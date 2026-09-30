@@ -34,6 +34,24 @@ python3 -m venv .venv
 .venv/bin/pytest
 ```
 
+### PDF export prerequisites / PDF出力の前提条件
+
+`report_export.export_report(..., report_format="pdf")` uses nbconvert's
+`PDFExporter`, which shells out to a system `xelatex` binary. This is **not**
+installed by `pip`/`npm` and must be provided separately, e.g.:
+
+```sh
+# Debian/Ubuntu
+sudo apt-get install texlive-xetex texlive-fonts-recommended
+
+# macOS
+brew install --cask mactex-no-gui
+```
+
+If `xelatex` is not on `PATH`, PDF export raises a `RuntimeError` pointing
+back to this section; use `report_format="html"` if you do not need PDF
+output.
+
 ## Skill
 
 See `.github/skills/ai-data-scientist/SKILL.md` for the skill's invocation

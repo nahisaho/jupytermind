@@ -47,7 +47,17 @@ def export_report(
 
     notebook = nbformat.read(handle.notebook_path, as_version=4)
     exporter = _EXPORTERS[report_format]()
-    body, _resources = exporter.from_notebook_node(notebook)
+    try:
+        body, _resources = exporter.from_notebook_node(notebook)
+    except OSError as exc:
+        if report_format == "pdf" and "xelatex" in str(exc).lower():
+            raise RuntimeError(
+                "PDF export requires a system TeX/xelatex installation, which "
+                "is not bundled with this package. See the 'PDF export "
+                "prerequisites' section of README.md for install instructions, "
+                "or use report_format='html' instead."
+            ) from exc
+        raise
 
     reports_dir = handle.root / "reports"
     reports_dir.mkdir(parents=True, exist_ok=True)

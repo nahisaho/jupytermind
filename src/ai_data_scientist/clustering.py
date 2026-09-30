@@ -37,6 +37,11 @@ def cluster_or_reduce(
     if method == "kmeans":
         params.setdefault("n_clusters", 2)
         params.setdefault("n_init", 10)
+        if params["n_clusters"] > len(df):
+            raise ValueError(
+                f"n_clusters ({params['n_clusters']}) must not exceed the "
+                f"number of rows ({len(df)})"
+            )
         model = KMeans(**params)
         labels_or_components = model.fit_predict(df).tolist()
     else:  # pca

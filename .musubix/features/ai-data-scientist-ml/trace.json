@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-30T22:38:58.988Z",
+  "generatedAt": "2026-09-30T23:11:58.788Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -622,7 +622,13 @@
       "id": "TEST-AIDS-016",
       "kind": "test",
       "path": "tests/test_clustering.py",
-      "line": 8
+      "line": 9
+    },
+    {
+      "id": "TEST-AIDS-034",
+      "kind": "test",
+      "path": "tests/test_clustering.py",
+      "line": 26
     },
     {
       "id": "TEST-AIDS-024",
@@ -760,13 +766,19 @@
       "id": "TEST-AIDS-025",
       "kind": "test",
       "path": "tests/test_report_export.py",
-      "line": 49
+      "line": 52
     },
     {
       "id": "TEST-AIDS-033",
       "kind": "test",
       "path": "tests/test_report_export.py",
-      "line": 55
+      "line": 58
+    },
+    {
+      "id": "TEST-AIDS-036",
+      "kind": "test",
+      "path": "tests/test_report_export.py",
+      "line": 64
     },
     {
       "id": "TEST-AIDS-012",
@@ -790,7 +802,13 @@
       "id": "TEST-AIDS-018",
       "kind": "test",
       "path": "tests/test_timeseries.py",
-      "line": 19
+      "line": 20
+    },
+    {
+      "id": "TEST-AIDS-035",
+      "kind": "test",
+      "path": "tests/test_timeseries.py",
+      "line": 41
     },
     {
       "id": "TEST-AIDS-007",
@@ -1526,6 +1544,11 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AIDS-034",
+      "to": "REQ-AIDS-016",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AIDS-024",
       "to": "REQ-AIDS-024",
       "relation": "verifies"
@@ -1646,6 +1669,11 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AIDS-036",
+      "to": "REQ-AIDS-025",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AIDS-012",
       "to": "REQ-AIDS-012",
       "relation": "verifies"
@@ -1662,6 +1690,11 @@
     },
     {
       "from": "TEST-AIDS-018",
+      "to": "REQ-AIDS-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-035",
       "to": "REQ-AIDS-018",
       "relation": "verifies"
     },
@@ -1686,11 +1719,13 @@
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
+    "bin/ai-data-scientist.js": "f70c764374ee721ebe18b26ed2f3da6ddd896d3c7bc5520c10f8fc0e70fd85da",
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/anomaly_detection.py": "8e991c85d27e7414ac66320d3a4fbed04a61adc484de9b4ada6923cb17a8752d",
     "src/ai_data_scientist/automl.py": "f867bf8081f0d72011356466c30690452035dec090e90f99c05daf1023e964da",
     "src/ai_data_scientist/cleaning.py": "8060c69112efe6aae6f0afdff6e464d601a76b5b62455e5d673916edfd4207ea",
-    "src/ai_data_scientist/clustering.py": "6f976c5509e7208366ed565838b4db4513884280e1c978debdb27204ebdc174e",
+    "src/ai_data_scientist/cli.py": "d7b60bd499fbd427453061ba87b20ab346f1a79cf36ecaca0ba8207347dff9a4",
+    "src/ai_data_scientist/clustering.py": "2b9011a2dfbb2e9318518dedf90b186d58eace35f03d1c28d6d47937c4a79bd0",
     "src/ai_data_scientist/dashboard.py": "e54d6d6fe08fe6505a4904d83621b12605a1b22fa77c7f1337f7fd9f9cf1bab3",
     "src/ai_data_scientist/eda.py": "180650138a9b7132c49849f0ff96859fdcc99ced679606aabafc7a886e944f4f",
     "src/ai_data_scientist/experiment_evaluation.py": "d333684c4dd4fbd80e943b5faac5254ac202a09cfde388d30b27c699d02ad45a",
@@ -1705,16 +1740,16 @@
     "src/ai_data_scientist/ml_modeling.py": "774e7f12fa5ba0cac2a5559ef9abaf8db67445e659b86b18dbc607a9cb5bd6a9",
     "src/ai_data_scientist/model_tuning.py": "2e4cdbc8895c319876ef3a0274e7247408063ac31c8b59825051a2bdd2ad1faf",
     "src/ai_data_scientist/project_manager.py": "d2416989e93913e5fcf8f03abc12958b00188ef16e750982b7093594df5e3493",
-    "src/ai_data_scientist/report_export.py": "8d77a4f0c94fe6dead72fdc0b2920908c9dcd91f03cb83a5628e80e3d19d48b1",
+    "src/ai_data_scientist/report_export.py": "29f1d2ccc4d3cd8208d7a4ba043a976b60caec863f9a2ad701017e0bf8b82510",
     "src/ai_data_scientist/skill_packaging.py": "90597141eda3af0b96a0e667612cb1e2d0c3f7deb58d2dca923d716946966de1",
     "src/ai_data_scientist/stats_analysis.py": "85fc910ad24b5c8a1205d0360aebf88d40dd3c2029cf7d24d24f7ba6859dea4a",
     "src/ai_data_scientist/text_nlp.py": "bb7ee36f88f69ba683b82dae4fee06b3a1ff004774d57973ee60c9b0f53f3985",
-    "src/ai_data_scientist/timeseries.py": "3f4a63241f954935715c56a18b4e2a244f4cc0e26cb8f9f0cb51d762155a3180",
+    "src/ai_data_scientist/timeseries.py": "9c36ccab2c39d70815a3e5cd55e8b79679d7678107a39fda02a22ab665263dc5",
     "src/ai_data_scientist/visualization.py": "e6a1479d736a61088ecf5738622af861d23ddac11bd984f083e14c11bca9bf38",
     "tests/test_anomaly_detection.py": "1d3cdaabb41d4dc2f7d0b0278d6645cee4d0d11557aa4519a7de0376a083d3ba",
     "tests/test_automl.py": "8143813b6142f3e83cd5117ecb0025a161963b616b4480cf76cbbe1859e5989a",
     "tests/test_cleaning.py": "83face0b0f1ddcd158def39d0a711444b717b0416dc1f1b7bc021bc71723942e",
-    "tests/test_clustering.py": "5d296b714bd33cc3365bf3513ec785a8ffa468aa4eabd3a8a26990cd0b3b6545",
+    "tests/test_clustering.py": "9175839a04a67f4e66ebe7856b77bc36715dd9e2b3acc8e37460027272fc2557",
     "tests/test_dashboard.py": "4e2358a3a6582809facb218355ae496de8cfb2b873a53977ec22bfbdcb5a3e15",
     "tests/test_eda.py": "fcdf174ba32df0113cd3acc761ebde19c084720724c874755daf9719993a0185",
     "tests/test_experiment_evaluation.py": "fb86918ae84bfa34f8e386dfc92a8b16d51d09f836da52915d4528dcc5e843b9",
@@ -1729,11 +1764,11 @@
     "tests/test_ml_modeling.py": "7023a333da56f3e39d672946b8481742f22d118d66e5e5afc14113b916865e39",
     "tests/test_model_tuning.py": "b924be0cb1f7be508ca6697e032e2dc45bb154d67e53c8a588f0c9b4dd351f62",
     "tests/test_project_manager.py": "a8b9e5c56a72fa378fceae012f3c6edddbf2c684c0022bab786f9f5796f5d982",
-    "tests/test_report_export.py": "97e6e2ab9e6710479440d95d6c686fec155e12aff94e4003eb56667b8a703e0f",
+    "tests/test_report_export.py": "9640608629a523fc0b124d6fca0e7b5448869d672289b5bec3e9011e4e477fea",
     "tests/test_skill_packaging.py": "73cfcef96b5e5364334a76cfb402f2b5b956ac830e9ce9f8f5d1c3ad543a1c5c",
     "tests/test_stats_analysis.py": "b8bc426c85e6fddf8dff9151a7799a4d9014f597d72563d824487afa0e9ee8d6",
     "tests/test_text_nlp.py": "fd80ec14405d2eafc9def8bbf0e4e763a3b36e340f3aff4c6d6c69360dc69274",
-    "tests/test_timeseries.py": "992d100f92986d32d6396680cfe40578f2255a695eca85f604066ca4b49f0843",
+    "tests/test_timeseries.py": "263103dc868f7a5d994c30b63640725af49bb1ac8bcc488f084075a758a7fdd0",
     "tests/test_visualization.py": "4d9ce1d301d9b858529d99e42b52e656e44596805abce2bc55f49689b241273a"
   }
 }

@@ -47,11 +47,21 @@ def analyze_time_series(
         )
 
     # forecast
+    seasonal = params.get("seasonal")
+    seasonal_periods = params.get("seasonal_periods")
+    if seasonal is not None and seasonal_periods:
+        min_required = 2 * seasonal_periods
+        if len(series) < min_required:
+            raise ValueError(
+                f"Forecasting with seasonal_periods={seasonal_periods} requires "
+                f"at least {min_required} observations (2 x seasonal_periods); "
+                f"got {len(series)}."
+            )
     model = ExponentialSmoothing(
         series,
         trend=params.get("trend", "add"),
-        seasonal=params.get("seasonal"),
-        seasonal_periods=params.get("seasonal_periods"),
+        seasonal=seasonal,
+        seasonal_periods=seasonal_periods,
     ).fit()
     steps = params.get("steps", 1)
     forecast = model.forecast(steps)

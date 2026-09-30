@@ -1,6 +1,9 @@
 """Tests for report export (REQ-AIDS-025, REQ-AIDS-033)."""
 
+from unittest.mock import patch
+
 import nbformat
+import pytest
 
 from ai_data_scientist.project_manager import ensure_notebook, resolve_project
 from ai_data_scientist.report_export import export_report
@@ -56,3 +59,16 @@ def test_TEST_AIDS_025(tmp_path):
 # @verifies REQ-AIDS-033
 def test_TEST_AIDS_033(tmp_path):
     _assert_export_produces_evidence_preserving_report(tmp_path)
+
+
+# @id TEST-AIDS-036
+# @verifies REQ-AIDS-025
+def test_TEST_AIDS_036_pdf_export_without_xelatex_raises_actionable_error(tmp_path):
+    handle = _build_project_with_insight(tmp_path)
+
+    with patch(
+        "ai_data_scientist.report_export.PDFExporter.from_notebook_node",
+        side_effect=OSError("xelatex not found on PATH"),
+    ):
+        with pytest.raises(RuntimeError, match="xelatex|TeX|README"):
+            export_report(handle, report_format="pdf", name="report")

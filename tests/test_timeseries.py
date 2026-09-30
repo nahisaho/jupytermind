@@ -2,6 +2,7 @@
 
 import numpy as np
 import pandas as pd
+import pytest
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 
 from ai_data_scientist.timeseries import analyze_time_series
@@ -35,3 +36,15 @@ def test_TEST_AIDS_018():
     forecast_values = pd.Series(result.forecast)
     assert len(forecast_values) == params["steps"]
     assert np.allclose(forecast_values.to_numpy(), reference_forecast.to_numpy(), rtol=0, atol=1e-6)
+
+
+# @id TEST-AIDS-035
+# @verifies REQ-AIDS-018
+def test_TEST_AIDS_035_forecast_with_insufficient_seasonal_cycles_raises_clear_error():
+    short_series = pd.Series([1.0, 2.0, 3.0, 4.0, 5.0])
+    params = {"seasonal_periods": 12, "trend": "add", "seasonal": "add", "steps": 3}
+
+    with pytest.raises(
+        ValueError, match=r"requires at least 24 observations \(2 .* seasonal_periods\)"
+    ):
+        analyze_time_series(short_series, operation="forecast", params=params)
