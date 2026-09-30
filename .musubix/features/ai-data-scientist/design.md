@@ -138,3 +138,39 @@ not itself certify correctness beyond what the executed tests check.
 Requirements: REQ-AIDS-013
 ADRs: none — this is a process gate, not an architectural component with alternatives.
 Depends-On: none
+
+## DES-AIDS-025: Jupyter MCP runtime manager / Jupyter MCPランタイム管理
+Responsibilities: On the first execution request with no healthy runtime
+registered, install (if missing) and launch JupyterLab and the
+jupyter-mcp-server inside the project's managed `.venv`, bound to
+127.0.0.1 on an automatically chosen free port with a randomly generated
+token; poll for health within the configured startup timeout; persist the
+process identifiers, port, and token to a machine-local state file so a
+separate later CLI invocation can detect and reuse the same runtime instead
+of starting a duplicate one; and expose explicit status/stop operations.
+Interfaces: ensureRuntime(timeoutMs) -> RuntimeInfo{pid, port, token};
+status() -> RuntimeInfo | None; stop() -> None.
+Constraints: Must bind only to 127.0.0.1, never a public interface. Must not
+mark the state file healthy until the health check passes. On startup
+failure or timeout it must raise MCPUnavailableError, deregister any
+partially started state, and must not retry automatically. `stop()` must
+terminate every recorded process id and remove the state file.
+Requirements: REQ-AIDS-034, REQ-AIDS-035, REQ-AIDS-036, REQ-AIDS-037
+ADRs: ADR-0008
+Depends-On: DES-AIDS-003
+
+## DES-AIDS-026: Concrete Jupyter MCP client / 具象Jupyter MCPクライアント
+Responsibilities: Implement the MCPClient contract declared by
+DES-AIDS-004 by communicating with the runtime started by DES-AIDS-012
+(using its recorded port and token) so run_and_record can execute real code
+against a live Jupyter kernel without any caller-supplied client.
+Interfaces: execute(code) -> dict, satisfying mcp_gateway.MCPClient; obtains
+connection details via DES-AIDS-025.ensureRuntime before first use.
+Constraints: Must only be used as the default client when no other MCPClient
+is explicitly supplied; must surface the same MCPUnavailableError /
+MCPExecutionTimeoutError classification already defined by DES-AIDS-004
+rather than leaking transport-specific exceptions.
+Requirements: REQ-AIDS-038
+ADRs: none — this component is a direct, non-competing fulfillment of
+REQ-AIDS-038 within the boundary already decided by ADR-0002 and ADR-0008.
+Depends-On: DES-AIDS-004, DES-AIDS-025
