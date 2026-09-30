@@ -1,0 +1,150 @@
+---
+schemaVersion: 1
+feature: ai-data-scientist
+---
+# Requirements / 要求 (MVP)
+
+Feature: MVP scope of the GitHub Copilot Agent Skill "AI Data Scientist" that
+lets a user perform natural language data analysis (Japanese or English)
+through a Jupyter MCP server (Datalayer jupyter-mcp-server), recording every
+analysis step and every reasoning-based insight as notebook cells inside a
+per-project notebook. Advanced modeling and analytics capabilities are tracked
+separately in the `ai-data-scientist-ml` feature so this MVP boundary stays
+independently shippable and testable (see rubber-duck review: scope risk).
+
+## REQ-AIDS-001: Bilingual instruction support / 日英両対応の指示理解
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user submits an analysis instruction in Japanese or English, the system shall respond in the same language as that instruction.
+Acceptance: A test feeds 10 paired Japanese/English prompts and asserts the assistant response language matches the input language in all 10 cases.
+
+## REQ-AIDS-002: Project-scoped notebook creation / プロジェクト単位のNotebook作成
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user starts analysis work for a project with no existing notebook, the system shall create a notebook file at projects/<project_name>/notebooks/<project_name>.ipynb before executing any analysis cell.
+Acceptance: Starting analysis on a new project name creates exactly one ipynb file at the expected path, and starting analysis again on the same project reuses the existing file instead of creating a duplicate.
+Formal: {"kind":"conditional","condition":"notebook_missing","consequence":"create_notebook"}
+
+## REQ-AIDS-003: Jupyter MCP execution backend / Jupyter MCP実行バックエンド
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall execute all analysis code through the configured Jupyter MCP server tools against the project notebook kernel.
+Acceptance: A test instruments MCP tool calls during an analysis session and asserts 100 percent of code execution requests are routed through the configured jupyter-mcp-server tools.
+
+## REQ-AIDS-004: Data cleaning operations / データクリーニング操作
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests a data cleaning operation, the system shall execute a notebook code cell performing that operation and report the row and column impact in the cell output.
+Acceptance: Given a dataset with injected nulls and duplicates, a cleaning instruction removes or imputes them as requested and the resulting cell output states the number of rows and columns affected.
+
+## REQ-AIDS-005: Exploratory data analysis / 探索的データ分析
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests exploratory analysis, the system shall execute a notebook code cell that computes summary statistics, data types, and missing value counts for the target dataset.
+Acceptance: Running an EDA instruction against a sample CSV produces a cell whose output includes column dtypes, non-null counts, and mean and std for numeric columns, matching pandas describe and info reference values.
+
+## REQ-AIDS-006: Statistical analysis / 統計分析
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests a statistical test or correlation analysis, the system shall execute a notebook code cell reporting the statistic and an adjacent markdown cell with a natural language interpretation.
+Acceptance: A correlation request on a known synthetic dataset yields a correlation coefficient matching the scipy or numpy reference value within 1e-6, paired with a markdown interpretation cell.
+
+## REQ-AIDS-007: Visualization generation / 可視化生成
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests a chart or plot, the system shall execute a notebook code cell that renders the requested visualization into the cell output.
+Acceptance: A visualization instruction results in a code cell whose output contains an image MIME bundle, PNG or SVG, in the saved ipynb JSON.
+
+## REQ-AIDS-009: Insight generation with recorded rationale / 根拠を伴うInsight生成
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When the system generates a reasoning based insight, the system shall insert a markdown cell containing that insight immediately after the executed code cell that constitutes its evidentiary basis.
+Acceptance: For every insight markdown cell added in a session, a test parses the ipynb and asserts the directly preceding code cell has a non-null execution_count and its output is referenced by the insight text, for 100 percent of insight cells.
+Formal: {"kind":"transition","from":"evidence_executed","event":"insight_requested","to":"insight_recorded"}
+
+## REQ-AIDS-010: No insight without notebook evidence / 根拠なきInsightの禁止
+Priority: must
+Type: functional
+Pattern: unwanted-behavior
+Statement: If the system cannot locate an executed evidentiary cell for a candidate insight, then the system shall withhold that insight and notify the user that supporting evidence could not be established.
+Acceptance: Simulating a failed or skipped execution before an insight request results in no insight markdown cell being written and a user visible notification message in the configured response language.
+
+## REQ-AIDS-011: Analysis history persistence / 分析履歴の永続化
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall persist every executed analysis cell and its output in the project notebook file so the full analysis history is reconstructable by reopening the notebook.
+Acceptance: After a multi-step analysis session, reopening the ipynb file with nbformat validate passes and the cell count matches the session execution log, with every executed cell showing its original output.
+
+## REQ-AIDS-012: Skill packaging as SKILL.md / SKILL.md形式でのスキル提供
+Priority: must
+Type: non-functional
+Pattern: ubiquitous
+Statement: The system shall be packaged as a GitHub Copilot Agent Skill at .github/skills/ai-data-scientist/SKILL.md following the structural conventions used by this repository's existing sdd-* skills.
+Acceptance: Manual review confirms the skill directory contains a SKILL.md that is discoverable and loadable the same way the sdd-requirements skill was loaded in this session.
+
+## REQ-AIDS-013: Test-driven development coverage / TDDによるテスト網羅
+Priority: must
+Type: non-functional
+Pattern: ubiquitous
+Statement: The system shall require its pytest suite to pass before any implementation change is considered complete.
+Acceptance: CI or local run of pytest reports zero failing tests immediately before a change is marked complete.
+Performance: {"counter":"tests.pass_rate","max":100,"testId":"TEST-AIDS-PYTEST-001","unit":"operations"}
+
+## REQ-AIDS-014: Diverse data source ingestion / 多様なデータソース取り込み
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests to load data from a CSV or Excel file or a database or API or image or text source, the system shall execute a notebook code cell that ingests the data into an in-memory dataframe available for subsequent analysis.
+Acceptance: Ingestion instructions for a CSV, an Excel file, and a REST API endpoint each produce a code cell whose output confirms the loaded row count and column count.
+
+## REQ-AIDS-027: Structured insight evidence manifest / 構造化Insightエビデンスマニフェスト
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When the system inserts an insight markdown cell, the system shall include within that cell a structured evidence manifest identifying the source cell execution count, a cited output value, and the claim type.
+Acceptance: A test parses each insight markdown cell in the notebook and confirms it contains a machine-readable evidence manifest whose cited execution count matches an actual executed cell and whose cited value appears verbatim in that cell's output, for 100 percent of insight cells.
+
+## REQ-AIDS-028: Project identifier validation / プロジェクト識別子検証
+Priority: must
+Type: functional
+Pattern: unwanted-behavior
+Statement: If a requested project name contains path traversal segments or characters outside the allowed identifier pattern, then the system shall reject the request and notify the user of the allowed naming rules.
+Acceptance: Requests using project names such as a parent-directory reference or embedded path separators are rejected before any file system write, verified by asserting no file is created outside the projects directory tree.
+
+## REQ-AIDS-029: Concurrent notebook access safety / Notebook同時アクセス安全性
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When two analysis sessions target the same project notebook concurrently, the system shall serialize their writes so no cell or output from either session is lost or corrupted.
+Acceptance: A test runs two concurrent write sessions against one project notebook and asserts the resulting ipynb passes nbformat validate and contains every cell submitted by both sessions.
+
+## REQ-AIDS-030: Jupyter MCP unavailability handling / Jupyter MCP接続断時の処理
+Priority: must
+Type: functional
+Pattern: unwanted-behavior
+Statement: If the configured Jupyter MCP server or kernel is unreachable when an analysis instruction is submitted, then the system shall report the failure to the user in the configured response language without writing a partial or corrupted cell to the notebook.
+Acceptance: Simulating an unreachable MCP server during an analysis request results in a user-visible failure notification and no new cell appended to the notebook, verified by comparing cell count before and after the attempt.
+
+## REQ-AIDS-031: Execution timeout handling / 実行タイムアウト処理
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a notebook cell execution exceeds the configured timeout, the system shall cancel that execution, mark the cell as failed, and notify the user without treating the cell as evidentiary basis for any insight.
+Acceptance: A test forces a cell to exceed a configured timeout and asserts the cell is marked failed, no insight is generated from it, and a timeout notification is shown to the user.
+Formal: {"kind":"temporal","trigger":"cell_execution_started","response":"timeout_cancelled","withinMs":30000}
+
+## REQ-AIDS-032: Data source ingestion safety limits / データ取込の安全制限
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests ingestion from a database or API source, the system shall apply the configured authentication, network allowlist, and row-count limit before loading the data into a dataframe.
+Acceptance: An ingestion request to a non-allowlisted host is rejected before any network call is attempted, and an ingestion request exceeding the configured row limit truncates the loaded data and reports the truncation to the user.

@@ -1,0 +1,37 @@
+[project]
+name = "ai-data-scientist"
+version = "0.1.0"
+description = "GitHub Copilot Agent Skill: AI Data Scientist (MVP) over Jupyter MCP"
+requires-python = ">=3.10"
+dependencies = [
+  "nbformat>=5.9",
+  "pandas>=2.0",
+  "scipy>=1.11",
+  "matplotlib>=3.8",
+  "openpyxl>=3.1",
+  "scikit-learn>=1.5",
+  "statsmodels>=0.14",
+  "nbconvert>=7.16",
+  "spacy>=3.7",
+  "ginza>=5.2",
+  "ja-ginza>=5.2",
+  "vaderSentiment>=3.3",
+  "plotly>=5.20",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-json-report>=1.5", "ruff>=0.6"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 2,
+  "runId": "4a92273b-031f-41ff-a397-e2a14f618d9b",
+  "generatedAt": "2026-09-30T22:39:06.498Z",
+  "executions": [
+    {
+      "runId": "4a92273b-031f-41ff-a397-e2a14f618d9b",
+      "executionId": "790dc6eefe2b7e564d0f254d014bdcee758bc10c1026379b252a3a6cdd628578",
+      "commandName": "test",
+      "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
+      "reportPath": ".musubix/evidence/native/test/aggregate.json",
+      "sourceKind": "file",
+      "reportSha256": "11e7ae03b00ad44b74a98fc580151433d6cbf597d832e405a2ae882cb23a87e6",
+      "processStatus": "completed",
+      "exitCode": 0,
+      "tests": [
+        {
+          "id": "TEST-AIDS-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-007",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-008",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-009",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-010",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-011",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-012",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-014",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-015",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-016",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-017",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-018",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-019",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-020",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-021",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-022",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-023",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-024",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-025",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-026",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-027",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-028",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-029",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-030",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-031",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-032",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-033",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-PYTEST-001",
+          "status": "passed"
+        }
+      ],
+      "recordSha256": "1838026f2260c9be6a2e7cd5fcf84dd0a781f29febe3911b36fb5f227fa77e18"
+    }
+  ],
+  "observations": [
+    {
+      "requirementId": "REQ-AIDS-013",
+      "testId": "TEST-AIDS-PYTEST-001",
+      "counter": "tests.pass_rate",
+      "observed": null,
+      "maximum": 100,
+      "status": "missing"
+    }
+  ]
+}

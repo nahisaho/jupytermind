@@ -1,0 +1,19 @@
+
+# musubix3 generated caches
+/.musubix/cache/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Projects created at runtime by the AI Data Scientist skill
+/projects/
+
+# Node / npm (bin wrapper has no runtime npm dependencies, but keep this
+# clean if any tooling is added later)
+node_modules/
+npm-debug.log*

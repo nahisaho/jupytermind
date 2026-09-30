@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "language": "auto",
+  "qualityProfile": "custom",
+  "commands": [
+    {
+      "name": "format",
+      "command": ".venv/bin/ruff",
+      "args": ["format", "--check", "src", "tests"],
+      "required": true,
+      "timeoutMs": 60000
+    },
+    {
+      "name": "test",
+      "command": ".venv/bin/pytest",
+      "args": [],
+      "adapter": "pytest",
+      "required": true,
+      "timeoutMs": 120000
+    }
+  ],
+  "requiredChecks": [
+    "requirements",
+    "design",
+    "constitution",
+    "trace",
+    "graph",
+    "commands"
+  ],
+  "thresholds": {
+    "design": 1,
+    "implementation": 1,
+    "tests": 1
+  },
+  "architecture": {
+    "forbidCycles": true,
+    "rules": []
+  },
+  "codeGraph": {
+    "mode": "compatible"
+  },
+  "formal": {
+    "solver": "none",
+    "minModeledFraction": 0,
+    "timeoutMs": 12000
+  },
+  "mutation": {
+    "mode": "compatible"
+  },
+  "tdd": {
+    "redPreflightCommands": ["format"]
+  },
+  "approval": {
+    "mode": "required",
+    "domains": []
+  },
+  "workflow": {
+    "mode": "compatible",
+    "maxAgeSeconds": 3600,
+    "maxFutureSkewSeconds": 60
+  },
+  "attestation": {
+    "mode": "local",
+    "maxAgeSeconds": 3600,
+    "maxFutureSkewSeconds": 60,
+    "trustedPublicKeys": [],
+    "githubOidc": {
+      "mode": "off"
+    }
+  }
+}
