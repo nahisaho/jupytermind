@@ -16,6 +16,8 @@ import matplotlib.pyplot as plt
 import nbformat
 import pandas as pd
 
+from ai_data_scientist.project_manager import ProjectHandle, enqueue_write, next_execution_count
+
 _SUPPORTED_KINDS = ("scatter", "line", "bar", "hist")
 
 
@@ -52,3 +54,29 @@ def build_image_output(png_bytes: bytes) -> nbformat.NotebookNode:
         "execute_result",
         data={"image/png": encoded, "text/plain": "<matplotlib chart>"},
     )
+
+
+# @id CODE-AIDS-035
+# @implements REQ-AIDS-007
+# @design DES-AIDS-009
+def record_chart(handle: ProjectHandle, code: str, png_bytes: bytes) -> int:
+    """Persist a rendered chart as an executed code cell in the project notebook.
+
+    Mirrors mcp_gateway.run_and_record's ergonomics for chart/image outputs so
+    callers don't need to hand-roll enqueue_write boilerplate. Returns the
+    stamped execution_count of the new cell.
+    """
+    stamped_count: dict[str, int] = {}
+
+    def add_cell(nb):
+        execution_count = next_execution_count(nb)
+        stamped_count["value"] = execution_count
+        cell = nbformat.v4.new_code_cell(code)
+        cell["execution_count"] = execution_count
+        output = build_image_output(png_bytes)
+        output["execution_count"] = execution_count
+        cell["outputs"] = [output]
+        nb.cells.append(cell)
+
+    enqueue_write(handle, add_cell)
+    return stamped_count["value"]

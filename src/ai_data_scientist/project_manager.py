@@ -17,6 +17,20 @@ import nbformat
 _SLUG_PATTERN = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
 
+def next_execution_count(notebook) -> int:
+    """Compute the next monotonically increasing execution_count for ``notebook``.
+
+    Shared by any writer that appends an "executed" code cell (mcp_gateway's
+    run_and_record, visualization's record_chart) so every such cell carries
+    a real, non-null, incrementing execution_count instead of leaving it
+    unset (REQ-AIDS-009's evidentiary-cell acceptance criterion).
+    """
+    existing = [
+        cell.get("execution_count") for cell in notebook.cells if cell.get("cell_type") == "code"
+    ]
+    return max((count for count in existing if isinstance(count, int)), default=0) + 1
+
+
 class InvalidProjectNameError(ValueError):
     """Raised when a project name does not satisfy the ADR-0005 slug policy."""
 

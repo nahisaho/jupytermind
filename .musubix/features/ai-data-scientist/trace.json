@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-30T23:11:58.788Z",
+  "generatedAt": "2026-09-30T23:31:11.761Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -544,19 +544,19 @@
       "id": "CODE-AIDS-028",
       "kind": "code",
       "path": "src/ai_data_scientist/project_manager.py",
-      "line": 48
+      "line": 62
     },
     {
       "id": "CODE-AIDS-002",
       "kind": "code",
       "path": "src/ai_data_scientist/project_manager.py",
-      "line": 72
+      "line": 86
     },
     {
       "id": "CODE-AIDS-011",
       "kind": "code",
       "path": "src/ai_data_scientist/project_manager.py",
-      "line": 85
+      "line": 99
     },
     {
       "id": "CODE-AIDS-025",
@@ -592,13 +592,19 @@
       "id": "CODE-AIDS-007",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
-      "line": 22
+      "line": 24
     },
     {
       "id": "CODE-AIDS-034",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
-      "line": 45
+      "line": 47
+    },
+    {
+      "id": "CODE-AIDS-035",
+      "kind": "code",
+      "path": "src/ai_data_scientist/visualization.py",
+      "line": 59
     },
     {
       "id": "TEST-AIDS-017",
@@ -727,6 +733,18 @@
       "line": 63
     },
     {
+      "id": "TEST-AIDS-037",
+      "kind": "test",
+      "path": "tests/test_mcp_gateway.py",
+      "line": 78
+    },
+    {
+      "id": "TEST-AIDS-038",
+      "kind": "test",
+      "path": "tests/test_mcp_gateway.py",
+      "line": 97
+    },
+    {
       "id": "TEST-AIDS-008",
       "kind": "test",
       "path": "tests/test_ml_modeling.py",
@@ -814,7 +832,13 @@
       "id": "TEST-AIDS-007",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 9
+      "line": 10
+    },
+    {
+      "id": "TEST-AIDS-039",
+      "kind": "test",
+      "path": "tests/test_visualization.py",
+      "line": 40
     }
   ],
   "edges": [
@@ -1524,6 +1548,16 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AIDS-035",
+      "to": "REQ-AIDS-007",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-035",
+      "to": "DES-AIDS-009",
+      "relation": "implements"
+    },
+    {
       "from": "TEST-AIDS-017",
       "to": "REQ-AIDS-017",
       "relation": "verifies"
@@ -1629,6 +1663,16 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AIDS-037",
+      "to": "REQ-AIDS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-038",
+      "to": "REQ-AIDS-009",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AIDS-008",
       "to": "REQ-AIDS-008",
       "relation": "verifies"
@@ -1702,6 +1746,11 @@
       "from": "TEST-AIDS-007",
       "to": "REQ-AIDS-007",
       "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-039",
+      "to": "REQ-AIDS-007",
+      "relation": "verifies"
     }
   ],
   "diagnostics": [],
@@ -1736,16 +1785,16 @@
     "src/ai_data_scientist/insight_engine.py": "7675b81eca86f84049a948823c0459c496192b439d57d0b6dfef33833805a02e",
     "src/ai_data_scientist/japanese_nlp.py": "49ee7fabf2f60de41fadfdc2238ef032bbdc953cded2611c5069200cd672905e",
     "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
-    "src/ai_data_scientist/mcp_gateway.py": "d110c5e80a9798562057c45b44142522224c1d621827c0f314e58a9c1234a57c",
+    "src/ai_data_scientist/mcp_gateway.py": "484909c235694b2ea4a5bc42886401499476ca39884c9f237c36f714009a69fb",
     "src/ai_data_scientist/ml_modeling.py": "774e7f12fa5ba0cac2a5559ef9abaf8db67445e659b86b18dbc607a9cb5bd6a9",
     "src/ai_data_scientist/model_tuning.py": "2e4cdbc8895c319876ef3a0274e7247408063ac31c8b59825051a2bdd2ad1faf",
-    "src/ai_data_scientist/project_manager.py": "d2416989e93913e5fcf8f03abc12958b00188ef16e750982b7093594df5e3493",
+    "src/ai_data_scientist/project_manager.py": "c88da5405208a606026b7dd454f909ef2fe21fd18bdb9a0d5ed9f43048e03fc9",
     "src/ai_data_scientist/report_export.py": "29f1d2ccc4d3cd8208d7a4ba043a976b60caec863f9a2ad701017e0bf8b82510",
     "src/ai_data_scientist/skill_packaging.py": "90597141eda3af0b96a0e667612cb1e2d0c3f7deb58d2dca923d716946966de1",
     "src/ai_data_scientist/stats_analysis.py": "85fc910ad24b5c8a1205d0360aebf88d40dd3c2029cf7d24d24f7ba6859dea4a",
     "src/ai_data_scientist/text_nlp.py": "bb7ee36f88f69ba683b82dae4fee06b3a1ff004774d57973ee60c9b0f53f3985",
     "src/ai_data_scientist/timeseries.py": "9c36ccab2c39d70815a3e5cd55e8b79679d7678107a39fda02a22ab665263dc5",
-    "src/ai_data_scientist/visualization.py": "e6a1479d736a61088ecf5738622af861d23ddac11bd984f083e14c11bca9bf38",
+    "src/ai_data_scientist/visualization.py": "e4fe75295912f5cc12964af3d0fefcd3c33e688e2a521bfffccce178d9d638da",
     "tests/test_anomaly_detection.py": "1d3cdaabb41d4dc2f7d0b0278d6645cee4d0d11557aa4519a7de0376a083d3ba",
     "tests/test_automl.py": "8143813b6142f3e83cd5117ecb0025a161963b616b4480cf76cbbe1859e5989a",
     "tests/test_cleaning.py": "83face0b0f1ddcd158def39d0a711444b717b0416dc1f1b7bc021bc71723942e",
@@ -1760,7 +1809,7 @@
     "tests/test_insight_engine.py": "3f4685a8b614f6984ffc43b60bd677f6e032ee546c1a01c6e6949978cc275c61",
     "tests/test_japanese_nlp.py": "a5aaca651bf8f5dd44015833d01a52c0c0a45ce104875f04da4c20d2fdcd9325",
     "tests/test_language_router.py": "27a278cb085fb9bf97fb6c8298fcdc39c9a40462de5f1fcafade143f924682ba",
-    "tests/test_mcp_gateway.py": "da43da5438cfdac286e1c51b82035e6defbe1a7c626179311761d18408555284",
+    "tests/test_mcp_gateway.py": "75cd4bb93ae14359d65c220bf48e5538fdb9733d20839c2212f3f9144b2b5bd0",
     "tests/test_ml_modeling.py": "7023a333da56f3e39d672946b8481742f22d118d66e5e5afc14113b916865e39",
     "tests/test_model_tuning.py": "b924be0cb1f7be508ca6697e032e2dc45bb154d67e53c8a588f0c9b4dd351f62",
     "tests/test_project_manager.py": "a8b9e5c56a72fa378fceae012f3c6edddbf2c684c0022bab786f9f5796f5d982",
@@ -1769,6 +1818,6 @@
     "tests/test_stats_analysis.py": "b8bc426c85e6fddf8dff9151a7799a4d9014f597d72563d824487afa0e9ee8d6",
     "tests/test_text_nlp.py": "fd80ec14405d2eafc9def8bbf0e4e763a3b36e340f3aff4c6d6c69360dc69274",
     "tests/test_timeseries.py": "263103dc868f7a5d994c30b63640725af49bb1ac8bcc488f084075a758a7fdd0",
-    "tests/test_visualization.py": "4d9ce1d301d9b858529d99e42b52e656e44596805abce2bc55f49689b241273a"
+    "tests/test_visualization.py": "984daca6d1f06263a64e3e24e064342e8262dadf1e27cf8d7473ccd8b211e0be"
   }
 }

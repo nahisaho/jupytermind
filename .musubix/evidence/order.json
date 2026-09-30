@@ -592,6 +592,54 @@
       "phase": "green",
       "previousSha256": "f526425d59876a5496132f843bc43d84736a591c22b842b2943e7fd3dd499e62",
       "recordSha256": "8d1cec91100f1c234cbbc8e873b85d9e75fd90fd4b5b1a77d85e7ff7b76f1077"
+    },
+    {
+      "sequence": 75,
+      "kind": "tdd",
+      "entityId": "6116efd2-96d0-4b8a-9289-86a4bddde2be",
+      "phase": "red",
+      "previousSha256": "8d1cec91100f1c234cbbc8e873b85d9e75fd90fd4b5b1a77d85e7ff7b76f1077",
+      "recordSha256": "07c3aed6aecf61eaa7e2e431fe2278dc00cb5a874cee906dc6d303c71f294257"
+    },
+    {
+      "sequence": 76,
+      "kind": "tdd",
+      "entityId": "f18a01be-39e4-4e83-8c72-aae134a4f152",
+      "phase": "red",
+      "previousSha256": "07c3aed6aecf61eaa7e2e431fe2278dc00cb5a874cee906dc6d303c71f294257",
+      "recordSha256": "428823f05fdec039a7c97c721f7ce847c05becfe4729b1c66626c8132c458fc2"
+    },
+    {
+      "sequence": 77,
+      "kind": "tdd",
+      "entityId": "55e01f9c-9151-4ab7-83ec-ace7a15564b1",
+      "phase": "red",
+      "previousSha256": "428823f05fdec039a7c97c721f7ce847c05becfe4729b1c66626c8132c458fc2",
+      "recordSha256": "2905ae92cdb0e42e99d13500805b89d81738de0759d034bc8fe6d0369d4e71b1"
+    },
+    {
+      "sequence": 78,
+      "kind": "tdd",
+      "entityId": "6116efd2-96d0-4b8a-9289-86a4bddde2be",
+      "phase": "green",
+      "previousSha256": "2905ae92cdb0e42e99d13500805b89d81738de0759d034bc8fe6d0369d4e71b1",
+      "recordSha256": "0e54cde6dfae839781c24c46cff080ffef8151ddee0eac60ce0cc43a1a893b9b"
+    },
+    {
+      "sequence": 79,
+      "kind": "tdd",
+      "entityId": "f18a01be-39e4-4e83-8c72-aae134a4f152",
+      "phase": "green",
+      "previousSha256": "0e54cde6dfae839781c24c46cff080ffef8151ddee0eac60ce0cc43a1a893b9b",
+      "recordSha256": "4d70d08e6ce1875850cf07068a7b8e0bad251f19bc14cb841ae0d9548f238c30"
+    },
+    {
+      "sequence": 80,
+      "kind": "tdd",
+      "entityId": "55e01f9c-9151-4ab7-83ec-ace7a15564b1",
+      "phase": "green",
+      "previousSha256": "4d70d08e6ce1875850cf07068a7b8e0bad251f19bc14cb841ae0d9548f238c30",
+      "recordSha256": "a4b2de51978d4261b67d16b5da3c59d027ff8398a4fe027bd626afad9a5aeda4"
     }
   ]
 }

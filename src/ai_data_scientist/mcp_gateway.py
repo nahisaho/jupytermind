@@ -13,7 +13,7 @@ from typing import Protocol
 
 import nbformat
 
-from ai_data_scientist.project_manager import ProjectHandle, enqueue_write
+from ai_data_scientist.project_manager import ProjectHandle, enqueue_write, next_execution_count
 
 DEFAULT_TIMEOUT_MS = 30000
 
@@ -77,15 +77,21 @@ def run_and_record(
     satisfying REQ-AIDS-030 (unavailability) and REQ-AIDS-031 (timeout).
     """
     result = execute_cell(client, code, timeout_ms=timeout_ms)
+    stamped_count: dict[str, int] = {}
 
     def add_cell(nb):
+        execution_count = next_execution_count(nb)
+        stamped_count["value"] = execution_count
         cell = nbformat.v4.new_code_cell(code)
+        cell["execution_count"] = execution_count
         cell["outputs"] = [
             nbformat.v4.new_output(
-                "execute_result", data={"text/plain": str(result.get("output", ""))}
+                "execute_result",
+                data={"text/plain": str(result.get("output", ""))},
+                execution_count=execution_count,
             )
         ]
         nb.cells.append(cell)
 
     enqueue_write(handle, add_cell)
-    return result
+    return {**result, "execution_count": stamped_count["value"]}
