@@ -148,3 +148,39 @@ Type: functional
 Pattern: event-driven
 Statement: When a user requests ingestion from a database or API source, the system shall apply the configured authentication, network allowlist, and row-count limit before loading the data into a dataframe.
 Acceptance: An ingestion request to a non-allowlisted host is rejected before any network call is attempted, and an ingestion request exceeding the configured row limit truncates the loaded data and reports the truncation to the user.
+
+## REQ-AIDS-034: On-demand Jupyter MCP runtime startup / オンデマンドJupyter MCP起動
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When the first analysis code execution is requested and no healthy Jupyter MCP runtime is already running, the system shall install (if needed) and start JupyterLab and the Jupyter MCP server inside the project's managed Python environment, binding to localhost only with an automatically selected free port and a randomly generated authentication token, and reuse that running runtime for all subsequent execution requests in the same machine.
+Acceptance: A test simulates a first execution request with no prior runtime present and asserts JupyterLab and the jupyter-mcp-server process are started, bound to 127.0.0.1 on a dynamically chosen free port, configured with a non-guessable generated token, and that a second execution request reuses the same runtime without starting a duplicate process.
+
+## REQ-AIDS-035: Background daemon persistence across invocations / CLI呼び出しを跨いだ常駐継続
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall record the running Jupyter MCP runtime's process identifiers, port, and token in a project-independent state file so that a separate, later CLI invocation can detect and reuse the same still-running runtime without starting a duplicate one.
+Acceptance: A test starts the runtime from one process invocation, then simulates a second independent invocation and asserts it detects the existing healthy runtime via the state file and performs no additional process start.
+
+## REQ-AIDS-036: Jupyter MCP startup failure handling / Jupyter MCP起動失敗時の処理
+Priority: must
+Type: functional
+Pattern: unwanted-behavior
+Statement: If JupyterLab or the Jupyter MCP server does not become healthy within the configured startup timeout, then the system shall raise the existing MCPUnavailableError, leave no partially started runtime registered as healthy, and report the failure to the user without retrying automatically.
+Acceptance: A test forces the health check to never succeed and asserts MCPUnavailableError is raised within the configured timeout, the state file does not mark the runtime healthy, and no notebook cell is written.
+Formal: {"kind":"temporal","trigger":"runtime_startup_requested","response":"mcp_unavailable_raised","withinMs":30000}
+
+## REQ-AIDS-037: Explicit Jupyter MCP runtime status and stop control / 明示的な状態確認・停止操作
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When a user runs the status or stop command for the Jupyter MCP runtime, the system shall report whether a runtime is currently running and, for stop, terminate the recorded processes and clear the state file.
+Acceptance: Running the status command against a running runtime reports it as healthy with its port; running the stop command terminates the recorded processes and a subsequent status command reports no runtime running.
+
+## REQ-AIDS-038: Concrete Jupyter MCP client implementation / 具象Jupyter MCPクライアント実装
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall provide a concrete implementation of the MCPClient contract that communicates with the started jupyter-mcp-server using its configured port and token, so that run_and_record can execute real code in a live Jupyter kernel without any caller-supplied client.
+Acceptance: A test starts the on-demand runtime, executes a simple arithmetic expression through the concrete client without supplying any custom client implementation, and asserts the returned output matches the expected evaluated result.
