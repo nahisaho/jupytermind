@@ -1,0 +1,11 @@
+Kaggle APIから対象データを取得し、ゼロ値の意味を確認したうえで、アウトカム別比較と感度分析を行います。取得履歴、判断根拠、追加分析、再実行結果を指定Notebookに残します。
+Kaggle APIから対象データを取得し、ゼロ値の意味を確認したうえで、アウトカム別比較と感度分析を行います
+。取得履歴、判断根拠、追加分析、再実行結果を指定Notebookに残します。
+
+指定slugはKaggle検索に現れず、直接のファイル一覧APIもHTTP 403で拒否されました。別ownerや外部CSVには切り替えず、ここで分析を停止します。停止理由と未実施項目をNotebookに記録し、上から再実行して監査結果と`failed`状態を保存します。
+
+
+**Kaggle APIで指定データを取得できず、分析を停止しました。** `uciml/pima-indians-diabetes-database`は検索結果に現れず、指定slugへの`dataset_list_files(...)`もHTTP **403**でした。別ownerや外部CSVには切り替えていません。データ未取得のため、関連の結論・図表・感度分析は示せません。
+
+[指定Notebook](benchmark/projects/kaggle-v020-kaggle-exp-09-diabetes/notebooks/kaggle-v020-kaggle-exp-09-diabetes.ipynb)に、計画、取得コードと出力、停止根拠、manifest、未実施理由、使用モジュール、保存統合の改善候補を記録しました。カーネル再起動後に全4コードセルを上から実行し、同じ取得障害を確認。`visual_audit=True`の監査は取得セルのエラーにより`ok=False`、run_id `v020-exp-09`は`failed`です。ファイル名・取得日・SHA-256は未取得として明記し、APIトークンは表示していません。
+

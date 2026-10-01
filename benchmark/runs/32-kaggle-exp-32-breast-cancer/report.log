@@ -1,0 +1,12 @@
+指定された実ファイルから結果と追加依頼の経緯を確認し、既存の実験節に合わせた記事とNotebook内の図表を保存します。文書化状態と分析の完了状態は分けて扱います。
+
+
+分析完了はNotebookの保存済み出力と`analysis_complete`・`final_completion`から確認できました。追加依頼は2回あり、内部検証の高い性能と臨床利用の限界を分けて記載します。Notebookで再現された改善候補2件は、MCP保存競合やランナーの停止処理とは区別して保存します。
+
+
+実験32の日本語・Qiita書式の節を[report-section.md](benchmark/runs/32-kaggle-exp-32-breast-cancer/report-section.md)に保存しました。初回プロンプト全文、AIによる追加依頼2回の原文・理由・結果、使用モジュール、結論、監査・再現性、限界と途中の障害を記載しています。
+
+Notebook内のPNG図表6枚を`benchmark/figures/exp-32-*.png`へ抽出し、節内から参照しました。Jupytermindの改善候補2件は外部要因と切り分けて[issue-candidate.json](benchmark/runs/32-kaggle-exp-32-breast-cancer/issue-candidate.json)に保存しました。`white-paper-v0.2.0.md`は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

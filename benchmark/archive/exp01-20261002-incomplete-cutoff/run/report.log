@@ -1,0 +1,10 @@
+指定された実ファイルを照合し、確認できる結果だけで実験節を作成します。NotebookのPNGを抽出し、改善候補はJupytermind本体と外部ツールの問題を切り分けます。
+
+
+データ取得は確認できましたが、比較分析・追加依頼の実行結果・PNG図表は残っていません。ランナーの「完了」判定とは区別し、実験節は未完了として記載します。停止ログだけではJupytermind本体の不具合と断定できないため、改善候補は`null`とします。
+
+
+実験節を日本語・Qiita書式で[report-section.md](benchmark/runs/01-kaggle-exp-01-titanic/report-section.md)に保存しました。実ファイルではデータ取得まで確認できましたが、比較分析・追加依頼の実行結果はなく、ランナーの完了判定と区別して**分析未完了**と記載しています。
+
+NotebookにPNG出力はなく、図表の抽出・保存は0件です。Jupytermind本体に帰属できる改善候補は確認できなかったため、[issue-candidate.json](benchmark/runs/01-kaggle-exp-01-titanic/issue-candidate.json)には`null`を保存しました。`white-paper-v0.2.0.md`は編集していません。
+

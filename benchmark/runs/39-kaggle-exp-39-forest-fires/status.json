@@ -1,0 +1,94 @@
+{
+  "id": 39,
+  "dataset": "Forest Fires",
+  "kaggle": "https://www.kaggle.com/datasets?search=forest+fires+weather",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb",
+  "run_id": "v020-exp-39",
+  "initial_exit_code": 0,
+  "initial_seconds": 765.1,
+  "initial_termination": "exited",
+  "initial_stability": {
+    "stable": true,
+    "size": 402413,
+    "mtime": "2026-10-01T22:26:57.404610+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 15,
+    "executed_code_cells": 15,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      10,
+      11,
+      12
+    ],
+    "insight_cells": 6,
+    "findings": [],
+    "visual_findings": []
+  },
+  "followup_exit_code": 0,
+  "followup_seconds": 94.9,
+  "followup_termination": "artifact_complete_cutoff",
+  "final_stability": {
+    "stable": true,
+    "size": 402413,
+    "mtime": "2026-10-01T22:26:57.404610+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 15,
+    "executed_code_cells": 15,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      10,
+      11,
+      12
+    ],
+    "insight_cells": 6,
+    "findings": [],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 15,
+      "executed_code_cells": 15,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        10,
+        11,
+        12
+      ],
+      "insight_cells": 6,
+      "findings": [],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": true,
+  "documentation_complete": true,
+  "semantic_complete": true,
+  "completed_at": "2026-10-01T22:33:30.266056+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 308.2,
+  "report_termination": "exited"
+}

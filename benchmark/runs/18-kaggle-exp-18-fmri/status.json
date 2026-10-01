@@ -1,0 +1,91 @@
+{
+  "id": 18,
+  "dataset": "fMRI",
+  "kaggle": "https://www.kaggle.com/datasets?search=fmri+time+series",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-18-fmri/notebooks/kaggle-v020-kaggle-exp-18-fmri.ipynb",
+  "run_id": "v020-exp-18",
+  "initial_exit_code": 0,
+  "initial_seconds": 820.6,
+  "initial_termination": "exited",
+  "initial_stability": {
+    "stable": true,
+    "size": 868905,
+    "mtime": "2026-10-01T17:46:25.741558+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 12,
+    "executed_code_cells": 12,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      7,
+      12
+    ],
+    "insight_cells": 3,
+    "findings": [],
+    "visual_findings": []
+  },
+  "followup_exit_code": 0,
+  "followup_seconds": 93.0,
+  "followup_termination": "artifact_complete_cutoff",
+  "final_stability": {
+    "stable": true,
+    "size": 868905,
+    "mtime": "2026-10-01T17:46:25.741558+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 12,
+    "executed_code_cells": 12,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      7,
+      12
+    ],
+    "insight_cells": 3,
+    "findings": [],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 12,
+      "executed_code_cells": 12,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        7,
+        12
+      ],
+      "insight_cells": 3,
+      "findings": [],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": true,
+  "documentation_complete": true,
+  "semantic_complete": true,
+  "completed_at": "2026-10-01T18:08:23.758733+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 327.4,
+  "report_termination": "exited"
+}

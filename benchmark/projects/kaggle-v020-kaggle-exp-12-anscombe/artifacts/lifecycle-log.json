@@ -1,0 +1,439 @@
+{
+  "run_id": "v020-exp-12",
+  "events": [
+    {
+      "phase": "kaggle-discovery",
+      "event": "start",
+      "utc": "2026-10-01T17:05:36.955871+00:00"
+    },
+    {
+      "phase": "kaggle-discovery",
+      "event": "end",
+      "utc": "2026-10-01T17:05:39.298683+00:00"
+    },
+    {
+      "phase": "kaggle-source-inspection",
+      "event": "start",
+      "utc": "2026-10-01T17:05:46.245050+00:00"
+    },
+    {
+      "phase": "kaggle-source-inspection",
+      "event": "end",
+      "utc": "2026-10-01T17:05:46.876097+00:00"
+    },
+    {
+      "phase": "kaggle-download",
+      "event": "start",
+      "utc": "2026-10-01T17:05:59.831482+00:00"
+    },
+    {
+      "phase": "kaggle-download",
+      "event": "end",
+      "utc": "2026-10-01T17:05:51.344363+00:00"
+    },
+    {
+      "phase": "definitions-and-quality",
+      "event": "start",
+      "utc": "2026-10-01T17:05:55.321272+00:00"
+    },
+    {
+      "phase": "definitions-and-quality",
+      "event": "end",
+      "utc": "2026-10-01T17:05:55.353950+00:00"
+    },
+    {
+      "phase": "initial-analysis",
+      "event": "start",
+      "utc": "2026-10-01T17:06:05.139121+00:00"
+    },
+    {
+      "phase": "initial-analysis",
+      "event": "end",
+      "utc": "2026-10-01T17:06:05.293899+00:00"
+    },
+    {
+      "phase": "visualization",
+      "event": "start",
+      "utc": "2026-10-01T17:06:09.998408+00:00"
+    },
+    {
+      "phase": "visualization",
+      "event": "end",
+      "utc": "2026-10-01T17:06:11.082000+00:00"
+    },
+    {
+      "phase": "initial-sensitivity",
+      "event": "start",
+      "utc": "2026-10-01T17:06:15.485755+00:00"
+    },
+    {
+      "phase": "initial-sensitivity",
+      "event": "end",
+      "utc": "2026-10-01T17:06:15.582738+00:00"
+    },
+    {
+      "phase": "initial-review",
+      "event": "start",
+      "utc": "2026-10-01T17:06:19.855781+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:19.864685+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:19.885026+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:19.885085+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:19.910634+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:19.910715+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:19.937528+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:19.937738+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:19.956621+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:19.958014+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:19.976441+00:00"
+    },
+    {
+      "phase": "initial-review",
+      "event": "end",
+      "utc": "2026-10-01T17:06:19.976486+00:00"
+    },
+    {
+      "phase": "iteration-1",
+      "event": "start",
+      "utc": "2026-10-01T17:06:23.800378+00:00"
+    },
+    {
+      "phase": "iteration-1",
+      "event": "end",
+      "utc": "2026-10-01T17:06:24.968370+00:00"
+    },
+    {
+      "phase": "iteration-2",
+      "event": "start",
+      "utc": "2026-10-01T17:06:28.377801+00:00"
+    },
+    {
+      "phase": "iteration-2",
+      "event": "end",
+      "utc": "2026-10-01T17:06:28.943977+00:00"
+    },
+    {
+      "phase": "module-applicability-check",
+      "event": "start",
+      "utc": "2026-10-01T17:06:34.942454+00:00"
+    },
+    {
+      "phase": "module-applicability-check",
+      "event": "end",
+      "utc": "2026-10-01T17:06:34.944646+00:00"
+    },
+    {
+      "phase": "final-report",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.494089+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.503408+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.526163+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.526250+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.560414+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.560494+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.581505+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.585596+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.604974+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.605041+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.630952+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.631022+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.648105+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.654046+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.672525+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.672581+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.693940+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.694019+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.714330+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.720886+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.738608+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.738713+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.763719+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.763795+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.780919+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.781174+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.801617+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.802375+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.820623+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.820776+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.841316+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.848081+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.868819+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.868884+00:00"
+    },
+    {
+      "phase": "insight-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.891530+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.891591+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.908729+00:00"
+    },
+    {
+      "phase": "artifact-write:data-definition-manifest.json",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.908918+00:00"
+    },
+    {
+      "phase": "artifact-write:data-definition-manifest.json",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.909600+00:00"
+    },
+    {
+      "phase": "artifact-write:analysis-assumptions-manifest.json",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.909770+00:00"
+    },
+    {
+      "phase": "artifact-write:analysis-assumptions-manifest.json",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.910168+00:00"
+    },
+    {
+      "phase": "artifact-write:kaggle-provenance.json",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.910192+00:00"
+    },
+    {
+      "phase": "artifact-write:kaggle-provenance.json",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.910601+00:00"
+    },
+    {
+      "phase": "artifact-write:analysis-results.json",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.924786+00:00"
+    },
+    {
+      "phase": "artifact-write:analysis-results.json",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.927224+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.927294+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.947831+00:00"
+    },
+    {
+      "phase": "final-report",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.959194+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.961460+00:00"
+    },
+    {
+      "phase": "notebook-write",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.981922+00:00"
+    },
+    {
+      "phase": "artifact-write:notebook-audit.json",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.982180+00:00"
+    },
+    {
+      "phase": "artifact-write:notebook-audit.json",
+      "event": "end",
+      "utc": "2026-10-01T17:06:38.982764+00:00"
+    },
+    {
+      "phase": "artifact-write:lifecycle-log.json",
+      "event": "start",
+      "utc": "2026-10-01T17:06:38.983053+00:00"
+    }
+  ],
+  "final_status": {
+    "run_id": "v020-exp-12",
+    "state": "completed",
+    "active_cell_executions": 0,
+    "pending_notebook_writes": 0,
+    "locks_held": 0,
+    "notebook_path": "/home/nahisaho/GitHub/jupytermind/benchmark/projects/kaggle-v020-kaggle-exp-12-anscombe/notebooks/kaggle-v020-kaggle-exp-12-anscombe.ipynb",
+    "reason": null
+  }
+}

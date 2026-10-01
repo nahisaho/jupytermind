@@ -1,0 +1,69 @@
+{
+  "id": 1,
+  "dataset": "Titanic",
+  "kaggle": "https://www.kaggle.com/competitions/titanic",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb",
+  "run_id": "v020-exp-01",
+  "initial_exit_code": 124,
+  "initial_seconds": 1200.0,
+  "initial_termination": "timeout",
+  "initial_stability": {
+    "stable": true,
+    "size": 250356,
+    "mtime": "2026-10-01T15:18:04.511379+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 9,
+    "executed_code_cells": 8,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      9,
+      13
+    ],
+    "insight_cells": 6,
+    "findings": [
+      {
+        "severity": "warning",
+        "message": "Trailing cell invokes audit_notebook and has not finished executing yet; excluded from unexecuted-cell findings.",
+        "cell_index": 23
+      }
+    ],
+    "visual_findings": []
+  },
+  "followup_exit_code": null,
+  "followup_seconds": null,
+  "followup_termination": null,
+  "final_stability": {
+    "stable": true,
+    "size": 250356,
+    "mtime": "2026-10-01T15:18:04.511379+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 9,
+    "executed_code_cells": 8,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      9,
+      13
+    ],
+    "insight_cells": 6,
+    "findings": [
+      {
+        "severity": "warning",
+        "message": "Trailing cell invokes audit_notebook and has not finished executing yet; excluded from unexecuted-cell findings.",
+        "cell_index": 23
+      }
+    ],
+    "visual_findings": []
+  },
+  "semantic_complete": false,
+  "completed_at": "2026-10-01T15:18:29.250570+00:00"
+}

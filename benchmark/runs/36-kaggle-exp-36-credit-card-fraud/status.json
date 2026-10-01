@@ -1,0 +1,94 @@
+{
+  "id": 36,
+  "dataset": "Credit Card Fraud Detection",
+  "kaggle": "https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-36-credit-card-fraud/notebooks/kaggle-v020-kaggle-exp-36-credit-card-fraud.ipynb",
+  "run_id": "v020-exp-36",
+  "initial_exit_code": 0,
+  "initial_seconds": 841.6,
+  "initial_termination": "exited",
+  "initial_stability": {
+    "stable": true,
+    "size": 868061,
+    "mtime": "2026-10-01T22:16:08.041233+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 12,
+    "executed_code_cells": 12,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      6,
+      7,
+      10
+    ],
+    "insight_cells": 7,
+    "findings": [],
+    "visual_findings": []
+  },
+  "followup_exit_code": 0,
+  "followup_seconds": 95.2,
+  "followup_termination": "artifact_complete_cutoff",
+  "final_stability": {
+    "stable": true,
+    "size": 868061,
+    "mtime": "2026-10-01T22:16:08.041233+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 12,
+    "executed_code_cells": 12,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      6,
+      7,
+      10
+    ],
+    "insight_cells": 7,
+    "findings": [],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 12,
+      "executed_code_cells": 12,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        6,
+        7,
+        10
+      ],
+      "insight_cells": 7,
+      "findings": [],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": true,
+  "documentation_complete": true,
+  "semantic_complete": true,
+  "completed_at": "2026-10-01T22:23:14.128574+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 319.7,
+  "report_termination": "exited"
+}

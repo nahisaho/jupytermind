@@ -1,0 +1,96 @@
+{
+  "experiment": "01-titanic",
+  "run_id": "v020-exp-01",
+  "evidence_policy": "指定Notebook、initial-prompt.md、initial.log、followup.log、status.jsonのみ。候補の再現実験やソースコードによる原因確定は実施していない。",
+  "candidates": [
+    {
+      "id": "exp-01-notebook-save-coordination",
+      "classification": "Jupytermind–Jupyter MCP協調保存の機能不足疑い。統合境界の原因未確定であり、Jupytermind単体の確定不具合ではない。",
+      "reproduction_steps": [
+        "Jupyter MCPでNotebookを開き、project_manager.resolve_projectとlifecycle.register_runで対象を登録する。",
+        "実行中のコードセルでmanifestを構築し、displayによる実出力を生成する。",
+        "同じセルの実行中にproject_manager.enqueue_writeで同じNotebookのmetadataを書き換える。Notebook固有のrecorded_cell回避策は使わない。",
+        "MCP実行戻り値、Notebook読戻し、ライブカーネル内の変数、実行・書込みフェーズ記録を比較する。",
+        "関連ケースとして、コード実行中にinsight_engine.record_insightでMarkdownを挿入してコードセル位置が変わる場合も調べ、既存Insightが保持されるか確認する。"
+      ],
+      "expected_behavior": "metadataの保存とライブセルの実出力・実行番号が共存し、Insight追加でも既存セルと根拠が失われない。協調保存に制約がある場合は未対応操作を明示し、成功に見える出力喪失を防ぐ。",
+      "actual_behavior": "Notebookの改善候補節は、manifests-qualityの初回MCP戻り値がoutputs=[]、count=0、read_notebookのexecution_countがN/Aだった一方、カーネル内にdefinition_manifestが存在しexecution/writeフェーズが完了していたと記録する。実行中のセル位置を変えるInsight挿入で初回Insightが失われたとも記録する。最終成果物には回避策適用後の実出力と監査合格が残るが、初回の生MCP応答は指定ログにない。",
+      "impact": "計算済みセルが未実行に見え、出力、Insight根拠、PNG、監査の追跡可能性が損なわれる可能性がある。今回の最終成果物は回避後に21/21コード実行・4図・6 Insightを確認しているため、最終データ喪失が残っているとは断定しない。",
+      "workaround": "Notebook独自のrecorded_cellで実際のIPython出力をcapture_outputし、実execution_countとMIMEをenqueue_writeで同一IDセルに保存して再表示する。Insightは末尾へ追記し、コードセル位置を変えず、最終監査で期待するInsight数も検査する。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb",
+          "locator": "cells[28]「Jupytermind改善候補」候補1",
+          "observation": "初回障害の記述と時刻2026-10-01T15:35:22.865625～15:35:22.884183+00:00。障害の細部はNotebook内の自己記録であり、生ツール応答による独立確認ではない。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb",
+          "locator": "cells[1].source recorded_cell、cells[9].source save_insight、cell id=manifests-quality、cell id=final-audit、metadata.notebook_audit",
+          "observation": "実出力・実行番号を同一セルへ明示保存しInsightを末尾に配置する回避コード。最終監査は21コード実行、4図、6 Insight、指摘なし。"
+        },
+        {
+          "file": "benchmark/runs/01-kaggle-exp-01-titanic/initial.log",
+          "locator": "3回の追加分析後の進捗メッセージ",
+          "observation": "保存連携問題への回避策と改善候補を記録した旨の要約。初回障害の生MCP応答は含まれない。"
+        }
+      ],
+      "acceptance_criteria": [
+        "回避策なしの統合再現テストで、display後にenqueue_writeしてもmetadata、正しいセルID、実行番号、text/plainおよびimage/pngの実出力が保存・読戻し後にすべて保持される。",
+        "コード実行とInsight挿入の連携テストで、既存Insightやその根拠セルが削除・誤結合されず、未実行・エラー・根拠不整合なしでnotebook_auditに合格する。",
+        "どの保存・再読込・ライブ文書更新境界が原因かを生のMCP応答と保存前後のNotebookで特定し、Jupytermind側の対応範囲と外部MCP側の制約を明示する。",
+        "協調保存できない操作は明示的に拒否または安全な保存経路へ誘導し、失われた出力を成功扱いしない。"
+      ],
+      "separation_from_external_components": {
+        "jupyter_mcp": "協調保存の当事者であり、根本原因がMCP側かJupytermind側か未確定。統合テストで切り分けが必要。",
+        "copilot_cli": "Notebookが記録するCLI出力サイズ制限とは異なる。表示上の制約を保存出力喪失の原因と断定しない。",
+        "kaggle_api": "データ取得・ハッシュ一致は最終記録で確認され、Kaggle API取得失敗を本候補の原因としていない。",
+        "external_runner": "followup.logのプロセス停止とstatus.jsonのartifact_complete_cutoffは別系統。ランナーによる追加確認の打ち切りを本候補に含めない。"
+      },
+      "verification_status": "疑いの記録と回避後の成果物を確認。回避策なしの再現・根本原因・責任境界は未確認。"
+    },
+    {
+      "id": "exp-01-inferred-definition-discovery",
+      "classification": "データ定義manifestの機能不足／ガイダンス差候補。unknown限定APIの実装バグとは断定しない。",
+      "reproduction_steps": [
+        "Notebookのmanifests-qualityと同様に、列定義・単位にFieldValue(status='inferred')を設定し、運賃単位などにstatus='unknown'を設定する。",
+        "data_definition.build_manifestでmanifestを作り、manifest.unresolved_fields()を呼び出す。",
+        "戻り値をmanifest.variablesのinferred項目と比較する。今回の結果はunknown2項目と、別走査によるinferred23項目である。",
+        "注意点一覧をunresolved_fields()だけで作る場合と、inferred項目も併記する場合で、未検証定義の表示がどう変わるか確認する。"
+      ],
+      "expected_behavior": "推定と未知の注意点を状態を区別したまま標準的な方法で列挙できる、またはunknown限定APIであることとinferredを別途列挙する必要を利用ガイダンスに明示する。",
+      "actual_behavior": "manifests-qualityのunknown_fieldsには収集・改訂過程と運賃単位の2項目だけが含まれ、Ageの単位や家族列の定義など推定23項目は独自走査のinferred_fields_caveatで出力している。NotebookはAPIのdocstringがunknown限定で、ガイダンスとの差が疑われると記録するが、本タスクの証拠にはdocstringやガイダンス原本がなく、その契約差自体は独立検証していない。",
+      "impact": "API名だけから推定も未解決一覧に含まれると利用者が期待した場合、年齢・家族定義などの未検証前提が報告から漏れる可能性がある。今回のNotebookでは推定項目を併記し警告も残しており、最終報告から欠落したとは主張しない。",
+      "workaround": "manifest.variablesを明示走査してstatus='inferred'の項目をinferred_fields_caveatとして併記し、推定をverifiedへ格上げしない。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb",
+          "locator": "cell id=manifests-quality のsourceとoutputs",
+          "observation": "unresolved_fields()のunknown_fields2項目と独自走査のinferred_fields_caveat23項目を区別して表示している。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb",
+          "locator": "cell id=final-results のFINAL_RESULTS、metadata.data_definition_manifest",
+          "observation": "unknown_definition_fields2項目、inferred_definition_fields=23、列定義・単位のinferred状態を保存している。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb",
+          "locator": "cells[28]「Jupytermind改善候補」候補2、cell id=final-audit",
+          "observation": "候補と回避策の記述。詳細定義semantic-codingがassumedのままで警告が残る。ガイダンス原本の検証証拠ではない。"
+        }
+      ],
+      "acceptance_criteria": [
+        "unknownとinferredを含むmanifestで、注意点の列挙方法が文書化され、項目パス・元の状態・値・出典を失わずに利用できる。",
+        "API追加で対応する場合、既存のunknown限定挙動を互換に保ち、選択した状態の全項目が欠落・重複なく返ることをテストする。",
+        "ガイダンスで対応する場合、unknown限定の戻り値だけではinferred注意点を網羅しないことと、その列挙・報告方法を実例で明示する。",
+        "verified項目を未解決扱いせず、inferred項目を検証済みと誤表示しない。"
+      ],
+      "separation_from_external_components": {
+        "jupytermind": "manifestの注意点列挙方法と利用契約の範囲に限定する候補。",
+        "copilot_cli": "CLI表示制限・セッション終了とは関係しない。",
+        "kaggle_api": "公開descriptionに詳細辞書がないことは元データ側の限界。APIによる状態一覧の範囲とは分ける。",
+        "external_runner": "外部の完了フラグ・打ち切りとは関係しない。"
+      },
+      "verification_status": "保存Notebookの呼出し・戻り値・回避コードを確認。API／ガイダンス原本との契約照合や新規再現は未実施。"
+    }
+  ]
+}

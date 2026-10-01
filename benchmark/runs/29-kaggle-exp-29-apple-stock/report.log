@@ -1,0 +1,16 @@
+指定された実ファイルから分析結果と追加依頼の経緯を確認し、既存の実験節に合わせて日本語の節を作成します。NotebookのPNGも抽出し、改善候補はJupytermindと外部ツールの問題を区別して記録します。
+
+
+分析完了と、AIによる2回の追加分析を確認できました。実行中のNotebookへの書込みで出力が失われた現象は、回避後の保存・監査結果と分けて記載し、帰属未確定のJupytermind／MCP連携改善候補として整理します。
+
+
+**実験29の日本語・Qiita形式の節を保存しました。**
+
+- 実験節：`benchmark/runs/29-kaggle-exp-29-apple-stock/report-section.md`
+- Notebookから抽出したPNG 7枚：`benchmark/figures/exp-29-*.png`
+- 改善候補：`benchmark/runs/29-kaggle-exp-29-apple-stock/issue-candidate.json`
+
+初回プロンプト全文、AIが生成した追加依頼2回の原文・理由・結果、監査・再現性・限界を記載しました。出力消失の現象は、外部ランナー等と切り分けた**帰属未確定のJupytermind／MCP連携改善候補**として整理しています。`white-paper-v0.2.0.md` は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

@@ -1,0 +1,12 @@
+Notebookの実行出力とログを照合し、分析結果と実行基盤の問題を分けて記述します。図表はNotebookに埋め込まれたPNGをそのまま抽出します。
+
+
+分析は完了しており、3回の追加検証でチップ率の分母と車種構成による解釈の違いが確認できました。改善候補は、stream出力の証拠照合と実行中Notebookへの書込み競合の2件です。後者は原因帰属が未確定の統合問題として記録します。
+
+
+実験23の日本語・Qiita書式の節を [`report-section.md`](benchmark/runs/23-kaggle-exp-23-taxis/report-section.md) に保存しました。初回プロンプト全文、追加依頼3件の原文・結果、使用モジュール、監査・再現性、限界を記載しています。
+
+NotebookのPNG **7点**を `benchmark/figures/exp-23-*.png` に抽出し、節内から参照しました。改善候補 **2件**は [`issue-candidate.json`](benchmark/runs/23-kaggle-exp-23-taxis/issue-candidate.json) に保存し、書込み競合は原因帰属未確定として外部ランナー等と切り分けています。`white-paper-v0.2.0.md` は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

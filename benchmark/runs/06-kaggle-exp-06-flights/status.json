@@ -1,0 +1,91 @@
+{
+  "id": 6,
+  "dataset": "Air Passengers / Flights",
+  "kaggle": "https://www.kaggle.com/datasets/rakannimer/air-passengers",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-06-flights/notebooks/kaggle-v020-kaggle-exp-06-flights.ipynb",
+  "run_id": "v020-exp-06",
+  "initial_exit_code": 0,
+  "initial_seconds": 772.0,
+  "initial_termination": "exited",
+  "initial_stability": {
+    "stable": true,
+    "size": 777946,
+    "mtime": "2026-10-01T16:29:41.792593+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 9,
+    "executed_code_cells": 9,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      9,
+      19
+    ],
+    "insight_cells": 8,
+    "findings": [],
+    "visual_findings": []
+  },
+  "followup_exit_code": 0,
+  "followup_seconds": 93.5,
+  "followup_termination": "artifact_complete_cutoff",
+  "final_stability": {
+    "stable": true,
+    "size": 777946,
+    "mtime": "2026-10-01T16:29:41.792593+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 9,
+    "executed_code_cells": 9,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      9,
+      19
+    ],
+    "insight_cells": 8,
+    "findings": [],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 9,
+      "executed_code_cells": 9,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        9,
+        19
+      ],
+      "insight_cells": 8,
+      "findings": [],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": true,
+  "documentation_complete": true,
+  "semantic_complete": true,
+  "completed_at": "2026-10-01T16:35:46.585660+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 248.7,
+  "report_termination": "exited"
+}

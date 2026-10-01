@@ -1,0 +1,88 @@
+{
+  "id": 46,
+  "dataset": "Crop Yield",
+  "kaggle": "https://www.kaggle.com/datasets?search=crop+yield+weather",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-46-crop-yield/notebooks/kaggle-v020-kaggle-exp-46-crop-yield.ipynb",
+  "run_id": "v020-exp-46",
+  "initial_exit_code": 0,
+  "initial_seconds": 1027.6,
+  "initial_termination": "exited",
+  "initial_stability": {
+    "stable": true,
+    "size": 840726,
+    "mtime": "2026-10-01T23:30:30.044298+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 13,
+    "executed_code_cells": 13,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      11,
+      22
+    ],
+    "insight_cells": 3,
+    "findings": [],
+    "visual_findings": []
+  },
+  "followup_exit_code": 0,
+  "followup_seconds": 95.3,
+  "followup_termination": "artifact_complete_cutoff",
+  "final_stability": {
+    "stable": true,
+    "size": 840726,
+    "mtime": "2026-10-01T23:30:30.044298+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 13,
+    "executed_code_cells": 13,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      11,
+      22
+    ],
+    "insight_cells": 3,
+    "findings": [],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 13,
+      "executed_code_cells": 13,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        11,
+        22
+      ],
+      "insight_cells": 3,
+      "findings": [],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": true,
+  "documentation_complete": false,
+  "semantic_complete": false,
+  "completed_at": "2026-10-01T23:32:37.395106+00:00"
+}

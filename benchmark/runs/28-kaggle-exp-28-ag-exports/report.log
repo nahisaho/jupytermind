@@ -1,0 +1,12 @@
+指定された実ファイルを照合し、分析結果と実行環境の問題を切り分けた実験節を作成します。NotebookのPNG出力も抽出して、節内から参照できるように保存します。
+
+
+分析完了と全15コードセルの再実行を確認しました。Kaggleの対応データは取得できず、指定されたPlotly公開CSVで継続した実験としてまとめます。3回の追加依頼による結論の変化と、Notebookに記録された改善候補3件を、根拠の確認範囲を明示して記載します。
+
+
+実験28の日本語・Qiita形式の節を [report-section.md](benchmark/runs/28-kaggle-exp-28-ag-exports/report-section.md) に保存しました。初回プロンプト全文、3回の追加依頼原文と結果、直接利用モジュール、監査・再現性、限界を記載しています。
+
+NotebookのPNG図表3枚を `benchmark/figures/exp-28-*.png` に抽出し、改善候補3件を外部環境の問題と切り分けて [issue-candidate.json](benchmark/runs/28-kaggle-exp-28-ag-exports/issue-candidate.json) に保存しました。`white-paper-v0.2.0.md` は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

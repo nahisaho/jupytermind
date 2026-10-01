@@ -1,0 +1,21 @@
+Kaggle上の公開データを確認して取得し、品質確認から表現と評価点の関連分析、感度分析、最終監査までを指定Notebookに記録します。実行はJupyter MCPに限定し、認証情報は出力しません。
+Kaggle上の公開データを確認して取得し、品質確認から表現と評価点の関連分析、感度分析、最終監査までを指
+定Notebookに記録します。実行はJupyter MCPに限定し、認証情報は出力しません。
+
+衣料品レビューの公開CSVが見つかりました。取得コードで現行Kaggle SDKにないメソッドを呼んでいたため、SDKに対応するメタデータ取得方法と保存ファイル名を確認し、同じデータセットで取得をやり直します。
+
+
+初回分析では、高評価で `love`・`perfect`・`comfortable`、低評価で `disappointed`・`cheap`・`not flattering` の出現率が高くなりました。一方、低評価にも `love` が現れるため、まず前処理や評価群の定義による変動を確認し、その後、商品・本文長の偏りと否定表現の文脈を調べます。
+
+
+3回の追加分析で、主要表現の関連の向きは前処理変更や商品・本文長を考慮した比較でも維持されました。ただし `perfect` の差の大きさは評価群の定義に敏感です。否定・期待の文脈では単語と感情が単純に対応しないことも確認できたため、残る限界を明記し、これからkernel再起動後に全コードセルを上から再実行して最終監査を行います。
+
+
+**分析を完了し、[指定Notebook](benchmark/projects/kaggle-v020-kaggle-exp-45-product-reviews/notebooks/kaggle-v020-kaggle-exp-45-product-reviews.ipynb)に保存しました。** Kaggle SDKで `nicapotato/womens-ecommerce-clothing-reviews` を取得し、23,486件から本文欠損・言語proxy・重複を確認した22,522件を主分析に使用しました。
+
+高評価4–5点では低評価1–2点より、`love` の出現率が **19.45ポイント**、`perfect` が **13.40ポイント**、`comfortable` が **12.43ポイント**高く、`disappointed` は **9.62ポイント低い**結果でした。3回の追加分析で前処理・商品・部門・本文長を考慮しても主要表現の関連の向きは維持されましたが、`perfect` の差の大きさは評価群の定義に敏感でした。低評価の `love` 406件中272件には `but` が共存しており、単語だけで感情や皮肉を断定できません。投稿者選択の偏りも解消できず、購入者全体やEC全般への一般化はできません。
+
+取得日・SHA-256、両manifest、反復依頼原文、使用モジュール、改善候補と回避策を記録済みです。全11コードセルを上から再実行し、`visual_audit=True` の最終監査は指摘なし、`v020-exp-45` は **completed** です。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

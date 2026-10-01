@@ -17,3 +17,13 @@ __pycache__/
 # clean if any tooling is added later)
 node_modules/
 npm-debug.log*
+
+# Jupyter server runtime state (local to running instance)
+/.jupyter/
+/.jupyter_ystore.db
+/.ipynb_checkpoints/
+
+# Raw datasets fetched for benchmark runs (large, reproducible via scripts)
+/benchmark/projects/*/data/
+/benchmark/archive/*/project*/data/
+/benchmark/archive/*/project*/data/**

@@ -1,0 +1,121 @@
+{
+  "id": 5,
+  "dataset": "Diamonds",
+  "kaggle": "https://www.kaggle.com/datasets/shivam2503/diamonds",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-05-diamonds/notebooks/kaggle-v020-kaggle-exp-05-diamonds.ipynb",
+  "run_id": "v020-exp-05",
+  "initial_exit_code": 0,
+  "initial_seconds": 1301.1,
+  "initial_termination": "artifact_complete_cutoff",
+  "initial_stability": {
+    "stable": true,
+    "size": 473982,
+    "mtime": "2026-10-01T16:20:54.340751+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 19,
+    "executed_code_cells": 18,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      7,
+      8,
+      9,
+      13,
+      20,
+      21
+    ],
+    "insight_cells": 9,
+    "findings": [
+      {
+        "severity": "warning",
+        "message": "Trailing cell invokes audit_notebook and has not finished executing yet; excluded from unexecuted-cell findings.",
+        "cell_index": 37
+      }
+    ],
+    "visual_findings": []
+  },
+  "followup_exit_code": 1,
+  "followup_seconds": 38.1,
+  "followup_termination": "exited",
+  "final_stability": {
+    "stable": true,
+    "size": 473982,
+    "mtime": "2026-10-01T16:20:54.340751+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 19,
+    "executed_code_cells": 18,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      7,
+      8,
+      9,
+      13,
+      20,
+      21
+    ],
+    "insight_cells": 9,
+    "findings": [
+      {
+        "severity": "warning",
+        "message": "Trailing cell invokes audit_notebook and has not finished executing yet; excluded from unexecuted-cell findings.",
+        "cell_index": 37
+      }
+    ],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 19,
+      "executed_code_cells": 18,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        7,
+        8,
+        9,
+        13,
+        20,
+        21
+      ],
+      "insight_cells": 9,
+      "findings": [
+        {
+          "severity": "warning",
+          "message": "Trailing cell invokes audit_notebook and has not finished executing yet; excluded from unexecuted-cell findings.",
+          "cell_index": 37
+        }
+      ],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": false,
+  "documentation_complete": true,
+  "semantic_complete": false,
+  "completed_at": "2026-10-01T16:27:31.613390+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 294.3,
+  "report_termination": "exited"
+}

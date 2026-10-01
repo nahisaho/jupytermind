@@ -1,0 +1,152 @@
+[E 2026-10-02 07:27:23.524 ServerApp] Exception while loading config file /home/nahisaho/.jupyter/jupyter_server_config.py
+    Traceback (most recent call last):
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/application.py", line 916, in _load_config_files
+        config = loader.load_config()
+                 ^^^^^^^^^^^^^^^^^^^^
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/loader.py", line 625, in load_config
+        self._read_file_as_dict()
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/loader.py", line 658, in _read_file_as_dict
+        exec(compile(f.read(), conf_filename, "exec"), namespace, namespace)  # noqa: S102
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/home/nahisaho/.jupyter/jupyter_server_config.py", line 3, in <module>
+        c.IdentityProvider.token = os.environ["JUPYTER_TOKEN"]
+                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+      File "<frozen os>", line 685, in __getitem__
+    KeyError: 'JUPYTER_TOKEN'
+[I 2026-10-02 07:27:24.271 ServerApp] Extension package jupyter_mcp_server took 0.7312s to import
+[I 2026-10-02 07:27:35.834 ServerApp] Extension package jupyterlab_jupytext took 0.2284s to import
+[I 2026-10-02 07:27:35.835 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2026-10-02 07:27:35.838 ServerApp] jupyter_mcp_server | extension was successfully linked.
+[I 2026-10-02 07:27:35.838 ServerApp] jupyter_mcp_tools | extension was successfully linked.
+[I 2026-10-02 07:27:35.840 ServerApp] jupyter_server_fileid | extension was successfully linked.
+[I 2026-10-02 07:27:35.842 ServerApp] jupyter_server_nbmodel | extension was successfully linked.
+[I 2026-10-02 07:27:35.845 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2026-10-02 07:27:35.848 ServerApp] jupyter_server_ydoc | extension was successfully linked.
+[I 2026-10-02 07:27:35.850 ServerApp] jupyterlab | extension was successfully linked.
+[I 2026-10-02 07:27:35.851 ServerApp] jupyterlab_jupytext | extension was successfully linked.
+[I 2026-10-02 07:27:35.875 ServerApp] notebook_shim | extension was successfully linked.
+[I 2026-10-02 07:27:35.886 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2026-10-02 07:27:35.888 ServerApp] jupyter_lsp | extension was successfully loaded.
+[10/02/26 07:27:24] INFO     Auto-enrolled document             extension.py:201
+                             'notebook.ipynb' as 'default'                      
+                    INFO     Jupyter MCP Server Extension       extension.py:211
+                             settings initialized                               
+                    INFO     Registered MCP handlers at /mcp/   extension.py:247
+                    INFO       - MCP protocol: /mcp (SSE-based) extension.py:248
+                    INFO       - Health check: /mcp/healthz     extension.py:249
+                    INFO       - List tools: /mcp/tools/list    extension.py:250
+                    INFO       - Call tool: /mcp/tools/call     extension.py:251
+[I 2026-10-02 07:27:24.376 ServerApp] jupyter_mcp_server | extension was successfully loaded.
+[I 2026-10-02 07:27:24.377 ServerApp] Registered jupyter_mcp_tools server extension
+[I 2026-10-02 07:27:24.377 ServerApp] jupyter_mcp_tools | extension was successfully loaded.
+[I 2026-10-02 07:27:24.377 FileIdExtension] Configured File ID manager: ArbitraryFileIdManager
+[I 2026-10-02 07:27:24.378 FileIdExtension] ArbitraryFileIdManager : Configured root dir: /home/nahisaho/GitHub/jupytermind
+[I 2026-10-02 07:27:24.378 FileIdExtension] ArbitraryFileIdManager : Configured database path: /home/nahisaho/.local/share/jupyter/file_id_manager.db
+[I 2026-10-02 07:27:24.378 FileIdExtension] ArbitraryFileIdManager : Successfully connected to database file.
+[I 2026-10-02 07:27:24.378 FileIdExtension] ArbitraryFileIdManager : Creating File ID tables and indices with journal_mode = DELETE
+[I 2026-10-02 07:27:24.379 FileIdExtension] Attached event listeners.
+[I 2026-10-02 07:27:24.379 ServerApp] jupyter_server_fileid | extension was successfully loaded.
+[I 2026-10-02 07:27:24.380 ServerApp] jupyter_server_nbmodel | extension was successfully loaded.
+[I 2026-10-02 07:27:24.381 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2026-10-02 07:27:24.384 ServerApp] jupyter_server_ydoc | extension was successfully loaded.
+[I 2026-10-02 07:27:24.388 LabApp] JupyterLab extension loaded from /home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyterlab
+[I 2026-10-02 07:27:24.388 LabApp] JupyterLab application directory is /home/nahisaho/GitHub/jupytermind/.venv/share/jupyter/lab
+[I 2026-10-02 07:27:24.388 LabApp] Extension Manager is 'pypi'.
+[I 2026-10-02 07:27:24.423 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2026-10-02 07:27:24.423 ServerApp] [Jupytext Server Extension] Deriving an AsyncTextFileContentsManager from AsyncLargeFileManager
+[I 2026-10-02 07:27:24.425 ServerApp] jupyterlab_jupytext | extension was successfully loaded.
+[I 2026-10-02 07:27:24.425 ServerApp] Serving notebooks from local directory: /home/nahisaho/GitHub/jupytermind
+[I 2026-10-02 07:27:24.425 ServerApp] Jupyter Server 2.21.1 is running at:
+[I 2026-10-02 07:27:24.425 ServerApp] http://127.0.0.1:53251/lab?token=...
+[I 2026-10-02 07:27:24.425 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 2026-10-02 07:27:26.735 ServerApp] Skipped non-installed server(s): basedpyright, bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyrefly, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[I 2026-10-02 07:27:27.361 ServerApp] Kernel started: e4339ded-55d8-410f-a9ca-55870bd4e259
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 07:27:27.714 ServerApp] Adapting from protocol version 5.3 (kernel e4339ded-55d8-410f-a9ca-55870bd4e259) to 5.4 (client).
+[I 2026-10-02 07:27:27.715 ServerApp] Connecting to kernel e4339ded-55d8-410f-a9ca-55870bd4e259.
+[W 2026-10-02 07:27:27.717 ServerApp] The websocket_ping_timeout (90000) cannot be longer than the websocket_ping_interval (30000).
+    Setting websocket_ping_timeout=30000
+[I 2026-10-02 07:27:43.094 ServerApp] Kernel started: 091eac4f-ba65-42f7-bd95-328b293da37d
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 07:27:43.421 ServerApp] Adapting from protocol version 5.3 (kernel 091eac4f-ba65-42f7-bd95-328b293da37d) to 5.4 (client).
+[I 2026-10-02 07:27:43.423 ServerApp] Connecting to kernel 091eac4f-ba65-42f7-bd95-328b293da37d.
+[I 2026-10-02 07:27:43.428 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb' with room ID: 222f0d87-2045-4d16-b4a7-3aec43df1d49
+[I 2026-10-02 07:27:43.432 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb' with room ID: 222f0d87-2045-4d16-b4a7-3aec43df1d49
+[I 2026-10-02 07:27:43.439 YDocExtension] Creating FileLoader for: benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb
+[I 2026-10-02 07:27:43.441 YDocExtension] Watching file: benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb
+[I 2026-10-02 07:27:43.444 ServerApp] Initializing room json:notebook:222f0d87-2045-4d16-b4a7-3aec43df1d49
+[W 2026-10-02 07:27:43.506 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb is not trusted
+[I 2026-10-02 07:27:43.516 ServerApp] Content in room json:notebook:222f0d87-2045-4d16-b4a7-3aec43df1d49 loaded from the ystore SQLiteYStore
+[I 2026-10-02 07:27:43.521 ServerApp] Content in file benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb is out-of-sync with the ystore SQLiteYStore
+[I 2026-10-02 07:27:43.522 ServerApp] Content in room json:notebook:222f0d87-2045-4d16-b4a7-3aec43df1d49 loaded from file benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb
+[I 2026-10-02 07:27:46.041 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb' with room ID: 222f0d87-2045-4d16-b4a7-3aec43df1d49
+[I 2026-10-02 07:27:50.485 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb' with room ID: 222f0d87-2045-4d16-b4a7-3aec43df1d49
+[I 2026-10-02 07:28:03.469 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb' with room ID: 222f0d87-2045-4d16-b4a7-3aec43df1d49
+[I 2026-10-02 07:28:03.486 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb' with room ID: 222f0d87-2045-4d16-b4a7-3aec43df1d49
+[C 2026-10-02 07:28:42.630 ServerApp] received signal 15, stopping
+[I 2026-10-02 07:28:42.632 ServerApp] Shutting down 10 extensions
+[10/02/26 07:28:42] INFO     Stopping Jupyter MCP Server        extension.py:267
+                             Extension                                          
+                    INFO     Jupyter MCP Server Extension       extension.py:273
+                             stopped                                            
+[I 2026-10-02 07:28:42.636 YDocExtension] Deleting all rooms.
+[I 2026-10-02 07:28:42.637 ServerApp] Shutting down 2 kernels
+[I 2026-10-02 07:28:42.638 ServerApp] Kernel shutdown: 091eac4f-ba65-42f7-bd95-328b293da37d
+[I 2026-10-02 07:28:42.638 ServerApp] Kernel shutdown: e4339ded-55d8-410f-a9ca-55870bd4e259
+[I 2026-10-02 07:28:42.656 ServerApp] Cleaning room: json:notebook:222f0d87-2045-4d16-b4a7-3aec43df1d49
+[I 2026-10-02 07:28:42.656 ServerApp] Starting buffering for 091eac4f-ba65-42f7-bd95-328b293da37d:a6481845-99ef10967d7ff948006a5416
+[I 2026-10-02 07:28:42.657 ServerApp] Starting buffering for e4339ded-55d8-410f-a9ca-55870bd4e259:6ef4c6e9-be328c20f23466f538841fce
+[C 2026-10-02 07:28:42.668 ServerApp] received signal 15, stopping
+[I 2026-10-02 07:28:42.669 ServerApp] Shutting down 10 extensions
+                    INFO     Stopping Jupyter MCP Server        extension.py:267
+                             Extension                                          
+                    INFO     Jupyter MCP Server Extension       extension.py:273
+                             stopped                                            
+[I 2026-10-02 07:28:42.673 YDocExtension] Deleting all rooms.
+                    ERROR    Task exception was never        base_events.py:1821
+                             retrieved                                          
+                             future: <Task finished                             
+                             name='Task-293'                                    
+                             coro=<JupyterWebsocketServer.cl                    
+                             ean() done, defined at                             
+                             /home/nahisaho/GitHub/jupytermi                    
+                             nd/.venv/lib/python3.12/site-pa                    
+                             ckages/jupyter_server_ydoc/webs                    
+                             ocketserver.py:60>                                 
+                             exception=RuntimeError('Websock                    
+                             etServer not running')>                            
+                             ╭─ Traceback (most recent cal─╮                    
+                             │ /home/nahisaho/GitHub/jupyt │                    
+                             │ ermind/.venv/lib/python3.12 │                    
+                             │ /site-packages/jupyter_serv │                    
+                             │ er_ydoc/websocketserver.py: │                    
+                             │ 79 in clean                 │                    
+                             │                             │                    
+                             │    76 │   │   #         sel │                    
+                             │    77 │   │   #         sel │                    
+                             │    78 │   │                 │                    
+                             │ ❱  79 │   │   await self.st │                    
+                             │    80 │   │   tasks = []    │                    
+                             │    81 │   │   if self.monit │                    
+                             │    82 │   │   │   self.moni │                    
+                             │                             │                    
+                             │ /home/nahisaho/GitHub/jupyt │                    
+                             │ ermind/.venv/lib/python3.12 │                    
+                             │ /site-packages/pycrdt/webso │                    
+                             │ cket/websocket_server.py:26 │                    
+                             │ 4 in stop                   │                    
+                             │                             │                    
+                             │   261 │   │   bound that wa │                    
+                             │   262 │   │   """           │                    
+                             │   263 │   │   if self._task │                    
+                             │ ❱ 264 │   │   │   raise Run │                    
+                             │   265 │   │                 │                    
+                             │   266 │   │   self._stopped │                    
+                             │   267 │   │   self._task_gr │                    
+                             ╰─────────────────────────────╯                    
+                             RuntimeError: WebsocketServer                      
+                             not running                                        
+[I 2026-10-02 07:28:42.727 ServerApp] Shutting down 2 kernels
+[I 2026-10-02 07:28:42.728 ServerApp] Kernel shutdown: 091eac4f-ba65-42f7-bd95-328b293da37d
+[I 2026-10-02 07:28:42.728 ServerApp] Discarding 1 buffered messages for e4339ded-55d8-410f-a9ca-55870bd4e259:6ef4c6e9-be328c20f23466f538841fce
+[I 2026-10-02 07:28:42.728 ServerApp] Kernel shutdown: e4339ded-55d8-410f-a9ca-55870bd4e259

@@ -1,0 +1,144 @@
+{
+  "experiment_id": 25,
+  "run_id": "v020-exp-25",
+  "evidence_scope": [
+    "benchmark/projects/kaggle-v020-kaggle-exp-25-ebola/notebooks/kaggle-v020-kaggle-exp-25-ebola.ipynb",
+    "benchmark/runs/25-kaggle-exp-25-ebola/initial-prompt.md",
+    "benchmark/runs/25-kaggle-exp-25-ebola/initial.log",
+    "benchmark/runs/25-kaggle-exp-25-ebola/status.json"
+  ],
+  "cell_index_base": 0,
+  "candidates": [
+    {
+      "id": "JM-EBOLA-01",
+      "classification": "不具合候補 / visualization.render_chartの既定レイアウト",
+      "module": "ai_data_scientist.visualization",
+      "function": "render_chart",
+      "reproduction_steps": [
+        "Matplotlib 3.11.2でfigure.autolayout=Falseを設定する。",
+        "Notebookセル31のfinal_definition_casesと同じ3国の表を使う。行はGuinea、Liberia、Sierra Leone、列はconfirmed、probable、suspected、値はそれぞれ[3351,453,0]、[3151,1879,5636]、[8704,287,5131]。",
+        "Notebookセル32と同じkind='bar'、title='主要3か国：報告症例の定義別内訳'、xlabel='国（2016-03-23、主系列）'、ylabel='累積報告症例件数'でrender_chartを呼び、国名tickとx軸ラベルの描画範囲を確認する。この公開関数単独の再現は受け入れ前に追加確認する。",
+        "保存済みの境界測定を再現する場合はセル38のとおりplt.subplots()、DataFrame.plot(kind='bar', ax=ax)、同じタイトル・軸ラベルを設定し、canvas.draw()後のxlabelのget_window_extent()と640×480キャンバスを比較する。"
+      ],
+      "expected_behavior": "標準的な棒グラフで、回転した国名tickとタイトル・軸ラベルがPNGキャンバス内に収まり読める。グローバルrcParamsの事前変更を利用者へ要求しない。",
+      "actual_behavior": {
+        "diagnostic": "同じデータをMatplotlibで直接描画したセル38の境界測定",
+        "matplotlib_version": "3.11.2",
+        "rc_override": "figure.autolayout=False (render_chart既定条件というNotebookの記録)",
+        "canvas_width_pixels": 640.0,
+        "canvas_height_pixels": 480.0,
+        "xlabel_bbox_pixels_xywh": [
+          238.0,
+          -57.366666666666674,
+          180.0,
+          13.888888888888893
+        ],
+        "xlabel_outside_canvas": true
+      },
+      "impact": "文字欠落警告の有無とは独立に、国名tickや軸ラベルが下端で切れ、読者が比較対象や時点を読み取れない可能性がある。",
+      "workaround": "Notebookセル1でmatplotlib.rcParams['figure.autolayout']=Trueを設定。Notebookは5図を再描画したと記録しており、保存済みセル32のPNGではx軸ラベルが表示されている。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-25-ebola/notebooks/kaggle-v020-kaggle-exp-25-ebola.ipynb",
+          "cell_index": 38,
+          "execution_count": 18,
+          "content": "jupytermind-improvement-reproductionのコード、layout出力、改善候補JM-EBOLA-01。xlabelの負のy座標とoutside_canvas=trueを記録。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-25-ebola/notebooks/kaggle-v020-kaggle-exp-25-ebola.ipynb",
+          "cell_indices": [
+            1,
+            32,
+            37
+          ],
+          "content": "autolayout設定、render_chart呼出しと保存済みPNG、再描画の回避策の記述。"
+        }
+      ],
+      "attribution": "ローカル描画の改善候補。境界測定はrender_chart本体の直接計測ではなくMatplotlib直接描画であるため、Jupytermindの原因確定とはしない。外部ランナーのタイムアウト、Copilot CLI、Kaggle API、上流データの国ラベル変換とは別。",
+      "acceptance_criteria": [
+        "figure.autolayout=False、Notebookと同じデータ・日本語ラベル・回転tickで公開関数render_chartの問題を再現し、本体への帰属を確認する。",
+        "グローバルrcParamsを変更しなくても、生成PNGのタイトル、軸ラベル、tick、凡例がキャンバス内に収まり読める。",
+        "棒グラフの境界確認を回帰テストに追加し、既存のline等の描画と日本語文字表示を壊さない。",
+        "Notebookの回避策を外した条件で同じ図を確認し、元のx軸ラベル切れが起きない。"
+      ]
+    },
+    {
+      "id": "JM-EBOLA-02",
+      "classification": "機能不足候補 / notebook_auditの視覚監査未検証状態",
+      "module": "ai_data_scientist.notebook_audit",
+      "function": "audit_visual_outputs",
+      "reproduction_steps": [
+        "Notebookセル38のとおり、実図のPNGをvisualization.build_image_outputでコードセルの画像出力にする。",
+        "execution_count=1のnbformat v4コードセルにその画像出力を入れ、metadata.chartは付けない。",
+        "1セルのインメモリNotebookを作り、notebook_audit.audit_visual_outputs(nb, (0,))を呼ぶ。",
+        "返されたfindingsに、タイトル・軸ラベル・凡例・文字欠落をメタデータなしでは検証できないという通知があるか確認する。"
+      ],
+      "expected_behavior": "metadata.chartがない図では、ラベル・凡例・文字欠落の監査が未検証であることを明示する。画像の空白率等の検査とラベル検査の完了状態を区別する。",
+      "actual_behavior": {
+        "chart_metadata_present": false,
+        "actual_finding_count": 0,
+        "findings": []
+      },
+      "impact": "visual_audit=Trueやfindingsなしを、ラベル・凡例・欠落文字も検証済みと誤解し得る。メタデータ非提供の図に対する監査範囲が利用者に伝わらない。",
+      "workaround": "全図にchartメタデータを明示し、画像を別途目視する。findingsがないことを意味的妥当性や完全な視覚検証の保証にしない。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-25-ebola/notebooks/kaggle-v020-kaggle-exp-25-ebola.ipynb",
+          "cell_index": 38,
+          "execution_count": 18,
+          "content": "metadata.chartなしのsynthetic_nb作成、audit_visual_outputsの直接呼出し、missing_metadata_audit出力と改善候補JM-EBOLA-02。findings=0を保存。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-25-ebola/notebooks/kaggle-v020-kaggle-exp-25-ebola.ipynb",
+          "cell_indices": [
+            16,
+            17,
+            18,
+            28,
+            32,
+            40,
+            41
+          ],
+          "content": "実図のchartメタデータと監査範囲の留保。末尾のaudit_notebook(..., visual_audit=True)は未完了で出力なしのため、Notebook全体での最終監査成功を証拠には使わない。"
+        }
+      ],
+      "attribution": "公開関数のインメモリnbformat入力で実行結果が保存されている機能不足候補。Copilot CLI、Kaggle API、外部ランナーや上流データから独立。ラベルが実際に欠けていると監査が証明したわけではなく、検証に必要な情報の欠落を通知しないことが対象。",
+      "acceptance_criteria": [
+        "metadata.chartなしのPNG出力に対し、メタデータ依存の検査が未検証という構造化findingまたは同等の明示的検査状態を返す。",
+        "audit_notebook(..., visual_audit=True)経由でも、その未検証状態が利用者に伝わる。",
+        "メタデータが適切な図では不要な未検証警告を出さず、既存の空白率・ラベル・文字欠落の検査を維持する。",
+        "メタデータあり/なし双方の回帰テストを用意し、監査結果と文書で検査範囲を明確に区別する。"
+      ]
+    }
+  ],
+  "excluded_from_jupytermind_candidates": [
+    {
+      "classification": "外部ベンチマークランナー",
+      "evidence": "initial.logの[runner] stopping process group: exceeded 1800sとstatus.jsonのinitial_exit_code=124、initial_seconds=1802.9、initial_termination=timeout",
+      "reason": "最終セル未完了の影響はあるが、この停止記録だけでJupytermind本体の不具合とは確定しない。"
+    },
+    {
+      "classification": "Kaggle API",
+      "evidence": "Notebookの認証・検索・ファイル一覧・CSV取得のsuccess記録",
+      "reason": "API障害による失敗は確認されず、Plotly CSVへのフォールバックも未使用。"
+    },
+    {
+      "classification": "上流データ・変換",
+      "evidence": "Notebookセル13・23・31の211重複行、106不一致行、6内訳不整合",
+      "reason": "CSV自体の系列・ラベル・定義不整合であり、Jupytermindの計算不具合と区別する。"
+    },
+    {
+      "classification": "Copilot CLI / MCPのNotebook準備",
+      "evidence": "Notebookセル38本文の最初のMCP create時に保存先ディレクトリが未作成だったという記述",
+      "reason": "指定初回ログに対応する詳細な失敗記録はなく、Jupytermind本体の不具合に含めない。"
+    }
+  ],
+  "unresolved_completion_evidence": {
+    "analysis_complete": false,
+    "final_completion_ready": false,
+    "has_evidence_backed_insight": false,
+    "audit_insight_cells": 0,
+    "final_cell_execution_count": null,
+    "reason": "数値付きMarkdownとevidenceブロックはあるが監査の認識と食い違う。末尾の根拠再紐付け・最終監査セルは出力なしで、指定証拠だけでは原因や本体への帰属を確定できないため独立した改善候補にはしない。"
+  }
+}

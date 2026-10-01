@@ -1,0 +1,16 @@
+指定された実ファイルから分析結果と追加依頼の経緯を確認し、既存の実験節に合わせた日本語レポートとNotebook内の図表を保存します。
+
+
+Notebookには3回の追加分析と全18コードセルの再実行記録があります。レポートでは、Transit中心という構成の安定性と、測定経路・完全ケース選択で変わる比較値を分けて説明し、監査機能の改善候補も確認済みの挙動と帰属未確定の事象を区別します。
+
+
+実験21の日本語・Qiita形式の節を保存しました。
+
+- レポート: `benchmark/runs/21-kaggle-exp-21-planets/report-section.md`
+- Notebookから抽出したPNG図表5点: `benchmark/figures/exp-21-*.png`
+- 改善候補: `benchmark/runs/21-kaggle-exp-21-planets/issue-candidate.json`
+
+初回プロンプト全文、3回の追加依頼の原文・理由・結果、監査・再現性・限界を記載し、改善候補は確認済み・履歴記述のみ・帰属未確定を区別しました。`white-paper-v0.2.0.md`は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

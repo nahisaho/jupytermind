@@ -1,0 +1,110 @@
+{
+  "experiment_id": 22,
+  "run_id": "v020-exp-22",
+  "evidence_scope": [
+    "benchmark/projects/kaggle-v020-kaggle-exp-22-seaice/notebooks/kaggle-v020-kaggle-exp-22-seaice.ipynb",
+    "benchmark/runs/22-kaggle-exp-22-seaice/initial-prompt.md",
+    "benchmark/runs/22-kaggle-exp-22-seaice/initial.log",
+    "benchmark/runs/22-kaggle-exp-22-seaice/followup.log",
+    "benchmark/runs/22-kaggle-exp-22-seaice/status.json"
+  ],
+  "cell_index_convention": "Notebook cells配列の0始まり",
+  "verification_scope": "指定された実験時の保存ファイルのみ。今回の文書化では分析コードや改善候補の再現コードを新たに実行していない。",
+  "candidates": [
+    {
+      "classification": "Jupytermindの機能不足候補：推定されたデータ定義の一覧化",
+      "module": "ai_data_scientist.data_definition",
+      "functions": [
+        "FieldValue",
+        "build_manifest",
+        "DataDefinitionManifest.unresolved_fields"
+      ],
+      "verification_status": "実データmanifestの出力でunknown一覧からinferredが除外されることを確認。最終セルの最小再現は出力未保存。既存APIの仕様違反とは断定しない。",
+      "reproduction_steps": [
+        "Notebookセル5と同様に、variables.Extent.definitionとvariables.Extent.measurementをstatus='inferred'、source.licenseとvariables.Missing.definitionをstatus='unknown'としてbuild_manifestでmanifestを作る。",
+        "manifest.unresolved_fields()を呼び、返されたフィールドとmanifest内のinferredフィールドを比較する。",
+        "最小構成ではbuild_manifest({}, {}, {'x': {'unit': FieldValue('推定単位', 'inferred', '試験')}})を作り、unresolved_fields()の戻り値を記録する。Notebookセル21にこの再現コードがあるが、保存された実行出力はない。"
+      ],
+      "expected_behavior": "unknownのみを返す既存挙動と互換性を保ちつつ、専用APIまたは明示的なオプションでinferredを含む未確認の定義を状態付きで一括取得できる。",
+      "actual_behavior": "セル5の保存出力ではunresolved_fieldsはsource.licenseとvariables.Missing.definitionのunknownだけを返す。Extent.definitionとExtent.measurementのinferredは別途走査した出力にのみ現れる。",
+      "impact": "unknown一覧だけを確認すると、推定された測定定義・経路が確認済みと誤解され、結論の留保を見落とす可能性がある。本分析はinferredの別途走査により回避した。",
+      "workaround": "manifestの各フィールドを走査し、status='inferred'も別途出力して留保する。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-22-seaice/notebooks/kaggle-v020-kaggle-exp-22-seaice.ipynb",
+          "cell_index": 5,
+          "execution_count": 5,
+          "observed": "unresolved_fieldsのunknown 2項目と、inferredも別途留保の2項目の保存出力"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-22-seaice/notebooks/kaggle-v020-kaggle-exp-22-seaice.ipynb",
+          "cell_index": 13,
+          "observed": "Jupytermind改善候補の記述。unknownのみというAPI仕様とのインターフェース差として報告"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-22-seaice/notebooks/kaggle-v020-kaggle-exp-22-seaice.ipynb",
+          "cell_index": 21,
+          "execution_count": null,
+          "observed": "probe_inferred_not_reportedの最小再現コードのみ。outputsは空で、Trueの結果出力はない"
+        }
+      ],
+      "acceptance_criteria": [
+        "inferredのみのmanifestを新しい一覧取得APIまたはオプションで検査すると、該当フィールドがinferred状態付きで返る。",
+        "unknownとinferredが混在するmanifestで両状態を取りこぼさず、verifiedを未確認項目に混入しない。",
+        "既存のunknownのみ取得する呼び出しの互換性と意味を維持する。",
+        "実行されたテスト結果とAPIの状態定義・使用例を記録する。"
+      ],
+      "external_problem_separation": "manifestのローカル一覧処理に関する候補。NSIDC解説取得のHTTPError、Kaggle API、Copilot CLI、外部ランナーの打切りとは別。HTTPErrorはinferredをverifiedにできなかった理由であり、このAPI挙動の原因ではない。"
+    },
+    {
+      "classification": "Jupytermindの監査不足の疑い：PNGセルのチャートメタデータ欠落",
+      "module": "ai_data_scientist.notebook_audit",
+      "functions": [
+        "audit_visual_outputs"
+      ],
+      "verification_status": "Notebookの記述と最小再現コードに基づく再現待ち候補。再現結果は保存されておらず、実際の戻り値は未確認。",
+      "reproduction_steps": [
+        "Notebookセル7の有効なPNG出力を使い、nbformat.v4.new_notebookとnew_code_cellでコードセル1個のNotebookを作る。",
+        "コードセルをexecution_count=1とし、visualization.build_image_outputでPNG出力を付ける。metadata.chartは付けない。セル21のコードと同じく出力のexecution_countも1にする。",
+        "notebook_audit.audit_visual_outputs(probe_notebook, (0,))を呼び、戻り値を保存する。",
+        "Notebookの候補記述は空タプルを返すと報告しているが、指定された保存ファイルにはこの呼び出しの結果がないため、まず実行して挙動を確認する。"
+      ],
+      "expected_behavior": "PNGは存在するがタイトル・軸・凡例・文字欠落の情報がない場合、図の情報を確認できない旨のwarningまたは明示的な未監査状態を返す。",
+      "actual_behavior": "Notebookセル13はmetadata.chartがないと空タプルを返しラベル検査に入らないと報告する。セル21はaudit_visual_outputs(visual_probe, (0,)) == ()の比較コードを含むが、execution_count=null、outputs=[]のため保存証拠から結果は確認できない。現在の本分析の画像セル7・9にはchart.specificationsがあり、この欠落条件は本分析の最終保存図には当てはまらない。",
+      "impact": "候補の挙動が再現すれば、visual_auditで情報不足の図を警告なしと扱う可能性がある。5図の意味や本分析の数値に誤りがあったことを示す証拠ではない。",
+      "workaround": "描画警告を捕捉し、各画像のタイトル・軸・凡例・missing_glyphs・PNGハッシュを保存してmetadata.chart.specificationsを明示的に付ける。本Notebookの保存メタデータにはこれらの仕様がある。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-22-seaice/notebooks/kaggle-v020-kaggle-exp-22-seaice.ipynb",
+          "cell_index": 13,
+          "observed": "監査不足の候補記述。ただし独立した実行結果ではない"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-22-seaice/notebooks/kaggle-v020-kaggle-exp-22-seaice.ipynb",
+          "cell_index": 21,
+          "execution_count": null,
+          "observed": "PNGあり・chartメタデータなしの最小再現コード。結果出力なし"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-22-seaice/notebooks/kaggle-v020-kaggle-exp-22-seaice.ipynb",
+          "cell_indices": [
+            7,
+            9
+          ],
+          "observed": "5画像の保存PNGとchart.specifications。回避策を反映した状態"
+        },
+        {
+          "file": "benchmark/runs/22-kaggle-exp-22-seaice/status.json",
+          "observed": "final_auditは末尾監査セルの未完了を警告している。visual_findingsが空であることだけでは最小再現の挙動を証明しない"
+        }
+      ],
+      "acceptance_criteria": [
+        "まず上記最小再現を実行し、結果を保存して候補の挙動が存在するか確認する。再現しない場合は未確認候補を取り下げるか再現条件を修正する。",
+        "PNGセルにchartメタデータがない場合、監査は情報不足を示すfindingまたは未監査状態を返す。",
+        "必要情報がそろった正常な図では欠落警告を出さず、複数PNGを持つセルでも各画像の仕様を確認できる。",
+        "メタデータ欠落・部分欠落・正常メタデータの実行テストと、図の視覚的正しさまでは保証しないという監査範囲を記録する。"
+      ],
+      "external_problem_separation": "有効PNGを入力したJupytermind監査APIのローカル挙動に関する疑い。Kaggle取得、Copilot CLI、Jupyter MCPの親ディレクトリ問題とは別。再現結果が保存されていない点は外部ランナーのartifact_complete_cutoffと切り分け、監査APIの故障の証明とはしない。"
+    }
+  ]
+}

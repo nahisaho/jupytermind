@@ -1,0 +1,10 @@
+指定された実ファイルを照合し、確認できた分析結果と未完了・失敗を分けて実験節にまとめます。Notebook内の図表出力も確認します。
+
+
+初回・追加確認とも指定データの取得がHTTP 403で停止しており、科学的分析は未完了です。PNG出力もないため図は作成せず、その旨を記載します。改善候補は、Notebookに再現証拠が残る2件を外部ツールの問題と分けて保存します。
+
+
+実験09のQiita書式・日本語の実験節を[report-section.md](benchmark/runs/09-kaggle-exp-09-diabetes/report-section.md)に保存しました。初回・追加確認ともHTTP 403でデータ取得が停止したため、**科学的分析は未完了**として、未確認の数値や成功状態を補わず記載しています。
+
+Jupytermind改善候補2件は、外部ツールの問題と切り分けて[issue-candidate.json](benchmark/runs/09-kaggle-exp-09-diabetes/issue-candidate.json)に保存しました。NotebookにPNGがないため画像ファイルは生成していません。`white-paper-v0.2.0.md`は編集していません。
+

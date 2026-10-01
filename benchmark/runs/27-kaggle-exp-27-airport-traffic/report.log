@@ -1,0 +1,12 @@
+Notebookと実行ログを根拠に、分析結果と文書化前の状態を切り分けてまとめます。図表はNotebookに保存されたPNGをそのまま抽出します。
+
+
+3回の追加分析で、旅客カウントの定義、空港コードの誤結合、都市の集約方法を検証した記録が確認できました。最終監査は完了していますが、単位と2025年の完全収録は未確認です。この制約と、Notebookで再現されたJupytermindの改善候補4件を明示して保存します。
+
+
+実験27の日本語・Qiita書式の節を [report-section.md](benchmark/runs/27-kaggle-exp-27-airport-traffic/report-section.md) に保存しました。初回プロンプト全文、追加依頼3件の原文・理由・結果、直接使用したモジュール、結論、監査、限界、途中の失敗を記載しています。
+
+NotebookのPNG4件を `benchmark/figures/exp-27-*.png` に抽出し、説明付きで参照しました。Jupytermind改善候補4件は外部環境・データ品質の問題と切り分け、[issue-candidate.json](benchmark/runs/27-kaggle-exp-27-airport-traffic/issue-candidate.json) に保存しています。`white-paper-v0.2.0.md` は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

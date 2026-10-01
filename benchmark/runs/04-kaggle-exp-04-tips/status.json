@@ -1,0 +1,103 @@
+{
+  "id": 4,
+  "dataset": "Tips",
+  "kaggle": "https://www.kaggle.com/datasets/jsphyg/tipping",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb",
+  "run_id": "v020-exp-04",
+  "initial_exit_code": 0,
+  "initial_seconds": 1158.5,
+  "initial_termination": "artifact_complete_cutoff",
+  "initial_stability": {
+    "stable": true,
+    "size": 884783,
+    "mtime": "2026-10-01T18:24:27.761869+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 11,
+    "executed_code_cells": 10,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      11,
+      13,
+      15,
+      17
+    ],
+    "insight_cells": 8,
+    "findings": [
+      {
+        "severity": "warning",
+        "message": "Trailing cell invokes audit_notebook and has not finished executing yet; excluded from unexecuted-cell findings.",
+        "cell_index": 32
+      }
+    ],
+    "visual_findings": []
+  },
+  "followup_exit_code": 0,
+  "followup_seconds": 422.5,
+  "followup_termination": "exited",
+  "final_stability": {
+    "stable": true,
+    "size": 925543,
+    "mtime": "2026-10-01T18:31:59.863183+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 12,
+    "executed_code_cells": 12,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      11,
+      13,
+      15,
+      17
+    ],
+    "insight_cells": 8,
+    "findings": [],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 12,
+      "executed_code_cells": 12,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        11,
+        13,
+        15,
+        17
+      ],
+      "insight_cells": 8,
+      "findings": [],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": true,
+  "documentation_complete": true,
+  "semantic_complete": true,
+  "completed_at": "2026-10-01T18:42:08.638539+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 346.1,
+  "report_termination": "exited"
+}

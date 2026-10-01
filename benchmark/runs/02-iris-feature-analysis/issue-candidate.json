@@ -1,0 +1,104 @@
+{
+  "experiment_id": "02-iris-feature-analysis",
+  "run_id": "v020-exp-02",
+  "evidence_scope": [
+    "benchmark/projects/kaggle-v020-iris-feature-analysis/notebooks/kaggle-v020-iris-feature-analysis.ipynb",
+    "benchmark/runs/02-iris-feature-analysis/initial-prompt.md",
+    "benchmark/runs/02-iris-feature-analysis/initial.log",
+    "benchmark/runs/02-iris-feature-analysis/followup.log",
+    "benchmark/runs/02-iris-feature-analysis/status.json"
+  ],
+  "candidates": [
+    {
+      "classification": "機能不足: 根拠記録の標準出力互換性",
+      "module": "ai_data_scientist.insight_engine",
+      "function": "record_insight",
+      "reproduction_steps": [
+        "実行済みコードセルでprintにより引用可能な値を出力し、Notebookのoutput_type=streamのtextに保存する。本実験ではS1のSHA-256を用いた。",
+        "保存済みセルのstream.textを読み、extract_cited_valueで値を抽出し、実際にその値が標準出力にあることを確認する。",
+        "同じNotebookのhandle、当該セルのexecution_count、抽出値をrecord_insightに渡す。本実験の呼出しはS8に保存されている。"
+      ],
+      "expected_behavior": "実行済みセルの通常の標準出力に存在する引用値を根拠として解決し、妥当な考察を記録できる。",
+      "actual_behavior": "S8のstream_probeはhash_found_in_stream=true、evidence_execution_count=21を記録しているが、record_insightはEvidenceMissingErrorを返した。",
+      "impact": "print主体のNotebookでは実際の根拠出力があっても考察記録を拒否され、MIME出力への書換えが必要になる。",
+      "workaround": "根拠値をdisplay({'text/plain': ...}, raw=True)で保存する。本実験のS3、S5、S6、S7はMIME出力を持つ。",
+      "responsibility_boundary": "Notebook内のPython関数呼出しに対する入出力互換性の候補。Kaggle認証・取得、Copilot CLI表示、外部ランナー停止の問題とは区別する。data MIMEだけを照合するという原因説明はNotebookの診断記録に基づき、本報告ではソースコードを独立検証していない。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-iris-feature-analysis/notebooks/kaggle-v020-iris-feature-analysis.ipynb",
+          "cell_id": "s1-kaggle",
+          "cell_index": 3,
+          "execution_count": 21,
+          "detail": "取得成功のstream出力にSHA-256が存在する。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-iris-feature-analysis/notebooks/kaggle-v020-iris-feature-analysis.ipynb",
+          "cell_id": "s8-probes",
+          "cell_index": 24,
+          "execution_count": 28,
+          "detail": "再現コードとstream_probeの保存済み出力。hash_found_in_stream=true、actual=EvidenceMissingError。"
+        }
+      ],
+      "acceptance_criteria": [
+        "実行済みコードセルのstdout stream.textに存在する引用値をrecord_insightが受理し、正しいexecution_countを持つ根拠manifestを記録する。",
+        "同じ引用値をtext/plain MIME出力で保存した既存経路も引き続き動作する。",
+        "引用値が存在しない場合や未実行セルへの参照は拒否され、標準出力対応によって根拠検証が弱まらない。",
+        "生成された根拠をnotebook_auditが解決でき、実行済み標準出力経路を含む回帰テストを追加する。"
+      ]
+    },
+    {
+      "classification": "不具合疑い: 棒図の目盛ラベル切れ",
+      "module": "ai_data_scientist.visualization",
+      "function": "render_chart",
+      "reproduction_steps": [
+        "Iris.csvを読み、Species別にSepalLengthCm、SepalWidthCm、PetalLengthCm、PetalWidthCmの平均を取り、reset_indexする。",
+        "render_chartでkind='bar'、x='Species'、title='Iris: feature means by species'、xlabel='Species'、ylabel='Mean measurement (Cm columns; inferred unit)'を指定し、既定の回転とキャンバスでPNGを生成する。呼出しはS8に保存されている。",
+        "生成PNGの縦向きIris-setosa、Iris-versicolor、Iris-virginicaラベルがキャンバス内に完全に収まるか確認する。"
+      ],
+      "expected_behavior": "既定設定でもタイトル、軸、凡例、すべての種名の目盛ラベルがPNG内に収まり、全文を読める。",
+      "actual_behavior": "初回ログとNotebookの改善候補節は、初回S4棒図の縦向き種ラベル下部が切れたと報告。S8のlayout_probeはoriginal_png_bytes=28760、observed_initial_png_bytes=28760を記録する。",
+      "impact": "図だけから比較対象の種名を判読できず、PNG保存後の目視確認と手動レイアウト調整が必要になる。",
+      "workaround": "最終S4では棒図のみmatplotlibでrot=0、tight_layout、savefigのbbox_inches='tight'を明示し、build_image_outputでPNGを出力した。",
+      "responsibility_boundary": "Pythonの図作成APIに対する候補で、Kaggle API・Copilot CLI・外部ランナーの問題とは独立。visual_auditの合格はラベル切れがないことの保証ではない。",
+      "evidence_limitations": "切れた初回PNGとS8の再生成PNG自体は最終Notebookの画像出力に保存されていない。確認できる画像は修正版のみであり、初回の切れはログ・Notebookの記述と診断出力に基づく不具合疑いとして扱う。",
+      "evidence": [
+        {
+          "file": "benchmark/runs/02-iris-feature-analysis/initial.log",
+          "detail": "種別棒図のラベル切れを発見し、図を修正して改善候補に記録する旨の応答。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-iris-feature-analysis/notebooks/kaggle-v020-iris-feature-analysis.ipynb",
+          "cell_id": "s8-probes",
+          "cell_index": 24,
+          "execution_count": 28,
+          "detail": "再現用render_chart呼出しとlayout_probe出力。生成PNGサイズ28,760 bytes。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-iris-feature-analysis/notebooks/kaggle-v020-iris-feature-analysis.ipynb",
+          "cell_id": "s4-charts",
+          "cell_index": 12,
+          "execution_count": 24,
+          "detail": "回避策と修正版PNG出力。棒図は30,834 bytes。"
+        }
+      ],
+      "acceptance_criteria": [
+        "上記の既定render_chart呼出しで生成したPNGに、3つの種名の全ラベルが切れずに収まることを確認する。",
+        "長いカテゴリラベルを含む棒図の回帰テストで、描画後のテキスト境界が保存画像領域内に収まることを検証する。",
+        "既存の図種とbuild_image_outputのPNG出力形式を維持する。"
+      ]
+    }
+  ],
+  "excluded_observations": [
+    {
+      "classification": "連携上の問題: 責任分界未確定",
+      "observation": "Notebookは同一Notebook実行中のenqueue_write後にS9のexecution_countとoutputsが保存されない問題を記録している。",
+      "reason_for_exclusion": "Jupytermind単独かJupyter MCPの実行出力保存との相互作用かは未確定。followup.logがJupytermind固有の候補から除外すると明記しており、このJSONでも候補に含めない。",
+      "workaround": "非アクティブな対象Notebookへ別MCPセルから根拠を書き込み、S9を読取り専用監査にする。"
+    },
+    {
+      "classification": "実行準備・外部ランナー",
+      "observation": "Notebook記述上の保存先親ディレクトリ未作成と準備セルの括弧誤記、およびfollowup.logの成果物安定後のランナー停止。",
+      "reason_for_exclusion": "Jupyter MCPの作成前提、作成時のコード誤記、外部ランナーの終了制御をJupytermind固有の不具合に分類しない。"
+    }
+  ]
+}

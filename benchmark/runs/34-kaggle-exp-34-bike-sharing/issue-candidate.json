@@ -1,0 +1,134 @@
+{
+  "experiment_id": 34,
+  "run_id": "v020-exp-34",
+  "classification": "Notebook内で再現されたJupytermindの機能不足候補",
+  "evidence_scope": [
+    "benchmark/projects/kaggle-v020-kaggle-exp-34-bike-sharing/notebooks/kaggle-v020-kaggle-exp-34-bike-sharing.ipynb",
+    "benchmark/runs/34-kaggle-exp-34-bike-sharing/initial.log",
+    "benchmark/runs/34-kaggle-exp-34-bike-sharing/followup.log",
+    "benchmark/runs/34-kaggle-exp-34-bike-sharing/status.json"
+  ],
+  "candidates": [
+    {
+      "classification": "機能不足（証拠出力型対応）。現行契約違反とは断定しない",
+      "module": "ai_data_scientist.insight_engine",
+      "function": "record_insight",
+      "reproduction_steps": [
+        "Notebookのsetupセルを実行し、print('初期化', LANGUAGE, RUN_ID)をstream出力として保存する。",
+        "library-probesセルで保存済みsetupセルをnbformatで読み、その実行番号とstream内の文字列「初期化 ja v020-exp-34」を取得する。",
+        "record_insight(handle, '# プローブ：stream証拠', setup_cell.execution_count, '初期化 ja v020-exp-34', 'diagnostic', language='ja')を呼ぶ。"
+      ],
+      "expected_behavior": "指定実行番号の保存済みstream.textに実在する引用を証拠として検証でき、存在しない引用は拒否する。",
+      "actual_behavior": "保存済みstreamに文字列が存在してもEvidenceMissingErrorで拒否された。NotebookはMIME dataだけを検索すると記録している。",
+      "impact": "printで保存した結果を証拠付きInsightに引用できず、主結果の出力方法を変更する必要がある。",
+      "workaround": "主結果をdisplay(dict)でtext/plain MIMEとして保存する。",
+      "evidence": {
+        "notebook_cells": [
+          {"id": "setup", "index_zero_based": 1, "execution_count": 1},
+          {"id": "library-probes", "index_zero_based": 18, "execution_count": 11}
+        ],
+        "output": {
+          "stream_present": true,
+          "stream_rejected": true,
+          "message": "再現ログ：存在するstream出力がEvidenceMissingErrorで拒否された。display出力へ回避。"
+        },
+        "metadata_path": "metadata.analysis_run.improvements[0]",
+        "log_scope": "詳細な呼び出しと再現結果はNotebook内。initial.logは改善候補3件を記録したと報告するのみ。"
+      },
+      "acceptance_criteria": [
+        "指定実行番号のstream.textに存在する引用を、text/plainと同等に証拠検証できる。",
+        "存在しない引用や別の実行番号の出力を根拠とする引用はEvidenceMissingErrorで拒否する。",
+        "既存のMIME出力による証拠検証とNotebookへのevidence記録を維持する。"
+      ]
+    },
+    {
+      "classification": "機能不足（意味的不確実性の列挙）。Notebookによれば現行契約はunknownのみであり契約違反ではない",
+      "module": "ai_data_scientist.data_definition",
+      "function": "DataDefinitionManifest.unresolved_fields",
+      "reproduction_steps": [
+        "build_manifest(source={}, dataset_scope={}, variables={'unit': {'definition': FieldValue('件/時間', 'inferred')}})でinferredだけのmanifestを作る。",
+        "作成したmanifestのunresolved_fields()を呼び、戻り値の件数を確認する。"
+      ],
+      "expected_behavior": "既存のunknownのみの動作を維持しつつ、選択的にinferred等の未検証項目も列挙できる。",
+      "actual_behavior": "inferredだけのmanifestではunresolved_fields()が空リストを返し、inferred_only_unresolvedは0だった。",
+      "impact": "unknown一覧のみを読むと、推定にとどまる季節・天候辞書や単位を検証済みと誤認する可能性がある。",
+      "workaround": "manifest全体を出力し、status='inferred'の項目を分析コードで別途列挙する。",
+      "evidence": {
+        "notebook_cells": [
+          {"id": "quality", "index_zero_based": 6, "execution_count": 5},
+          {"id": "library-probes", "index_zero_based": 18, "execution_count": 11}
+        ],
+        "output": {"inferred_only_unresolved": 0},
+        "metadata_path": "metadata.analysis_run.improvements[1]",
+        "qualification": "現行docstringがunknownのみという評価はNotebookの記録による。今回の証拠範囲ではライブラリソースを独立確認していない。"
+      },
+      "acceptance_criteria": [
+        "引数なしの既存動作はunknownのみの列挙として維持する。",
+        "inferredを含める選択的な方法を提供し、選択時は再現manifestのunit.definitionを列挙する。",
+        "選択結果でstatusと出典を保持し、verifiedやtestedを未検証項目へ混入させない。"
+      ]
+    },
+    {
+      "classification": "機能不足（監査対象の検出）",
+      "module": "ai_data_scientist.notebook_audit",
+      "function": "_looks_like_insight_candidate",
+      "reproduction_steps": [
+        "_looks_like_insight_candidate('# 結論：証拠付き解釈')を呼ぶ。",
+        "_looks_like_insight_candidate('結論：証拠付き解釈')を呼び、見出し付きとの判定差を確認する。",
+        "見出し付きの結論とevidence fenceを含むNotebookセルについてaudit_notebookの検出範囲を確認する。最後の手順は改善の受け入れ時に追加検証するものであり、保存された直接プローブは前二手順である。"
+      ],
+      "expected_behavior": "結論本文やevidence fenceを含むセルは、Markdown見出しの有無で証拠監査対象から除外されない。",
+      "actual_behavior": "見出し付きの文字列は候補から除外され、見出しなしは候補になった。",
+      "impact": "見出し付きの結論で根拠参照の不整合を見逃す可能性がある。最終成果物で不整合が残ったことを示すものではない。",
+      "workaround": "結論セル先頭の#を除き、固定Markdownスロットで保存する。最終完全監査は7結論を検出した。",
+      "evidence": {
+        "notebook_cells": [
+          {"id": "library-probes", "index_zero_based": 18, "execution_count": 11},
+          {"id": "final-audit", "index_zero_based": 28, "execution_count": 12}
+        ],
+        "output": {"heading_skipped": true, "plain_candidate": true},
+        "metadata_path": "metadata.analysis_run.improvements[2]",
+        "final_audit": {"insight_cell_count": 7, "findings": [], "ok": true},
+        "qualification": "修正前のInsight件数0はNotebook内の履歴記述であり、その監査の構造化出力は現在の最終Notebookには残っていない。直接確認できるのは検出関数のプローブと最終7件の監査。"
+      },
+      "acceptance_criteria": [
+        "同じ結論本文・evidence fenceを持つセルで、見出しの有無にかかわらず証拠監査を行う。",
+        "見出し付きセルに存在しない実行番号や引用値を記録した場合、監査で不整合を報告する。",
+        "結論本文もevidence fenceもない単なる章見出しをInsightとして誤計上しない。",
+        "本Notebookの最終7結論に対する既存の証拠検証を維持する。"
+      ]
+    }
+  ],
+  "excluded_or_unattributed_observations": [
+    {
+      "classification": "Kaggle SDK",
+      "observation": "SDK 2.2.4にdataset_viewがないとのNotebook記録。dataset_metadataで回避。descriptionは空。",
+      "reason_not_jupytermind_candidate": "SDKのインターフェースと配布メタデータに関する問題。"
+    },
+    {
+      "classification": "分析コード",
+      "observation": "pandas pivot_table(size)の非一意列をgroupby.sizeへ修正したとのNotebook記録。",
+      "reason_not_jupytermind_candidate": "分析者が作成した集計コードの問題。"
+    },
+    {
+      "classification": "MCP起動手順",
+      "observation": "新規Notebookディレクトリ不足を起動手順で回避したとのNotebook記録。",
+      "reason_not_jupytermind_candidate": "指定証拠からJupytermindのライブラリ責任を確定できない。"
+    },
+    {
+      "classification": "MCP／Notebook書込み統合・責任未確定",
+      "observation": "実行中セルの移動・自己書込みで実行番号や出力保存が失われたとのNotebook記録。対象Notebookの非実行時に外部MCPセルから著者書込みする工程に分離して回避。",
+      "reason_not_jupytermind_candidate": "統合箇所の原因が未確定で、Jupytermind固有の欠陥とは判断できない。"
+    },
+    {
+      "classification": "実行ログの追跡限界・責任未確定",
+      "observation": "metadata.analysis_run.phase_logで初回記述分析と反復2のend時刻がstart時刻より前。最後の完全監査metadata永続化にはstartのみが残る。",
+      "reason_not_jupytermind_candidate": "分析コードが作る時刻列と保存の問題であり、指定証拠だけでは原因を確定できない。"
+    },
+    {
+      "classification": "外部ランナー／Copilot CLI",
+      "observation": "initial_exit_code=0、followup_exit_code=0。追加確認はartifact_complete_cutoff。Notebookのランナー不存在という文とは異なり、指定ログには[runner]の停止記録がある。",
+      "reason_not_jupytermind_candidate": "外部の実行制御であり、CLI固有の失敗やJupytermindの分析失敗を示す証拠ではない。"
+    }
+  ]
+}

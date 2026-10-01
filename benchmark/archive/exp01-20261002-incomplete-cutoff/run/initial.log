@@ -1,0 +1,6 @@
+Kaggle APIで公開データの対応関係を確認してから、生存率・属性別比較・交絡と欠損への感度分析を行います。取得履歴、判断根拠、反復分析、再実行と監査の結果を指定ノートブックに残します。
+
+
+Kaggle上の `rahulsah06/titanic` から `train.csv`（891人・12列）を取得できました。予測ラベルを含むファイルは使わず、性別・等級などの比較に加え、年齢欠損や運賃の偏りが結論へ与える影響を調べます。
+
+[runner] stopping process group: Notebook remained stable and passed semantic audit

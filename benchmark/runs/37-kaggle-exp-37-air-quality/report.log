@@ -1,0 +1,11 @@
+指定のNotebookと追加確認ログは存在せず、監査状態にも分析未完了が記録されています。初回ログで停止理由を確認し、分析結果が得られなかった実験として、確認できる事実と未確認事項を分けてまとめます。
+
+
+実験37のQiita書式・日本語の節を `benchmark/runs/37-kaggle-exp-37-air-quality/report-section.md` に保存しました。
+
+**Copilot CLIのモデル一覧取得タイムアウトによる起動失敗・分析未完了**として、初回プロンプト全文、確認できた失敗内容、監査状態、限界を記載しています。指定Notebookと追加確認ログが存在しないため、分析結果や追加依頼は補作せず、PNGも抽出していません。
+
+Jupytermind固有の改善候補を裏づける証拠はなく、`issue-candidate.json` は `null` としました。`white-paper-v0.2.0.md` は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

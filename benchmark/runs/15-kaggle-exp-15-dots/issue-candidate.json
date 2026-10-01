@@ -1,0 +1,115 @@
+{
+  "experiment_id": 15,
+  "run_id": "v020-exp-15",
+  "status": "candidates_not_confirmed_defects",
+  "evidence_scope": [
+    "benchmark/projects/kaggle-v020-kaggle-exp-15-dots/notebooks/kaggle-v020-kaggle-exp-15-dots.ipynb",
+    "benchmark/runs/15-kaggle-exp-15-dots/initial-prompt.md",
+    "benchmark/runs/15-kaggle-exp-15-dots/initial.log",
+    "benchmark/runs/15-kaggle-exp-15-dots/followup.log",
+    "benchmark/runs/15-kaggle-exp-15-dots/status.json"
+  ],
+  "candidates": [
+    {
+      "id": "exp-15-stream-evidence",
+      "classification": "機能不足候補：証拠照合の出力形式",
+      "module": "ai_data_scientist.insight_engine",
+      "function": "record_insight",
+      "reproduction_steps": [
+        "project_manager.resolve_projectとensure_notebookで検証用Notebookを用意する。",
+        "execution_count=1、source='print(\"STREAM_PROBE=7\")'のcodeセルを作り、outputsにoutput_type='stream', name='stdout', text='STREAM_PROBE=7'を保存する。これはNotebook内の最小再現と同じ保存出力fixtureであり、print自体の実行を要件にはしていない。",
+        "project_manager.enqueue_writeでセルを保存する。",
+        "insight_engine.record_insight(handle, 'Stream根拠の記録確認', 1, 'STREAM_PROBE=7', 'descriptive', language='ja')を呼ぶ。"
+      ],
+      "expected_behavior": "保存済みcodeセルの通常のstdout streamに実在する引用値を、対応するexecution_countの根拠として照合できる。",
+      "actual_behavior": "Notebookの最小再現ではEvidenceMissingErrorを捕捉し、candidate=trueと記録した。",
+      "impact": "通常のprint出力だけに存在する分析値が根拠として拒否され、出力形式を変更しないとInsightへ結び付けられない。主分析の数値計算自体の誤りを示すものではない。",
+      "workaround": "主分析はdisplay(Markdown(...))でMIME dataのtext/plainに根拠トークンを出力し、その引用値を照合した。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-15-dots/notebooks/kaggle-v020-kaggle-exp-15-dots.ipynb",
+          "cell_index_zero_based": 17,
+          "cell_id": "jupytermind-probes",
+          "execution_count": 11,
+          "observation": "stream_fixtureの作成、record_insightの直接呼び出し、EvidenceMissingErrorの型限定捕捉。保存出力のstream_evidence.actual='EvidenceMissingError', candidate=true。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-15-dots/notebooks/kaggle-v020-kaggle-exp-15-dots.ipynb",
+          "location": "metadata.jupytermind_improvement_candidates.stream_evidenceおよび「Jupytermind改善候補」節",
+          "observation": "同じ期待・実際・回避策を記録。セルが記述するdata/jupytermind_probe_log.jsonは別証拠として読み取っていない。"
+        }
+      ],
+      "acceptance_criteria": [
+        "上記stream fixtureのSTREAM_PROBE=7をrecord_insightが受け付け、execution_count=1と引用値を持つ根拠付きInsightを保存する回帰テストが通る。",
+        "streamに存在しない値や異なる実行番号による根拠は引き続きEvidenceMissingError等の明示的な拒否となり、根拠確認を弱めない。",
+        "既存のtext/plain MIME出力による根拠照合とNotebook監査を維持する。"
+      ],
+      "separation_from_external_components": "最小再現はローカルNotebookの保存済みstdoutだけを使う。Kaggle API、ネットワーク、Copilot CLI、ベンチマークランナーの処理を再現条件に含めない。",
+      "limitations": "指定証拠で確認したのは当該保存出力形式の拒否。全出力形式の網羅試験、内部原因のソース調査、修正、GitHub Issue作成は実施していない。"
+    },
+    {
+      "id": "exp-15-missing-chart-metadata",
+      "classification": "監査カバレッジ不足候補：chartメタデータ欠落の通知",
+      "module": "ai_data_scientist.notebook_audit",
+      "function": "audit_notebook",
+      "reproduction_steps": [
+        "project_manager.resolve_projectとensure_notebookで検証用Notebookを用意する。",
+        "主分析でrender_chartが生成したskill_gap_chart.pngのPNGバイト列をbuild_image_outputに渡す。",
+        "execution_count=1のcodeセルにPNG出力を保存する。Notebook内の最小再現と同様、cell.metadata.chartは付与しない。",
+        "project_manager.enqueue_writeでセルを保存する。",
+        "notebook_audit.audit_notebook(notebook_path, visual_audit=True)を呼び、okとvisual_findingsを確認する。"
+      ],
+      "expected_behavior": "PNGの存在だけでラベル・字形の確認済みを示唆せず、chartメタデータ欠落によりタイトル・軸・凡例・字形の監査情報がないこと、または当該検査を実施できないことを明示する。",
+      "actual_behavior": {
+        "ok": true,
+        "visual_findings": [],
+        "candidate": true
+      },
+      "impact": "利用者がvisual_audit=Trueの成功をラベル・字形まで確認済みと解釈すると、監査の適用範囲を過大評価する。図そのものが誤っていたことを示す再現ではない。",
+      "workaround": "主Notebookは実際の描画時に確認したタイトル・軸・凡例・字形情報をchartメタデータへ付与し、PNGを目視確認したと記録した。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-15-dots/notebooks/kaggle-v020-kaggle-exp-15-dots.ipynb",
+          "cell_index_zero_based": 17,
+          "cell_id": "jupytermind-probes",
+          "execution_count": 11,
+          "observation": "visual_fixtureはPNG出力を保存するがchartメタデータを付与しない。audit_notebook(..., visual_audit=True)の保存出力はmissing_chart_metadata.actual={ok:true, visual_findings:[]}。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-15-dots/notebooks/kaggle-v020-kaggle-exp-15-dots.ipynb",
+          "location": "metadata.jupytermind_improvement_candidates.missing_chart_metadata、主図セルのmetadata.chart、および「Jupytermind改善候補」節",
+          "observation": "候補と回避策を記録。主図セルfigures、iteration-2、iteration-3には確認情報が付与されている。"
+        }
+      ],
+      "acceptance_criteria": [
+        "上記chartメタデータなしのPNG fixtureをvisual_audit=Trueで監査した際、対象セルを識別できる欠落・未実施の所見が返る回帰テストが通る。",
+        "当該通知は図の誤りを断定せず、検査可能な項目と検査不能な項目を区別する。",
+        "妥当なchartメタデータを付与した既存PNGの監査を維持し、visual_audit=Falseの既存動作を不必要に変えない。"
+      ],
+      "separation_from_external_components": "ローカルPNGと保存済みcodeセルだけによる直接関数呼び出しであり、Kaggle API、ネットワーク、Copilot CLI、ベンチマークランナーは再現条件に含めない。",
+      "limitations": "実際に誤ったタイトル・欠落字形を描いて監査に見逃させた試験ではない。確認したのはchartメタデータ欠落でも通知なしの成功となる範囲であり、内部原因のソース調査や修正はしていない。"
+    }
+  ],
+  "excluded_observations": [
+    {
+      "classification": "外部参照先・ネットワーク",
+      "observation": "原実験公開ページのタイムアウト、旧Seaborn文書URLの404。",
+      "reason": "Jupytermind関数の不具合として再現されたものではない。"
+    },
+    {
+      "classification": "生成分析コード・環境準備",
+      "observation": "引用符構成によるSyntaxError、Kaggleメタデータinfo階層の読み違い、広すぎた文献検索、Jupyter MCP対象の親ディレクトリ未作成。",
+      "reason": "Notebookに生成コード修正・再確認・bootstrapによる対処の記録があり、Jupytermindの機能不具合とは切り分ける。"
+    },
+    {
+      "classification": "データ定義・掲載メタデータ",
+      "observation": "反応時間・試行分母・独立単位ID・加工辞書がなく、Kaggle説明は空でライセンスunknown。",
+      "reason": "データ取得は成功。推定不能な指標や来歴の限界であり、Kaggle APIやJupytermindの実行失敗とはしない。"
+    },
+    {
+      "classification": "外部ランナーによる停止と保存状態の留保",
+      "observation": "initial.logとfollowup.logはNotebook安定を理由とするプロセス群停止で終わり、status.jsonの終了理由はartifact_complete_cutoff。Notebook末尾の自己監査セルはexecution_count=nullで出力なしだが、completedと再実行一致のメタデータは保存済み。",
+      "reason": "停止と末尾セル未保存の因果関係やJupytermindの欠陥は指定証拠から断定できない。exit code 0を末尾出力保存完了の証拠にはしない。"
+    }
+  ]
+}

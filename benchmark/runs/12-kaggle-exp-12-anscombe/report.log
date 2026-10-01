@@ -1,0 +1,10 @@
+指定されたNotebook・ログ・監査状態を照合し、既存の実験節に書式を合わせて作成します。図表はNotebookのPNG出力から抽出し、改善候補は確認できた証拠に限って判断します。
+
+
+Notebookには、追加分析2回の結果と全13コードセルの再実行・監査記録が残っています。改善候補はNaNを含む感度分析の安定判定と、推定状態の定義を集約する機能の2件に分け、保存競合はJupytermind単体の不具合とは断定しない形で記載します。
+
+
+実験12の日本語・Qiita書式の節を[report-section.md](benchmark/runs/12-kaggle-exp-12-anscombe/report-section.md)に保存しました。指定ファイルを根拠に、初回プロンプト全文、追加依頼2件の原文・理由・結果、監査・再現性・限界をまとめています。
+
+NotebookのPNG図表4枚を`benchmark/figures/exp-12-*.png`へ抽出し、節内で参照しました。改善候補2件は[issue-candidate.json](benchmark/runs/12-kaggle-exp-12-anscombe/issue-candidate.json)に保存し、外部ランナー・保存競合とは切り分けています。`white-paper-v0.2.0.md`は編集していません。
+

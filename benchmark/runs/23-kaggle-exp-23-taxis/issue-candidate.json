@@ -1,0 +1,114 @@
+{
+  "experiment_id": 23,
+  "run_id": "v020-exp-23",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-23-taxis/notebooks/kaggle-v020-kaggle-exp-23-taxis.ipynb",
+  "cell_index_convention": "0-based; incident indices refer to the pre-workaround notebook where stated",
+  "evidence_scope": "指定Notebook、initial-prompt.md、initial.log、followup.log、status.jsonのみ。ソースコードの追加調査、別環境での再現、修正、GitHub Issue登録は行っていない。",
+  "candidates": [
+    {
+      "id": "exp-23-stream-evidence",
+      "title": "保存済みstreamの引用値がrecord_insightの証拠として認識されない",
+      "classification": "Jupytermind insight_engineの機能不足候補（streamとMIMEの証拠照合の非対称）",
+      "attribution": "実行済み出力と証拠照合の境界に絞った候補。内部実装の原因は今回の証拠だけでは断定しない。",
+      "reproduction_steps": [
+        "Notebookの初回統計セル9を実行し、initial_numeric_evidenceとしてdistance_fare_pearsonの完全精度値をprintする。保存済み最終実行番号は5。",
+        "セル25の診断コードで保存済みNotebookを読み、該当セルのstream.textを連結する。",
+        "insight_engine.extract_cited_valueで0.9604533970991638を抽出し、引用値がstream中に存在することを確認する。",
+        "同じNotebookハンドル、実行番号5、引用値、diagnostic種別をinsight_engine.record_insightへ渡し、実際の応答を記録する。",
+        "比較として同じ計算結果を実行済みtext/plain MIME出力に保存し、その出力と実行番号からInsightを記録する。"
+      ],
+      "expected_behavior": "保存済み実行済みstream中の引用値がMIMEと同様に証拠として照合されること。streamを非対応とするなら、非対応の出力形式であることを公開契約と診断で明確に示すこと。",
+      "actual_behavior": {
+        "stream_contains_value": true,
+        "evidence_execution_count": 5,
+        "exact_cited_value": "0.9604533970991638",
+        "exception_class": "EvidenceMissingError",
+        "exception_message": "Insight '診断専用：printによる実行済み証拠の受理確認' に根拠となる実行済みセル(execution_count=5)が見つからないため記録を保留しました。"
+      },
+      "impact": "print中心の実分析に保存済み根拠があってもInsightの記録を拒否する。MIMEへの追加出力を要する。stream根拠の監査解決にも影響し得るが、その独立した失敗は本実験では確認していない。",
+      "workaround": "初回根拠セル13と各反復でJSONをtext/plain MIMEとして保存し、その実出力から引用値を抽出して8件のInsightを記録した。",
+      "evidence": [
+        {
+          "source": "notebook.cells[9]",
+          "location": "execution_count=5、stream出力initial_numeric_evidence",
+          "observation": "distance_fare_pearson=0.9604533970991638が保存されている。"
+        },
+        {
+          "source": "notebook.cells[25]",
+          "location": "execution_count=12、診断コードとtext/plain JSON出力",
+          "observation": "stream_contains_value=trueとEvidenceMissingErrorを同時に記録。"
+        },
+        {
+          "source": "notebook.metadata.stream_evidence_diagnostic",
+          "observation": "診断セルと同じ実行番号・引用値・例外を保存。"
+        },
+        {
+          "source": "notebook.cells[24], notebook.cells[28], notebook.metadata.notebook_audit",
+          "observation": "改善候補本文、MIME根拠からのInsight記録コード、最終8件のInsightと監査合格。"
+        }
+      ],
+      "external_problem_separation": "Kaggle取得は成功し、問題の引用値はNotebookのstreamに実保存されている。CLIの表示切詰めや外部ランナーの終了状態を原因にせず、出力形式と証拠照合の相違として扱う。",
+      "acceptance_criteria": [
+        "同じ実行済みセル番号と存在する引用値について、streamおよびtext/plain MIMEからInsightを記録できる。",
+        "存在しない引用値、未実行セル、誤った実行番号は従来どおり明示的に拒否し、証拠検証を弱めない。",
+        "保存後のnotebook_auditでも受理済みのstream根拠を一貫して解決できる。",
+        "stream対応範囲と非対応形式の診断が文書化される。"
+      ]
+    },
+    {
+      "id": "exp-23-active-notebook-write",
+      "title": "実行中Notebookへの自己書込みでセルの実行結果が保存されない",
+      "classification": "Jupytermind project_managerとJupyter MCPのNotebook保存の統合不足候補",
+      "attribution": "未確定。Jupytermind単独の不具合かJupyter MCPの保存・再読込タイミングかは、本実験だけでは判定できない。",
+      "reproduction_steps": [
+        "Jupyter MCPで対象Notebookのセルを実行する。",
+        "そのセルの実行中に対象Notebook自身へproject_manager.enqueue_writeまたはinsight_engine.record_insightで本文・Insightを書き込む。初期版の診断セル・Insight記録セルで発生したと記録されている。",
+        "ツールが返した実出力と、直後の保存Notebookおよびjupyter.read_cellのexecution_count・outputsを比較する。",
+        "保存ファイルをnotebook_auditで監査し、未実行セル所見と実行済み件数を記録する。",
+        "対照として対象セルの終了後に同一カーネルの管理Notebookからpersist_insightsを呼び、対象Notebookを再接続・全再実行して保存後監査を行う。"
+      ],
+      "expected_behavior": "本文・Insight変更とセルのexecution_count・outputsが両方保存されること。対応できない自己書込み条件なら、保存競合を明示的に拒否し不完全な成果物を成功として残さないこと。",
+      "actual_behavior": {
+        "incident": "ツールから実出力が得られたにもかかわらず、初期版の2セルが保存ファイル上でexecution_count=None、outputs空となったとの事故記録。",
+        "pre_audit_code_cells": 13,
+        "pre_audit_executed_code_cells": 11,
+        "pre_audit_unexecuted_cell_indices": [25, 28],
+        "pre_audit_error_findings": 2,
+        "lifecycle_at_incident": "Notebook本文は事前監査失敗時にfailedを記録したと報告。"
+      },
+      "impact": "実行と保存が不一致となり、証拠の追跡と未実行セル監査が失敗する。管理Notebookを挟む手動の保存調整と全再実行を要した。",
+      "workaround": "対象セル内の自己書込みを排除し、セル完了後に同一カーネルを共有するJupyter MCP管理Notebookからpersist_insightsを呼ぶ。対象の14コードセルを再実行し、Insightを最新実行番号へ更新して保存後監査を実施。",
+      "evidence": [
+        {
+          "source": "notebook.metadata.write_integration_incident",
+          "observation": "期待・再現条件・回避策と、初期版13セル中11実行、位置25・28の未実行error所見を保存。"
+        },
+        {
+          "source": "notebook.cells[24]",
+          "location": "Jupytermind改善候補2",
+          "observation": "ツール出力と保存値の不一致、事前監査時failed、帰属未確定を記録。"
+        },
+        {
+          "source": "benchmark/runs/23-kaggle-exp-23-taxis/initial.log",
+          "observation": "実行中セルから同じNotebookへ書き込むと出力が失われたため、セル完了後への書込み分離を報告。"
+        },
+        {
+          "source": "notebook.cells[28], notebook.metadata.orchestration_record.post_cell_writer",
+          "observation": "persist_insightsの準備と、対象セル終了後に呼ぶ管理セルのコード・実行番号14・保存出力を記録。"
+        },
+        {
+          "source": "notebook.metadata.notebook_audit, notebook.metadata.lifecycle",
+          "observation": "回避後は全14コードセル実行済み、未実行・エラー・監査所見なし、completedで各活動カウンター0。"
+        }
+      ],
+      "external_problem_separation": "Kaggle取得は成功しており、CLI表示ではなく保存Notebookの実行番号・outputsの欠落が問題。ランナーの監視終了とは分離する。Jupytermindファイル書込みとJupyter MCP保存の統合境界に絞るが、単独コンポーネントの欠陥と断定しない。",
+      "acceptance_criteria": [
+        "同条件のセル内自己書込みで、本文更新・実行番号・outputsがいずれも欠落しない。",
+        "実行とファイル書込みの調整ができない条件は明示的に拒否し、成功に見える不完全保存を残さない。",
+        "保存後監査で全対象セルが実行済みとなり、Insightの実行番号と引用値が最新保存出力へ解決される。",
+        "成功時はcompletedかつ実行・書込み・ロックのカウンター0、失敗時はfailedとなり、実行中Notebookへの書込み契約・回避手順が文書化される。",
+        "Jupyter MCPとの共同再現で原因帰属を確定し、管理Notebookを介する回避策の必要性または正式な対応手順を明示する。"
+      ]
+    }
+  ]
+}

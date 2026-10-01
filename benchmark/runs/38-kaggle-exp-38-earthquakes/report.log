@@ -1,0 +1,12 @@
+Notebookの実行結果とログを照合し、分析成果と追加確認の実行失敗を分けて記述します。図表は保存済みのPNG出力をそのまま抽出します。
+
+
+3回の追加分析では、浅発地震が多数という結論は維持されました。一方、時間変化と地理的集中度の数値は分析条件に依存します。Notebookの完了・監査記録と`analysis_complete=false`の不整合、追加確認時のCopilot CLI起動失敗も明記し、Jupytermind改善候補3件は再現証拠の範囲に限定して保存します。
+
+
+実験38の日本語Qiita節を [report-section.md](benchmark/runs/38-kaggle-exp-38-earthquakes/report-section.md) に保存しました。NotebookのPNG図表6点を `benchmark/figures/exp-38-*.png` へ抽出し、改善候補3件を [issue-candidate.json](benchmark/runs/38-kaggle-exp-38-earthquakes/issue-candidate.json) に記録しています。
+
+分析成果、追加確認時のCopilot CLI起動失敗、完了記録の不整合を区別して記載しました。`white-paper-v0.2.0.md` は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

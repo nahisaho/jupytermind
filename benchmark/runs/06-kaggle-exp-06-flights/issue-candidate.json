@@ -1,0 +1,69 @@
+{
+  "id": "VIZ-AUDIT-01",
+  "title": "PNG図表の監査メタデータ欠落が警告されない",
+  "classification": {
+    "component": "Jupytermind",
+    "module": "ai_data_scientist.notebook_audit",
+    "function": "audit_visual_outputs",
+    "type": "図表監査の機能不足候補",
+    "scope": "監査の確認範囲の明示。実験06の分析値や結論の計算誤りではない"
+  },
+  "reproduction_steps": [
+    "実験06のNotebookセル19の実在するPNG出力を用意する。",
+    "セル25と同様にnbformat.v4.new_code_cellを作り、build_image_output(png)をoutputsに入れ、execution_count=1とする。",
+    "このセルをnbformat.v4.new_notebookのcellsに入れる。cell.metadata.chartは設定しない。",
+    "ai_data_scientist.notebook_auditから直接importしたaudit_visual_outputs(repro, (0,))を呼び出す。",
+    "chartメタデータの有無と返されたfindingsを確認する。"
+  ],
+  "expected_behavior": "PNGが存在しても監査メタデータが未提供であれば、字形・タイトル・軸ラベル・凡例の確認が未実施であることを明示する警告を返す。",
+  "actual_behavior": {
+    "metadata_present": false,
+    "actual_findings": [],
+    "missing_metadata_passes_without_findings": true
+  },
+  "impact": "監査対象のPNGに確認材料がなくても指摘が空になるため、未確認の図表が監査済みと誤解され得る。画像からラベルを読み取れたことは証明されない。本実験の分析数値・結論への影響は記録されていない。",
+  "workaround": "本Notebookでは図表のtitle、xlabel、ylabel、legendと、実際の描画フォントのcharmapを用いたmissing_glyphs検査結果を明示して保存し、visual_audit=Trueで最終監査した。",
+  "evidence": [
+    {
+      "path": "benchmark/projects/kaggle-v020-kaggle-exp-06-flights/notebooks/kaggle-v020-kaggle-exp-06-flights.ipynb",
+      "cell_index": 25,
+      "execution_count": 8,
+      "output_index": 0,
+      "record": "improvement_reproduction",
+      "observed": {
+        "case": "PNGあり・cell.metadata.chartなし",
+        "metadata_present": false,
+        "actual_findings": [],
+        "missing_metadata_passes_without_findings": true
+      }
+    },
+    {
+      "path": "benchmark/projects/kaggle-v020-kaggle-exp-06-flights/notebooks/kaggle-v020-kaggle-exp-06-flights.ipynb",
+      "cell_index": 24,
+      "record": "Jupytermind改善候補 / VIZ-AUDIT-01",
+      "description": "分類・期待する挙動・実際の挙動・影響・回避策を記載"
+    },
+    {
+      "path": "benchmark/projects/kaggle-v020-kaggle-exp-06-flights/notebooks/kaggle-v020-kaggle-exp-06-flights.ipynb",
+      "record": "metadata.chart_metadata_manifest / metadata.final_verification",
+      "description": "本実験の4画像の明示的メタデータとvisual_audit=true、最終visual_findings=[]の記録。欠落再現とは区別する"
+    },
+    {
+      "path": "benchmark/runs/06-kaggle-exp-06-flights/initial.log",
+      "description": "図表監査の改善候補をNotebookへ収録したとの報告。再現の一次証拠はセル25のコードと出力"
+    }
+  ],
+  "acceptance_criteria": [
+    "セル25と同じ実在PNG・chartメタデータなしの再現に対し、未確認／未提供の警告を返す。",
+    "タイトル、軸ラベル、凡例、字形検査結果のいずれかが欠落するケースでは、未確認の項目を識別できる。",
+    "本実験のように必要な図表メタデータが揃いmissing_glyphsが空のケースは、欠落警告を出さず既存の検査を維持する。",
+    "監査メタデータの不足と、実際の画像内のラベルや字形の問題を区別し、未確認を検証済みと表現しない。"
+  ],
+  "separation": {
+    "kaggle_sdk": "dataset_viewが存在しない事象はセル5とセル25に記録されたKaggle SDK固有の制約であり、本候補に含めない。",
+    "jupyter_mcp": "未作成の親ディレクトリにNotebookを作成できなかったというセル24の記述は、操作の前提条件として区別する。",
+    "external_runner": "followup.logのプロセス停止とstatus.jsonのartifact_complete_cutoffは外部ランナーの終了制御であり、本候補に含めない。",
+    "copilot_cli": "指定証拠に本候補をCopilot CLI固有の問題とする根拠はない。",
+    "lifecycle_snapshot": "完了出力と最終検証スナップショットの実行中件数には差があるが、保存時点・外部操作を特定できず、追加のJupytermind不具合とは断定しない。"
+  }
+}

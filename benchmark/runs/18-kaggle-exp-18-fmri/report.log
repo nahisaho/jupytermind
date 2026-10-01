@@ -1,0 +1,10 @@
+指定された実ファイルから結果と追加依頼の経緯を確認し、既存実験節の書式に合わせてまとめます。NotebookのPNGも抽出し、改善候補はJupytermind本体に帰属する証拠がある場合だけ記録します。
+
+分析は完了しており、追加分析2回と全セル再実行の記録があります。ただし、追加確認ログにある「反復3」は実施予告だけで、保存Notebookに結果は残っていません。報告ではこの未実施部分を明示し、監査の改善候補3件も証拠の強さを区別します。
+
+実験18のQiita書式・日本語節を [report-section.md](benchmark/runs/18-kaggle-exp-18-fmri/report-section.md) に保存しました。Notebook内のPNG3点を `benchmark/figures/exp-18-*.png` に抽出し、節内から説明付きで参照しています。改善候補3件は、証拠の強さと周辺ツールとの切り分けを含めて [issue-candidate.json](benchmark/runs/18-kaggle-exp-18-fmri/issue-candidate.json) に保存しました。
+
+分析完了と、追加確認で予告された反復3の結果が未記録であることを区別しました。文書化状態を実験の失敗判定には使用していません。`white-paper-v0.2.0.md` は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

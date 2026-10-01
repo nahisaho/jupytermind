@@ -1,0 +1,91 @@
+{
+  "id": 30,
+  "dataset": "World GDP",
+  "kaggle": "https://www.kaggle.com/datasets?search=world+gdp+by+country",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-30-world-gdp/notebooks/kaggle-v020-kaggle-exp-30-world-gdp.ipynb",
+  "run_id": "v020-exp-30",
+  "initial_exit_code": 0,
+  "initial_seconds": 1644.1,
+  "initial_termination": "exited",
+  "initial_stability": {
+    "stable": true,
+    "size": 570336,
+    "mtime": "2026-10-01T21:32:21.289088+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 12,
+    "executed_code_cells": 12,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      7,
+      15
+    ],
+    "insight_cells": 8,
+    "findings": [],
+    "visual_findings": []
+  },
+  "followup_exit_code": 0,
+  "followup_seconds": 95.2,
+  "followup_termination": "artifact_complete_cutoff",
+  "final_stability": {
+    "stable": true,
+    "size": 570336,
+    "mtime": "2026-10-01T21:32:21.289088+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 12,
+    "executed_code_cells": 12,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      7,
+      15
+    ],
+    "insight_cells": 8,
+    "findings": [],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 12,
+      "executed_code_cells": 12,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        7,
+        15
+      ],
+      "insight_cells": 8,
+      "findings": [],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": true,
+  "documentation_complete": true,
+  "semantic_complete": true,
+  "completed_at": "2026-10-01T21:40:58.745671+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 403.0,
+  "report_termination": "exited"
+}

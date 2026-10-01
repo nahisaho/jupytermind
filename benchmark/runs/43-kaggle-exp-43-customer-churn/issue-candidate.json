@@ -1,0 +1,188 @@
+{
+  "experiment_id": 43,
+  "run_id": "v020-exp-43",
+  "evidence_scope": [
+    "benchmark/projects/kaggle-v020-kaggle-exp-43-customer-churn/notebooks/kaggle-v020-kaggle-exp-43-customer-churn.ipynb",
+    "benchmark/runs/43-kaggle-exp-43-customer-churn/initial.log",
+    "benchmark/runs/43-kaggle-exp-43-customer-churn/followup.log",
+    "benchmark/runs/43-kaggle-exp-43-customer-churn/status.json",
+    "benchmark/runs/43-kaggle-exp-43-customer-churn/initial-prompt.md"
+  ],
+  "cell_index_convention": "0-based",
+  "candidates": [
+    {
+      "id": "exp-43-visual-audit-missing-metadata",
+      "classification": "Jupytermind機能不足候補：視覚監査の未検証状態の報告",
+      "module": "ai_data_scientist.notebook_audit",
+      "functions": ["audit_visual_outputs"],
+      "reproduction_steps": [
+        "Notebookセル24と同じ契約別解約率のPNGを用意し、visualization.build_image_outputで画像出力を作る。",
+        "nbformat.v4.new_code_cellでメモリ内コードセルを作り、outputsにPNG出力を設定する。metadata.chartは設定しない。",
+        "そのセルを含むnbformat.v4.new_notebookを作り、audit_visual_outputs(probe_notebook, (0,))を直接呼ぶ。",
+        "返された所見数と内容を確認する。Notebookセル28に同じ検査がある。"
+      ],
+      "expected_behavior": "監査用のタイトル・軸・凡例・glyph検査メタデータが欠落している場合は、読みやすさが未検証であると明示的に報告する。画像実内容を検証済みとは扱わない。",
+      "actual_behavior": {
+        "finding_count": 0,
+        "findings": []
+      },
+      "impact": "監査メタデータ欠落時も所見なしとなり、図表の読みやすさを確認済みと誤解する可能性がある。OCRによる画像内容検査の実施を示すものではない。",
+      "evidence": [
+        {
+          "source": "notebook",
+          "cell_index": 28,
+          "execution_count": 13,
+          "location": "probe_logおよび出力",
+          "observation": "metadata.chartを省略したメモリ内Notebookの直接監査でfinding_count=0、findings=[]。"
+        },
+        {
+          "source": "notebook",
+          "location": "metadata.jupytermind_improvement_candidates[0]",
+          "observation": "再現条件、未確認状態の報告への期待、回避策と外部問題の切り分けを記録。"
+        }
+      ],
+      "workaround": "全図にtitle/xlabel/ylabel/legend/missing_glyphsを設定し、描画warningを捕捉し、PNGを表示して確認する。",
+      "external_system_separation": "メモリ内Notebookに対するモジュール直接呼出しのため、Kaggle API、Copilot CLI、外部ベンチマークランナーに依存しない。",
+      "acceptance_criteria": [
+        "metadata.chartを欠く有効PNGのテストで、監査結果に未検証を示す明示的な所見が含まれる。",
+        "部分的な監査メタデータの場合も、未検証の対象を区別して報告する。",
+        "完全な監査メタデータを持つ本実験の補正後3図では、欠落メタデータの誤検出がない。",
+        "メタデータ検査の合格を画像実内容の検証と同一視しないことが結果または関連文書で明確になる。"
+      ],
+      "status": "candidate_not_fixed"
+    },
+    {
+      "id": "exp-43-chart-label-clipping",
+      "classification": "Jupytermind描画機能不足候補：既定レイアウトのラベル切れ",
+      "module": "ai_data_scientist.visualization",
+      "functions": ["render_chart"],
+      "reproduction_steps": [
+        "Notebookセル24のcontract_plotを用意する。カテゴリはMonth-to-month、One year、Two year。",
+        "既定figsizeとfigure.autolayout=Falseの条件で、font.familyをIPAexGothicにする。",
+        "セル28と同じrender_chart(contract_plot, kind='bar', x='Contract', y='解約率', title='契約別の解約率（未調整）', xlabel='契約種別', ylabel='解約顧客の割合（%）')を呼ぶ。",
+        "返されたPNGを表示して、縦向きカテゴリラベルとx軸タイトルが下端に収まるか確認する。"
+      ],
+      "expected_behavior": "既定の描画条件でも契約名とx軸タイトルがPNG内に完全に収まり、必要な余白が確保される。",
+      "actual_behavior": "Notebookは、初回契約図で縦向きtickの下部とx軸タイトルがPNG下端に切れたと目視記録している。セル28には再現コードと再現PNGのパス・ハッシュがある。",
+      "impact": "カテゴリ名や軸説明を読めず誤読するおそれがあり、メタデータ中心の視覚監査だけでは切れを検知しない。",
+      "evidence": [
+        {
+          "source": "notebook",
+          "cell_index": 28,
+          "execution_count": 13,
+          "location": "layout_logおよび出力",
+          "observation": "初回画像のラベル切れの目視記録とrender_chartによる再現コード。",
+          "recorded_artifact_path": "benchmark/projects/kaggle-v020-kaggle-exp-43-customer-churn/data/visual-layout-default-reproduction.png",
+          "recorded_artifact_sha256": "9c74b7764427277c5852236c28b154fb7eb594665ebf3b903f1f92af3910dfb4",
+          "qualification": "再現PNGファイル自体は本レポートの指定証拠には含めず、Notebook内の記録として引用。"
+        },
+        {
+          "source": "notebook",
+          "cell_index": 24,
+          "execution_count": 10,
+          "location": "show_chart",
+          "observation": "回避策としてfigure.autolayout=True、figure.figsize=(8,5)を各描画に適用。"
+        },
+        {
+          "source": "initial.log",
+          "observation": "ラベル切れを描画設定で回避したとの報告。"
+        }
+      ],
+      "workaround": "各描画のmpl.rc_contextでfigure.autolayout=Trueとfigure.figsize=(8,5)を指定し、生成PNGを表示確認する。",
+      "external_system_separation": "記録された症状は生成PNGのレイアウトであり、Kaggleの取得やCLI表示ではない。原因候補は直接呼び出した描画機能に限定する。",
+      "acceptance_criteria": [
+        "同じデータ・長いカテゴリ名・既定描画条件の回帰テストで、カテゴリラベルと軸タイトルが生成画像の範囲内に完全に収まる。",
+        "確認は文字列メタデータの存在だけではなく、描画された要素の境界と画像範囲の比較または保存画像の目視で行う。",
+        "日本語ラベル、凡例、既存のfigsize指定を維持し、数値データと棒の値を変更しない。"
+      ],
+      "status": "candidate_not_fixed"
+    },
+    {
+      "id": "exp-43-japanese-font-context-restoration",
+      "classification": "Jupytermind日本語フォント状態不具合候補",
+      "module": "ai_data_scientist.visualization",
+      "functions": ["render_chart"],
+      "reproduction_steps": [
+        "クリーンなkernelでNotebookセル24と同じ日本語タイトル・軸ラベル付きrender_chartを一度実行する。",
+        "rc_context終了による復元、またはmpl.rc_context({'font.family': 'DejaVu Sans'})でfont.familyを日本語非対応の値に戻す。",
+        "同じ日本語図をrender_chartで再度描画し、warnings.catch_warnings(record=True)でGlyphとmissingを含むwarningを捕捉する。",
+        "warning件数とPNGの日本語描画を確認する。セル28にDejaVu Sansを使う最小再現がある。"
+      ],
+      "expected_behavior": "日本語を含む各render_chart呼出しで利用可能な同梱日本語フォントが有効となり、rc_context復元後も欠落glyphなしで描画する。",
+      "actual_behavior": {
+        "minimal_reproduction_glyph_warning_count": 28,
+        "prior_clean_reexecution": {
+          "phase": "初回クリーン再実行chart2",
+          "glyph_warning_count": 35,
+          "state": "failed"
+        },
+        "observed_sequence": "初回クリーン再実行では契約図は正常、描画設定の復元後の期間・契約図で日本語が欠落したと記録。",
+        "root_cause_hypothesis": "一度だけのフォント適用フラグと復元されたrcParamsの不整合というNotebookの説明。ソースコードを独立検証した確定原因ではない。"
+      },
+      "impact": "クリーンな全セル再実行で文字化けし、視覚監査がmissing_glyphsを検出して完了確認に失敗する。記録上、数値分析は不変。",
+      "evidence": [
+        {
+          "source": "notebook",
+          "cell_index": 28,
+          "execution_count": 13,
+          "location": "font_context_logおよび出力",
+          "observation": "DejaVu Sansの条件で28件のglyph warningを捕捉。",
+          "recorded_artifact_path": "benchmark/projects/kaggle-v020-kaggle-exp-43-customer-churn/data/visual-font-context-reproduction.png",
+          "recorded_artifact_sha256": "8a27e7545ef115f0bd260021d385b3729ad1f84917aa4bafa32173acd35101ee",
+          "qualification": "再現PNGファイル自体は指定証拠には含めず、Notebook内の記録として引用。"
+        },
+        {
+          "source": "notebook",
+          "location": "metadata.prior_reexecution_failure",
+          "observation": "chart2の35件のglyph warningとstate=failedを保持。"
+        },
+        {
+          "source": "initial.log",
+          "observation": "クリーン再実行で2枚目の日本語フォント欠落を確認し、各図への明示的フォント設定後に全セル再実行をやり直す旨を記録。"
+        },
+        {
+          "source": "notebook",
+          "cell_index": 34,
+          "execution_count": 14,
+          "location": "最終監査出力、セル24〜26のmetadata.chart.missing_glyphs",
+          "observation": "回避後の最終視覚監査は所見なし、全3図のmissing_glyphsは空。"
+        }
+      ],
+      "workaround": "各図のrc_contextにfont.family=IPAexGothicを明示し、全セル再実行で図ごとのglyph warningが0であることを確認する。",
+      "external_system_separation": "日本語フォントが利用可能で最初の図が正常な条件でも、モジュール直接呼出しとrcParams復元の組合せで発生する。Copilot CLI、Kaggle API、外部ランナー固有の問題ではない。",
+      "acceptance_criteria": [
+        "クリーンkernelで日本語描画、rc_context復元、日本語再描画を続けても、両画像で欠落glyphが0件となる。",
+        "フォント登録済みだがfont.familyがDejaVu Sansへ戻った条件の最小再現でも日本語を正しく描画する。",
+        "明示的IPAexGothic指定の既存回避策を壊さず、同じNotebookの全コードセル上から再実行で3図が正常に描画される。",
+        "図ごとのwarning捕捉と視覚監査の両方で欠落glyphがないことを確認し、数値結果を変更しない。"
+      ],
+      "status": "candidate_not_fixed"
+    }
+  ],
+  "excluded_problems": [
+    {
+      "classification": "Kaggle SDK固有",
+      "problem": "dataset_viewが存在せずAttributeError",
+      "evidence": "Notebookセル5のsdk_compatibility_log",
+      "resolution": "dataset_metadata(dataset, path)を使用。CSV取得・分析は継続。"
+    },
+    {
+      "classification": "AIが作成した分析コード",
+      "problem": "InternetService=Noと補助サービスのNo internet serviceダミーの完全重複による特異行列",
+      "evidence": "Notebookセル11のanalysis_debug_log",
+      "resolution": "追加サービスをYes指示子へ再パラメータ化し、全モデルのフルランク・収束を確認。"
+    },
+    {
+      "classification": "Notebook作成コード／IPython連携",
+      "problem": "shellの次の実行番号を保存し、画像セルの番号が重複",
+      "evidence": "Notebookのmetadata.execution_stamp_debug_log",
+      "resolution": "入力履歴の現在の番号へ訂正し、1〜14の順序を確認。"
+    },
+    {
+      "classification": "外部ベンチマークランナーの終了制御",
+      "problem": "追加確認プロセスのartifact_complete_cutoff",
+      "evidence": "followup.logの安定Notebook・監査通過後の停止記録、status.jsonのfollowup_termination",
+      "resolution": "分析失敗やJupytermind不具合とは判定しない。追加確認での別の再実行成功ともみなさない。"
+    }
+  ]
+}

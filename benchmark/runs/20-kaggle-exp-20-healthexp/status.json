@@ -1,0 +1,115 @@
+{
+  "id": 20,
+  "dataset": "Health Expenditure",
+  "kaggle": "https://www.kaggle.com/datasets?search=health+expenditure+life+expectancy",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-20-healthexp/notebooks/kaggle-v020-kaggle-exp-20-healthexp.ipynb",
+  "run_id": "v020-exp-20",
+  "initial_exit_code": 124,
+  "initial_seconds": 1803.8,
+  "initial_termination": "timeout",
+  "initial_stability": {
+    "stable": true,
+    "size": 1343755,
+    "mtime": "2026-10-01T19:33:26.462171+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 14,
+    "executed_code_cells": 13,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      10,
+      15,
+      18,
+      21
+    ],
+    "insight_cells": 6,
+    "findings": [
+      {
+        "severity": "warning",
+        "message": "Trailing cell invokes audit_notebook and has not finished executing yet; excluded from unexecuted-cell findings.",
+        "cell_index": 28
+      }
+    ],
+    "visual_findings": []
+  },
+  "followup_exit_code": null,
+  "followup_seconds": null,
+  "followup_termination": null,
+  "final_stability": {
+    "stable": true,
+    "size": 1343755,
+    "mtime": "2026-10-01T19:33:26.462171+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 14,
+    "executed_code_cells": 13,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      10,
+      15,
+      18,
+      21
+    ],
+    "insight_cells": 6,
+    "findings": [
+      {
+        "severity": "warning",
+        "message": "Trailing cell invokes audit_notebook and has not finished executing yet; excluded from unexecuted-cell findings.",
+        "cell_index": 28
+      }
+    ],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 14,
+      "executed_code_cells": 13,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        10,
+        15,
+        18,
+        21
+      ],
+      "insight_cells": 6,
+      "findings": [
+        {
+          "severity": "warning",
+          "message": "Trailing cell invokes audit_notebook and has not finished executing yet; excluded from unexecuted-cell findings.",
+          "cell_index": 28
+        }
+      ],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": false,
+  "documentation_complete": true,
+  "semantic_complete": false,
+  "completed_at": "2026-10-01T19:40:49.976186+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 447.7,
+  "report_termination": "exited"
+}

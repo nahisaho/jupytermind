@@ -1,0 +1,91 @@
+{
+  "id": 32,
+  "dataset": "Breast Cancer Wisconsin",
+  "kaggle": "https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-32-breast-cancer/notebooks/kaggle-v020-kaggle-exp-32-breast-cancer.ipynb",
+  "run_id": "v020-exp-32",
+  "initial_exit_code": 0,
+  "initial_seconds": 1076.7,
+  "initial_termination": "exited",
+  "initial_stability": {
+    "stable": true,
+    "size": 884076,
+    "mtime": "2026-10-01T21:34:27.919098+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 11,
+    "executed_code_cells": 11,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      6,
+      10
+    ],
+    "insight_cells": 5,
+    "findings": [],
+    "visual_findings": []
+  },
+  "followup_exit_code": 0,
+  "followup_seconds": 95.3,
+  "followup_termination": "artifact_complete_cutoff",
+  "final_stability": {
+    "stable": true,
+    "size": 884076,
+    "mtime": "2026-10-01T21:34:27.919098+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 11,
+    "executed_code_cells": 11,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      6,
+      10
+    ],
+    "insight_cells": 5,
+    "findings": [],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 11,
+      "executed_code_cells": 11,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        6,
+        10
+      ],
+      "insight_cells": 5,
+      "findings": [],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": true,
+  "documentation_complete": true,
+  "semantic_complete": true,
+  "completed_at": "2026-10-01T21:45:28.629391+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 296.9,
+  "report_termination": "exited"
+}

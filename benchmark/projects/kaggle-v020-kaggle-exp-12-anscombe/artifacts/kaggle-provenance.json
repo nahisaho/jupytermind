@@ -1,0 +1,75 @@
+{
+  "acquisition": {
+    "owner_dataset_slug": "carlmcbrideellis/data-anscombes-quartet",
+    "file_name": "Anscombe_quartet_data.csv",
+    "retrieved_utc": "2026-10-01T17:05:51.279178+00:00",
+    "sha256": "21dd4998e5985a2717e1ca154e3f90ac7657e8e71c6564096d92addf3c5a36b9",
+    "reference_url": "https://www.kaggle.com/code/tomarns/anscombe-s-quartet"
+  },
+  "catalog": [
+    {
+      "ref": "carlmcbrideellis/data-anscombes-quartet",
+      "title": "Data: Anscombe's quintet"
+    },
+    {
+      "ref": "jeongtw/anscombe",
+      "title": "anscombe"
+    },
+    {
+      "ref": "abdoomoh/all-seaborn-built-in-datasets",
+      "title": "All Seaborn Built-in Datasets 📊✨"
+    },
+    {
+      "ref": "keshariji/data-visualization-anscombes-quartet",
+      "title": "Data Visualization (Anscombe’s Quartet)"
+    },
+    {
+      "ref": "ladyvivianagaray/anscombeanddatasaurusdataset-lvvg",
+      "title": "AnscombeAndDatasaurusDataset-lvvg"
+    },
+    {
+      "ref": "germanviscuso/anscombe2",
+      "title": "Anscombe2"
+    },
+    {
+      "ref": "sagarchhabriya/anscombe-simple-linear-regression-dataset",
+      "title": "anscombe simple linear regression dataset"
+    },
+    {
+      "ref": "alaaomar85/anscombes",
+      "title": "anscombes"
+    }
+  ],
+  "file_listing": {
+    "carlmcbrideellis/data-anscombes-quartet": [
+      {
+        "name": "Anscombe_quartet_data.csv",
+        "size": 337
+      },
+      {
+        "name": "Anscombe_quintet_data.csv",
+        "size": 391
+      }
+    ],
+    "jeongtw/anscombe": [
+      {
+        "name": "ch3_anscombe.npy",
+        "size": 784
+      }
+    ]
+  },
+  "reference_metadata": {
+    "id": "tomarns/anscombe-s-quartet",
+    "title": "Anscombe's Quartet",
+    "dataset_sources": [],
+    "kernel_sources": []
+  },
+  "reference_features": {
+    "code_cell_count": 2,
+    "markdown_cell_count": 1,
+    "uses_seaborn_anscombe_loader": true,
+    "uses_regplot": false,
+    "uses_lmplot": false,
+    "mentions_correlation": true
+  }
+}

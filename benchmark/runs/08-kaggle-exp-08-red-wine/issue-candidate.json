@@ -1,0 +1,113 @@
+{
+  "experiment_id": 8,
+  "run_id": "v020-exp-08",
+  "status": "candidates_only_not_fixed",
+  "evidence_scope": [
+    "benchmark/projects/kaggle-v020-kaggle-exp-08-red-wine/notebooks/kaggle-v020-kaggle-exp-08-red-wine.ipynb",
+    "benchmark/runs/08-kaggle-exp-08-red-wine/initial-prompt.md",
+    "benchmark/runs/08-kaggle-exp-08-red-wine/initial.log",
+    "benchmark/runs/08-kaggle-exp-08-red-wine/followup.log",
+    "benchmark/runs/08-kaggle-exp-08-red-wine/status.json"
+  ],
+  "candidates": [
+    {
+      "id": "exp-08-stream-evidence",
+      "classification": "機能不足候補 / Insight根拠のstdout stream対応",
+      "module": "ai_data_scientist.insight_engine",
+      "functions": [
+        "record_insight",
+        "extract_cited_value"
+      ],
+      "reproduction_steps": [
+        "NotebookのCELL: 08と同じく、ProjectHandleで隔離したNotebookを作り、ensure_notebookを呼ぶ。",
+        "enqueue_writeで、sourceがprint(\"probe_rho=0.5\")、execution_countが1、outputsがstream/name=stdout/text=probe_rho=0.5\\nのコードセルをテストfixtureとして格納する。",
+        "record_insight(handle, '再現試験の関連値', 1, '0.5', 'associational', language='ja')を呼ぶ。",
+        "EvidenceMissingErrorが発生するかを確認する。fixtureは構築した出力であり、実分析のカーネル実行証拠とは区別する。"
+      ],
+      "expected_behavior": "実行番号で指定したセルのstdout streamに存在する引用値を、実行済みセルの根拠出力形式として認識する。",
+      "actual_behavior": "CELL: 08の保存出力でEvidenceMissingErrorが発生し、stream_probe.actualは「EvidenceMissingError: 実行済みstream値を認識しない」。",
+      "impact": "標準的なprint出力を根拠にしたInsightが拒否され、分析者は別の出力形式を用意する必要がある。本実験の統計結果の誤りを示すものではない。",
+      "workaround": "CELL: 09に根拠値をdisplay_data(text/plain)として実際に出力し、その出力からextract_cited_valueで引用値を抽出する。過去のstdout出力や実行番号を改変しない。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-08-red-wine/notebooks/kaggle-v020-kaggle-exp-08-red-wine.ipynb",
+          "location": "cell index 17 / CELL: 08 / execution_count 9",
+          "details": "stream形式の再現fixture、record_insight呼び出し、EvidenceMissingError捕捉、stream根拠再現ログの保存出力。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-08-red-wine/notebooks/kaggle-v020-kaggle-exp-08-red-wine.ipynb",
+          "location": "cell index 19 / CELL: 09 / execution_count 10; cell index 22; metadata.improvements",
+          "details": "実分析のdisplay_data(text/plain)根拠出力と、改善候補・回避策の記録。"
+        }
+      ],
+      "ownership_separation": "隔離Notebookに対するJupytermind APIの直接呼び出しで再現しており、Kaggle取得、Copilot CLI、外部ランナーの終了処理を必要としない。insight_engineの根拠出力形式処理に関する候補。",
+      "acceptance_criteria": [
+        "execution_countが設定されたセルのstdout streamに存在する引用値でrecord_insightが成功し、正しい実行番号・引用値・主張種別のmanifestを記録できる。",
+        "stdoutに存在しない引用値、未実行セル、存在しない実行番号は引き続きEvidenceMissingErrorとして拒否する。",
+        "既存のdisplay_dataおよびexecute_resultのtext/plain根拠検証を維持し、記録したInsightがaudit_notebookで検証できる。",
+        "fixtureによる回帰テストに加え、実際にJupyterでprintした出力を用いる統合テストで同じ挙動を確認する。"
+      ],
+      "limitations": "本候補は保存された再現コードと出力に基づく。ライブラリソースの追加調査、今回の新規再現実行、修正は行っていない。"
+    },
+    {
+      "id": "exp-08-missing-chart-metadata",
+      "classification": "機能不足候補 / visual auditのメタデータ欠落検出",
+      "modules": [
+        "ai_data_scientist.visualization",
+        "ai_data_scientist.notebook_audit"
+      ],
+      "functions": [
+        "render_chart",
+        "build_image_output",
+        "audit_visual_outputs"
+      ],
+      "reproduction_steps": [
+        "CELL: 04と同じくrender_chartで品質度数のPNGを作成する。",
+        "CELL: 08と同じくbuild_image_output(png)をoutputsに持ち、execution_count=1、metadata={}のコードセルをテストfixtureとして作成する。",
+        "そのセルを含むNotebookにaudit_visual_outputs(notebook, (0,))を呼ぶ。",
+        "メタデータの欠落に対する所見の有無を確認する。画像内容そのものを壊す必要はない。"
+      ],
+      "expected_behavior": "画像セルのchart metadataが未記録なら、タイトル、軸ラベル、凡例、グリフ情報を確認できないことを明示的に警告する。",
+      "actual_behavior": "CELL: 08の保存出力は「メタデータ無しの画像監査所見: []」。Notebookの改善候補にはvisual_findings=()と記録され、メタデータ欠落の警告が出ない。",
+      "impact": "所見が空であることを、ラベルやグリフまで確認済みと誤認する恐れがある。今回のPNGに実際のラベル欠落があったことや、画像の見た目が不適切だったことを示すものではない。",
+      "workaround": "CELL: 04とCELL: 07で画像出力にタイトル・軸・凡例・missing_glyphsを明記し、セルにもchart metadataを保存する。描画警告の確認と画像の目視を併用する。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-08-red-wine/notebooks/kaggle-v020-kaggle-exp-08-red-wine.ipynb",
+          "location": "cell index 17 / CELL: 08 / execution_count 9",
+          "details": "metadata={}の画像セルを構築するimage_probe_nb、audit_visual_outputs呼び出しと、所見が空の保存出力。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-08-red-wine/notebooks/kaggle-v020-kaggle-exp-08-red-wine.ipynb",
+          "location": "cell indices 9 and 15 / CELL: 04 and CELL: 07; cell index 22; metadata.chart_log; metadata.improvements",
+          "details": "実分析における画像・セルのchart metadata、描画ログ、改善候補と回避策。"
+        }
+      ],
+      "ownership_separation": "構築したNotebookオブジェクトに対するJupytermind監査APIの直接呼び出しで再現する。Kaggle API、Copilot CLI、MCPの出力保存、外部ランナーの打ち切りとは独立した監査契約の候補。",
+      "acceptance_criteria": [
+        "PNGを持つ対象セルでchart metadataが空または未記録なら、監査不能な項目を示すvisual findingを返す。",
+        "必要なメタデータがある画像セルでは既存のラベル・グリフ検査を維持し、欠落・不完全なフィールドには明示的な所見を返す。",
+        "同一セルの複数PNG出力について、各画像のメタデータ欠落を検出できる。",
+        "audit_notebook(path, visual_audit=True)でも上記所見が呼び出し元に伝わり、所見なしを検査範囲外のまま合格扱いしない。"
+      ],
+      "limitations": "このprobeはメタデータ欠落時の挙動を確認するもので、PNGの画素から実際のラベル欠落を検出する能力を検証したものではない。今回の新規再現実行、ソース調査、修正は行っていない。"
+    }
+  ],
+  "excluded_or_unattributed_observations": [
+    {
+      "observation": "末尾の監査・Insightセルの自己書き込みと実行出力の未保存",
+      "evidence": "initial.logの連携現象の報告、およびNotebook cell index 33 / CELL: 10のenqueue_write・record_insight呼び出し、execution_count=null、outputs=[]。",
+      "reason": "MCPとNotebook保存の連携条件に関する制約。保存ログだけではJupytermind単独の原因とは確定できず、独立したライブラリ不具合候補には含めない。ログで予定された分離が最終保存物で完了したとは確認できない。"
+    },
+    {
+      "observation": "指定ディレクトリ不存在時の初期MCP接続失敗",
+      "evidence": "Notebook cell index 22の改善候補説明。",
+      "reason": "ホスト接続の準備操作として記録されている。提供された初回・追加確認ログにエラー詳細はなく、Jupytermindの不具合とは帰属しない。"
+    },
+    {
+      "observation": "初回・追加確認のartifact_complete_cutoff",
+      "evidence": "initial.logとfollowup.logのrunner停止行、status.jsonのinitial_termination・followup_termination。",
+      "reason": "外部ランナーによる成果物判定後の打ち切りで、Jupytermindの不具合ではない。CLIの自然終了や新しい追加分析の成功とは解釈しない。"
+    }
+  ]
+}

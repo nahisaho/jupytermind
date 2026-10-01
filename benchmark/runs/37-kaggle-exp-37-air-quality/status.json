@@ -1,0 +1,56 @@
+{
+  "id": 37,
+  "dataset": "Air Quality",
+  "kaggle": "https://www.kaggle.com/datasets?search=air+quality+time+series",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-37-air-quality/notebooks/kaggle-v020-kaggle-exp-37-air-quality.ipynb",
+  "run_id": "v020-exp-37",
+  "initial_exit_code": 1,
+  "initial_seconds": 48.0,
+  "initial_termination": "exited",
+  "initial_stability": {
+    "stable": false,
+    "exists": false
+  },
+  "initial_audit": {
+    "exists": false,
+    "semantic_complete": false,
+    "error": "notebook_missing"
+  },
+  "followup_exit_code": null,
+  "followup_seconds": null,
+  "followup_termination": null,
+  "final_stability": {
+    "stable": false,
+    "exists": false
+  },
+  "final_audit": {
+    "exists": false,
+    "semantic_complete": false,
+    "error": "notebook_missing"
+  },
+  "final_completion": {
+    "ready": false,
+    "requirements": {
+      "structural_audit_ok": false,
+      "minimum_executed_code_cells": false,
+      "has_chart_output": false,
+      "has_evidence_backed_insight": false,
+      "has_iteration_history": false,
+      "has_module_usage_record": false,
+      "has_improvement_candidate_record": false,
+      "has_notebook_audit_call": false
+    },
+    "audit": {
+      "exists": false,
+      "semantic_complete": false,
+      "error": "notebook_missing"
+    }
+  },
+  "analysis_complete": false,
+  "documentation_complete": true,
+  "semantic_complete": false,
+  "completed_at": "2026-10-01T22:15:31.213297+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 101.6,
+  "report_termination": "exited"
+}

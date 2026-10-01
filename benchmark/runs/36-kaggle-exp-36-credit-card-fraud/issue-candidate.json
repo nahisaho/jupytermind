@@ -1,0 +1,105 @@
+{
+  "experiment_id": 36,
+  "run_id": "v020-exp-36",
+  "status": "improvement_candidates_not_confirmed_specification_violations",
+  "candidates": [
+    {
+      "classification": "Jupytermind本体のデータ定義機能不足候補",
+      "module": "ai_data_scientist.data_definition",
+      "functions": [
+        "FieldValue",
+        "build_manifest",
+        "DataDefinitionManifest.unresolved_fields"
+      ],
+      "reproduction_steps": [
+        "Notebookセル11のinferred_probeと同じく、Amount.currencyにstatus='inferred'のFieldValueを持つmanifestを作成する。",
+        "manifest.unresolved_fields()を呼び出す。",
+        "返却値を記録し、推定された通貨が未検証項目として列挙されるか確認する。"
+      ],
+      "reproduction_code": "from ai_data_scientist import data_definition\nmanifest = data_definition.build_manifest(source={}, dataset_scope={}, variables={'Amount': {'currency': data_definition.FieldValue('通貨推定のテスト', 'inferred')}})\nprint(manifest.unresolved_fields())",
+      "expected_behavior": "推定された定義も確認対象として列挙できる明示的なAPIまたはオプションがある。既存のunknown専用の挙動との互換性は維持し、inferredをverifiedと混同しない。",
+      "actual_behavior": "セル11の実行出力でinferred_fields_returnedは空リストだった。Notebookの改善候補節はunresolved_fields()がunknownだけを返すと記録している。これは既存仕様違反と断定せず機能不足候補として扱う。",
+      "impact": "未検証定義の確認をこのメソッドだけに依存すると、推定された定義を見落とし確定事項として扱うおそれがある。本解析では通貨をinferredにせずunknownとして記録しており、この見落としによる分析結果の誤りは確認されていない。",
+      "workaround": "全FieldValue.statusを別途走査し、unknownとinferredを区別して報告する。本解析の未確認項目はunknownのまま保持する。",
+      "evidence": {
+        "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-36-credit-card-fraud/notebooks/kaggle-v020-kaggle-exp-36-credit-card-fraud.ipynb",
+        "cell_index_zero_based": 11,
+        "cell_id": "8fddec2c",
+        "execution_count": 11,
+        "probe": "inferred_probe / inferred_unresolved",
+        "observed_output": {
+          "inferred_fields_returned": []
+        },
+        "narrative_cell_index_zero_based": 20,
+        "log_scope": "再現結果はNotebookセル11のstream出力にある。initial.logとfollowup.logには詳細な再現ログはない。"
+      },
+      "acceptance_criteria": [
+        "unknownとinferredを未検証として列挙できるAPIまたはオプションを提供し、この再現入力ではvariables.Amount.currencyが確認対象になる。",
+        "unknownとinferredの状態を区別でき、verified項目を未検証として誤列挙しない。",
+        "unknownだけを返す既存APIの利用者との互換性を維持し、変更した挙動を文書化する。",
+        "inferredのみ、unknownのみ、verifiedのみ、混在manifestについて回帰テストを追加する。"
+      ],
+      "external_component_separation": "再現コードはJupytermindのmanifest生成とメソッド呼び出しだけで、外部ランナー、Copilot CLI、Jupyter MCPのファイル同期、Kaggle APIへのアクセスを必要としない。"
+    },
+    {
+      "classification": "Jupytermind本体の視覚監査機能不足候補",
+      "module": "ai_data_scientist.notebook_audit",
+      "functions": [
+        "ai_data_scientist.visualization.build_image_output",
+        "audit_visual_outputs"
+      ],
+      "reproduction_steps": [
+        "Notebookセル11のprobe_pngと同じく、実際のPNGではないバイト列をbuild_image_outputに渡す。",
+        "その出力を持つコードセルをnbformat.v4.new_notebookで作成し、chart metadataは付けない。",
+        "audit_visual_outputs(notebook, (0,))を呼び、返却findingを確認する。",
+        "改善の検証時には、正常PNG・メタデータ欠落と、不正PNG・正常メタデータのケースも分けて確認する。元の証拠は不正PNGかつメタデータ欠落の組合せである。"
+      ],
+      "reproduction_code": "import nbformat\nfrom ai_data_scientist import visualization, notebook_audit\noutput = visualization.build_image_output(b'not-a-valid-png-for-metadata-test')\nnotebook = nbformat.v4.new_notebook(cells=[nbformat.v4.new_code_cell('metadata_probe', outputs=[output])])\nprint(notebook_audit.audit_visual_outputs(notebook, (0,)))",
+      "expected_behavior": "image/png出力が読取不能な場合と、図の検証に必要なchart metadataが欠落した場合に、利用者が問題を区別できる明示的なfindingを返す。visual_auditの保証範囲を文書化する。",
+      "actual_behavior": "セル11の実行出力でchart_without_metadata_findingsは空リストだった。入力は不正PNGバイト列かつchart metadataなしであり、この組合せに対して問題が報告されなかった。",
+      "impact": "visual_auditの所見0件を画像妥当性の保証と誤解すると、破損画像や監査用メタデータのない図が見逃されるおそれがある。本解析の4図は実際のPNGで、ラベル・凡例・missing_glyphsを記録しているため、実図が破損していたとは主張しない。",
+      "workaround": "実画像を確認し、タイトル・軸・凡例・glyph警告などを明示的に保存する。監査の合格だけで視覚的・科学的妥当性を保証しない。",
+      "evidence": {
+        "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-36-credit-card-fraud/notebooks/kaggle-v020-kaggle-exp-36-credit-card-fraud.ipynb",
+        "cell_index_zero_based": 11,
+        "cell_id": "8fddec2c",
+        "execution_count": 11,
+        "probe": "probe_png / metadata_probe / probe_visual",
+        "observed_output": {
+          "chart_without_metadata_findings": []
+        },
+        "narrative_cell_index_zero_based": 20,
+        "log_scope": "再現結果はNotebookセル11のstream出力にある。initial.logとfollowup.logには詳細な再現ログはない。"
+      },
+      "acceptance_criteria": [
+        "この再現入力に対して空のfindingを返さず、不正なimage/png出力を明示的に検出する。",
+        "正常PNGでchart metadataだけがないケースでも、必要情報の欠落を明示する。",
+        "chart metadataが揃っていても不正PNGは検出し、正常画像かつ適切なメタデータのケースは誤検知しない。",
+        "各ケースの回帰テストを追加し、視覚監査が科学的妥当性や図の正確な読解を保証しないことを文書化する。"
+      ],
+      "external_component_separation": "再現コードはメモリ上のnbformat NotebookとJupytermindの関数だけを使う。Kaggle API、外部ランナー、Copilot CLIの終了処理、Jupyter MCPの保存競合は関与しない。"
+    }
+  ],
+  "excluded_from_jupytermind_candidates": [
+    {
+      "classification": "Jupyter MCP同期とNotebook書込みの相互作用",
+      "reason": "Notebookは同時書込みによる実行番号・出力・Markdownの不整合と回避策を記録するが、独立再現や完全な例外ログがなくJupytermind単体の不具合と断定できない。"
+    },
+    {
+      "classification": "Copilot CLI・filesystem実行環境",
+      "reason": "Notebookに記録された許可ルート不一致は外部実行環境の問題であり、Jupytermind本体の候補に含めない。"
+    },
+    {
+      "classification": "Kaggle Python SDK仕様",
+      "reason": "dataset_view不存在とmetadataのinfoネストはSDKへの対応であり、対象データの取得は成功している。"
+    },
+    {
+      "classification": "利用者の分析コード",
+      "reason": "Notebookに記録されたDataFrame構築エラーは修正済みの利用者コードの問題で、最終Notebookにerror出力はない。"
+    },
+    {
+      "classification": "外部ベンチマークランナーの終了管理",
+      "reason": "followup_terminationはartifact_complete_cutoffで、followup.logは成果物安定・監査合格によるプロセスグループ停止を記録する。CLIの自然終了やJupytermindの失敗とは同一視しない。Notebookのランナー不在という記述はログのrunner停止記録と一致しないため採用しない。"
+    }
+  ]
+}

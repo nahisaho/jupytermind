@@ -1,0 +1,10 @@
+指定された実ファイルから分析結果と反復履歴を確認し、参考記事の書式に合わせて実験節を作成します。文書化状態と分析完了状態は区別し、図表はNotebookに保存されたPNG出力を抽出します。
+
+
+記録値の条件差は確認できていますが、測定定義が曖昧なため「正確さの向上」とは結論できません。AIが生成した3件の追加依頼を原文で掲載し、Jupytermind側の改善候補4件を外部ツール・呼出し側の問題と分けて記録します。
+
+
+実験11のQiita形式の日本語節を [report-section.md](benchmark/runs/11-kaggle-exp-11-anagrams/report-section.md) に保存しました。初回プロンプト全文、3件の追加依頼の原文・理由・結果、使用モジュール、結論、監査・再現性、限界を記載しています。
+
+NotebookのPNG図表2枚を `benchmark/figures/exp-11-*.png` に抽出し、節内から参照しました。改善候補4件は外部ツールの問題と切り分け、[issue-candidate.json](benchmark/runs/11-kaggle-exp-11-anagrams/issue-candidate.json) に保存しています。結論は「条件間の記録値差は確認できるが、正確さの向上とは断定できない」です。`white-paper-v0.2.0.md` は編集していません。
+

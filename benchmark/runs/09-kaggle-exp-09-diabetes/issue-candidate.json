@@ -1,0 +1,100 @@
+{
+  "experiment_id": "09",
+  "run_id": "v020-exp-09",
+  "classification": "Notebookに保持された過去のJupytermind改善候補。今回の修正後出力では新たな本体不具合を確認していない",
+  "evidence_scope": {
+    "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-09-diabetes/notebooks/kaggle-v020-kaggle-exp-09-diabetes.ipynb",
+    "historical_record_cell_index": 21,
+    "current_chart_cell_indices": [8, 15, 18],
+    "limitations": "候補は指定Notebookの履歴記述を根拠とする。元のラベル切れ画像、制御Notebook、data/initial-visual-audit.jsonの実ファイルは指定証拠に含まれず参照していない。本報告作成時の独立再現やソース実装検証は行っていない"
+  },
+  "candidates": [
+    {
+      "classification": "visualization.render_chartの描画品質に関する不具合疑い",
+      "title": "長いx目盛りと日本語軸ラベルの下端切れ",
+      "reproduction_steps": [
+        "Notebookの過去の候補記録に従い、PregnanciesやDiabetesPedigreeFunctionなどの長い特徴名をx目盛りに持つDataFrameを用意する",
+        "ai_data_scientist.visualization.render_chartでkind='bar'を指定し、日本語のtitle、xlabel、ylabelを設定する",
+        "生成PNGで長い目盛り文字とxlabelが画像内に収まり、欠けずに読めるか目視確認する"
+      ],
+      "expected_behavior": "長い目盛り文字と日本語のxlabelが画像内に収まり、特徴名と軸の意味を読める",
+      "actual_behavior": "Notebookの過去の初回記録では標準余白の描画で下端の目盛りが切れ、xlabelが見えなかった。現在のNotebookは修正後の画像だけを保存しているため、現時点の不具合再現は未確認",
+      "impact": "特徴の比較対象と軸の意味を読み取れず、図表による説明の信頼性を損なう",
+      "workaround": "比較図を横棒化し、matplotlibのfig.savefig(bbox_inches='tight')で画像の余白を調整する。今回の最終図では回避済み",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-09-diabetes/notebooks/kaggle-v020-kaggle-exp-09-diabetes.ipynb",
+          "cell_index": 21,
+          "section": "Jupytermind改善候補／候補1、今回の再確認における切り分け",
+          "observation": "過去の長いラベル切れと回避策、今回の修正後7図で切れが見られなかった旨を記録"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-09-diabetes/notebooks/kaggle-v020-kaggle-exp-09-diabetes.ipynb",
+          "cell_index": 8,
+          "cell_id": "charts",
+          "observation": "欠損率図をbarhで作成し、複雑な比較図はbbox_inches='tight'を使って保存する。render_chartの現在の直接呼出しは短いOutcomeカテゴリの件数図"
+        }
+      ],
+      "acceptance_criteria": [
+        "上記条件でまず現行版の切れの有無を再現検証し、再現しなければ解消済みまたは未再現と明示する",
+        "再現する場合は同じ長い特徴名と日本語軸ラベルを用いた回帰ケースで、全目盛りとxlabelが欠けずに画像内に収まることを画像確認する",
+        "短いOutcomeカテゴリを使う既存の棒グラフでも文字欠落や表示劣化が生じない"
+      ]
+    },
+    {
+      "classification": "notebook_audit.visual_auditの可読性検出範囲に関する機能拡張候補。仕様違反とは未判定",
+      "title": "ラベル切れの警告または検査対象外の明示",
+      "reproduction_steps": [
+        "第1候補のラベル切れ画像を再現できた場合、そのPNGを出力に持つNotebookセルを用意する",
+        "Notebookの候補記録にあるtitle、xlabel、ylabel、legend、missing_glyphsの図表メタデータを付ける",
+        "ai_data_scientist.notebook_audit.audit_notebookをvisual_audit=Trueで実行し、okとvisual_findings、および検査対象外の説明を確認する",
+        "元画像を目視で確認した結果と監査出力を比較する"
+      ],
+      "expected_behavior": "画像端のラベル切れを警告する、または画素上のラベル切れ・重なりの可読性を保証する検査ではないと監査結果で明示する",
+      "actual_behavior": "Notebookの過去の候補記録では、ラベルが切れた図に対してok=True、visual_findingsは空だった。今回の最終監査も指摘は空だが、現在の図は修正後であり、検出漏れを今回新たに再現したわけではない",
+      "impact": "自動監査の合格を図の可読性の保証と誤認すると、軸ラベルや比較対象が読めない図を見逃す",
+      "workaround": "図の目視確認を併用し、ラベル切れと重なりを手動で修正する",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-09-diabetes/notebooks/kaggle-v020-kaggle-exp-09-diabetes.ipynb",
+          "cell_index": 21,
+          "section": "Jupytermind改善候補／候補2",
+          "observation": "過去の切れ画像に対するok=Trueとvisual_findings空を記録。元監査ログの実ファイルは今回未確認"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-09-diabetes/notebooks/kaggle-v020-kaggle-exp-09-diabetes.ipynb",
+          "cell_index": 24,
+          "metadata_key": "handoff.audit",
+          "observation": "修正後の7図について最終visual_findings空、audit_ok=Trueを記録。元問題画像の検出能力を証明するものではない"
+        }
+      ],
+      "acceptance_criteria": [
+        "再現できたラベル切れ画像について、監査結果に警告または画素上の可読性が検査対象外である旨が明示される",
+        "修正後の可読な図に不必要な切れ警告を出さず、対応範囲外の明示と不具合検出を区別する",
+        "nbformat、未実行・エラー、根拠参照に関する既存の監査結果を維持する"
+      ]
+    }
+  ],
+  "excluded_external_or_analysis_issues": [
+    {
+      "classification": "Kaggle API／データセットへのアクセス",
+      "observation": "acquisitionの取得記録で指定uciml版のdataset_list_filesがHTTP 403、ahmedgamelwaly版はdiabetes.csv不在。harsh146版で取得成功",
+      "reason_not_jupytermind": "Kaggle SDKの取得処理と掲載データセット側の問題であり、JupytermindのCSV読込み・分析機能の障害とは判断しない"
+    },
+    {
+      "classification": "Copilot CLI／MCP接続と周辺ツール設定",
+      "observation": "NotebookにはCLIからのPython MCPClient注入不可、Filesystem MCPの許可ディレクトリ、Jupyter Contents APIの絶対パス制約を記録",
+      "reason_not_jupytermind": "周辺の接続・設定制約として記録されており、本体不具合の独立した証拠がない"
+    },
+    {
+      "classification": "分析担当側の探索手順",
+      "observation": "Notebookの初期取得履歴では検索先頭ページだけで指定slug不在と判断して一時フォールバックし、その後探索を修正",
+      "reason_not_jupytermind": "検索・取得候補の選び方に関する分析コード側の判断であり、Jupytermind本体の不具合とはしない"
+    },
+    {
+      "classification": "外部ベンチマークランナーの実行制御",
+      "observation": "initial.logにCLI終了後の子プロセス整理、followup.logにNotebook安定・監査合格後の停止、status.jsonにfollowup_termination='artifact_complete_cutoff'を記録",
+      "reason_not_jupytermind": "外部停止・終了制御の記録であり本体の失敗を示さない。Notebookのランナー未起動という記述は、実際のrunnerログと区別する"
+    }
+  ]
+}

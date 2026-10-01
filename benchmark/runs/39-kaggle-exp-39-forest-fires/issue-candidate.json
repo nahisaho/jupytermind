@@ -1,0 +1,66 @@
+{
+  "experiment_id": 39,
+  "run_id": "v020-exp-39",
+  "title": "図表メタデータ欠落の可視化監査検出漏れ",
+  "classification": {
+    "category": "監査・可視化連携",
+    "status": "不具合または機能不足の候補。指定証拠だけでは期待仕様への違反を確定しない",
+    "modules": [
+      "ai_data_scientist.visualization.build_image_output",
+      "ai_data_scientist.notebook_audit.audit_visual_outputs"
+    ],
+    "excluded_causes": [
+      "最小再現はKaggle APIを呼ばないため、Kaggle取得・認証問題ではない",
+      "最小再現はNotebook内の関数呼び出しで、Copilot CLIや外部ベンチマークランナーを呼ばない"
+    ]
+  },
+  "reproduction_steps": [
+    "対象Notebookのセル12までを実行し、描画済みPNGの変数pngを用意する。セル番号は0始まり",
+    "セル24（実行番号13）でimage = visualization.build_image_output(png)を呼ぶ",
+    "nbformat.v4.new_code_cell('画像出力の監査再現', execution_count=1, outputs=[image])でmetadata.chartのないコードセルを作る",
+    "nbformat.v4.new_notebook(cells=[probe_cell])を作る",
+    "notebook_audit.audit_visual_outputs(probe, (0,))を呼び、メタデータの有無と所見を出力する"
+  ],
+  "expected_behavior": "PNG図表セルでmetadata.chartやglyph確認情報、タイトル・軸・凡例メタデータが欠落した場合、未確認または欠落として明示的な監査所見を返す。記録がないことを確認済みと区別する",
+  "actual_behavior": {
+    "chart_metadata_present": false,
+    "actual_findings": [],
+    "description": "指定の最小再現では図表メタデータなしでも可視化監査が所見なしを返した"
+  },
+  "impact": "可視化監査の所見なしだけでは、作者がタイトル・軸・凡例・glyph確認情報を記録し忘れたことを検出できない。今回の最終図表が読めないことや分析値が誤っていることを示す証拠ではない",
+  "workaround": "今回のNotebookでは描画時のglyph警告を捕捉し、セル10・11・12にmetadata.chartを明示付与した。最終監査セル35でtitle/xlabel/ylabel/legend/missing_glyphsの存在とglyph欠落なしを別途検査した",
+  "evidence": [
+    {
+      "path": "benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb",
+      "cell_index": 23,
+      "description": "改善候補の分類、期待、実際、影響、回避策、外部要因との切り分けを記録"
+    },
+    {
+      "path": "benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb",
+      "cell_index": 24,
+      "execution_count": 13,
+      "output_excerpt": {
+        "module": "ai_data_scientist.notebook_audit.audit_visual_outputs",
+        "chart_metadata_present": false,
+        "expected": "glyphとタイトル/軸/凡例メタデータの欠落を報告",
+        "actual_findings": [],
+        "workaround": "実図のメタデータを手動付与しglyph警告を捕捉"
+      }
+    },
+    {
+      "path": "benchmark/projects/kaggle-v020-kaggle-exp-39-forest-fires/notebooks/kaggle-v020-kaggle-exp-39-forest-fires.ipynb",
+      "cell_indices": [10, 11, 12, 35],
+      "description": "図表メタデータ付与済みの保存状態と最終監査の追加検査"
+    },
+    {
+      "path": "benchmark/runs/39-kaggle-exp-39-forest-fires/initial.log",
+      "description": "最終応答が図表メタデータ欠落の検出漏れと明示付与による回避を報告"
+    }
+  ],
+  "acceptance_criteria": [
+    "セル24と同じPNG付き・metadata.chartなしのNotebookに対し、欠落または未確認を示す非空の可視化監査所見を返し、該当セルを特定できる",
+    "title/xlabel/ylabel/legend/missing_glyphsの各情報の欠落を個別に扱い、glyph確認情報なしと確認結果が空配列である状態を区別できる",
+    "対象Notebookのセル10・11・12のように必要情報がありmissing_glyphsが空の場合、メタデータ欠落の誤警告を返さない",
+    "audit_notebook(..., visual_audit=True)経由でも同じ欠落を報告し、実行・証拠など既存の監査結果を損なわない"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "title": "見出し付きMarkdownの明示的evidenceがNotebook監査の対象から漏れる",
+  "classification": "Jupytermindの証拠監査対象検出不足",
+  "module": "ai_data_scientist.notebook_audit",
+  "function": "audit_notebook",
+  "run_id": "v020-exp-04",
+  "reproduction_steps": [
+    "実行カウント1の実行済みコードセルに実出力403を持つ一時Notebookを用意する。",
+    "Markdownセルに、execution_countが1、cited_valueが999、claim_typeがdescriptiveのJSONをevidence fence内へ記載する。実出力との不一致を意図的に作る。",
+    "Markdown先頭を#の見出しにしてai_data_scientist.notebook_audit.audit_notebookで監査する。",
+    "同じMarkdownの先頭記法だけを太字へ変更し、コード出力とevidenceを変更せずに再度監査する。",
+    "両結果のok、insight_cell_count、findingsを比較する。Notebook metadataのfollowup.heading_reproductionに、この比較の実測結果が保存されている。"
+  ],
+  "expected_behavior": "明示的evidenceがあるMarkdownは見出しの有無によらず監査される。execution_count=1の実出力403に対して引用999は不一致として検出され、両形式ともok=falseになる。",
+  "actual_behavior": {
+    "heading": {
+      "ok": true,
+      "insight_cell_count": 0,
+      "findings": []
+    },
+    "bold": {
+      "ok": false,
+      "insight_cell_count": 1,
+      "findings": [
+        {
+          "cell_index": 1,
+          "severity": "error",
+          "message": "Evidence manifest references execution_count=1 with cited_value='999', but no executed cell output contains it (missing or stale evidence)."
+        }
+      ]
+    }
+  },
+  "impact": "見出し付き結論に含まれる古い、または誤った引用が監査合格として利用者へ渡り得る。再実行後の証拠追跡と結論の信頼性に影響する。今回のKaggle HTTP 403や分析未実施の原因ではなく、実際の停止結論の誤りを示すものでもない。",
+  "evidence": [
+    {
+      "path": "benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb",
+      "location": "metadata.followup.heading_reproduction",
+      "observation": "実出力403・意図的な不一致引用999の一時Notebookで、先頭記法だけを変えた比較。headingはok=true・insight_cell_count=0、boldはok=false・insight_cell_count=1。"
+    },
+    {
+      "path": "benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb",
+      "location": "cells[8]: Jupytermind改善候補",
+      "observation": "Kaggle・MCP同期を介さない単体再現、利用者への影響、回避策と受け入れ条件を記録。"
+    },
+    {
+      "path": "benchmark/runs/04-kaggle-exp-04-tips/followup.log",
+      "location": "追加確認の経過と最終応答",
+      "observation": "見出し付きの誤った証拠引用を見逃す問題を単体再現し、改善候補をこの1件へ絞ったと報告。"
+    }
+  ],
+  "workaround": "実際の停止結論は太字先頭で保存し、見出しに関係なく全evidence fenceを実出力へ別途照合する。最終Notebookでは2件中2件の照合成功をmetadata.followup.all_evidence_fencesに記録。",
+  "acceptance_criteria": [
+    "見出し、太字、通常文の各先頭形式で、明示的evidenceを同数検査する。",
+    "存在する実行カウントと一致する引用は全形式で合格する。",
+    "実出力に存在しない引用値は全形式でerrorとして検出し、ok=falseにする。",
+    "不存在の実行カウント、不正JSON、必須キー欠落は全形式で不合格にする。",
+    "evidenceのない計画見出しを結論と誤認しない。",
+    "既存の非見出しの証拠検査とvisual_auditの挙動を維持する。"
+  ],
+  "scope_limitations": "実測された単体比較は不一致引用999の見出し対太字である。通常文、不正JSON、必須キー欠落などは修正後の受け入れ条件であり、この実験で再現済みの別不具合とは主張しない。製品ソースはこの報告作成では検査・修正していない。",
+  "excluded_causes": [
+    "Kaggle dataset_list_files(jsphyg/tipping)のHTTP 403は外部API応答であり、この監査候補とは別。",
+    "実行中Notebookの自己書込みとMCP出力同期の旧候補はJupytermind単体で未再現であり、外部MCP保存競合でも説明できるため除外。",
+    "未作成親ディレクトリへのMCP作成拒否は外部ツール制約、検索先頭ページだけによる未発見は実行手順の問題として除外。",
+    "追加セルの改行escape修正は生成Notebookコードの修正履歴であり、Jupytermind本体の不具合とは認定しない。",
+    "提示された証拠にはCopilot CLIや外部ベンチマークランナー固有の原因を確定する根拠がない。"
+  ]
+}

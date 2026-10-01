@@ -1,0 +1,97 @@
+{
+  "id": 1,
+  "dataset": "Titanic",
+  "kaggle": "https://www.kaggle.com/competitions/titanic",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb",
+  "run_id": "v020-exp-01",
+  "initial_exit_code": 0,
+  "initial_seconds": 1093.4,
+  "initial_termination": "exited",
+  "initial_stability": {
+    "stable": true,
+    "size": 601441,
+    "mtime": "2026-10-01T15:47:26.760473+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 21,
+    "executed_code_cells": 21,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      12,
+      13,
+      14,
+      24
+    ],
+    "insight_cells": 6,
+    "findings": [],
+    "visual_findings": []
+  },
+  "followup_exit_code": 0,
+  "followup_seconds": 92.9,
+  "followup_termination": "artifact_complete_cutoff",
+  "final_stability": {
+    "stable": true,
+    "size": 601441,
+    "mtime": "2026-10-01T15:47:26.760473+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 21,
+    "executed_code_cells": 21,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      12,
+      13,
+      14,
+      24
+    ],
+    "insight_cells": 6,
+    "findings": [],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 21,
+      "executed_code_cells": 21,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        12,
+        13,
+        14,
+        24
+      ],
+      "insight_cells": 6,
+      "findings": [],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": true,
+  "documentation_complete": true,
+  "semantic_complete": true,
+  "completed_at": "2026-10-01T15:57:17.102591+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 130.2,
+  "report_termination": "exited"
+}

@@ -1,0 +1,160 @@
+[E 2026-10-02 08:33:08.617 ServerApp] Exception while loading config file /home/nahisaho/.jupyter/jupyter_server_config.py
+    Traceback (most recent call last):
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/application.py", line 916, in _load_config_files
+        config = loader.load_config()
+                 ^^^^^^^^^^^^^^^^^^^^
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/loader.py", line 625, in load_config
+        self._read_file_as_dict()
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/loader.py", line 658, in _read_file_as_dict
+        exec(compile(f.read(), conf_filename, "exec"), namespace, namespace)  # noqa: S102
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/home/nahisaho/.jupyter/jupyter_server_config.py", line 3, in <module>
+        c.IdentityProvider.token = os.environ["JUPYTER_TOKEN"]
+                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+      File "<frozen os>", line 685, in __getitem__
+    KeyError: 'JUPYTER_TOKEN'
+[I 2026-10-02 08:33:09.462 ServerApp] Extension package jupyter_mcp_server took 0.8281s to import
+[I 2026-10-02 08:33:09.768 ServerApp] Extension package jupyterlab_jupytext took 0.2112s to import
+[I 2026-10-02 08:33:09.768 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2026-10-02 08:33:09.771 ServerApp] jupyter_mcp_server | extension was successfully linked.
+[I 2026-10-02 08:33:09.772 ServerApp] jupyter_mcp_tools | extension was successfully linked.
+[I 2026-10-02 08:33:09.774 ServerApp] jupyter_server_fileid | extension was successfully linked.
+[I 2026-10-02 08:33:09.776 ServerApp] jupyter_server_nbmodel | extension was successfully linked.
+[I 2026-10-02 08:33:09.777 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2026-10-02 08:33:09.779 ServerApp] jupyter_server_ydoc | extension was successfully linked.
+[I 2026-10-02 08:33:09.782 ServerApp] jupyterlab | extension was successfully linked.
+[I 2026-10-02 08:33:09.782 ServerApp] jupyterlab_jupytext | extension was successfully linked.
+[I 2026-10-02 08:33:09.805 ServerApp] notebook_shim | extension was successfully linked.
+[I 2026-10-02 08:33:09.819 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2026-10-02 08:33:09.820 ServerApp] jupyter_lsp | extension was successfully loaded.
+[10/02/26 08:33:09] INFO     Auto-enrolled document             extension.py:201
+                             'notebook.ipynb' as 'default'                      
+[10/02/26 08:33:10] INFO     Jupyter MCP Server Extension       extension.py:211
+                             settings initialized                               
+                    INFO     Registered MCP handlers at /mcp/   extension.py:247
+                    INFO       - MCP protocol: /mcp (SSE-based) extension.py:248
+                    INFO       - Health check: /mcp/healthz     extension.py:249
+                    INFO       - List tools: /mcp/tools/list    extension.py:250
+                    INFO       - Call tool: /mcp/tools/call     extension.py:251
+[I 2026-10-02 08:33:10.018 ServerApp] jupyter_mcp_server | extension was successfully loaded.
+[I 2026-10-02 08:33:10.018 ServerApp] Registered jupyter_mcp_tools server extension
+[I 2026-10-02 08:33:10.018 ServerApp] jupyter_mcp_tools | extension was successfully loaded.
+[I 2026-10-02 08:33:10.019 FileIdExtension] Configured File ID manager: ArbitraryFileIdManager
+[I 2026-10-02 08:33:10.019 FileIdExtension] ArbitraryFileIdManager : Configured root dir: /home/nahisaho/GitHub/jupytermind
+[I 2026-10-02 08:33:10.019 FileIdExtension] ArbitraryFileIdManager : Configured database path: /home/nahisaho/.local/share/jupyter/file_id_manager.db
+[I 2026-10-02 08:33:10.019 FileIdExtension] ArbitraryFileIdManager : Successfully connected to database file.
+[I 2026-10-02 08:33:10.019 FileIdExtension] ArbitraryFileIdManager : Creating File ID tables and indices with journal_mode = DELETE
+[I 2026-10-02 08:33:10.020 FileIdExtension] Attached event listeners.
+[I 2026-10-02 08:33:10.020 ServerApp] jupyter_server_fileid | extension was successfully loaded.
+[I 2026-10-02 08:33:10.020 ServerApp] jupyter_server_nbmodel | extension was successfully loaded.
+[I 2026-10-02 08:33:10.021 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2026-10-02 08:33:10.024 ServerApp] jupyter_server_ydoc | extension was successfully loaded.
+[I 2026-10-02 08:33:10.026 LabApp] JupyterLab extension loaded from /home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyterlab
+[I 2026-10-02 08:33:10.026 LabApp] JupyterLab application directory is /home/nahisaho/GitHub/jupytermind/.venv/share/jupyter/lab
+[I 2026-10-02 08:33:10.027 LabApp] Extension Manager is 'pypi'.
+[I 2026-10-02 08:33:10.055 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2026-10-02 08:33:10.055 ServerApp] [Jupytext Server Extension] Deriving an AsyncTextFileContentsManager from AsyncLargeFileManager
+[I 2026-10-02 08:33:10.056 ServerApp] jupyterlab_jupytext | extension was successfully loaded.
+[I 2026-10-02 08:33:10.057 ServerApp] Serving notebooks from local directory: /home/nahisaho/GitHub/jupytermind
+[I 2026-10-02 08:33:10.057 ServerApp] Jupyter Server 2.21.1 is running at:
+[I 2026-10-02 08:33:10.057 ServerApp] http://127.0.0.1:48779/lab?token=...
+[I 2026-10-02 08:33:10.057 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 2026-10-02 08:33:11.802 ServerApp] Skipped non-installed server(s): basedpyright, bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyrefly, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[I 2026-10-02 08:33:12.672 ServerApp] Kernel started: 1f40900d-604a-4e0a-993b-06e1cb8b8adc
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 08:33:13.023 ServerApp] Adapting from protocol version 5.3 (kernel 1f40900d-604a-4e0a-993b-06e1cb8b8adc) to 5.4 (client).
+[I 2026-10-02 08:33:13.024 ServerApp] Connecting to kernel 1f40900d-604a-4e0a-993b-06e1cb8b8adc.
+[W 2026-10-02 08:33:13.025 ServerApp] The websocket_ping_timeout (90000) cannot be longer than the websocket_ping_interval (30000).
+    Setting websocket_ping_timeout=30000
+[W 2026-10-02 08:33:32.642 ServerApp] 404 GET /api/contents/benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks?type=directory&content=1 (df79258c2a154ca1b56e63247a4d4665@127.0.0.1) 1.76ms referer=None
+[W 2026-10-02 08:33:32.643 ServerApp] 404 GET /api/contents/benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks?type=directory&content=1 (127.0.0.1): No such file or directory: benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks
+[I 2026-10-02 08:33:39.717 ServerApp] Uploading file to /v020-exp-49-setup.ipynb
+[I 2026-10-02 08:33:39.719 ServerApp] Saving v020-exp-49-setup.ipynb
+[I 2026-10-02 08:33:39.801 ServerApp] Kernel started: e6d53ea6-2b1f-4a18-b245-625669fc4863
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 08:33:40.166 ServerApp] Adapting from protocol version 5.3 (kernel e6d53ea6-2b1f-4a18-b245-625669fc4863) to 5.4 (client).
+[I 2026-10-02 08:33:40.168 ServerApp] Connecting to kernel e6d53ea6-2b1f-4a18-b245-625669fc4863.
+[I 2026-10-02 08:33:40.177 ServerApp] Request for Y document (now indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:33:40.181 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:33:40.189 YDocExtension] Creating FileLoader for: v020-exp-49-setup.ipynb
+[I 2026-10-02 08:33:40.191 YDocExtension] Watching file: v020-exp-49-setup.ipynb
+[I 2026-10-02 08:33:40.194 ServerApp] Initializing room json:notebook:093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:33:40.211 ServerApp] Content in room json:notebook:093d8a01-1029-4bbe-973e-d8d837afdba6 loaded from file v020-exp-49-setup.ipynb
+[I 2026-10-02 08:33:47.103 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:33:47.123 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:33:48.131 ServerApp] Saving the content from room json:notebook:093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:33:49.133 ServerApp] Saving the content from room json:notebook:093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:33:49.135 YDocExtension] Saving file: v020-exp-49-setup.ipynb
+[I 2026-10-02 08:33:49.138 ServerApp] Saving v020-exp-49-setup.ipynb
+[I 2026-10-02 08:34:08.476 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:34:08.490 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:34:09.549 ServerApp] Saving the content from room json:notebook:093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:34:09.551 YDocExtension] Saving file: v020-exp-49-setup.ipynb
+[I 2026-10-02 08:34:09.553 ServerApp] Saving v020-exp-49-setup.ipynb
+[I 2026-10-02 08:34:12.447 ServerApp] Adapting from protocol version 5.3 (kernel e6d53ea6-2b1f-4a18-b245-625669fc4863) to 5.4 (client).
+[I 2026-10-02 08:34:12.447 ServerApp] Connecting to kernel e6d53ea6-2b1f-4a18-b245-625669fc4863.
+[I 2026-10-02 08:34:12.455 ServerApp] Request for Y document (now indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:34:12.459 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:34:12.463 YDocExtension] Creating FileLoader for: benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[I 2026-10-02 08:34:12.464 YDocExtension] Watching file: benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[I 2026-10-02 08:34:12.466 ServerApp] Initializing room json:notebook:f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[W 2026-10-02 08:34:12.472 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb is not trusted
+[I 2026-10-02 08:34:12.476 ServerApp] Content in room json:notebook:f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6 loaded from file benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[I 2026-10-02 08:34:15.232 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:34:15.249 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:34:15.776 ServerApp] Saving the content from room json:notebook:f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:34:15.780 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[I 2026-10-02 08:34:15.782 ServerApp] Saving kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[I 2026-10-02 08:34:21.465 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:34:41.697 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:34:41.717 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:34:42.614 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[W 2026-10-02 08:34:42.617 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb is not trusted
+[I 2026-10-02 08:34:42.778 ServerApp] Saving the content from room json:notebook:093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:34:42.781 YDocExtension] Saving file: v020-exp-49-setup.ipynb
+[I 2026-10-02 08:34:42.782 ServerApp] Saving v020-exp-49-setup.ipynb
+[I 2026-10-02 08:34:46.904 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:34:49.524 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:34:49.537 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:34:51.043 ServerApp] Saving the content from room json:notebook:f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:34:51.047 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[I 2026-10-02 08:34:51.049 ServerApp] Saving kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[I 2026-10-02 08:34:53.753 ServerApp] Saving the content from room json:notebook:f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:34:53.754 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[I 2026-10-02 08:34:53.756 ServerApp] Saving kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[W 2026-10-02 08:34:53.756 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb is not trusted
+[I 2026-10-02 08:35:03.589 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:35:16.670 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:35:16.688 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:35:17.312 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[W 2026-10-02 08:35:17.315 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb is not trusted
+[I 2026-10-02 08:35:17.750 ServerApp] Saving the content from room json:notebook:093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:35:17.752 YDocExtension] Saving file: v020-exp-49-setup.ipynb
+[I 2026-10-02 08:35:17.754 ServerApp] Saving v020-exp-49-setup.ipynb
+[I 2026-10-02 08:35:20.501 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:35:23.717 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:35:23.740 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:35:24.964 ServerApp] Saving the content from room json:notebook:f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:35:24.966 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[I 2026-10-02 08:35:24.970 ServerApp] Saving kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[W 2026-10-02 08:35:24.970 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb is not trusted
+[I 2026-10-02 08:35:25.875 ServerApp] Saving the content from room json:notebook:f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:35:25.879 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[I 2026-10-02 08:35:25.882 ServerApp] Saving kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[W 2026-10-02 08:35:25.883 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb is not trusted
+[I 2026-10-02 08:35:39.232 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:36:09.125 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:36:09.141 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:36:09.668 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[W 2026-10-02 08:36:09.671 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb is not trusted
+[I 2026-10-02 08:36:10.205 ServerApp] Saving the content from room json:notebook:093d8a01-1029-4bbe-973e-d8d837afdba6
+[I 2026-10-02 08:36:10.206 YDocExtension] Saving file: v020-exp-49-setup.ipynb
+[I 2026-10-02 08:36:10.208 ServerApp] Saving v020-exp-49-setup.ipynb
+[I 2026-10-02 08:36:12.693 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:36:15.498 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:36:15.515 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb' with room ID: f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:36:17.592 ServerApp] Saving the content from room json:notebook:f6bd0fc7-f2af-4659-9bbc-c7e22cecf3a6
+[I 2026-10-02 08:36:17.596 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[I 2026-10-02 08:36:17.597 ServerApp] Saving kaggle-v020-kaggle-exp-49-water-quality.ipynb
+[W 2026-10-02 08:36:17.597 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-49-water-quality/notebooks/kaggle-v020-kaggle-exp-49-water-quality.ipynb is not trusted
+[I 2026-10-02 08:36:48.737 ServerApp] Request for Y document (previously indexed) 'v020-exp-49-setup.ipynb' with room ID: 093d8a01-1029-4bbe-973e-d8d837afdba6

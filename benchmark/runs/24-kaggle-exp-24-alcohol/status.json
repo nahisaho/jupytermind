@@ -1,0 +1,91 @@
+{
+  "id": 24,
+  "dataset": "Alcohol Consumption by Country",
+  "kaggle": "https://www.kaggle.com/datasets?search=alcohol+consumption+by+country",
+  "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-24-alcohol/notebooks/kaggle-v020-kaggle-exp-24-alcohol.ipynb",
+  "run_id": "v020-exp-24",
+  "initial_exit_code": 0,
+  "initial_seconds": 1038.8,
+  "initial_termination": "exited",
+  "initial_stability": {
+    "stable": true,
+    "size": 562501,
+    "mtime": "2026-10-01T20:26:26.494982+00:00"
+  },
+  "initial_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 10,
+    "executed_code_cells": 10,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      9,
+      13
+    ],
+    "insight_cells": 4,
+    "findings": [],
+    "visual_findings": []
+  },
+  "followup_exit_code": 1,
+  "followup_seconds": 39.1,
+  "followup_termination": "exited",
+  "final_stability": {
+    "stable": true,
+    "size": 562501,
+    "mtime": "2026-10-01T20:26:26.494982+00:00"
+  },
+  "final_audit": {
+    "exists": true,
+    "semantic_complete": true,
+    "nbformat_valid": true,
+    "code_cells": 10,
+    "executed_code_cells": 10,
+    "unexecuted_cells": [],
+    "error_cells": [],
+    "chart_cells": [
+      9,
+      13
+    ],
+    "insight_cells": 4,
+    "findings": [],
+    "visual_findings": []
+  },
+  "final_completion": {
+    "ready": true,
+    "requirements": {
+      "structural_audit_ok": true,
+      "minimum_executed_code_cells": true,
+      "has_chart_output": true,
+      "has_evidence_backed_insight": true,
+      "has_iteration_history": true,
+      "has_module_usage_record": true,
+      "has_improvement_candidate_record": true,
+      "has_notebook_audit_call": true
+    },
+    "audit": {
+      "exists": true,
+      "semantic_complete": true,
+      "nbformat_valid": true,
+      "code_cells": 10,
+      "executed_code_cells": 10,
+      "unexecuted_cells": [],
+      "error_cells": [],
+      "chart_cells": [
+        9,
+        13
+      ],
+      "insight_cells": 4,
+      "findings": [],
+      "visual_findings": []
+    }
+  },
+  "analysis_complete": false,
+  "documentation_complete": true,
+  "semantic_complete": false,
+  "completed_at": "2026-10-01T20:36:15.600509+00:00",
+  "report_exit_code": 0,
+  "report_seconds": 578.8,
+  "report_termination": "exited"
+}

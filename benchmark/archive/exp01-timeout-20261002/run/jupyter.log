@@ -1,0 +1,472 @@
+[E 2026-10-02 00:00:12.775 ServerApp] Exception while loading config file /home/nahisaho/.jupyter/jupyter_server_config.py
+    Traceback (most recent call last):
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/application.py", line 916, in _load_config_files
+        config = loader.load_config()
+                 ^^^^^^^^^^^^^^^^^^^^
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/loader.py", line 625, in load_config
+        self._read_file_as_dict()
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/loader.py", line 658, in _read_file_as_dict
+        exec(compile(f.read(), conf_filename, "exec"), namespace, namespace)  # noqa: S102
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/home/nahisaho/.jupyter/jupyter_server_config.py", line 3, in <module>
+        c.IdentityProvider.token = os.environ["JUPYTER_TOKEN"]
+                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+      File "<frozen os>", line 685, in __getitem__
+    KeyError: 'JUPYTER_TOKEN'
+[I 2026-10-02 00:00:13.436 ServerApp] Extension package jupyter_mcp_server took 0.6372s to import
+[I 2026-10-02 00:00:13.788 ServerApp] Extension package jupyterlab_jupytext took 0.2717s to import
+[I 2026-10-02 00:00:13.788 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2026-10-02 00:00:13.791 ServerApp] jupyter_mcp_server | extension was successfully linked.
+[I 2026-10-02 00:00:13.792 ServerApp] jupyter_mcp_tools | extension was successfully linked.
+[I 2026-10-02 00:00:13.794 ServerApp] jupyter_server_fileid | extension was successfully linked.
+[I 2026-10-02 00:00:13.795 ServerApp] jupyter_server_nbmodel | extension was successfully linked.
+[I 2026-10-02 00:00:13.797 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2026-10-02 00:00:13.799 ServerApp] jupyter_server_ydoc | extension was successfully linked.
+[I 2026-10-02 00:00:13.801 ServerApp] jupyterlab | extension was successfully linked.
+[I 2026-10-02 00:00:13.801 ServerApp] jupyterlab_jupytext | extension was successfully linked.
+[I 2026-10-02 00:00:13.827 ServerApp] notebook_shim | extension was successfully linked.
+[I 2026-10-02 00:00:13.839 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2026-10-02 00:00:13.840 ServerApp] jupyter_lsp | extension was successfully loaded.
+[10/02/26 00:00:14] INFO     Auto-enrolled document             extension.py:201
+                             'notebook.ipynb' as 'default'                      
+                    INFO     Jupyter MCP Server Extension       extension.py:211
+                             settings initialized                               
+                    INFO     Registered MCP handlers at /mcp/   extension.py:247
+                    INFO       - MCP protocol: /mcp (SSE-based) extension.py:248
+                    INFO       - Health check: /mcp/healthz     extension.py:249
+                    INFO       - List tools: /mcp/tools/list    extension.py:250
+                    INFO       - Call tool: /mcp/tools/call     extension.py:251
+[I 2026-10-02 00:00:14.034 ServerApp] jupyter_mcp_server | extension was successfully loaded.
+[I 2026-10-02 00:00:14.034 ServerApp] Registered jupyter_mcp_tools server extension
+[I 2026-10-02 00:00:14.034 ServerApp] jupyter_mcp_tools | extension was successfully loaded.
+[I 2026-10-02 00:00:14.034 FileIdExtension] Configured File ID manager: ArbitraryFileIdManager
+[I 2026-10-02 00:00:14.034 FileIdExtension] ArbitraryFileIdManager : Configured root dir: /home/nahisaho/GitHub/jupytermind
+[I 2026-10-02 00:00:14.034 FileIdExtension] ArbitraryFileIdManager : Configured database path: /home/nahisaho/.local/share/jupyter/file_id_manager.db
+[I 2026-10-02 00:00:14.035 FileIdExtension] ArbitraryFileIdManager : Successfully connected to database file.
+[I 2026-10-02 00:00:14.035 FileIdExtension] ArbitraryFileIdManager : Creating File ID tables and indices with journal_mode = DELETE
+[I 2026-10-02 00:00:14.035 FileIdExtension] Attached event listeners.
+[I 2026-10-02 00:00:14.035 ServerApp] jupyter_server_fileid | extension was successfully loaded.
+[I 2026-10-02 00:00:14.036 ServerApp] jupyter_server_nbmodel | extension was successfully loaded.
+[I 2026-10-02 00:00:14.036 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2026-10-02 00:00:14.039 ServerApp] jupyter_server_ydoc | extension was successfully loaded.
+[I 2026-10-02 00:00:14.041 LabApp] JupyterLab extension loaded from /home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyterlab
+[I 2026-10-02 00:00:14.041 LabApp] JupyterLab application directory is /home/nahisaho/GitHub/jupytermind/.venv/share/jupyter/lab
+[I 2026-10-02 00:00:14.041 LabApp] Extension Manager is 'pypi'.
+[I 2026-10-02 00:00:14.071 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2026-10-02 00:00:14.071 ServerApp] [Jupytext Server Extension] Deriving an AsyncTextFileContentsManager from AsyncLargeFileManager
+[I 2026-10-02 00:00:14.072 ServerApp] jupyterlab_jupytext | extension was successfully loaded.
+[I 2026-10-02 00:00:14.073 ServerApp] Serving notebooks from local directory: /home/nahisaho/GitHub/jupytermind
+[I 2026-10-02 00:00:14.073 ServerApp] Jupyter Server 2.21.1 is running at:
+[I 2026-10-02 00:00:14.073 ServerApp] http://127.0.0.1:38961/lab?token=...
+[I 2026-10-02 00:00:14.073 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 2026-10-02 00:00:16.173 ServerApp] Skipped non-installed server(s): basedpyright, bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyrefly, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[I 2026-10-02 00:00:16.924 ServerApp] Kernel started: 88846117-25c2-4916-ac3a-eb980387bcb3
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 00:00:17.277 ServerApp] Adapting from protocol version 5.3 (kernel 88846117-25c2-4916-ac3a-eb980387bcb3) to 5.4 (client).
+[I 2026-10-02 00:00:17.278 ServerApp] Connecting to kernel 88846117-25c2-4916-ac3a-eb980387bcb3.
+[W 2026-10-02 00:00:17.279 ServerApp] The websocket_ping_timeout (90000) cannot be longer than the websocket_ping_interval (30000).
+    Setting websocket_ping_timeout=30000
+[W 2026-10-02 00:01:26.713 ServerApp] 404 GET /api/contents/benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks?type=directory&content=1 (03052237c9af4874866bec7748e15ef7@127.0.0.1) 1.51ms referer=None
+[W 2026-10-02 00:01:26.713 ServerApp] 404 GET /api/contents/benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks?type=directory&content=1 (127.0.0.1): No such file or directory: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks
+[I 2026-10-02 00:01:48.125 ServerApp] Uploading file to /benchmark/v020-exp-01-bootstrap.ipynb
+[I 2026-10-02 00:01:48.128 ServerApp] Saving v020-exp-01-bootstrap.ipynb
+[I 2026-10-02 00:01:48.195 ServerApp] Kernel started: 98acd094-aceb-4f63-be4b-d69020290414
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 00:01:48.408 ServerApp] Adapting from protocol version 5.3 (kernel 98acd094-aceb-4f63-be4b-d69020290414) to 5.4 (client).
+[I 2026-10-02 00:01:48.409 ServerApp] Connecting to kernel 98acd094-aceb-4f63-be4b-d69020290414.
+[I 2026-10-02 00:01:48.417 ServerApp] Request for Y document (now indexed) 'benchmark/v020-exp-01-bootstrap.ipynb' with room ID: 65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:01:48.423 ServerApp] Request for Y document (previously indexed) 'benchmark/v020-exp-01-bootstrap.ipynb' with room ID: 65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:01:48.428 YDocExtension] Creating FileLoader for: benchmark/v020-exp-01-bootstrap.ipynb
+[I 2026-10-02 00:01:48.431 YDocExtension] Watching file: benchmark/v020-exp-01-bootstrap.ipynb
+[I 2026-10-02 00:01:48.434 ServerApp] Initializing room json:notebook:65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:01:48.469 ServerApp] Content in room json:notebook:65538264-da26-470f-9493-95a5687c6336 loaded from file benchmark/v020-exp-01-bootstrap.ipynb
+[I 2026-10-02 00:01:58.020 ServerApp] Request for Y document (previously indexed) 'benchmark/v020-exp-01-bootstrap.ipynb' with room ID: 65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:01:58.036 ServerApp] Request for Y document (previously indexed) 'benchmark/v020-exp-01-bootstrap.ipynb' with room ID: 65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:01:59.947 ServerApp] Saving the content from room json:notebook:65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:01:59.948 YDocExtension] Saving file: benchmark/v020-exp-01-bootstrap.ipynb
+[I 2026-10-02 00:01:59.950 ServerApp] Saving v020-exp-01-bootstrap.ipynb
+[I 2026-10-02 00:02:07.115 ServerApp] Request for Y document (previously indexed) 'benchmark/v020-exp-01-bootstrap.ipynb' with room ID: 65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:02:07.134 ServerApp] Request for Y document (previously indexed) 'benchmark/v020-exp-01-bootstrap.ipynb' with room ID: 65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:02:17.271 ServerApp] Saving the content from room json:notebook:65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:02:17.273 YDocExtension] Saving file: benchmark/v020-exp-01-bootstrap.ipynb
+[I 2026-10-02 00:02:17.275 ServerApp] Saving v020-exp-01-bootstrap.ipynb
+[I 2026-10-02 00:02:17.580 ServerApp] Kernel started: a1aaad94-aea6-4f70-95b3-da4edcd6ff25
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 00:02:17.826 ServerApp] Adapting from protocol version 5.3 (kernel a1aaad94-aea6-4f70-95b3-da4edcd6ff25) to 5.4 (client).
+[I 2026-10-02 00:02:17.827 ServerApp] Connecting to kernel a1aaad94-aea6-4f70-95b3-da4edcd6ff25.
+[I 2026-10-02 00:02:17.837 ServerApp] Request for Y document (now indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:02:17.839 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:02:17.843 YDocExtension] Creating FileLoader for: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:02:17.844 YDocExtension] Watching file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:02:17.846 ServerApp] Initializing room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[W 2026-10-02 00:02:17.851 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:02:17.855 ServerApp] Content in room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830 loaded from file benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:02:38.470 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:02:38.495 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:02:39.754 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:02:39.755 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:02:39.758 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:02:41.039 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:02:41.042 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:02:41.045 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:02:58.613 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:02:58.630 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:03:00.165 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:03:00.170 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:03:00.173 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:03:15.408 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:03:15.426 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:03:17.029 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:03:17.035 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:03:17.038 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:03:29.111 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[E 2026-10-02 00:03:29.125 ServerApp] Failed to write message
+    Traceback (most recent call last):
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyter_server_ydoc/handlers.py", line 353, in send
+        self.write_message(message, binary=True)
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/tornado/websocket.py", line 360, in write_message
+        raise WebSocketClosedError()
+    tornado.websocket.WebSocketClosedError
+[I 2026-10-02 00:03:29.139 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:03:30.399 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:03:30.404 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:03:30.406 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:03:32.173 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:03:32.178 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:03:32.181 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:04:00.715 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:04:00.743 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:04:01.980 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:04:01.981 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:04:01.983 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:04:03.078 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:04:03.082 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:04:03.083 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:04:33.970 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:04:34.002 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:04:35.078 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:04:35.081 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:04:35.084 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:04:47.453 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:04:47.482 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:04:48.540 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:04:48.545 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:04:48.548 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:05:34.363 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:05:34.393 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:05:35.635 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:05:35.637 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:05:35.639 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:05:36.708 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:05:36.713 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:05:36.715 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:05:44.497 ServerApp] Request for Y document (previously indexed) 'benchmark/v020-exp-01-bootstrap.ipynb' with room ID: 65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:06:00.689 ServerApp] Starting buffering for a1aaad94-aea6-4f70-95b3-da4edcd6ff25:f64dae21-ec40cd47603b8a0ddd738f09
+[I 2026-10-02 00:06:00.695 ServerApp] Kernel shutdown: a1aaad94-aea6-4f70-95b3-da4edcd6ff25
+[I 2026-10-02 00:06:02.069 ServerApp] Cleaning room: json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:06:56.550 ServerApp] Deleting Y document from memory: json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:06:56.550 ServerApp] Room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830 deleted
+[I 2026-10-02 00:06:56.551 ServerApp] Deleting file benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:08:29.859 ServerApp] Request for Y document (previously indexed) 'benchmark/v020-exp-01-bootstrap.ipynb' with room ID: 65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:08:29.878 ServerApp] Request for Y document (previously indexed) 'benchmark/v020-exp-01-bootstrap.ipynb' with room ID: 65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:08:30.955 ServerApp] Saving the content from room json:notebook:65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:08:30.956 YDocExtension] Saving file: benchmark/v020-exp-01-bootstrap.ipynb
+[I 2026-10-02 00:08:30.958 ServerApp] Saving v020-exp-01-bootstrap.ipynb
+[I 2026-10-02 00:08:42.788 ServerApp] Kernel started: 6fc1d412-4b29-41f4-bc76-034abf82c23f
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 00:08:43.119 ServerApp] Adapting from protocol version 5.3 (kernel 6fc1d412-4b29-41f4-bc76-034abf82c23f) to 5.4 (client).
+[I 2026-10-02 00:08:43.120 ServerApp] Connecting to kernel 6fc1d412-4b29-41f4-bc76-034abf82c23f.
+[I 2026-10-02 00:08:43.125 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:08:43.128 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:08:43.132 YDocExtension] Creating FileLoader for: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:08:43.133 YDocExtension] Watching file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:08:43.135 ServerApp] Initializing room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[W 2026-10-02 00:08:43.140 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:08:43.146 ServerApp] Content in room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830 loaded from the ystore SQLiteYStore
+[I 2026-10-02 00:08:43.147 ServerApp] Content in file benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is out-of-sync with the ystore SQLiteYStore
+[I 2026-10-02 00:08:43.147 ServerApp] Content in room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830 loaded from file benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:08:50.457 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:08:50.472 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:08:52.228 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:08:52.242 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:08:52.245 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:08:54.316 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:08:54.318 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:08:54.320 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:09:12.953 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:12.970 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:05.343 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:05.345 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:09:05.347 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:09:06.777 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:06.779 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:09:06.781 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:09:14.229 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:14.246 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:15.312 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:15.314 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:09:15.317 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:09:40.505 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:40.528 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:41.906 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:41.908 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:09:41.912 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:09:50.032 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:50.049 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:51.428 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:09:51.432 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:09:51.434 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[W 2026-10-02 00:09:51.434 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:10:35.428 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[W 2026-10-02 00:10:35.437 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:10:43.570 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:10:43.584 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:11:01.564 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:11:01.593 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:11:03.054 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:11:03.059 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:11:03.062 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[W 2026-10-02 00:11:03.062 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:12:42.798 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[W 2026-10-02 00:12:42.802 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:12:52.833 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:12:52.852 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:13:03.378 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:13:03.380 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:13:03.382 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[W 2026-10-02 00:13:03.382 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:13:21.138 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[W 2026-10-02 00:13:21.142 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:13:31.283 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:13:31.298 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:13:32.553 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:13:32.555 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:13:32.557 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[W 2026-10-02 00:13:32.557 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:13:42.877 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:13:42.899 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:13:44.007 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:13:44.011 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:13:44.014 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[W 2026-10-02 00:13:44.015 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:14:38.326 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[W 2026-10-02 00:14:38.331 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:14:53.365 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:14:53.382 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:14:44.842 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:14:44.845 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:14:44.847 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[W 2026-10-02 00:14:44.847 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/json/encoder.py", line 260, in _make_iterencode
+    def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
+    
+RuntimeError: pycrdt::undo::UndoManager is unsendable, but is being dropped on another thread
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/json/encoder.py", line 260, in _make_iterencode
+    def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
+    
+RuntimeError: pycrdt::subscription::Subscription is unsendable, but is being dropped on another thread
+[I 2026-10-02 00:16:04.103 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[W 2026-10-02 00:16:04.109 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:16:10.924 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:16:10.945 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:16:12.399 ServerApp] Saving the content from room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:16:12.402 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb
+[I 2026-10-02 00:16:12.405 ServerApp] Saving kaggle-v020-kaggle-exp-01-titanic.ipynb
+[W 2026-10-02 00:16:12.406 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[I 2026-10-02 00:16:31.383 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:16:31.392 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb' with room ID: 0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:18:04.765 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[W 2026-10-02 00:18:04.769 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-01-titanic/notebooks/kaggle-v020-kaggle-exp-01-titanic.ipynb is not trusted
+[C 2026-10-02 00:18:18.659 ServerApp] received signal 15, stopping
+[I 2026-10-02 00:18:18.661 ServerApp] Shutting down 10 extensions
+[10/02/26 00:18:18] INFO     Stopping Jupyter MCP Server        extension.py:267
+                             Extension                                          
+                    INFO     Jupyter MCP Server Extension       extension.py:273
+                             stopped                                            
+[I 2026-10-02 00:18:18.665 YDocExtension] Deleting all rooms.
+[I 2026-10-02 00:18:18.667 ServerApp] Shutting down 3 kernels
+[I 2026-10-02 00:18:18.668 ServerApp] Kernel shutdown: 6fc1d412-4b29-41f4-bc76-034abf82c23f
+[I 2026-10-02 00:18:18.668 ServerApp] Kernel shutdown: 98acd094-aceb-4f63-be4b-d69020290414
+[I 2026-10-02 00:18:18.668 ServerApp] Kernel shutdown: 88846117-25c2-4916-ac3a-eb980387bcb3
+[I 2026-10-02 00:18:18.684 ServerApp] Starting buffering for 88846117-25c2-4916-ac3a-eb980387bcb3:9c6f7dbe-d62f98310f46d663d84876bc
+[C 2026-10-02 00:18:18.693 ServerApp] received signal 15, stopping
+                    ERROR    Task exception was never        base_events.py:1821
+                             retrieved                                          
+                             future: <Task finished                             
+                             name='Task-6926'                                   
+                             coro=<WebSocketProtocol13.write                    
+                             _message.<locals>.wrapper()                        
+                             done, defined at                                   
+                             /home/nahisaho/GitHub/jupytermi                    
+                             nd/.venv/lib/python3.12/site-pa                    
+                             ckages/tornado/websocket.py:111                    
+                             1>                                                 
+                             exception=WebSocketClosedError(                    
+                             )>                                                 
+                             ╭─ Traceback (most recent cal─╮                    
+                             │ /home/nahisaho/GitHub/jupyt │                    
+                             │ ermind/.venv/lib/python3.12 │                    
+                             │ /site-packages/tornado/webs │                    
+                             │ ocket.py:1113 in wrapper    │                    
+                             │                             │                    
+                             │   1110 │   │                │                    
+                             │   1111 │   │   async def wr │                    
+                             │   1112 │   │   │   try:     │                    
+                             │ ❱ 1113 │   │   │   │   awai │                    
+                             │   1114 │   │   │   except S │                    
+                             │   1115 │   │   │   │   rais │                    
+                             │   1116                      │                    
+                             ╰─────────────────────────────╯                    
+                             StreamClosedError: Stream is                       
+                             closed                                             
+                                                                                
+                             During handling of the above                       
+                             exception, another exception                       
+                             occurred:                                          
+                                                                                
+                             ╭─ Traceback (most recent cal─╮                    
+                             │ /home/nahisaho/GitHub/jupyt │                    
+                             │ ermind/.venv/lib/python3.12 │                    
+                             │ /site-packages/tornado/webs │                    
+                             │ ocket.py:1115 in wrapper    │                    
+                             │                             │                    
+                             │   1112 │   │   │   try:     │                    
+                             │   1113 │   │   │   │   awai │                    
+                             │   1114 │   │   │   except S │                    
+                             │ ❱ 1115 │   │   │   │   rais │                    
+                             │   1116 │   │                │                    
+                             │   1117 │   │   return async │                    
+                             │   1118                      │                    
+                             ╰─────────────────────────────╯                    
+                             WebSocketClosedError                               
+[I 2026-10-02 00:18:18.823 ServerApp] Starting buffering for 6fc1d412-4b29-41f4-bc76-034abf82c23f:00b1f907-e6ce353a256247935f855e9e
+                    ERROR    Task exception was never        base_events.py:1821
+                             retrieved                                          
+                             future: <Task finished                             
+                             name='Task-6927'                                   
+                             coro=<WebSocketProtocol13.write                    
+                             _message.<locals>.wrapper()                        
+                             done, defined at                                   
+                             /home/nahisaho/GitHub/jupytermi                    
+                             nd/.venv/lib/python3.12/site-pa                    
+                             ckages/tornado/websocket.py:111                    
+                             1>                                                 
+                             exception=WebSocketClosedError(                    
+                             )>                                                 
+                             ╭─ Traceback (most recent cal─╮                    
+                             │ /home/nahisaho/GitHub/jupyt │                    
+                             │ ermind/.venv/lib/python3.12 │                    
+                             │ /site-packages/tornado/webs │                    
+                             │ ocket.py:1113 in wrapper    │                    
+                             │                             │                    
+                             │   1110 │   │                │                    
+                             │   1111 │   │   async def wr │                    
+                             │   1112 │   │   │   try:     │                    
+                             │ ❱ 1113 │   │   │   │   awai │                    
+                             │   1114 │   │   │   except S │                    
+                             │   1115 │   │   │   │   rais │                    
+                             │   1116                      │                    
+                             ╰─────────────────────────────╯                    
+                             StreamClosedError: Stream is                       
+                             closed                                             
+                                                                                
+                             During handling of the above                       
+                             exception, another exception                       
+                             occurred:                                          
+                                                                                
+                             ╭─ Traceback (most recent cal─╮                    
+                             │ /home/nahisaho/GitHub/jupyt │                    
+                             │ ermind/.venv/lib/python3.12 │                    
+                             │ /site-packages/tornado/webs │                    
+                             │ ocket.py:1115 in wrapper    │                    
+                             │                             │                    
+                             │   1112 │   │   │   try:     │                    
+                             │   1113 │   │   │   │   awai │                    
+                             │   1114 │   │   │   except S │                    
+                             │ ❱ 1115 │   │   │   │   rais │                    
+                             │   1116 │   │                │                    
+                             │   1117 │   │   return async │                    
+                             │   1118                      │                    
+                             ╰─────────────────────────────╯                    
+                             WebSocketClosedError                               
+[I 2026-10-02 00:18:18.898 ServerApp] Cleaning room: json:notebook:0eec6994-d229-4ad8-9fd7-2c98002e4830
+[I 2026-10-02 00:18:18.899 ServerApp] Cleaning room: json:notebook:65538264-da26-470f-9493-95a5687c6336
+[I 2026-10-02 00:18:18.899 ServerApp] Starting buffering for 98acd094-aceb-4f63-be4b-d69020290414:15072259-262603ffa48d0d4f7db92357
+[I 2026-10-02 00:18:18.900 ServerApp] Shutting down 10 extensions
+                    INFO     Stopping Jupyter MCP Server        extension.py:267
+                             Extension                                          
+                    INFO     Jupyter MCP Server Extension       extension.py:273
+                             stopped                                            
+[I 2026-10-02 00:18:18.903 YDocExtension] Deleting all rooms.
+                    ERROR    Task exception was never        base_events.py:1821
+                             retrieved                                          
+                             future: <Task finished                             
+                             name='Task-6941'                                   
+                             coro=<JupyterWebsocketServer.cl                    
+                             ean() done, defined at                             
+                             /home/nahisaho/GitHub/jupytermi                    
+                             nd/.venv/lib/python3.12/site-pa                    
+                             ckages/jupyter_server_ydoc/webs                    
+                             ocketserver.py:60>                                 
+                             exception=RuntimeError('Websock                    
+                             etServer not running')>                            
+                             ╭─ Traceback (most recent cal─╮                    
+                             │ /home/nahisaho/GitHub/jupyt │                    
+                             │ ermind/.venv/lib/python3.12 │                    
+                             │ /site-packages/jupyter_serv │                    
+                             │ er_ydoc/websocketserver.py: │                    
+                             │ 79 in clean                 │                    
+                             │                             │                    
+                             │    76 │   │   #         sel │                    
+                             │    77 │   │   #         sel │                    
+                             │    78 │   │                 │                    
+                             │ ❱  79 │   │   await self.st │                    
+                             │    80 │   │   tasks = []    │                    
+                             │    81 │   │   if self.monit │                    
+                             │    82 │   │   │   self.moni │                    
+                             │                             │                    
+                             │ /home/nahisaho/GitHub/jupyt │                    
+                             │ ermind/.venv/lib/python3.12 │                    
+                             │ /site-packages/pycrdt/webso │                    
+                             │ cket/websocket_server.py:26 │                    
+                             │ 4 in stop                   │                    
+                             │                             │                    
+                             │   261 │   │   bound that wa │                    
+                             │   262 │   │   """           │                    
+                             │   263 │   │   if self._task │                    
+                             │ ❱ 264 │   │   │   raise Run │                    
+                             │   265 │   │                 │                    
+                             │   266 │   │   self._stopped │                    
+                             │   267 │   │   self._task_gr │                    
+                             ╰─────────────────────────────╯                    
+                             RuntimeError: WebsocketServer                      
+                             not running                                        
+[I 2026-10-02 00:18:18.920 ServerApp] Shutting down 3 kernels
+[I 2026-10-02 00:18:18.921 ServerApp] Kernel shutdown: 6fc1d412-4b29-41f4-bc76-034abf82c23f
+[I 2026-10-02 00:18:18.921 ServerApp] Discarding 1 buffered messages for 98acd094-aceb-4f63-be4b-d69020290414:15072259-262603ffa48d0d4f7db92357
+[I 2026-10-02 00:18:18.921 ServerApp] Kernel shutdown: 98acd094-aceb-4f63-be4b-d69020290414
+[E 2026-10-02 00:18:18.922 ServerApp] Exception in callback functools.partial(<bound method IOLoop._discard_future_result of <tornado.platform.asyncio.AsyncIOMainLoop object at 0x791f4c5f9220>>, <Task finished name='Task-6928' coro=<ServerApp._stop() done, defined at /home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyter_server/serverapp.py:3267> exception=HTTPError()>)
+    Traceback (most recent call last):
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/tornado/ioloop.py", line 758, in _run_callback
+        ret = callback()
+              ^^^^^^^^^^
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/tornado/ioloop.py", line 782, in _discard_future_result
+        future.result()
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyter_server/serverapp.py", line 3269, in _stop
+        await self._cleanup()
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyter_server/serverapp.py", line 3209, in _cleanup
+        await self.cleanup_kernels()
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyter_server/serverapp.py", line 2901, in cleanup_kernels
+        await ensure_async(self.kernel_manager.shutdown_all())
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+        result = await obj
+                 ^^^^^^^^^
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyter_client/multikernelmanager.py", line 369, in _async_shutdown_all
+        await asyncio.gather(*futs)
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyter_server/services/kernels/kernelmanager.py", line 454, in _async_shutdown_kernel
+        self._check_kernel_id(kernel_id)
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyter_server/services/kernels/kernelmanager.py", line 569, in _check_kernel_id
+        raise web.HTTPError(404, "Kernel does not exist: %s" % kernel_id)
+    tornado.web.HTTPError: HTTP 404: Not Found (Kernel does not exist: 88846117-25c2-4916-ac3a-eb980387bcb3)

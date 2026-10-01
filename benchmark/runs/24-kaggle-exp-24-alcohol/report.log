@@ -1,0 +1,12 @@
+指定された実ファイルの記録を照合し、Notebookの図表を抽出して、既存の実験節に合わせた日本語レポートを保存します。
+
+
+Notebookには3回の追加分析と最終監査の完了記録があります。一方、外部の追加確認はCopilot CLIのモデル一覧取得タイムアウトで終了しています。この二つを分けて記述し、Notebookに残る改善候補2件も、再現済みの監査問題と責任境界が未確定の連携問題として区別します。
+
+
+実験24のQiita形式・日本語レポートを [report-section.md](benchmark/runs/24-kaggle-exp-24-alcohol/report-section.md) に保存しました。初回プロンプト全文、追加依頼3件の原文・結果、使用モジュール、監査・再現性・限界を記載しています。
+
+NotebookのPNG図表5件を `benchmark/figures/exp-24-*.png` に抽出し、節内から参照しました。改善候補2件は [issue-candidate.json](benchmark/runs/24-kaggle-exp-24-alcohol/issue-candidate.json) に保存し、Notebookの分析完了記録とCopilot CLIの外部追加確認失敗を区別しています。`white-paper-v0.2.0.md`は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

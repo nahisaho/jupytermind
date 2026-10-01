@@ -1,0 +1,12 @@
+Notebookとログの証拠を照合し、分析結果と実行完了の確認状態を分けて記述します。追加確認ログは現時点で存在しないため、その内容は補いません。
+
+
+国間の正の関連は明確ですが、国内の関連は期間・所得・トレンド調整に依存していました。保存済みの再実行検証・監査記録は確認できる一方、最終セルの終了出力はなく、ランナーはタイムアウトしています。この違いを明記し、Notebookから8点のPNGを抽出します。
+
+
+実験20の日本語・Qiita形式の節を `benchmark/runs/20-kaggle-exp-20-healthexp/report-section.md` に保存しました。NotebookのPNG **8点**を `benchmark/figures/exp-20-*.png` に抽出し、Jupytermind改善候補 **3件**を同じrunディレクトリの `issue-candidate.json` に記録しました。
+
+主要分析・追加3回の結果と、ランナーのタイムアウトによる正常終了未確認を区別しています。存在しない `followup.log` の内容は補わず、`white-paper-v0.2.0.md` は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

@@ -1,0 +1,12 @@
+指定された実ファイルから分析結果と実行経緯を照合し、既存の実験節に合わせた日本語レポートとNotebook内のPNG画像を保存します。文書化状態は実験の成否判定から除外します。
+
+
+Notebookには3回の追加分析と8枚のPNG図表が残っており、重量が価格差の主軸という結論は維持されています。一方、カットの調整価格差は重量によって変わり、末尾の監査セルには実行完了出力がありません。この留保と、Notebook内で再現確認されたJupytermind改善候補を分けて記載します。
+
+
+日本語・Qiita書式の実験節を [`report-section.md`](benchmark/runs/05-kaggle-exp-05-diamonds/report-section.md) に保存しました。初回プロンプト全文、3回の追加依頼の原文・理由・結果、直接使用したモジュール、監査・再現性・限界を記載しています。
+
+NotebookのPNG **8枚**を `benchmark/figures/exp-05-diamonds-*.png` に抽出し、節内から参照しました。改善候補 **3件**は [`issue-candidate.json`](benchmark/runs/05-kaggle-exp-05-diamonds/issue-candidate.json) に保存しています。分析完了と末尾監査セルの完了出力未確認を区別し、文書化状態は成否判定に使用していません。`white-paper-v0.2.0.md` は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

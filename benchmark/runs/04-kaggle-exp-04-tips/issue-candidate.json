@@ -1,0 +1,71 @@
+{
+  "experiment_id": "v020-exp-04",
+  "candidates": [
+    {
+      "id": "exp-04-inferred-definition-disclosure",
+      "classification": "機能・利用案内の整合候補（既存API契約違反とは断定しない）",
+      "module": "ai_data_scientist.data_definition",
+      "reproduction_steps": [
+        "Notebookのセル5でFieldValueを使いtotal_bill.unitをstatus=inferredとしてbuild_manifestする。",
+        "セル19でdefinition_manifest.unresolved_fields()にvariables.total_bill.unitが含まれるか確認する。",
+        "新カーネルで同じセルを再実行し、セル33のcapability_reproduction_logでも結果を確認する。"
+      ],
+      "expected_behavior": "未確認事項を報告する利用手順でunknownとinferredをともに注意喚起できること。unknownのみのAPIであれば、inferredを別走査する必要を利用案内で明示すること。",
+      "actual_behavior": "inferred_unit_status=inferredだがinferred_unit_returned_by_unresolved_fields=false。Notebookの追加確認記録は現APIのdocstringがunknownのみと明記しているとし、契約違反ではなく案内・機能整合の候補と評価している。",
+      "impact": "unresolved_fieldsだけで注意書きを生成すると、推測にとどまる通貨単位を見落とし、確認済みと誤解する可能性がある。今回のNotebookでは別走査で回避しており、統計値の誤計算の証拠ではない。",
+      "workaround": "manifest内のstatus=inferredを別途走査してinferred_fieldsとして出力し、unknownとともに限界へ記録する。",
+      "evidence": {
+        "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb",
+        "cell_index_convention": "zero_based",
+        "cell_indices": [5, 19, 21, 33],
+        "observed_output": {
+          "inferred_unit_status": "inferred",
+          "inferred_unit_returned_by_unresolved_fields": false
+        },
+        "log": "benchmark/runs/04-kaggle-exp-04-tips/followup.log",
+        "log_support": "改善候補2件の再現性・利用者影響・受け入れ条件の追記と新カーネルでの再実行を報告。",
+        "verification_scope": "指定Notebookの再現コード・出力・再評価記述に限定し、ライブラリ実装・docstringや利用案内を別途検証したものではない。"
+      },
+      "acceptance_criteria": [
+        "unknownのみを返す既存契約を維持するなら、利用案内でinferredの別走査を必須として明示する。",
+        "APIを拡張するなら、unknown/inferredの選択を明示し、両ステータスを用いたテストを設ける。",
+        "inferredをverifiedへ自動昇格させず、出所と確度を保った注意喚起を生成できる。"
+      ],
+      "separation": "Kaggle HTTP 403、初回検索一覧の記録不足、Copilot CLI、外部ランナー、Jupyter MCPのパス・出力保存問題、Notebook著者のSyntaxErrorとは別のmanifest APIの限定再現例。"
+    },
+    {
+      "id": "exp-04-missing-chart-metadata",
+      "classification": "視覚監査の機能不足候補（検査情報の完全欠落を検知しない）",
+      "module": "ai_data_scientist.notebook_audit",
+      "reproduction_steps": [
+        "セル11で生成したPNGをvisualization.build_image_output(png)で画像出力にする。",
+        "セル19と同じくnbformat.v4.new_code_cellでコードセルを作り、画像出力を付けるがchartメタデータを付けない。",
+        "この1セルを持つNotebookにnotebook_audit.audit_visual_outputs(mini_notebook, (0,))を呼び出す。",
+        "新カーネルで再実行し、セル33のcapability_reproduction_logでも結果を確認する。"
+      ],
+      "expected_behavior": "PNGが存在するのにchartメタデータやmissing_glyphsの検査情報がない場合、未検査として識別可能なfindingを返すこと。検査済みで欠落なしの場合と区別すること。",
+      "actual_behavior": "chartメタデータを丸ごと省いた最小Notebookでもvisual_findings_when_chart_metadata_entirely_absent=[]となった。",
+      "impact": "文字・軸・タイトル・凡例の検証情報がない画像を、視覚監査の指摘なしだけで検証済みと誤解する可能性がある。実際の文字欠落や誤った図をこの再現例が証明するわけではない。",
+      "workaround": "今回のNotebookでは全図セルにchartメタデータを付け、描画時のGlyph警告を検査した。目視確認もNotebookに記録されている。",
+      "evidence": {
+        "notebook": "benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb",
+        "cell_index_convention": "zero_based",
+        "cell_indices": [11, 13, 15, 17, 19, 21, 33],
+        "observed_output": {
+          "visual_findings_when_chart_metadata_entirely_absent": []
+        },
+        "log": "benchmark/runs/04-kaggle-exp-04-tips/followup.log",
+        "log_support": "改善候補2件の追記、図の再描画、新カーネルでの再実行を報告。",
+        "verification_scope": "指定Notebookの最小再現コードと実行出力。視覚監査実装を別途調査したものではない。"
+      },
+      "acceptance_criteria": [
+        "visual_audit=Trueでchartメタデータ全欠落とmissing_glyphs検査キー欠落を識別可能なfindingとして報告する。",
+        "検査済みのmissing_glyphs=[]と検査情報が存在しない状態を区別する。",
+        "必要なタイトル・軸・単位・凡例、または単一系列等で凡例不要という明示を検証する。",
+        "メタデータ欠落・完全なメタデータ・文字欠落報告の各ケースをテストし、findingと監査okへの影響を固定する。",
+        "PNG密度や著者申告メタデータを実画素の可読性の完全保証として扱わない。"
+      ],
+      "separation": "純粋な最小Notebookへの直接監査呼出しの結果であり、Kaggle API、Copilot CLI、外部ランナー、Jupyter MCPの保存競合やパス制約から切り離された候補。"
+    }
+  ]
+}

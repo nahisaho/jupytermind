@@ -1,0 +1,382 @@
+[
+  {
+    "id": 1,
+    "slug": "kaggle-exp-01-titanic",
+    "dataset": "Titanic",
+    "kaggle": "https://www.kaggle.com/competitions/titanic",
+    "prompt": "KaggleのTitanicデータで、生存者と非生存者にどのような違いが見られるか調べてください。分析計画は自分で立て、適切な比較と図表を選び、判断根拠と限界を日本語で説明してください。AI Data Scientist SkillとJupyter MCPを使い、計画、実行コード、結果、根拠付きInsightをノートブックに記録し、最後に上から再実行できるか確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
+  },
+  {
+    "id": 2,
+    "slug": "iris-feature-analysis",
+    "dataset": "Iris",
+    "kaggle": "https://www.kaggle.com/datasets/uciml/iris",
+    "prompt": "Irisの公開データ（ Data Scientist SkillとこのプロジェクトのJupyter MCPを使って実行済みコード・出力・根拠付きの気づきをノートブックに記録してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv"
+  },
+  {
+    "id": 3,
+    "slug": "kaggle-exp-03-penguins",
+    "dataset": "Palmer Penguins",
+    "kaggle": "https://www.kaggle.com/datasets/parulpandey/palmer-archipelago-antarctica-penguin-data",
+    "prompt": "KaggleのPalmer Penguinsデータから、ペンギンの種や体格の違いがどの特徴に表れているか調べてください。手順は指定しません。自分で分析計画を立て、適切な図表を選んで、分析結果・不確実性・限界を日本語で説明してください。AI Data Scientist SkillとJupyter MCPを使い、計画、実行コード、結果、根拠付きInsightをノートブックに記録し、上からの再実行も確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv"
+  },
+  {
+    "id": 4,
+    "slug": "kaggle-exp-04-tips",
+    "dataset": "Tips",
+    "kaggle": "https://www.kaggle.com/datasets/jsphyg/tipping",
+    "prompt": "Kaggleの飲食店Tipsデータで、チップ額やチップ率に関係する特徴を調べてください。分析方法は自分で選び、見やすい図表とともに、観察できた関係と因果とは言えない点を日本語で説明してください。AI Data Scientist SkillとJupyter MCPを使い、分析計画、コード、実行結果、根拠付きInsightをノートブックに記録し、再実行可能か確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv"
+  },
+  {
+    "id": 5,
+    "slug": "kaggle-exp-05-diamonds",
+    "dataset": "Diamonds",
+    "kaggle": "https://www.kaggle.com/datasets/shivam2503/diamonds",
+    "prompt": "KaggleのDiamondsデータから、価格の違いを説明する特徴を調べてください。手順は指定しません。自分で分析計画と図表を選び、単位・外れ値・相関と因果の区別に注意して日本語で報告してください。AI Data Scientist SkillとJupyter MCPで実行し、計画、コード、結果、根拠付きInsightをノートブックに残して再実行できることも確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/diamonds.csv"
+  },
+  {
+    "id": 6,
+    "slug": "kaggle-exp-06-flights",
+    "dataset": "Air Passengers / Flights",
+    "kaggle": "https://www.kaggle.com/datasets/rakannimer/air-passengers",
+    "prompt": "KaggleのAir Passengersデータで、旅客数の長期的な推移と季節性を明らかにしてください。分析手順は自分で考え、時系列に適した図表を選び、データの期間と予測上の限界も日本語で述べてください。AI Data Scientist SkillとJupyter MCPで計画・実行・結果・根拠付きInsightをノートブックに記録し、先頭からの再実行を確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/flights.csv"
+  },
+  {
+    "id": 7,
+    "slug": "kaggle-exp-07-auto-mpg",
+    "dataset": "Auto MPG",
+    "kaggle": "https://www.kaggle.com/datasets/uciml/autompg-dataset",
+    "prompt": "KaggleのAuto MPGデータを分析し、燃費の違いに関係する車両特性を調べてください。手法は自分で選び、関係性の強さをわかりやすい図表で示し、観察データの限界を日本語で説明してください。AI Data Scientist SkillとJupyter MCPを使用し、計画から根拠付きInsightまでをノートブックに記録して再実行を確かめてください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/mpg.csv"
+  },
+  {
+    "id": 8,
+    "slug": "kaggle-exp-08-red-wine",
+    "dataset": "Red Wine Quality",
+    "kaggle": "https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009",
+    "prompt": "KaggleのRed Wine Qualityデータで、品質スコアと化学特性の関係を調べてください。分析計画と図表は自分で決め、統計的な関係を因果効果と混同せず日本語で説明してください。AI Data Scientist SkillとJupyter MCPを使って実行し、計画・コード・出力・根拠付きInsightをノートブックに記録し、再実行可能か確認してください。",
+    "fallback_csv": "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
+  },
+  {
+    "id": 9,
+    "slug": "kaggle-exp-09-diabetes",
+    "dataset": "Pima Indians Diabetes",
+    "kaggle": "https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database",
+    "prompt": "KaggleのPima Indians Diabetesデータを分析し、糖尿病アウトカムと関連する特徴を調べてください。欠損や不自然な値の扱いは自分で判断して明記し、比較に適した図表を選んで、相関を因果と誤認しない日本語の結論を示してください。AI Data Scientist SkillとJupyter MCPで計画、実行コード、出力、根拠付きInsightを保存し、ノートブックの再実行も確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv"
+  },
+  {
+    "id": 10,
+    "slug": "kaggle-exp-10-students",
+    "dataset": "Students Performance in Exams",
+    "kaggle": "https://www.kaggle.com/datasets/spscientist/students-performance-in-exams",
+    "prompt": "KaggleのStudents Performanceデータで、試験成績の差に結びつく要因を調べてください。分析計画、比較方法、図表は自分で決め、交絡や自己選択の可能性を含む限界を日本語で説明してください。AI Data Scientist SkillとJupyter MCPを使い、コード・結果・根拠付きInsightをノートブックに記録し、再実行可能か検証してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/rashida048/Datasets/master/StudentsPerformance.csv"
+  },
+  {
+    "id": 11,
+    "slug": "kaggle-exp-11-anagrams",
+    "dataset": "Anagrams",
+    "kaggle": "https://www.kaggle.com/datasets?search=anagrams",
+    "prompt": "Kaggleで見つかるAnagrams課題データを使い、課題条件や参加者によって回答の正確さがどう異なるか調べてください。データの形を確認してから自分で計画・統計的比較・図表を選び、少数標本の限界も述べてください。AI Data Scientist SkillとJupyter MCPで実行し、計画、コード、出力、根拠付きInsightをノートブックに記録して再実行を確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/anagrams.csv"
+  },
+  {
+    "id": 12,
+    "slug": "kaggle-exp-12-anscombe",
+    "dataset": "Anscombe's Quartet",
+    "kaggle": "https://www.kaggle.com/code/tomarns/anscombe-s-quartet",
+    "prompt": "KaggleのAnscombe's Quartet例を調べ、要約統計が似ている複数群を同じ結論として扱ってよいか検証してください。どの可視化と比較が必要か自分で判断し、数値だけでは見えない違いを日本語で説明してください。AI Data Scientist SkillとJupyter MCPを使い、分析計画・実行コード・結果・根拠付きInsightを保存し、再実行を確かめてください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/anscombe.csv"
+  },
+  {
+    "id": 13,
+    "slug": "kaggle-exp-13-attention",
+    "dataset": "Attention",
+    "kaggle": "https://www.kaggle.com/datasets?search=attention+dataset+psychology",
+    "prompt": "Kaggle上の心理学Attentionデータに相当する公開データを分析し、注意課題の結果が時間や条件でどう変わるか調べてください。測定構造を自分で見極めて分析計画と適切な図表を選び、同一参加者の反復測定を無視する危険も日本語で説明してください。AI Data Scientist SkillとJupyter MCPで計画・コード・結果・根拠付きInsightを保存し、再実行を確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/attention.csv"
+  },
+  {
+    "id": 14,
+    "slug": "kaggle-exp-14-car-crashes",
+    "dataset": "Car Crashes / Bad Drivers",
+    "kaggle": "https://www.kaggle.com/datasets?search=bad+drivers+car+crashes",
+    "prompt": "Kaggleで扱われる米国州別の交通事故データから、事故率や死亡率に関係する特徴を探してください。分析方法と図表を自分で選び、州間の比較可能性や相関から因果を主張できない点も含めて日本語で報告してください。AI Data Scientist SkillとJupyter MCPを使い、計画・コード・出力・根拠付きInsightを記録し、再実行を確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/car_crashes.csv"
+  },
+  {
+    "id": 15,
+    "slug": "kaggle-exp-15-dots",
+    "dataset": "Dots",
+    "kaggle": "https://www.kaggle.com/datasets?search=dots+perception+experiment",
+    "prompt": "Kaggle検索で見つかる知覚実験のDotsデータで、刺激条件と反応時間・判断の関係を調べてください。変数の意味と実験単位を自分で把握して計画し、適切な図表と統計を選び、解釈の限界を説明してください。AI Data Scientist SkillとJupyter MCPを用い、計画・コード・出力・根拠付きInsightを保存し、再実行してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/dots.csv"
+  },
+  {
+    "id": 16,
+    "slug": "kaggle-exp-16-dowjones",
+    "dataset": "Dow Jones",
+    "kaggle": "https://www.kaggle.com/datasets?search=dow+jones+historical+data",
+    "prompt": "Kaggleで公開されているDow Jones株価時系列に相当するデータを用い、期間中のトレンドと変動の特徴を分析してください。時系列に合う分析計画と図表を自分で選び、価格水準とリターンの違いや将来予測の限界を日本語で説明してください。AI Data Scientist SkillとJupyter MCPで分析を記録し、再実行できるか確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/dowjones.csv"
+  },
+  {
+    "id": 17,
+    "slug": "kaggle-exp-17-exercise",
+    "dataset": "Exercise",
+    "kaggle": "https://www.kaggle.com/datasets?search=exercise+heart+rate",
+    "prompt": "Kaggleで見つかる運動・心拍のExerciseデータを調べ、運動の種類や時間と心拍数の違いを明らかにしてください。適切な比較方法、図表、欠損処理は自分で決め、観察された差の限界を日本語で示してください。AI Data Scientist SkillとJupyter MCPで計画、コード、結果、根拠付きInsightをノートブックに記録し、再実行してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/exercise.csv"
+  },
+  {
+    "id": 18,
+    "slug": "kaggle-exp-18-fmri",
+    "dataset": "fMRI",
+    "kaggle": "https://www.kaggle.com/datasets?search=fmri+time+series",
+    "prompt": "Kaggle上のfMRI時系列データに相当する公開データで、条件や領域によって信号の時間推移がどう異なるかを調べてください。データの反復測定構造を確認して自分で分析計画を立て、推移を伝える図表と慎重な解釈を日本語で示してください。AI Data Scientist SkillとJupyter MCPを利用し、根拠付きで記録して再実行を確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/fmri.csv"
+  },
+  {
+    "id": 19,
+    "slug": "kaggle-exp-19-geyser",
+    "dataset": "Old Faithful Geyser",
+    "kaggle": "https://www.kaggle.com/datasets?search=old+faithful+geyser",
+    "prompt": "Kaggleでよく使われるOld Faithful間欠泉データについて、噴出時間と次の噴出までの待ち時間の関係や分布を調べてください。自分で分析計画・適切な図表・統計的要約を選び、単純な相関だけでは分からない構造も日本語で説明してください。AI Data Scientist SkillとJupyter MCPで実行・記録し、ノートブックの再実行を確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/geyser.csv"
+  },
+  {
+    "id": 20,
+    "slug": "kaggle-exp-20-healthexp",
+    "dataset": "Health Expenditure",
+    "kaggle": "https://www.kaggle.com/datasets?search=health+expenditure+life+expectancy",
+    "prompt": "Kaggle検索で見つかる国別医療支出・平均寿命データを分析し、支出と寿命の関係や国・年ごとの違いを調べてください。時間変化と国差を区別する計画・図表を自分で選び、交絡や因果推論の限界を日本語で説明してください。AI Data Scientist SkillとJupyter MCPで計画と根拠付きの分析を記録し、再実行してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/healthexp.csv"
+  },
+  {
+    "id": 21,
+    "slug": "kaggle-exp-21-planets",
+    "dataset": "Planets / Exoplanets",
+    "kaggle": "https://www.kaggle.com/datasets?search=exoplanets+discovery+methods",
+    "prompt": "Kaggleの太陽系外惑星発見データに相当する公開データから、発見年・発見方法・惑星特性の傾向を調べてください。欠損や測定方法の違いを考慮して自分で分析を計画し、時系列またはカテゴリ比較に適した図表と解釈上の注意を日本語で示してください。AI Data Scientist SkillとJupyter MCPを用いて実行記録と根拠付きInsightを残し、再実行を確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/planets.csv"
+  },
+  {
+    "id": 22,
+    "slug": "kaggle-exp-22-seaice",
+    "dataset": "Arctic Sea Ice",
+    "kaggle": "https://www.kaggle.com/datasets?search=arctic+sea+ice+extent",
+    "prompt": "Kaggle上の北極海氷データに相当する公開時系列データを分析し、長期傾向と季節変動を分けて示してください。時間軸・単位を確かめて自分で計画と図表を選び、どこまで結論できるかを日本語で記録してください。AI Data Scientist SkillとJupyter MCPを使い、コード・出力・根拠付きInsightを保存し、再実行可能か検証してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/seaice.csv"
+  },
+  {
+    "id": 23,
+    "slug": "kaggle-exp-23-taxis",
+    "dataset": "NYC Taxis",
+    "kaggle": "https://www.kaggle.com/datasets?search=nyc+taxi+trips",
+    "prompt": "Kaggleのタクシー乗車データに相当する公開データから、距離・所要時間・料金・チップの関係を調べてください。データ量や外れ値を確認し、分析計画と適切な図表を自分で決めて、サンプル範囲と限界を明記してください。AI Data Scientist SkillとJupyter MCPで計画・分析・根拠付きInsightを記録し、ノートブックを再実行してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/taxis.csv"
+  },
+  {
+    "id": 24,
+    "slug": "kaggle-exp-24-alcohol",
+    "dataset": "Alcohol Consumption by Country",
+    "kaggle": "https://www.kaggle.com/datasets?search=alcohol+consumption+by+country",
+    "prompt": "Kaggleで公開されている国別アルコール消費データを用い、国・地域による消費量の違いと分布を調べてください。単位やカテゴリを確認し、適切な比較・図表を自分で選び、解釈の範囲と限界を日本語で示してください。AI Data Scientist SkillとJupyter MCPを使って再現可能に記録してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/plotly/datasets/master/2010_alcohol_consumption_by_country.csv"
+  },
+  {
+    "id": 25,
+    "slug": "kaggle-exp-25-ebola",
+    "dataset": "Ebola",
+    "kaggle": "https://www.kaggle.com/datasets?search=ebola+cases+deaths",
+    "prompt": "KaggleのEbola流行データに相当する公開データで、国別・時系列の報告症例と死亡の推移を調べてください。データ構造と定義を先に確認し、推移を見せる図表と慎重な分析計画を自分で選び、報告データの限界を明記してください。AI Data Scientist SkillとJupyter MCPで実行記録と根拠付きInsightを残し、再実行を確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/plotly/datasets/master/2014_ebola.csv"
+  },
+  {
+    "id": 26,
+    "slug": "kaggle-exp-26-seattle-weather",
+    "dataset": "Seattle Weather",
+    "kaggle": "https://www.kaggle.com/datasets?search=seattle+weather",
+    "prompt": "KaggleのSeattle気象データに相当する公開データを分析し、気温や降水量の季節性・変動を明らかにしてください。列の単位と時間範囲を確認して、自分で分析計画と図表を決め、過度な一般化を避けて日本語で説明してください。AI Data Scientist SkillとJupyter MCPでコード・結果・根拠付きInsightを記録し、再実行を確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/plotly/datasets/master/2016-weather-data-seattle.csv"
+  },
+  {
+    "id": 27,
+    "slug": "kaggle-exp-27-airport-traffic",
+    "dataset": "US Airport Traffic",
+    "kaggle": "https://www.kaggle.com/datasets?search=us+airport+traffic",
+    "prompt": "Kaggle上の米国空港交通データに相当する公開データを調べ、空港・都市ごとの交通量や地理的な偏りを分析してください。データ項目を確認して適切な集計と図表を自分で選び、対象期間の制約を日本語で説明してください。AI Data Scientist SkillとJupyter MCPを使い、計画から根拠付き結果までノートブックに記録して再実行してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/plotly/datasets/master/2011_february_us_airport_traffic.csv"
+  },
+  {
+    "id": 28,
+    "slug": "kaggle-exp-28-ag-exports",
+    "dataset": "US Agricultural Exports",
+    "kaggle": "https://www.kaggle.com/datasets?search=us+agricultural+exports",
+    "prompt": "Kaggleで扱われる米国農産物輸出データに相当する公開データから、品目や地域による輸出額の構成を調べてください。通貨単位や集計対象を確認し、比較に向いた図表を自分で選んで、分析結果を日本語で説明してください。AI Data Scientist SkillとJupyter MCPで計画・コード・出力・根拠付きInsightを記録し、再実行を確認してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv"
+  },
+  {
+    "id": 29,
+    "slug": "kaggle-exp-29-apple-stock",
+    "dataset": "Apple Stock",
+    "kaggle": "https://www.kaggle.com/datasets?search=apple+stock+historical",
+    "prompt": "Kaggleで公開されるApple株価データに相当する公開時系列データを分析し、価格推移と日次変動の特徴を示してください。価格とリターンを区別して自分で分析方法と図表を選び、予測を行う場合はデータ範囲の限界を明記してください。AI Data Scientist SkillとJupyter MCPで根拠付きで記録し、再実行してください。",
+    "fallback_csv": "https://raw.githubusercontent.com/plotly/datasets/master/2014_apple_stock.csv"
+  },
+  {
+    "id": 30,
+    "slug": "kaggle-exp-30-world-gdp",
+    "dataset": "World GDP",
+    "kaggle": "https://www.kaggle.com/datasets?search=world+gdp+by+country",
+    "prompt": "Kaggleの世界GDPデータに相当する公開データを使い、国ごとのGDP分布と地域差を調べてください。分布の偏りを確認して分析計画と伝わりやすい図表を自分で決め、集計年とGDPの解釈上の注意を日本語で説明してください。AI Data Scientist SkillとJupyter MCPで計画・コード・結果・根拠付きInsightを記録し、ノートブックの再実行を確かめてください。",
+    "fallback_csv": "https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv"
+  },
+  {
+    "id": 31,
+    "slug": "kaggle-exp-31-house-prices",
+    "dataset": "House Prices",
+    "kaggle": "https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques",
+    "prompt": "KaggleのHouse Pricesデータを使い、住宅価格の違いを説明する主要な特徴と、単純な線形関係では捉えにくい要因を調べてください。欠損、歪んだ価格分布、カテゴリ変数を確認し、適切な図表と検証を自分で選び、予測性能と説明の違いを日本語で示してください。"
+  },
+  {
+    "id": 32,
+    "slug": "kaggle-exp-32-breast-cancer",
+    "dataset": "Breast Cancer Wisconsin",
+    "kaggle": "https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data",
+    "prompt": "KaggleのBreast Cancer Wisconsinデータを使い、良性・悪性を区別する特徴を調べてください。クラス比率、特徴間の強い相関、医療データとしての誤分類リスクを確認し、説明可能な比較と図表を日本語で報告してください。診断支援と臨床診断を混同しないでください。"
+  },
+  {
+    "id": 33,
+    "slug": "kaggle-exp-33-heart-disease",
+    "dataset": "Heart Disease",
+    "kaggle": "https://www.kaggle.com/datasets?search=heart+disease+uci",
+    "prompt": "KaggleのHeart Diseaseデータを分析し、心疾患アウトカムと関連する特徴を調べてください。欠損や符号化を確認し、単変量差と多変量での関連を区別して、交絡、標本選択、因果解釈の限界を日本語で説明してください。"
+  },
+  {
+    "id": 34,
+    "slug": "kaggle-exp-34-bike-sharing",
+    "dataset": "Bike Sharing Demand",
+    "kaggle": "https://www.kaggle.com/competitions/bike-sharing-demand",
+    "prompt": "KaggleのBike Sharing Demandデータを使い、自転車利用数の時間帯・曜日・季節・天候による変化を調べてください。時系列順序と需要分布を考慮し、適切な図表と検証を自分で選び、将来期間への一般化の限界を日本語で示してください。"
+  },
+  {
+    "id": 35,
+    "slug": "kaggle-exp-35-retail-sales",
+    "dataset": "Retail Sales",
+    "kaggle": "https://www.kaggle.com/datasets?search=retail+sales+time+series",
+    "prompt": "Kaggleの小売売上データを使い、売上の季節性、店舗・商品カテゴリ差、急な変化を調べてください。集計粒度と欠損期間を確認し、再現可能な時系列図と比較を作成して、予測可能性の限界を日本語で説明してください。"
+  },
+  {
+    "id": 36,
+    "slug": "kaggle-exp-36-credit-card-fraud",
+    "dataset": "Credit Card Fraud Detection",
+    "kaggle": "https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud",
+    "prompt": "KaggleのCredit Card Fraud Detectionデータを使い、不正取引の頻度、金額・時刻の分布、正常取引との違いを調べてください。極端なクラス不均衡を前提に、accuracyだけに依存しない評価と図表を選び、匿名化特徴による解釈上の制約を日本語で示してください。"
+  },
+  {
+    "id": 37,
+    "slug": "kaggle-exp-37-air-quality",
+    "dataset": "Air Quality",
+    "kaggle": "https://www.kaggle.com/datasets?search=air+quality+time+series",
+    "prompt": "Kaggleの大気質時系列データを使い、主要汚染物質の時間変化、季節性、気象条件との関連を調べてください。単位、欠測、観測地点を確認し、相関を排出源の因果効果と混同しない日本語の結論を示してください。"
+  },
+  {
+    "id": 38,
+    "slug": "kaggle-exp-38-earthquakes",
+    "dataset": "Earthquakes",
+    "kaggle": "https://www.kaggle.com/datasets?search=global+earthquakes",
+    "prompt": "Kaggleの世界地震データを使い、規模、深さ、発生地域、時間の分布を調べてください。観測期間とカタログの検出限界を確認し、地理的・統計的に適切な図表を選び、短期予知が可能であるかのような表現を避けて日本語で報告してください。"
+  },
+  {
+    "id": 39,
+    "slug": "kaggle-exp-39-forest-fires",
+    "dataset": "Forest Fires",
+    "kaggle": "https://www.kaggle.com/datasets?search=forest+fires+weather",
+    "prompt": "Kaggleの森林火災データを使い、焼失面積と気象・季節・火災危険指数の関係を調べてください。ゼロが多く歪んだ分布を確認し、外れ値に頑健な要約と図表を自分で選び、関連を発火原因と解釈しないよう日本語で説明してください。"
+  },
+  {
+    "id": 40,
+    "slug": "kaggle-exp-40-world-happiness",
+    "dataset": "World Happiness",
+    "kaggle": "https://www.kaggle.com/datasets?search=world+happiness+report",
+    "prompt": "KaggleのWorld Happinessデータを使い、幸福度と所得、健康、社会的支援などの指標の関係と地域差を調べてください。年次・国別データの構造を確認し、ランキング差の不確実性と因果推論の限界を日本語で示してください。"
+  },
+  {
+    "id": 41,
+    "slug": "kaggle-exp-41-co2-emissions",
+    "dataset": "CO2 Emissions",
+    "kaggle": "https://www.kaggle.com/datasets?search=co2+emissions+by+country",
+    "prompt": "Kaggleの国別CO2排出データを使い、総排出量、一人当たり排出量、長期変化の違いを調べてください。人口と経済規模による見え方の違いを確認し、単位・対象年・欠測を明示した図表と日本語の解釈を作成してください。"
+  },
+  {
+    "id": 42,
+    "slug": "kaggle-exp-42-energy-consumption",
+    "dataset": "Energy Consumption",
+    "kaggle": "https://www.kaggle.com/datasets?search=energy+consumption+time+series",
+    "prompt": "Kaggleの電力・エネルギー消費時系列を使い、日内・週内・季節変動と需要ピークを調べてください。時刻、タイムゾーン、欠損、集計間隔を確認し、需要予測に使える情報と未知期間への限界を日本語で説明してください。"
+  },
+  {
+    "id": 43,
+    "slug": "kaggle-exp-43-customer-churn",
+    "dataset": "Telco Customer Churn",
+    "kaggle": "https://www.kaggle.com/datasets/blastchar/telco-customer-churn",
+    "prompt": "KaggleのTelco Customer Churnデータを使い、解約と関連する契約・料金・利用期間の特徴を調べてください。クラス比率、カテゴリの符号化、顧客期間による交絡を確認し、解約原因と予測上の関連を区別して日本語で報告してください。"
+  },
+  {
+    "id": 44,
+    "slug": "kaggle-exp-44-movie-ratings",
+    "dataset": "Movie Ratings",
+    "kaggle": "https://www.kaggle.com/datasets?search=movie+ratings+movielens",
+    "prompt": "Kaggleの映画評価データを使い、作品・ジャンル・利用者による評価分布の違いを調べてください。評価件数の少ない作品、人気による選択バイアス、利用者内の反復測定を確認し、ランキングの不確実性を含めて日本語で説明してください。"
+  },
+  {
+    "id": 45,
+    "slug": "kaggle-exp-45-product-reviews",
+    "dataset": "Product Reviews",
+    "kaggle": "https://www.kaggle.com/datasets?search=ecommerce+product+reviews",
+    "prompt": "KaggleのEC商品レビューデータを使い、評価点とレビュー本文に現れる表現の関係を調べてください。言語、欠損、重複、クラス不均衡を確認し、単語頻度または感情分析を適切に選び、皮肉や投稿者選択による限界を日本語で示してください。"
+  },
+  {
+    "id": 46,
+    "slug": "kaggle-exp-46-crop-yield",
+    "dataset": "Crop Yield",
+    "kaggle": "https://www.kaggle.com/datasets?search=crop+yield+weather",
+    "prompt": "Kaggleの作物収量データを使い、作物・地域・年・気象条件による収量差を調べてください。単位、地域粒度、欠測を確認し、時間変化と地域差を分けた分析と図表を選び、観察データから施策効果を断定しない日本語の結論を示してください。"
+  },
+  {
+    "id": 47,
+    "slug": "kaggle-exp-47-traffic-accidents",
+    "dataset": "Traffic Accidents",
+    "kaggle": "https://www.kaggle.com/datasets?search=traffic+accidents+weather",
+    "prompt": "Kaggleの交通事故データを使い、事故件数または重大度の時間帯・道路・天候による違いを調べてください。曝露量が不明な場合の率と件数の違い、記録バイアス、位置情報の欠損を確認し、慎重な日本語の解釈を示してください。"
+  },
+  {
+    "id": 48,
+    "slug": "kaggle-exp-48-covid-cases",
+    "dataset": "COVID-19 Cases",
+    "kaggle": "https://www.kaggle.com/datasets?search=covid+19+cases+time+series",
+    "prompt": "KaggleのCOVID-19国別または地域別時系列データを使い、症例・死亡の波と地域差を調べてください。報告遅延、検査体制、人口規模、定義変更を確認し、単純な国比較や政策の因果効果を断定しない日本語の分析を作成してください。"
+  },
+  {
+    "id": 49,
+    "slug": "kaggle-exp-49-water-quality",
+    "dataset": "Water Quality",
+    "kaggle": "https://www.kaggle.com/datasets?search=water+quality+potability",
+    "prompt": "Kaggleの水質データを使い、飲用可否または水質区分と化学指標の関係を調べてください。欠損、測定単位、基準値、クラス比率を確認し、規制基準による判定とデータ駆動の関連を区別して日本語で報告してください。"
+  },
+  {
+    "id": 50,
+    "slug": "kaggle-exp-50-loan-default",
+    "dataset": "Loan Default",
+    "kaggle": "https://www.kaggle.com/datasets?search=loan+default+risk",
+    "prompt": "Kaggleのローン返済・デフォルトデータを使い、デフォルトと関連する申込者・契約特徴を調べてください。クラス不均衡、欠損、時点の混入、保護属性または代理変数による公平性リスクを確認し、予測上の関連と信用判断の妥当性を区別して日本語で示してください。"
+  }
+]

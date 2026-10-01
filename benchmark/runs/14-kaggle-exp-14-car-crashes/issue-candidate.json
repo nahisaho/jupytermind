@@ -1,0 +1,160 @@
+{
+  "experiment_id": 14,
+  "run_id": "v020-exp-14",
+  "assessment": "改善候補であり、確定した不具合や修正済み項目ではない。外部SDK、MCP接続、外部ランナーの問題は除外する。",
+  "evidence_scope": [
+    "benchmark/projects/kaggle-v020-kaggle-exp-14-car-crashes/notebooks/kaggle-v020-kaggle-exp-14-car-crashes.ipynb",
+    "benchmark/runs/14-kaggle-exp-14-car-crashes/initial-prompt.md",
+    "benchmark/runs/14-kaggle-exp-14-car-crashes/initial.log",
+    "benchmark/runs/14-kaggle-exp-14-car-crashes/followup.log",
+    "benchmark/runs/14-kaggle-exp-14-car-crashes/status.json"
+  ],
+  "cell_index_convention": "0-based",
+  "candidates": [
+    {
+      "classification": "可視化・レイアウト機能不足",
+      "module": "ai_data_scientist.visualization",
+      "function": "render_chart",
+      "reproduction_steps": [
+        "bad-drivers.csvの死亡事故関与運転者率上位10州を抽出する。",
+        "render_chart(df, kind='bar', x='state', y='fatal_driver_rate', title='死亡事故関与運転者率の上位10州（2012年）', xlabel='州（州等重みの比較）', ylabel='運転者 / 走行10億マイル')を呼び出す。",
+        "州名など長い軸ラベルがPNG領域内に収まるかを目視確認する。",
+        "公開シグネチャでfigsizeまたは余白調整を指定できるかを確認する。"
+      ],
+      "expected_behavior": "長いカテゴリ名と日本語の軸ラベルが画像領域内に収まる。またはfigsize・余白・ラベル配置を調整できる。",
+      "actual_behavior": "Notebookセル20は修正前の縦棒図で州名の下端が切れたと記録する。セル22の公開シグネチャにはfigsize・余白調整の引数がない。最終セル9では横棒図へ置き換えられている。",
+      "impact": "州比較の図でカテゴリ名が読めなくなり、render_chartの公開引数だけでは調整できない可能性がある。",
+      "workaround": "Matplotlibで横棒図を作り、fig.tight_layout()とfig.savefig(..., bbox_inches='tight')を適用する。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-14-car-crashes/notebooks/kaggle-v020-kaggle-exp-14-car-crashes.ipynb",
+          "cell_index": 20,
+          "type": "Notebook内の履歴記述",
+          "observation": "初回縦棒の州名下端が切れた。修正前MCP画像SHA先頭0d54a4b3c70f0c2f、修正後f4a2c0704e3d6a7dと記述。これらは履歴上の値で、現PNGのハッシュとしては扱わない。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-14-car-crashes/notebooks/kaggle-v020-kaggle-exp-14-car-crashes.ipynb",
+          "cell_index": 22,
+          "execution_count": 25,
+          "type": "保存済み診断出力",
+          "observation": "(df: 'pd.DataFrame', kind: 'str' = 'scatter', x: 'str | None' = None, y: 'str | None' = None, title: 'str | None' = None, xlabel: 'str | None' = None, ylabel: 'str | None' = None) -> 'bytes'"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-14-car-crashes/notebooks/kaggle-v020-kaggle-exp-14-car-crashes.ipynb",
+          "cell_index": 9,
+          "type": "保存済み回避コードとPNG",
+          "observation": "上位10州はbarh、figsize=(10, 6)、tight_layout、bbox_inches='tight'で描画。散布図にはrender_chartを使用。"
+        }
+      ],
+      "evidence_limitations": "修正前の切れたPNGやそのMCP応答は指定証拠に残っていない。切れの発生はNotebookの履歴記述に基づき、現出力から同じ不具合を再確認したものではない。固定figsizeという実装内部の記述もソース検証していない。",
+      "acceptance_criteria": [
+        "同じ上位10州、日本語タイトル・軸ラベルを用いた縦棒図で、全州名と全ラベルが画像内に収まり、読み取れる。",
+        "公開APIで調整可能にする場合、レイアウト指定を明文化し、既存のscatter呼び出しを維持する。",
+        "長いカテゴリ名を含む回帰テストでPNG出力とラベルの収まりを確認する。"
+      ]
+    },
+    {
+      "classification": "データ定義・未検証項目抽出の仕様不足",
+      "module": "ai_data_scientist.data_definition",
+      "function": "DataDefinitionManifest.unresolved_fields",
+      "reproduction_steps": [
+        "build_manifestでvariables.fatal_driver_rate.exposure_denominatorにFieldValue('州内車両走行距離と解釈', 'inferred', 'per billion milesという列名。測定手順・車種範囲は未確認')を設定する。",
+        "manifest.unresolved_fields()の返却パスを収集する。",
+        "manifest.variables内のstatus='inferred'のパスと返却パスの差を求める。"
+      ],
+      "expected_behavior": "unknownだけでなく未検証inferredも区別して一覧化できるAPI、または明示的なオプションがある。既存のunknownのみを返す契約は必要に応じて維持する。",
+      "actual_behavior": "セル22の差分出力はINFERRED_NOT_RETURNED ['variables.fatal_driver_rate.exposure_denominator']。unresolved_fieldsの一覧にinferredの分母が含まれない。",
+      "impact": "未解決一覧だけを見る利用者が、推測された重要な分母や派生率の母集団条件を見落とす可能性がある。",
+      "workaround": "manifest内のstatus='inferred'を別途列挙し、INFERRED_FIELDS_SUPPLEMENTと日本語の制限説明へ記録する。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-14-car-crashes/notebooks/kaggle-v020-kaggle-exp-14-car-crashes.ipynb",
+          "cell_index": 6,
+          "execution_count": 12,
+          "type": "コードと保存出力",
+          "observation": "UNRESOLVED_FIELDSはunknown項目を列挙し、INFERRED_FIELDS_SUPPLEMENTにvariables.fatal_driver_rate.exposure_denominatorを別途出力する。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-14-car-crashes/notebooks/kaggle-v020-kaggle-exp-14-car-crashes.ipynb",
+          "cell_index": 22,
+          "execution_count": 25,
+          "type": "直接API呼び出しの再現出力",
+          "observation": "INFERRED_NOT_RETURNED ['variables.fatal_driver_rate.exposure_denominator']"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-14-car-crashes/notebooks/kaggle-v020-kaggle-exp-14-car-crashes.ipynb",
+          "cell_index": 20,
+          "type": "Notebookの解釈",
+          "observation": "unknownのみが返るのはdocstring通りであり、契約違反とは断定しないと記録。"
+        }
+      ],
+      "evidence_limitations": "実装・docstring自体は今回の指定証拠に含まれない。既存契約違反ではなく、未検証inferredを追跡する機能の改善候補として扱う。",
+      "acceptance_criteria": [
+        "unknownとinferredを区別したまま、未検証項目を一覧化できる。",
+        "同じmanifestのexposure_denominatorがinferredとして取得できる。",
+        "既存のunknown-only利用を維持するか、互換性の扱いを明文化する。",
+        "unknown・inferred・verifiedを混在させたテストで抽出結果を検証する。"
+      ]
+    },
+    {
+      "classification": "図表監査・メタデータ欠如の見逃し",
+      "module": "ai_data_scientist.notebook_audit",
+      "function": "audit_visual_outputs",
+      "reproduction_steps": [
+        "visualization.build_image_output(coupling_png)で非空PNGの出力を作る。",
+        "nbformat.v4.new_code_cellで作ったセルのoutputsへそのPNGを入れ、metadata.chartは付けない。",
+        "そのセルを含むNotebookへaudit_visual_outputs(probe_nb, (0,))を実行する。",
+        "返却されたfindingsとセルmetadataを表示する。"
+      ],
+      "expected_behavior": "PNGがあるのにchart監査メタデータがない場合、未評価の監査項目を警告または明示的な未評価状態として返す。",
+      "actual_behavior": "セル22はNO_METADATA_VISUAL_FINDINGS []、NO_METADATA_PRESENT {}を出力し、メタデータ欠如について警告しない。",
+      "impact": "監査に必要な情報がない状態を、図のタイトル・軸・凡例・文字について問題がない状態と誤認し得る。visual_auditの空findingsだけでは監査の実施範囲を判断できない。",
+      "workaround": "実図のタイトル・軸・凡例を確認し、文字欠損警告を検査する。実図セル9・17にはmetadata.chartを付与し、初回図ごとのCHART_METADATAも出力する。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-14-car-crashes/notebooks/kaggle-v020-kaggle-exp-14-car-crashes.ipynb",
+          "cell_index": 22,
+          "execution_count": 25,
+          "type": "直接API呼び出しの再現コードと出力",
+          "observation": "probe_cell.outputs = [visualization.build_image_output(coupling_png)]、missing_meta_findings = notebook_audit.audit_visual_outputs(probe_nb, (0,))。出力はNO_METADATA_VISUAL_FINDINGS []およびNO_METADATA_PRESENT {}。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-14-car-crashes/notebooks/kaggle-v020-kaggle-exp-14-car-crashes.ipynb",
+          "cell_index": 9,
+          "type": "回避記録",
+          "observation": "metadata.chartにtitle/xlabel/ylabel/legend/missing_glyphs、各PNGについてCHART_METADATAを保存。"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-14-car-crashes/notebooks/kaggle-v020-kaggle-exp-14-car-crashes.ipynb",
+          "cell_index": 17,
+          "type": "回避記録",
+          "observation": "3パネル図のglyph警告を検査し、metadata.chartを保存。"
+        }
+      ],
+      "evidence_limitations": "このprobeはメタデータ欠如を検出しないことを示す。PNG画像内で実際に軸ラベルやタイトルが欠けていること、画像解析機能に不具合があることを証明するものではない。最終セル25のvisual_audit=True実行完了も未確認。",
+      "acceptance_criteria": [
+        "PNG出力を持ちchartメタデータのない同じprobeで、メタデータ欠如または未評価項目を明示する。",
+        "メタデータ完備・欠如・一部欠如を区別するテストを追加する。",
+        "警告なしと未評価を区別できる監査結果にする。",
+        "正常なPNGと必要メタデータを持つ既存Notebookの監査挙動を維持する。"
+      ]
+    }
+  ],
+  "excluded_external_events": [
+    {
+      "classification": "Kaggle SDKの引数互換性",
+      "evidence": "Notebookセル3にdataset_list(page_size=...)のTypeErrorとsearchのみへの修正を記録。修正後セル2は検索結果を出力。",
+      "reason_for_exclusion": "Jupytermind APIではなく外部SDKの呼び出し条件に関する問題。元tracebackは指定証拠にない。"
+    },
+    {
+      "classification": "Jupyter MCP接続・操作条件",
+      "evidence": "followup.logはプロトコル不一致と互換版クライアントへの接続し直しの意向を記録。Notebookセル0・20には親ディレクトリ作成をbootstrapで解消した記述がある。",
+      "reason_for_exclusion": "Jupytermind内部の原因を示す診断はなく、接続回復・再実行完了も指定証拠では未確認。"
+    },
+    {
+      "classification": "外部ベンチマークランナーの終了条件",
+      "evidence": "initial.logとfollowup.log末尾に安定したNotebookとauditを理由とする停止。status.jsonのinitial_terminationとfollowup_terminationはartifact_complete_cutoff。Notebook最終セル25はexecution_count=nullかつoutputs=[]。",
+      "reason_for_exclusion": "打ち切りと最終処理の未確認はあるが、Jupytermindの根本原因は特定できない。"
+    }
+  ]
+}

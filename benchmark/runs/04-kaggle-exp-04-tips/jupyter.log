@@ -1,0 +1,324 @@
+[E 2026-10-02 03:26:08.032 ServerApp] Exception while loading config file /home/nahisaho/.jupyter/jupyter_server_config.py
+    Traceback (most recent call last):
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/application.py", line 916, in _load_config_files
+        config = loader.load_config()
+                 ^^^^^^^^^^^^^^^^^^^^
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/loader.py", line 625, in load_config
+        self._read_file_as_dict()
+      File "/home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/traitlets/config/loader.py", line 658, in _read_file_as_dict
+        exec(compile(f.read(), conf_filename, "exec"), namespace, namespace)  # noqa: S102
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/home/nahisaho/.jupyter/jupyter_server_config.py", line 3, in <module>
+        c.IdentityProvider.token = os.environ["JUPYTER_TOKEN"]
+                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+      File "<frozen os>", line 685, in __getitem__
+    KeyError: 'JUPYTER_TOKEN'
+[I 2026-10-02 03:26:09.092 ServerApp] Extension package jupyter_mcp_server took 1.0372s to import
+[I 2026-10-02 03:26:09.208 ServerApp] Extension package jupyter_mcp_tools took 0.1147s to import
+[I 2026-10-02 03:26:09.540 ServerApp] Extension package jupyterlab_jupytext took 0.3063s to import
+[I 2026-10-02 03:26:09.542 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2026-10-02 03:26:09.547 ServerApp] jupyter_mcp_server | extension was successfully linked.
+[I 2026-10-02 03:26:09.547 ServerApp] jupyter_mcp_tools | extension was successfully linked.
+[I 2026-10-02 03:26:09.552 ServerApp] jupyter_server_fileid | extension was successfully linked.
+[I 2026-10-02 03:26:09.555 ServerApp] jupyter_server_nbmodel | extension was successfully linked.
+[I 2026-10-02 03:26:09.558 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2026-10-02 03:26:09.561 ServerApp] jupyter_server_ydoc | extension was successfully linked.
+[I 2026-10-02 03:26:09.565 ServerApp] jupyterlab | extension was successfully linked.
+[I 2026-10-02 03:26:09.565 ServerApp] jupyterlab_jupytext | extension was successfully linked.
+[I 2026-10-02 03:26:09.603 ServerApp] notebook_shim | extension was successfully linked.
+[I 2026-10-02 03:26:09.618 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2026-10-02 03:26:09.621 ServerApp] jupyter_lsp | extension was successfully loaded.
+[10/02/26 03:26:09] INFO     Auto-enrolled document             extension.py:201
+                             'notebook.ipynb' as 'default'                      
+                    INFO     Jupyter MCP Server Extension       extension.py:211
+                             settings initialized                               
+                    INFO     Registered MCP handlers at /mcp/   extension.py:247
+                    INFO       - MCP protocol: /mcp (SSE-based) extension.py:248
+                    INFO       - Health check: /mcp/healthz     extension.py:249
+                    INFO       - List tools: /mcp/tools/list    extension.py:250
+                    INFO       - Call tool: /mcp/tools/call     extension.py:251
+[I 2026-10-02 03:26:09.918 ServerApp] jupyter_mcp_server | extension was successfully loaded.
+[I 2026-10-02 03:26:09.918 ServerApp] Registered jupyter_mcp_tools server extension
+[I 2026-10-02 03:26:09.918 ServerApp] jupyter_mcp_tools | extension was successfully loaded.
+[I 2026-10-02 03:26:09.919 FileIdExtension] Configured File ID manager: ArbitraryFileIdManager
+[I 2026-10-02 03:26:09.920 FileIdExtension] ArbitraryFileIdManager : Configured root dir: /home/nahisaho/GitHub/jupytermind
+[I 2026-10-02 03:26:09.920 FileIdExtension] ArbitraryFileIdManager : Configured database path: /home/nahisaho/.local/share/jupyter/file_id_manager.db
+[I 2026-10-02 03:26:09.920 FileIdExtension] ArbitraryFileIdManager : Successfully connected to database file.
+[I 2026-10-02 03:26:09.920 FileIdExtension] ArbitraryFileIdManager : Creating File ID tables and indices with journal_mode = DELETE
+[I 2026-10-02 03:26:09.920 FileIdExtension] Attached event listeners.
+[I 2026-10-02 03:26:09.921 ServerApp] jupyter_server_fileid | extension was successfully loaded.
+[I 2026-10-02 03:26:09.921 ServerApp] jupyter_server_nbmodel | extension was successfully loaded.
+[I 2026-10-02 03:26:09.922 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2026-10-02 03:26:09.925 ServerApp] jupyter_server_ydoc | extension was successfully loaded.
+[I 2026-10-02 03:26:09.928 LabApp] JupyterLab extension loaded from /home/nahisaho/GitHub/jupytermind/.venv/lib/python3.12/site-packages/jupyterlab
+[I 2026-10-02 03:26:09.928 LabApp] JupyterLab application directory is /home/nahisaho/GitHub/jupytermind/.venv/share/jupyter/lab
+[I 2026-10-02 03:26:09.928 LabApp] Extension Manager is 'pypi'.
+[I 2026-10-02 03:26:09.970 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2026-10-02 03:26:09.970 ServerApp] [Jupytext Server Extension] Deriving an AsyncTextFileContentsManager from AsyncLargeFileManager
+[I 2026-10-02 03:26:09.971 ServerApp] jupyterlab_jupytext | extension was successfully loaded.
+[I 2026-10-02 03:26:09.972 ServerApp] Serving notebooks from local directory: /home/nahisaho/GitHub/jupytermind
+[I 2026-10-02 03:26:09.972 ServerApp] Jupyter Server 2.21.1 is running at:
+[I 2026-10-02 03:26:09.973 ServerApp] http://127.0.0.1:54887/lab?token=...
+[I 2026-10-02 03:26:09.973 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 2026-10-02 03:26:12.136 ServerApp] Skipped non-installed server(s): basedpyright, bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyrefly, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[I 2026-10-02 03:26:13.872 ServerApp] Kernel started: e6fe2601-cc7c-4bfd-b0cb-edb1d731d4c1
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 03:26:14.245 ServerApp] Adapting from protocol version 5.3 (kernel e6fe2601-cc7c-4bfd-b0cb-edb1d731d4c1) to 5.4 (client).
+[I 2026-10-02 03:26:14.246 ServerApp] Connecting to kernel e6fe2601-cc7c-4bfd-b0cb-edb1d731d4c1.
+[W 2026-10-02 03:26:14.248 ServerApp] The websocket_ping_timeout (90000) cannot be longer than the websocket_ping_interval (30000).
+    Setting websocket_ping_timeout=30000
+[I 2026-10-02 03:26:37.504 ServerApp] Kernel started: dff01e8a-26df-4f19-bce2-85e088eca0a3
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 03:26:27.240 ServerApp] Adapting from protocol version 5.3 (kernel dff01e8a-26df-4f19-bce2-85e088eca0a3) to 5.4 (client).
+[I 2026-10-02 03:26:27.241 ServerApp] Connecting to kernel dff01e8a-26df-4f19-bce2-85e088eca0a3.
+[I 2026-10-02 03:26:27.248 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:26:27.251 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:26:27.258 YDocExtension] Creating FileLoader for: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:26:27.259 YDocExtension] Watching file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:26:27.262 ServerApp] Initializing room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[W 2026-10-02 03:26:27.326 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:26:27.333 ServerApp] Content in room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d loaded from the ystore SQLiteYStore
+[I 2026-10-02 03:26:32.200 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:26:34.357 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:27:09.410 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:27:09.434 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:27:12.071 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:27:12.075 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:27:12.077 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:27:12.078 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:28:18.618 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[W 2026-10-02 03:28:18.626 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:28:26.835 ServerApp] Kernel restarted: dff01e8a-26df-4f19-bce2-85e088eca0a3
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 03:28:29.838 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:29.872 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:31.389 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:31.392 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:28:31.394 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:28:31.395 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:28:32.727 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:32.731 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:28:32.733 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:28:32.734 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:28:37.802 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:37.870 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:38.917 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:38.922 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:28:38.925 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:28:38.926 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:28:41.779 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:41.801 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:42.401 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:42.406 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:28:42.409 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:28:42.410 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:28:45.174 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:45.196 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:46.397 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:46.401 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:28:46.404 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:28:46.404 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:28:51.648 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:51.719 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:52.351 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:52.355 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:28:52.357 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:28:52.358 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:28:56.732 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:56.801 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:58.069 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:28:58.073 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:28:58.075 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:28:58.075 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:29:01.297 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:01.322 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:12.808 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:12.812 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:29:12.814 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:29:12.814 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:29:05.564 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:05.591 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:06.966 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:06.969 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:29:06.972 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:29:06.972 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:29:10.094 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:10.148 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:11.504 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:11.507 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:29:11.509 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:29:11.510 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:29:14.497 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:14.527 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:15.589 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:15.592 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:29:15.595 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:29:15.595 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:29:18.551 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:23.327 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:23.358 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:24.396 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:24.400 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:29:24.402 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:29:24.403 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:29:37.902 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:27.340 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:27.893 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[W 2026-10-02 03:29:27.902 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:29:28.699 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:29:28.704 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:29:28.706 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:29:28.706 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:30:19.350 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[W 2026-10-02 03:30:19.361 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:30:28.859 ServerApp] Kernel restarted: dff01e8a-26df-4f19-bce2-85e088eca0a3
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[I 2026-10-02 03:30:32.513 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:32.551 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:33.085 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:33.089 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:30:33.091 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:30:33.091 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:30:35.415 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:35.419 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:30:35.421 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:30:35.422 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:30:38.173 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:38.210 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:39.290 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:39.296 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:30:39.300 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:30:39.301 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:30:44.078 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:44.108 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:45.181 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:45.184 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:30:45.186 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:30:45.187 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:30:48.416 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:48.443 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:49.632 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:49.636 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:30:49.638 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:30:49.639 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:30:53.050 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:53.095 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:54.230 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:54.236 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:30:54.239 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:30:54.239 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:30:57.199 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:57.227 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:58.424 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:30:58.428 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:30:58.430 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:30:58.431 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:31:02.378 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:02.425 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:03.475 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:03.478 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:31:03.480 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:31:03.481 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:31:10.681 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:10.716 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:12.103 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:12.106 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:31:12.108 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:31:12.109 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:31:14.634 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:14.670 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:15.976 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:15.980 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:31:15.982 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:31:15.982 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:31:18.858 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:18.899 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:19.963 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:19.966 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:31:19.968 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:31:19.969 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:31:24.677 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:24.712 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:25.792 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:25.796 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:31:25.798 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:31:25.799 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:31:28.212 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:28.253 ServerApp] Request for Y document (previously indexed) 'benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb' with room ID: 1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:28.693 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[W 2026-10-02 03:31:28.703 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:31:29.713 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[W 2026-10-02 03:31:29.721 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:31:29.771 ServerApp] Saving the content from room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:31:29.775 YDocExtension] Saving file: benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb
+[I 2026-10-02 03:31:29.777 ServerApp] Saving kaggle-v020-kaggle-exp-04-tips.ipynb
+[W 2026-10-02 03:31:29.778 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[I 2026-10-02 03:32:00.825 ServerApp] Out-of-band changes. Overwriting the content in room json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[W 2026-10-02 03:32:00.833 ServerApp] Notebook benchmark/projects/kaggle-v020-kaggle-exp-04-tips/notebooks/kaggle-v020-kaggle-exp-04-tips.ipynb is not trusted
+[C 2026-10-02 03:32:23.985 ServerApp] received signal 15, stopping
+[I 2026-10-02 03:32:23.986 ServerApp] Shutting down 10 extensions
+[10/02/26 03:32:23] INFO     Stopping Jupyter MCP Server        extension.py:267
+                             Extension                                          
+                    INFO     Jupyter MCP Server Extension       extension.py:273
+                             stopped                                            
+[I 2026-10-02 03:32:23.988 YDocExtension] Deleting all rooms.
+[I 2026-10-02 03:32:23.989 ServerApp] Shutting down 2 kernels
+[I 2026-10-02 03:32:23.990 ServerApp] Kernel shutdown: e6fe2601-cc7c-4bfd-b0cb-edb1d731d4c1
+[I 2026-10-02 03:32:23.990 ServerApp] Kernel shutdown: dff01e8a-26df-4f19-bce2-85e088eca0a3
+[I 2026-10-02 03:32:24.004 ServerApp] Cleaning room: json:notebook:1d847e54-97fd-444b-85d8-95d967f2221d
+[I 2026-10-02 03:32:24.005 ServerApp] Starting buffering for dff01e8a-26df-4f19-bce2-85e088eca0a3:4ffbe86b-b0559a1cf8c1836b2f9189a5
+[I 2026-10-02 03:32:24.006 ServerApp] Starting buffering for e6fe2601-cc7c-4bfd-b0cb-edb1d731d4c1:882790ca-a35433908c57a68a16e95f59
+[C 2026-10-02 03:32:24.017 ServerApp] received signal 15, stopping
+[I 2026-10-02 03:32:24.018 ServerApp] Shutting down 10 extensions
+[10/02/26 03:32:24] INFO     Stopping Jupyter MCP Server        extension.py:267
+                             Extension                                          
+                    INFO     Jupyter MCP Server Extension       extension.py:273
+                             stopped                                            
+[I 2026-10-02 03:32:24.021 YDocExtension] Deleting all rooms.
+                    ERROR    Task exception was never        base_events.py:1821
+                             retrieved                                          
+                             future: <Task finished                             
+                             name='Task-2860'                                   
+                             coro=<JupyterWebsocketServer.cl                    
+                             ean() done, defined at                             
+                             /home/nahisaho/GitHub/jupytermi                    
+                             nd/.venv/lib/python3.12/site-pa                    
+                             ckages/jupyter_server_ydoc/webs                    
+                             ocketserver.py:60>                                 
+                             exception=RuntimeError('Websock                    
+                             etServer not running')>                            
+                             ╭─ Traceback (most recent cal─╮                    
+                             │ /home/nahisaho/GitHub/jupyt │                    
+                             │ ermind/.venv/lib/python3.12 │                    
+                             │ /site-packages/jupyter_serv │                    
+                             │ er_ydoc/websocketserver.py: │                    
+                             │ 79 in clean                 │                    
+                             │                             │                    
+                             │    76 │   │   #         sel │                    
+                             │    77 │   │   #         sel │                    
+                             │    78 │   │                 │                    
+                             │ ❱  79 │   │   await self.st │                    
+                             │    80 │   │   tasks = []    │                    
+                             │    81 │   │   if self.monit │                    
+                             │    82 │   │   │   self.moni │                    
+                             │                             │                    
+                             │ /home/nahisaho/GitHub/jupyt │                    
+                             │ ermind/.venv/lib/python3.12 │                    
+                             │ /site-packages/pycrdt/webso │                    
+                             │ cket/websocket_server.py:26 │                    
+                             │ 4 in stop                   │                    
+                             │                             │                    
+                             │   261 │   │   bound that wa │                    
+                             │   262 │   │   """           │                    
+                             │   263 │   │   if self._task │                    
+                             │ ❱ 264 │   │   │   raise Run │                    
+                             │   265 │   │                 │                    
+                             │   266 │   │   self._stopped │                    
+                             │   267 │   │   self._task_gr │                    
+                             ╰─────────────────────────────╯                    
+                             RuntimeError: WebsocketServer                      
+                             not running                                        
+[I 2026-10-02 03:32:24.072 ServerApp] Shutting down 2 kernels
+[I 2026-10-02 03:32:24.072 ServerApp] Discarding 1 buffered messages for e6fe2601-cc7c-4bfd-b0cb-edb1d731d4c1:882790ca-a35433908c57a68a16e95f59
+[I 2026-10-02 03:32:24.073 ServerApp] Kernel shutdown: e6fe2601-cc7c-4bfd-b0cb-edb1d731d4c1
+[I 2026-10-02 03:32:24.073 ServerApp] Kernel shutdown: dff01e8a-26df-4f19-bce2-85e088eca0a3

@@ -1,0 +1,12 @@
+実行済みNotebookとログを照合し、分析結果と実行基盤の問題を分けて記載します。PNGはNotebookの保存出力から抽出します。
+
+
+分析は完了しており、追加依頼は3回記録されています。Notebookの最小再現で確認された改善候補2件は、回避済みの書込み競合や外部ランナーの終了処理とは分けて報告します。
+
+
+実験03の日本語・Qiita書式の節を [report-section.md](benchmark/runs/03-kaggle-exp-03-penguins/report-section.md) に保存しました。初回プロンプト全文、追加依頼3回の原文・選定理由・結果、使用モジュール、最終結論、監査・再現性、限界と途中の問題を記載しています。
+
+NotebookのPNG図表4点を `benchmark/figures/exp-03-*.png` に抽出し、説明付きで参照しました。改善候補2件は外部基盤の問題と切り分け、[issue-candidate.json](benchmark/runs/03-kaggle-exp-03-penguins/issue-candidate.json) に保存しました。`white-paper-v0.2.0.md` は編集していません。
+
+
+[runner] stopping process group: Copilot CLI exited; cleaning descendant runtimes

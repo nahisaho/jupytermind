@@ -1,0 +1,101 @@
+{
+  "experiment_id": 32,
+  "run_id": "v020-exp-32",
+  "status": "candidate_not_confirmed_defect",
+  "evidence_scope": "指定Notebook、initial-prompt.md、initial.log、followup.log、status.jsonのみ。ソース実装や外部仕様の追加調査は行っていない。",
+  "candidates": [
+    {
+      "classification": "Jupytermindの定義検査の機能不足候補／推定定義の可視化",
+      "reproduction_steps": [
+        "Notebookセル11（0始まり、実行カウント30）のinferred_probe生成と同じく、ai_data_scientist.data_definitionをimportする。",
+        "data_definition.build_manifest(source={'unit': data_definition.FieldValue('仮の単位', 'inferred')}, dataset_scope={}, variables={})を実行する。",
+        "返されたmanifest.unresolved_fields()を呼び、推定定義が返却結果に含まれるか確認する。"
+      ],
+      "expected_behavior": "検証済みではないinferred定義をunknownと区別しつつ確認対象として表面化できる公開API、またはその用途の明確な案内を提供する。",
+      "actual_behavior": "Notebookセル11の検証ではinferredだけを含むmanifest.unresolved_fields()の戻り値は[]。Notebook自身はunknownのみを返すAPIと記録しているが、本候補で直接検証されたのはinferredが一覧に含まれないこと。",
+      "impact": "unresolved_fields()だけを使った場合、推定された定義が追加確認の一覧から漏れ、検証済みと誤認される可能性がある。本実験の定義資料取得は成功しており、この検証用inferred値が実データ定義の誤りを示すものではない。",
+      "workaround": "Notebookセル3でinferredフィールドを別走査し、未解決定義と併記している。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-32-breast-cancer/notebooks/kaggle-v020-kaggle-exp-32-breast-cancer.ipynb",
+          "cell_index": 11,
+          "execution_count": 30,
+          "location": "inferred_probe、inferred_probe_result、およびoutputs[2]のimprovement_candidates[0]",
+          "observed_value": "戻り値=[]"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-32-breast-cancer/notebooks/kaggle-v020-kaggle-exp-32-breast-cancer.ipynb",
+          "cell_index": 3,
+          "execution_count": 24,
+          "location": "unresolved、inferredの別走査と表示"
+        },
+        {
+          "file": "benchmark/runs/32-kaggle-exp-32-breast-cancer/initial.log",
+          "location": "最終応答の改善候補2件の記録への言及。個別API検証の根拠はNotebook出力。"
+        }
+      ],
+      "acceptance_criteria": [
+        "inferred-only、unknown-only、verified-only、混在するmanifestについて、確認対象を列挙する公開経路のテストを追加する。",
+        "確認対象の列挙でinferredとunknownがそれぞれ状態を保って表面化し、verifiedは未検証項目として混入しない。",
+        "既存unresolved_fields()のunknown限定仕様を維持する場合は、inferredも確認する公開経路と用途を明記し、同じ再現入力でその経路からinferredを取得できることを示す。"
+      ],
+      "responsibility_boundary": "data_definitionの公開APIでNotebook内に再現された候補。Kaggle API、Copilot CLI、外部ランナー、MCP保存競合には依存しない。APIの設計意図との照合は未実施。"
+    },
+    {
+      "classification": "Jupytermindの図表監査の機能不足候補／監査用メタデータ不足",
+      "reproduction_steps": [
+        "Notebookセル6のvisualization.render_chartとvisualization.build_image_outputで作成された最初のPNG出力を用いる。",
+        "セル11と同様に、そのPNG出力のみをoutputsに持つ実行済みコードセルをnbformat.v4.new_code_cellで作り、chartメタデータを付けずにnew_notebookへ格納する。",
+        "notebook_audit.audit_visual_outputs(chart_probe, (0,))を呼び、字形・ラベル検査の情報不足が報告されるか確認する。"
+      ],
+      "expected_behavior": "字形・タイトル・軸ラベル等を検査する情報が不足した場合、監査未実施または情報不足を明示する。公開描画APIで監査用メタデータを提供する場合も、メタデータがない他のPNGは検査済みと区別する。",
+      "actual_behavior": "Notebookセル11のメタデータなしPNGの検証ではvisual_findings=()。Notebookは字形・ラベルのメタデータがない場合にその項目が検査されず、PNG密度のみを確認すると記録している。再現されたPNG自体に字形欠けがあることを示す結果ではない。",
+      "impact": "空の指摘一覧を日本語表示・軸説明まで確認済みと解釈するおそれがある。visual_audit=Trueだけで実施された検査範囲を判断しにくい。",
+      "workaround": "Notebookセル6・10で実際のMatplotlib Textとフォント文字マップを確認し、missing_glyphsを記録。controller側の書込みで図表メタデータを保存してから最終監査を実施している。",
+      "evidence": [
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-32-breast-cancer/notebooks/kaggle-v020-kaggle-exp-32-breast-cancer.ipynb",
+          "cell_index": 11,
+          "execution_count": 30,
+          "location": "chart_probe、chart_probe_result、およびoutputs[2]のimprovement_candidates[1]",
+          "observed_value": "visual_findings=()"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-32-breast-cancer/notebooks/kaggle-v020-kaggle-exp-32-breast-cancer.ipynb",
+          "cell_index": 6,
+          "execution_count": 27,
+          "location": "render_chart、build_image_output、emit_figure、およびoutputs[6]のchart_checks"
+        },
+        {
+          "file": "benchmark/projects/kaggle-v020-kaggle-exp-32-breast-cancer/notebooks/kaggle-v020-kaggle-exp-32-breast-cancer.ipynb",
+          "location": "metadata.post_save_audit、セル12の回避策記録、セル20の保存後監査"
+        }
+      ],
+      "acceptance_criteria": [
+        "メタデータなしのPNG出力を持つ実行済みセルの監査で、字形・ラベル検査が未実施であることを警告または構造化された検査状態として明示する。",
+        "公開描画APIの出力を保存する標準経路で、監査可能なタイトル・軸ラベル・字形検査情報の供給方法を提供する。",
+        "メタデータあり／なし、字形不足あり／なし、空ラベルを使ったテストで、未検査と検査合格・検査不合格を区別できる。",
+        "本Notebookのように1セルに複数PNGを含む場合、各図に対応する監査範囲が識別できる。"
+      ],
+      "responsibility_boundary": "visualizationとnotebook_auditの公開API間の情報連携候補。分析コードのfindfont誤用、Agg環境のPNG出力方法、MCP保存競合、Copilot CLI、Kaggle API、ランナー停止は含めない。"
+    }
+  ],
+  "excluded_events": [
+    {
+      "event": "初回use_notebookの親ディレクトリ準備",
+      "classification": "Copilot CLI／Jupyter MCP接続・準備上の事象としてNotebookに記録"
+    },
+    {
+      "event": "findfontにlistを渡したTypeErrorとdisplay(fig)だけではPNGにならない問題",
+      "classification": "分析側の補助コード・描画環境"
+    },
+    {
+      "event": "アクティブNotebookへの報告追記がMCP保存で上書きされる",
+      "classification": "MCP保存との競合。Jupytermind単独の不具合と断定しない"
+    },
+    {
+      "event": "followupのartifact_complete_cutoff",
+      "classification": "外部ランナーの安定成果物検知による停止。分析失敗ではない"
+    }
+  ]
+}
