@@ -11,11 +11,11 @@ from ai_data_scientist.project_manager import ensure_notebook, resolve_project
 
 
 class _FakeLauncher:
-    def start_jupyter(self, port: int, token: str) -> int:
-        return 1001
+    def start_jupyter(self) -> tuple[int, int, str]:
+        return 1001, 19000, "jupyter-tok"
 
-    def start_mcp_server(self, port: int, token: str) -> int:
-        return 1002
+    def start_mcp_server(self, jupyter_port: int, jupyter_token: str) -> tuple[int, int, str]:
+        return 1002, 19001, "mcp-tok"
 
     def is_healthy(self, info: RuntimeInfo) -> bool:
         return True
@@ -35,7 +35,14 @@ def _failing_transport(port: int, token: str, code: str) -> dict:
 # @id TEST-AIDS-044
 # @verifies REQ-AIDS-038
 def test_TEST_AIDS_044_jupyter_mcp_client_executes_via_transport_and_reclassifies_errors():
-    info = RuntimeInfo(jupyter_pid=1, mcp_server_pid=2, port=12345, token="tok")
+    info = RuntimeInfo(
+        jupyter_pid=1,
+        jupyter_port=19000,
+        jupyter_token="jupyter-tok",
+        mcp_server_pid=2,
+        mcp_port=12345,
+        mcp_token="tok",
+    )
 
     ok_client = JupyterMCPClient(info, _fake_transport)
     assert ok_client.execute("1 + 1") == {"status": "ok", "output": "2"}

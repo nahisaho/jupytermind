@@ -153,8 +153,8 @@ Acceptance: An ingestion request to a non-allowlisted host is rejected before an
 Priority: must
 Type: functional
 Pattern: event-driven
-Statement: When the first analysis code execution is requested and no healthy Jupyter MCP runtime is already running, the system shall install (if needed) and start JupyterLab and the Jupyter MCP server inside the project's managed Python environment, binding to localhost only with an automatically selected free port and a randomly generated authentication token, and reuse that running runtime for all subsequent execution requests in the same machine.
-Acceptance: A test simulates a first execution request with no prior runtime present and asserts JupyterLab and the jupyter-mcp-server process are started, bound to 127.0.0.1 on a dynamically chosen free port, configured with a non-guessable generated token, and that a second execution request reuses the same runtime without starting a duplicate process.
+Statement: When the first analysis code execution is requested and no healthy Jupyter MCP runtime is already running, the system shall install (if needed) and start JupyterLab and the Jupyter MCP server inside the project's managed Python environment, binding to localhost only with automatically selected free ports and randomly generated authentication tokens (JupyterLab and the jupyter-mcp-server each require their own independent token), and reuse that running runtime for all subsequent execution requests in the same machine.
+Acceptance: A test simulates a first execution request with no prior runtime present and asserts JupyterLab and the jupyter-mcp-server process are started, bound to 127.0.0.1 on dynamically chosen free ports, each configured with its own non-guessable generated token, and that a second execution request reuses the same runtime without starting a duplicate process.
 
 ## REQ-AIDS-035: Background daemon persistence across invocations / CLI呼び出しを跨いだ常駐継続
 Priority: must

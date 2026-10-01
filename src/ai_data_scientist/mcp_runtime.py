@@ -13,8 +13,6 @@ from __future__ import annotations
 
 import dataclasses
 import json
-import secrets
-import socket
 import time
 from pathlib import Path
 from typing import Protocol
@@ -28,12 +26,21 @@ DEFAULT_STATE_PATH = Path.home() / ".cache" / "ai-data-scientist" / "mcp_runtime
 
 @dataclasses.dataclass(frozen=True)
 class RuntimeInfo:
-    """Identity of a running Jupyter MCP runtime (REQ-AIDS-034)."""
+    """Identity of a running Jupyter MCP runtime (REQ-AIDS-034).
+
+    Two separate (port, token) pairs are tracked because JupyterLab and the
+    jupyter-mcp-server (streamable-http transport) are independent processes
+    with independent listeners and independent authentication: JUPYTER_TOKEN
+    guards the Jupyter server itself, while the MCP token guards the MCP
+    server's own HTTP endpoint that the concrete client (DES-AIDS-026) calls.
+    """
 
     jupyter_pid: int
+    jupyter_port: int
+    jupyter_token: str
     mcp_server_pid: int
-    port: int
-    token: str
+    mcp_port: int
+    mcp_token: str
 
 
 class RuntimeLauncher(Protocol):
@@ -44,16 +51,10 @@ class RuntimeLauncher(Protocol):
     or starting JupyterLab/jupyter-mcp-server.
     """
 
-    def start_jupyter(self, port: int, token: str) -> int: ...
-    def start_mcp_server(self, port: int, token: str) -> int: ...
+    def start_jupyter(self) -> tuple[int, int, str]: ...
+    def start_mcp_server(self, jupyter_port: int, jupyter_token: str) -> tuple[int, int, str]: ...
     def is_healthy(self, info: RuntimeInfo) -> bool: ...
     def terminate(self, pid: int) -> None: ...
-
-
-def _pick_free_port() -> int:
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-        sock.bind(("127.0.0.1", 0))
-        return sock.getsockname()[1]
 
 
 def _read_state(state_path: Path) -> RuntimeInfo | None:
@@ -97,12 +98,15 @@ def ensure_runtime(
     if existing is not None:
         _clear_state(state_path)
 
-    port = _pick_free_port()
-    token = secrets.token_urlsafe(32)
-    jupyter_pid = launcher.start_jupyter(port, token)
-    mcp_server_pid = launcher.start_mcp_server(port, token)
+    jupyter_pid, jupyter_port, jupyter_token = launcher.start_jupyter()
+    mcp_server_pid, mcp_port, mcp_token = launcher.start_mcp_server(jupyter_port, jupyter_token)
     candidate = RuntimeInfo(
-        jupyter_pid=jupyter_pid, mcp_server_pid=mcp_server_pid, port=port, token=token
+        jupyter_pid=jupyter_pid,
+        jupyter_port=jupyter_port,
+        jupyter_token=jupyter_token,
+        mcp_server_pid=mcp_server_pid,
+        mcp_port=mcp_port,
+        mcp_token=mcp_token,
     )
 
     deadline = time.monotonic() + timeout_ms / 1000

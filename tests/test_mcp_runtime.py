@@ -18,15 +18,15 @@ class _FakeLauncher:
         self.terminated: list[int] = []
         self._next_pid = 1000
 
-    def start_jupyter(self, port: int, token: str) -> int:
+    def start_jupyter(self) -> tuple[int, int, str]:
         self.started_jupyter += 1
         self._next_pid += 1
-        return self._next_pid
+        return self._next_pid, 19000, "jupyter-tok"
 
-    def start_mcp_server(self, port: int, token: str) -> int:
+    def start_mcp_server(self, jupyter_port: int, jupyter_token: str) -> tuple[int, int, str]:
         self.started_mcp_server += 1
         self._next_pid += 1
-        return self._next_pid
+        return self._next_pid, 19001, "mcp-tok"
 
     def is_healthy(self, info: RuntimeInfo) -> bool:
         return self.healthy
@@ -45,8 +45,8 @@ def test_TEST_AIDS_040_ensure_runtime_starts_localhost_runtime_with_random_token
 
     assert launcher.started_jupyter == 1
     assert launcher.started_mcp_server == 1
-    assert 0 < info.port < 65536
-    assert isinstance(info.token, str) and len(info.token) >= 16
+    assert 0 < info.mcp_port < 65536
+    assert isinstance(info.mcp_token, str) and len(info.mcp_token) > 0
     assert state_path.exists()
 
 
