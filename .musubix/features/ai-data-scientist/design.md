@@ -91,6 +91,29 @@ Requirements: REQ-AIDS-005
 ADRs: none — EDA output directly follows pandas semantics with no alternative design considered.
 Depends-On: DES-AIDS-004
 
+## DES-AIDS-031: Categorical/missing summary extension of EDAReport / EDAReportのカテゴリ・欠損サマリー拡張
+Responsibilities: Extend EDAReport with two additional fields computed from
+the same input DataFrame as the existing describe/dtypes/non_null_counts,
+without altering those three fields: a per-column missing_summary
+(missing_count, missing_ratio) covering every column, and a
+categorical_summary covering columns with dtype kind object/category/bool
+only, each entry carrying unique_count (nunique, dropna) and a top_values
+list (value, count, ratio) sorted by descending count and bounded to a
+fixed limit (default 10), with a truncated flag set when unique_count
+exceeds that limit.
+Interfaces: explore(df, top_n: int = 10) -> EDAReport (new optional
+parameter, existing single-argument call sites unchanged); EDAReport gains
+missing_summary: dict and categorical_summary: dict fields in addition to
+the existing describe/dtypes/non_null_counts.
+Constraints: Must not change the existing describe/dtypes/non_null_counts
+values or their keys; must return a well-formed (non-raising) report for an
+empty DataFrame, an all-missing column, and a DataFrame with no categorical
+columns (categorical_summary == {} in the last case); top_values list length
+must never exceed top_n.
+Requirements: REQ-AIDS-043
+ADRs: none — an additive, backward-compatible extension of the existing EDA report.
+Depends-On: DES-AIDS-007
+
 ## DES-AIDS-008: Statistical analysis module / 統計分析モジュール
 Responsibilities: Run requested statistical tests or correlation analyses and
 pair the numeric result with a markdown interpretation cell.

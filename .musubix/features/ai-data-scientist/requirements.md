@@ -212,3 +212,10 @@ Type: functional
 Pattern: event-driven
 Statement: When execute_cell's configured timeout elapses before the underlying MCP client call returns, the system shall raise MCPExecutionTimeoutError to the caller immediately without waiting for the still-running worker thread to finish.
 Acceptance: Given an MCP client call that takes materially longer than timeout_ms, execute_cell/run_and_record raise MCPExecutionTimeoutError within a bounded margin of timeout_ms (not after the client call actually completes), and no notebook cell is appended even if the worker later finishes successfully (its result is discarded, not retried or surfaced).
+
+## REQ-AIDS-043: Categorical distribution and missing-value summary in EDA / EDAにおけるカテゴリ分布と欠損サマリー
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When a user requests exploratory analysis, the system shall also report, for every column, its missing count and missing ratio, and, for every categorical column, its unique-value count and the counts and ratios of its most frequent values up to a bounded limit, while preserving the existing describe/dtypes/non_null_counts fields unchanged.
+Acceptance: Running EDA against a dataset with categorical columns (e.g. a species/gender/category column) produces a report exposing, per categorical column, unique_count and a bounded list of top values with counts and ratios (with a truncated flag when more unique values exist than the limit), and a per-column missing_count/missing_ratio for every column; an empty DataFrame, an all-missing column, and a DataFrame with no categorical columns all return a well-formed report without raising, and the pre-existing describe/dtypes/non_null_counts values are unchanged from before this requirement.

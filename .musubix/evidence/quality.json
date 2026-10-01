@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T03:27:31.821Z",
+  "generatedAt": "2026-10-01T03:44:06.381Z",
   "status": "fail",
   "checks": [
     {
@@ -74,7 +74,7 @@
       "name": "formal",
       "required": false,
       "status": "pass",
-      "summary": "8/43 requirements modeled; consistency consistent; solver not-requested.",
+      "summary": "8/44 requirements modeled; consistency consistent; solver not-requested.",
       "diagnostics": [
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -184,6 +184,11 @@
         {
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
+          "message": "REQ-AIDS-043 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
           "message": "REQ-AIDS-008 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
@@ -271,7 +276,7 @@
       "name": "tdd",
       "required": true,
       "status": "fail",
-      "summary": "57 Red-Green TDD cycle(s) recorded.",
+      "summary": "61 Red-Green TDD cycle(s) recorded.",
       "diagnostics": [
         {
           "code": "TDD_REQUIREMENT_UNCOVERED",
@@ -301,7 +306,7 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/ruff: completed, exit 0.",
-      "durationMs": 29,
+      "durationMs": 23,
       "exitCode": 0,
       "stdout": "57 files already formatted\n",
       "stderr": ""
@@ -311,16 +316,16 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/pytest: completed, exit 0.",
-      "durationMs": 16616,
+      "durationMs": 15535,
       "exitCode": 0,
-      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 52 items\n\ntests/test_anomaly_detection.py .                                        [  1%]\ntests/test_automl.py .                                                   [  3%]\ntests/test_cleaning.py .                                                 [  5%]\ntests/test_clustering.py ..                                              [  9%]\ntests/test_dashboard.py .                                                [ 11%]\ntests/test_eda.py .                                                      [ 13%]\ntests/test_experiment_evaluation.py .                                    [ 15%]\ntests/test_explainability.py .                                           [ 17%]\ntests/test_feature_engineering.py .                                      [ 19%]\ntests/test_gate_config.py .                                              [ 21%]\ntests/test_ingestion.py ..                                               [ 25%]\ntests/test_insight_engine.py .....                                       [ 34%]\ntests/test_japanese_nlp.py .                                             [ 36%]\ntests/test_jupyter_mcp_client.py ..                                      [ 40%]\ntests/test_language_router.py .                                          [ 42%]\ntests/test_mcp_gateway.py ......                                         [ 53%]\ntests/test_mcp_runtime.py ......                                         [ 65%]\ntests/test_mcp_runtime_integration.py .                                  [ 67%]\ntests/test_ml_modeling.py .                                              [ 69%]\ntests/test_model_tuning.py .                                             [ 71%]\ntests/test_project_manager.py ....                                       [ 78%]\ntests/test_report_export.py ...                                          [ 84%]\ntests/test_skill_packaging.py .                                          [ 86%]\ntests/test_stats_analysis.py .                                           [ 88%]\ntests/test_text_nlp.py .                                                 [ 90%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visualization.py ...                                          [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 52 passed in 14.10s ==============================\n",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 56 items\n\ntests/test_anomaly_detection.py .                                        [  1%]\ntests/test_automl.py .                                                   [  3%]\ntests/test_cleaning.py .                                                 [  5%]\ntests/test_clustering.py ..                                              [  8%]\ntests/test_dashboard.py .                                                [ 10%]\ntests/test_eda.py .....                                                  [ 19%]\ntests/test_experiment_evaluation.py .                                    [ 21%]\ntests/test_explainability.py .                                           [ 23%]\ntests/test_feature_engineering.py .                                      [ 25%]\ntests/test_gate_config.py .                                              [ 26%]\ntests/test_ingestion.py ..                                               [ 30%]\ntests/test_insight_engine.py .....                                       [ 39%]\ntests/test_japanese_nlp.py .                                             [ 41%]\ntests/test_jupyter_mcp_client.py ..                                      [ 44%]\ntests/test_language_router.py .                                          [ 46%]\ntests/test_mcp_gateway.py ......                                         [ 57%]\ntests/test_mcp_runtime.py ......                                         [ 67%]\ntests/test_mcp_runtime_integration.py .                                  [ 69%]\ntests/test_ml_modeling.py .                                              [ 71%]\ntests/test_model_tuning.py .                                             [ 73%]\ntests/test_project_manager.py ....                                       [ 80%]\ntests/test_report_export.py ...                                          [ 85%]\ntests/test_skill_packaging.py .                                          [ 87%]\ntests/test_stats_analysis.py .                                           [ 89%]\ntests/test_text_nlp.py .                                                 [ 91%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visualization.py ...                                          [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 56 passed in 13.05s ==============================\n",
       "stderr": ""
     },
     {
       "name": "test-identities",
       "required": false,
       "status": "pass",
-      "summary": "52/52 annotated test IDs passed in structured command reports.",
+      "summary": "56/56 annotated test IDs passed in structured command reports.",
       "diagnostics": []
     },
     {
@@ -417,12 +422,12 @@
     "trace.errors": 2,
     "graph.violations": 0,
     "formal.errors": 0,
-    "formal.modeledFraction": 0.18604651162790697,
+    "formal.modeledFraction": 0.18181818181818182,
     "commands.failures": 0,
     "commands.skipped": 0,
-    "tests.annotatedIds": 52,
-    "tests.executedIds": 52,
-    "tdd.cycles": 57,
+    "tests.annotatedIds": 56,
+    "tests.executedIds": 56,
+    "tdd.cycles": 61,
     "tdd.errors": 1,
     "changes.count": 0,
     "changes.errors": 0,
@@ -446,9 +451,13 @@
   "mode": "changed",
   "feature": null,
   "changed": [
+    ".github/skills/ai-data-scientist/SKILL.md",
     ".musubix/evidence/approvals/design.json",
     ".musubix/evidence/approvals/requirements.json",
-    ".musubix/evidence/native/test/TEST-AIDS-052.json",
+    ".musubix/evidence/native/test/TEST-AIDS-053.json",
+    ".musubix/evidence/native/test/TEST-AIDS-054.json",
+    ".musubix/evidence/native/test/TEST-AIDS-055.json",
+    ".musubix/evidence/native/test/TEST-AIDS-056.json",
     ".musubix/evidence/order.json",
     ".musubix/evidence/tdd.json",
     ".musubix/features/ai-data-scientist-ml/trace.json",
@@ -456,26 +465,24 @@
     ".musubix/features/ai-data-scientist/requirements.md",
     ".musubix/features/ai-data-scientist/trace.json",
     ".musubix/features/example/trace.json",
-    "src/ai_data_scientist/mcp_gateway.py",
-    "tests/test_mcp_gateway.py"
+    "src/ai_data_scientist/eda.py",
+    "tests/test_eda.py"
   ],
   "impacted": [
-    "src/ai_data_scientist/jupyter_launcher.py",
-    "src/ai_data_scientist/jupyter_mcp_client.py",
-    "src/ai_data_scientist/mcp_gateway.py",
-    "src/ai_data_scientist/mcp_runtime.py",
-    "tests/test_jupyter_mcp_client.py",
-    "tests/test_mcp_gateway.py",
-    "tests/test_mcp_runtime.py",
-    "tests/test_mcp_runtime_integration.py"
+    "src/ai_data_scientist/eda.py",
+    "tests/test_eda.py"
   ],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "64fae4f64ffa74af05a2a8ffea8ade6a272eeb40",
+    "head": "0d6b311d4ceda51b8d548ca1735a048d828e468c",
     "changed": [
+      ".github/skills/ai-data-scientist/SKILL.md",
       ".musubix/evidence/approvals/design.json",
       ".musubix/evidence/approvals/requirements.json",
-      ".musubix/evidence/native/test/TEST-AIDS-052.json",
+      ".musubix/evidence/native/test/TEST-AIDS-053.json",
+      ".musubix/evidence/native/test/TEST-AIDS-054.json",
+      ".musubix/evidence/native/test/TEST-AIDS-055.json",
+      ".musubix/evidence/native/test/TEST-AIDS-056.json",
       ".musubix/evidence/order.json",
       ".musubix/evidence/tdd.json",
       ".musubix/features/ai-data-scientist-ml/trace.json",
@@ -483,20 +490,14 @@
       ".musubix/features/ai-data-scientist/requirements.md",
       ".musubix/features/ai-data-scientist/trace.json",
       ".musubix/features/example/trace.json",
-      "src/ai_data_scientist/mcp_gateway.py",
-      "tests/test_mcp_gateway.py"
+      "src/ai_data_scientist/eda.py",
+      "tests/test_eda.py"
     ],
     "impacted": [
-      "src/ai_data_scientist/jupyter_launcher.py",
-      "src/ai_data_scientist/jupyter_mcp_client.py",
-      "src/ai_data_scientist/mcp_gateway.py",
-      "src/ai_data_scientist/mcp_runtime.py",
-      "tests/test_jupyter_mcp_client.py",
-      "tests/test_mcp_gateway.py",
-      "tests/test_mcp_runtime.py",
-      "tests/test_mcp_runtime_integration.py"
+      "src/ai_data_scientist/eda.py",
+      "tests/test_eda.py"
     ],
-    "generatedAt": "2026-10-01T03:27:31.821Z"
+    "generatedAt": "2026-10-01T03:44:06.381Z"
   },
   "fingerprints": {
     ".gitignore": "e84aeb824f0a807b1c6ad67896f805e730b99033974ff7d69ce975d8b9138682",
@@ -510,8 +511,8 @@
     ".musubix/decisions/ADR-0006.md": "7c57c83bf7bd8bba568732cfe2697a9831910bff526ad9a05a1a29fcd3b750b5",
     ".musubix/decisions/ADR-0007.md": "1f10374842d0f109bf5c0ce8d312305b56ab8431ea1ed2d233b770798437b14c",
     ".musubix/decisions/ADR-0008.md": "1502ca21a62020cf0e1960d1884f2d8a88b1209ba3b70a4c3247759921900867",
-    ".musubix/features/ai-data-scientist/design.md": "2392659c0f6bdc24e74093f80d6dfdbb9e36c3f3e04c0f4cb642cf8a922d9deb",
-    ".musubix/features/ai-data-scientist/requirements.md": "f60186f76fa317a6ed7e979e3bb8c98166676319f35763912966d91d5e17e562",
+    ".musubix/features/ai-data-scientist/design.md": "8643f97dc9f0be0f0c0a1f61ec7dd1655ec33c401fb4997b1fbc82cff1383a21",
+    ".musubix/features/ai-data-scientist/requirements.md": "6f48f57ab5e7c4bc9e3cb80df559b510f102f7591cf01112c03b96f1886b2f27",
     ".musubix/features/ai-data-scientist-ml/design.md": "5a9b6d88cda2a8e05fbfb09b8e1ea8cd3dd1c361b27c0385bef71437c9e62906",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
@@ -521,11 +522,11 @@
     ".pytest_cache/CACHEDIR.TAG": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
     ".pytest_cache/README.md": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
     ".pytest_cache/v/cache/lastfailed": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
-    ".pytest_cache/v/cache/nodeids": "c0d1110f22b3677b34582cde285b38dd8d1d4bafda6f7117c087bfef074a1f90",
+    ".pytest_cache/v/cache/nodeids": "d31827b36dbaf745acbcda5406b5ea1c5154e1195e323dc535adf01d4ca5ba3a",
     ".ruff_cache/.gitignore": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
     ".ruff_cache/0.16.9/10475705668944416582": "af84e7104c6973dae733e8f97dac6482d4127ceeb3ed9da0b7ef28c9ed665194",
     ".ruff_cache/0.16.9/10579984203275047153": "082280517ef72ea9903e93a392edca9814f2bd1ff42aae270e2df5dc3475e5a2",
-    ".ruff_cache/0.16.9/11045243294447251513": "f857ed583f331fd02e516c00bca2d2d9311ce954e41eabf3389b70c3cafbc10f",
+    ".ruff_cache/0.16.9/11045243294447251513": "3f2f16bbfd45b4a71ef8ffd344ca35931a3084cb0b7859a62ff28d732772be42",
     ".ruff_cache/0.16.9/1247709145152865978": "3b469e84a4073701c7a5f2cfa2575280c9fd041fd0698851cee8dc3845ab84c7",
     ".ruff_cache/0.16.9/13081969580362491247": "1e468d9e50ea8a68bbd39721300bba091bf9bb72e92d103ee33bd137ef47752f",
     ".ruff_cache/0.16.9/14249878075970112962": "4ac32b3bfcd4cde42d250e2a588f67ca183702cb66a0e336eed6dfc08b3b549c",
@@ -538,7 +539,7 @@
     ".ruff_cache/0.16.9/2481471438501299910": "a37c56ab8ad7d8377193f79fa4377c5854f3a651026001a1359de3294196a94a",
     ".ruff_cache/0.16.9/3150483640153176888": "ae097c770747f1cbfd788e87162f9847a854973aa2c84005e8d2ba4becd28aa2",
     ".ruff_cache/0.16.9/5724543538001266855": "db98f342699910a3e7af9beb1dedfd766eb2a4f3d19027725a80bb93eaed647f",
-    ".ruff_cache/0.16.9/5883943560588815151": "b115392b215fe4c2bd1ec7c98cf06a4be220226280bd8105ebb886cab9241f69",
+    ".ruff_cache/0.16.9/5883943560588815151": "48b0bdba393ddd55d9fe1c2615b6af56915faea2de4789bcb218766c11b20de7",
     ".ruff_cache/0.16.9/7230609887172313534": "0a7a91034fc86bfb22813c3de209bbf84359d9e4fffab43c62f0f38afc2421d7",
     ".ruff_cache/0.16.9/9392018825492256468": "0d7614cd583ea97005dfc0c6e931c85c699c97d80a76a860bc5eeff2481f1f4f",
     ".ruff_cache/CACHEDIR.TAG": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
@@ -555,7 +556,7 @@
     "src/ai_data_scientist/cli.py": "d7b60bd499fbd427453061ba87b20ab346f1a79cf36ecaca0ba8207347dff9a4",
     "src/ai_data_scientist/clustering.py": "2b9011a2dfbb2e9318518dedf90b186d58eace35f03d1c28d6d47937c4a79bd0",
     "src/ai_data_scientist/dashboard.py": "e54d6d6fe08fe6505a4904d83621b12605a1b22fa77c7f1337f7fd9f9cf1bab3",
-    "src/ai_data_scientist/eda.py": "180650138a9b7132c49849f0ff96859fdcc99ced679606aabafc7a886e944f4f",
+    "src/ai_data_scientist/eda.py": "b81e5e3ac240b3e66e30cc8f6fe57fc34a34b1fb58f72ecd955db9c6b1550ec4",
     "src/ai_data_scientist/experiment_evaluation.py": "d333684c4dd4fbd80e943b5faac5254ac202a09cfde388d30b27c699d02ad45a",
     "src/ai_data_scientist/explainability.py": "7ec63a3108773741ee4161516329f858931db70a803def21c66957fa369a1b45",
     "src/ai_data_scientist/feature_engineering.py": "882c1e0d0da761f8c40d8298745e3cb2801bfd0d84424e4f3c202fdbaab5cbe1",
@@ -588,7 +589,7 @@
     "tests/test_cleaning.py": "83face0b0f1ddcd158def39d0a711444b717b0416dc1f1b7bc021bc71723942e",
     "tests/test_clustering.py": "9175839a04a67f4e66ebe7856b77bc36715dd9e2b3acc8e37460027272fc2557",
     "tests/test_dashboard.py": "4e2358a3a6582809facb218355ae496de8cfb2b873a53977ec22bfbdcb5a3e15",
-    "tests/test_eda.py": "fcdf174ba32df0113cd3acc761ebde19c084720724c874755daf9719993a0185",
+    "tests/test_eda.py": "c1788a18c88015b40a6edf311a3c9f80bad2de40a4a51bbfc4618f363bc6eceb",
     "tests/test_experiment_evaluation.py": "fb86918ae84bfa34f8e386dfc92a8b16d51d09f836da52915d4528dcc5e843b9",
     "tests/test_explainability.py": "f150b75da3143cb2d42777f8f858e628ca7db4f33a9037973ada44f80498e233",
     "tests/test_feature_engineering.py": "e25775ae6e5a5078f570dfb91f0c773d8b2846139571a47e536bf4e68cf86977",
