@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "a8642c18-c0de-40b4-9ac2-967ed6cf07e7",
-  "generatedAt": "2026-10-01T11:01:56.386Z",
-  "formalEvidenceSha256": "a6feb83d846324e344ab64a70586323795d76690bdcd9d391721e76831647985",
-  "traceEvidenceSha256": "33b4e054048348717b69d453a585923259fa40a55346f8ced0cec175997ee730",
+  "runId": "7cd50121-7255-4cb5-b544-178a49187eca",
+  "generatedAt": "2026-10-01T13:30:34.160Z",
+  "formalEvidenceSha256": "bda3e071115b6c7f94ce8f26df674b4381c4c5eaa45bb303bb2ef6820ca76c30",
+  "traceEvidenceSha256": "a5c2b5bc770fa1ffc5e25cace85d885a0f1ad1d2532f28ed247981ec0bedf4b4",
   "entries": [
     {
       "requirementId": "REQ-AIDS-002",
       "requirementPath": ".musubix/features/ai-data-scientist/requirements.md",
       "formalSha256": "14f874c67a550b22c99fd992f67ead1b37613743ba6b40336a4f08818d3d4457",
       "modelSha256": "5806dff5812b265b27dd6d50026ca9a70ea6afd320da3f55c65ab7879654e94c",
-      "traceSha256": "33b4e054048348717b69d453a585923259fa40a55346f8ced0cec175997ee730",
+      "traceSha256": "a5c2b5bc770fa1ffc5e25cace85d885a0f1ad1d2532f28ed247981ec0bedf4b4",
       "tests": [
         {
           "testId": "TEST-AIDS-002",
           "testPath": "tests/test_project_manager.py",
-          "testSha256": "947bf2dbef94239bd9ac89fd2ad05807d8b6277ae142f2265d634848fcb9c6d4",
+          "testSha256": "19b28c0633ec7fefc0eab0aea1ad6e5159480e7b1a84e46288fbce6f1c17aea1",
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "dcb3a2e5305451c09aae8270230d39b4489537c139776c4a981f59cf60865db3",
-          "provenanceSha256": "74b4a3db57a52b10bba765b6c1610f00923e2625166807cc1988bd469af9b2d9"
+          "reportSha256": "931a94776e7815d9428537f91424360286309e687f11e05a5f49226c020f3f06",
+          "provenanceSha256": "03890785be6fcc858b489a4b959c633ad6270414369a4f9e83a3de4eea716159"
         }
       ]
     },
@@ -29,7 +29,7 @@
       "requirementPath": ".musubix/features/ai-data-scientist/requirements.md",
       "formalSha256": "bf73d273da2008bd78dad508b71fa14011503cb297314af2e57c9540f5648f01",
       "modelSha256": "a7fb108e2492743364024c853185b984dd691fa211a3bbd1c9ce43b4edb65bd7",
-      "traceSha256": "33b4e054048348717b69d453a585923259fa40a55346f8ced0cec175997ee730",
+      "traceSha256": "a5c2b5bc770fa1ffc5e25cace85d885a0f1ad1d2532f28ed247981ec0bedf4b4",
       "tests": [
         {
           "testId": "TEST-AIDS-009",
@@ -38,8 +38,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "dcb3a2e5305451c09aae8270230d39b4489537c139776c4a981f59cf60865db3",
-          "provenanceSha256": "940c4d5d80fd15dc35c4628bdda5195b5b3c28d5d02ef23fa2ba2811e18b6b45"
+          "reportSha256": "931a94776e7815d9428537f91424360286309e687f11e05a5f49226c020f3f06",
+          "provenanceSha256": "1298789654b3a0ca2b9f1fc80d0803b7573f76b7c9e3c004063ebcbbbb353cc0"
         },
         {
           "testId": "TEST-AIDS-038",
@@ -48,8 +48,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "dcb3a2e5305451c09aae8270230d39b4489537c139776c4a981f59cf60865db3",
-          "provenanceSha256": "b12a8259c8def901d829660d599cfd2fe708abcbc8e615b6faa63adc4c32c455"
+          "reportSha256": "931a94776e7815d9428537f91424360286309e687f11e05a5f49226c020f3f06",
+          "provenanceSha256": "344f2d62eacbea68148252c048a7cdcf0c19dfc3f44dcbd48822ff282d507dc5"
         }
       ]
     },
@@ -58,7 +58,7 @@
       "requirementPath": ".musubix/features/ai-data-scientist/requirements.md",
       "formalSha256": "151d17f3d2697ce402640363dce0246f804c20abbb59c29b94f227a511b13e91",
       "modelSha256": "b2dc840a9685389232a904679cca568a213edcf0cb6c2460aa2442910d4bb175",
-      "traceSha256": "33b4e054048348717b69d453a585923259fa40a55346f8ced0cec175997ee730",
+      "traceSha256": "a5c2b5bc770fa1ffc5e25cace85d885a0f1ad1d2532f28ed247981ec0bedf4b4",
       "tests": [
         {
           "testId": "TEST-AIDS-031",
@@ -67,8 +67,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "dcb3a2e5305451c09aae8270230d39b4489537c139776c4a981f59cf60865db3",
-          "provenanceSha256": "361b08b11b85cb0cf4ee2c6899d74d352def9f29e63708118bcfd258235418a1"
+          "reportSha256": "931a94776e7815d9428537f91424360286309e687f11e05a5f49226c020f3f06",
+          "provenanceSha256": "c21169bb165ce27f1f8b280eb5c7b1980c55f21865fefe3e07444c06d098bf7b"
         }
       ]
     },
@@ -77,7 +77,7 @@
       "requirementPath": ".musubix/features/ai-data-scientist/requirements.md",
       "formalSha256": "2cb17e3f6c05c6361c69bd03b91e974faf17fd0606a7fe3ecf6fb38553f3893c",
       "modelSha256": "f7e15c1b66a9c7ad3a138d167ed7a268b0caf2f69dc257d638b1af94a1097d88",
-      "traceSha256": "33b4e054048348717b69d453a585923259fa40a55346f8ced0cec175997ee730",
+      "traceSha256": "a5c2b5bc770fa1ffc5e25cace85d885a0f1ad1d2532f28ed247981ec0bedf4b4",
       "tests": [
         {
           "testId": "TEST-AIDS-042",
@@ -86,8 +86,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "dcb3a2e5305451c09aae8270230d39b4489537c139776c4a981f59cf60865db3",
-          "provenanceSha256": "f0dff5b4339086cd6f623139663b509979ad74edd8ac926aac51fc2a02ac74ce"
+          "reportSha256": "931a94776e7815d9428537f91424360286309e687f11e05a5f49226c020f3f06",
+          "provenanceSha256": "a75330c4aa3c97c569381664f2e228a108e05d05661369d73ec31d389b56645e"
         }
       ]
     }

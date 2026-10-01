@@ -240,3 +240,24 @@ Type: functional
 Pattern: event-driven
 Statement: When render_chart is asked to render a chart title or axis label containing non-ASCII characters, the system shall configure matplotlib to use a bundled Japanese-capable font for that rendering.
 Acceptance: Given a DataFrame and a title/xlabel/ylabel containing Japanese text, calling render_chart(df, ..., title=..., xlabel=..., ylabel=...) returns valid PNG bytes and matplotlib's active font family becomes the bundled Japanese-capable font (verified via matplotlib.rcParams after the call); calling render_chart with only ASCII text still returns valid PNG bytes without requiring the bundled font; because the font ships as a package dependency, this behavior is identical regardless of what fonts are installed on the host operating system.
+
+## REQ-AIDS-047: Stable relative-path resolution for notebook audit / ノートブック監査における相対パスの安定解決
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When audit_notebook is given a notebook path that does not resolve under the process's current working directory, the system shall resolve it against resolve_project's stable workspace root instead, reporting a distinct unresolved-path finding rather than a generic parse-failure finding when neither location contains the file.
+Acceptance: Given a notebook created under the stable workspace root and a caller whose working directory has since moved into that notebook's own directory, calling audit_notebook with the original workspace-root-relative path succeeds identically to calling it from the workspace root; given a path that resolves under neither the current working directory nor the stable workspace root, the report's findings include an unresolved-path finding whose message is textually distinguishable from a parse-failure finding.
+
+## REQ-AIDS-048: Self-referencing audit cell exclusion / 自己参照する監査セルの除外
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When the last cell of an audited notebook is an unexecuted code cell whose source invokes audit_notebook, the system shall exclude that cell from the unexecuted-cell and error findings that determine the report's overall pass/fail status.
+Acceptance: Given a notebook whose cells are all executed except a final code cell that is still running and whose source contains a call to audit_notebook, auditing that notebook reports ok=True provided no other failing condition exists; given a final unexecuted code cell whose source does not reference audit_notebook, it is still reported as an unexecuted-cell error exactly as before.
+
+## REQ-AIDS-049: Stable project data directory / プロジェクトデータディレクトリの安定化
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall expose a stable workspace-root-anchored data directory path on every resolved ProjectHandle, together with a helper that creates it, so dataset files written during a session land under the same stable project root as the notebook.
+Acceptance: Given a ProjectHandle returned by resolve_project, its data_dir attribute equals root/"data" regardless of the process's current working directory at the time of the call; calling the ensure_data_dir helper with that handle creates the directory (and any missing parents) if absent and returns its path; SKILL.md's ingestion step references handle.data_dir instead of a hand-rolled relative path.

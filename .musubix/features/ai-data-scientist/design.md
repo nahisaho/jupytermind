@@ -359,3 +359,64 @@ Requirements: REQ-AIDS-046
 ADRs: none — adopts an existing, widely used PyPI package (`japanize-matplotlib`)
 rather than introducing a new bundled-asset mechanism of our own.
 Depends-On: DES-AIDS-009
+
+## DES-AIDS-035: Stable-root path resolution for notebook audit / ノートブック監査向けの安定ルートパス解決
+Responsibilities: Before attempting to parse a notebook, resolve a possibly
+relative input path by first checking it against the process's current
+working directory and, only if that does not exist, re-checking it against
+`project_manager`'s stable import-time workspace root (the same root
+`resolve_project` anchors to under REQ-AIDS-044). Expose this as a reusable
+`project_manager.resolve_stable_path(path)` helper that raises a dedicated
+`StablePathResolutionError` when neither location contains the file, which
+`audit_notebook` catches to emit a distinct unresolved-path finding instead
+of folding it into the generic nbformat parse-failure branch.
+Interfaces: project_manager.resolve_stable_path(path: Path | str) -> Path
+(raises StablePathResolutionError); notebook_audit.audit_notebook unchanged
+signature, now resolving its `path` argument through this helper before
+calling nbformat.read.
+Constraints: Must not change behavior for already-absolute or
+already-cwd-resolvable paths (zero regression for the existing common case);
+must not swallow genuine nbformat parse/validate errors into the
+unresolved-path finding category, and vice versa.
+Requirements: REQ-AIDS-047
+ADRs: none — a narrow two-location fallback mirrors the existing
+`_default_projects_root` resolution rule rather than introducing a new
+path-search policy.
+Depends-On: DES-AIDS-003, DES-AIDS-033
+
+## DES-AIDS-036: Self-referencing audit cell exclusion / 自己参照する監査セルの除外
+Responsibilities: When classifying code cells, detect the specific case of
+the notebook's last cell being unexecuted (`execution_count is None`) with
+source text that contains a call to `audit_notebook`, and exclude that one
+cell from the unexecuted-cell and error findings that feed `report.ok`,
+instead reporting it as a non-error informational finding. Every other
+unexecuted or error-producing cell (including a non-trailing one, or a
+trailing one that does not reference `audit_notebook`) is still reported
+exactly as before.
+Interfaces: notebook_audit.audit_notebook(path) -> NotebookAuditReport
+(signature unchanged); internal classification only.
+Constraints: Must not change `ok` for any notebook whose trailing unexecuted
+cell does not reference `audit_notebook`; must not suppress a genuine error
+output on that same cell (an error output on the self-audit cell is still a
+real failure and remains an error-level finding).
+Requirements: REQ-AIDS-048
+ADRs: none — a narrow source-text heuristic scoped to the one documented
+self-audit pattern, not a general unexecuted-cell exemption mechanism.
+Depends-On: DES-AIDS-033
+
+## DES-AIDS-037: Stable project data directory / プロジェクトデータディレクトリの安定化
+Responsibilities: Extend `ProjectHandle` with a `data_dir` field computed as
+`root / "data"` at resolution time (anchored to the same stable `root` that
+REQ-AIDS-044 already stabilizes), and add an `ensure_data_dir(handle)`
+helper, mirroring `ensure_notebook`, that creates the directory (and any
+missing parents) if absent and returns its path. Update SKILL.md's ingestion
+step to reference `handle.data_dir` / `ensure_data_dir(handle)` instead of a
+hand-rolled `projects/<slug>/data` relative path.
+Interfaces: ProjectHandle gains `data_dir: Path`;
+project_manager.ensure_data_dir(handle: ProjectHandle) -> Path.
+Constraints: Must not change the existing `name`/`root`/`notebook_path`
+semantics or require callers who only used those fields to change anything.
+Requirements: REQ-AIDS-049
+ADRs: none — extends the existing `ProjectHandle`/`ensure_notebook` pattern
+rather than introducing a separate data-path resolution mechanism.
+Depends-On: DES-AIDS-003

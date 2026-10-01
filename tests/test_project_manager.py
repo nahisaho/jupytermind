@@ -130,3 +130,47 @@ def test_TEST_AIDS_058_default_root_falls_back_to_import_time_cwd(tmp_path, monk
     finally:
         monkeypatch.chdir(original_cwd)
         importlib.reload(project_manager)
+
+
+# @id TEST-AIDS-070
+# @verifies REQ-AIDS-049
+def test_TEST_AIDS_070_data_dir_is_stable_and_ensure_data_dir_creates_it(tmp_path, monkeypatch):
+    handle = resolve_project("data-dir-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+
+    assert handle.data_dir == handle.root / "data"
+    assert not handle.data_dir.exists()
+
+    created = project_manager.ensure_data_dir(handle)
+
+    assert created == handle.data_dir
+    assert created.is_dir()
+
+    # Calling again (e.g. from a different cwd) must not fail and must keep
+    # pointing at the same stable, root-anchored location.
+    monkeypatch.chdir(handle.notebook_path.parent)
+    handle_again = resolve_project("data-dir-project", projects_root=tmp_path)
+    assert handle_again.data_dir == handle.data_dir
+    assert project_manager.ensure_data_dir(handle_again) == handle.data_dir
+
+
+# @id TEST-AIDS-071
+# @verifies REQ-AIDS-047
+def test_TEST_AIDS_071_resolve_stable_path_falls_back_and_raises(tmp_path, monkeypatch):
+    workspace_root = tmp_path / "ws"
+    workspace_root.mkdir()
+    monkeypatch.setattr(project_manager, "_IMPORT_TIME_CWD", workspace_root)
+
+    target = workspace_root / "data" / "file.csv"
+    target.parent.mkdir(parents=True)
+    target.write_text("x", encoding="utf-8")
+
+    other_dir = workspace_root / "elsewhere"
+    other_dir.mkdir()
+    monkeypatch.chdir(other_dir)
+
+    resolved = project_manager.resolve_stable_path("data/file.csv")
+    assert resolved == target.resolve()
+
+    with pytest.raises(project_manager.StablePathResolutionError):
+        project_manager.resolve_stable_path("data/missing.csv")

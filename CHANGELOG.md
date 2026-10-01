@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/)
 
 ## [Unreleased]
 
+## [0.1.4] - 2026-10-01
+### Fixed
+- `notebook_audit.audit_notebook` now resolves a relative notebook path
+  against the same stable workspace root `resolve_project` uses when it does
+  not resolve under the current working directory, and reports a distinct
+  unresolved-path finding instead of conflating it with a parse failure
+  (closes #13, REQ-AIDS-047 / DES-AIDS-035).
+- `notebook_audit.audit_notebook` no longer reports a false failure for the
+  one documented self-audit pattern: a notebook's own trailing, still-running
+  cell that invokes `audit_notebook` is excluded from the unexecuted-cell
+  findings that determine `report.ok` (closes #14, REQ-AIDS-048 / DES-AIDS-036).
+
+### Added
+- `ProjectHandle` now exposes a stable, workspace-root-anchored `data_dir`
+  field (`root / "data"`) and a matching `project_manager.ensure_data_dir`
+  helper, so dataset files land under the same stable project root as the
+  notebook instead of being derived from a possibly-drifted kernel cwd
+  (closes #15, REQ-AIDS-049 / DES-AIDS-037).
+
 ## [0.1.3] - 2026-10-01
 ### Added
 - Japanese (and other non-ASCII) chart title/axis-label support in
@@ -69,6 +88,7 @@ environment.
   after `stop()` (closes #8).
 
 [Unreleased]: https://github.com/nahisaho/jupytermind/compare/v0.1.3...HEAD
+[0.1.4]: https://github.com/nahisaho/jupytermind/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/nahisaho/jupytermind/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/nahisaho/jupytermind/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/nahisaho/jupytermind/compare/v0.1.0...v0.1.1

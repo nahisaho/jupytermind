@@ -16,6 +16,7 @@ from pathlib import Path
 
 import nbformat
 
+from ai_data_scientist import project_manager
 from ai_data_scientist.insight_engine import _find_evidence_cell
 
 _EVIDENCE_FENCE_PATTERN = re.compile(r"```evidence\n(.*?)\n```", re.DOTALL)
@@ -70,11 +71,31 @@ def _looks_like_insight_candidate(markdown_source: str) -> bool:
 # @id CODE-AIDS-053
 # @implements REQ-AIDS-045
 # @design DES-AIDS-033
+# @id CODE-AIDS-057
+# @implements REQ-AIDS-047
+# @design DES-AIDS-035
 def audit_notebook(path: Path | str) -> NotebookAuditReport:
     """Audit ``path`` read-only; never writes the notebook back to disk."""
     path = Path(path)
     try:
-        notebook = nbformat.read(str(path), as_version=4)
+        resolved_path = project_manager.resolve_stable_path(path)
+    except project_manager.StablePathResolutionError as exc:
+        return NotebookAuditReport(
+            path=str(path),
+            nbformat_valid=False,
+            code_cell_count=0,
+            executed_code_cell_count=0,
+            unexecuted_cell_indices=(),
+            error_cell_indices=(),
+            chart_cell_indices=(),
+            insight_cell_count=0,
+            findings=(
+                NotebookAuditFinding("error", f"Notebook path could not be resolved: {exc}", None),
+            ),
+        )
+
+    try:
+        notebook = nbformat.read(str(resolved_path), as_version=4)
         nbformat.validate(notebook)
     except Exception as exc:  # noqa: BLE001 - surface any parse/validate failure as a finding
         return NotebookAuditReport(
@@ -98,12 +119,39 @@ def audit_notebook(path: Path | str) -> NotebookAuditReport:
     error_indices: list[int] = []
     chart_indices: list[int] = []
 
+    # @id CODE-AIDS-058
+    # @implements REQ-AIDS-048
+    # @design DES-AIDS-036
+    # Detect the one documented self-audit pattern: the notebook's own last
+    # cell, still running (no execution_count yet), whose source invokes
+    # audit_notebook. That cell cannot have an execution_count by definition
+    # (it is the audit call itself), so it must not be flagged as a failure.
+    last_index = len(notebook.cells) - 1
+    self_audit_index: int | None = None
+    if last_index >= 0:
+        last_cell = notebook.cells[last_index]
+        if (
+            last_cell.get("cell_type") == "code"
+            and last_cell.get("execution_count") is None
+            and "audit_notebook" in last_cell.get("source", "")
+        ):
+            self_audit_index = last_index
+
     for index, cell in enumerate(notebook.cells):
         if cell.get("cell_type") != "code":
             continue
         code_cell_count += 1
         execution_count = cell.get("execution_count")
-        if execution_count is None:
+        if index == self_audit_index:
+            findings.append(
+                NotebookAuditFinding(
+                    "warning",
+                    "Trailing cell invokes audit_notebook and has not finished "
+                    "executing yet; excluded from unexecuted-cell findings.",
+                    index,
+                )
+            )
+        elif execution_count is None:
             unexecuted_indices.append(index)
             findings.append(
                 NotebookAuditFinding(

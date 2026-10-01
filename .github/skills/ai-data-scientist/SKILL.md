@@ -40,7 +40,12 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
 4. **Ingest data** with `ai_data_scientist.ingestion.ingest(source_spec,
    fetcher=..., allowlist=..., row_limit=...)` for CSV, Excel, database, or
    API sources; non-allowlisted hosts and over-limit responses are rejected
-   or truncated before load (REQ-AIDS-014/032).
+   or truncated before load (REQ-AIDS-014/032). Write any downloaded/staged
+   dataset file under `ai_data_scientist.project_manager.ensure_data_dir(handle)`
+   (i.e. `handle.data_dir`), not a hand-rolled `projects/<name>/data` relative
+   path — `data_dir` is anchored to the same stable workspace root as
+   `notebook_path`, so it stays correct even if the kernel's working
+   directory has drifted into the notebook's own directory (REQ-AIDS-049).
 5. **Clean data** with `ai_data_scientist.cleaning.clean_dataset(df,
    operation=...)` (`drop_duplicates` | `drop_na` | `fillna`); report the
    returned row/column impact to the user (REQ-AIDS-004).
@@ -85,9 +90,19 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
     (REQ-AIDS-045). It is read-only (never rewrites the notebook) and
     reports unexecuted/error code cells and any insight-like markdown cell
     whose evidence manifest is missing or no longer resolves to a real
-    executed output. If `report.ok` is `False`, fix the underlying cells or
-    insights before finishing, rather than reporting success with
-    unresolved findings. The same check is available from the shell as
+    executed output. `path` may be the same workspace-root-relative path
+    used elsewhere (e.g. `handle.notebook_path`); it resolves against the
+    stable workspace root even if the kernel's cwd has drifted into the
+    notebook's own directory, and reports a distinct, clearly-worded
+    finding instead of a parse-failure finding when the path genuinely
+    cannot be found (REQ-AIDS-047). Because the audit is typically run from
+    inside the notebook's own still-running final cell, that one trailing,
+    not-yet-executed cell is excluded from the unexecuted-cell findings
+    when its source invokes `audit_notebook` — only a different unexecuted
+    or error-producing cell will fail the audit (REQ-AIDS-048). If
+    `report.ok` is `False`, fix the underlying cells or insights before
+    finishing, rather than reporting success with unresolved findings. The
+    same check is available from the shell as
     `ai-data-scientist validate-notebook <path>` for CI or manual spot
     checks.
 

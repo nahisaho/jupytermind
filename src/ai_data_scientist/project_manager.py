@@ -61,6 +61,10 @@ class InvalidProjectNameError(ValueError):
     """Raised when a project name does not satisfy the ADR-0005 slug policy."""
 
 
+class StablePathResolutionError(FileNotFoundError):
+    """Raised when a path resolves under neither cwd nor the stable workspace root."""
+
+
 @dataclass(frozen=True)
 class ProjectHandle:
     """Resolved, validated project identity and its notebook path."""
@@ -68,6 +72,7 @@ class ProjectHandle:
     name: str
     root: Path
     notebook_path: Path
+    data_dir: Path
 
 
 # A process-wide lock per notebook path, guaranteeing a single writer at a
@@ -116,7 +121,56 @@ def resolve_project(name: str, projects_root: Path | str | None = None) -> Proje
         # Defense in depth: even a slug-valid name must stay inside projects_root.
         raise InvalidProjectNameError(f"'{name}' resolves outside the projects directory.")
     notebook_path = project_dir / "notebooks" / f"{name}.ipynb"
-    return ProjectHandle(name=name, root=project_dir, notebook_path=notebook_path)
+    data_dir = project_dir / "data"
+    return ProjectHandle(
+        name=name, root=project_dir, notebook_path=notebook_path, data_dir=data_dir
+    )
+
+
+# @id CODE-AIDS-055
+# @implements REQ-AIDS-049
+# @design DES-AIDS-037
+def ensure_data_dir(handle: ProjectHandle) -> Path:
+    """Create ``handle.data_dir`` (and any missing parents) if absent; return it."""
+    handle.data_dir.mkdir(parents=True, exist_ok=True)
+    return handle.data_dir
+
+
+# @id CODE-AIDS-056
+# @implements REQ-AIDS-047
+# @design DES-AIDS-035
+def resolve_stable_path(path: Path | str) -> Path:
+    """Resolve ``path`` against cwd, falling back to the stable workspace root.
+
+    Mirrors ``_default_projects_root``'s stability rule for any caller (such
+    as ``notebook_audit.audit_notebook``) that receives a relative path which
+    may have been computed against the workspace root but is later evaluated
+    from a kernel whose working directory has drifted into a project's own
+    notebook directory (REQ-AIDS-047).
+
+    An absolute ``path`` is returned resolved as-is (existence is left to the
+    caller, matching prior behavior). A relative ``path`` is first checked
+    against the current working directory; if that candidate does not exist,
+    it is re-checked against ``_IMPORT_TIME_CWD`` (the same stable base
+    ``_default_projects_root`` anchors to). If neither candidate exists,
+    ``StablePathResolutionError`` is raised naming both attempted locations.
+    """
+    candidate = Path(path)
+    if candidate.is_absolute():
+        return candidate.resolve()
+
+    cwd_candidate = (Path.cwd() / candidate).resolve()
+    if cwd_candidate.exists():
+        return cwd_candidate
+
+    stable_candidate = (_IMPORT_TIME_CWD / candidate).resolve()
+    if stable_candidate.exists():
+        return stable_candidate
+
+    raise StablePathResolutionError(
+        f"Could not resolve '{path}' relative to the current working directory "
+        f"({cwd_candidate}) or the stable workspace root ({stable_candidate})."
+    )
 
 
 # @id CODE-AIDS-002

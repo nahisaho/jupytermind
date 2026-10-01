@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T11:01:41.102Z",
-  "totalRequirements": 47,
-  "modeledRequirements": 8,
-  "modeledFraction": 0.1702127659574468,
+  "generatedAt": "2026-10-01T13:30:09.017Z",
+  "totalRequirements": 50,
+  "modeledRequirements": 9,
+  "modeledFraction": 0.18,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -29,6 +29,11 @@
       {
         "requirement": "REQ-AIDS-013",
         "atom": "[\"system\",\"require its pytest suite to pass before any implementation change is considered complete\"]",
+        "positive": true
+      },
+      {
+        "requirement": "REQ-AIDS-049",
+        "atom": "[\"system\",\"expose a stable workspace-root-anchored data directory path on every resolved projecthandle, together with a helper that creates it, so dataset files written during a session land under the same stable project root as the notebook\"]",
         "positive": true
       },
       {
@@ -102,6 +107,8 @@
       "REQ-AIDS-044",
       "REQ-AIDS-045",
       "REQ-AIDS-046",
+      "REQ-AIDS-047",
+      "REQ-AIDS-048",
       "REQ-AIDS-008",
       "REQ-AIDS-015",
       "REQ-AIDS-016",
@@ -246,6 +253,16 @@
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
+        "message": "REQ-AIDS-047 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-048 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
         "message": "REQ-AIDS-008 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
@@ -326,7 +343,7 @@
     }
   },
   "fingerprints": {
-    ".musubix/features/ai-data-scientist/requirements.md": "896c73a81a38150501e30413c21803ad8dcdb946c7fc8c72bb9ad32a32ea9fa7",
+    ".musubix/features/ai-data-scientist/requirements.md": "810fdf1b45b9615dfd138a8c86674bb3046bf1583f5f73b84bd3064f83f270d2",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed"
   }
