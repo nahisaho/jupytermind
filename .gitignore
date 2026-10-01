@@ -27,3 +27,6 @@ npm-debug.log*
 /benchmark/projects/*/data/
 /benchmark/archive/*/project*/data/
 /benchmark/archive/*/project*/data/**
+
+# Jupyter notebooks (benchmark/experiment artifacts; not committed)
+*.ipynb
