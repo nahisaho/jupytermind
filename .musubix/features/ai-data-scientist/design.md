@@ -281,3 +281,51 @@ execute_cell's public signature or return type on the success path.
 Requirements: REQ-AIDS-042
 ADRs: none — a non-blocking refinement of the existing timeout mechanism.
 Depends-On: DES-AIDS-004
+
+## DES-AIDS-032: Import-time-anchored default projects root / インポート時アンカー付きデフォルトprojects_root
+Responsibilities: Replace resolve_project's default `projects_root="projects"`
+(resolved relative to the process's current working directory at call time)
+with a default that is independent of later `os.chdir` calls: an explicit
+`AI_DATA_SCIENTIST_PROJECTS_ROOT` environment variable takes precedence when
+set; otherwise the module captures the process working directory once, at
+import time (before any skill code can chdir into a notebook/dataset
+directory), and anchors `<that directory>/projects` as the default root for
+the lifetime of the process.
+Interfaces: resolve_project(name, projects_root: Path | str | None = None)
+-> ProjectHandle (projects_root now defaults to None, meaning "use the
+stable default root"; passing an explicit projects_root is unchanged from
+today). A module-level `_default_projects_root() -> Path` helper performs
+the environment-variable-then-import-time-cwd resolution.
+Constraints: Must not change behavior for any caller that already passes an
+explicit projects_root; must not perform the cwd capture lazily per-call
+(that would reintroduce the bug), only once at import time; must document
+the AI_DATA_SCIENTIST_PROJECTS_ROOT override in the skill instructions.
+Requirements: REQ-AIDS-044
+ADRs: none — a stability fix anchoring an existing default, no new architectural alternative.
+Depends-On: DES-AIDS-003
+
+## DES-AIDS-033: Read-only notebook audit module / 読み取り専用ノートブック監査モジュール
+Responsibilities: Load a notebook via nbformat (without writing it back),
+and report: nbformat validity; per code cell, whether execution_count is set
+and whether any output has output_type "error"; per code cell, whether an
+"image/png" output is present (chart detection); and, per markdown cell
+whose source is non-empty and does not start with a heading ("#"), whether
+it carries a `\`\`\`evidence\n{...}\n\`\`\`` fenced JSON manifest with
+execution_count/cited_value/claim_type keys that resolves (via the same
+matching rule insight_engine.record_insight uses) to an existing code cell
+output containing cited_value — flagging missing or stale manifests as
+error-level findings tied to their cell index.
+Interfaces: audit_notebook(path: Path | str) -> NotebookAuditReport, where
+NotebookAuditReport exposes nbformat_valid, unexecuted_cell_indices,
+error_cell_indices, chart_cell_indices, findings (tuple of
+severity/message/cell_index), and an `ok` property that is False whenever
+any error-level finding exists (including nbformat invalidity).
+Constraints: Must never call nbformat.write or otherwise mutate the file on
+disk; must not raise for a structurally valid-but-incomplete notebook (e.g.
+zero cells, zero insights) — only for an unreadable/invalid notebook file,
+which is instead reported as a single error-level finding; must reuse the
+same evidence cross-check semantics as DES-AIDS-010 rather than
+re-implementing a divergent matching rule.
+Requirements: REQ-AIDS-045
+ADRs: none — a read-only consumer of the existing notebook/evidence format, no new storage format introduced.
+Depends-On: DES-AIDS-003, DES-AIDS-010

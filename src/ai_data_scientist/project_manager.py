@@ -7,6 +7,7 @@ concurrent notebook writes (ADR-0004).
 
 from __future__ import annotations
 
+import os
 import re
 import threading
 from dataclasses import dataclass
@@ -15,6 +16,31 @@ from pathlib import Path
 import nbformat
 
 _SLUG_PATTERN = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
+
+# Captured once, at import time, before any skill code can os.chdir() into a
+# notebook/dataset directory. This anchors resolve_project's default
+# projects_root to a stable location (REQ-AIDS-044 / DES-AIDS-032), instead
+# of re-resolving "projects" relative to whatever the cwd happens to be at
+# call time (which previously created nested
+# projects/<slug>/notebooks/projects/<slug> paths when the kernel cwd drifted
+# into a project's own notebooks directory).
+_IMPORT_TIME_CWD = Path.cwd()
+
+_PROJECTS_ROOT_ENV_VAR = "AI_DATA_SCIENTIST_PROJECTS_ROOT"
+
+
+def _default_projects_root() -> Path:
+    """Resolve the stable default projects root.
+
+    Prefers the ``AI_DATA_SCIENTIST_PROJECTS_ROOT`` environment variable when
+    set (for callers that want to pin an explicit workspace root); otherwise
+    falls back to ``<import-time cwd>/projects``, which stays constant for
+    the lifetime of the process regardless of later ``os.chdir`` calls.
+    """
+    env_root = os.environ.get(_PROJECTS_ROOT_ENV_VAR)
+    if env_root:
+        return Path(env_root).resolve()
+    return (_IMPORT_TIME_CWD / "projects").resolve()
 
 
 def next_execution_count(notebook) -> int:
@@ -62,11 +88,21 @@ def _lock_for(path: Path) -> threading.Lock:
 # @id CODE-AIDS-028
 # @implements REQ-AIDS-028
 # @design DES-AIDS-003
-def resolve_project(name: str, projects_root: Path | str = "projects") -> ProjectHandle:
+# @id CODE-AIDS-052
+# @implements REQ-AIDS-044
+# @design DES-AIDS-032
+def resolve_project(name: str, projects_root: Path | str | None = None) -> ProjectHandle:
     """Validate ``name`` and resolve its on-disk project handle.
 
     Rejects path traversal / non-slug names before any filesystem access,
     per ADR-0005.
+
+    When ``projects_root`` is omitted, the default root is stable across
+    process working-directory changes: it honors the
+    ``AI_DATA_SCIENTIST_PROJECTS_ROOT`` environment variable when set, and
+    otherwise anchors to the directory this module was imported from, not
+    the caller's current working directory at call time (REQ-AIDS-044).
+    Passing an explicit ``projects_root`` is unchanged from before.
     """
     if not _SLUG_PATTERN.match(name):
         raise InvalidProjectNameError(
@@ -74,7 +110,7 @@ def resolve_project(name: str, projects_root: Path | str = "projects") -> Projec
             f"lowercase ASCII letters, digits and single hyphens, e.g. 'sales-2024' "
             f"(プロジェクト名は小文字英数字とハイフンのみ使用できます: 例 'sales-2024')."
         )
-    root = Path(projects_root).resolve()
+    root = Path(projects_root).resolve() if projects_root is not None else _default_projects_root()
     project_dir = (root / name).resolve()
     if project_dir.parent != root:
         # Defense in depth: even a slug-valid name must stay inside projects_root.

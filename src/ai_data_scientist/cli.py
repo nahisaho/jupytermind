@@ -45,14 +45,42 @@ def doctor() -> int:
     return 0
 
 
+def validate_notebook(path: str) -> int:
+    """Audit a notebook (read-only) and print findings; exit 1 if any error finding."""
+    from ai_data_scientist.notebook_audit import audit_notebook
+
+    report = audit_notebook(path)
+    print(f"Notebook: {report.path}")
+    print(f"nbformat_valid={report.nbformat_valid} ok={report.ok}")
+    print(
+        f"code_cells={report.code_cell_count} executed={report.executed_code_cell_count} "
+        f"insight_cells={report.insight_cell_count}"
+    )
+    if not report.findings:
+        print("OK: 問題は見つかりませんでした / no issues found.")
+        return 0
+
+    print("findings:")
+    for finding in report.findings:
+        location = f"cell[{finding.cell_index}]" if finding.cell_index is not None else "-"
+        print(f"  - [{finding.severity}] {location}: {finding.message}")
+    return 0 if report.ok else 1
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ai-data-scientist")
     subparsers = parser.add_subparsers(dest="command")
     subparsers.add_parser("doctor", help="Verify the Python environment can import every module.")
+    validate_parser = subparsers.add_parser(
+        "validate-notebook", help="Audit a notebook's execution/evidence completeness (read-only)."
+    )
+    validate_parser.add_argument("path", help="Path to the .ipynb file to audit.")
     args = parser.parse_args(argv)
 
     if args.command in (None, "doctor"):
         return doctor()
+    if args.command == "validate-notebook":
+        return validate_notebook(args.path)
 
     parser.error(f"Unknown command: {args.command}")
     return 2

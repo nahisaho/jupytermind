@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T03:43:51.212Z",
+  "generatedAt": "2026-10-01T07:51:38.991Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -157,6 +157,18 @@
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
       "line": 262
+    },
+    {
+      "id": "DES-AIDS-032",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist/design.md",
+      "line": 285
+    },
+    {
+      "id": "DES-AIDS-033",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist/design.md",
+      "line": 307
     },
     {
       "id": "REQ-AIDS-001",
@@ -359,6 +371,20 @@
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist/requirements.md",
       "line": 216,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AIDS-044",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 223,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIDS-045",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 230,
       "mandatory": false
     },
     {
@@ -725,22 +751,28 @@
       "line": 27
     },
     {
+      "id": "CODE-AIDS-053",
+      "kind": "code",
+      "path": "src/ai_data_scientist/notebook_audit.py",
+      "line": 70
+    },
+    {
       "id": "CODE-AIDS-028",
       "kind": "code",
       "path": "src/ai_data_scientist/project_manager.py",
-      "line": 62
+      "line": 88
     },
     {
       "id": "CODE-AIDS-002",
       "kind": "code",
       "path": "src/ai_data_scientist/project_manager.py",
-      "line": 86
+      "line": 122
     },
     {
       "id": "CODE-AIDS-011",
       "kind": "code",
       "path": "src/ai_data_scientist/project_manager.py",
-      "line": 99
+      "line": 135
     },
     {
       "id": "CODE-AIDS-025",
@@ -1037,28 +1069,70 @@
       "line": 8
     },
     {
+      "id": "TEST-AIDS-059",
+      "kind": "test",
+      "path": "tests/test_notebook_audit.py",
+      "line": 25
+    },
+    {
+      "id": "TEST-AIDS-060",
+      "kind": "test",
+      "path": "tests/test_notebook_audit.py",
+      "line": 64
+    },
+    {
+      "id": "TEST-AIDS-061",
+      "kind": "test",
+      "path": "tests/test_notebook_audit.py",
+      "line": 93
+    },
+    {
+      "id": "TEST-AIDS-062",
+      "kind": "test",
+      "path": "tests/test_notebook_audit.py",
+      "line": 130
+    },
+    {
+      "id": "TEST-AIDS-063",
+      "kind": "test",
+      "path": "tests/test_notebook_audit.py",
+      "line": 143
+    },
+    {
       "id": "TEST-AIDS-028",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 16
+      "line": 18
     },
     {
       "id": "TEST-AIDS-002",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 25
+      "line": 27
     },
     {
       "id": "TEST-AIDS-011",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 40
+      "line": 42
     },
     {
       "id": "TEST-AIDS-029",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 57
+      "line": 59
+    },
+    {
+      "id": "TEST-AIDS-057",
+      "kind": "test",
+      "path": "tests/test_project_manager.py",
+      "line": 87
+    },
+    {
+      "id": "TEST-AIDS-058",
+      "kind": "test",
+      "path": "tests/test_project_manager.py",
+      "line": 107
     },
     {
       "id": "TEST-AIDS-025",
@@ -1431,6 +1505,31 @@
     {
       "from": "DES-AIDS-030",
       "to": "DES-AIDS-004",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-032",
+      "to": "REQ-AIDS-044",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AIDS-032",
+      "to": "DES-AIDS-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-033",
+      "to": "REQ-AIDS-045",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AIDS-033",
+      "to": "DES-AIDS-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-033",
+      "to": "DES-AIDS-010",
       "relation": "depends-on"
     },
     {
@@ -1959,6 +2058,16 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AIDS-053",
+      "to": "REQ-AIDS-045",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-053",
+      "to": "DES-AIDS-033",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AIDS-028",
       "to": "REQ-AIDS-028",
       "relation": "implements"
@@ -1966,6 +2075,16 @@
     {
       "from": "CODE-AIDS-028",
       "to": "DES-AIDS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-028",
+      "to": "REQ-AIDS-044",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-028",
+      "to": "DES-AIDS-032",
       "relation": "implements"
     },
     {
@@ -2309,6 +2428,31 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AIDS-059",
+      "to": "REQ-AIDS-045",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-060",
+      "to": "REQ-AIDS-045",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-061",
+      "to": "REQ-AIDS-045",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-062",
+      "to": "REQ-AIDS-045",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-063",
+      "to": "REQ-AIDS-045",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AIDS-028",
       "to": "REQ-AIDS-028",
       "relation": "verifies"
@@ -2326,6 +2470,16 @@
     {
       "from": "TEST-AIDS-029",
       "to": "REQ-AIDS-029",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-057",
+      "to": "REQ-AIDS-044",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-058",
+      "to": "REQ-AIDS-044",
       "relation": "verifies"
     },
     {
@@ -2394,8 +2548,8 @@
     ".musubix/decisions/ADR-0006.md": "7c57c83bf7bd8bba568732cfe2697a9831910bff526ad9a05a1a29fcd3b750b5",
     ".musubix/decisions/ADR-0007.md": "1f10374842d0f109bf5c0ce8d312305b56ab8431ea1ed2d233b770798437b14c",
     ".musubix/decisions/ADR-0008.md": "1502ca21a62020cf0e1960d1884f2d8a88b1209ba3b70a4c3247759921900867",
-    ".musubix/features/ai-data-scientist/design.md": "8643f97dc9f0be0f0c0a1f61ec7dd1655ec33c401fb4997b1fbc82cff1383a21",
-    ".musubix/features/ai-data-scientist/requirements.md": "6f48f57ab5e7c4bc9e3cb80df559b510f102f7591cf01112c03b96f1886b2f27",
+    ".musubix/features/ai-data-scientist/design.md": "12a63e2799e2c35f2059805a3584925dbfe60a47cb44a725fc998e718891ab5e",
+    ".musubix/features/ai-data-scientist/requirements.md": "be05c321dcb8430cf750b042467f21c68696f5b922cb994a6125a73fac831cca",
     ".musubix/features/ai-data-scientist-ml/design.md": "5a9b6d88cda2a8e05fbfb09b8e1ea8cd3dd1c361b27c0385bef71437c9e62906",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
@@ -2405,7 +2559,7 @@
     "src/ai_data_scientist/anomaly_detection.py": "8e991c85d27e7414ac66320d3a4fbed04a61adc484de9b4ada6923cb17a8752d",
     "src/ai_data_scientist/automl.py": "f867bf8081f0d72011356466c30690452035dec090e90f99c05daf1023e964da",
     "src/ai_data_scientist/cleaning.py": "8060c69112efe6aae6f0afdff6e464d601a76b5b62455e5d673916edfd4207ea",
-    "src/ai_data_scientist/cli.py": "d7b60bd499fbd427453061ba87b20ab346f1a79cf36ecaca0ba8207347dff9a4",
+    "src/ai_data_scientist/cli.py": "0f3b779e0896c67c9ac321dae40af4259b0d1583e2ad8f7af036adb496d0a4f2",
     "src/ai_data_scientist/clustering.py": "2b9011a2dfbb2e9318518dedf90b186d58eace35f03d1c28d6d47937c4a79bd0",
     "src/ai_data_scientist/dashboard.py": "e54d6d6fe08fe6505a4904d83621b12605a1b22fa77c7f1337f7fd9f9cf1bab3",
     "src/ai_data_scientist/eda.py": "b81e5e3ac240b3e66e30cc8f6fe57fc34a34b1fb58f72ecd955db9c6b1550ec4",
@@ -2424,7 +2578,8 @@
     "src/ai_data_scientist/mcp_transport.py": "b4bc766c3eabcc452976e34c330e1e40b78605565063f31627013582778a52e6",
     "src/ai_data_scientist/ml_modeling.py": "774e7f12fa5ba0cac2a5559ef9abaf8db67445e659b86b18dbc607a9cb5bd6a9",
     "src/ai_data_scientist/model_tuning.py": "2e4cdbc8895c319876ef3a0274e7247408063ac31c8b59825051a2bdd2ad1faf",
-    "src/ai_data_scientist/project_manager.py": "c88da5405208a606026b7dd454f909ef2fe21fd18bdb9a0d5ed9f43048e03fc9",
+    "src/ai_data_scientist/notebook_audit.py": "63efd34e356f6bc2695b9695bd780a894f3ada615b5a0368beefdb822ff2050f",
+    "src/ai_data_scientist/project_manager.py": "d7a6a5411c10b3ad534d054277137cae7c0253da2af4669b18b7abfdb28c3adc",
     "src/ai_data_scientist/report_export.py": "29f1d2ccc4d3cd8208d7a4ba043a976b60caec863f9a2ad701017e0bf8b82510",
     "src/ai_data_scientist/skill_packaging.py": "90597141eda3af0b96a0e667612cb1e2d0c3f7deb58d2dca923d716946966de1",
     "src/ai_data_scientist/stats_analysis.py": "85fc910ad24b5c8a1205d0360aebf88d40dd3c2029cf7d24d24f7ba6859dea4a",
@@ -2451,7 +2606,8 @@
     "tests/test_mcp_runtime.py": "ddc6a67c2565f205986a34f94cedf39c5a7fa7f8f5089d89f84ca881be6242c0",
     "tests/test_ml_modeling.py": "7023a333da56f3e39d672946b8481742f22d118d66e5e5afc14113b916865e39",
     "tests/test_model_tuning.py": "b924be0cb1f7be508ca6697e032e2dc45bb154d67e53c8a588f0c9b4dd351f62",
-    "tests/test_project_manager.py": "a8b9e5c56a72fa378fceae012f3c6edddbf2c684c0022bab786f9f5796f5d982",
+    "tests/test_notebook_audit.py": "da0a7814d955ee0aabd01fb18b32ed8ee57733b02a33ca91b32deb05181d867b",
+    "tests/test_project_manager.py": "947bf2dbef94239bd9ac89fd2ad05807d8b6277ae142f2265d634848fcb9c6d4",
     "tests/test_report_export.py": "9640608629a523fc0b124d6fca0e7b5448869d672289b5bec3e9011e4e477fea",
     "tests/test_skill_packaging.py": "73cfcef96b5e5364334a76cfb402f2b5b956ac830e9ce9f8f5d1c3ad543a1c5c",
     "tests/test_stats_analysis.py": "b8bc426c85e6fddf8dff9151a7799a4d9014f597d72563d824487afa0e9ee8d6",

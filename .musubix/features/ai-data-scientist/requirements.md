@@ -219,3 +219,17 @@ Type: functional
 Pattern: event-driven
 Statement: When a user requests exploratory analysis, the system shall also report, for every column, its missing count and missing ratio, and, for every categorical column, its unique-value count and the counts and ratios of its most frequent values up to a bounded limit, while preserving the existing describe/dtypes/non_null_counts fields unchanged.
 Acceptance: Running EDA against a dataset with categorical columns (e.g. a species/gender/category column) produces a report exposing, per categorical column, unique_count and a bounded list of top values with counts and ratios (with a truncated flag when more unique values exist than the limit), and a per-column missing_count/missing_ratio for every column; an empty DataFrame, an all-missing column, and a DataFrame with no categorical columns all return a well-formed report without raising, and the pre-existing describe/dtypes/non_null_counts values are unchanged from before this requirement.
+
+## REQ-AIDS-044: Stable default project workspace root / プロジェクトワークスペースルートの安定化
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall resolve resolve_project's default projects_root to a location that is independent of the process's current working directory at call time, so that calling resolve_project with no explicit projects_root from the workspace root or from a project's own notebook subdirectory resolves to the same project root and notebook path.
+Acceptance: Given the process working directory changes to a project's notebooks subdirectory after the module has been loaded, calling resolve_project(name) with no explicit projects_root still returns the same root/notebook_path as calling it from the original workspace root, and never creates a nested projects/<slug>/notebooks/projects/<slug> path; calling resolve_project with an explicit projects_root argument continues to honor that argument exactly as before.
+
+## REQ-AIDS-045: Read-only notebook evidence/execution audit / 読み取り専用のノートブック実行・根拠監査
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When a caller requests an audit of a project notebook, the system shall report, without modifying the notebook, its nbformat validity, any unexecuted or error-producing code cells, and, for every markdown cell carrying or expected to carry an evidence manifest, whether that manifest is present, well-formed, and resolves to an existing executed cell whose output actually contains the cited value.
+Acceptance: Given a notebook with at least one unexecuted code cell, one error output, one chart output, one insight cell with a valid evidence manifest, and one insight-like cell with a missing or stale evidence manifest, auditing it reports each condition tied to its originating cell index, leaves the notebook file byte-for-byte unmodified, and yields a report whose overall pass/fail status is false whenever any error-level finding exists (so it is usable as a CI gate); auditing a fully well-formed notebook yields a passing status.

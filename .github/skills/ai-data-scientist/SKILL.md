@@ -23,7 +23,11 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
    `ai_data_scientist.project_manager.resolve_project(name)` to validate the
    project identifier (ADR-0005 slug policy), then
    `ensure_notebook(handle)` to create or reuse
-   `projects/<name>/notebooks/<name>.ipynb` (REQ-AIDS-002/028).
+   `projects/<name>/notebooks/<name>.ipynb` (REQ-AIDS-002/028). The default
+   `projects/` root is stable across kernel working-directory changes
+   (REQ-AIDS-044): set `AI_DATA_SCIENTIST_PROJECTS_ROOT` to an absolute path
+   to pin the workspace root explicitly, especially if the kernel may `cd`
+   into a dataset or notebook directory during the session.
 2. **Detect instruction language** — call
    `ai_data_scientist.language_router.detect_language(instruction_text)` and
    use its result for every reply and inserted markdown cell in this turn
@@ -70,6 +74,16 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
    `EvidenceMissingError` (which you must report to the user, not silently
    swallow) instead of writing an insight with no notebook-backed rationale
    (REQ-AIDS-009/010/027).
+10. **Audit before handing off** — before telling the user the notebook is
+    complete, run `ai_data_scientist.notebook_audit.audit_notebook(path)`
+    (REQ-AIDS-045). It is read-only (never rewrites the notebook) and
+    reports unexecuted/error code cells and any insight-like markdown cell
+    whose evidence manifest is missing or no longer resolves to a real
+    executed output. If `report.ok` is `False`, fix the underlying cells or
+    insights before finishing, rather than reporting success with
+    unresolved findings. The same check is available from the shell as
+    `ai-data-scientist validate-notebook <path>` for CI or manual spot
+    checks.
 
 ## Constraints / 制約
 - Every notebook write goes through
@@ -92,4 +106,5 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
 - `src/ai_data_scientist/stats_analysis.py` — DES-AIDS-008
 - `src/ai_data_scientist/visualization.py` — DES-AIDS-009
 - `src/ai_data_scientist/insight_engine.py` — DES-AIDS-010
+- `src/ai_data_scientist/notebook_audit.py` — DES-AIDS-033
 - `src/ai_data_scientist/gate_config.py` — DES-AIDS-011

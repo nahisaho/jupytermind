@@ -1,10 +1,12 @@
 """Tests for project & notebook manager (REQ-AIDS-002/011/028/029)."""
 
+import importlib
 import threading
 
 import nbformat
 import pytest
 
+from ai_data_scientist import project_manager
 from ai_data_scientist.project_manager import (
     InvalidProjectNameError,
     enqueue_write,
@@ -80,3 +82,51 @@ def test_TEST_AIDS_029(tmp_path):
     assert len(notebook.cells) == 10
     markers = {cell.source for cell in notebook.cells}
     assert len(markers) == 10
+
+
+# @id TEST-AIDS-057
+# @verifies REQ-AIDS-044
+def test_TEST_AIDS_057_default_root_env_override_is_stable_across_cwd(tmp_path, monkeypatch):
+    workspace_root = tmp_path / "workspace"
+    workspace_root.mkdir()
+    monkeypatch.setenv("AI_DATA_SCIENTIST_PROJECTS_ROOT", str(workspace_root / "projects"))
+
+    handle_from_root = resolve_project("stable-project")
+
+    notebook_subdir = workspace_root / "projects" / "other-project" / "notebooks"
+    notebook_subdir.mkdir(parents=True)
+    monkeypatch.chdir(notebook_subdir)
+
+    handle_from_subdir = resolve_project("stable-project")
+
+    assert handle_from_root.root == handle_from_subdir.root
+    assert handle_from_root.notebook_path == handle_from_subdir.notebook_path
+    assert not (handle_from_root.root / "notebooks" / "projects").exists()
+
+
+# @id TEST-AIDS-058
+# @verifies REQ-AIDS-044
+def test_TEST_AIDS_058_default_root_falls_back_to_import_time_cwd(tmp_path, monkeypatch):
+    monkeypatch.delenv("AI_DATA_SCIENTIST_PROJECTS_ROOT", raising=False)
+    workspace_root = tmp_path / "workspace-fallback"
+    workspace_root.mkdir()
+    original_cwd = tmp_path
+
+    try:
+        monkeypatch.chdir(workspace_root)
+        importlib.reload(project_manager)
+
+        handle_from_root = project_manager.resolve_project("stable-project")
+
+        notebook_subdir = workspace_root / "projects" / "other-project" / "notebooks"
+        notebook_subdir.mkdir(parents=True)
+        monkeypatch.chdir(notebook_subdir)
+
+        handle_from_subdir = project_manager.resolve_project("stable-project")
+
+        assert handle_from_root.root == handle_from_subdir.root
+        assert handle_from_root.notebook_path == handle_from_subdir.notebook_path
+        assert handle_from_root.root == (workspace_root / "projects" / "stable-project").resolve()
+    finally:
+        monkeypatch.chdir(original_cwd)
+        importlib.reload(project_manager)

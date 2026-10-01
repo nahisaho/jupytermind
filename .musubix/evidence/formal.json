@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T03:43:52.020Z",
-  "totalRequirements": 44,
+  "generatedAt": "2026-10-01T07:51:39.742Z",
+  "totalRequirements": 46,
   "modeledRequirements": 8,
-  "modeledFraction": 0.18181818181818182,
+  "modeledFraction": 0.17391304347826086,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -99,6 +99,8 @@
       "REQ-AIDS-041",
       "REQ-AIDS-042",
       "REQ-AIDS-043",
+      "REQ-AIDS-044",
+      "REQ-AIDS-045",
       "REQ-AIDS-008",
       "REQ-AIDS-015",
       "REQ-AIDS-016",
@@ -228,6 +230,16 @@
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
+        "message": "REQ-AIDS-044 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-045 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
         "message": "REQ-AIDS-008 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
@@ -308,7 +320,7 @@
     }
   },
   "fingerprints": {
-    ".musubix/features/ai-data-scientist/requirements.md": "6f48f57ab5e7c4bc9e3cb80df559b510f102f7591cf01112c03b96f1886b2f27",
+    ".musubix/features/ai-data-scientist/requirements.md": "be05c321dcb8430cf750b042467f21c68696f5b922cb994a6125a73fac831cca",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed"
   }
