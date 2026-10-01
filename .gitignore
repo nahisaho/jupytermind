@@ -30,3 +30,8 @@ npm-debug.log*
 
 # Jupyter notebooks (benchmark/experiment artifacts; not committed)
 *.ipynb
+
+# Benchmark run artifacts (keep only figures/ and white-paper)
+/benchmark/*
+!/benchmark/figures/
+!/benchmark/white-paper-v0.2.0.md
