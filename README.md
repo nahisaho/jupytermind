@@ -1,4 +1,4 @@
-# AI Data Scientist — Jupyter MCP Copilot Agent Skill
+# Jupytermind：AI Data Scientist — Jupyter MCP Copilot Agent Skill
 
 [日本語 README](README-ja.md)
 
