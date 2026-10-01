@@ -233,3 +233,10 @@ Type: functional
 Pattern: event-driven
 Statement: When a caller requests an audit of a project notebook, the system shall report, without modifying the notebook, its nbformat validity, any unexecuted or error-producing code cells, and, for every markdown cell carrying or expected to carry an evidence manifest, whether that manifest is present, well-formed, and resolves to an existing executed cell whose output actually contains the cited value.
 Acceptance: Given a notebook with at least one unexecuted code cell, one error output, one chart output, one insight cell with a valid evidence manifest, and one insight-like cell with a missing or stale evidence manifest, auditing it reports each condition tied to its originating cell index, leaves the notebook file byte-for-byte unmodified, and yields a report whose overall pass/fail status is false whenever any error-level finding exists (so it is usable as a CI gate); auditing a fully well-formed notebook yields a passing status.
+
+## REQ-AIDS-046: Legible Japanese chart text via bundled font / バンドル済みフォントによる日本語グラフ文言の可読表示
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When render_chart is asked to render a chart title or axis label containing non-ASCII characters, the system shall configure matplotlib to use a bundled Japanese-capable font for that rendering.
+Acceptance: Given a DataFrame and a title/xlabel/ylabel containing Japanese text, calling render_chart(df, ..., title=..., xlabel=..., ylabel=...) returns valid PNG bytes and matplotlib's active font family becomes the bundled Japanese-capable font (verified via matplotlib.rcParams after the call); calling render_chart with only ASCII text still returns valid PNG bytes without requiring the bundled font; because the font ships as a package dependency, this behavior is identical regardless of what fonts are installed on the host operating system.

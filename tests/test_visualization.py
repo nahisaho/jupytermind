@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import nbformat
 import pandas as pd
 
@@ -81,3 +82,48 @@ def test_TEST_AIDS_049_documents_kernel_consistency_contract():
     )
     skill_text = skill_path.read_text(encoding="utf-8")
     assert "never execute the stored code string against the live" in skill_text
+
+
+# @id TEST-AIDS-064
+# @verifies REQ-AIDS-046
+def test_TEST_AIDS_064_ascii_title_labels_render_without_font_switch(monkeypatch):
+    from ai_data_scientist import visualization
+
+    monkeypatch.setattr(visualization, "_japanese_font_applied", False)
+    original_family = list(plt.rcParams["font.family"])
+    try:
+        df = pd.DataFrame({"x": [1, 2, 3], "y": [1, 4, 9]})
+        png_bytes = render_chart(
+            df, kind="scatter", x="x", y="y", title="Growth", xlabel="X axis", ylabel="Y axis"
+        )
+        assert png_bytes[:8] == b"\x89PNG\r\n\x1a\n"
+        assert plt.rcParams["font.family"] == original_family
+        assert visualization._japanese_font_applied is False
+    finally:
+        plt.rcParams["font.family"] = original_family
+
+
+# @id TEST-AIDS-065
+# @verifies REQ-AIDS-046
+def test_TEST_AIDS_065_japanese_title_uses_bundled_font(monkeypatch):
+    from ai_data_scientist import visualization
+
+    monkeypatch.setattr(visualization, "_japanese_font_applied", False)
+    original_family = list(plt.rcParams["font.family"])
+    try:
+        df = pd.DataFrame({"x": [1, 2, 3], "y": [1, 4, 9]})
+
+        png_bytes = render_chart(
+            df, kind="scatter", x="x", y="y", title="売上推移", xlabel="月", ylabel="金額"
+        )
+        assert png_bytes[:8] == b"\x89PNG\r\n\x1a\n"
+        assert plt.rcParams["font.family"] == ["IPAexGothic"]
+        assert visualization._japanese_font_applied is True
+
+        # Calling again with Japanese text must stay idempotent (no error,
+        # font family unchanged on the second call).
+        png_bytes_2 = render_chart(df, kind="scatter", x="x", y="y", title="第2四半期")
+        assert png_bytes_2[:8] == b"\x89PNG\r\n\x1a\n"
+        assert plt.rcParams["font.family"] == ["IPAexGothic"]
+    finally:
+        plt.rcParams["font.family"] = original_family

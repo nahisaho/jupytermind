@@ -54,13 +54,19 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
    language=...)`; write the resulting statistic in a code cell and its
    `interpretation` in an adjacent markdown cell (REQ-AIDS-006).
 8. **Visualize** with `ai_data_scientist.visualization.render_chart(df,
-   kind=..., x=..., y=...)` and `build_image_output(png_bytes)`, then append
-   via `project_manager.enqueue_write` so the image MIME bundle is persisted
+   kind=..., x=..., y=..., title=..., xlabel=..., ylabel=...)` and
+   `build_image_output(png_bytes)`, then append via
+   `project_manager.enqueue_write` so the image MIME bundle is persisted
    in the notebook JSON (REQ-AIDS-007). `render_chart`/`record_chart` render
    locally and never execute the stored code string against the live
    Jupyter kernel (REQ-AIDS-040): only reference variables already
    established by a prior `run_and_record` call in that code string, so the
    notebook stays consistent if a human re-runs it top-to-bottom later.
+   Pass Japanese (or other non-ASCII) text in `title`/`xlabel`/`ylabel`
+   freely: `render_chart` automatically switches to a bundled
+   Japanese-capable font the first time such text appears in a process, so
+   it renders as legible glyphs instead of mojibake/placeholder boxes,
+   regardless of what fonts are installed on the host (REQ-AIDS-046).
 9. **Record insights with evidence** — only after executing the
    evidentiary cell, derive `cited_value` from the executed cell's actual
    output with `ai_data_scientist.insight_engine.extract_cited_value(result,

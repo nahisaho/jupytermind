@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/)
 (pre-1.0, so minor versions may still include breaking changes).
 
 ## [Unreleased]
+
+## [0.1.3] - 2026-10-01
 ### Added
 - Japanese (and other non-ASCII) chart title/axis-label support in
   `visualization.render_chart`, using a bundled font (`japanize-matplotlib` /
@@ -66,7 +68,8 @@ environment.
 - `mcp_runtime`: added a bounded polling helper to wait for full termination
   after `stop()` (closes #8).
 
-[Unreleased]: https://github.com/nahisaho/jupytermind/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/nahisaho/jupytermind/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/nahisaho/jupytermind/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/nahisaho/jupytermind/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/nahisaho/jupytermind/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/nahisaho/jupytermind/releases/tag/v0.1.0

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T07:51:38.991Z",
+  "generatedAt": "2026-10-01T11:01:40.325Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -169,6 +169,12 @@
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
       "line": 307
+    },
+    {
+      "id": "DES-AIDS-034",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist/design.md",
+      "line": 333
     },
     {
       "id": "REQ-AIDS-001",
@@ -386,6 +392,13 @@
       "path": ".musubix/features/ai-data-scientist/requirements.md",
       "line": 230,
       "mandatory": false
+    },
+    {
+      "id": "REQ-AIDS-046",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 237,
+      "mandatory": true
     },
     {
       "id": "DES-AIDS-012",
@@ -805,22 +818,28 @@
       "line": 25
     },
     {
-      "id": "CODE-AIDS-007",
+      "id": "CODE-AIDS-054",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
       "line": 24
     },
     {
+      "id": "CODE-AIDS-007",
+      "kind": "code",
+      "path": "src/ai_data_scientist/visualization.py",
+      "line": 58
+    },
+    {
       "id": "CODE-AIDS-034",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
-      "line": 47
+      "line": 102
     },
     {
       "id": "CODE-AIDS-035",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
-      "line": 59
+      "line": 114
     },
     {
       "id": "TEST-AIDS-017",
@@ -1186,19 +1205,31 @@
       "id": "TEST-AIDS-007",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 12
+      "line": 13
     },
     {
       "id": "TEST-AIDS-039",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 42
+      "line": 43
     },
     {
       "id": "TEST-AIDS-049",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 65
+      "line": 66
+    },
+    {
+      "id": "TEST-AIDS-064",
+      "kind": "test",
+      "path": "tests/test_visualization.py",
+      "line": 87
+    },
+    {
+      "id": "TEST-AIDS-065",
+      "kind": "test",
+      "path": "tests/test_visualization.py",
+      "line": 106
     }
   ],
   "edges": [
@@ -1530,6 +1561,16 @@
     {
       "from": "DES-AIDS-033",
       "to": "DES-AIDS-010",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-034",
+      "to": "REQ-AIDS-046",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AIDS-034",
+      "to": "DES-AIDS-009",
       "relation": "depends-on"
     },
     {
@@ -2178,6 +2219,16 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AIDS-054",
+      "to": "REQ-AIDS-046",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-054",
+      "to": "DES-AIDS-034",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AIDS-007",
       "to": "REQ-AIDS-007",
       "relation": "implements"
@@ -2536,6 +2587,16 @@
       "from": "TEST-AIDS-049",
       "to": "REQ-AIDS-040",
       "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-064",
+      "to": "REQ-AIDS-046",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-065",
+      "to": "REQ-AIDS-046",
+      "relation": "verifies"
     }
   ],
   "diagnostics": [],
@@ -2548,8 +2609,8 @@
     ".musubix/decisions/ADR-0006.md": "7c57c83bf7bd8bba568732cfe2697a9831910bff526ad9a05a1a29fcd3b750b5",
     ".musubix/decisions/ADR-0007.md": "1f10374842d0f109bf5c0ce8d312305b56ab8431ea1ed2d233b770798437b14c",
     ".musubix/decisions/ADR-0008.md": "1502ca21a62020cf0e1960d1884f2d8a88b1209ba3b70a4c3247759921900867",
-    ".musubix/features/ai-data-scientist/design.md": "12a63e2799e2c35f2059805a3584925dbfe60a47cb44a725fc998e718891ab5e",
-    ".musubix/features/ai-data-scientist/requirements.md": "be05c321dcb8430cf750b042467f21c68696f5b922cb994a6125a73fac831cca",
+    ".musubix/features/ai-data-scientist/design.md": "edc9809acfbb1cd007287e793f2def8a4e79be9ebc7e888649ad48d48d2b62ee",
+    ".musubix/features/ai-data-scientist/requirements.md": "896c73a81a38150501e30413c21803ad8dcdb946c7fc8c72bb9ad32a32ea9fa7",
     ".musubix/features/ai-data-scientist-ml/design.md": "5a9b6d88cda2a8e05fbfb09b8e1ea8cd3dd1c361b27c0385bef71437c9e62906",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
@@ -2585,7 +2646,7 @@
     "src/ai_data_scientist/stats_analysis.py": "85fc910ad24b5c8a1205d0360aebf88d40dd3c2029cf7d24d24f7ba6859dea4a",
     "src/ai_data_scientist/text_nlp.py": "bb7ee36f88f69ba683b82dae4fee06b3a1ff004774d57973ee60c9b0f53f3985",
     "src/ai_data_scientist/timeseries.py": "9c36ccab2c39d70815a3e5cd55e8b79679d7678107a39fda02a22ab665263dc5",
-    "src/ai_data_scientist/visualization.py": "fc9efc9acdc93cbf375d7d40d2ff7695aba509fa1ed7e1841467c77eaed9acbc",
+    "src/ai_data_scientist/visualization.py": "9530eab051be0934fd7d9a2bfe620c35fd522aec130e98f633156320d6f05cdb",
     "tests/test_anomaly_detection.py": "1d3cdaabb41d4dc2f7d0b0278d6645cee4d0d11557aa4519a7de0376a083d3ba",
     "tests/test_automl.py": "8143813b6142f3e83cd5117ecb0025a161963b616b4480cf76cbbe1859e5989a",
     "tests/test_cleaning.py": "83face0b0f1ddcd158def39d0a711444b717b0416dc1f1b7bc021bc71723942e",
@@ -2613,6 +2674,6 @@
     "tests/test_stats_analysis.py": "b8bc426c85e6fddf8dff9151a7799a4d9014f597d72563d824487afa0e9ee8d6",
     "tests/test_text_nlp.py": "fd80ec14405d2eafc9def8bbf0e4e763a3b36e340f3aff4c6d6c69360dc69274",
     "tests/test_timeseries.py": "263103dc868f7a5d994c30b63640725af49bb1ac8bcc488f084075a758a7fdd0",
-    "tests/test_visualization.py": "61b494ea98d58786b8dfe69cac1bafafb378f7f38799f31b062ede06b78753ca"
+    "tests/test_visualization.py": "87498bcba8a229e06a98917e7f5af6ec2012196d4389cc31f59e7aee8ea2a92a"
   }
 }

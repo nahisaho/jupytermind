@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import base64
 import io
+import warnings
 
 import matplotlib
 
@@ -20,16 +21,64 @@ from ai_data_scientist.project_manager import ProjectHandle, enqueue_write, next
 
 _SUPPORTED_KINDS = ("scatter", "line", "bar", "hist")
 
+# @id CODE-AIDS-054
+# @implements REQ-AIDS-046
+# @design DES-AIDS-034
+_japanese_font_applied = False
+
+
+def _contains_non_ascii(text: str | None) -> bool:
+    """True if ``text`` contains a character matplotlib's default font
+    cannot render legibly (anything outside the printable ASCII range)."""
+    return bool(text) and any(ord(ch) > 127 for ch in text)
+
+
+def _ensure_japanese_font() -> None:
+    """Lazily register the bundled Japanese-capable font with matplotlib.
+
+    Importing/calling ``japanize_matplotlib.japanize()`` registers its
+    bundled IPAexGothic TrueType font with matplotlib's font manager and
+    sets it as the active ``font.family`` (REQ-AIDS-046), independent of
+    whatever fonts happen to be installed on the host. Only triggered once
+    per process: charts with no non-ASCII title/xlabel/ylabel never pay
+    this cost and matplotlib's default font behavior is unaffected until
+    Japanese (or other non-ASCII) text first appears.
+    """
+    global _japanese_font_applied
+    if _japanese_font_applied:
+        return
+    with warnings.catch_warnings():
+        # japanize_matplotlib relies on distutils.version.LooseVersion,
+        # which emits a harmless DeprecationWarning under modern setuptools.
+        warnings.simplefilter("ignore", DeprecationWarning)
+        import japanize_matplotlib  # noqa: F401 - import side effect registers the font
+    _japanese_font_applied = True
+
 
 # @id CODE-AIDS-007
 # @implements REQ-AIDS-007
 # @design DES-AIDS-009
 def render_chart(
-    df: pd.DataFrame, kind: str = "scatter", x: str | None = None, y: str | None = None
+    df: pd.DataFrame,
+    kind: str = "scatter",
+    x: str | None = None,
+    y: str | None = None,
+    title: str | None = None,
+    xlabel: str | None = None,
+    ylabel: str | None = None,
 ) -> bytes:
-    """Render ``df`` as ``kind`` chart and return PNG bytes."""
+    """Render ``df`` as ``kind`` chart and return PNG bytes.
+
+    ``title``/``xlabel``/``ylabel`` containing non-ASCII characters (e.g.
+    Japanese) are rendered using a bundled Japanese-capable font
+    (REQ-AIDS-046) so they display as legible glyphs instead of matplotlib's
+    default placeholder boxes, regardless of fonts installed on the host.
+    """
     if kind not in _SUPPORTED_KINDS:
         raise ValueError(f"Unsupported chart kind: {kind!r}")
+
+    if any(_contains_non_ascii(text) for text in (title, xlabel, ylabel)):
+        _ensure_japanese_font()
 
     fig, ax = plt.subplots()
     try:
@@ -37,6 +86,12 @@ def render_chart(
             df[x].plot(kind="hist", ax=ax)
         else:
             df.plot(kind=kind, x=x, y=y, ax=ax)
+        if title is not None:
+            ax.set_title(title)
+        if xlabel is not None:
+            ax.set_xlabel(xlabel)
+        if ylabel is not None:
+            ax.set_ylabel(ylabel)
         buffer = io.BytesIO()
         fig.savefig(buffer, format="png")
         return buffer.getvalue()

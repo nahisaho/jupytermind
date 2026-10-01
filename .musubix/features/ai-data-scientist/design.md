@@ -329,3 +329,33 @@ re-implementing a divergent matching rule.
 Requirements: REQ-AIDS-045
 ADRs: none — a read-only consumer of the existing notebook/evidence format, no new storage format introduced.
 Depends-On: DES-AIDS-003, DES-AIDS-010
+
+## DES-AIDS-034: Bundled Japanese font for chart text / バンドル済み日本語フォントによるグラフ文言対応
+Responsibilities: Extend render_chart with optional title/xlabel/ylabel
+parameters. When any of title/xlabel/ylabel contains a non-ASCII character,
+lazily (once per process) import the `japanize-matplotlib` package, whose
+import side effect registers the bundled IPAexGothic TrueType font with
+matplotlib's font manager and sets it as the active `font.family` via
+`matplotlib.rc`. Subsequent calls reuse the already-registered font (a
+module-level flag avoids re-importing/re-registering on every call). Charts
+with only ASCII title/xlabel/ylabel (or none at all) never trigger the
+import, so default matplotlib font behavior for existing callers is
+unchanged until Japanese text first appears in a given process.
+Interfaces: render_chart(df, kind="scatter", x=None, y=None, title=None,
+xlabel=None, ylabel=None) -> bytes (new optional keyword-only-by-convention
+parameters; existing positional/keyword call sites are unaffected since the
+new parameters default to None and are appended after the existing ones).
+Constraints: Must not require any font to be pre-installed on the host
+(the font ships inside the `japanize-matplotlib` PyPI package, itself
+bundling IPA's freely redistributable IPAexGothic font); must not import
+`japanize-matplotlib` eagerly at module load (keeps import cost and any
+transitional deprecation warnings it emits out of the common ASCII-only
+path); once triggered, the font change is process-global (matches
+`japanize-matplotlib`'s own documented usage pattern) rather than scoped
+per-call, which is acceptable because a process rendering Japanese text
+once is overwhelmingly likely to render Japanese text again in the same
+session.
+Requirements: REQ-AIDS-046
+ADRs: none — adopts an existing, widely used PyPI package (`japanize-matplotlib`)
+rather than introducing a new bundled-asset mechanism of our own.
+Depends-On: DES-AIDS-009
