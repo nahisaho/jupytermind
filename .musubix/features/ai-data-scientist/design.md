@@ -420,3 +420,26 @@ Requirements: REQ-AIDS-049
 ADRs: none — extends the existing `ProjectHandle`/`ensure_notebook` pattern
 rather than introducing a separate data-path resolution mechanism.
 Depends-On: DES-AIDS-003
+
+## DES-AIDS-038: Bounded Jupyter MCP dependency pins / Jupyter MCP依存バージョンの範囲固定
+Responsibilities: Narrow `pyproject.toml`'s `mcp` and `jupyter-mcp-server`
+dependency specifiers to the specific minor-version range already verified
+to interoperate (`mcp>=2.2,<2.3`, `jupyter-mcp-server>=2.2,<2.3`), replacing
+the previously open-ended `jupyter-mcp-server>=2.2` and wider `mcp>=2,<3`.
+Add a small `dependency_pins` module that textually parses
+`pyproject.toml`'s `[project].dependencies` array (no new TOML-parsing
+dependency) to return the raw declared specifier for a given package name,
+and a test that uses it together with `packaging.requirements.Requirement`
+and `importlib.metadata.version` to assert both specifiers are bounded on
+both sides and that the versions actually installed in the environment
+satisfy them.
+Interfaces: dependency_pins.get_dependency_specifier(name: str) -> str
+(raises KeyError if the package is not declared).
+Constraints: Must not require installing a new TOML-parsing library (plain
+text scanning of the dependencies array is sufficient and avoids a
+Python-3.10-compatibility concern with stdlib `tomllib`, which only ships
+from 3.11); must not change behavior of any other declared dependency.
+Requirements: REQ-AIDS-050
+ADRs: none — a conservative, already-verified version-range narrowing, not a
+new installation mechanism.
+Depends-On: none

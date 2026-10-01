@@ -3264,6 +3264,154 @@
         "diagnostics": [],
         "order": 150
       }
+    },
+    {
+      "cycleId": "a7f686a1-9c7a-4c27-adf1-1a5737b011e5",
+      "requirementId": "REQ-AIDS-050",
+      "testId": "TEST-AIDS-072",
+      "testPath": "tests/test_dependency_pins.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": false,
+        "scoped": true,
+        "resultObserved": false,
+        "reportSha256": "a8b765f77a5fdc176656216cb50d7d20a4b93793c88db9468873557d1455f7ec",
+        "commandSha256": "0a7bb7c98175576c74a063c860df2f82560badcafe936ab56f9ba0f49bc1dce0",
+        "outputSha256": "8cea2ee7714a4ea69a50601fcafd14c9b90f96b316583f1130c9f7fbfc3efec2",
+        "exitCode": 2,
+        "durationMs": 372,
+        "testFingerprint": "b1abba580b5d0be47ee85ecdd6a32abe17f4932cf88f6f98e4c60fc2cd31dd53",
+        "sourceFingerprint": "d997ca86020ba8826cadc073c9adffa4459d6475e5fa9377bf84938097c08e17",
+        "executionId": "0c6c3a5b-e18c-41ad-8409-ccce48da103c",
+        "recordedAt": "2026-10-01T13:48:15.110Z",
+        "diagnostics": [
+          {
+            "code": "TDD_REPORT_INVALID",
+            "severity": "error",
+            "message": "No annotated TEST-* identities were found in the pytest report. Pytest node IDs must include the normalized TEST ID (for example test_TEST_APP_001), or configure a project-local musubix-json runner.",
+            "path": ".musubix/evidence/native/test/TEST-AIDS-072.json"
+          }
+        ],
+        "order": 151
+      }
+    },
+    {
+      "cycleId": "24640347-f5aa-460d-ba10-63bd70c3f9f4",
+      "requirementId": "REQ-AIDS-050",
+      "testId": "TEST-AIDS-073",
+      "testPath": "tests/test_dependency_pins.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": false,
+        "scoped": true,
+        "resultObserved": false,
+        "reportSha256": "5f5dde098a41be451791150a0b5c4771d29a0fb8761bfaa2f5b6a0cab6532d0f",
+        "commandSha256": "ad0441b9f4e51e6206e9fc85a5c6b170503caed630c39c3a6eefb56a0ca4e32f",
+        "outputSha256": "57a57352a6c8d0096f1bb1c5f346805fd843d4288ea1e6bd5ccf42090047711f",
+        "exitCode": 2,
+        "durationMs": 425,
+        "testFingerprint": "360fd08e109a21d1fbdef95ef724d198f9b0debe1e1635c4fe7fd5632dbb6f3f",
+        "sourceFingerprint": "d997ca86020ba8826cadc073c9adffa4459d6475e5fa9377bf84938097c08e17",
+        "executionId": "fa046446-451f-4a42-8533-325e7dc0b54c",
+        "recordedAt": "2026-10-01T13:48:16.350Z",
+        "diagnostics": [
+          {
+            "code": "TDD_REPORT_INVALID",
+            "severity": "error",
+            "message": "No annotated TEST-* identities were found in the pytest report. Pytest node IDs must include the normalized TEST ID (for example test_TEST_APP_001), or configure a project-local musubix-json runner.",
+            "path": ".musubix/evidence/native/test/TEST-AIDS-073.json"
+          }
+        ],
+        "order": 152
+      }
+    },
+    {
+      "cycleId": "c840bff4-eb4a-40e0-aa05-47fa344c4796",
+      "requirementId": "REQ-AIDS-050",
+      "testId": "TEST-AIDS-072",
+      "testPath": "tests/test_dependency_pins.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "389912bbd1e4e4fa930ea6e07d6257c09a02a9cbf9b32626c3520b4dbc182157",
+        "commandSha256": "0a7bb7c98175576c74a063c860df2f82560badcafe936ab56f9ba0f49bc1dce0",
+        "outputSha256": "25a31ee623b46bb35f9ec9427f15097f7fdf7c587c4cbd98d9e05109b9db8322",
+        "exitCode": 1,
+        "durationMs": 406,
+        "testFingerprint": "b1abba580b5d0be47ee85ecdd6a32abe17f4932cf88f6f98e4c60fc2cd31dd53",
+        "sourceFingerprint": "b12a84401fc18538bbbd780064050b9d86516d7b5c93e0dafc241a6e9e2e6959",
+        "executionId": "8e52418b-1cb9-4ebe-a147-8314039bd16a",
+        "recordedAt": "2026-10-01T13:50:10.352Z",
+        "diagnostics": [],
+        "order": 153
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "b254307e049ad36944051162e6562b9231c20f0bb6d146797eb4bb9e4f2fa792",
+        "commandSha256": "0a7bb7c98175576c74a063c860df2f82560badcafe936ab56f9ba0f49bc1dce0",
+        "outputSha256": "70d391f7fe020613e25acbe88efc7ca05a8595af4ee28c5842c2f5d0045e9704",
+        "exitCode": 0,
+        "durationMs": 670,
+        "testFingerprint": "b1abba580b5d0be47ee85ecdd6a32abe17f4932cf88f6f98e4c60fc2cd31dd53",
+        "sourceFingerprint": "529e8bb06767259ee8c402f2cf2c6f620b34f06f5c299a5d8d982a979d208993",
+        "executionId": "7189d579-3ad4-4f7e-aa88-a521f92c5eb1",
+        "recordedAt": "2026-10-01T13:50:22.079Z",
+        "diagnostics": [],
+        "order": 155
+      }
+    },
+    {
+      "cycleId": "687add0e-d1c0-44d8-b6dd-3b9ce17fb1f2",
+      "requirementId": "REQ-AIDS-050",
+      "testId": "TEST-AIDS-073",
+      "testPath": "tests/test_dependency_pins.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "74f70569b3467fc71171f389bdf1dced9c02a59fabd536b31b276a6e2ba5ff26",
+        "commandSha256": "ad0441b9f4e51e6206e9fc85a5c6b170503caed630c39c3a6eefb56a0ca4e32f",
+        "outputSha256": "68cf04da2610a2f8b5ce2e8f410b3b3c5e0f94db8defb51e4b369b937de66179",
+        "exitCode": 1,
+        "durationMs": 535,
+        "testFingerprint": "360fd08e109a21d1fbdef95ef724d198f9b0debe1e1635c4fe7fd5632dbb6f3f",
+        "sourceFingerprint": "b12a84401fc18538bbbd780064050b9d86516d7b5c93e0dafc241a6e9e2e6959",
+        "executionId": "e6dc633f-ad04-4990-9773-1963f21e9ea4",
+        "recordedAt": "2026-10-01T13:50:21.128Z",
+        "diagnostics": [],
+        "order": 154
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "92426126dfe33daf174f0614d8a5d74931e07d6f525e9e8caecfb9742a1cc175",
+        "commandSha256": "ad0441b9f4e51e6206e9fc85a5c6b170503caed630c39c3a6eefb56a0ca4e32f",
+        "outputSha256": "1ef9b71ece5ccfa8c7302af2dc1ee9d0a612db71c4a0b4890f6957c8d1da52d2",
+        "exitCode": 0,
+        "durationMs": 683,
+        "testFingerprint": "360fd08e109a21d1fbdef95ef724d198f9b0debe1e1635c4fe7fd5632dbb6f3f",
+        "sourceFingerprint": "529e8bb06767259ee8c402f2cf2c6f620b34f06f5c299a5d8d982a979d208993",
+        "executionId": "4c139c84-325f-462b-93bf-f21282a8d4fe",
+        "recordedAt": "2026-10-01T13:50:24.242Z",
+        "diagnostics": [],
+        "order": 156
+      }
     }
   ],
   "chain": [
@@ -5066,6 +5214,78 @@
       "phaseEvidenceSha256": "6c2fc8b9313f7ac1d72abd35392dd61bde21da1ed2cc9dc63eaecbbd44f528ba",
       "previousSha256": "90f50d179242c390d52f292b44100e94756e163c5e5690e84a4de74291e308db",
       "recordSha256": "a99f029f0cf45383c841336506c77083a6e6d51002670dcaa3d1be2b4a26cdf6"
+    },
+    {
+      "sequence": 151,
+      "cycleId": "a7f686a1-9c7a-4c27-adf1-1a5737b011e5",
+      "requirementId": "REQ-AIDS-050",
+      "testId": "TEST-AIDS-072",
+      "testPath": "tests/test_dependency_pins.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "71407e7bde357c1f878a8de1ae2e49c7f258dea2c17ecc7c406c0a67ddf7b0f3",
+      "previousSha256": "a99f029f0cf45383c841336506c77083a6e6d51002670dcaa3d1be2b4a26cdf6",
+      "recordSha256": "e6935432a0cc8c00e274eb92de4b9c4fcaa0927042e95bf2f6663c71ced5ebaa"
+    },
+    {
+      "sequence": 152,
+      "cycleId": "24640347-f5aa-460d-ba10-63bd70c3f9f4",
+      "requirementId": "REQ-AIDS-050",
+      "testId": "TEST-AIDS-073",
+      "testPath": "tests/test_dependency_pins.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "3972b4171b6933f3e228dbaec952049ee898815c427a343f934f47496c6777f3",
+      "previousSha256": "e6935432a0cc8c00e274eb92de4b9c4fcaa0927042e95bf2f6663c71ced5ebaa",
+      "recordSha256": "f8878ed9e6b9bfe7f1be46f22f1d786b7d624d3d57a1d540416d5ee043fb4a72"
+    },
+    {
+      "sequence": 153,
+      "cycleId": "c840bff4-eb4a-40e0-aa05-47fa344c4796",
+      "requirementId": "REQ-AIDS-050",
+      "testId": "TEST-AIDS-072",
+      "testPath": "tests/test_dependency_pins.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "864ffed9d7bec6bb9712a0e7c1fa8d3826aa5cf915f66e24ffd7ebd38fff9fb3",
+      "previousSha256": "f8878ed9e6b9bfe7f1be46f22f1d786b7d624d3d57a1d540416d5ee043fb4a72",
+      "recordSha256": "729a041c39a1d8a75ccb30a199aea1370d007fbfd12c8b50d27c3310c40c3f9f"
+    },
+    {
+      "sequence": 154,
+      "cycleId": "687add0e-d1c0-44d8-b6dd-3b9ce17fb1f2",
+      "requirementId": "REQ-AIDS-050",
+      "testId": "TEST-AIDS-073",
+      "testPath": "tests/test_dependency_pins.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "8f798ac0ff59c482f28c642b175bcdbba593c3903ff5e26a8aba806fb323746e",
+      "previousSha256": "729a041c39a1d8a75ccb30a199aea1370d007fbfd12c8b50d27c3310c40c3f9f",
+      "recordSha256": "4ec6d9e872c621b22a1138981d02794fb0caee5565f561a4e9d83975dc4dc9fd"
+    },
+    {
+      "sequence": 155,
+      "cycleId": "c840bff4-eb4a-40e0-aa05-47fa344c4796",
+      "requirementId": "REQ-AIDS-050",
+      "testId": "TEST-AIDS-072",
+      "testPath": "tests/test_dependency_pins.py",
+      "commandName": "test",
+      "phase": "green",
+      "phaseEvidenceSha256": "d1b641d2407728a472a6f4e48ce282b2f51fe54e6f3450e3cb414673949369ae",
+      "previousSha256": "4ec6d9e872c621b22a1138981d02794fb0caee5565f561a4e9d83975dc4dc9fd",
+      "recordSha256": "9e636e78a049454d9b6e658d3affaa94196f1adf164c43ec1afc4fb39b80ba21"
+    },
+    {
+      "sequence": 156,
+      "cycleId": "687add0e-d1c0-44d8-b6dd-3b9ce17fb1f2",
+      "requirementId": "REQ-AIDS-050",
+      "testId": "TEST-AIDS-073",
+      "testPath": "tests/test_dependency_pins.py",
+      "commandName": "test",
+      "phase": "green",
+      "phaseEvidenceSha256": "138e885006f8823ef783caf07df51d3ea086e71a6adc5371ce4c8189e41ca40b",
+      "previousSha256": "9e636e78a049454d9b6e658d3affaa94196f1adf164c43ec1afc4fb39b80ba21",
+      "recordSha256": "ce52c09cecefa5160fa7031f81360b7326b62fbb3d72325446e3b61deea916aa"
     }
   ]
 }

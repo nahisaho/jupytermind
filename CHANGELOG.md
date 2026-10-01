@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/)
 
 ## [Unreleased]
 
+## [0.1.5] - 2026-10-01
+### Changed
+- Narrowed the `mcp` and `jupyter-mcp-server` dependency specifiers from
+  open-ended ranges (`mcp>=2,<3`, `jupyter-mcp-server>=2.2`) to the exact
+  minor-version range verified to interoperate in this repository's test
+  suite (`>=2.2,<2.3` for both), preventing a silent upgrade to an untested
+  client/server combination whose negotiated MCP protocol version may not
+  be compatible (addresses the in-repo dependency-pinning portion of #17;
+  REQ-AIDS-050 / DES-AIDS-038). The remaining part of #17 — a benchmark
+  harness (`.benchmark-runner.py`) misreporting success on semantic
+  failure — lives outside this repository and is not addressed here.
+- Added `packaging` as an explicit runtime dependency (previously only an
+  indirect/tooling dependency) so the new dependency-pin check can parse
+  version specifiers without relying on an undeclared transitive package.
+
+### Added
+- `ai_data_scientist.dependency_pins.get_dependency_specifier` reads the
+  raw version specifier declared for a package in `pyproject.toml`'s
+  `[project].dependencies` array, used to assert the MCP stack pins stay
+  bounded on both sides and that the installed versions satisfy them
+  (CODE-AIDS-059).
+
 ## [0.1.4] - 2026-10-01
 ### Fixed
 - `notebook_audit.audit_notebook` now resolves a relative notebook path
@@ -87,7 +109,8 @@ environment.
 - `mcp_runtime`: added a bounded polling helper to wait for full termination
   after `stop()` (closes #8).
 
-[Unreleased]: https://github.com/nahisaho/jupytermind/compare/v0.1.3...HEAD
+[Unreleased]: https://github.com/nahisaho/jupytermind/compare/v0.1.5...HEAD
+[0.1.5]: https://github.com/nahisaho/jupytermind/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/nahisaho/jupytermind/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/nahisaho/jupytermind/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/nahisaho/jupytermind/compare/v0.1.1...v0.1.2

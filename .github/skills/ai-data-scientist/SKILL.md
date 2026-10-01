@@ -7,7 +7,13 @@ description: "Use when a user asks, in Japanese or English, to load, clean, expl
 Respond in the user's input language (日本語 / English) for every user-facing
 message, per REQ-AIDS-001. Route execution exclusively through the Jupyter
 MCP (Datalayer `jupyter-mcp-server`) tools configured for this project;
-never execute analysis code outside that path (REQ-AIDS-003).
+never execute analysis code outside that path (REQ-AIDS-003). The `mcp` and
+`jupyter-mcp-server` packages are pinned to a narrow, verified-interoperable
+minor-version range (`>=2.2,<2.3` for both) rather than an open-ended range,
+so client/server MCP protocol negotiation cannot silently drift to an
+untested combination (REQ-AIDS-050 / DES-AIDS-038); see
+`ai_data_scientist.dependency_pins.get_dependency_specifier` for the
+programmatic check.
 
 ## Scope / 対象範囲 (MVP)
 Data ingestion (CSV/Excel/DB/API), cleaning, exploratory data analysis,

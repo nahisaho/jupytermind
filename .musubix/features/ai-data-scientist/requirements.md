@@ -261,3 +261,10 @@ Type: functional
 Pattern: ubiquitous
 Statement: The system shall expose a stable workspace-root-anchored data directory path on every resolved ProjectHandle, together with a helper that creates it, so dataset files written during a session land under the same stable project root as the notebook.
 Acceptance: Given a ProjectHandle returned by resolve_project, its data_dir attribute equals root/"data" regardless of the process's current working directory at the time of the call; calling the ensure_data_dir helper with that handle creates the directory (and any missing parents) if absent and returns its path; SKILL.md's ingestion step references handle.data_dir instead of a hand-rolled relative path.
+
+## REQ-AIDS-050: Bounded Jupyter MCP dependency pins / Jupyter MCP依存バージョンの範囲固定
+Priority: must
+Type: non-functional
+Pattern: ubiquitous
+Statement: The system shall declare both a lower and an upper bound for its mcp and jupyter-mcp-server dependencies in pyproject.toml, so installing the package cannot silently resolve to an untested release pair whose negotiated MCP protocol version is incompatible.
+Acceptance: pyproject.toml's mcp and jupyter-mcp-server dependency specifiers each include an explicit upper bound (not an open-ended "greater than or equal" range); a test parses both declared specifiers and confirms each is bounded on both sides and that the currently installed mcp/jupyter-mcp-server versions satisfy their respective declared ranges; raising either bound to admit a newer release requires a deliberate pyproject.toml edit, documented in CHANGELOG.md.
