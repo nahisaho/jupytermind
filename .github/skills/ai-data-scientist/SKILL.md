@@ -49,9 +49,16 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
 8. **Visualize** with `ai_data_scientist.visualization.render_chart(df,
    kind=..., x=..., y=...)` and `build_image_output(png_bytes)`, then append
    via `project_manager.enqueue_write` so the image MIME bundle is persisted
-   in the notebook JSON (REQ-AIDS-007).
+   in the notebook JSON (REQ-AIDS-007). `render_chart`/`record_chart` render
+   locally and never execute the stored code string against the live
+   Jupyter kernel (REQ-AIDS-040): only reference variables already
+   established by a prior `run_and_record` call in that code string, so the
+   notebook stays consistent if a human re-runs it top-to-bottom later.
 9. **Record insights with evidence** — only after executing the
-   evidentiary cell, call
+   evidentiary cell, derive `cited_value` from the executed cell's actual
+   output with `ai_data_scientist.insight_engine.extract_cited_value(result,
+   pattern)` (REQ-AIDS-039) rather than hand-transcribing or rounding a
+   number, then call
    `ai_data_scientist.insight_engine.record_insight(handle, insight_text,
    evidence_execution_count, cited_value, claim_type, language=...)`. It
    verifies the cited value actually appears in that cell's output, embeds

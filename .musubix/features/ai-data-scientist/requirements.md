@@ -184,3 +184,24 @@ Type: functional
 Pattern: ubiquitous
 Statement: The system shall provide a concrete implementation of the MCPClient contract that communicates with the started jupyter-mcp-server using its configured port and token, so that run_and_record can execute real code in a live Jupyter kernel without any caller-supplied client.
 Acceptance: A test starts the on-demand runtime, executes a simple arithmetic expression through the concrete client without supplying any custom client implementation, and asserts the returned output matches the expected evaluated result.
+
+## REQ-AIDS-039: Cited-value extraction helper for insight evidence / Insight根拠値抽出補助
+Priority: should
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall provide a helper that extracts a candidate cited value from a run_and_record (or execute_cell) result's output using a caller-supplied regular expression, so that callers constructing record_insight calls obtain the exact verbatim substring instead of manually transcribing or rounding it.
+Acceptance: Given a result dict whose output contains a line matching a supplied pattern, the helper returns the exact matched substring; given no match, it raises a clear error rather than returning a guessed or empty value.
+
+## REQ-AIDS-040: Documented chart-code kernel-consistency contract / チャートコードのカーネル整合性契約の明文化
+Priority: should
+Type: non-functional
+Pattern: ubiquitous
+Statement: The system shall document, in both the visualization module and the skill instructions, that the code string passed to record_chart is not executed against the live Jupyter kernel and therefore must reference only variables already established by prior run_and_record calls, so top-to-bottom notebook re-execution remains consistent.
+Acceptance: The visualization module's record_chart docstring and the SKILL.md workflow step both state the kernel-consistency obligation explicitly.
+
+## REQ-AIDS-041: Blocking wait option for Jupyter MCP runtime stop / Jupyter MCPランタイム停止の待機オプション
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When a caller requests the Jupyter MCP runtime to stop with a wait option enabled, the system shall poll the recorded process IDs until they exit or a bounded timeout elapses, so callers can reliably confirm shutdown instead of guessing a fixed sleep duration.
+Acceptance: Calling stop with wait=True on a running runtime returns only after the recorded processes have exited (or the timeout elapses, in which case it reports the remaining processes); calling stop without the option preserves today's fire-and-forget behavior.

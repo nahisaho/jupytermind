@@ -1,9 +1,11 @@
 """Tests for visualization generation (REQ-AIDS-007)."""
 
-import pandas as pd
-import nbformat
+from pathlib import Path
 
-from ai_data_scientist.project_manager import ensure_notebook, enqueue_write, resolve_project
+import nbformat
+import pandas as pd
+
+from ai_data_scientist.project_manager import enqueue_write, ensure_notebook, resolve_project
 from ai_data_scientist.visualization import build_image_output, render_chart
 
 
@@ -58,3 +60,24 @@ def test_TEST_AIDS_039_record_chart_persists_output_with_execution_count(tmp_pat
     assert cell["execution_count"] == 1
     assert "image/png" in cell["outputs"][0]["data"]
     assert cell["outputs"][0]["execution_count"] == 1
+
+
+# @id TEST-AIDS-049
+# @verifies REQ-AIDS-040
+def test_TEST_AIDS_049_documents_kernel_consistency_contract():
+    import inspect
+
+    from ai_data_scientist import visualization
+
+    doc = inspect.getdoc(visualization.record_chart) or ""
+    assert "never executed against" in doc or "not executed against" in doc
+
+    skill_path = (
+        Path(__file__).resolve().parent.parent
+        / ".github"
+        / "skills"
+        / "ai-data-scientist"
+        / "SKILL.md"
+    )
+    skill_text = skill_path.read_text(encoding="utf-8")
+    assert "never execute the stored code string against the live" in skill_text

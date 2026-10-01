@@ -122,3 +122,16 @@ class JupyterLabMCPServerLauncher:
             os.kill(pid, signal.SIGTERM)
         except ProcessLookupError:
             pass
+
+    # @id CODE-AIDS-049
+    # @implements REQ-AIDS-041
+    # @design DES-AIDS-029
+    def is_process_alive(self, pid: int) -> bool:
+        """Probe whether ``pid`` is still alive without sending a real signal."""
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            return False
+        except PermissionError:
+            return True
+        return True

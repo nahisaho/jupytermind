@@ -5,7 +5,12 @@ import json
 import nbformat
 import pytest
 
-from ai_data_scientist.insight_engine import EvidenceMissingError, record_insight
+from ai_data_scientist.insight_engine import (
+    CitedValueNotFoundError,
+    EvidenceMissingError,
+    extract_cited_value,
+    record_insight,
+)
 from ai_data_scientist.project_manager import ensure_notebook, resolve_project
 
 
@@ -83,3 +88,22 @@ def test_TEST_AIDS_010(tmp_path):
 
     notebook = nbformat.read(handle.notebook_path, as_version=4)
     assert len(notebook.cells) == 0
+
+
+# @id TEST-AIDS-047
+# @verifies REQ-AIDS-039
+def test_TEST_AIDS_047():
+    result = {"status": "ok", "output": "kagawa_gap_vs_mean=0.62\nother=1\n"}
+
+    cited = extract_cited_value(result, r"kagawa_gap_vs_mean=(\S+)")
+
+    assert cited == "0.62"
+
+
+# @id TEST-AIDS-048
+# @verifies REQ-AIDS-039
+def test_TEST_AIDS_048():
+    result = {"status": "ok", "output": "unrelated=1\n"}
+
+    with pytest.raises(CitedValueNotFoundError):
+        extract_cited_value(result, r"kagawa_gap_vs_mean=(\S+)")

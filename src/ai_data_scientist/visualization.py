@@ -57,14 +57,21 @@ def build_image_output(png_bytes: bytes) -> nbformat.NotebookNode:
 
 
 # @id CODE-AIDS-035
-# @implements REQ-AIDS-007
-# @design DES-AIDS-009
+# @implements REQ-AIDS-007 REQ-AIDS-040
+# @design DES-AIDS-009 DES-AIDS-028
 def record_chart(handle: ProjectHandle, code: str, png_bytes: bytes) -> int:
     """Persist a rendered chart as an executed code cell in the project notebook.
 
     Mirrors mcp_gateway.run_and_record's ergonomics for chart/image outputs so
     callers don't need to hand-roll enqueue_write boilerplate. Returns the
     stamped execution_count of the new cell.
+
+    ``code`` is never executed against the live Jupyter kernel (REQ-AIDS-040):
+    rendering happens locally via ``render_chart`` and ``code`` is stored only
+    as a human-readable record of how the chart was produced. Callers must
+    ensure ``code`` references only variables already established by a prior
+    ``mcp_gateway.run_and_record`` call, so the notebook stays consistent if a
+    human re-runs it top-to-bottom against the live kernel later.
     """
     stamped_count: dict[str, int] = {}
 

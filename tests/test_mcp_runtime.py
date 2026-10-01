@@ -17,6 +17,7 @@ class _FakeLauncher:
         self.started_mcp_server = 0
         self.terminated: list[int] = []
         self._next_pid = 1000
+        self._alive_after_terminate: set[int] = set()
 
     def start_jupyter(self) -> tuple[int, int, str]:
         self.started_jupyter += 1
@@ -33,6 +34,9 @@ class _FakeLauncher:
 
     def terminate(self, pid: int) -> None:
         self.terminated.append(pid)
+
+    def is_process_alive(self, pid: int) -> bool:
+        return pid in self._alive_after_terminate
 
 
 # @id TEST-AIDS-040
@@ -93,3 +97,29 @@ def test_TEST_AIDS_043_status_and_stop_control_the_runtime(tmp_path):
     assert status(launcher, state_path=state_path) is None
     assert not state_path.exists()
     assert set(launcher.terminated) == {info.jupyter_pid, info.mcp_server_pid}
+
+
+# @id TEST-AIDS-050
+# @verifies REQ-AIDS-041
+def test_TEST_AIDS_050_stop_wait_blocks_until_processes_exit(tmp_path):
+    state_path = tmp_path / "mcp_runtime.json"
+    launcher = _FakeLauncher(healthy=True)
+    info = ensure_runtime(launcher, state_path=state_path, timeout_ms=1000)
+
+    result = stop(launcher, state_path=state_path, wait=True, timeout_s=1.0, poll_interval_s=0.01)
+
+    assert result.still_running == ()
+    assert set(launcher.terminated) == {info.jupyter_pid, info.mcp_server_pid}
+
+
+# @id TEST-AIDS-051
+# @verifies REQ-AIDS-041
+def test_TEST_AIDS_051_stop_wait_reports_still_running_after_timeout(tmp_path):
+    state_path = tmp_path / "mcp_runtime.json"
+    launcher = _FakeLauncher(healthy=True)
+    info = ensure_runtime(launcher, state_path=state_path, timeout_ms=1000)
+    launcher._alive_after_terminate = {info.jupyter_pid, info.mcp_server_pid}
+
+    result = stop(launcher, state_path=state_path, wait=True, timeout_s=0.1, poll_interval_s=0.02)
+
+    assert set(result.still_running) == {info.jupyter_pid, info.mcp_server_pid}

@@ -10,6 +10,7 @@ missing.
 from __future__ import annotations
 
 import json
+import re
 
 import nbformat
 
@@ -20,6 +21,34 @@ _MANIFEST_FENCE = "```evidence\n{payload}\n```"
 
 class EvidenceMissingError(ValueError):
     """Raised when no executed cell backs a candidate insight's evidence."""
+
+
+class CitedValueNotFoundError(ValueError):
+    """Raised when a cited-value pattern has no match in a result's output."""
+
+
+# @id CODE-AIDS-047
+# @implements REQ-AIDS-039
+# @design DES-AIDS-027
+def extract_cited_value(result: dict, pattern: str) -> str:
+    """Extract the exact substring a caller should pass as ``cited_value``.
+
+    Searches ``result["output"]`` (the dict returned by
+    ``mcp_gateway.run_and_record``/``execute_cell``) for ``pattern`` and
+    returns its first capture group verbatim, or the whole match when
+    ``pattern`` defines no group. Raises ``CitedValueNotFoundError`` on no
+    match instead of returning a guessed or empty value, so callers never
+    hand-transcribe (and risk rounding/mistyping) a value for
+    ``record_insight``.
+    """
+    output = str(result.get("output", ""))
+    match = re.search(pattern, output)
+    if match is None:
+        raise CitedValueNotFoundError(
+            f"Pattern {pattern!r} did not match the result output; "
+            "no cited value could be extracted."
+        )
+    return match.group(1) if match.lastindex else match.group(0)
 
 
 def _find_evidence_cell(notebook, execution_count: int, cited_value: str):

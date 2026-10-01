@@ -185,3 +185,53 @@ Requirements: REQ-AIDS-038
 ADRs: none — this component is a direct, non-competing fulfillment of
 REQ-AIDS-038 within the boundary already decided by ADR-0002 and ADR-0008.
 Depends-On: DES-AIDS-004, DES-AIDS-025
+
+## DES-AIDS-027: Cited-value extraction helper / 根拠値抽出補助
+Responsibilities: Provide a small, dependency-free helper that takes a
+run_and_record/execute_cell result dict and a caller-supplied regular
+expression, searches the result's `output` string, and returns the exact
+matched substring (or raises a clear error on no match) so callers building
+`record_insight(..., cited_value=...)` calls never hand-transcribe or round
+a value themselves.
+Interfaces: extract_cited_value(result: dict, pattern: str) -> str, raising
+CitedValueNotFoundError (ValueError subclass) when the pattern does not
+match `result["output"]`.
+Constraints: Must not mutate the input result; must not silently truncate or
+reformat the matched substring (returns exactly what the regex matched,
+using group(1) when the pattern defines a capture group, else group(0)).
+Requirements: REQ-AIDS-039
+ADRs: none — a pure helper function fulfilling REQ-AIDS-039 directly.
+Depends-On: DES-AIDS-004, DES-AIDS-010
+
+## DES-AIDS-028: Chart-code kernel-consistency documentation / チャートコードのカーネル整合性文書化
+Responsibilities: Make the existing (intentional) gap between
+`record_chart`'s stored code string and actual kernel execution an explicit,
+documented contract rather than an implicit assumption, in both the
+`visualization` module docstring and the SKILL.md workflow step that
+describes visualization.
+Interfaces: No new interface; `record_chart`'s docstring and SKILL.md step 8
+gain an explicit sentence stating the code string is never executed against
+the live kernel and must only reference variables already established by
+prior `run_and_record` calls.
+Constraints: Documentation-only; must not change `record_chart`'s behavior
+or signature.
+Requirements: REQ-AIDS-040
+ADRs: none — documents an existing accepted design decision (REQ-AIDS-007 /
+DES-AIDS-009's local-rendering boundary) rather than introducing a new one.
+Depends-On: DES-AIDS-009
+
+## DES-AIDS-029: Blocking stop with bounded polling / 有限待機付き停止
+Responsibilities: Extend the existing fire-and-forget `stop(launcher)` with
+an optional bounded wait that polls the recorded jupyter_pid/mcp_server_pid
+for exit after sending SIGTERM, so callers can reliably confirm shutdown
+instead of guessing a fixed sleep duration.
+Interfaces: stop(launcher, wait: bool = False, timeout_s: float = 5.0,
+poll_interval_s: float = 0.2) -> StopResult (StopResult records which PIDs,
+if any, were still alive when the timeout elapsed). Default behavior
+(wait=False) is unchanged for existing callers.
+Constraints: Must not busy-loop past timeout_s; must use a process-liveness
+check portable to the already-supported platforms (os.kill(pid, 0) probing,
+consistent with the existing SIGTERM mechanism).
+Requirements: REQ-AIDS-041
+ADRs: none — a bounded-polling extension of the existing stop() mechanism.
+Depends-On: DES-AIDS-025

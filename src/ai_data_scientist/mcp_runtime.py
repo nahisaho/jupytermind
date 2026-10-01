@@ -43,6 +43,21 @@ class RuntimeInfo:
     mcp_token: str
 
 
+# @id CODE-AIDS-050
+# @implements REQ-AIDS-041
+# @design DES-AIDS-029
+@dataclasses.dataclass(frozen=True)
+class StopResult:
+    """Outcome of a ``stop(..., wait=True)`` call (REQ-AIDS-041).
+
+    ``still_running`` lists any recorded PIDs that were still alive when the
+    bounded poll timed out; empty when every recorded process exited before
+    the timeout.
+    """
+
+    still_running: tuple[int, ...]
+
+
 class RuntimeLauncher(Protocol):
     """Process-management contract any Jupyter MCP runtime backend must satisfy.
 
@@ -55,6 +70,7 @@ class RuntimeLauncher(Protocol):
     def start_mcp_server(self, jupyter_port: int, jupyter_token: str) -> tuple[int, int, str]: ...
     def is_healthy(self, info: RuntimeInfo) -> bool: ...
     def terminate(self, pid: int) -> None: ...
+    def is_process_alive(self, pid: int) -> bool: ...
 
 
 def _read_state(state_path: Path) -> RuntimeInfo | None:
@@ -141,11 +157,38 @@ def status(launcher: RuntimeLauncher, state_path: Path = DEFAULT_STATE_PATH) -> 
 # @id CODE-AIDS-041
 # @implements REQ-AIDS-037
 # @design DES-AIDS-025
-def stop(launcher: RuntimeLauncher, state_path: Path = DEFAULT_STATE_PATH) -> None:
-    """Terminate the recorded runtime's processes and clear the state file."""
+def stop(
+    launcher: RuntimeLauncher,
+    state_path: Path = DEFAULT_STATE_PATH,
+    wait: bool = False,
+    timeout_s: float = 5.0,
+    poll_interval_s: float = 0.2,
+) -> StopResult | None:
+    """Terminate the recorded runtime's processes and clear the state file.
+
+    With the default ``wait=False`` this is fire-and-forget (unchanged
+    behavior): it sends SIGTERM and returns ``None`` immediately without
+    confirming the processes actually exited. With ``wait=True``
+    (REQ-AIDS-041), it polls ``launcher.is_process_alive`` for both recorded
+    PIDs every ``poll_interval_s`` seconds until neither is alive or
+    ``timeout_s`` elapses, then returns a ``StopResult`` recording any PIDs
+    still alive at that point (empty when both exited cleanly).
+    """
     existing = _read_state(state_path)
     if existing is None:
-        return
+        return StopResult(still_running=()) if wait else None
     launcher.terminate(existing.jupyter_pid)
     launcher.terminate(existing.mcp_server_pid)
     _clear_state(state_path)
+
+    if not wait:
+        return None
+
+    pids = [existing.jupyter_pid, existing.mcp_server_pid]
+    deadline = time.monotonic() + timeout_s
+    while time.monotonic() < deadline:
+        pids = [pid for pid in pids if launcher.is_process_alive(pid)]
+        if not pids:
+            break
+        time.sleep(poll_interval_s)
+    return StopResult(still_running=tuple(pids))
