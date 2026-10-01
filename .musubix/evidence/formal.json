@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T02:27:18.912Z",
-  "totalRequirements": 42,
+  "generatedAt": "2026-10-01T03:27:16.377Z",
+  "totalRequirements": 43,
   "modeledRequirements": 8,
-  "modeledFraction": 0.19047619047619047,
+  "modeledFraction": 0.18604651162790697,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -97,6 +97,7 @@
       "REQ-AIDS-039",
       "REQ-AIDS-040",
       "REQ-AIDS-041",
+      "REQ-AIDS-042",
       "REQ-AIDS-008",
       "REQ-AIDS-015",
       "REQ-AIDS-016",
@@ -216,6 +217,11 @@
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
+        "message": "REQ-AIDS-042 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
         "message": "REQ-AIDS-008 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
@@ -296,7 +302,7 @@
     }
   },
   "fingerprints": {
-    ".musubix/features/ai-data-scientist/requirements.md": "b92dfc6b47332844f9ef0deb7f327e97a583026b50c532ce729d32007feb99b0",
+    ".musubix/features/ai-data-scientist/requirements.md": "f60186f76fa317a6ed7e979e3bb8c98166676319f35763912966d91d5e17e562",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed"
   }

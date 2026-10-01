@@ -205,3 +205,10 @@ Type: functional
 Pattern: event-driven
 Statement: When a caller requests the Jupyter MCP runtime to stop with a wait option enabled, the system shall poll the recorded process IDs until they exit or a bounded timeout elapses, so callers can reliably confirm shutdown instead of guessing a fixed sleep duration.
 Acceptance: Calling stop with wait=True on a running runtime returns only after the recorded processes have exited (or the timeout elapses, in which case it reports the remaining processes); calling stop without the option preserves today's fire-and-forget behavior.
+
+## REQ-AIDS-042: Non-blocking hard timeout for MCP cell execution / MCPセル実行の非ブロッキングなハードタイムアウト
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When execute_cell's configured timeout elapses before the underlying MCP client call returns, the system shall raise MCPExecutionTimeoutError to the caller immediately without waiting for the still-running worker thread to finish.
+Acceptance: Given an MCP client call that takes materially longer than timeout_ms, execute_cell/run_and_record raise MCPExecutionTimeoutError within a bounded margin of timeout_ms (not after the client call actually completes), and no notebook cell is appended even if the worker later finishes successfully (its result is discarded, not retried or surfaced).

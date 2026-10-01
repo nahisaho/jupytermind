@@ -38,28 +38,44 @@ class MCPClient(Protocol):
 # @id CODE-AIDS-031
 # @implements REQ-AIDS-031
 # @design DES-AIDS-004
+# @id CODE-AIDS-048
+# @implements REQ-AIDS-042
+# @design DES-AIDS-030
 def execute_cell(client: MCPClient, code: str, timeout_ms: int = DEFAULT_TIMEOUT_MS) -> dict:
     """Execute ``code`` exclusively through ``client`` with a hard timeout.
 
     Raises ``MCPExecutionTimeoutError`` if execution exceeds ``timeout_ms``
     and ``MCPUnavailableError`` if the client cannot reach the MCP server
     or kernel.
+
+    The timeout is non-blocking for the caller: detection uses
+    ``concurrent.futures.wait`` (not ``future.result(timeout=...)`` inside a
+    ``with ThreadPoolExecutor`` block, whose ``__exit__`` would otherwise
+    perform an implicit ``shutdown(wait=True)`` and block the caller until
+    the still-running worker finishes). The executor is shut down with
+    ``wait=False`` so a worker that keeps running past the deadline cannot
+    delay the caller; its eventual result is discarded and never written to
+    the notebook, since only the value returned here is ever persisted.
     """
     timeout_s = timeout_ms / 1000
-    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+    executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+    try:
         future = executor.submit(client.execute, code)
         try:
-            return future.result(timeout=timeout_s)
-        except concurrent.futures.TimeoutError as exc:
-            raise MCPExecutionTimeoutError(
-                f"Execution exceeded the configured {timeout_ms}ms timeout "
-                f"(実行が設定タイムアウト{timeout_ms}msを超えました)."
-            ) from exc
+            done, _pending = concurrent.futures.wait({future}, timeout=timeout_s)
+            if future not in done:
+                raise MCPExecutionTimeoutError(
+                    f"Execution exceeded the configured {timeout_ms}ms timeout "
+                    f"(実行が設定タイムアウト{timeout_ms}msを超えました)."
+                )
+            return future.result()
         except ConnectionError as exc:
             raise MCPUnavailableError(
                 "The configured Jupyter MCP server or kernel is unreachable "
                 "(設定されたJupyter MCPサーバー/カーネルに接続できません)."
             ) from exc
+    finally:
+        executor.shutdown(wait=False)
 
 
 # @id CODE-AIDS-030

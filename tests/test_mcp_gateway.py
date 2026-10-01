@@ -94,6 +94,20 @@ def test_TEST_AIDS_037_run_and_record_stamps_incrementing_execution_count(tmp_pa
     assert notebook.cells[0]["outputs"][0]["execution_count"] == 1
 
 
+# @id TEST-AIDS-052
+# @verifies REQ-AIDS-042
+def test_TEST_AIDS_052_execute_cell_timeout_returns_promptly_not_after_worker_finishes():
+    client = _SlowClient()  # sleeps 0.5s, timeout is 0.05s
+    started = time.monotonic()
+    with pytest.raises(MCPExecutionTimeoutError):
+        execute_cell(client, "1 + 1", timeout_ms=50)
+    elapsed = time.monotonic() - started
+
+    # The bug returned only after the 0.5s worker finished; the fix must
+    # return close to the 50ms timeout, well before the worker completes.
+    assert elapsed < 0.3
+
+
 # @id TEST-AIDS-038
 # @verifies REQ-AIDS-009
 def test_TEST_AIDS_038_run_and_record_execution_count_anchors_insight_evidence(tmp_path):

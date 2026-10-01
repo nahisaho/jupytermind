@@ -235,3 +235,26 @@ consistent with the existing SIGTERM mechanism).
 Requirements: REQ-AIDS-041
 ADRs: none — a bounded-polling extension of the existing stop() mechanism.
 Depends-On: DES-AIDS-025
+
+## DES-AIDS-030: Non-blocking timeout detection via concurrent.futures.wait / concurrent.futures.waitによる非ブロッキングなタイムアウト検出
+Responsibilities: Replace execute_cell's `with ThreadPoolExecutor(...)` block
+(whose `__exit__` performs an implicit `shutdown(wait=True)` on any exit path,
+including the TimeoutError branch) with an executor created and shut down
+explicitly via `shutdown(wait=False)`, and detect timeout by calling
+`concurrent.futures.wait({future}, timeout=timeout_s)` instead of
+`future.result(timeout=timeout_s)`, so the timeout branch returns to the
+caller as soon as the deadline elapses regardless of worker-thread state.
+Interfaces: execute_cell(client, code, timeout_ms) -> dict (signature
+unchanged). Internally: a module-level helper constructs the executor,
+submits client.execute, and on timeout raises MCPExecutionTimeoutError
+without retaining a reference the caller could use to later consume the
+stale result; run_and_record's write-on-success-only control flow already
+ensures a cell is appended only from the dict returned by execute_cell, so
+a late-finishing worker's result is never read.
+Constraints: Must preserve existing ConnectionError -> MCPUnavailableError
+classification; must not introduce a busy-wait loop (rely on
+concurrent.futures.wait's native blocking-with-timeout); must not change
+execute_cell's public signature or return type on the success path.
+Requirements: REQ-AIDS-042
+ADRs: none — a non-blocking refinement of the existing timeout mechanism.
+Depends-On: DES-AIDS-004
