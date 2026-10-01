@@ -10,13 +10,22 @@ Built with SDD (`musubix3`) and TDD (pytest).
 
 ## Setup
 
-The Python environment (virtualenv + dependencies) can be set up
-automatically via npm:
+Install the skill from the npm registry (no need to clone this repo):
+
+```sh
+npm install ai-data-scientist-skill
+npx ai-data-scientist doctor
+```
+
+Or, for a local checkout of this repo:
 
 ```sh
 npm install
 npx ai-data-scientist doctor
 ```
+
+The Python environment (virtualenv + dependencies) is set up automatically
+on first CLI invocation in both cases.
 
 `npm install` itself has no dependencies and does not use `postinstall`
 (since npm v12, install scripts of dependencies are disabled by default

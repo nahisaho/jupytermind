@@ -9,12 +9,23 @@ Jupyter MCP(Datalayer `jupyter-mcp-server`)経由でのみ分析コードを実�
 
 ## セットアップ
 
-Python環境(仮想環境 + 依存パッケージ)はnpm経由で自動セットアップできます:
+npmレジストリから直接インストールできます(このリポジトリをcloneする必要は
+ありません):
+
+```sh
+npm install ai-data-scientist-skill
+npx ai-data-scientist doctor
+```
+
+または、このリポジトリをローカルにcloneしている場合:
 
 ```sh
 npm install
 npx ai-data-scientist doctor
 ```
+
+いずれの場合もPython環境(仮想環境 + 依存パッケージ)はCLIの初回呼び出し時に
+自動セットアップされます。
 
 `npm install` 自体は依存パッケージを持たず、`postinstall` も使用していません
 (npm v12以降、依存パッケージの install スクリプトはデフォルトで無効化され
