@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T13:51:26.054Z",
-  "totalRequirements": 51,
+  "generatedAt": "2026-10-01T14:46:45.009Z",
+  "totalRequirements": 58,
   "modeledRequirements": 9,
-  "modeledFraction": 0.17647058823529413,
+  "modeledFraction": 0.15517241379310345,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -110,6 +110,13 @@
       "REQ-AIDS-047",
       "REQ-AIDS-048",
       "REQ-AIDS-050",
+      "REQ-AIDS-051",
+      "REQ-AIDS-052",
+      "REQ-AIDS-053",
+      "REQ-AIDS-054",
+      "REQ-AIDS-055",
+      "REQ-AIDS-056",
+      "REQ-AIDS-057",
       "REQ-AIDS-008",
       "REQ-AIDS-015",
       "REQ-AIDS-016",
@@ -269,6 +276,41 @@
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
+        "message": "REQ-AIDS-051 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-052 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-053 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-054 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-055 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-056 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-057 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
         "message": "REQ-AIDS-008 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
@@ -349,7 +391,7 @@
     }
   },
   "fingerprints": {
-    ".musubix/features/ai-data-scientist/requirements.md": "9c97bef97b13de974adfbf5bcd9d16497734235f528df6fcc8f8728ffabdc953",
+    ".musubix/features/ai-data-scientist/requirements.md": "e10141f6de0355ce888402bf957f79133c3e8a232c4fbc14edda0b1dfeed28cf",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed"
   }

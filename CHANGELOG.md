@@ -7,6 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/)
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-02
+### Added
+- Cooperative run-lifecycle API (`ai_data_scientist.lifecycle`): register a
+  run, mark execution/write phases, request cooperative cancellation, query
+  run status, and block until a run is quiescent (closes #20;
+  REQ-AIDS-051 / DES-AIDS-039).
+- Structured data-definition manifest (`ai_data_scientist.data_definition`):
+  records each semantic field's value with an explicit
+  verified/inferred/reported/unknown status, and surfaces unresolved fields
+  so an inferred unit/definition is never silently treated as confirmed
+  (closes #21; REQ-AIDS-052 / DES-AIDS-040).
+- Visual-readability audit extension to `notebook_audit.audit_notebook`
+  (opt-in `visual_audit=True`): flags charts with missing glyph metadata,
+  missing title/axis-label/legend metadata, or a near-empty-looking image,
+  via a byte-density heuristic that intentionally avoids adding a new
+  imaging dependency (closes #22; REQ-AIDS-053 / DES-AIDS-041).
+- Analysis-assumptions and applicability manifest
+  (`ai_data_scientist.analysis_assumptions`): records conclusion-critical
+  assumptions with a verified/tested/assumed/rejected status and a
+  descriptive/associational/causal scope, and flags causal conclusions
+  lacking a tested/verified identification assumption, plus any unresolved
+  conclusion-critical risk (closes #23; REQ-AIDS-054 / DES-AIDS-042).
+- Semantic data-quality checks (`ai_data_scientist.data_quality`):
+  schema-driven `detect_anomalies` (range/allowed-values/not-null/unique
+  constraints) distinct from the existing statistical z-score detector, plus
+  `validate_anomalies` to cross-check against an independent reference
+  dataset (closes #24; REQ-AIDS-055 / DES-AIDS-043).
+- Reusable sensitivity-analysis plans (`ai_data_scientist.sensitivity`):
+  `SensitivityPlan`/`run_sensitivity` re-run an analysis function across a
+  bounded grid of alternative specifications and report whether the
+  conclusion is stable within a tolerance (closes #25;
+  REQ-AIDS-056 / DES-AIDS-044).
+- Independent-dataset overlap comparison
+  (`ai_data_scientist.dataset_validation.compare_datasets`): key-overlap and
+  per-column agreement checks against an already-loaded candidate dataset.
+  Automated dataset *discovery* (e.g. searching an external catalog) was
+  explicitly scoped out per design review and is not implemented (closes
+  #26, narrowed scope; REQ-AIDS-057 / DES-AIDS-045).
+
 ## [0.1.5] - 2026-10-01
 ### Changed
 - Narrowed the `mcp` and `jupyter-mcp-server` dependency specifiers from

@@ -9,8 +9,10 @@ well-formed evidence manifest that resolves to a real executed cell output
 
 from __future__ import annotations
 
+import base64
 import json
 import re
+import struct
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -21,6 +23,13 @@ from ai_data_scientist.insight_engine import _find_evidence_cell
 
 _EVIDENCE_FENCE_PATTERN = re.compile(r"```evidence\n(.*?)\n```", re.DOTALL)
 _REQUIRED_MANIFEST_KEYS = {"execution_count", "cited_value", "claim_type"}
+# A chart whose compressed PNG payload holds fewer than this many bytes per
+# pixel is treated as suspiciously uniform/near-empty (DES-AIDS-041): a real
+# rendered chart (axes, ticks, text, data) compresses far less efficiently
+# than a solid-fill or all-white canvas of the same dimensions. Approximate
+# by design (no imaging dependency is added for an exact pixel scan).
+_NEAR_EMPTY_BYTES_PER_PIXEL_THRESHOLD = 0.02
+_PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 
 
 @dataclass(frozen=True)
@@ -30,6 +39,16 @@ class NotebookAuditFinding:
     severity: str  # "error" | "warning"
     message: str
     cell_index: int | None = None
+
+
+@dataclass(frozen=True)
+class VisualAuditFinding:
+    """A single visual-readability observation for one chart output."""
+
+    chart_cell_index: int
+    code: str  # e.g. "missing_glyphs", "near_empty_image", "missing_label"
+    severity: str  # "error" | "warning"
+    details: dict = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -45,6 +64,7 @@ class NotebookAuditReport:
     chart_cell_indices: tuple[int, ...]
     insight_cell_count: int
     findings: tuple[NotebookAuditFinding, ...] = field(default_factory=tuple)
+    visual_findings: tuple[VisualAuditFinding, ...] = field(default_factory=tuple)
 
     @property
     def ok(self) -> bool:
@@ -68,14 +88,93 @@ def _looks_like_insight_candidate(markdown_source: str) -> bool:
     return bool(stripped) and not stripped.startswith("#")
 
 
+def _png_dimensions(png_bytes: bytes) -> tuple[int, int] | None:
+    """Parse (width, height) from a PNG's IHDR chunk; ``None`` if malformed."""
+    if not png_bytes.startswith(_PNG_SIGNATURE) or len(png_bytes) < 24:
+        return None
+    width, height = struct.unpack(">II", png_bytes[16:24])
+    return width, height
+
+
+# @id CODE-AIDS-073
+# @implements REQ-AIDS-053
+# @design DES-AIDS-041
+def audit_visual_outputs(
+    notebook, chart_cell_indices: tuple[int, ...]
+) -> tuple[VisualAuditFinding, ...]:
+    """Inspect each chart cell's authoring metadata and image output.
+
+    Reads ``cell["metadata"]["chart"]`` (written by callers such as
+    ``visualization.record_chart``) for ``missing_glyphs``, ``title``,
+    ``xlabel``, ``ylabel`` and ``legend``; and decodes the cell's
+    ``image/png`` output to approximate whether it is suspiciously
+    near-empty (DES-AIDS-041).
+    """
+    findings: list[VisualAuditFinding] = []
+    for index in chart_cell_indices:
+        cell = notebook.cells[index]
+        chart_metadata = cell.get("metadata", {}).get("chart", {})
+
+        missing_glyphs = chart_metadata.get("missing_glyphs")
+        if missing_glyphs:
+            findings.append(
+                VisualAuditFinding(
+                    chart_cell_index=index,
+                    code="missing_glyphs",
+                    severity="error",
+                    details={"codepoints": missing_glyphs},
+                )
+            )
+
+        for label_field in ("title", "xlabel", "ylabel", "legend"):
+            if chart_metadata and not chart_metadata.get(label_field):
+                findings.append(
+                    VisualAuditFinding(
+                        chart_cell_index=index,
+                        code="missing_label",
+                        severity="warning",
+                        details={"field": label_field},
+                    )
+                )
+
+        for output in cell.get("outputs", []):
+            encoded = output.get("data", {}).get("image/png")
+            if not encoded:
+                continue
+            png_bytes = base64.b64decode(encoded)
+            dimensions = _png_dimensions(png_bytes)
+            if dimensions is None:
+                continue
+            width, height = dimensions
+            pixel_count = max(width * height, 1)
+            bytes_per_pixel = len(png_bytes) / pixel_count
+            if bytes_per_pixel < _NEAR_EMPTY_BYTES_PER_PIXEL_THRESHOLD:
+                findings.append(
+                    VisualAuditFinding(
+                        chart_cell_index=index,
+                        code="near_empty_image",
+                        severity="error",
+                        details={"bytes_per_pixel": bytes_per_pixel},
+                    )
+                )
+
+    return tuple(findings)
+
+
 # @id CODE-AIDS-053
 # @implements REQ-AIDS-045
 # @design DES-AIDS-033
 # @id CODE-AIDS-057
 # @implements REQ-AIDS-047
 # @design DES-AIDS-035
-def audit_notebook(path: Path | str) -> NotebookAuditReport:
-    """Audit ``path`` read-only; never writes the notebook back to disk."""
+def audit_notebook(path: Path | str, visual_audit: bool = False) -> NotebookAuditReport:
+    """Audit ``path`` read-only; never writes the notebook back to disk.
+
+    When ``visual_audit`` is ``True`` (default ``False``, fully backward
+    compatible), also runs ``audit_visual_outputs`` over every detected
+    chart cell and appends any readability finding as an error-severity
+    ``NotebookAuditFinding`` so it affects ``report.ok`` (REQ-AIDS-053).
+    """
     path = Path(path)
     try:
         resolved_path = project_manager.resolve_stable_path(path)
@@ -221,6 +320,18 @@ def audit_notebook(path: Path | str) -> NotebookAuditReport:
                 )
             )
 
+    visual_findings: tuple[VisualAuditFinding, ...] = ()
+    if visual_audit:
+        visual_findings = audit_visual_outputs(notebook, tuple(chart_indices))
+        for visual_finding in visual_findings:
+            findings.append(
+                NotebookAuditFinding(
+                    visual_finding.severity,
+                    f"Visual readability issue ({visual_finding.code}): {visual_finding.details}",
+                    visual_finding.chart_cell_index,
+                )
+            )
+
     return NotebookAuditReport(
         path=str(path),
         nbformat_valid=True,
@@ -231,4 +342,5 @@ def audit_notebook(path: Path | str) -> NotebookAuditReport:
         chart_cell_indices=tuple(chart_indices),
         insight_cell_count=insight_cell_count,
         findings=tuple(findings),
+        visual_findings=visual_findings,
     )

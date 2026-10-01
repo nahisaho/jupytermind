@@ -443,3 +443,193 @@ Requirements: REQ-AIDS-050
 ADRs: none — a conservative, already-verified version-range narrowing, not a
 new installation mechanism.
 Depends-On: none
+
+## DES-AIDS-039: Run lifecycle registry / ランライフサイクルレジストリ
+Responsibilities: A new `lifecycle` module holding a process-wide,
+thread-safe registry of `RunState` records keyed by caller-supplied
+`run_id`. Exposes `register_run(run_id, notebook_path)`,
+`mark_execution_start/end(run_id)`, `mark_write_start/end(run_id)`,
+`request_cancel(run_id, reason)`, `is_cancel_requested(run_id)`,
+`mark_completed/failed(run_id)`, `get_run_status(run_id)`, and
+`wait_for_quiescence(run_id, timeout_s)` (polling loop with a short sleep
+interval, returning the last observed status either once quiescent or once
+the timeout elapses). `mcp_gateway.execute_cell`/`run_and_record` and
+`project_manager.enqueue_write` accept an optional `run_id` keyword
+(default `None`, fully backward compatible); when provided they call the
+matching `mark_*` hooks around their existing work so tracked counts stay
+accurate without changing default (no `run_id`) behavior at all.
+Interfaces: lifecycle.register_run(run_id, notebook_path) -> None;
+lifecycle.request_cancel(run_id, reason) -> None (idempotent, no raise for
+unknown/completed run_id); lifecycle.get_run_status(run_id) -> RunStatus
+(state, active_cell_executions, pending_notebook_writes, locks_held,
+notebook_path, last_modified, reason); lifecycle.wait_for_quiescence(run_id,
+timeout_s) -> RunStatus.
+Constraints: Must not introduce a new process/thread model; counts are
+in-memory and process-local (consistent with the existing per-notebook
+`threading.Lock` registry in project_manager). Cancellation is cooperative:
+`request_cancel` only sets a flag inspected by execute_cell before starting
+a new cell; it cannot interrupt a kernel cell already in flight (documented
+limitation, matches the issue's cooperative-cancellation framing).
+Requirements: REQ-AIDS-051
+ADRs: none — in-process cooperative tracking extending the existing single-writer lock pattern, not a new architectural decision.
+Depends-On: DES-AIDS-003, DES-AIDS-004
+
+## DES-AIDS-040: Data-definition manifest with field confidence / データ定義マニフェストとフィールド信頼度
+Responsibilities: A new `data_definition` module providing a `FieldValue`
+value object (`value`, `status` in {"verified","inferred","reported",
+"unknown"}, optional `source`) and a `DataDefinitionManifest` dataclass
+(source, dataset_scope, variables, transformations, unresolved_metadata)
+built via `build_manifest(...)`. `unresolved_metadata` is derived, not
+caller-set: computed by scanning every `FieldValue` in the manifest and
+collecting those whose status is "unknown". `FieldValue` is frozen so a
+status, once constructed, cannot be mutated in place to "verified" by later
+code; only constructing a brand-new `FieldValue` can change it, and that
+is always an explicit caller action, not an automatic promotion.
+Interfaces: data_definition.FieldValue(value, status, source=None);
+data_definition.build_manifest(source, dataset_scope, variables,
+transformations=()) -> DataDefinitionManifest; manifest.unresolved_fields()
+-> list[tuple[str, FieldValue]] (dotted path + field).
+Constraints: No implicit status inference logic is added in this module
+(the caller/agent decides inferred vs verified when constructing a
+`FieldValue`); the module's job is to make that distinction structurally
+enforceable and queryable, not to guess it.
+Requirements: REQ-AIDS-052
+ADRs: none — a new, self-contained value-object/manifest module with no cross-cutting architectural impact.
+Depends-On: none
+
+## DES-AIDS-041: Visual-readability audit phase / ビジュアル可読性監査フェーズ
+Responsibilities: Extend `notebook_audit` with an opt-in
+`audit_visual_outputs(notebook, chart_cell_indices)` phase, invoked from
+`audit_notebook(path, visual_audit=False)` only when requested (default
+`False` preserves prior behavior exactly, satisfying the backward-
+compatibility acceptance criterion). For each chart cell it reads
+chart-authoring metadata the cell's code-cell `metadata["chart"]` dict may
+carry (`missing_glyphs`, `title`, `xlabel`, `ylabel`, `legend`) — written
+by callers such as `visualization.record_chart` — plus a lightweight
+pixel-level near-empty check (decode the `image/png` base64 payload with
+the stdlib-available `zlib`/manual PNG IDAT heuristic is out of scope;
+instead reuse `PIL` only if already a transitive dependency — since it is
+not, perform the near-empty check by reading the PNG dimensions from its
+header bytes and flagging a suspiciously tiny byte-size-per-pixel payload
+as a proxy for near-empty, documented as an approximation).
+Interfaces: notebook_audit.audit_visual_outputs(notebook,
+chart_cell_indices) -> tuple[VisualAuditFinding, ...];
+notebook_audit.audit_notebook(path, visual_audit: bool = False).
+Constraints: Must not add a hard dependency (no OCR, no imaging library);
+the glyph/label checks rely on authoring-time metadata rather than re-
+rendering or OCR-scanning the image, which the issue's own "Implementation
+options" lists as an acceptable approach ("record chart semantics at
+creation time").
+Requirements: REQ-AIDS-053
+ADRs: none — an additive, opt-in audit phase; default-off behavior keeps the existing DES-AIDS-033 contract unchanged.
+Depends-On: DES-AIDS-033
+
+## DES-AIDS-042: Analysis-assumption manifest with risk surfacing / 分析前提マニフェストとリスク表面化
+Responsibilities: A new `analysis_assumptions` module providing an
+`Assumption` dataclass (id, statement, status, evidence_cell=None,
+impact_if_false=None, conclusion_critical=False) and an
+`AnalysisAssumptionManifest` dataclass (analysis_scope: dict, assumptions:
+tuple[Assumption,...], causal_scope: one of
+"descriptive"/"associational"/"causal", sampling: dict|None). A
+`check_manifest(manifest)` function returns findings: a finding when
+`causal_scope=="causal"` and no assumption with status in {"tested",
+"verified"} exists; a finding per conclusion-critical assumption whose
+status is "assumed" or "rejected" (also collected into
+`manifest.unresolved_risks()`); a finding when `sampling` is set but lacks
+both "n" and "seed" keys.
+Interfaces: analysis_assumptions.Assumption(...);
+analysis_assumptions.AnalysisAssumptionManifest(...);
+analysis_assumptions.check_manifest(manifest) ->
+tuple[AssumptionFinding, ...]; manifest.unresolved_risks() ->
+tuple[Assumption, ...].
+Constraints: Pure data/validation module; does not itself run or detect
+statistical tests — the caller/agent supplies assumption statuses based on
+its own analysis.
+Requirements: REQ-AIDS-054
+ADRs: none — a pure validation/data-structure module with no architectural decision to record.
+Depends-On: none
+
+## DES-AIDS-043: Semantic anomaly detection and overlap validation / 意味的異常検知と重複検証
+Responsibilities: A new `data_quality` module (distinct from the existing
+statistical-outlier-only `anomaly_detection` module) providing
+`detect_anomalies(df, schema)` — schema maps a column name to a constraint
+dict supporting `lte_column` (cross-column comparison) and
+`missing_sentinels` (list of raw values that mean missing) — returning an
+`AnomalyReport` (tuple of `AnomalyFinding(row_index, column, code,
+details)`) without mutating `df`. Also provides `validate_anomalies(primary,
+reference, keys, columns, tolerance)` returning an `OverlapValidation`
+(matched_keys, primary_only_keys, reference_only_keys, per-column max/mean
+absolute difference among matched keys, and the specific keys whose
+difference exceeds the declared tolerance for any compared column).
+Interfaces: data_quality.detect_anomalies(df, schema: dict) -> AnomalyReport;
+data_quality.validate_anomalies(primary, reference, keys: list[str],
+columns: dict[str, str], tolerance: dict[str, float]) -> OverlapValidation.
+Constraints: Never mutates or drops rows from either input dataframe
+(copies before any internal manipulation); disposition (retain/exclude/
+correct) is left entirely to the caller, matching the issue's "do not
+automatically delete anomalous rows" safety requirement.
+Requirements: REQ-AIDS-055
+ADRs: none — a new, isolated module with no cross-cutting dependency or architectural trade-off.
+Depends-On: none
+
+## DES-AIDS-044: Bounded sensitivity-analysis plan execution / 境界付き感度分析プラン実行
+Responsibilities: A new `sensitivity` module providing `SensitivityPlan`
+(target_claim: str, dimensions: dict[str, list], metrics: list[str],
+max_specifications: int = 100) and `run_sensitivity(plan, evaluator)`.
+`run_sensitivity` first computes the Cartesian product size of
+`dimensions` and raises `SensitivityBudgetExceededError` before invoking
+`evaluator` at all if that size exceeds `plan.max_specifications`.
+Otherwise it calls `evaluator(**specification)` for every combination,
+catching any exception per-specification (recorded as a failed
+specification, not aborting the rest), and classifies the run's overall
+conclusion by comparing the sign and relative magnitude of each
+specification's reported metric value against the first (baseline)
+specification: "reversed" if any later value's sign differs from the
+baseline's, "stable" if every value shares the baseline's sign and stays
+within a configurable relative tolerance band, otherwise "attenuated"; a
+plan with fewer than two successful specifications reports "not
+comparable".
+Interfaces: sensitivity.SensitivityPlan(target_claim, dimensions, metrics,
+max_specifications=100); sensitivity.run_sensitivity(plan, evaluator:
+Callable[..., float | dict]) -> SensitivityResult (specifications:
+tuple[SpecificationResult,...], conclusion: str).
+Constraints: `evaluator` is entirely caller-supplied (no built-in
+statistical models); the module only orchestrates the bounded grid and
+classifies stability, keeping it generic across the issue's many example
+domains (clustering, regression, preprocessing toggles).
+Requirements: REQ-AIDS-056
+ADRs: none — a new, isolated module; no shared state or cross-cutting concern introduced.
+Depends-On: none
+
+## DES-AIDS-045: Independent-dataset overlap comparison / 独立データセット重複比較
+Responsibilities: A new `dataset_validation` module providing
+`compare_datasets(primary, candidate, key_mapping, value_mapping,
+candidate_relationship="unknown")`. Renames columns per `key_mapping`/
+`value_mapping`, merges on the mapped key with an outer join to compute
+matched vs. each side's unmatched keys, then for matched rows computes per
+mapped value-column Spearman rank correlation and absolute-difference
+statistics (mean, max). `candidate_relationship` must be one of
+"independent", "same-upstream", or "unknown" and is always taken verbatim
+from the caller — the function never infers "independent" from the
+candidate simply having a different owner/slug than the primary; omitting
+it defaults to "unknown", never "independent". `discover_validation_dataset`
+candidate search (actual Kaggle querying) is explicitly out of scope for
+this module — see constraints below — leaving `compare_datasets` as the
+sole in-repo-actionable piece, consistent with the ask_user-selected
+"proceed with feasible scope" decision for this issue.
+Interfaces: dataset_validation.compare_datasets(primary, candidate,
+key_mapping: dict[str,str], value_mapping: dict[str,str],
+candidate_relationship: str = "unknown") -> OverlapComparison
+(matched_keys, primary_only_keys, candidate_only_keys, per-column
+rank_correlation and abs_difference stats, candidate_relationship).
+Constraints: No network access, no Kaggle API client, and no dataset
+discovery/search heuristic are implemented in this repository: this
+codebase has no existing Kaggle integration to extend (confirmed by
+inspecting `ingestion.py`), and building a live external-search feature
+exceeds this repository's dependency/secrets footprint. `compare_datasets`
+covers every acceptance criterion that depends only on already-loaded
+dataframes; `discover_validation_datasets` remains a documented, not
+implemented, extension point.
+Requirements: REQ-AIDS-057
+ADRs: none — a new, isolated module; no shared state or cross-cutting concern introduced.
+Depends-On: none

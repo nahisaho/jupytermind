@@ -268,3 +268,52 @@ Type: non-functional
 Pattern: ubiquitous
 Statement: The system shall declare both a lower and an upper bound for its mcp and jupyter-mcp-server dependencies in pyproject.toml, so installing the package cannot silently resolve to an untested release pair whose negotiated MCP protocol version is incompatible.
 Acceptance: pyproject.toml's mcp and jupyter-mcp-server dependency specifiers each include an explicit upper bound (not an open-ended "greater than or equal" range); a test parses both declared specifiers and confirms each is bounded on both sides and that the currently installed mcp/jupyter-mcp-server versions satisfy their respective declared ranges; raising either bound to admit a newer release requires a deliberate pyproject.toml edit, documented in CHANGELOG.md.
+
+## REQ-AIDS-051: Cooperative run cancellation and quiescence barrier / 協調的キャンセルと静止確認
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall provide a lifecycle API that lets a caller register a run, request cooperative cancellation of that run, query its current status (state, active cell executions, pending notebook writes, locks held), and wait for quiescence (all tracked activity settled) within a caller-supplied timeout.
+Acceptance: A registered run that has an active tracked cell execution and a pending tracked notebook write reports active_cell_executions>=1 and pending_notebook_writes>=1 from get_run_status; after that execution and write complete, wait_for_quiescence returns a status with active_cell_executions==0, pending_notebook_writes==0 and locks_held==0 within the supplied timeout; calling request_cancel twice on the same run, or once on an already-completed run, does not raise and returns a status consistent with the run's actual completion state; a second run can register and complete after an earlier run on the same notebook path reaches quiescence, without a lock-acquisition error.
+
+## REQ-AIDS-052: Data-definition and provenance manifest with confidence status / データ定義・来歴マニフェストと信頼度ステータス
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall provide a DataDefinitionManifest builder that records, for a dataset's source, scope and variables, each semantic field together with an immutable status of verified, inferred, reported, or unknown, never silently upgrading an inferred or unknown field's recorded status to verified.
+Acceptance: Building a manifest for a variable whose unit was only inferred from numeric scale (not read from an explicit source field) records that unit's status as "inferred", not "verified"; a variable with no available unit information at all records status "unknown"; a manifest-level check surfaces every field whose status is "unknown" as an actionable, listed item; a field explicitly supplied with status "verified" and its source text is preserved verbatim and distinguishable from an inferred field with the same value.
+
+## REQ-AIDS-053: Visual-readability audit for chart outputs / チャート出力の可読性監査
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall provide an optional notebook-audit phase that inspects each chart-bearing code cell's recorded rendering metadata and outputs, reporting a finding when a chart has missing-glyph warnings, is empty/near-empty, or is missing a declared title, axis label, or legend where required by policy.
+Acceptance: A chart cell whose recorded rendering metadata includes a missing-glyph warning is reported as not readable with a "missing_glyphs" finding identifying the cell; the same chart cell with no missing-glyph warning and complete title/axis/legend metadata is reported as readable; an all-uniform (near-empty) PNG output is detected and reported as a finding distinct from the missing-glyph case; running audit_notebook without requesting the visual-audit phase preserves its prior findings and ok value unchanged (backward compatible when the phase is not requested).
+
+## REQ-AIDS-054: Analysis-assumption and applicability manifest / 分析前提・適用範囲マニフェスト
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall provide a structured analysis-assumption manifest recording the analysis scope, a list of assumptions each with an explicit status of verified, tested, assumed, or rejected, and a causal_scope classification, surfacing as an unresolved risk any conclusion-critical assumption whose status is assumed or rejected.
+Acceptance: A manifest declaring causal_scope "descriptive" alongside only descriptive claims produces no causal-identification finding; a manifest declaring causal_scope "causal" without any "tested" or "verified" identification assumption produces a finding naming the gap; an assumption recorded with status "assumed" and marked conclusion-critical appears in the manifest's unresolved_risks list; a sampled-model entry missing a recorded sample size or seed produces a finding.
+
+## REQ-AIDS-055: Semantic anomaly detection and independent overlap validation / 意味的異常検知と独立データ重複検証
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall provide detect_anomalies, evaluating a dataframe against a declared per-column schema of semantic constraints (cross-column comparisons and declared missing-value sentinels) to report violating rows without modifying the source dataframe, and validate_anomalies, comparing two dataframes on a declared key to report matching coverage and per-column value differences beyond a declared tolerance.
+Acceptance: A schema declaring column A must be less-than-or-equal-to column B flags every row where A>B and no others; a declared missing-value sentinel is reported as a distinct finding category from an out-of-range numeric value, and the source dataframe's values are unchanged after detection; comparing two dataframes on a shared date key with one anomalous, non-overlapping-value date isolates that date as the sole disagreement when every other overlapping date matches within the declared tolerance; neither function deletes or mutates input rows.
+
+## REQ-AIDS-056: Reusable sensitivity-analysis plan with conclusion-stability reporting / 再利用可能な感度分析プランと結論安定性レポート
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall provide a bounded SensitivityPlan (a target claim, a dictionary of named dimensions each with an explicit list of alternative values, and a configured maximum specification count) and a run_sensitivity function that evaluates every combination through a caller-supplied evaluator up to that bound, classifying the resulting conclusion across specifications as stable, attenuated, reversed, or not comparable.
+Acceptance: A plan whose dimensions would exceed the configured maximum specification count raises a clear error before any evaluation runs; a two-alternative dimension whose evaluator returns opposite-signed metric values for a specified target claim is classified "reversed"; a dimension whose evaluator returns consistently same-signed, similarly-scaled values across every alternative is classified "stable"; each result records which dimension/alternative combination produced it and any evaluator failure is recorded as a failed specification rather than aborting the remaining plan.
+
+## REQ-AIDS-057: Authorized independent-dataset overlap comparison / 認可済み独立データセット重複比較
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall provide compare_datasets, aligning a primary and a candidate dataframe on a declared key mapping and value mapping to report key coverage, rank correlation, value-difference statistics, the unmatched keys on each side, and for every candidate dataset its recorded relationship to the primary source (independent, same-upstream, or unknown) without ever inferring independence solely from a different owner/slug.
+Acceptance: Two dataframes sharing 189 of a larger combined key set report exactly 189 matched keys and list the remaining keys on each side as unmatched; comparing two dataframes copied from the same declared upstream source records relationship "same-upstream", not "independent", even when their owner/slug differ; omitting explicit upstream-source information for a candidate records relationship "unknown" rather than defaulting to "independent"; rank correlation and absolute-value difference statistics are reported as distinct, separately labeled results.

@@ -110,7 +110,69 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
     finishing, rather than reporting success with unresolved findings. The
     same check is available from the shell as
     `ai-data-scientist validate-notebook <path>` for CI or manual spot
-    checks.
+    checks. For a stricter pre-handoff pass, call
+    `ai_data_scientist.notebook_audit.audit_notebook(path, visual_audit=True)`
+    (REQ-AIDS-053) to additionally flag charts with missing glyph metadata,
+    missing title/axis-label/legend metadata, or a near-empty-looking image
+    (a byte-density heuristic, not an exact pixel scan — see
+    `audit_visual_outputs`), surfaced in `report.visual_findings`.
+11. **Manage long-running or cancellable work** — for any analysis that may
+    run long enough that a user wants to cancel it, or that writes to the
+    notebook from a background task, call
+    `ai_data_scientist.lifecycle.register_run(run_id)` first, call
+    `mark_execution_start`/`mark_execution_end` (and
+    `mark_write_start`/`mark_write_end`) around the corresponding work, check
+    `is_cancel_requested(run_id)` between steps, and call
+    `mark_completed`/`mark_failed` at the end. A caller elsewhere can call
+    `request_cancel(run_id)` (cooperative only — it cannot interrupt a cell
+    already executing in the kernel) and `wait_for_quiescence(run_id)` to
+    block until that run is no longer mid-execution/mid-write
+    (REQ-AIDS-051).
+12. **Record what each field actually means** — before relying on a
+    column's unit or definition in an insight, build a
+    `ai_data_scientist.data_definition.DataDefinitionManifest` via
+    `build_manifest(...)`, recording each semantic field's value plus a
+    status of `verified` (confirmed against a data dictionary/source),
+    `inferred` (inferred from values/name), `reported` (as stated by the
+    user), or `unknown`. Call `manifest.unresolved_fields()` and surface any
+    `unknown`/`inferred` fields as caveats rather than presenting them as
+    verified facts (REQ-AIDS-052).
+13. **Record assumptions and causal scope** — for any conclusion that
+    depends on a non-obvious analytical choice (sampling, preprocessing,
+    causal interpretation), build an
+    `ai_data_scientist.analysis_assumptions.AnalysisAssumptionManifest`
+    (one `Assumption` per choice, with a `status` of `verified`/`tested`/
+    `assumed`/`rejected`, and `causal_scope` of `descriptive`/
+    `associational`/`causal`). Call `check_manifest(manifest)` and report
+    every returned finding to the user — in particular, never present a
+    `causal` conclusion without a `tested`/`verified` identification
+    assumption, and flag any conclusion-critical assumption left `assumed`
+    or `rejected` (REQ-AIDS-054).
+14. **Check for semantic data-quality issues** — beyond the statistical
+    z-score check in `anomaly_detection.detect_anomalies`, use
+    `ai_data_scientist.data_quality.detect_anomalies(df, schema={...})` to
+    check declarative per-column constraints (`min`/`max`, `allowed`
+    categories, `not_null`, `unique`). When an independent reference
+    dataset is available, call
+    `validate_anomalies(primary, reference, columns, tolerance=...)` to
+    confirm a detected anomaly isn't an artifact of the primary dataset
+    alone (REQ-AIDS-055).
+15. **Test conclusion stability** — before stating a conclusion as robust,
+    define an `ai_data_scientist.sensitivity.SensitivityPlan(parameter_grid=
+    {...}, max_runs=...)` covering the alternative specifications that
+    matter (model choice, subset, parameters), and call
+    `run_sensitivity(plan, analysis_fn, stability_tolerance=...)`. Report
+    `report.stable` and `report.max_relative_deviation` to the user;
+    `SensitivityBudgetExceededError` means the grid must be narrowed rather
+    than silently truncated (REQ-AIDS-056).
+16. **Compare against an independent dataset** — when the user supplies or
+    names a second, already-loaded dataset to validate findings against,
+    call `ai_data_scientist.dataset_validation.compare_datasets(primary,
+    candidate, key_mapping, value_mapping, candidate_relationship=...)` to
+    report key overlap and per-column agreement. Automated dataset
+    *discovery* (e.g. searching an external catalog such as Kaggle) is out
+    of scope for this module — the caller must load the candidate dataset
+    first (REQ-AIDS-057).
 
 ## Constraints / 制約
 - Every notebook write goes through
@@ -133,5 +195,12 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
 - `src/ai_data_scientist/stats_analysis.py` — DES-AIDS-008
 - `src/ai_data_scientist/visualization.py` — DES-AIDS-009
 - `src/ai_data_scientist/insight_engine.py` — DES-AIDS-010
-- `src/ai_data_scientist/notebook_audit.py` — DES-AIDS-033
+- `src/ai_data_scientist/notebook_audit.py` — DES-AIDS-033, DES-AIDS-041
 - `src/ai_data_scientist/gate_config.py` — DES-AIDS-011
+- `src/ai_data_scientist/dependency_pins.py` — DES-AIDS-038
+- `src/ai_data_scientist/lifecycle.py` — DES-AIDS-039
+- `src/ai_data_scientist/data_definition.py` — DES-AIDS-040
+- `src/ai_data_scientist/analysis_assumptions.py` — DES-AIDS-042
+- `src/ai_data_scientist/data_quality.py` — DES-AIDS-043
+- `src/ai_data_scientist/sensitivity.py` — DES-AIDS-044
+- `src/ai_data_scientist/dataset_validation.py` — DES-AIDS-045
