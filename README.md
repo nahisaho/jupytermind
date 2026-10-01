@@ -64,3 +64,11 @@ output.
 See `.github/skills/ai-data-scientist/SKILL.md` for the skill's invocation
 instructions and `.musubix/features/ai-data-scientist*/requirements.md` for
 the authoritative requirement set (MVP + ML extension).
+
+## License
+
+MIT License — see [LICENSE](LICENSE).
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes.

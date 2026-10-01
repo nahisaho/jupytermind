@@ -64,3 +64,11 @@ brew install --cask mactex-no-gui
 Skillの呼び出し手順は `.github/skills/ai-data-scientist/SKILL.md` を、
 正式な要件セット(MVP + ML拡張)は
 `.musubix/features/ai-data-scientist*/requirements.md` を参照してください。
+
+## ライセンス
+
+MITライセンス — [LICENSE](LICENSE) を参照してください。
+
+## 変更履歴
+
+リリースノートは [CHANGELOG.md](CHANGELOG.md) を参照してください。
