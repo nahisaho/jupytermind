@@ -1,9 +1,6 @@
 # AI Data Scientist — Jupyter MCP Copilot Agent Skill
 
-自然言語(日本語/英語)でJupyter上のデータ分析を行うGitHub Copilot Agent Skillです。
-Jupyter MCP(Datalayer `jupyter-mcp-server`)経由でのみ分析コードを実行し、
-推論によるInsightはすべて根拠となる実行済みセルとともにプロジェクトのnotebookに
-記録されます。SDD(`musubix3`)とTDD(pytest)で開発されています。
+[日本語 README](README-ja.md)
 
 A GitHub Copilot Agent Skill that performs natural-language (Japanese/
 English) data analysis over Jupyter via the Jupyter MCP (Datalayer
@@ -11,22 +8,23 @@ English) data analysis over Jupyter via the Jupyter MCP (Datalayer
 project notebook alongside the executed cell that provides its evidence.
 Built with SDD (`musubix3`) and TDD (pytest).
 
-## Setup / セットアップ
+## Setup
 
-Python環境(仮想環境 + 依存パッケージ)はnpm経由で自動セットアップできます:
+The Python environment (virtualenv + dependencies) can be set up
+automatically via npm:
 
 ```sh
 npm install
 npx ai-data-scientist doctor
 ```
 
-`npm install` 自体は依存パッケージを持たず、`postinstall` も使用していません
-(npm v12以降、依存パッケージの install スクリプトはデフォルトで無効化され
-`npm approve-scripts` が必要になるため)。代わりに `bin/ai-data-scientist.js`
-が初回のCLI呼び出し時に `.venv` を作成し `pyproject.toml` の依存関係を
-インストールします。2回目以降はキャッシュされ高速に起動します。
+`npm install` itself has no dependencies and does not use `postinstall`
+(since npm v12, install scripts of dependencies are disabled by default
+and require `npm approve-scripts`). Instead, `bin/ai-data-scientist.js`
+creates a `.venv` and installs the dependencies from `pyproject.toml` on
+first CLI invocation. Subsequent invocations are cached and start fast.
 
-Python環境を手動でセットアップする場合:
+To set up the Python environment manually:
 
 ```sh
 python3 -m venv .venv
@@ -34,7 +32,7 @@ python3 -m venv .venv
 .venv/bin/pytest
 ```
 
-### PDF export prerequisites / PDF出力の前提条件
+### PDF export prerequisites
 
 `report_export.export_report(..., report_format="pdf")` uses nbconvert's
 `PDFExporter`, which shells out to a system `xelatex` binary. This is **not**
