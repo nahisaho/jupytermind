@@ -33,7 +33,7 @@ def _write(handle, notebook):
         nbformat.write(notebook, fh)
 
 
-def _add_chart_cell(notebook, png_bytes: bytes, chart_metadata: dict | None = None):
+def _add_chart_cell(notebook, png_bytes: bytes, chart_metadata=None):
     cell = nbformat.v4.new_code_cell("render_chart(...)")
     cell["execution_count"] = 1
     encoded = base64.b64encode(png_bytes).decode("ascii")
@@ -117,3 +117,43 @@ def test_TEST_AIDS_086_audit_notebook_backward_compatible_when_visual_audit_disa
     report_with_visual_audit = audit_notebook(handle.notebook_path, visual_audit=True)
     assert not report_with_visual_audit.ok
     assert len(report_with_visual_audit.visual_findings) > 0
+
+
+# @id TEST-AIDS-109
+# @verifies REQ-AIDS-053
+def test_TEST_AIDS_109_chart_cell_without_authoring_metadata_is_flagged_unaudited():
+    """GitHub #28: a chart-bearing cell whose metadata["chart"] is absent, an
+    empty mapping, or a non-mapping value must surface a distinct
+    "unaudited" finding rather than silently passing as if it had been
+    checked."""
+    absent = nbformat.v4.new_notebook()
+    _add_chart_cell(absent, _png(100, 100, uniform=False), chart_metadata=None)
+
+    empty = nbformat.v4.new_notebook()
+    _add_chart_cell(empty, _png(100, 100, uniform=False), chart_metadata={})
+
+    non_mapping = nbformat.v4.new_notebook()
+    _add_chart_cell(non_mapping, _png(100, 100, uniform=False), chart_metadata="not-a-dict")
+
+    for notebook in (absent, empty, non_mapping):
+        findings = audit_visual_outputs(notebook, (0,))
+        codes = {f.code for f in findings}
+        assert "unaudited" in codes
+        unaudited = [f for f in findings if f.code == "unaudited"]
+        assert all(f.severity == "warning" for f in unaudited)
+        # Unaudited is informational and must not itself trigger the
+        # label/glyph checks that assume a usable metadata mapping.
+        assert "missing_label" not in codes
+        assert "missing_glyphs" not in codes
+
+
+# @id TEST-AIDS-110
+# @verifies REQ-AIDS-053
+def test_TEST_AIDS_110_cell_without_image_output_is_not_flagged_unaudited():
+    notebook = nbformat.v4.new_notebook()
+    cell = nbformat.v4.new_code_cell("x = 1")
+    cell["execution_count"] = 1
+    notebook.cells.append(cell)
+
+    findings = audit_visual_outputs(notebook, (0,))
+    assert findings == ()

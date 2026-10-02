@@ -107,3 +107,38 @@ def test_TEST_AIDS_048():
 
     with pytest.raises(CitedValueNotFoundError):
         extract_cited_value(result, r"kagawa_gap_vs_mean=(\S+)")
+
+
+# @id TEST-AIDS-105
+# @verifies REQ-AIDS-009 REQ-AIDS-010
+def test_TEST_AIDS_105_stream_print_output_is_valid_evidence(tmp_path):
+    """GitHub #29: a value only present in a cell's ``stream`` (print())
+    output must still count as valid evidentiary basis for record_insight,
+    not just execute_result/display_data ``data`` output. This also matters
+    for REQ-AIDS-010: before this fix, stream-only evidence was invisible to
+    evidence detection, so a genuinely-supported insight could be wrongly
+    withheld as if no evidentiary cell existed."""
+    handle = resolve_project("stream-evidence-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    cell = nbformat.v4.new_code_cell("print(f'corr={corr:.2f}')")
+    cell["execution_count"] = 1
+    cell["outputs"] = [nbformat.v4.new_output("stream", name="stdout", text="corr=0.91\n")]
+    notebook.cells.append(cell)
+    with handle.notebook_path.open("w", encoding="utf-8") as fh:
+        nbformat.write(notebook, fh)
+
+    record_insight(
+        handle,
+        insight_text="Price and sales show a strong positive correlation.",
+        evidence_execution_count=1,
+        cited_value="0.91",
+        claim_type="correlation",
+        language="en",
+    )
+
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    assert len(notebook.cells) == 2
+    _, insight_cell = notebook.cells
+    assert insight_cell["cell_type"] == "markdown"

@@ -84,6 +84,42 @@ def test_TEST_AIDS_029(tmp_path):
     assert len(markers) == 10
 
 
+# @id TEST-AIDS-104
+# @verifies REQ-AIDS-029
+def test_TEST_AIDS_104_serialization_failure_does_not_corrupt_existing_notebook(tmp_path):
+    """GitHub #27: a mutation that nbformat.validate() accepts but that fails
+    at serialization time (e.g. a non-JSON-serializable metadata value) must
+    never truncate or corrupt the already-written notebook on disk."""
+    handle = resolve_project("atomic-write-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+
+    def add_first_cell(nb):
+        nb.cells.append(nbformat.v4.new_code_cell("first = 1"))
+
+    enqueue_write(handle, add_first_cell)
+    before = handle.notebook_path.read_text(encoding="utf-8")
+    assert before  # the notebook has real, non-empty prior content
+
+    def add_unserializable_cell(nb):
+        cell = nbformat.v4.new_code_cell("second = 2")
+        # A set is valid nbformat metadata structurally (validate() accepts
+        # an arbitrary mapping) but is not JSON-serializable, so writing it
+        # out fails at serialization time, not at validation time.
+        cell["metadata"]["bad"] = {1, 2, 3}
+        nb.cells.append(cell)
+
+    with pytest.raises(TypeError):
+        enqueue_write(handle, add_unserializable_cell)
+
+    after = handle.notebook_path.read_text(encoding="utf-8")
+    assert after == before
+
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    nbformat.validate(notebook)
+    assert len(notebook.cells) == 1
+    assert notebook.cells[0].source == "first = 1"
+
+
 # @id TEST-AIDS-057
 # @verifies REQ-AIDS-044
 def test_TEST_AIDS_057_default_root_env_override_is_stable_across_cwd(tmp_path, monkeypatch):
@@ -174,3 +210,27 @@ def test_TEST_AIDS_071_resolve_stable_path_falls_back_and_raises(tmp_path, monke
 
     with pytest.raises(project_manager.StablePathResolutionError):
         project_manager.resolve_stable_path("data/missing.csv")
+
+
+# @id TEST-AIDS-112
+# @verifies REQ-AIDS-059
+def test_TEST_AIDS_112_concurrent_mcp_write_risk_is_documented():
+    """GitHub #34: SKILL.md and enqueue_write's docstring must both state the
+    Jupyter-MCP concurrent-external-save risk and its mitigation. Documentation-
+    only requirement (REQ-AIDS-059); no runtime behavior is asserted here."""
+    from pathlib import Path
+
+    skill_path = (
+        Path(__file__).resolve().parents[1]
+        / ".github"
+        / "skills"
+        / "ai-data-scientist"
+        / "SKILL.md"
+    )
+    skill_text = skill_path.read_text(encoding="utf-8")
+    assert "Concurrent-write risk" in skill_text
+    assert "MCP" in skill_text
+
+    docstring = enqueue_write.__doc__ or ""
+    assert "Concurrent-write risk" in docstring
+    assert "MCP" in docstring

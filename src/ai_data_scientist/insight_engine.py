@@ -61,6 +61,12 @@ def _find_evidence_cell(notebook, execution_count: int, cited_value: str):
             for value in output.get("data", {}).values():
                 if cited_value in str(value):
                     return cell
+            # GitHub #29: execute_result/display_data outputs store their
+            # payload under "data", but print()-produced stream output
+            # stores it under "text" instead; a value genuinely printed by
+            # the executed cell is equally valid evidence.
+            if output.get("output_type") == "stream" and cited_value in str(output.get("text", "")):
+                return cell
     return None
 
 

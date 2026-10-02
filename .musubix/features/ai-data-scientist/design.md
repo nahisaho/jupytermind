@@ -327,20 +327,28 @@ which is instead reported as a single error-level finding; must reuse the
 same evidence cross-check semantics as DES-AIDS-010 rather than
 re-implementing a divergent matching rule.
 Requirements: REQ-AIDS-045
-ADRs: none — a read-only consumer of the existing notebook/evidence format, no new storage format introduced.
+ADRs: ADR-0009
 Depends-On: DES-AIDS-003, DES-AIDS-010
 
 ## DES-AIDS-034: Bundled Japanese font for chart text / バンドル済み日本語フォントによるグラフ文言対応
 Responsibilities: Extend render_chart with optional title/xlabel/ylabel
 parameters. When any of title/xlabel/ylabel contains a non-ASCII character,
-lazily (once per process) import the `japanize-matplotlib` package, whose
-import side effect registers the bundled IPAexGothic TrueType font with
-matplotlib's font manager and sets it as the active `font.family` via
-`matplotlib.rc`. Subsequent calls reuse the already-registered font (a
-module-level flag avoids re-importing/re-registering on every call). Charts
-with only ASCII title/xlabel/ylabel (or none at all) never trigger the
-import, so default matplotlib font behavior for existing callers is
-unchanged until Japanese text first appears in a given process.
+import the `japanize-matplotlib` package (its import side effect registers
+the bundled IPAexGothic TrueType font with matplotlib's font manager and
+sets it as the active `font.family` via `matplotlib.rc`), and reassert the
+registered font as the active `font.family` at the top of every such
+`render_chart` call, not only on first trigger. This removes the prior
+sticky, process-global assumption: a caller resetting matplotlib's global
+`rcParams` (e.g. `plt.rcdefaults()`) between calls previously silently
+undid the font registration, causing Japanese text to render as "tofu"
+boxes on later calls (GitHub issue #32) — the module-level flag now only
+gates the one-time `import japanize_matplotlib` (an expensive, idempotent
+side effect), while the inexpensive `font.family` assertion itself runs
+unconditionally whenever non-ASCII text is requested, so each rendering's
+font state is self-contained and does not depend on any prior call's
+surviving global state. Charts with only ASCII title/xlabel/ylabel (or
+none at all) never trigger either step, so default matplotlib font
+behavior for existing callers is unchanged.
 Interfaces: render_chart(df, kind="scatter", x=None, y=None, title=None,
 xlabel=None, ylabel=None) -> bytes (new optional keyword-only-by-convention
 parameters; existing positional/keyword call sites are unaffected since the
@@ -350,14 +358,10 @@ Constraints: Must not require any font to be pre-installed on the host
 bundling IPA's freely redistributable IPAexGothic font); must not import
 `japanize-matplotlib` eagerly at module load (keeps import cost and any
 transitional deprecation warnings it emits out of the common ASCII-only
-path); once triggered, the font change is process-global (matches
-`japanize-matplotlib`'s own documented usage pattern) rather than scoped
-per-call, which is acceptable because a process rendering Japanese text
-once is overwhelmingly likely to render Japanese text again in the same
-session.
+path); must reassert `font.family` on every call that needs it regardless
+of any intervening global `rcParams` reset by the caller.
 Requirements: REQ-AIDS-046
-ADRs: none — adopts an existing, widely used PyPI package (`japanize-matplotlib`)
-rather than introducing a new bundled-asset mechanism of our own.
+ADRs: ADR-0010
 Depends-On: DES-AIDS-009
 
 ## DES-AIDS-035: Stable-root path resolution for notebook audit / ノートブック監査向けの安定ルートパス解決
@@ -478,23 +482,31 @@ Depends-On: DES-AIDS-003, DES-AIDS-004
 Responsibilities: A new `data_definition` module providing a `FieldValue`
 value object (`value`, `status` in {"verified","inferred","reported",
 "unknown"}, optional `source`) and a `DataDefinitionManifest` dataclass
-(source, dataset_scope, variables, transformations, unresolved_metadata)
-built via `build_manifest(...)`. `unresolved_metadata` is derived, not
-caller-set: computed by scanning every `FieldValue` in the manifest and
-collecting those whose status is "unknown". `FieldValue` is frozen so a
-status, once constructed, cannot be mutated in place to "verified" by later
-code; only constructing a brand-new `FieldValue` can change it, and that
-is always an explicit caller action, not an automatic promotion.
+(source, dataset_scope, variables, transformations) built via
+`build_manifest(...)`. `unresolved_fields()` is derived, not caller-set:
+computed by scanning every `FieldValue` in the manifest and collecting
+those whose status is "unknown". `FieldValue` is frozen so a status, once
+constructed, cannot be mutated in place to "verified" by later code; only
+constructing a brand-new `FieldValue` can change it, and that is always an
+explicit caller action, not an automatic promotion. A second derived
+query, `inferred_fields()`, mirrors the same three-scan traversal
+(source/dataset_scope/variables) and collects those whose status is
+"inferred" instead of "unknown", so a field never appears in both result
+sets and neither method's result depends on evaluation order.
 Interfaces: data_definition.FieldValue(value, status, source=None);
 data_definition.build_manifest(source, dataset_scope, variables,
 transformations=()) -> DataDefinitionManifest; manifest.unresolved_fields()
--> list[tuple[str, FieldValue]] (dotted path + field).
+-> list[tuple[str, FieldValue]] (dotted path + field, status == "unknown"
+only); manifest.inferred_fields() -> list[tuple[str, FieldValue]] (dotted
+path + field, status == "inferred" only).
 Constraints: No implicit status inference logic is added in this module
 (the caller/agent decides inferred vs verified when constructing a
 `FieldValue`); the module's job is to make that distinction structurally
-enforceable and queryable, not to guess it.
+enforceable and queryable, not to guess it. `inferred_fields()` must not
+mutate or reclassify any field; it is a read-only filter over the same
+stored data `unresolved_fields()` reads.
 Requirements: REQ-AIDS-052
-ADRs: none — a new, self-contained value-object/manifest module with no cross-cutting architectural impact.
+ADRs: ADR-0011
 Depends-On: none
 
 ## DES-AIDS-041: Visual-readability audit phase / ビジュアル可読性監査フェーズ
@@ -519,10 +531,66 @@ Constraints: Must not add a hard dependency (no OCR, no imaging library);
 the glyph/label checks rely on authoring-time metadata rather than re-
 rendering or OCR-scanning the image, which the issue's own "Implementation
 options" lists as an acceptable approach ("record chart semantics at
-creation time").
+creation time"). Note: as of this change, no current caller (including
+`visualization.record_chart`) writes `cell["metadata"]["chart"]`; until a
+caller is updated to populate it, every chart-bearing cell audited by this
+phase is expected to surface as "unaudited" rather than as a false "pass",
+which is the intended, correct behavior per REQ-AIDS-053's new acceptance
+clause. A chart-bearing cell (an `image/png` output present) whose
+`metadata["chart"]` key is absent, an empty mapping, or a non-mapping value
+yields a distinct `VisualAuditFinding(code="unaudited", severity="warning",
+...)`, checked and returned before the existing `missing_glyphs`/label
+checks run (those checks are otherwise unchanged); this finding is
+informational only and does not by itself flip the mandatory
+(non-visual-audit) `ok` status this module already governs.
 Requirements: REQ-AIDS-053
-ADRs: none — an additive, opt-in audit phase; default-off behavior keeps the existing DES-AIDS-033 contract unchanged.
+ADRs: ADR-0012
 Depends-On: DES-AIDS-033
+
+## DES-AIDS-046: Non-clipped chart text layout / グラフ描画文字の非クリッピング・レイアウト
+Responsibilities: In `visualization.render_chart`, after plotting and
+setting title/xlabel/ylabel but before saving the PNG, call matplotlib's
+`Figure.tight_layout()` (falling back to `constrained_layout` if
+`tight_layout` raises, e.g. for 3D axes) and pass `bbox_inches="tight"` to
+`savefig`, so the title, axis labels, and tick labels are
+repositioned/padded to fit within the saved canvas instead of being
+clipped. Applies on every call, not only when labels are detected as long,
+so behavior is deterministic and does not depend on a heuristic length
+threshold. `bbox_inches="tight"` changes the saved PNG's pixel dimensions
+to fit the tightened bounding box (the current implementation saves a
+fixed-size canvas with no existing `bbox_inches`/`dpi` argument); no
+requirement or existing test depends on a fixed output size, so this is an
+intentional, acceptable side effect, not a regression — the verifying test
+must call `fig.canvas.draw()`, then compute each `Text` artist's
+`get_window_extent()` using the renderer obtained after the same
+`tight_layout`/`savefig(bbox_inches="tight")` call sequence, so the
+asserted bounding boxes use the same bbox/DPI convention as the saved PNG,
+rather than comparing against the original, un-tightened canvas extent.
+Interfaces: visualization.render_chart(..., ) -> bytes (PNG), unchanged
+public signature; the layout call is an internal step before `savefig`.
+Constraints: Must not change the plotted data, legend, or color palette;
+must not regress REQ-AIDS-046's bundled-Japanese-font configuration (the
+layout call must run after font configuration and after title/axis-label
+text is set, since `tight_layout` measures already-rendered text metrics).
+Requirements: REQ-AIDS-058
+ADRs: ADR-0013
+Depends-On: DES-AIDS-009, DES-AIDS-034
+
+## DES-AIDS-047: Documented Jupyter MCP concurrent-write risk / Jupyter MCP同時書込みリスクの文書化
+Responsibilities: Add an explicit risk/mitigation note to SKILL.md's
+notebook-write workflow step and to `project_manager.enqueue_write`'s
+docstring, stating that a direct `enqueue_write` call against a notebook
+file that is simultaneously open in a Jupyter MCP session can be
+overwritten when that MCP session later saves, and recommending routing
+writes through the active MCP session (or pausing MCP-side saves) instead.
+Interfaces: none — documentation only; no function signature or behavior
+changes.
+Constraints: Must not alter `enqueue_write`'s runtime behavior; this is a
+documentation-only design element with no TDD cycle, consistent with
+REQ-AIDS-059's "no code behavior change" acceptance clause.
+Requirements: REQ-AIDS-059
+ADRs: ADR-0014
+Depends-On: DES-AIDS-003
 
 ## DES-AIDS-042: Analysis-assumption manifest with risk surfacing / 分析前提マニフェストとリスク表面化
 Responsibilities: A new `analysis_assumptions` module providing an

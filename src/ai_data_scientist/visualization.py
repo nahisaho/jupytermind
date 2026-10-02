@@ -25,6 +25,7 @@ _SUPPORTED_KINDS = ("scatter", "line", "bar", "hist")
 # @implements REQ-AIDS-046
 # @design DES-AIDS-034
 _japanese_font_applied = False
+_JAPANESE_FONT_FAMILY = "IPAexGothic"
 
 
 def _contains_non_ascii(text: str | None) -> bool:
@@ -34,29 +35,33 @@ def _contains_non_ascii(text: str | None) -> bool:
 
 
 def _ensure_japanese_font() -> None:
-    """Lazily register the bundled Japanese-capable font with matplotlib.
+    """Register (once) and reassert (every call) the bundled Japanese font.
 
-    Importing/calling ``japanize_matplotlib.japanize()`` registers its
-    bundled IPAexGothic TrueType font with matplotlib's font manager and
-    sets it as the active ``font.family`` (REQ-AIDS-046), independent of
-    whatever fonts happen to be installed on the host. Only triggered once
-    per process: charts with no non-ASCII title/xlabel/ylabel never pay
-    this cost and matplotlib's default font behavior is unaffected until
-    Japanese (or other non-ASCII) text first appears.
+    Importing ``japanize_matplotlib`` registers its bundled IPAexGothic
+    TrueType font with matplotlib's font manager — an expensive, idempotent
+    side effect gated by ``_japanese_font_applied`` so it runs at most once
+    per process. Setting ``font.family`` to the registered font name is
+    cheap and, unlike the import, is *not* gated: it is reasserted on every
+    call that needs it (GitHub #32). Without this, a caller resetting
+    matplotlib's global ``rcParams`` between calls (e.g. ``plt.rcdefaults()``)
+    would silently revert ``font.family`` to its default, and the previous
+    once-per-process guard would then skip reapplying it, causing Japanese
+    text to render as "tofu" boxes on later calls even though the font was
+    already registered.
     """
     global _japanese_font_applied
-    if _japanese_font_applied:
-        return
-    with warnings.catch_warnings():
-        # japanize_matplotlib relies on distutils.version.LooseVersion,
-        # which emits a harmless DeprecationWarning under modern setuptools.
-        warnings.simplefilter("ignore", DeprecationWarning)
-        import japanize_matplotlib  # noqa: F401 - import side effect registers the font
-    _japanese_font_applied = True
+    if not _japanese_font_applied:
+        with warnings.catch_warnings():
+            # japanize_matplotlib relies on distutils.version.LooseVersion,
+            # which emits a harmless DeprecationWarning under modern setuptools.
+            warnings.simplefilter("ignore", DeprecationWarning)
+            import japanize_matplotlib  # noqa: F401 - import side effect registers the font
+        _japanese_font_applied = True
+    matplotlib.rcParams["font.family"] = _JAPANESE_FONT_FAMILY
 
 
 # @id CODE-AIDS-007
-# @implements REQ-AIDS-007
+# @implements REQ-AIDS-007 REQ-AIDS-058
 # @design DES-AIDS-009
 def render_chart(
     df: pd.DataFrame,
@@ -92,8 +97,20 @@ def render_chart(
             ax.set_xlabel(xlabel)
         if ylabel is not None:
             ax.set_ylabel(ylabel)
+        # GitHub #31: reposition/pad title, axis labels, and tick labels to
+        # fit within the saved canvas instead of being clipped. Applied on
+        # every call (not gated by a label-length heuristic) so behavior is
+        # deterministic. Runs after text is set (tight_layout measures
+        # already-rendered text metrics) and after font configuration above.
+        try:
+            fig.tight_layout()
+        except Exception:
+            # Some axes projections (e.g. 3D) raise from tight_layout();
+            # constrained_layout is a safe fallback that still repositions
+            # text to avoid clipping.
+            fig.set_layout_engine("constrained")
         buffer = io.BytesIO()
-        fig.savefig(buffer, format="png")
+        fig.savefig(buffer, format="png", bbox_inches="tight")
         return buffer.getvalue()
     finally:
         plt.close(fig)

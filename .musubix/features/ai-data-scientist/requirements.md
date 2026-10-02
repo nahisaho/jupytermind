@@ -281,14 +281,14 @@ Priority: must
 Type: functional
 Pattern: ubiquitous
 Statement: The system shall provide a DataDefinitionManifest builder that records, for a dataset's source, scope and variables, each semantic field together with an immutable status of verified, inferred, reported, or unknown, never silently upgrading an inferred or unknown field's recorded status to verified.
-Acceptance: Building a manifest for a variable whose unit was only inferred from numeric scale (not read from an explicit source field) records that unit's status as "inferred", not "verified"; a variable with no available unit information at all records status "unknown"; a manifest-level check surfaces every field whose status is "unknown" as an actionable, listed item; a field explicitly supplied with status "verified" and its source text is preserved verbatim and distinguishable from an inferred field with the same value.
+Acceptance: Building a manifest for a variable whose unit was only inferred from numeric scale (not read from an explicit source field) records that unit's status as "inferred", not "verified"; a variable with no available unit information at all records status "unknown"; a manifest-level check surfaces every field whose status is "unknown" as an actionable, listed item; a field explicitly supplied with status "verified" and its source text is preserved verbatim and distinguishable from an inferred field with the same value; a separate manifest-level check surfaces every field whose status is "inferred" as its own actionable, listed item, without that field also appearing in, or being conflated with, the "unknown" list.
 
 ## REQ-AIDS-053: Visual-readability audit for chart outputs / チャート出力の可読性監査
 Priority: must
 Type: functional
 Pattern: ubiquitous
 Statement: The system shall provide an optional notebook-audit phase that inspects each chart-bearing code cell's recorded rendering metadata and outputs, reporting a finding when a chart has missing-glyph warnings, is empty/near-empty, or is missing a declared title, axis label, or legend where required by policy.
-Acceptance: A chart cell whose recorded rendering metadata includes a missing-glyph warning is reported as not readable with a "missing_glyphs" finding identifying the cell; the same chart cell with no missing-glyph warning and complete title/axis/legend metadata is reported as readable; an all-uniform (near-empty) PNG output is detected and reported as a finding distinct from the missing-glyph case; running audit_notebook without requesting the visual-audit phase preserves its prior findings and ok value unchanged (backward compatible when the phase is not requested).
+Acceptance: A chart cell whose recorded rendering metadata includes a missing-glyph warning is reported as not readable with a "missing_glyphs" finding identifying the cell; the same chart cell with no missing-glyph warning and complete title/axis/legend metadata is reported as readable; an all-uniform (near-empty) PNG output is detected and reported as a finding distinct from the missing-glyph case; running audit_notebook without requesting the visual-audit phase preserves its prior findings and ok value unchanged (backward compatible when the phase is not requested); a chart-bearing code cell (an `image/png` output present) whose code cell carries no `metadata["chart"]` key, or carries it as an empty mapping or a non-mapping value, is reported with a distinct "unaudited" finding identifying the cell, so "not audited" is never silently indistinguishable from "audited and passing"; this "unaudited" finding does not by itself fail the mandatory (non-visual-audit) findings this requirement already governs.
 
 ## REQ-AIDS-054: Analysis-assumption and applicability manifest / 分析前提・適用範囲マニフェスト
 Priority: must
@@ -317,3 +317,17 @@ Type: functional
 Pattern: ubiquitous
 Statement: The system shall provide compare_datasets, aligning a primary and a candidate dataframe on a declared key mapping and value mapping to report key coverage, rank correlation, value-difference statistics, the unmatched keys on each side, and for every candidate dataset its recorded relationship to the primary source (independent, same-upstream, or unknown) without ever inferring independence solely from a different owner/slug.
 Acceptance: Two dataframes sharing 189 of a larger combined key set report exactly 189 matched keys and list the remaining keys on each side as unmatched; comparing two dataframes copied from the same declared upstream source records relationship "same-upstream", not "independent", even when their owner/slug differ; omitting explicit upstream-source information for a candidate records relationship "unknown" rather than defaulting to "independent"; rank correlation and absolute-value difference statistics are reported as distinct, separately labeled results.
+
+## REQ-AIDS-058: Non-clipped chart text in saved rendering / グラフ描画文字のはみ出し防止
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When a chart's title or x-axis label or y-axis label or tick label extends near the figure boundary, the system shall apply layout adjustment so that the saved PNG's rendered text stays within the saved image's pixel bounds.
+Acceptance: Rendering a chart with long category tick labels and a wrapped multi-line axis label produces a saved PNG whose title, axis-label, and tick-label `Text` artists each report, via the renderer's `get_window_extent` after layout adjustment, a bounding box within the figure canvas's pixel dimensions at the same DPI/bbox convention used for the save; a chart whose labels already fit without adjustment keeps the same plotted data, labels, and `image/png` output contract as before.
+
+## REQ-AIDS-059: Documented Jupyter MCP concurrent-write risk / Jupyter MCP同時書込みリスクの文書化
+Priority: should
+Type: non-functional
+Pattern: ubiquitous
+Statement: The system shall document, in both SKILL.md and the project-manager module, that writing directly to a notebook file via enqueue_write while the same file is open and later saved by a Jupyter MCP session can overwrite or lose that direct write.
+Acceptance: SKILL.md's workflow guidance and the project_manager module's enqueue_write docstring both state the concurrent-external-save risk explicitly, together with the recommended mitigation of routing writes through the active MCP session (or pausing MCP-side saves) instead of writing directly to an MCP-opened notebook; enqueue_write's runtime behavior remains unchanged, and no code behavior change is required or implied by this requirement.

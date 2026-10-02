@@ -38,6 +38,9 @@ class FieldValue:
             )
 
 
+# @id CODE-AIDS-083
+# @implements REQ-AIDS-052
+# @design DES-AIDS-040
 @dataclass(frozen=True)
 class DataDefinitionManifest:
     """Aggregated data-definition manifest for one ingested dataset."""
@@ -53,18 +56,30 @@ class DataDefinitionManifest:
         Each entry's first element is a dotted path identifying its location
         (e.g. ``"source.license"`` or ``"variables.value.unit"``).
         """
-        unresolved: list[tuple[str, FieldValue]] = []
+        return self._fields_with_status("unknown")
+
+    def inferred_fields(self) -> list[tuple[str, FieldValue]]:
+        """Return every ``FieldValue`` across the manifest whose status is "inferred".
+
+        GitHub #33: surfaces unconfirmed-but-assumed fields as their own
+        actionable, listed item, separate from (and never overlapping
+        with) :meth:`unresolved_fields`'s "unknown" list.
+        """
+        return self._fields_with_status("inferred")
+
+    def _fields_with_status(self, status: str) -> list[tuple[str, FieldValue]]:
+        matches: list[tuple[str, FieldValue]] = []
         for key, field_value in self.source.items():
-            if isinstance(field_value, FieldValue) and field_value.status == "unknown":
-                unresolved.append((f"source.{key}", field_value))
+            if isinstance(field_value, FieldValue) and field_value.status == status:
+                matches.append((f"source.{key}", field_value))
         for key, field_value in self.dataset_scope.items():
-            if isinstance(field_value, FieldValue) and field_value.status == "unknown":
-                unresolved.append((f"dataset_scope.{key}", field_value))
+            if isinstance(field_value, FieldValue) and field_value.status == status:
+                matches.append((f"dataset_scope.{key}", field_value))
         for variable_name, fields in self.variables.items():
             for field_name, field_value in fields.items():
-                if isinstance(field_value, FieldValue) and field_value.status == "unknown":
-                    unresolved.append((f"variables.{variable_name}.{field_name}", field_value))
-        return unresolved
+                if isinstance(field_value, FieldValue) and field_value.status == status:
+                    matches.append((f"variables.{variable_name}.{field_name}", field_value))
+        return matches
 
 
 # @id CODE-AIDS-072

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import os
 import re
+import tempfile
 import threading
 from dataclasses import dataclass
 from pathlib import Path
@@ -190,7 +191,7 @@ def ensure_notebook(handle: ProjectHandle) -> Path:
 # @implements REQ-AIDS-011
 # @design DES-AIDS-003
 # @id CODE-AIDS-029
-# @implements REQ-AIDS-029
+# @implements REQ-AIDS-029 REQ-AIDS-059
 # @design DES-AIDS-003
 def enqueue_write(handle: ProjectHandle, cell_mutation) -> Path:
     """Serialize a notebook mutation through a per-notebook single-writer lock.
@@ -200,12 +201,43 @@ def enqueue_write(handle: ProjectHandle, cell_mutation) -> Path:
     re-written under the lock so every writer observes the latest on-disk
     state, guaranteeing no cell from a concurrent writer is lost, and the
     result always round-trips through ``nbformat.validate``.
+
+    The write itself is atomic (GitHub #27): the mutated notebook is
+    serialized to a string with ``nbformat.writes`` *before* anything on
+    disk is touched, so a mutation that ``nbformat.validate`` accepts but
+    that fails at JSON-serialization time (e.g. non-JSON-serializable
+    metadata) raises without ever truncating or corrupting the existing
+    file. The serialized string is then written to a temporary file in the
+    same directory, flushed and fsynced, and atomically swapped into place
+    with ``os.replace`` so a crash or error mid-write never leaves a
+    partially written notebook on disk.
+
+    **Concurrent-write risk with Jupyter MCP (GitHub #34, REQ-AIDS-059)**:
+    this lock only serializes concurrent callers of this function within
+    the current process; it does not coordinate with a separate Jupyter
+    MCP session that has the same notebook file open in memory. If such an
+    MCP session later saves its own in-memory copy, it can silently
+    overwrite whatever this function already wrote to disk. Prefer routing
+    writes through the active MCP session when one is open against this
+    notebook, or pause MCP-side saves while calling this function directly.
     """
     lock = _lock_for(handle.notebook_path)
     with lock:
         notebook = nbformat.read(handle.notebook_path, as_version=4)
         cell_mutation(notebook)
         nbformat.validate(notebook)
-        with handle.notebook_path.open("w", encoding="utf-8") as fh:
-            nbformat.write(notebook, fh)
+        serialized = nbformat.writes(notebook)
+        directory = handle.notebook_path.parent
+        fd, tmp_name = tempfile.mkstemp(
+            dir=directory, prefix=f".{handle.notebook_path.name}.", suffix=".tmp"
+        )
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as fh:
+                fh.write(serialized)
+                fh.flush()
+                os.fsync(fh.fileno())
+            os.replace(tmp_name, handle.notebook_path)
+        except BaseException:
+            Path(tmp_name).unlink(missing_ok=True)
+            raise
     return handle.notebook_path

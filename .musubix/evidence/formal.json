@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-02T04:37:47.956Z",
-  "totalRequirements": 82,
+  "generatedAt": "2026-10-02T07:21:41.365Z",
+  "totalRequirements": 84,
   "modeledRequirements": 11,
-  "modeledFraction": 0.13414634146341464,
+  "modeledFraction": 0.13095238095238096,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -137,6 +137,8 @@
       "REQ-AIDS-055",
       "REQ-AIDS-056",
       "REQ-AIDS-057",
+      "REQ-AIDS-058",
+      "REQ-AIDS-059",
       "REQ-AIDS-008",
       "REQ-AIDS-015",
       "REQ-AIDS-016",
@@ -353,6 +355,16 @@
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
+        "message": "REQ-AIDS-058 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-059 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
         "message": "REQ-AIDS-008 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
@@ -543,7 +555,7 @@
     }
   },
   "fingerprints": {
-    ".musubix/features/ai-data-scientist/requirements.md": "e10141f6de0355ce888402bf957f79133c3e8a232c4fbc14edda0b1dfeed28cf",
+    ".musubix/features/ai-data-scientist/requirements.md": "0d26d654ec602e29b5e800b566a3ab73fbb13b4ba71113570d4d4e873515c55f",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
     ".musubix/features/ai-scientist/requirements.md": "0813eae3d21203183b9b3804375b2c5b2b9813da2fbaffd264f134d10ca156a7",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed"

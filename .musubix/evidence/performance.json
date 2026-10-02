@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
-  "runId": "a062fae2-7253-4138-b148-77075eb10087",
-  "generatedAt": "2026-10-02T04:38:06.078Z",
+  "runId": "5a85b47b-4219-43e5-99b1-90f6838015b8",
+  "generatedAt": "2026-10-02T07:21:57.750Z",
   "executions": [
     {
-      "runId": "a062fae2-7253-4138-b148-77075eb10087",
-      "executionId": "692abc38a4404c317ef9087d63fc4638feba3623e4889c94696d6cba3390cd91",
+      "runId": "5a85b47b-4219-43e5-99b1-90f6838015b8",
+      "executionId": "77cab65c02c1cf06e93461e5003dd5935a5a8bba2921759f8e9562b9977ab6bb",
       "commandName": "test",
       "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
       "reportPath": ".musubix/evidence/native/test/aggregate.json",
       "sourceKind": "file",
-      "reportSha256": "2d7de428025553b01ba7a987d8dc2a451c591c1bcebf68fd4beb426bdde6e706",
+      "reportSha256": "38c734ea37db8ea8ab8b7fe313d8085be802035ecce22a24369129d448d09558",
       "processStatus": "completed",
       "exitCode": 0,
       "tests": [
@@ -423,6 +423,42 @@
           "status": "passed"
         },
         {
+          "id": "TEST-AIDS-104",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-105",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-106",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-107",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-108",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-109",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-110",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-111",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-112",
+          "status": "passed"
+        },
+        {
           "id": "TEST-AIDS-PYTEST-001",
           "status": "passed"
         },
@@ -591,7 +627,7 @@
           "status": "passed"
         }
       ],
-      "recordSha256": "82a605e54a010e84b813808937a41d397c9ec1db79cfb9c070e088feaab1b452"
+      "recordSha256": "d8e8bbe3198b11a4220bb643c3d730462edce512bc392da5a263e44fa4ac124d"
     }
   ],
   "observations": [

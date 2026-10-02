@@ -78,6 +78,12 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
    Japanese-capable font the first time such text appears in a process, so
    it renders as legible glyphs instead of mojibake/placeholder boxes,
    regardless of what fonts are installed on the host (REQ-AIDS-046).
+   **Concurrent-write risk**: calling `enqueue_write` directly against a
+   notebook file that a human has simultaneously open in a Jupyter MCP
+   session can be silently overwritten when that MCP session later saves
+   its own in-memory copy (REQ-AIDS-059). Prefer routing writes through the
+   active MCP session instead, or ask the human to pause MCP-side saves
+   while this skill writes to the notebook file directly.
 9. **Record insights with evidence** — only after executing the
    evidentiary cell, derive `cited_value` from the executed cell's actual
    output with `ai_data_scientist.insight_engine.extract_cited_value(result,

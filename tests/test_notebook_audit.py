@@ -127,6 +127,42 @@ def test_TEST_AIDS_061_detects_missing_and_stale_evidence_manifest(tmp_path):
     assert stale_finding.cell_index == 2
 
 
+# @id TEST-AIDS-106
+# @verifies REQ-AIDS-045
+def test_TEST_AIDS_106_heading_prefixed_cell_with_stale_evidence_is_still_flagged(tmp_path):
+    """GitHub #30: a markdown cell that starts with a heading ("#") but
+    still carries a ```evidence block must not be excluded from evidence
+    validation just because of the leading heading."""
+    handle = resolve_project("audit-heading-evidence-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[
+            nbformat.v4.new_output("execute_result", data={"text/plain": "0.42"}, execution_count=1)
+        ],
+    )
+    stale_manifest = json.dumps(
+        {"execution_count": 1, "cited_value": "0.99", "claim_type": "correlation"},
+        separators=(",", ":"),
+    )
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell(
+            f"# Stale heading claim.\n\n```evidence\n{stale_manifest}\n```"
+        )
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is False
+    messages = [finding.message for finding in report.findings]
+    assert any("missing or stale evidence" in message for message in messages)
+    stale_finding = next(f for f in report.findings if "missing or stale evidence" in f.message)
+    assert stale_finding.cell_index == 1
+
+
 # @id TEST-AIDS-062
 # @verifies REQ-AIDS-045
 def test_TEST_AIDS_062_invalid_notebook_file_is_reported_not_raised(tmp_path):

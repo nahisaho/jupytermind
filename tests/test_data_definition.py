@@ -63,3 +63,30 @@ def test_TEST_AIDS_082_verified_field_preserves_exact_source_text():
 
     with pytest.raises(Exception):  # noqa: B017 - frozen dataclass must reject mutation
         verified.status = "unknown"
+
+
+# @id TEST-AIDS-108
+# @verifies REQ-AIDS-052
+def test_TEST_AIDS_108_inferred_fields_lists_every_inferred_status_disjoint_from_unknown():
+    """GitHub #33: a manifest-level check must separately surface every
+    "inferred" field, without conflating it with the "unknown" list."""
+    manifest = build_manifest(
+        source={
+            "license": FieldValue(None, status="unknown"),
+            "owner_slug": FieldValue("nsidc/arctic-sea-ice", status="inferred"),
+        },
+        dataset_scope={"population": FieldValue("unknown", status="unknown")},
+        variables={
+            "extent": {
+                "unit": FieldValue("million km²", status="inferred"),
+                "scale": FieldValue(None, status="unknown"),
+            }
+        },
+    )
+
+    inferred_paths = {path for path, _ in manifest.inferred_fields()}
+    unknown_paths = {path for path, _ in manifest.unresolved_fields()}
+
+    assert inferred_paths == {"source.owner_slug", "variables.extent.unit"}
+    assert unknown_paths == {"source.license", "dataset_scope.population", "variables.extent.scale"}
+    assert inferred_paths.isdisjoint(unknown_paths)

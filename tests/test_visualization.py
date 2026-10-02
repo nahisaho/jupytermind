@@ -1,5 +1,6 @@
 """Tests for visualization generation (REQ-AIDS-007)."""
 
+import struct
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -8,6 +9,12 @@ import pandas as pd
 
 from ai_data_scientist.project_manager import enqueue_write, ensure_notebook, resolve_project
 from ai_data_scientist.visualization import build_image_output, render_chart
+
+
+def _png_dimensions(png_bytes: bytes) -> tuple[int, int]:
+    """Parse (width, height) in pixels from a PNG's IHDR chunk."""
+    width, height = struct.unpack(">II", png_bytes[16:24])
+    return width, height
 
 
 # @id TEST-AIDS-007
@@ -127,3 +134,118 @@ def test_TEST_AIDS_065_japanese_title_uses_bundled_font(monkeypatch):
         assert plt.rcParams["font.family"] == ["IPAexGothic"]
     finally:
         plt.rcParams["font.family"] = original_family
+
+
+# @id TEST-AIDS-107
+# @verifies REQ-AIDS-046
+def test_TEST_AIDS_107_font_survives_global_rcparams_reset_between_calls(monkeypatch):
+    """GitHub #32: if a caller resets matplotlib's global rcParams (e.g.
+    plt.rcdefaults()) between render_chart calls, a later call requesting
+    Japanese text must still render with the bundled Japanese font instead
+    of silently reverting to a default font producing "tofu" boxes."""
+    from ai_data_scientist import visualization
+
+    monkeypatch.setattr(visualization, "_japanese_font_applied", False)
+    original_family = list(plt.rcParams["font.family"])
+    try:
+        df = pd.DataFrame({"x": [1, 2, 3], "y": [1, 4, 9]})
+
+        png_bytes = render_chart(df, kind="scatter", x="x", y="y", title="第1四半期")
+        assert png_bytes[:8] == b"\x89PNG\r\n\x1a\n"
+        assert plt.rcParams["font.family"] == ["IPAexGothic"]
+
+        # Simulate an external caller resetting matplotlib global state
+        # (the already-imported japanize_matplotlib font registration is
+        # unaffected, but font.family itself reverts to the default).
+        plt.rcdefaults()
+        assert plt.rcParams["font.family"] != ["IPAexGothic"]
+
+        png_bytes_2 = render_chart(df, kind="scatter", x="x", y="y", title="第2四半期")
+        assert png_bytes_2[:8] == b"\x89PNG\r\n\x1a\n"
+        assert plt.rcParams["font.family"] == ["IPAexGothic"]
+    finally:
+        plt.rcParams["font.family"] = original_family
+
+
+# @id TEST-AIDS-111
+# @verifies REQ-AIDS-058
+def test_TEST_AIDS_111_long_axis_labels_are_not_clipped(monkeypatch):
+    """GitHub #31: a long title/axis-label/tick-label must be repositioned to
+    fit entirely within the saved canvas, not clipped at the figure edge."""
+    closed_figures = []
+    original_close = plt.close
+
+    def _capture_close(fig=None):
+        if fig is not None:
+            closed_figures.append(fig)
+        # Defer the actual close so the test can still inspect the figure.
+
+    monkeypatch.setattr(plt, "close", _capture_close)
+
+    df = pd.DataFrame(
+        {
+            "a_very_long_category_name_for_the_x_axis": [1, 2, 3],
+            "a_very_long_measurement_name_for_the_y_axis": [10, 400, 90],
+        }
+    )
+    long_title = "An Extremely Long Chart Title That Would Normally Overflow The Figure Canvas"
+    long_xlabel = "A Very Long X-Axis Label Describing The Independent Variable In Detail"
+    long_ylabel = "A Very Long Y-Axis Label Describing The Dependent Variable In Great Detail"
+
+    try:
+        png_bytes = render_chart(
+            df,
+            kind="line",
+            x="a_very_long_category_name_for_the_x_axis",
+            y="a_very_long_measurement_name_for_the_y_axis",
+            title=long_title,
+            xlabel=long_xlabel,
+            ylabel=long_ylabel,
+        )
+        assert png_bytes[:8] == b"\x89PNG\r\n\x1a\n"
+        assert len(closed_figures) == 1
+        fig = closed_figures[0]
+
+        # Compare against the *actual saved* PNG canvas (which bbox_inches=
+        # "tight" resizes to fit all content, per DES-AIDS-046), not the
+        # figure's original, un-tightened nominal size — otherwise this
+        # assertion would pass trivially even without the fix.
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+        dpi = fig.dpi
+        pad_inches = 0.1  # matplotlib's savefig(bbox_inches="tight") default
+        tight_bbox = fig.get_tightbbox(renderer)
+        origin_x = (tight_bbox.x0 - pad_inches) * dpi
+        origin_y = (tight_bbox.y0 - pad_inches) * dpi
+
+        actual_width_px, actual_height_px = _png_dimensions(png_bytes)
+
+        text_artists = [fig._suptitle] if fig._suptitle is not None else []
+        for ax in fig.axes:
+            text_artists.extend([ax.title, ax.xaxis.label, ax.yaxis.label])
+            text_artists.extend(ax.get_xticklabels())
+            text_artists.extend(ax.get_yticklabels())
+
+        tolerance = 2.0  # pixels, for DPI/pad rounding
+        for artist in text_artists:
+            if not artist.get_text():
+                continue
+            bbox = artist.get_window_extent(renderer=renderer)
+            local_x0 = bbox.x0 - origin_x
+            local_y0 = bbox.y0 - origin_y
+            local_x1 = bbox.x1 - origin_x
+            local_y1 = bbox.y1 - origin_y
+            assert local_x0 >= -tolerance, f"{artist.get_text()!r} clipped at left edge"
+            assert local_y0 >= -tolerance, f"{artist.get_text()!r} clipped at bottom edge"
+            assert local_x1 <= actual_width_px + tolerance, (
+                f"{artist.get_text()!r} clipped at right edge: "
+                f"{local_x1} vs saved width {actual_width_px}"
+            )
+            assert local_y1 <= actual_height_px + tolerance, (
+                f"{artist.get_text()!r} clipped at top edge: "
+                f"{local_y1} vs saved height {actual_height_px}"
+            )
+    finally:
+        monkeypatch.setattr(plt, "close", original_close)
+        for fig in closed_figures:
+            original_close(fig)

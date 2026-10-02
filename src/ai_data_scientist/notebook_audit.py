@@ -85,7 +85,15 @@ def _extract_evidence_manifest(markdown_source: str) -> dict | None:
 
 def _looks_like_insight_candidate(markdown_source: str) -> bool:
     stripped = markdown_source.strip()
-    return bool(stripped) and not stripped.startswith("#")
+    if not stripped:
+        return False
+    # GitHub #30: a heading-prefixed cell ("# ...") was unconditionally
+    # excluded, letting malformed evidence in such cells bypass validation.
+    # A cell that genuinely carries an evidence manifest is a candidate
+    # regardless of a leading heading.
+    if _EVIDENCE_FENCE_PATTERN.search(stripped):
+        return True
+    return not stripped.startswith("#")
 
 
 def _png_dimensions(png_bytes: bytes) -> tuple[int, int] | None:
@@ -113,7 +121,26 @@ def audit_visual_outputs(
     findings: list[VisualAuditFinding] = []
     for index in chart_cell_indices:
         cell = notebook.cells[index]
-        chart_metadata = cell.get("metadata", {}).get("chart", {})
+        has_image_output = any(
+            output.get("data", {}).get("image/png") for output in cell.get("outputs", [])
+        )
+        chart_metadata = cell.get("metadata", {}).get("chart")
+
+        # GitHub #28: a chart-bearing cell whose authoring metadata is
+        # absent, empty, or not a mapping must be flagged "unaudited"
+        # rather than silently treated as passing the glyph/label checks
+        # below, which require a usable mapping to read from.
+        if has_image_output and not (isinstance(chart_metadata, dict) and chart_metadata):
+            findings.append(
+                VisualAuditFinding(
+                    chart_cell_index=index,
+                    code="unaudited",
+                    severity="warning",
+                    details={},
+                )
+            )
+        if not isinstance(chart_metadata, dict):
+            chart_metadata = {}
 
         missing_glyphs = chart_metadata.get("missing_glyphs")
         if missing_glyphs:
