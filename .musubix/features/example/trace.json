@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-02T12:51:23.510Z",
+  "generatedAt": "2026-10-02T21:33:19.947Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -145,6 +145,165 @@
       "kind": "adr",
       "path": ".musubix/decisions/ADR-0024.md",
       "line": 1
+    },
+    {
+      "id": "ADR-0025",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0025.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0026",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0026.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0027",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0027.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0028",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0028.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0029",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0029.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0030",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0030.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0031",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0031.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0032",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0032.md",
+      "line": 1
+    },
+    {
+      "id": "DES-ACHEM-001",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 16
+    },
+    {
+      "id": "DES-ACHEM-002",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 87
+    },
+    {
+      "id": "DES-ACHEM-003",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 113
+    },
+    {
+      "id": "DES-ACHEM-010",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 159
+    },
+    {
+      "id": "DES-ACHEM-020",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 179
+    },
+    {
+      "id": "DES-ACHEM-030",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 211
+    },
+    {
+      "id": "DES-ACHEM-040",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 253
+    },
+    {
+      "id": "DES-ACHEM-050",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 277
+    },
+    {
+      "id": "REQ-ACHEM-001",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 27,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-002",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 34,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-003",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 41,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-004",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 49,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-010",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 57,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-020",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 64,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-030",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 72,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-040",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 80,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-050",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 88,
+      "mandatory": true
     },
     {
       "id": "DES-AIDS-001",
@@ -3598,6 +3757,176 @@
     }
   ],
   "edges": [
+    {
+      "from": "DES-ACHEM-001",
+      "to": "REQ-ACHEM-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-ACHEM-001",
+      "to": "REQ-ACHEM-002",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0025",
+      "to": "DES-ACHEM-001",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-002",
+      "to": "REQ-ACHEM-003",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0026",
+      "to": "DES-ACHEM-002",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-002",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-003",
+      "to": "REQ-ACHEM-004",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0027",
+      "to": "DES-ACHEM-003",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-003",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-010",
+      "to": "REQ-ACHEM-010",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0028",
+      "to": "DES-ACHEM-010",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-010",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-010",
+      "to": "DES-ACHEM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-010",
+      "to": "DES-ACHEM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-020",
+      "to": "REQ-ACHEM-020",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0029",
+      "to": "DES-ACHEM-020",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-020",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-020",
+      "to": "DES-ACHEM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-020",
+      "to": "DES-ACHEM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-030",
+      "to": "REQ-ACHEM-030",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0030",
+      "to": "DES-ACHEM-030",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-030",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-030",
+      "to": "DES-ACHEM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-030",
+      "to": "DES-ACHEM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-040",
+      "to": "REQ-ACHEM-040",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0031",
+      "to": "DES-ACHEM-040",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-040",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-040",
+      "to": "DES-ACHEM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-040",
+      "to": "DES-ACHEM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-050",
+      "to": "REQ-ACHEM-050",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0032",
+      "to": "DES-ACHEM-050",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-050",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-050",
+      "to": "DES-ACHEM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-050",
+      "to": "DES-ACHEM-003",
+      "relation": "depends-on"
+    },
     {
       "from": "DES-AIDS-001",
       "to": "REQ-AIDS-012",
@@ -7741,6 +8070,16 @@
     ".musubix/decisions/ADR-0022.md": "8ecac7e9d7b3162b3c087ad8d049f4df5e673232282cf7070c1647cf457932c9",
     ".musubix/decisions/ADR-0023.md": "d5a01c7588d5fc182124c8b6153c91d0f652e63533f4bc41156e8a49161d9653",
     ".musubix/decisions/ADR-0024.md": "78492e859aa768ab60d4d3348f0fa84e10def52c3b4473c502aca9ecaf4930ab",
+    ".musubix/decisions/ADR-0025.md": "cedd1c7a139986a92bc8f3ee6c2f0a31e0fab8536a0398031b84c5e743ec7c2a",
+    ".musubix/decisions/ADR-0026.md": "16f5ee2d32d11a69a3a38f3f8a672d9642b3bf588d06688dd58777eea8e6ee83",
+    ".musubix/decisions/ADR-0027.md": "a520851af36404ec48df585b7cbd5f3bbbabc1376480974209bbe01c955150b2",
+    ".musubix/decisions/ADR-0028.md": "167f5bde34278340a9500f7dbd557db5b2732d3d39277404e1713eb35084a512",
+    ".musubix/decisions/ADR-0029.md": "1054466b1e98babfdf330233e3c52bd22ca5c8c1a5bafad4f466d992bbe63027",
+    ".musubix/decisions/ADR-0030.md": "2695f9f7033f379f4bf798142e99356c30d77d11d4f941ed4aaee82c74088671",
+    ".musubix/decisions/ADR-0031.md": "fb92067d0729d9a0e46686aebf10cf264b9438c8f2b029449b2b01c8774b3d66",
+    ".musubix/decisions/ADR-0032.md": "e7f4df0112188f25af966498c3fa27b22a92c7dcd6244656650f6c967b33f2d5",
+    ".musubix/features/ai-chemistry-scientist/design.md": "3fc504cbeb47081bd487ffe325d76cc06a4b6b8b7e1b661fe40d4befcac8228a",
+    ".musubix/features/ai-chemistry-scientist/requirements.md": "f32c36d6b23b94d792bd33d3812848522a92bb16eb266ec366fbbecbb1b647ec",
     ".musubix/features/ai-data-scientist/design.md": "ac47fd80066d22d91e8c4db1f86a505413171dd48d2713637877bd7e3c4ad51d",
     ".musubix/features/ai-data-scientist/requirements.md": "ca5d1702eb51bfd980c6e8427b34997b74f8936aea5a721757acd6c645b3968b",
     ".musubix/features/ai-data-scientist-ml/design.md": "5a9b6d88cda2a8e05fbfb09b8e1ea8cd3dd1c361b27c0385bef71437c9e62906",
@@ -7753,10 +8092,15 @@
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
     "benchmark/mcp_launcher.py": "4cc6036338392c9e28cc1bae08b56d21bedfae2b119663237202326fb55c1370",
     "benchmark/projects/_failed-v021-1905/kaggle-v021-kaggle-exp-22-seaice/data/source_metadata/monthly_sea_ice_index_download_v1.0.py": "4f84c599b1b64b62a6ded1e8ffc53b8cb9f31c8505ea50486b2fe1b8b23ca1db",
-    "benchmark/run_benchmark.py": "b1a9648a680709ba818dd2b3cb0a57f21ac40f2ee85938f6c79deba954173aba",
-    "benchmark/run_queue.py": "b393d14637ae47d747089ae0d3f3697e73cab3f372ef4e8bd4387150e296198f",
+    "benchmark/run_benchmark.py": "26db773944b9ed50e2cd8983a71f6afd49f7be88995f084f72c45cbe23d1a181",
+    "benchmark/run_queue.py": "2bedf9ab798d179fab09c9cc8517faa593cc85272628c81d8dd6f39bd3fabc65",
     "benchmark/runs-v021/verify/repro_issues.py": "f79117a85856294e8aef90371d2a3f50969f83d8cf480997fa2c811d329d1fd1",
     "benchmark/runs-v021/verify/repro_new_candidates.py": "80930449f987e2c683e34cc581c4d944e9162a176319021ea7d29adcd71deabe",
+    "benchmark/runs-v023/verify/aggregate.py": "483d169426f88b0fb8602576335b20abaab03544a184d5df865ede61eff177d6",
+    "benchmark/runs-v023/verify/repro_35_record_chart.py": "5bc67c72b239e3416104fd214dd4433c8bf5b0b082264c97644bf6ee14f2aa84",
+    "benchmark/runs-v023/verify/repro_issues.py": "f79117a85856294e8aef90371d2a3f50969f83d8cf480997fa2c811d329d1fd1",
+    "benchmark/runs-v023/verify/repro_new_candidates.py": "80930449f987e2c683e34cc581c4d944e9162a176319021ea7d29adcd71deabe",
+    "benchmark/runs-v023/verify/repro_v023_candidates.py": "f230efe48ebe494a2a8865c35a75ec8ebf48779cb70f01a6970a7279b2e1103f",
     "bin/ai-data-scientist.js": "f70c764374ee721ebe18b26ed2f3da6ddd896d3c7bc5520c10f8fc0e70fd85da",
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",

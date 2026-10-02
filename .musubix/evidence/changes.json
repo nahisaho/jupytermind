@@ -5412,6 +5412,176 @@
           }
         }
       ]
+    },
+    {
+      "changeId": "CHANGE-005",
+      "requirementIds": [
+        "REQ-ACHEM-001",
+        "REQ-ACHEM-002",
+        "REQ-ACHEM-003",
+        "REQ-ACHEM-004",
+        "REQ-ACHEM-010",
+        "REQ-ACHEM-020",
+        "REQ-ACHEM-030",
+        "REQ-ACHEM-040",
+        "REQ-ACHEM-050"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-02T13:51:29.858Z",
+          "fingerprints": {
+            "impact": "ead6f6975e3c638e3ff0c323e17180365da5e1be82d7159b4e0bbd646808fdbf",
+            "requirements": "ed807fc67e6349bcaa41707d81fdaef52f49e9844d4a7a46776941e1b8f1fb8b",
+            "design": "9d49b368864fb86a4ce183c03c57c429ce82cad349f46ed2f69ccacd08448885",
+            "implementation": "47dad2495006bfaa0bd15ecab2b337d76a73abd775885c4b07ff71b8df0f2e0a",
+            "tests": "b90caccb16a10d9e4b9622b7f7482bb502e913b7bad75a122f637b7bb9315d04",
+            "tdd": "bdd77bad5650e8750e6ec1af17bb8a953cb0149f161e674a96c6d1d2ef191760",
+            "requirementImplementations": {
+              "REQ-ACHEM-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-010": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-020": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-030": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-040": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-050": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 519
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-02T13:57:38.893Z",
+          "fingerprints": {
+            "impact": "ead6f6975e3c638e3ff0c323e17180365da5e1be82d7159b4e0bbd646808fdbf",
+            "requirements": "ed807fc67e6349bcaa41707d81fdaef52f49e9844d4a7a46776941e1b8f1fb8b",
+            "design": "9d49b368864fb86a4ce183c03c57c429ce82cad349f46ed2f69ccacd08448885",
+            "implementation": "47dad2495006bfaa0bd15ecab2b337d76a73abd775885c4b07ff71b8df0f2e0a",
+            "tests": "b90caccb16a10d9e4b9622b7f7482bb502e913b7bad75a122f637b7bb9315d04",
+            "tdd": "bdd77bad5650e8750e6ec1af17bb8a953cb0149f161e674a96c6d1d2ef191760",
+            "requirementImplementations": {
+              "REQ-ACHEM-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-010": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-020": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-030": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-040": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-050": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 520
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-02T21:33:21.411Z",
+          "fingerprints": {
+            "impact": "1545f029b7a79cab6329c1112f6a38eada068995894d673442a350a9a636977b",
+            "requirements": "ed807fc67e6349bcaa41707d81fdaef52f49e9844d4a7a46776941e1b8f1fb8b",
+            "design": "9cdde2717d7e24a93322d0778909104728dc838d5caa83a855a31e0306027f27",
+            "implementation": "47dad2495006bfaa0bd15ecab2b337d76a73abd775885c4b07ff71b8df0f2e0a",
+            "tests": "b90caccb16a10d9e4b9622b7f7482bb502e913b7bad75a122f637b7bb9315d04",
+            "tdd": "bdd77bad5650e8750e6ec1af17bb8a953cb0149f161e674a96c6d1d2ef191760",
+            "requirementImplementations": {
+              "REQ-ACHEM-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-010": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-020": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-030": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-040": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-050": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 521
+        }
+      }
     }
   ]
 }
