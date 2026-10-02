@@ -1,0 +1,370 @@
+{
+  "schemaVersion": 1,
+  "changes": [
+    {
+      "changeId": "CHANGE-001",
+      "requirementIds": [
+        "REQ-AISCI-001",
+        "REQ-AISCI-002",
+        "REQ-AISCI-003",
+        "REQ-AISCI-004",
+        "REQ-AISCI-005",
+        "REQ-AISCI-006",
+        "REQ-AISCI-007",
+        "REQ-AISCI-008",
+        "REQ-AISCI-009",
+        "REQ-AISCI-010",
+        "REQ-AISCI-011",
+        "REQ-AISCI-012",
+        "REQ-AISCI-013",
+        "REQ-AISCI-014",
+        "REQ-AISCI-015",
+        "REQ-AISCI-016",
+        "REQ-AISCI-017",
+        "REQ-AISCI-018",
+        "REQ-AISCI-019",
+        "REQ-AISCI-020",
+        "REQ-AISCI-021",
+        "REQ-AISCI-022",
+        "REQ-AISCI-023",
+        "REQ-AISCI-024"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-02T02:52:27.173Z",
+          "fingerprints": {
+            "impact": "57058b0c11550fc5701896870e35f67c239322f539a632e406943c1b93f4ab35",
+            "requirements": "8cc61c041f92704e3e658b1f60f69cd43667ec30d56d11697490ef19a1679759",
+            "design": "bde8ae70b812e3db00215d44fa9b149c5de6c000d4af028eb174a17c1986ca5e",
+            "implementation": "baad3b85ad56dadd1e5277d396fd54ee94d1be21b2301ff5dd9d32166f06df0d",
+            "tests": "e8f1db0ce7f9ef21de0d479cb2c142557d2b6e054588033794579c92a808f1e9",
+            "tdd": "a8aa6fb7fee813235044d4d7a77d88a972641eaec3f9a301719c47cd35a803a1",
+            "requirementImplementations": {
+              "REQ-AISCI-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-005": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-006": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-007": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-008": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-009": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-010": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-011": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-012": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-013": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-014": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-015": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-016": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-017": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-018": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-019": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-020": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-021": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-022": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-023": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-024": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 217
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-02T02:52:55.344Z",
+          "fingerprints": {
+            "impact": "57058b0c11550fc5701896870e35f67c239322f539a632e406943c1b93f4ab35",
+            "requirements": "8cc61c041f92704e3e658b1f60f69cd43667ec30d56d11697490ef19a1679759",
+            "design": "bde8ae70b812e3db00215d44fa9b149c5de6c000d4af028eb174a17c1986ca5e",
+            "implementation": "baad3b85ad56dadd1e5277d396fd54ee94d1be21b2301ff5dd9d32166f06df0d",
+            "tests": "e8f1db0ce7f9ef21de0d479cb2c142557d2b6e054588033794579c92a808f1e9",
+            "tdd": "a8aa6fb7fee813235044d4d7a77d88a972641eaec3f9a301719c47cd35a803a1",
+            "requirementImplementations": {
+              "REQ-AISCI-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-005": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-006": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-007": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-008": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-009": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-010": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-011": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-012": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-013": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-014": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-015": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-016": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-017": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-018": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-019": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-020": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-021": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-022": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-023": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-024": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 218
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-02T03:11:36.890Z",
+          "fingerprints": {
+            "impact": "57058b0c11550fc5701896870e35f67c239322f539a632e406943c1b93f4ab35",
+            "requirements": "ff4fa6661a040f105a643b4a063eb3cf46f0175fda8273b1683b070465751a18",
+            "design": "01662ccc0a2c740382973b008749170a7226552de7017e3084fde718952cdaec",
+            "implementation": "baad3b85ad56dadd1e5277d396fd54ee94d1be21b2301ff5dd9d32166f06df0d",
+            "tests": "e8f1db0ce7f9ef21de0d479cb2c142557d2b6e054588033794579c92a808f1e9",
+            "tdd": "a8aa6fb7fee813235044d4d7a77d88a972641eaec3f9a301719c47cd35a803a1",
+            "requirementImplementations": {
+              "REQ-AISCI-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-005": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-006": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-007": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-008": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-009": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-010": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-011": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-012": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-013": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-014": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-015": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-016": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-017": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-018": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-019": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-020": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-021": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-022": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-023": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AISCI-024": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 219
+        }
+      }
+    }
+  ]
+}

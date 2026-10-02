@@ -1728,6 +1728,30 @@
       "phase": "green",
       "previousSha256": "7074a292d2cae6bce06688d4701a18903d9ba8169737411b16d70fa206a67949",
       "recordSha256": "ddbc90c45fc9f885c15cc7042776d6890c56922c456d57108efd7d1eefded96a"
+    },
+    {
+      "sequence": 217,
+      "kind": "change",
+      "entityId": "CHANGE-001",
+      "phase": "impact",
+      "previousSha256": "ddbc90c45fc9f885c15cc7042776d6890c56922c456d57108efd7d1eefded96a",
+      "recordSha256": "3900ef9cc756e4e65fc658354c2e91303110a3d9ea50810c4f45ba0632609b6c"
+    },
+    {
+      "sequence": 218,
+      "kind": "change",
+      "entityId": "CHANGE-001",
+      "phase": "requirements",
+      "previousSha256": "3900ef9cc756e4e65fc658354c2e91303110a3d9ea50810c4f45ba0632609b6c",
+      "recordSha256": "6ed685bbdb172c2df0e9b6ec0334e098525aa1b47c97079b67850bb21e4a6632"
+    },
+    {
+      "sequence": 219,
+      "kind": "change",
+      "entityId": "CHANGE-001",
+      "phase": "design",
+      "previousSha256": "6ed685bbdb172c2df0e9b6ec0334e098525aa1b47c97079b67850bb21e4a6632",
+      "recordSha256": "331351689f5dab793f11a9f4c344a62465b58d8243ade5c1db84f90a4524d60f"
     }
   ]
 }

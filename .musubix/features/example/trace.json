@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T14:46:44.100Z",
+  "generatedAt": "2026-10-02T03:11:36.112Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -717,6 +717,288 @@
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 111,
+      "mandatory": true
+    },
+    {
+      "id": "DES-AISCI-001",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 7
+    },
+    {
+      "id": "DES-AISCI-002",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 37
+    },
+    {
+      "id": "DES-AISCI-003",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 59
+    },
+    {
+      "id": "DES-AISCI-004",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 81
+    },
+    {
+      "id": "DES-AISCI-005",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 105
+    },
+    {
+      "id": "DES-AISCI-006",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 136
+    },
+    {
+      "id": "DES-AISCI-007",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 153
+    },
+    {
+      "id": "DES-AISCI-008",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 169
+    },
+    {
+      "id": "DES-AISCI-009",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 188
+    },
+    {
+      "id": "DES-AISCI-010",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 204
+    },
+    {
+      "id": "DES-AISCI-011",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 222
+    },
+    {
+      "id": "DES-AISCI-012",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 246
+    },
+    {
+      "id": "DES-AISCI-013",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 272
+    },
+    {
+      "id": "DES-AISCI-014",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 281
+    },
+    {
+      "id": "DES-AISCI-015",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 298
+    },
+    {
+      "id": "DES-AISCI-016",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 338
+    },
+    {
+      "id": "DES-AISCI-017",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 358
+    },
+    {
+      "id": "DES-AISCI-018",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 373
+    },
+    {
+      "id": "DES-AISCI-019",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 392
+    },
+    {
+      "id": "REQ-AISCI-001",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 38,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-002",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 45,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-003",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 52,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-004",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 60,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-005",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 67,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-006",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 74,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-007",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 82,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-008",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 89,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-009",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 96,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-010",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 103,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-011",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 110,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-012",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 117,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-013",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 124,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-014",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 131,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-015",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 138,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-016",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 145,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-017",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 152,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-018",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 159,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-019",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 166,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-020",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 173,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-021",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 180,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-022",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 187,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-023",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 194,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-024",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 201,
       "mandatory": true
     },
     {
@@ -2347,6 +2629,296 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-AISCI-001",
+      "to": "REQ-AISCI-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-001",
+      "to": "DES-AISCI-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-001",
+      "to": "DES-AISCI-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-001",
+      "to": "DES-AISCI-004",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-001",
+      "to": "DES-AISCI-015",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-002",
+      "to": "REQ-AISCI-002",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-002",
+      "to": "REQ-AISCI-003",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-003",
+      "to": "REQ-AISCI-004",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-003",
+      "to": "REQ-AISCI-005",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-003",
+      "to": "DES-AISCI-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-003",
+      "to": "DES-AISCI-017",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-004",
+      "to": "REQ-AISCI-006",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-004",
+      "to": "REQ-AISCI-007",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-004",
+      "to": "DES-AISCI-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-005",
+      "to": "REQ-AISCI-008",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-005",
+      "to": "DES-AISCI-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-005",
+      "to": "DES-AISCI-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-005",
+      "to": "DES-AISCI-016",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-006",
+      "to": "REQ-AISCI-009",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-006",
+      "to": "DES-AISCI-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-006",
+      "to": "DES-AISCI-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-006",
+      "to": "DES-AISCI-016",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-007",
+      "to": "REQ-AISCI-010",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-007",
+      "to": "DES-AISCI-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-007",
+      "to": "DES-AISCI-006",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-008",
+      "to": "REQ-AISCI-011",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-008",
+      "to": "REQ-AISCI-012",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-008",
+      "to": "REQ-AISCI-013",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-008",
+      "to": "DES-AISCI-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-008",
+      "to": "DES-AISCI-007",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-008",
+      "to": "DES-AISCI-016",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-009",
+      "to": "REQ-AISCI-014",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-009",
+      "to": "DES-AISCI-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-009",
+      "to": "DES-AISCI-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-009",
+      "to": "DES-AISCI-006",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-009",
+      "to": "DES-AISCI-016",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-010",
+      "to": "REQ-AISCI-015",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-010",
+      "to": "DES-AISCI-011",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-010",
+      "to": "DES-AISCI-012",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-010",
+      "to": "DES-AISCI-013",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-010",
+      "to": "DES-AISCI-014",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-011",
+      "to": "REQ-AISCI-016",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-012",
+      "to": "REQ-AISCI-017",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-012",
+      "to": "DES-AISCI-011",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-012",
+      "to": "DES-AISCI-014",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-013",
+      "to": "REQ-AISCI-018",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-013",
+      "to": "DES-AISCI-011",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-014",
+      "to": "REQ-AISCI-019",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-015",
+      "to": "REQ-AISCI-023",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-016",
+      "to": "REQ-AISCI-020",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-016",
+      "to": "DES-AISCI-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-017",
+      "to": "REQ-AISCI-020",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-017",
+      "to": "DES-AISCI-016",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-018",
+      "to": "REQ-AISCI-021",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-018",
+      "to": "REQ-AISCI-022",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-018",
+      "to": "DES-AISCI-006",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-019",
+      "to": "REQ-AISCI-024",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AISCI-019",
+      "to": "DES-AISCI-005",
+      "relation": "depends-on"
+    },
+    {
       "from": "DES-EXAMPLE-001",
       "to": "REQ-EXAMPLE-001",
       "relation": "satisfies"
@@ -3706,8 +4278,13 @@
     ".musubix/features/ai-data-scientist/requirements.md": "e10141f6de0355ce888402bf957f79133c3e8a232c4fbc14edda0b1dfeed28cf",
     ".musubix/features/ai-data-scientist-ml/design.md": "5a9b6d88cda2a8e05fbfb09b8e1ea8cd3dd1c361b27c0385bef71437c9e62906",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
+    ".musubix/features/ai-scientist/design.md": "0e5f0360cb8f54a29cdbdc3c28fb9c0614d5f47d312b5046f83fda603de85539",
+    ".musubix/features/ai-scientist/requirements.md": "0813eae3d21203183b9b3804375b2c5b2b9813da2fbaffd264f134d10ca156a7",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
+    "benchmark/mcp_launcher.py": "4cc6036338392c9e28cc1bae08b56d21bedfae2b119663237202326fb55c1370",
+    "benchmark/run_benchmark.py": "29257af826a6c0e217fcec8eb7bc1263b948d46720d2c281a23bc77f864ac8e2",
+    "benchmark/run_queue.py": "fba8d129490edb3805992235df7a1f3683c9355566965b1479a2a5f476a11ea4",
     "bin/ai-data-scientist.js": "f70c764374ee721ebe18b26ed2f3da6ddd896d3c7bc5520c10f8fc0e70fd85da",
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
