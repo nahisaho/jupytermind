@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/)
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-10-02
+### Added
+- Published npm package now also bundles the `ai-scientist`, `tech-writer`,
+  `japanese-prose`, and `presentation-planner` Copilot Agent Skills
+  (previously only `ai-data-scientist` was listed in `package.json`'s
+  `files`, so `npm install`/`npx` consumers never received these skills).
+
 ## [0.2.1] - 2026-10-02
 ### Fixed
 - `project_manager.enqueue_write` writes atomically, so a serialization

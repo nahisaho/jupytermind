@@ -1,6 +1,6 @@
 {
   "name": "ai-data-scientist-skill",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "GitHub Copilot Agent Skill: AI Data Scientist over Jupyter MCP (npm bootstrap for the Python implementation)",
   "license": "MIT",
   "bin": {
@@ -10,6 +10,10 @@
     "bin",
     "src/ai_data_scientist/**/*.py",
     ".github/skills/ai-data-scientist",
+    ".github/skills/ai-scientist",
+    ".github/skills/tech-writer",
+    ".github/skills/japanese-prose",
+    ".github/skills/presentation-planner",
     "pyproject.toml"
   ],
   "engines": {
