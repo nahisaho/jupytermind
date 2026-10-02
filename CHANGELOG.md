@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/)
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-10-02
+### Fixed
+- `project_manager.enqueue_write` writes atomically, so a serialization
+  failure can no longer leave an existing notebook truncated to 0 bytes
+  (closes #27; REQ-AIDS-029).
+- `insight_engine.record_insight` / `audit_notebook` can match cited values
+  from a cell's `stream` stdout output, not only structured result output
+  (closes #29; REQ-AIDS-009/010).
+- `notebook_audit.audit_notebook` validates the evidence block of
+  Markdown cells that begin with a heading, instead of skipping them
+  (closes #30; REQ-AIDS-045).
+- `notebook_audit.audit_visual_outputs` reports chart cells with no
+  `metadata["chart"]` as a distinct "unaudited" finding instead of
+  silently passing them (closes #28; REQ-AIDS-053).
+- `visualization.render_chart` no longer clips long category tick labels
+  or axis labels outside the saved PNG, via unconditional
+  `tight_layout()`/`bbox_inches="tight"` (closes #31; REQ-AIDS-058;
+  ADR-0013).
+- `visualization.render_chart` reasserts the bundled Japanese
+  (`japanize-matplotlib`) font on every call needing non-ASCII text,
+  fixing Japanese text rendering as "tofu" boxes after a caller resets
+  `matplotlib.rcParams` (closes #32; REQ-AIDS-046; ADR-0010).
+### Added
+- `data_definition.DataDefinitionManifest.inferred_fields()`: a derived,
+  read-only query listing every field whose status is "inferred",
+  mirroring `unresolved_fields()` (closes #33; REQ-AIDS-052; ADR-0011).
+- Documented the Jupyter MCP concurrent-write risk in SKILL.md and
+  `project_manager.enqueue_write`'s docstring: a direct `enqueue_write`
+  call against a notebook simultaneously open in a Jupyter MCP session can
+  be overwritten on that session's next save (closes #34; REQ-AIDS-059;
+  ADR-0014; documentation only, no runtime behavior change).
+- ADR-0009 through ADR-0014 formalizing the above as explicit, reviewed
+  architecture decisions.
+
 ## [0.2.0] - 2026-10-02
 ### Added
 - Cooperative run-lifecycle API (`ai_data_scientist.lifecycle`): register a
