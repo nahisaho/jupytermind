@@ -1,16 +1,4 @@
----
-title: "Jupytermind v0.2.0でKaggle公開データ50件を反復分析する"
-tags:
-  - Python
-  - Jupyter
-  - JupyterMCP
-  - Kaggle
-  - データサイエンス
-private: true
-organization_url_name: null
----
-
-# はじめに
+ はじめに
 
 Jupytermind : AI Data Scientistは、Jupyter上のデータ分析を支援するGitHub Copilot Agent Skillです。本稿ではv0.2.0を用い、Kaggle APIから取得した公開データ50件を分析します。
 

@@ -1,0 +1,58 @@
+{
+  "phase-field": {
+    "modulePath": "ai_materials_scientist.phase_field",
+    "functionName": "run_phase_field",
+    "names": {
+      "en": ["phase-field", "phase field"],
+      "ja": ["フェーズフィールド法", "フェーズフィールド"]
+    }
+  },
+  "molecular-dynamics": {
+    "modulePath": "ai_materials_scientist.molecular_dynamics",
+    "functionName": "run_molecular_dynamics",
+    "names": {
+      "en": ["molecular dynamics"],
+      "ja": ["分子動力学"]
+    }
+  },
+  "classical-monte-carlo": {
+    "modulePath": "ai_materials_scientist.classical_monte_carlo",
+    "functionName": "run_classical_monte_carlo",
+    "names": {
+      "en": ["classical monte carlo"],
+      "ja": ["古典モンテカルロ"]
+    }
+  },
+  "kinetic-monte-carlo": {
+    "modulePath": "ai_materials_scientist.kinetic_monte_carlo",
+    "functionName": "run_kinetic_monte_carlo",
+    "names": {
+      "en": ["kinetic monte carlo"],
+      "ja": ["速度論的モンテカルロ", "キネティックモンテカルロ"]
+    }
+  },
+  "crystal-plasticity": {
+    "modulePath": "ai_materials_scientist.crystal_plasticity",
+    "functionName": "run_crystal_plasticity",
+    "names": {
+      "en": ["crystal plasticity"],
+      "ja": ["結晶塑性"]
+    }
+  },
+  "finite-element": {
+    "modulePath": "ai_materials_scientist.fem",
+    "functionName": "run_fem",
+    "names": {
+      "en": ["finite element", "finite-element"],
+      "ja": ["有限要素法", "有限要素"]
+    }
+  },
+  "calphad": {
+    "modulePath": "ai_materials_scientist.calphad",
+    "functionName": "run_calphad",
+    "names": {
+      "en": ["calphad", "phase diagram"],
+      "ja": ["カルファド", "状態図"]
+    }
+  }
+}

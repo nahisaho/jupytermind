@@ -3600,6 +3600,1276 @@
           }
         }
       ]
+    },
+    {
+      "changeId": "CHANGE-003",
+      "requirementIds": [
+        "REQ-AIMS-001",
+        "REQ-AIMS-002",
+        "REQ-AIMS-003",
+        "REQ-AIMS-004",
+        "REQ-AIMS-005",
+        "REQ-AIMS-010",
+        "REQ-AIMS-020",
+        "REQ-AIMS-030",
+        "REQ-AIMS-040",
+        "REQ-AIMS-050",
+        "REQ-AIMS-060",
+        "REQ-AIMS-070"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-02T09:31:11.560Z",
+          "fingerprints": {
+            "impact": "e18109467208e26af38f48592742e6590f04517dd93f354912a7c94cc499ecf3",
+            "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+            "design": "1aef522fd0db8996e59a5ead42d16b7a36f03e918dddf231e77f3e1b2b7c6a15",
+            "implementation": "d3cf92dc62e1b3b44121e436a45540dc7f7d7982217f68bebe87d6cf38f66e54",
+            "tests": "c8ba9ad12286368c7e9ac779b6f31b0c5bcbb8964f257bfdac2129cd432dec1e",
+            "tdd": "c5ce01299621ab3783da561e2e067fb16f3edebefbe45eef969ca47e603bee01",
+            "requirementImplementations": {
+              "REQ-AIMS-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-005": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-010": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-020": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-030": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-040": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-050": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-060": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-070": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 375
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-02T09:31:47.840Z",
+          "fingerprints": {
+            "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+            "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+            "design": "1aef522fd0db8996e59a5ead42d16b7a36f03e918dddf231e77f3e1b2b7c6a15",
+            "implementation": "d3cf92dc62e1b3b44121e436a45540dc7f7d7982217f68bebe87d6cf38f66e54",
+            "tests": "c8ba9ad12286368c7e9ac779b6f31b0c5bcbb8964f257bfdac2129cd432dec1e",
+            "tdd": "c5ce01299621ab3783da561e2e067fb16f3edebefbe45eef969ca47e603bee01",
+            "requirementImplementations": {
+              "REQ-AIMS-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-005": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-010": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-020": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-030": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-040": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-050": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-060": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-070": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 376
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-02T09:38:52.777Z",
+          "fingerprints": {
+            "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+            "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+            "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+            "implementation": "d3cf92dc62e1b3b44121e436a45540dc7f7d7982217f68bebe87d6cf38f66e54",
+            "tests": "c8ba9ad12286368c7e9ac779b6f31b0c5bcbb8964f257bfdac2129cd432dec1e",
+            "tdd": "c5ce01299621ab3783da561e2e067fb16f3edebefbe45eef969ca47e603bee01",
+            "requirementImplementations": {
+              "REQ-AIMS-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-005": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-010": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-020": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-030": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-040": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-050": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-060": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-070": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 377
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-02T10:23:22.446Z",
+          "fingerprints": {
+            "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+            "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+            "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+            "implementation": "c6018132b01aba1e12e56d3bb633b804d865112be29fa69f9e72f830534d1eab",
+            "tests": "5a63fcfd5836f13b8199ec370833af8312bff37f7c7abc9f8c7525a7efe0fe2e",
+            "tdd": "b571a43828b6bde6b839b7e32e6c75a1782f6f9290e16f2d2431fae62a9241bb",
+            "requirementImplementations": {
+              "REQ-AIMS-001": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_materials_scientist/dispatch.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_materials_scientist/dispatch.py": "93d50cec84f9bd1d3235c86f589ad9b29e738880726693b57c25f53710ad292b"
+                }
+              },
+              "REQ-AIMS-002": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_materials_scientist/dispatch.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_materials_scientist/dispatch.py": "93d50cec84f9bd1d3235c86f589ad9b29e738880726693b57c25f53710ad292b"
+                }
+              },
+              "REQ-AIMS-003": {
+                "paths": [
+                  "src/ai_materials_scientist/calphad.py",
+                  "src/ai_materials_scientist/classical_monte_carlo.py",
+                  "src/ai_materials_scientist/crystal_plasticity.py",
+                  "src/ai_materials_scientist/evidence.py",
+                  "src/ai_materials_scientist/fem.py",
+                  "src/ai_materials_scientist/kinetic_monte_carlo.py",
+                  "src/ai_materials_scientist/molecular_dynamics.py",
+                  "src/ai_materials_scientist/phase_field.py",
+                  "src/ai_materials_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/calphad.py": "cb5b5d1ce2edf38eb9c769b5e5f2847ed9aba6ca471044bea1efc64686308010",
+                  "src/ai_materials_scientist/classical_monte_carlo.py": "955b4ee4e91da95c9e1213ced551705ebca2beb762c3e32a1453600137938c7a",
+                  "src/ai_materials_scientist/crystal_plasticity.py": "91cdb31409b16f2dc82e420ce05da7eaefbd52fbc6df393bc47ca9edb54da601",
+                  "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                  "src/ai_materials_scientist/fem.py": "c9fd5bd97e067ae82ec2e554d54608122cefaa9e2c0de0842edee78c3352f6eb",
+                  "src/ai_materials_scientist/kinetic_monte_carlo.py": "bdfc8c74fec27c370a017a6d708eb1f0af74854f87ae0ebfce7f7a9e51b0c5bc",
+                  "src/ai_materials_scientist/molecular_dynamics.py": "07185fd352ae0836d28614c9f0d459b0bd73d1102545ac6a3fb3d24ea505c35a",
+                  "src/ai_materials_scientist/phase_field.py": "7bda2908e534f3c8c26a01d86b5b377cfab9f3f18b171d18533bf8d4756dae4d",
+                  "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                }
+              },
+              "REQ-AIMS-004": {
+                "paths": [
+                  "src/ai_materials_scientist/calphad.py",
+                  "src/ai_materials_scientist/classical_monte_carlo.py",
+                  "src/ai_materials_scientist/crystal_plasticity.py",
+                  "src/ai_materials_scientist/evidence.py",
+                  "src/ai_materials_scientist/fem.py",
+                  "src/ai_materials_scientist/kinetic_monte_carlo.py",
+                  "src/ai_materials_scientist/molecular_dynamics.py",
+                  "src/ai_materials_scientist/phase_field.py",
+                  "src/ai_materials_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/calphad.py": "cb5b5d1ce2edf38eb9c769b5e5f2847ed9aba6ca471044bea1efc64686308010",
+                  "src/ai_materials_scientist/classical_monte_carlo.py": "955b4ee4e91da95c9e1213ced551705ebca2beb762c3e32a1453600137938c7a",
+                  "src/ai_materials_scientist/crystal_plasticity.py": "91cdb31409b16f2dc82e420ce05da7eaefbd52fbc6df393bc47ca9edb54da601",
+                  "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                  "src/ai_materials_scientist/fem.py": "c9fd5bd97e067ae82ec2e554d54608122cefaa9e2c0de0842edee78c3352f6eb",
+                  "src/ai_materials_scientist/kinetic_monte_carlo.py": "bdfc8c74fec27c370a017a6d708eb1f0af74854f87ae0ebfce7f7a9e51b0c5bc",
+                  "src/ai_materials_scientist/molecular_dynamics.py": "07185fd352ae0836d28614c9f0d459b0bd73d1102545ac6a3fb3d24ea505c35a",
+                  "src/ai_materials_scientist/phase_field.py": "7bda2908e534f3c8c26a01d86b5b377cfab9f3f18b171d18533bf8d4756dae4d",
+                  "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                }
+              },
+              "REQ-AIMS-005": {
+                "paths": [
+                  "src/ai_materials_scientist/calphad.py",
+                  "src/ai_materials_scientist/classical_monte_carlo.py",
+                  "src/ai_materials_scientist/crystal_plasticity.py",
+                  "src/ai_materials_scientist/evidence.py",
+                  "src/ai_materials_scientist/fem.py",
+                  "src/ai_materials_scientist/kinetic_monte_carlo.py",
+                  "src/ai_materials_scientist/molecular_dynamics.py",
+                  "src/ai_materials_scientist/phase_field.py",
+                  "src/ai_materials_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/calphad.py": "cb5b5d1ce2edf38eb9c769b5e5f2847ed9aba6ca471044bea1efc64686308010",
+                  "src/ai_materials_scientist/classical_monte_carlo.py": "955b4ee4e91da95c9e1213ced551705ebca2beb762c3e32a1453600137938c7a",
+                  "src/ai_materials_scientist/crystal_plasticity.py": "91cdb31409b16f2dc82e420ce05da7eaefbd52fbc6df393bc47ca9edb54da601",
+                  "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                  "src/ai_materials_scientist/fem.py": "c9fd5bd97e067ae82ec2e554d54608122cefaa9e2c0de0842edee78c3352f6eb",
+                  "src/ai_materials_scientist/kinetic_monte_carlo.py": "bdfc8c74fec27c370a017a6d708eb1f0af74854f87ae0ebfce7f7a9e51b0c5bc",
+                  "src/ai_materials_scientist/molecular_dynamics.py": "07185fd352ae0836d28614c9f0d459b0bd73d1102545ac6a3fb3d24ea505c35a",
+                  "src/ai_materials_scientist/phase_field.py": "7bda2908e534f3c8c26a01d86b5b377cfab9f3f18b171d18533bf8d4756dae4d",
+                  "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                }
+              },
+              "REQ-AIMS-010": {
+                "paths": [
+                  "src/ai_materials_scientist/evidence.py",
+                  "src/ai_materials_scientist/phase_field.py",
+                  "src/ai_materials_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                  "src/ai_materials_scientist/phase_field.py": "7bda2908e534f3c8c26a01d86b5b377cfab9f3f18b171d18533bf8d4756dae4d",
+                  "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                }
+              },
+              "REQ-AIMS-020": {
+                "paths": [
+                  "src/ai_materials_scientist/evidence.py",
+                  "src/ai_materials_scientist/molecular_dynamics.py",
+                  "src/ai_materials_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                  "src/ai_materials_scientist/molecular_dynamics.py": "07185fd352ae0836d28614c9f0d459b0bd73d1102545ac6a3fb3d24ea505c35a",
+                  "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                }
+              },
+              "REQ-AIMS-030": {
+                "paths": [
+                  "src/ai_materials_scientist/classical_monte_carlo.py",
+                  "src/ai_materials_scientist/evidence.py",
+                  "src/ai_materials_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/classical_monte_carlo.py": "955b4ee4e91da95c9e1213ced551705ebca2beb762c3e32a1453600137938c7a",
+                  "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                  "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                }
+              },
+              "REQ-AIMS-040": {
+                "paths": [
+                  "src/ai_materials_scientist/evidence.py",
+                  "src/ai_materials_scientist/kinetic_monte_carlo.py",
+                  "src/ai_materials_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                  "src/ai_materials_scientist/kinetic_monte_carlo.py": "bdfc8c74fec27c370a017a6d708eb1f0af74854f87ae0ebfce7f7a9e51b0c5bc",
+                  "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                }
+              },
+              "REQ-AIMS-050": {
+                "paths": [
+                  "src/ai_materials_scientist/crystal_plasticity.py",
+                  "src/ai_materials_scientist/evidence.py",
+                  "src/ai_materials_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/crystal_plasticity.py": "91cdb31409b16f2dc82e420ce05da7eaefbd52fbc6df393bc47ca9edb54da601",
+                  "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                  "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                }
+              },
+              "REQ-AIMS-060": {
+                "paths": [
+                  "src/ai_materials_scientist/evidence.py",
+                  "src/ai_materials_scientist/fem.py",
+                  "src/ai_materials_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                  "src/ai_materials_scientist/fem.py": "c9fd5bd97e067ae82ec2e554d54608122cefaa9e2c0de0842edee78c3352f6eb",
+                  "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                }
+              },
+              "REQ-AIMS-070": {
+                "paths": [
+                  "src/ai_materials_scientist/calphad.py",
+                  "src/ai_materials_scientist/evidence.py",
+                  "src/ai_materials_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/calphad.py": "cb5b5d1ce2edf38eb9c769b5e5f2847ed9aba6ca471044bea1efc64686308010",
+                  "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                  "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                }
+              }
+            }
+          },
+          "order": 423
+        }
+      },
+      "tddBatches": [
+        {
+          "requirementIds": [
+            "REQ-AIMS-001",
+            "REQ-AIMS-002",
+            "REQ-AIMS-003",
+            "REQ-AIMS-004",
+            "REQ-AIMS-005"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T09:48:28.724Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "5467eaf9ae3d41decc0a54f41fd51e371958c6a93c3e3b56c1542d662811a37c",
+              "tests": "1b83a3a935336b22d6f9baf900b2894694a54b2e79a316414aeb160526f56fec",
+              "tdd": "21fe65643ccc04a5741432646808de036fdf2abde54f51d02d2a65739cec3461",
+              "requirementImplementations": {
+                "REQ-AIMS-001": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_materials_scientist/dispatch.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_materials_scientist/dispatch.py": "5b188529ac6e7f3f3874f32491bed17a877e59ff603940139f1993ae25c733c8"
+                  }
+                },
+                "REQ-AIMS-002": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_materials_scientist/dispatch.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_materials_scientist/dispatch.py": "5b188529ac6e7f3f3874f32491bed17a877e59ff603940139f1993ae25c733c8"
+                  }
+                },
+                "REQ-AIMS-003": {
+                  "paths": [
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/validation.py": "a9b2718f86eaacdeb6642eb2cfeb1f93f2e834ce269955d68ee8daa664e30d6b"
+                  }
+                },
+                "REQ-AIMS-004": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "fa8bf68eb9575946b8d3583111414375c85f1a031244f6b7b087ca3a875f606c"
+                  }
+                },
+                "REQ-AIMS-005": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "fa8bf68eb9575946b8d3583111414375c85f1a031244f6b7b087ca3a875f606c"
+                  }
+                }
+              }
+            },
+            "order": 388
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-02T09:50:55.277Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "292bf33cf3489302e5907c4206aa2b009f4bc64d8df4ecdac89a525ca84f7085",
+              "tests": "0f79e5f2f1bb83d781bf1e7c9b64cdec3b5052c8999b3ab09e681f096cade1f4",
+              "tdd": "21fe65643ccc04a5741432646808de036fdf2abde54f51d02d2a65739cec3461",
+              "requirementImplementations": {
+                "REQ-AIMS-001": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_materials_scientist/dispatch.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_materials_scientist/dispatch.py": "93d50cec84f9bd1d3235c86f589ad9b29e738880726693b57c25f53710ad292b"
+                  }
+                },
+                "REQ-AIMS-002": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_materials_scientist/dispatch.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_materials_scientist/dispatch.py": "93d50cec84f9bd1d3235c86f589ad9b29e738880726693b57c25f53710ad292b"
+                  }
+                },
+                "REQ-AIMS-003": {
+                  "paths": [
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                },
+                "REQ-AIMS-004": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f"
+                  }
+                },
+                "REQ-AIMS-005": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f"
+                  }
+                }
+              }
+            },
+            "order": 389
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-02T09:51:03.377Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "292bf33cf3489302e5907c4206aa2b009f4bc64d8df4ecdac89a525ca84f7085",
+              "tests": "0f79e5f2f1bb83d781bf1e7c9b64cdec3b5052c8999b3ab09e681f096cade1f4",
+              "tdd": "21fe65643ccc04a5741432646808de036fdf2abde54f51d02d2a65739cec3461",
+              "requirementImplementations": {
+                "REQ-AIMS-001": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_materials_scientist/dispatch.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_materials_scientist/dispatch.py": "93d50cec84f9bd1d3235c86f589ad9b29e738880726693b57c25f53710ad292b"
+                  }
+                },
+                "REQ-AIMS-002": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_materials_scientist/dispatch.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_materials_scientist/dispatch.py": "93d50cec84f9bd1d3235c86f589ad9b29e738880726693b57c25f53710ad292b"
+                  }
+                },
+                "REQ-AIMS-003": {
+                  "paths": [
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                },
+                "REQ-AIMS-004": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f"
+                  }
+                },
+                "REQ-AIMS-005": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f"
+                  }
+                }
+              }
+            },
+            "order": 390
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIMS-010"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T09:52:20.764Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "2b9d7fd9c9a78f8ac812bc130862880a6d4588afbc397112860ce80f68519457",
+              "tests": "87c07d3369c51a5f451aca1c543eb87573310f4139cf721aa6b554632593ba47",
+              "tdd": "30fa5563dd9f1833b198fa05994b9497f17535b8524e18b5d3abfd44addd48be",
+              "requirementImplementations": {
+                "REQ-AIMS-010": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/phase_field.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/phase_field.py": "1ef458b5d6155bd3132ce6aedaff9bb1bb6d60f274626f83d4c0784f895ddbec",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 393
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-02T09:54:25.770Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "60848ef1e2ff059f214396a32317826abf00594746cb2a6988eae873b52ca448",
+              "tests": "87c07d3369c51a5f451aca1c543eb87573310f4139cf721aa6b554632593ba47",
+              "tdd": "30fa5563dd9f1833b198fa05994b9497f17535b8524e18b5d3abfd44addd48be",
+              "requirementImplementations": {
+                "REQ-AIMS-010": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/phase_field.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/phase_field.py": "7bda2908e534f3c8c26a01d86b5b377cfab9f3f18b171d18533bf8d4756dae4d",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 394
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-02T09:54:27.866Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "60848ef1e2ff059f214396a32317826abf00594746cb2a6988eae873b52ca448",
+              "tests": "87c07d3369c51a5f451aca1c543eb87573310f4139cf721aa6b554632593ba47",
+              "tdd": "30fa5563dd9f1833b198fa05994b9497f17535b8524e18b5d3abfd44addd48be",
+              "requirementImplementations": {
+                "REQ-AIMS-010": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/phase_field.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/phase_field.py": "7bda2908e534f3c8c26a01d86b5b377cfab9f3f18b171d18533bf8d4756dae4d",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 395
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIMS-020"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T09:57:04.425Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "6032c9c570bb51978babd8fa5ea8ae58413c54d7eb8d7f387b3898a5e78fb076",
+              "tests": "71d20e9e74414ed320bf7046ee621d079d2f9a761b4e59ad5080c8130128b861",
+              "tdd": "556a10fc1eefbebe4fb0e7a62b36020118dbe5026c75f87c21e40dfd76247466",
+              "requirementImplementations": {
+                "REQ-AIMS-020": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/molecular_dynamics.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/molecular_dynamics.py": "cdb538eb2e46f5736da3fbfe9d3e0914731f193d05dc41e5d386c4f7d4caad2a",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 398
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-02T09:58:33.819Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "c5b016ed0b0a8ebce4d1b621139b41720a59840fbe05e9d6a986d49d766c68d3",
+              "tests": "546dd584e54bd6f2d371cb3c825777a76719d0bc7c41f994cdf8e3baabbed129",
+              "tdd": "556a10fc1eefbebe4fb0e7a62b36020118dbe5026c75f87c21e40dfd76247466",
+              "requirementImplementations": {
+                "REQ-AIMS-020": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/molecular_dynamics.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/molecular_dynamics.py": "07185fd352ae0836d28614c9f0d459b0bd73d1102545ac6a3fb3d24ea505c35a",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 399
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-02T09:58:36.047Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "c5b016ed0b0a8ebce4d1b621139b41720a59840fbe05e9d6a986d49d766c68d3",
+              "tests": "546dd584e54bd6f2d371cb3c825777a76719d0bc7c41f994cdf8e3baabbed129",
+              "tdd": "556a10fc1eefbebe4fb0e7a62b36020118dbe5026c75f87c21e40dfd76247466",
+              "requirementImplementations": {
+                "REQ-AIMS-020": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/molecular_dynamics.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/molecular_dynamics.py": "07185fd352ae0836d28614c9f0d459b0bd73d1102545ac6a3fb3d24ea505c35a",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 400
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIMS-030"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T10:01:37.819Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "e2fc5ddd2d3939d44a0aac62b97d7e2a0f3fe64cf80484c79bcbe3b1a5c9edcf",
+              "tests": "a9bfe2122a3ed7084e441f5af7e3ae3498638f706f24c30d2e7993c9d6311d4f",
+              "tdd": "0d55141145b2b8bf6d4b3e9633e341977f3b6f14ff8d55c2e7dc70393a5822b0",
+              "requirementImplementations": {
+                "REQ-AIMS-030": {
+                  "paths": [
+                    "src/ai_materials_scientist/classical_monte_carlo.py",
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/classical_monte_carlo.py": "dc923250084adfc09c3567757212b398c2afda53cd8e84efc23a6ae5702a252a",
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 402
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-02T10:04:27.208Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "2162411919337177be75c04d23baa2f3a7a05aa2dfb6ab73927bc2924d7eb48c",
+              "tests": "1194fd0590f040065faa9fff130a7f61a75714377784a15c8010f944d446b3aa",
+              "tdd": "0d55141145b2b8bf6d4b3e9633e341977f3b6f14ff8d55c2e7dc70393a5822b0",
+              "requirementImplementations": {
+                "REQ-AIMS-030": {
+                  "paths": [
+                    "src/ai_materials_scientist/classical_monte_carlo.py",
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/classical_monte_carlo.py": "955b4ee4e91da95c9e1213ced551705ebca2beb762c3e32a1453600137938c7a",
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 403
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-02T10:04:31.195Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "2162411919337177be75c04d23baa2f3a7a05aa2dfb6ab73927bc2924d7eb48c",
+              "tests": "1194fd0590f040065faa9fff130a7f61a75714377784a15c8010f944d446b3aa",
+              "tdd": "0d55141145b2b8bf6d4b3e9633e341977f3b6f14ff8d55c2e7dc70393a5822b0",
+              "requirementImplementations": {
+                "REQ-AIMS-030": {
+                  "paths": [
+                    "src/ai_materials_scientist/classical_monte_carlo.py",
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/classical_monte_carlo.py": "955b4ee4e91da95c9e1213ced551705ebca2beb762c3e32a1453600137938c7a",
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 404
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIMS-040"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T10:06:35.121Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "a6a374010c66756f151ba8ece63655a5f846e9719f6939d3e96a36219233468f",
+              "tests": "e17ff536521ec9bd43bd0cae1e4a0e9e3e27dc8d500d8158ecb00e92118ae92f",
+              "tdd": "57bca191624d96c4532086724d22e6582db1c60883d93c473b35eec145284744",
+              "requirementImplementations": {
+                "REQ-AIMS-040": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/kinetic_monte_carlo.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/kinetic_monte_carlo.py": "38640b37e2f2e4d7feb8906e33b777d069fad81f55eee3f8f1f69a1e52e3f3f1",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 406
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-02T10:08:00.104Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "e1c7c9ae47ce398ae9edda233db9a02aec1318273f6c9309ee1e2510aaade992",
+              "tests": "90f562ee00aeeb63839a7886df40fa9c23cdfcaa4d082578ad965a538622f137",
+              "tdd": "57bca191624d96c4532086724d22e6582db1c60883d93c473b35eec145284744",
+              "requirementImplementations": {
+                "REQ-AIMS-040": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/kinetic_monte_carlo.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/kinetic_monte_carlo.py": "bdfc8c74fec27c370a017a6d708eb1f0af74854f87ae0ebfce7f7a9e51b0c5bc",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 407
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-02T10:08:02.408Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "e1c7c9ae47ce398ae9edda233db9a02aec1318273f6c9309ee1e2510aaade992",
+              "tests": "90f562ee00aeeb63839a7886df40fa9c23cdfcaa4d082578ad965a538622f137",
+              "tdd": "57bca191624d96c4532086724d22e6582db1c60883d93c473b35eec145284744",
+              "requirementImplementations": {
+                "REQ-AIMS-040": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/kinetic_monte_carlo.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/kinetic_monte_carlo.py": "bdfc8c74fec27c370a017a6d708eb1f0af74854f87ae0ebfce7f7a9e51b0c5bc",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 408
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIMS-050"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T10:10:25.109Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "f24c94573dba77432f71e45bdce296f007fadaa27838d280f7c57b3304f17648",
+              "tests": "f591cfa530d7fbaa04775daeeaa4f09ddba75829b69bbc2a8d3957068392224f",
+              "tdd": "cd81cf6a5f692aaa695b93ea1819d6d482f9b760d69b416e0582b79b652e10f5",
+              "requirementImplementations": {
+                "REQ-AIMS-050": {
+                  "paths": [
+                    "src/ai_materials_scientist/crystal_plasticity.py",
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/crystal_plasticity.py": "c50fe5a14bde8456456de155a4e56d7ad6ae143ccf449ff9dd8ca817129760d5",
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 410
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-02T10:12:31.675Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "774d73cceb4ab178c8597e2ed0e31ee14da048b24886f6d1c9719c3f9a2c559b",
+              "tests": "53edcc4c9813833468d91ede99dbde9cfff283cf8167e79617984e8dceb009ab",
+              "tdd": "cd81cf6a5f692aaa695b93ea1819d6d482f9b760d69b416e0582b79b652e10f5",
+              "requirementImplementations": {
+                "REQ-AIMS-050": {
+                  "paths": [
+                    "src/ai_materials_scientist/crystal_plasticity.py",
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/crystal_plasticity.py": "91cdb31409b16f2dc82e420ce05da7eaefbd52fbc6df393bc47ca9edb54da601",
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 411
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-02T10:12:34.049Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "774d73cceb4ab178c8597e2ed0e31ee14da048b24886f6d1c9719c3f9a2c559b",
+              "tests": "53edcc4c9813833468d91ede99dbde9cfff283cf8167e79617984e8dceb009ab",
+              "tdd": "cd81cf6a5f692aaa695b93ea1819d6d482f9b760d69b416e0582b79b652e10f5",
+              "requirementImplementations": {
+                "REQ-AIMS-050": {
+                  "paths": [
+                    "src/ai_materials_scientist/crystal_plasticity.py",
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/crystal_plasticity.py": "91cdb31409b16f2dc82e420ce05da7eaefbd52fbc6df393bc47ca9edb54da601",
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 412
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIMS-060"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T10:18:06.560Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "e37800d54334c6c43c8c7d560a11aa9545439b56159a641dbadcb63f5e49af56",
+              "tests": "fbebe133628a1912eabcf56a5fa3805b2453478a1e4806aa6f4b06a0c2ce6f7d",
+              "tdd": "8e0a49999abf00e75726a5b864ff585841187fddf5150b459da29cd0f92cae7c",
+              "requirementImplementations": {
+                "REQ-AIMS-060": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/fem.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/fem.py": "39ee38345020296ccbd57e5f911d9e4d31d009ffa2e7756f2872b5b39ff6ee96",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 415
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-02T10:18:56.613Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "a492c296865df86c2f30948cc20f5a5d16310a34b42af33c63a6033e20d1c6ef",
+              "tests": "9133d1a2cb32dc727ea0ad2acfe77efec809754eeb6b773c7a6395387a95db27",
+              "tdd": "8e0a49999abf00e75726a5b864ff585841187fddf5150b459da29cd0f92cae7c",
+              "requirementImplementations": {
+                "REQ-AIMS-060": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/fem.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/fem.py": "c9fd5bd97e067ae82ec2e554d54608122cefaa9e2c0de0842edee78c3352f6eb",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 416
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-02T10:19:00.197Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "a492c296865df86c2f30948cc20f5a5d16310a34b42af33c63a6033e20d1c6ef",
+              "tests": "9133d1a2cb32dc727ea0ad2acfe77efec809754eeb6b773c7a6395387a95db27",
+              "tdd": "8e0a49999abf00e75726a5b864ff585841187fddf5150b459da29cd0f92cae7c",
+              "requirementImplementations": {
+                "REQ-AIMS-060": {
+                  "paths": [
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/fem.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/fem.py": "c9fd5bd97e067ae82ec2e554d54608122cefaa9e2c0de0842edee78c3352f6eb",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 417
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIMS-070"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T10:21:44.386Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "df7bbee1d5d6cd01a5035ebc8c22461b68f525e943efd32f9444f2da66fc8c6f",
+              "tests": "e45017aa45acd0009831397d7c928fc737b3fccc774c04518c25a175d084336e",
+              "tdd": "b571a43828b6bde6b839b7e32e6c75a1782f6f9290e16f2d2431fae62a9241bb",
+              "requirementImplementations": {
+                "REQ-AIMS-070": {
+                  "paths": [
+                    "src/ai_materials_scientist/calphad.py",
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/calphad.py": "c018b7667414baa0cbd8d977411d2d374c5e0b09b7ec8c7e3719ac4a098ef648",
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 420
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-02T10:22:20.340Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "c6018132b01aba1e12e56d3bb633b804d865112be29fa69f9e72f830534d1eab",
+              "tests": "5a63fcfd5836f13b8199ec370833af8312bff37f7c7abc9f8c7525a7efe0fe2e",
+              "tdd": "b571a43828b6bde6b839b7e32e6c75a1782f6f9290e16f2d2431fae62a9241bb",
+              "requirementImplementations": {
+                "REQ-AIMS-070": {
+                  "paths": [
+                    "src/ai_materials_scientist/calphad.py",
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/calphad.py": "cb5b5d1ce2edf38eb9c769b5e5f2847ed9aba6ca471044bea1efc64686308010",
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 421
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-02T10:22:27.187Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "c6018132b01aba1e12e56d3bb633b804d865112be29fa69f9e72f830534d1eab",
+              "tests": "5a63fcfd5836f13b8199ec370833af8312bff37f7c7abc9f8c7525a7efe0fe2e",
+              "tdd": "b571a43828b6bde6b839b7e32e6c75a1782f6f9290e16f2d2431fae62a9241bb",
+              "requirementImplementations": {
+                "REQ-AIMS-070": {
+                  "paths": [
+                    "src/ai_materials_scientist/calphad.py",
+                    "src/ai_materials_scientist/evidence.py",
+                    "src/ai_materials_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_materials_scientist/calphad.py": "cb5b5d1ce2edf38eb9c769b5e5f2847ed9aba6ca471044bea1efc64686308010",
+                    "src/ai_materials_scientist/evidence.py": "dede7c9262beb865147439c1f343155fe61aaef3ae98cc8f62632a7d08ddb41f",
+                    "src/ai_materials_scientist/validation.py": "9571ea978f733d44479fb9f0559f2e6bafc5fd7c65b51178a1b33a0ec7a65412"
+                  }
+                }
+              }
+            },
+            "order": 422
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIMS-002"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T10:37:52.924Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "41852650700bf5c74fce14423665903d79217368ece77321dbf71f12d96fbac8",
+              "tests": "cee6c21d728d7aca069d8d72e41e08a1c4cf674afc8c4543df259cf208dfaff9",
+              "tdd": "e80d5c0d7a462523bca3845c4e879f2171049c4457b7897cb33075661b24fda7",
+              "requirementImplementations": {
+                "REQ-AIMS-002": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_materials_scientist/dispatch.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_materials_scientist/dispatch.py": "88417b620dbdaee7695f4e3d693c80760dd067b8edecaad5f6c264fc57af4d38"
+                  }
+                }
+              }
+            },
+            "order": 433
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-02T10:39:01.286Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "35f17771e60321757ea664dabf48426afc75caeef33fa186885f4521f66bc420",
+              "tests": "df8dce14fc443c7a04a25d01800cc24523221d9ed6cc76f2fe45e1c5bfafe7b6",
+              "tdd": "654bb1edc989ba71afa8acc1032c31a5455317791319c23ea28664f5013f1159",
+              "requirementImplementations": {
+                "REQ-AIMS-002": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_materials_scientist/dispatch.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_materials_scientist/dispatch.py": "5b2167953f26b2ce59df67ee5c59e0e32e2a21b8cc9af3f0278d5040c8276330"
+                  }
+                }
+              }
+            },
+            "order": 436
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-02T10:39:07.651Z",
+            "fingerprints": {
+              "impact": "8dc15c2b6c30f92373ce07e4c61bcee510b0259a707aeccb32dfeb7d1c9f29e6",
+              "requirements": "ecb0f3f430243075a16aa3da11223cc3b2491be9f85a878b925cd18c70ddb38e",
+              "design": "4e982a2fb96e6181e2429ba14382f3dbf76f780f35f70b3bc9869ffa2c894e9d",
+              "implementation": "35f17771e60321757ea664dabf48426afc75caeef33fa186885f4521f66bc420",
+              "tests": "df8dce14fc443c7a04a25d01800cc24523221d9ed6cc76f2fe45e1c5bfafe7b6",
+              "tdd": "654bb1edc989ba71afa8acc1032c31a5455317791319c23ea28664f5013f1159",
+              "requirementImplementations": {
+                "REQ-AIMS-002": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_materials_scientist/dispatch.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_materials_scientist/dispatch.py": "5b2167953f26b2ce59df67ee5c59e0e32e2a21b8cc9af3f0278d5040c8276330"
+                  }
+                }
+              }
+            },
+            "order": 437
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-02T07:21:38.997Z",
+  "generatedAt": "2026-10-02T10:50:24.556Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -84,6 +84,66 @@
       "id": "ADR-0014",
       "kind": "adr",
       "path": ".musubix/decisions/ADR-0014.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0015",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0015.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0016",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0016.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0017",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0017.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0018",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0018.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0019",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0019.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0020",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0020.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0021",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0021.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0022",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0022.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0023",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0023.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0024",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0024.md",
       "line": 1
     },
     {
@@ -779,6 +839,150 @@
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 111,
+      "mandatory": true
+    },
+    {
+      "id": "DES-AIMS-001",
+      "kind": "design",
+      "path": ".musubix/features/ai-materials-scientist/design.md",
+      "line": 16
+    },
+    {
+      "id": "DES-AIMS-002",
+      "kind": "design",
+      "path": ".musubix/features/ai-materials-scientist/design.md",
+      "line": 38
+    },
+    {
+      "id": "DES-AIMS-003",
+      "kind": "design",
+      "path": ".musubix/features/ai-materials-scientist/design.md",
+      "line": 51
+    },
+    {
+      "id": "DES-AIMS-010",
+      "kind": "design",
+      "path": ".musubix/features/ai-materials-scientist/design.md",
+      "line": 73
+    },
+    {
+      "id": "DES-AIMS-020",
+      "kind": "design",
+      "path": ".musubix/features/ai-materials-scientist/design.md",
+      "line": 89
+    },
+    {
+      "id": "DES-AIMS-030",
+      "kind": "design",
+      "path": ".musubix/features/ai-materials-scientist/design.md",
+      "line": 106
+    },
+    {
+      "id": "DES-AIMS-040",
+      "kind": "design",
+      "path": ".musubix/features/ai-materials-scientist/design.md",
+      "line": 124
+    },
+    {
+      "id": "DES-AIMS-050",
+      "kind": "design",
+      "path": ".musubix/features/ai-materials-scientist/design.md",
+      "line": 143
+    },
+    {
+      "id": "DES-AIMS-060",
+      "kind": "design",
+      "path": ".musubix/features/ai-materials-scientist/design.md",
+      "line": 162
+    },
+    {
+      "id": "DES-AIMS-070",
+      "kind": "design",
+      "path": ".musubix/features/ai-materials-scientist/design.md",
+      "line": 204
+    },
+    {
+      "id": "REQ-AIMS-001",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 28,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-002",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 35,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-003",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 42,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-004",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 50,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-005",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 57,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-010",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 64,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-020",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 72,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-030",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 79,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-040",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 87,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-050",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 95,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-060",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 104,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-070",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 112,
       "mandatory": true
     },
     {
@@ -1497,6 +1701,168 @@
       "line": 131
     },
     {
+      "id": "CODE-AIMS-070",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/calphad.py",
+      "line": 71
+    },
+    {
+      "id": "CODE-AIMS-900",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/calphad.py",
+      "line": 101
+    },
+    {
+      "id": "CODE-AIMS-030",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/classical_monte_carlo.py",
+      "line": 105
+    },
+    {
+      "id": "CODE-AIMS-901",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/classical_monte_carlo.py",
+      "line": 149
+    },
+    {
+      "id": "CODE-AIMS-050",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/crystal_plasticity.py",
+      "line": 113
+    },
+    {
+      "id": "CODE-AIMS-902",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/crystal_plasticity.py",
+      "line": 166
+    },
+    {
+      "id": "CODE-AIMS-001",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/dispatch.py",
+      "line": 36
+    },
+    {
+      "id": "CODE-AIMS-003",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/evidence.py",
+      "line": 12
+    },
+    {
+      "id": "CODE-AIMS-903",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/evidence.py",
+      "line": 51
+    },
+    {
+      "id": "CODE-AIMS-904",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/evidence.py",
+      "line": 70
+    },
+    {
+      "id": "CODE-AIMS-060",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/fem.py",
+      "line": 192
+    },
+    {
+      "id": "CODE-AIMS-905",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/fem.py",
+      "line": 249
+    },
+    {
+      "id": "CODE-AIMS-906",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/fem.py",
+      "line": 267
+    },
+    {
+      "id": "CODE-AIMS-040",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/kinetic_monte_carlo.py",
+      "line": 63
+    },
+    {
+      "id": "CODE-AIMS-907",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/kinetic_monte_carlo.py",
+      "line": 102
+    },
+    {
+      "id": "CODE-AIMS-908",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/kinetic_monte_carlo.py",
+      "line": 130
+    },
+    {
+      "id": "CODE-AIMS-020",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/molecular_dynamics.py",
+      "line": 20
+    },
+    {
+      "id": "CODE-AIMS-909",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/molecular_dynamics.py",
+      "line": 165
+    },
+    {
+      "id": "CODE-AIMS-910",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/molecular_dynamics.py",
+      "line": 223
+    },
+    {
+      "id": "CODE-AIMS-010",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/phase_field.py",
+      "line": 36
+    },
+    {
+      "id": "CODE-AIMS-911",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/phase_field.py",
+      "line": 110
+    },
+    {
+      "id": "CODE-AIMS-912",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/phase_field.py",
+      "line": 152
+    },
+    {
+      "id": "CODE-AIMS-002",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/validation.py",
+      "line": 24
+    },
+    {
+      "id": "CODE-AIMS-913",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/validation.py",
+      "line": 34
+    },
+    {
+      "id": "CODE-AIMS-914",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/validation.py",
+      "line": 44
+    },
+    {
+      "id": "CODE-AIMS-915",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/validation.py",
+      "line": 54
+    },
+    {
+      "id": "CODE-AIMS-916",
+      "kind": "code",
+      "path": "src/ai_materials_scientist/validation.py",
+      "line": 62
+    },
+    {
       "id": "CODE-AISCI-021",
       "kind": "code",
       "path": "src/ai_scientist/completion_gate.py",
@@ -1639,6 +2005,504 @@
       "kind": "code",
       "path": "src/example_readiness.py",
       "line": 4
+    },
+    {
+      "id": "TEST-AIMS-001",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_bilingual.py",
+      "line": 31
+    },
+    {
+      "id": "TEST-AIMS-917",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_bilingual.py",
+      "line": 42
+    },
+    {
+      "id": "TEST-AIMS-918",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_bilingual.py",
+      "line": 53
+    },
+    {
+      "id": "TEST-AIMS-919",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_bilingual.py",
+      "line": 65
+    },
+    {
+      "id": "TEST-AIMS-920",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_bilingual.py",
+      "line": 77
+    },
+    {
+      "id": "TEST-AIMS-921",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_bilingual.py",
+      "line": 89
+    },
+    {
+      "id": "TEST-AIMS-070",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_calphad.py",
+      "line": 19
+    },
+    {
+      "id": "TEST-AIMS-922",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_calphad.py",
+      "line": 32
+    },
+    {
+      "id": "TEST-AIMS-923",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_calphad.py",
+      "line": 42
+    },
+    {
+      "id": "TEST-AIMS-924",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_calphad.py",
+      "line": 58
+    },
+    {
+      "id": "TEST-AIMS-925",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_calphad.py",
+      "line": 72
+    },
+    {
+      "id": "TEST-AIMS-926",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_calphad.py",
+      "line": 84
+    },
+    {
+      "id": "TEST-AIMS-927",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_calphad.py",
+      "line": 94
+    },
+    {
+      "id": "TEST-AIMS-928",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_calphad.py",
+      "line": 110
+    },
+    {
+      "id": "TEST-AIMS-929",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_calphad.py",
+      "line": 122
+    },
+    {
+      "id": "TEST-AIMS-930",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_calphad.py",
+      "line": 134
+    },
+    {
+      "id": "TEST-AIMS-931",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_calphad.py",
+      "line": 151
+    },
+    {
+      "id": "TEST-AIMS-030",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_classical_monte_carlo.py",
+      "line": 22
+    },
+    {
+      "id": "TEST-AIMS-932",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_classical_monte_carlo.py",
+      "line": 32
+    },
+    {
+      "id": "TEST-AIMS-933",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_classical_monte_carlo.py",
+      "line": 42
+    },
+    {
+      "id": "TEST-AIMS-934",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_classical_monte_carlo.py",
+      "line": 55
+    },
+    {
+      "id": "TEST-AIMS-935",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_classical_monte_carlo.py",
+      "line": 66
+    },
+    {
+      "id": "TEST-AIMS-936",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_classical_monte_carlo.py",
+      "line": 79
+    },
+    {
+      "id": "TEST-AIMS-937",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_classical_monte_carlo.py",
+      "line": 91
+    },
+    {
+      "id": "TEST-AIMS-938",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_classical_monte_carlo.py",
+      "line": 119
+    },
+    {
+      "id": "TEST-AIMS-050",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_crystal_plasticity.py",
+      "line": 22
+    },
+    {
+      "id": "TEST-AIMS-939",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_crystal_plasticity.py",
+      "line": 58
+    },
+    {
+      "id": "TEST-AIMS-940",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_crystal_plasticity.py",
+      "line": 70
+    },
+    {
+      "id": "TEST-AIMS-941",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_crystal_plasticity.py",
+      "line": 82
+    },
+    {
+      "id": "TEST-AIMS-942",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_crystal_plasticity.py",
+      "line": 94
+    },
+    {
+      "id": "TEST-AIMS-943",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_crystal_plasticity.py",
+      "line": 106
+    },
+    {
+      "id": "TEST-AIMS-944",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_crystal_plasticity.py",
+      "line": 129
+    },
+    {
+      "id": "TEST-AIMS-945",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_crystal_plasticity.py",
+      "line": 141
+    },
+    {
+      "id": "TEST-AIMS-946",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_crystal_plasticity.py",
+      "line": 153
+    },
+    {
+      "id": "TEST-AIMS-002",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_dispatch.py",
+      "line": 8
+    },
+    {
+      "id": "TEST-AIMS-947",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_dispatch.py",
+      "line": 39
+    },
+    {
+      "id": "TEST-AIMS-948",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_dispatch.py",
+      "line": 50
+    },
+    {
+      "id": "TEST-AIMS-990",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_dispatch.py",
+      "line": 60
+    },
+    {
+      "id": "TEST-AIMS-991",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_dispatch.py",
+      "line": 69
+    },
+    {
+      "id": "TEST-AIMS-004",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_evidence.py",
+      "line": 8
+    },
+    {
+      "id": "TEST-AIMS-949",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_evidence.py",
+      "line": 29
+    },
+    {
+      "id": "TEST-AIMS-005",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_evidence.py",
+      "line": 45
+    },
+    {
+      "id": "TEST-AIMS-950",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_evidence.py",
+      "line": 67
+    },
+    {
+      "id": "TEST-AIMS-951",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_evidence.py",
+      "line": 95
+    },
+    {
+      "id": "TEST-AIMS-060",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 64
+    },
+    {
+      "id": "TEST-AIMS-952",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 77
+    },
+    {
+      "id": "TEST-AIMS-953",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 87
+    },
+    {
+      "id": "TEST-AIMS-954",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 106
+    },
+    {
+      "id": "TEST-AIMS-955",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 126
+    },
+    {
+      "id": "TEST-AIMS-956",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 138
+    },
+    {
+      "id": "TEST-AIMS-957",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 150
+    },
+    {
+      "id": "TEST-AIMS-958",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 162
+    },
+    {
+      "id": "TEST-AIMS-959",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 175
+    },
+    {
+      "id": "TEST-AIMS-960",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 187
+    },
+    {
+      "id": "TEST-AIMS-961",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 207
+    },
+    {
+      "id": "TEST-AIMS-962",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_fem.py",
+      "line": 229
+    },
+    {
+      "id": "TEST-AIMS-040",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_kinetic_monte_carlo.py",
+      "line": 19
+    },
+    {
+      "id": "TEST-AIMS-963",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_kinetic_monte_carlo.py",
+      "line": 29
+    },
+    {
+      "id": "TEST-AIMS-964",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_kinetic_monte_carlo.py",
+      "line": 46
+    },
+    {
+      "id": "TEST-AIMS-965",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_kinetic_monte_carlo.py",
+      "line": 57
+    },
+    {
+      "id": "TEST-AIMS-966",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_kinetic_monte_carlo.py",
+      "line": 70
+    },
+    {
+      "id": "TEST-AIMS-967",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_kinetic_monte_carlo.py",
+      "line": 82
+    },
+    {
+      "id": "TEST-AIMS-968",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_kinetic_monte_carlo.py",
+      "line": 108
+    },
+    {
+      "id": "TEST-AIMS-020",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_molecular_dynamics.py",
+      "line": 34
+    },
+    {
+      "id": "TEST-AIMS-969",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_molecular_dynamics.py",
+      "line": 42
+    },
+    {
+      "id": "TEST-AIMS-970",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_molecular_dynamics.py",
+      "line": 60
+    },
+    {
+      "id": "TEST-AIMS-971",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_molecular_dynamics.py",
+      "line": 72
+    },
+    {
+      "id": "TEST-AIMS-972",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_molecular_dynamics.py",
+      "line": 95
+    },
+    {
+      "id": "TEST-AIMS-973",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_molecular_dynamics.py",
+      "line": 118
+    },
+    {
+      "id": "TEST-AIMS-974",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_molecular_dynamics.py",
+      "line": 130
+    },
+    {
+      "id": "TEST-AIMS-975",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_molecular_dynamics.py",
+      "line": 142
+    },
+    {
+      "id": "TEST-AIMS-976",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_molecular_dynamics.py",
+      "line": 154
+    },
+    {
+      "id": "TEST-AIMS-010",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_phase_field.py",
+      "line": 30
+    },
+    {
+      "id": "TEST-AIMS-977",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_phase_field.py",
+      "line": 39
+    },
+    {
+      "id": "TEST-AIMS-978",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_phase_field.py",
+      "line": 65
+    },
+    {
+      "id": "TEST-AIMS-979",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_phase_field.py",
+      "line": 82
+    },
+    {
+      "id": "TEST-AIMS-980",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_phase_field.py",
+      "line": 111
+    },
+    {
+      "id": "TEST-AIMS-003",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_validation.py",
+      "line": 8
+    },
+    {
+      "id": "TEST-AIMS-981",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_validation.py",
+      "line": 20
+    },
+    {
+      "id": "TEST-AIMS-982",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_validation.py",
+      "line": 30
+    },
+    {
+      "id": "TEST-AIMS-983",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_validation.py",
+      "line": 43
+    },
+    {
+      "id": "TEST-AIMS-984",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_validation.py",
+      "line": 56
+    },
+    {
+      "id": "TEST-AIMS-985",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_validation.py",
+      "line": 74
     },
     {
       "id": "TEST-AISCI-008",
@@ -3196,6 +4060,231 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-AIMS-001",
+      "to": "REQ-AIMS-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AIMS-001",
+      "to": "REQ-AIMS-002",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0015",
+      "to": "DES-AIMS-001",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIMS-002",
+      "to": "REQ-AIMS-003",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0016",
+      "to": "DES-AIMS-002",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIMS-002",
+      "to": "DES-AIMS-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-003",
+      "to": "REQ-AIMS-004",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AIMS-003",
+      "to": "REQ-AIMS-005",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0017",
+      "to": "DES-AIMS-003",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIMS-003",
+      "to": "DES-AIMS-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-010",
+      "to": "REQ-AIMS-010",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0018",
+      "to": "DES-AIMS-010",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIMS-010",
+      "to": "DES-AIMS-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-010",
+      "to": "DES-AIMS-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-010",
+      "to": "DES-AIMS-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-020",
+      "to": "REQ-AIMS-020",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0019",
+      "to": "DES-AIMS-020",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIMS-020",
+      "to": "DES-AIMS-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-020",
+      "to": "DES-AIMS-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-020",
+      "to": "DES-AIMS-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-030",
+      "to": "REQ-AIMS-030",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0020",
+      "to": "DES-AIMS-030",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIMS-030",
+      "to": "DES-AIMS-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-030",
+      "to": "DES-AIMS-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-030",
+      "to": "DES-AIMS-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-040",
+      "to": "REQ-AIMS-040",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0021",
+      "to": "DES-AIMS-040",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIMS-040",
+      "to": "DES-AIMS-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-040",
+      "to": "DES-AIMS-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-040",
+      "to": "DES-AIMS-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-050",
+      "to": "REQ-AIMS-050",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0022",
+      "to": "DES-AIMS-050",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIMS-050",
+      "to": "DES-AIMS-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-050",
+      "to": "DES-AIMS-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-050",
+      "to": "DES-AIMS-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-060",
+      "to": "REQ-AIMS-060",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0023",
+      "to": "DES-AIMS-060",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIMS-060",
+      "to": "DES-AIMS-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-060",
+      "to": "DES-AIMS-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-060",
+      "to": "DES-AIMS-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-070",
+      "to": "REQ-AIMS-070",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0024",
+      "to": "DES-AIMS-070",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIMS-070",
+      "to": "DES-AIMS-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-070",
+      "to": "DES-AIMS-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-070",
+      "to": "DES-AIMS-003",
+      "relation": "depends-on"
+    },
+    {
       "from": "DES-AISCI-001",
       "to": "REQ-AISCI-001",
       "relation": "satisfies"
@@ -4331,6 +5420,391 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AIMS-070",
+      "to": "REQ-AIMS-070",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-070",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-070",
+      "to": "DES-AIMS-070",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-900",
+      "to": "REQ-AIMS-070",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-900",
+      "to": "REQ-AIMS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-900",
+      "to": "REQ-AIMS-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-900",
+      "to": "DES-AIMS-070",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-030",
+      "to": "REQ-AIMS-030",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-030",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-030",
+      "to": "DES-AIMS-030",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-901",
+      "to": "REQ-AIMS-030",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-901",
+      "to": "REQ-AIMS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-901",
+      "to": "REQ-AIMS-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-901",
+      "to": "DES-AIMS-030",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-050",
+      "to": "REQ-AIMS-050",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-050",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-050",
+      "to": "DES-AIMS-050",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-902",
+      "to": "REQ-AIMS-050",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-902",
+      "to": "REQ-AIMS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-902",
+      "to": "REQ-AIMS-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-902",
+      "to": "DES-AIMS-050",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-001",
+      "to": "REQ-AIMS-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-001",
+      "to": "REQ-AIMS-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-001",
+      "to": "DES-AIMS-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-003",
+      "to": "REQ-AIMS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-003",
+      "to": "REQ-AIMS-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-003",
+      "to": "DES-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-903",
+      "to": "REQ-AIMS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-903",
+      "to": "DES-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-904",
+      "to": "REQ-AIMS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-904",
+      "to": "DES-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-060",
+      "to": "REQ-AIMS-060",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-060",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-060",
+      "to": "DES-AIMS-060",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-905",
+      "to": "REQ-AIMS-060",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-905",
+      "to": "DES-AIMS-060",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-906",
+      "to": "REQ-AIMS-060",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-906",
+      "to": "REQ-AIMS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-906",
+      "to": "REQ-AIMS-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-906",
+      "to": "DES-AIMS-060",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-040",
+      "to": "REQ-AIMS-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-040",
+      "to": "DES-AIMS-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-907",
+      "to": "REQ-AIMS-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-907",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-907",
+      "to": "DES-AIMS-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-908",
+      "to": "REQ-AIMS-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-908",
+      "to": "REQ-AIMS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-908",
+      "to": "REQ-AIMS-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-908",
+      "to": "DES-AIMS-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-020",
+      "to": "REQ-AIMS-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-020",
+      "to": "DES-AIMS-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-909",
+      "to": "REQ-AIMS-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-909",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-909",
+      "to": "DES-AIMS-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-910",
+      "to": "REQ-AIMS-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-910",
+      "to": "REQ-AIMS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-910",
+      "to": "REQ-AIMS-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-910",
+      "to": "DES-AIMS-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-010",
+      "to": "REQ-AIMS-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-010",
+      "to": "DES-AIMS-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-911",
+      "to": "REQ-AIMS-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-911",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-911",
+      "to": "DES-AIMS-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-912",
+      "to": "REQ-AIMS-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-912",
+      "to": "REQ-AIMS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-912",
+      "to": "REQ-AIMS-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-912",
+      "to": "DES-AIMS-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-002",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-002",
+      "to": "DES-AIMS-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-913",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-913",
+      "to": "DES-AIMS-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-914",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-914",
+      "to": "DES-AIMS-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-915",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-915",
+      "to": "DES-AIMS-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-916",
+      "to": "REQ-AIMS-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIMS-916",
+      "to": "DES-AIMS-002",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AISCI-021",
       "to": "REQ-AISCI-020",
       "relation": "implements"
@@ -4644,6 +6118,421 @@
       "from": "CODE-EXAMPLE-001",
       "to": "DES-EXAMPLE-001",
       "relation": "implements"
+    },
+    {
+      "from": "TEST-AIMS-001",
+      "to": "REQ-AIMS-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-917",
+      "to": "REQ-AIMS-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-918",
+      "to": "REQ-AIMS-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-919",
+      "to": "REQ-AIMS-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-920",
+      "to": "REQ-AIMS-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-921",
+      "to": "REQ-AIMS-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-070",
+      "to": "REQ-AIMS-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-922",
+      "to": "REQ-AIMS-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-923",
+      "to": "REQ-AIMS-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-924",
+      "to": "REQ-AIMS-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-925",
+      "to": "REQ-AIMS-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-926",
+      "to": "REQ-AIMS-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-927",
+      "to": "REQ-AIMS-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-928",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-929",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-930",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-931",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-030",
+      "to": "REQ-AIMS-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-932",
+      "to": "REQ-AIMS-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-933",
+      "to": "REQ-AIMS-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-934",
+      "to": "REQ-AIMS-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-935",
+      "to": "REQ-AIMS-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-936",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-937",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-938",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-050",
+      "to": "REQ-AIMS-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-939",
+      "to": "REQ-AIMS-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-940",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-941",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-942",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-943",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-944",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-945",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-946",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-002",
+      "to": "REQ-AIMS-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-947",
+      "to": "REQ-AIMS-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-948",
+      "to": "REQ-AIMS-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-990",
+      "to": "REQ-AIMS-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-991",
+      "to": "REQ-AIMS-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-004",
+      "to": "REQ-AIMS-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-949",
+      "to": "REQ-AIMS-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-005",
+      "to": "REQ-AIMS-005",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-950",
+      "to": "REQ-AIMS-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-951",
+      "to": "REQ-AIMS-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-060",
+      "to": "REQ-AIMS-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-952",
+      "to": "REQ-AIMS-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-953",
+      "to": "REQ-AIMS-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-954",
+      "to": "REQ-AIMS-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-955",
+      "to": "REQ-AIMS-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-956",
+      "to": "REQ-AIMS-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-957",
+      "to": "REQ-AIMS-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-958",
+      "to": "REQ-AIMS-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-959",
+      "to": "REQ-AIMS-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-960",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-961",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-962",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-040",
+      "to": "REQ-AIMS-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-963",
+      "to": "REQ-AIMS-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-964",
+      "to": "REQ-AIMS-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-965",
+      "to": "REQ-AIMS-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-966",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-967",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-968",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-020",
+      "to": "REQ-AIMS-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-969",
+      "to": "REQ-AIMS-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-970",
+      "to": "REQ-AIMS-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-971",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-972",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-973",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-974",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-975",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-976",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-010",
+      "to": "REQ-AIMS-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-977",
+      "to": "REQ-AIMS-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-978",
+      "to": "REQ-AIMS-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-979",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-980",
+      "to": "REQ-AIMS-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-003",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-981",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-982",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-983",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-984",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIMS-985",
+      "to": "REQ-AIMS-003",
+      "relation": "verifies"
     },
     {
       "from": "TEST-AISCI-008",
@@ -5443,17 +7332,31 @@
     ".musubix/decisions/ADR-0012.md": "cc5f6a507076cf6d1228d05a4c919af31364e244935c4b3340cd2588e0c75150",
     ".musubix/decisions/ADR-0013.md": "58df53c2ca6117abf942b8370e77be4294ca6938eeffe3b2f13de2ee789200bf",
     ".musubix/decisions/ADR-0014.md": "583d9d4cac7ad9926b9eb406d3b125d9665b3e2dcb2a8e86aa0a8dfb14add264",
+    ".musubix/decisions/ADR-0015.md": "a2669596103ff8891ab741f4e8d152c7506e99aa1d1da0fd514dfcc95380b42f",
+    ".musubix/decisions/ADR-0016.md": "557435fcc06220459a570bbcb0a0c5b46c48b9730ee7ce29644a18739aaeeba7",
+    ".musubix/decisions/ADR-0017.md": "0eb5ff139929cc4898e54a9912e178b1a7f09bd42816506a7ff4212840d62c3d",
+    ".musubix/decisions/ADR-0018.md": "bc174b282b2ef0cf80039ccaf575080312f76900f662ff00949c6e5f07f712bc",
+    ".musubix/decisions/ADR-0019.md": "7b471c5f31d1c00eae5a6faea35887595224994a8fa6b0fb3e19b54589fc3fb0",
+    ".musubix/decisions/ADR-0020.md": "5ea7101f8bcd672caf53f27d4b8f28f69773bd46da34a5190a686430fea7179c",
+    ".musubix/decisions/ADR-0021.md": "f72cf9b62708898d3d2cf35bf4a70c16ab62220e6062a371839725ac0c9365d1",
+    ".musubix/decisions/ADR-0022.md": "8ecac7e9d7b3162b3c087ad8d049f4df5e673232282cf7070c1647cf457932c9",
+    ".musubix/decisions/ADR-0023.md": "d5a01c7588d5fc182124c8b6153c91d0f652e63533f4bc41156e8a49161d9653",
+    ".musubix/decisions/ADR-0024.md": "78492e859aa768ab60d4d3348f0fa84e10def52c3b4473c502aca9ecaf4930ab",
     ".musubix/features/ai-data-scientist/design.md": "f3c2fc21dfa222e96b2869c4fc79826ff72e90b78d2bffba12ce19b12eba21b0",
     ".musubix/features/ai-data-scientist/requirements.md": "0d26d654ec602e29b5e800b566a3ab73fbb13b4ba71113570d4d4e873515c55f",
     ".musubix/features/ai-data-scientist-ml/design.md": "5a9b6d88cda2a8e05fbfb09b8e1ea8cd3dd1c361b27c0385bef71437c9e62906",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
+    ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
+    ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
     ".musubix/features/ai-scientist/design.md": "0e5f0360cb8f54a29cdbdc3c28fb9c0614d5f47d312b5046f83fda603de85539",
     ".musubix/features/ai-scientist/requirements.md": "0813eae3d21203183b9b3804375b2c5b2b9813da2fbaffd264f134d10ca156a7",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
     "benchmark/mcp_launcher.py": "4cc6036338392c9e28cc1bae08b56d21bedfae2b119663237202326fb55c1370",
-    "benchmark/run_benchmark.py": "29257af826a6c0e217fcec8eb7bc1263b948d46720d2c281a23bc77f864ac8e2",
-    "benchmark/run_queue.py": "fba8d129490edb3805992235df7a1f3683c9355566965b1479a2a5f476a11ea4",
+    "benchmark/projects/_failed-v021-1905/kaggle-v021-kaggle-exp-22-seaice/data/source_metadata/monthly_sea_ice_index_download_v1.0.py": "4f84c599b1b64b62a6ded1e8ffc53b8cb9f31c8505ea50486b2fe1b8b23ca1db",
+    "benchmark/run_benchmark.py": "b1a9648a680709ba818dd2b3cb0a57f21ac40f2ee85938f6c79deba954173aba",
+    "benchmark/run_queue.py": "b393d14637ae47d747089ae0d3f3697e73cab3f372ef4e8bd4387150e296198f",
+    "benchmark/runs-v021/verify/repro_issues.py": "f79117a85856294e8aef90371d2a3f50969f83d8cf480997fa2c811d329d1fd1",
     "bin/ai-data-scientist.js": "f70c764374ee721ebe18b26ed2f3da6ddd896d3c7bc5520c10f8fc0e70fd85da",
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
@@ -5493,6 +7396,17 @@
     "src/ai_data_scientist/text_nlp.py": "bb7ee36f88f69ba683b82dae4fee06b3a1ff004774d57973ee60c9b0f53f3985",
     "src/ai_data_scientist/timeseries.py": "9c36ccab2c39d70815a3e5cd55e8b79679d7678107a39fda02a22ab665263dc5",
     "src/ai_data_scientist/visualization.py": "b3fec3a20934bc71d90bc212ab5c1999cf3fde8a653a6c393cdd8db56ff1e187",
+    "src/ai_materials_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/ai_materials_scientist/calphad.py": "8bd4839df1a7b3c677e9d6c2444d4837c464c5e84d53608edc596f83937b9aa3",
+    "src/ai_materials_scientist/classical_monte_carlo.py": "1bbf4f334f42b4494a1b4b5328744c919a6ec1db08fb7712edac804214fbf7df",
+    "src/ai_materials_scientist/crystal_plasticity.py": "c3c6a0d046b7966b5ba78a508096fccf7b4aa075a0f467957f849b9b8ae56cf6",
+    "src/ai_materials_scientist/dispatch.py": "5b2167953f26b2ce59df67ee5c59e0e32e2a21b8cc9af3f0278d5040c8276330",
+    "src/ai_materials_scientist/evidence.py": "bcd6fccd767509bc807ce94431fee629472d07e474c36ba9ad2a71d5012f1196",
+    "src/ai_materials_scientist/fem.py": "fdb0c4ac972d416fd569375cb6a09883caec576bbc9127f1dc93c0a9c7ce618a",
+    "src/ai_materials_scientist/kinetic_monte_carlo.py": "96eeb67756fec4201f1153727ad5e9025838c4c276c249b67dfd3d13b28f7716",
+    "src/ai_materials_scientist/molecular_dynamics.py": "12610dbbfa940652592269d9fd7896a539e4923a73c046492d13114a8b3e2fad",
+    "src/ai_materials_scientist/phase_field.py": "12fecebcf6eb55bb4604f855c67f982edf4e3332ef2aa5a52a732fc062a3782a",
+    "src/ai_materials_scientist/validation.py": "8c1705d958bdcc00e501de73d78675883ed161a23572e89f8b165d416092e7fe",
     "src/ai_scientist/__init__.py": "a345a551ec27ec6fdee98a773416f6c07eb8a205ded47a9e6759edffb829f177",
     "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
     "src/ai_scientist/data_analysis.py": "c20f0d9bd383c442a1588dc326a8c7771b3c52738c5a3158f1662214aa7c4961",
@@ -5520,6 +7434,17 @@
     "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f",
     "src/ai_scientist/tdd_gate.py": "d278321c459fc32cd235dc77e8a3bdc94049655bf7e4ef1e825f7b5bedc4ebf7",
     "src/example_readiness.py": "b4deef302d05db806ccb39216aea65dcbdcc34c52b493aa81eb22842bc4bd190",
+    "tests/test_ai_materials_scientist_bilingual.py": "6cab8fc1263ec40af5e197061bc0ae4685db6199a68ca745ee22558f4aabbf95",
+    "tests/test_ai_materials_scientist_calphad.py": "f350b84d0f4c14b2234852c06ba534f7e81228e1a371e66d7c641ac9ae841fc9",
+    "tests/test_ai_materials_scientist_classical_monte_carlo.py": "a6019feecdc12c0fb8ce47390549d824c15a16fc6b1aeb736154020925950db7",
+    "tests/test_ai_materials_scientist_crystal_plasticity.py": "05b97032978c2aa71f75ee020d8fe326c6d89b3a6edaae0a854c34aa0a84242a",
+    "tests/test_ai_materials_scientist_dispatch.py": "e61977687ab9a44da47abbe446a562064f5a80030131960982f8f4056e98ad62",
+    "tests/test_ai_materials_scientist_evidence.py": "85fb8f17af7ca69308a70808200562365acf51c949ded746df34417b05cf6e89",
+    "tests/test_ai_materials_scientist_fem.py": "a11102e8ae9a80c617f70e26ed6123bcf040bd0a1aa099cb50356e2033279363",
+    "tests/test_ai_materials_scientist_kinetic_monte_carlo.py": "4ef078391bc60e99eaea54304aec5a0e100d787a4572c95a124ef0950abb7237",
+    "tests/test_ai_materials_scientist_molecular_dynamics.py": "3b289ed173478e64502bb822e32f022475de661e8c364b7c860eabbe5bb67ebd",
+    "tests/test_ai_materials_scientist_phase_field.py": "003834f3ff975f434db91e0dc95b0a4e7f79c96823e32390908abf1987b71dca",
+    "tests/test_ai_materials_scientist_validation.py": "e5856eceab201910ac5192aa414b2aa44ab274db360f9e1a6cd19eeb5a1201f0",
     "tests/test_ai_scientist_delegation.py": "b7e919785ed77b2eca3893f0c791ac283b9714c72d7abf76dcc5595268a31dbb",
     "tests/test_ai_scientist_evidence_registry.py": "e56432547cce3850a3837d9a2374f2a57be9f7fc03ec262fcb9f2bae7f319918",
     "tests/test_ai_scientist_mcp.py": "394b710a759e18c7cbfe37315cda46798148ef2eaed02bc87a69dde7c2dfa756",
