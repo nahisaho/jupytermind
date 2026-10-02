@@ -8,7 +8,7 @@ import nbformat
 import pandas as pd
 
 from ai_data_scientist.project_manager import enqueue_write, ensure_notebook, resolve_project
-from ai_data_scientist.visualization import build_image_output, render_chart
+from ai_data_scientist.visualization import build_image_output, record_chart, render_chart
 
 
 def _png_dimensions(png_bytes: bytes) -> tuple[int, int]:
@@ -249,3 +249,121 @@ def test_TEST_AIDS_111_long_axis_labels_are_not_clipped(monkeypatch):
         monkeypatch.setattr(plt, "close", original_close)
         for fig in closed_figures:
             original_close(fig)
+
+
+# @id TEST-AIDS-113
+# @verifies REQ-AIDS-060
+def test_TEST_AIDS_113_render_chart_returns_rendered_chart_with_metadata():
+    from ai_data_scientist.visualization import RenderedChart
+
+    df = pd.DataFrame({"x": [1, 2, 3], "y": [1, 4, 9]})
+
+    result = render_chart(df, kind="scatter", x="x", y="y", title="Growth", ylabel="Count")
+
+    assert isinstance(result, RenderedChart)
+    assert isinstance(result, bytes)
+    assert result[:8] == b"\x89PNG\r\n\x1a\n"
+    assert result.title == "Growth"
+    assert result.xlabel == "x"  # pandas auto-generates the x-axis label
+    assert result.ylabel == "Count"
+    assert result.legend is False
+    assert result.missing_glyphs == ()
+
+    # Ordinary bytes operations (base64, equality, slicing) still work since
+    # RenderedChart is-a bytes.
+    import base64
+
+    assert base64.b64encode(result)
+    assert result == bytes(result)
+
+
+# @id TEST-AIDS-114
+# @verifies REQ-AIDS-060
+def test_TEST_AIDS_114_render_chart_reports_legend_and_missing_glyphs():
+    from ai_data_scientist.visualization import RenderedChart
+
+    df = pd.DataFrame({"x": [1, 2, 3], "a": [1, 4, 9], "b": [2, 3, 5]})
+
+    # Two y columns with x set implicitly draws a legend (pandas default).
+    result = render_chart(df, kind="line", x="x", y=None)
+
+    assert isinstance(result, RenderedChart)
+    assert result.legend is True
+    assert result.missing_glyphs == ()
+
+
+# @id TEST-AIDS-115
+# @verifies REQ-AIDS-061
+def test_TEST_AIDS_115_record_chart_persists_chart_metadata(tmp_path):
+    df = pd.DataFrame({"x": [1, 2, 3], "y": [1, 4, 9]})
+    result = render_chart(df, kind="scatter", x="x", y="y", title="Growth")
+
+    handle = resolve_project("chart-metadata-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+
+    record_chart(handle, "render_chart(...)", result)
+
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    chart_metadata = notebook.cells[0]["metadata"]["chart"]
+    assert chart_metadata["title"] == "Growth"
+    assert chart_metadata["xlabel"] == "x"
+    assert chart_metadata["ylabel"] == "y"
+    assert chart_metadata["legend"] is False
+    assert list(chart_metadata["missing_glyphs"]) == []
+
+    # Plain bytes (not a render_chart result) must leave metadata["chart"]
+    # unset, preserving notebook_audit existing "unaudited" finding.
+    plain_png_bytes = bytes(result)
+    assert type(plain_png_bytes) is bytes
+
+    plain_handle = resolve_project("chart-metadata-plain-bytes-project", projects_root=tmp_path)
+    ensure_notebook(plain_handle)
+    record_chart(plain_handle, "render_chart(...)", plain_png_bytes)
+    plain_notebook = nbformat.read(plain_handle.notebook_path, as_version=4)
+    assert "chart" not in plain_notebook.cells[0]["metadata"]
+
+
+# @id TEST-AIDS-116
+# @verifies REQ-AIDS-061
+def test_TEST_AIDS_116_record_chart_persists_legend_true(tmp_path):
+    """A RenderedChart whose legend is True (distinct from TEST-AIDS-115's
+    legend=False case) must have legend=True persisted into cell metadata."""
+    df = pd.DataFrame({"x": [1, 2, 3], "a": [1, 4, 9], "b": [2, 3, 5]})
+    result = render_chart(df, kind="line", x="x", y=None)
+    assert result.legend is True
+
+    handle = resolve_project("chart-metadata-legend-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+
+    record_chart(handle, "render_chart(...)", result)
+
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    chart_metadata = notebook.cells[0]["metadata"]["chart"]
+    assert chart_metadata["legend"] is True
+
+
+# @id TEST-AIDS-127
+# @verifies REQ-AIDS-064
+def test_TEST_AIDS_127_tick_label_legend_only_japanese_uses_bundled_font(monkeypatch):
+    """ASCII title/xlabel/ylabel, but a categorical column plotted as tick
+    labels/legend entries contains Japanese text: the bundled font must still
+    be applied, and no "missing glyph" warnings should occur (REQ-AIDS-064)."""
+    from ai_data_scientist import visualization
+    from ai_data_scientist.visualization import RenderedChart
+
+    monkeypatch.setattr(visualization, "_japanese_font_applied", False)
+    original_family = list(plt.rcParams["font.family"])
+    try:
+        df = pd.DataFrame({"category": ["東京", "大阪", "名古屋"], "value": [10, 20, 15]})
+
+        result = render_chart(
+            df, kind="bar", x="category", y="value", title="Sales", xlabel="City", ylabel="Count"
+        )
+
+        assert isinstance(result, RenderedChart)
+        assert result[:8] == b"\x89PNG\r\n\x1a\n"
+        assert plt.rcParams["font.family"] == ["IPAexGothic"]
+        assert visualization._japanese_font_applied is True
+        assert result.missing_glyphs == ()
+    finally:
+        plt.rcParams["font.family"] = original_family

@@ -592,6 +592,282 @@ Requirements: REQ-AIDS-059
 ADRs: ADR-0014
 Depends-On: DES-AIDS-003
 
+## DES-AIDS-048: Rendering-result object carrying chart authoring metadata / 描画結果オブジェクトによるチャート生成メタデータの保持
+Responsibilities: In `visualization`, add a frozen `ChartMetadata`
+dataclass (`title: str | None`, `xlabel: str | None`, `ylabel: str | None`,
+`legend: bool`, `missing_glyphs: tuple[str, ...]`) and a `RenderedChart(bytes)`
+subclass whose instances carry an additional `chart_metadata: ChartMetadata`
+attribute set at construction time, plus read-only `title`, `xlabel`,
+`ylabel`, `legend`, and `missing_glyphs` properties that forward directly
+to the corresponding `chart_metadata` field — satisfying REQ-AIDS-060's
+acceptance that the returned object itself "exposes a `title`, `xlabel`,
+`ylabel`, `legend`, and `missing_glyphs` attribute" (`chart_metadata`
+remains available as the single structured bundle DES-AIDS-049 serializes
+from). `render_chart`'s control flow becomes: (1) determine the
+Japanese-content trigger and configure the font per DES-AIDS-052 (runs
+first, before any plotting), (2) create the figure and plot, (3) wrap the
+plot/`savefig` sequence in `warnings.catch_warnings(record=True)` with an
+explicit `simplefilter("always")` scoped to that block — the warning
+context starts before `df.plot`/label assignment/`tight_layout` and ends
+only after `savefig` returns, so no glyph warning raised anywhere in that
+sequence can escape capture, (4) scan captured warnings whose message
+matches matplotlib's `"Glyph \d+ .* missing from (?:current )?font"`
+pattern, extracting each referenced codepoint as its decimal Unicode code
+point string, de-duplicating while preserving first-seen order, and
+re-emitting every non-matching captured warning via `warnings.warn_explicit`
+with its original category/message/filename/lineno so no unrelated warning
+is swallowed, (5) detect legend presence via `ax.get_legend() is not None`,
+(6) construct a `ChartMetadata` from the rendered axes' actual
+`ax.get_title()`, `ax.get_xlabel()`, `ax.get_ylabel()` (not merely the
+caller-supplied `title`/`xlabel`/`ylabel` parameters, since pandas'
+`df.plot(...)` can auto-generate a label — e.g. `ylabel` from the plotted
+column name — when the caller passes `None`), the detected legend flag,
+and the deduplicated missing-glyph codepoints, and (7) return
+`RenderedChart(png_bytes, chart_metadata=metadata)` instead of plain
+`bytes`. Because `RenderedChart` is a real `bytes` subclass, every
+existing caller that treats the return value via ordinary `bytes`
+operations (`base64.b64encode`, equality, slicing, hashing) continues to
+work unmodified; this does not extend to callers that assert `type(value)
+is bytes` exactly or rely on `bytes`-specific pickling/serialization,
+which this design does not claim to preserve (none exist in this
+repository today).
+Interfaces: visualization.ChartMetadata(title, xlabel, ylabel, legend,
+missing_glyphs) (frozen dataclass); visualization.RenderedChart(bytes)
+subclass exposing `.chart_metadata: ChartMetadata` plus forwarding
+`.title`, `.xlabel`, `.ylabel`, `.legend`, `.missing_glyphs` read-only
+properties; render_chart(...) -> RenderedChart, replacing the prior
+`-> bytes` return annotation (a behavior-preserving, caller-compatible
+refactor for every existing in-repository call path, since `RenderedChart`
+is-a `bytes`).
+Constraints: This design itself (metadata capture and result-type
+wrapping) must not change the PNG bytes/pixel content produced today for
+any given set of plotting inputs and font configuration — any pixel
+difference for a specific chart is attributable solely to DES-AIDS-052's
+widened font trigger, not to this design; must not require call-site
+changes at any existing `render_chart` caller that uses ordinary `bytes`
+operations; must not suppress or swallow any non-glyph warning raised
+during rendering. Depends on DES-AIDS-052 having already configured the
+font before this design's plotting/`savefig` step runs, so the warning
+capture reflects the final, correctly-configured font — DES-AIDS-052 does
+not depend back on this design, keeping the dependency direction one-way.
+Requirements: REQ-AIDS-060
+ADRs: none — a narrow, backward-compatible wrapper-type introduction with
+a single defensible resolution (bytes subclass), consistent with the
+precedent recorded for DES-AIDS-042.
+Depends-On: DES-AIDS-009, DES-AIDS-034, DES-AIDS-052
+
+## DES-AIDS-049: record_chart auto-persists chart metadata into cell output / record_chartによるチャートメタデータの自動永続化
+Responsibilities: Update `record_chart` to check `isinstance(png_bytes,
+RenderedChart)`; when true, serialize its `.chart_metadata` (title, xlabel,
+ylabel, legend, missing_glyphs as a list) into the newly created code
+cell's `cell["metadata"]["chart"]` mapping before appending the cell to the
+notebook. When `png_bytes` is plain `bytes` (not a `RenderedChart`),
+`cell["metadata"]["chart"]` is left unset exactly as today, preserving
+`notebook_audit`'s existing "unaudited" finding and missing-glyph/near-
+empty/missing-label detection for that case (DES-AIDS-041 unchanged). This
+is an intentional, documented semantic extension of `record_chart`'s
+contract, not a value-preserving change for every conceivable external
+consumer: a caller that previously always saw an absent
+`cell["metadata"]["chart"]` key will now see it populated whenever it
+passes a `RenderedChart`.
+Interfaces: visualization.record_chart(handle, code, png_bytes: bytes) ->
+int, public annotation unchanged (left as `bytes` since `RenderedChart`
+is a subtype); internally the function performs an `isinstance` check to
+recognize a `RenderedChart` instance and extract its `chart_metadata`.
+Constraints: Must not require `visualization.record_chart`'s callers to
+pass chart metadata as a separate argument; must not write
+`cell["metadata"]["chart"]` when given plain bytes, since
+`notebook_audit.audit_visual_outputs` (DES-AIDS-041) relies on that
+absence to surface "unaudited" for non-conforming callers.
+Requirements: REQ-AIDS-061
+ADRs: none — a narrow module-internal serialization step with a single
+defensible resolution, consistent with the precedent recorded for
+DES-AIDS-042.
+Depends-On: DES-AIDS-048, DES-AIDS-041
+
+## DES-AIDS-050: Dataset-comparison agreement rate as float | None / 一致率のfloat | None型による明確化
+Responsibilities: In `dataset_validation`, change `ColumnComparison`'s
+`agreement_rate` field type annotation from `float` to `float | None`,
+documenting `None` as "not computable: no eligible joined rows for this
+comparison" (an intentional semantic extension that existing and future
+consumers of `agreement_rate` must handle by branching on `None`, not a
+value-preserving change for arbitrary external numeric consumers). In
+`compare_datasets`, before building `primary_key_values`/
+`candidate_key_values`, filter each side's key-column rows to those with
+no null key-column value, by computing two full-row eligibility frames —
+`eligible_primary = primary.dropna(subset=primary_keys)` and
+`eligible_candidate = candidate.dropna(subset=candidate_keys)` — which
+retain every column (not only the key columns). Derive
+`primary_key_values`/`candidate_key_values` from the key-column
+projections of `eligible_primary`/`eligible_candidate`
+(`eligible_primary[primary_keys]` and the candidate equivalent), so that
+`matched_keys`/`primary_only_keys`/`candidate_only_keys` never count a
+null-key row as matched or unmatched on either side — this corrects the
+current implementation's pandas set-equality behavior, under which two
+null keys (e.g. both `None`) compare equal and are incorrectly counted as
+a match today. Likewise, build `merged` from `eligible_primary` and
+`eligible_candidate` (an inner merge over already-non-null keys, with all
+value-mapped columns still present on both sides), so no null-matches-null
+row reaches the per-column comparison either, and every existing
+`primary_col_name`/`candidate_col_name` value-column lookup continues to
+resolve against `merged` exactly as today. For each compared column, keep
+the existing `matched_rows`/`mismatched_rows`/`total` computation over
+`merged` exactly as today (now implicitly restricted to eligible,
+non-null-key joined rows by the upstream filter, with no separate
+eligibility mask needed). When a column's `total` is zero, set
+`agreement_rate = None`; otherwise keep the existing `matched_rows /
+total` computation unchanged.
+Interfaces: dataset_validation.ColumnComparison.agreement_rate: float |
+None (was `float`); dataset_validation.compare_datasets(...) ->
+DatasetComparisonReport, unchanged public signature.
+Constraints: Must not change `agreement_rate`'s numeric value or meaning
+for any column with at least one eligible joined row; must not change
+`matched_keys`/`primary_only_keys`/`candidate_only_keys` for any dataset
+pair where every key-column value is already non-null on both sides
+(the null-row filter is a no-op in that case); for a pair containing at
+least one null-key row, the corrected (filtered) `matched_keys` count is
+the intended fix, not a regression, per REQ-AIDS-062's explicit null-key
+exclusion acceptance.
+Requirements: REQ-AIDS-062
+ADRs: none — a narrow type-and-guard-clause fix with a single defensible
+resolution, consistent with the precedent recorded for DES-AIDS-042.
+Depends-On: DES-AIDS-045
+
+## DES-AIDS-051: Significance-gated correlation interpretation / 有意性に基づく相関解釈の分岐
+Responsibilities: In `stats_analysis`, add a `significance_threshold:
+float = 0.05` parameter to `correlation`, threaded into `_interpret(r,
+p_value, language, significance_threshold)`. `_interpret` first checks
+`p_value >= significance_threshold`; when true, it returns a fixed
+sentence template that still reports the computed `r` and the
+DES-AIDS-053-formatted p-value display (`p_display`, shared by both
+branches), but replaces the strength/direction clause with a distinct
+"no statistically clear correlation is observed" wording — e.g. `en`:
+`"The correlation coefficient is {r:.4f} ({p_display}), and no
+statistically clear correlation is observed."`; `ja`:
+`"相関係数は {r:.4f} ({p_display}) で、統計的に明確な相関は見られません。"`
+— regardless of `r`'s magnitude or sign, bypassing the existing
+strength/direction phrase (not the numeric report) entirely for that
+case. When `p_value < significance_threshold`, the existing magnitude/
+direction-based wording path runs unchanged (still using the shared
+`p_display`). `significance_threshold` values outside `[0.0, 1.0]` are
+rejected by raising `ValueError` before any interpretation is computed.
+Interfaces: stats_analysis.correlation(..., significance_threshold: float
+= 0.05) -> StatResult, additive optional parameter (fully backward
+compatible for existing callers that omit it; return type is the
+existing `StatResult` dataclass, unchanged); stats_analysis._interpret(r,
+p_value, language, significance_threshold) -> str (internal, signature
+change is non-breaking since `_interpret` is module-private).
+Constraints: Must not alter the existing magnitude/direction wording or
+thresholds for any `p_value < significance_threshold` case; the
+non-significant sentence must be textually distinct from (not a weakened
+variant of) the existing "weak" wording, so it cannot be confused with a
+low-but-significant correlation; both branches must share one `p_display`
+computation (DES-AIDS-053) so the displayed p-value is never inconsistent
+between them.
+Requirements: REQ-AIDS-063
+ADRs: none — a single added guard-clause branch with a single defensible
+resolution, consistent with the precedent recorded for DES-AIDS-042.
+Depends-On: DES-AIDS-053
+
+## DES-AIDS-052: Bundled Japanese font applied for the full rendering lifetime / レンダリング全体への日本語フォント適用
+Responsibilities: In `visualization.render_chart`, widen the font-trigger
+condition by keeping the existing `_contains_non_ascii(title) or
+_contains_non_ascii(xlabel) or _contains_non_ascii(ylabel)` check exactly
+as today (preserving REQ-AIDS-046's existing acceptance that any non-ASCII
+character in a caller-supplied title/axis label, not only Japanese,
+triggers the bundled font), and OR-ing it with a new, separate check over
+the exact values matplotlib will render as tick labels or legend entries:
+for `kind == "hist"`, the `x` column's values (`df[x]`) and the
+DataFrame's index if it supplies tick labels; for other kinds, the
+selected `x` column's values, the selected `y` column's values (`df[y]`,
+since a categorical/string `y` column can be rendered as y-axis tick
+labels, not only as a legend entry), and for the legend label
+specifically: when `y` is given explicitly, the selected `y` column
+name(s); when `y` is `None`, the names of every column pandas will
+implicitly plot for that `kind` (every column of `df` other than `x` when
+`x` is set, or every column of `df` when `x` is unset) — and the
+DataFrame's index when `x` is unset and the index supplies tick labels.
+This check additionally covers every pandas-auto-generated axis-label
+source distinct from the caller-supplied `xlabel`/`ylabel` parameters
+already covered by the preserved check above: the selected `x` column
+name itself (pandas renders it as the x-axis label whenever `xlabel` is
+not explicitly supplied); the selected `y` column name(s) wherever pandas
+renders them as the y-axis label (not solely where they are a legend
+source) when `ylabel` is not explicitly supplied; and `df.index.name`
+whenever `x` is `None` (pandas renders the index name as the x-axis label
+whenever `xlabel` is not explicitly supplied). These column-name and
+index-name sources are inspected unconditionally (independent of whether
+an explicit `xlabel`/`ylabel` was supplied), since checking them only
+costs a cheap string test and keeps the trigger correct even if a caller
+supplies `xlabel`/`ylabel` for one axis but not the other.
+Values are stringified (`str(value)`) before inspection; non-string,
+non-stringifiable values are treated as not containing Japanese text. A
+column present in `df` but not selected by `x`/`y` for this plot is never
+inspected and must not trigger the font via this new check (it may still
+trigger the font via the unchanged title/xlabel/ylabel check above). This
+new check uses a narrower `_contains_japanese` predicate, narrower than
+`_contains_non_ascii`, per REQ-AIDS-064's scoping to Japanese-derived
+plotted data, matching any code point in the following Unicode blocks:
+Hiragana (U+3040–U+309F), Katakana (U+30A0–U+30FF), Katakana Phonetic
+Extensions (U+31F0–U+31FF), Halfwidth and Fullwidth Forms' halfwidth
+Katakana subrange (U+FF65–U+FF9F), CJK Symbols and Punctuation
+(U+3000–U+303F, covering the ideographic iteration mark `々` and
+Japanese punctuation), CJK Unified Ideographs (U+4E00–U+9FFF), CJK
+Unified Ideographs Extension A (U+3400–U+4DBF), and CJK Compatibility
+Ideographs (U+F900–U+FAFF). This block list is applied only to the above
+plotted-value/index/legend-source values — it does not replace or narrow
+the existing title/xlabel/ylabel
+check, which keeps using `_contains_non_ascii` unchanged. When either the
+unchanged title/xlabel/ylabel check or this new plotted-data check is
+true, `_ensure_japanese_font()` is called before the figure is created and
+plotted (unchanged call site relative to today, just with a widened,
+OR-combined trigger condition), so `matplotlib.rcParams["font.family"]` is
+set to the bundled font for the entire plot/draw/savefig sequence,
+covering tick labels and legend text derived from that data.
+Interfaces: visualization._contains_japanese(text: str | None) -> bool
+(new predicate, additive alongside the existing, unmodified
+`_contains_non_ascii`, which continues to gate the title/xlabel/ylabel
+check exactly as today); render_chart(...) internal trigger logic only —
+public signature unchanged.
+Constraints: Must not regress REQ-AIDS-046's existing acceptance (any
+non-ASCII character — not only Japanese — in title/xlabel/ylabel
+continues to trigger the bundled font exactly as today; ASCII-only
+title/xlabel/ylabel combined with ASCII-only plotted/index/legend data
+continues to not require the bundled font); must run before the figure is
+created and plotted, i.e. before DES-AIDS-048's plot/`savefig`/glyph-
+warning-capture step, so that step observes the final, correctly-
+configured font; must not inspect columns of `df` that are not selected
+for plotting by this call.
+Requirements: REQ-AIDS-064
+ADRs: none — a narrow trigger-condition widening with a single defensible
+resolution, consistent with the precedent recorded for DES-AIDS-042.
+Depends-On: DES-AIDS-009, DES-AIDS-034
+
+## DES-AIDS-053: Bounded display of a sub-threshold p-value / 閾値未満p値の上限表記
+Responsibilities: In `stats_analysis`, introduce a shared `p_display(
+p_value)` helper used by `_interpret`'s both the significant and
+non-significant sentence branches (DES-AIDS-051): when `p_value < 1e-4`,
+`p_display` returns the literal string `"p < 1e-4"`; when `p_value >=
+1e-4` (including exactly `1e-4`), it returns the existing `f"p={p_value
+:.4g}"` formatted numeric value unchanged. This check is independent of,
+and always computed before, DES-AIDS-051's significance branch, so a
+sub-threshold p-value is displayed identically regardless of whether the
+significant or non-significant sentence template is ultimately selected
+(in practice `p_value < 1e-4` always implies `p_value <
+significance_threshold` for the default `0.05`, but `p_display`'s
+behavior does not depend on that implication holding).
+Interfaces: stats_analysis.p_display(p_value: float) -> str (new,
+module-private helper); stats_analysis._interpret(...) calls this helper
+instead of inlining `:.4g` formatting — no public signature change.
+Constraints: Must not change formatting for any `p_value >= 1e-4`; must
+apply identically in both `ja` and `en` language branches and in both the
+significant and non-significant sentence templates.
+Requirements: REQ-AIDS-065
+ADRs: none — a narrow formatting guard-clause with a single defensible
+resolution, consistent with the precedent recorded for DES-AIDS-042.
+Depends-On: none
+Change: CHANGE-004
+
 ## DES-AIDS-042: Analysis-assumption manifest with risk surfacing / 分析前提マニフェストとリスク表面化
 Responsibilities: A new `analysis_assumptions` module providing an
 `Assumption` dataclass (id, statement, status, evidence_cell=None,

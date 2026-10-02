@@ -331,3 +331,45 @@ Type: non-functional
 Pattern: ubiquitous
 Statement: The system shall document, in both SKILL.md and the project-manager module, that writing directly to a notebook file via enqueue_write while the same file is open and later saved by a Jupyter MCP session can overwrite or lose that direct write.
 Acceptance: SKILL.md's workflow guidance and the project_manager module's enqueue_write docstring both state the concurrent-external-save risk explicitly, together with the recommended mitigation of routing writes through the active MCP session (or pausing MCP-side saves) instead of writing directly to an MCP-opened notebook; enqueue_write's runtime behavior remains unchanged, and no code behavior change is required or implied by this requirement.
+
+## REQ-AIDS-060: Chart authoring metadata persisted for visual audit / チャート生成メタデータの監査向け永続化
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When render_chart renders a chart, the system shall return a rendering result object that carries the chart's title, axis labels, legend presence, and any font-glyph-rendering warnings observed during rendering, alongside the PNG image bytes.
+Acceptance: Given a call to render_chart, its return value is an object usable anywhere raw PNG bytes are accepted (including base64 encoding and record_chart) and additionally exposes a "title", "xlabel", "ylabel", "legend", and "missing_glyphs" attribute reflecting what was actually rendered, with "missing_glyphs" listing the codepoints of any matplotlib "missing from font" warning raised during rendering (empty when none occurred); given a title/xlabel/ylabel combination that triggers a captured missing-glyph warning, "missing_glyphs" is non-empty and contains the warned codepoint(s).
+
+## REQ-AIDS-061: Chart metadata captured by record_chart for visual audit / record_chartによるチャートメタデータの監査向け取り込み
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When record_chart is called with a render_chart rendering result object, the system shall persist that object's title, axis labels, legend presence, and missing_glyphs attributes into the resulting cell's metadata["chart"] mapping.
+Acceptance: Given record_chart called with the object returned by render_chart unchanged, the resulting cell's metadata["chart"] is a non-empty mapping containing "title", "xlabel", "ylabel", "legend", and "missing_glyphs" keys matching that object's attributes, and auditing that notebook with audit_notebook(..., visual_audit=True) reports no "unaudited" finding for that cell; given that object's missing_glyphs is non-empty, audit_notebook(..., visual_audit=True) reports the existing "missing_glyphs" finding for that cell carrying those codepoints; given record_chart called with plain bytes that are not a render_chart rendering result object (e.g. raw PNG bytes read from a file), the resulting cell has no metadata["chart"] entry, preserving the existing "unaudited" finding and the existing missing-glyph/near-empty/missing-label detection behavior unchanged.
+
+## REQ-AIDS-062: Defined dataset-comparison agreement for zero overlapping rows / 重複行0件時の一致率の明確化
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When compare_datasets computes a column's agreement_rate and that column has zero eligible joined rows (rows present on the same non-null key in both the primary and candidate dataframe), the system shall report that column's agreement_rate as undefined (None) rather than as a numeric value, distinguishing "nothing was compared" from "everything agreed".
+Acceptance: Given a primary and candidate dataframe sharing no non-null key values, compare_datasets's returned report has matched_keys == 0 and every column_comparisons entry has agreement_rate is None and ColumnComparison.agreement_rate is typed as float | None; given a primary and candidate dataframe sharing exactly two non-null key values where a compared column agrees on one joined row and disagrees on the other, that column's agreement_rate equals 0.5 with matched_rows == 1 and total == 2 (its previous, unchanged numeric agreement_rate behavior of matched_rows / total); rows whose key is null on either side are excluded from both matched_keys and the per-column joined-row count on either side of this comparison.
+
+## REQ-AIDS-063: Significance-aware correlation interpretation / 有意性を踏まえた相関解釈
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When correlation generates its natural-language interpretation, the system shall state that no statistically clear correlation is observed whenever the p-value is greater than or equal to a significance_threshold parameter defaulting to 0.05, regardless of the coefficient's magnitude.
+Acceptance: Given a correlation coefficient near zero with p-value 0.85 and the default significance_threshold, calling correlation(..., language="ja") returns an interpretation stating no statistically clear correlation is observed (not "weak ... correlation is seen"), and the English equivalent for language="en" states no statistically clear correlation rather than claiming any strength/direction; given a correlation coefficient of 0.9 (strong magnitude) with p-value 0.2 and the default significance_threshold, the interpretation still states no statistically clear correlation is observed, proving the rule applies regardless of magnitude; given a p-value exactly equal to significance_threshold, the interpretation states no statistically clear correlation is observed; given a correlation coefficient with p-value strictly below significance_threshold, the existing magnitude/direction-based wording is unchanged from current behavior; calling correlation(..., significance_threshold=0.10) applies that overridden threshold instead of the 0.05 default.
+
+## REQ-AIDS-064: Bundled Japanese font applied to all rendered chart text / バンドル済み日本語フォントの全描画文言への適用
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When render_chart renders a chart whose title or axis labels or tick labels or legend contain a Japanese character, the system shall configure matplotlib's font.family rcParam to the bundled Japanese-capable font for the entire rendering.
+Acceptance: Given a DataFrame whose categorical values and/or legend entries contain Japanese text but whose title/xlabel/ylabel are ASCII-only, calling render_chart emits no matplotlib "missing from font" glyph warnings, the returned rendering result's missing_glyphs attribute is empty, and matplotlib.rcParams["font.family"] is set to the bundled Japanese-capable font family at the point tick labels and legend text are drawn; a title/xlabel/ylabel-only-Japanese case and a tick-label/legend-only-Japanese case are each tested separately; REQ-AIDS-046's existing acceptance (title/xlabel/ylabel non-ASCII triggers the bundled font; all-ASCII input, including tick labels and legend, does not require it) continues to hold unchanged.
+
+## REQ-AIDS-065: Bounded display of a near-zero p-value / p値がゼロ丸めとなる場合の上限表記
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When correlation's p-value is less than 1e-4, the system shall format the displayed p-value in its interpretation text as "p < 1e-4" instead of its formatted numeric value.
+Acceptance: Given a p-value of 0 or any value strictly less than 1e-4 (e.g. 1e-10), the generated interpretation text contains "p < 1e-4" (not a numeric p-value) in both language="ja" and language="en" outputs; given a p-value of exactly 1e-4 or any value greater than or equal to 1e-4 (e.g. 0.05), the interpretation text displays its existing formatted numeric p-value unchanged.

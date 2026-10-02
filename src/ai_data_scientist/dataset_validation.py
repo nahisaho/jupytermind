@@ -30,7 +30,7 @@ class ColumnComparison:
     candidate_column: str
     matched_rows: int
     mismatched_rows: int
-    agreement_rate: float
+    agreement_rate: float | None
 
 
 @dataclass(frozen=True)
@@ -52,8 +52,8 @@ class DatasetComparisonReport:
 
 
 # @id CODE-AIDS-082
-# @implements REQ-AIDS-057
-# @design DES-AIDS-045
+# @implements REQ-AIDS-057 REQ-AIDS-062
+# @design DES-AIDS-045 DES-AIDS-050
 def compare_datasets(
     primary: pd.DataFrame,
     candidate: pd.DataFrame,
@@ -67,21 +67,32 @@ def compare_datasets(
     name(s), used to join the two datasets. ``value_mapping`` maps
     primary value column name -> candidate value column name for
     per-column agreement checks on the joined rows.
+
+    Rows whose key is null on either side are excluded from
+    ``matched_keys``/``primary_only_keys``/``candidate_only_keys`` and from
+    the per-column agreement computation (REQ-AIDS-062): otherwise two
+    null keys (e.g. both ``None``) would incorrectly count as a matched key
+    pair under Python tuple-set equality.
     """
     primary_keys = list(key_mapping.keys())
     candidate_keys = list(key_mapping.values())
 
-    primary_key_values = set(map(tuple, primary[primary_keys].itertuples(index=False, name=None)))
+    eligible_primary = primary.dropna(subset=primary_keys)
+    eligible_candidate = candidate.dropna(subset=candidate_keys)
+
+    primary_key_values = set(
+        map(tuple, eligible_primary[primary_keys].itertuples(index=False, name=None))
+    )
     candidate_key_values = set(
-        map(tuple, candidate[candidate_keys].itertuples(index=False, name=None))
+        map(tuple, eligible_candidate[candidate_keys].itertuples(index=False, name=None))
     )
 
     matched_keys = primary_key_values & candidate_key_values
     primary_only_keys = primary_key_values - candidate_key_values
     candidate_only_keys = candidate_key_values - primary_key_values
 
-    merged = primary.merge(
-        candidate,
+    merged = eligible_primary.merge(
+        eligible_candidate,
         left_on=primary_keys,
         right_on=candidate_keys,
         how="inner",
@@ -104,7 +115,7 @@ def compare_datasets(
         matched_rows = int(matches.sum())
         mismatched_rows = int((~matches).sum())
         total = matched_rows + mismatched_rows
-        agreement_rate = (matched_rows / total) if total else 1.0
+        agreement_rate = (matched_rows / total) if total else None
         column_comparisons.append(
             ColumnComparison(
                 primary_column=primary_column,
