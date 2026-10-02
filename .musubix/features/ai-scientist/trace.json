@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-02T03:11:36.112Z",
+  "generatedAt": "2026-10-02T04:50:19.152Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -1429,6 +1429,390 @@
       "line": 114
     },
     {
+      "id": "CODE-AISCI-021",
+      "kind": "code",
+      "path": "src/ai_scientist/completion_gate.py",
+      "line": 7
+    },
+    {
+      "id": "CODE-AISCI-009",
+      "kind": "code",
+      "path": "src/ai_scientist/data_analysis.py",
+      "line": 18
+    },
+    {
+      "id": "CODE-AISCI-020",
+      "kind": "code",
+      "path": "src/ai_scientist/evidence_registry.py",
+      "line": 60
+    },
+    {
+      "id": "CODE-AISCI-001",
+      "kind": "code",
+      "path": "src/ai_scientist/language.py",
+      "line": 6
+    },
+    {
+      "id": "CODE-AISCI-022",
+      "kind": "code",
+      "path": "src/ai_scientist/latex_renderer.py",
+      "line": 24
+    },
+    {
+      "id": "CODE-AISCI-023",
+      "kind": "code",
+      "path": "src/ai_scientist/manifest.py",
+      "line": 58
+    },
+    {
+      "id": "CODE-AISCI-010",
+      "kind": "code",
+      "path": "src/ai_scientist/manuscript.py",
+      "line": 44
+    },
+    {
+      "id": "CODE-AISCI-016",
+      "kind": "code",
+      "path": "src/ai_scientist/mcp_config.py",
+      "line": 37
+    },
+    {
+      "id": "CODE-AISCI-018",
+      "kind": "code",
+      "path": "src/ai_scientist/mcp_external.py",
+      "line": 33
+    },
+    {
+      "id": "CODE-AISCI-019",
+      "kind": "code",
+      "path": "src/ai_scientist/mcp_failures.py",
+      "line": 16
+    },
+    {
+      "id": "CODE-AISCI-015",
+      "kind": "code",
+      "path": "src/ai_scientist/mcp_gateway.py",
+      "line": 23
+    },
+    {
+      "id": "CODE-AISCI-017",
+      "kind": "code",
+      "path": "src/ai_scientist/mcp_managed.py",
+      "line": 52
+    },
+    {
+      "id": "CODE-AISCI-025",
+      "kind": "code",
+      "path": "src/ai_scientist/orchestrator.py",
+      "line": 47
+    },
+    {
+      "id": "CODE-AISCI-026",
+      "kind": "code",
+      "path": "src/ai_scientist/orchestrator.py",
+      "line": 58
+    },
+    {
+      "id": "CODE-AISCI-014",
+      "kind": "code",
+      "path": "src/ai_scientist/orchestrator.py",
+      "line": 92
+    },
+    {
+      "id": "CODE-AISCI-012",
+      "kind": "code",
+      "path": "src/ai_scientist/peer_review.py",
+      "line": 25
+    },
+    {
+      "id": "CODE-AISCI-006",
+      "kind": "code",
+      "path": "src/ai_scientist/phase_gate.py",
+      "line": 26
+    },
+    {
+      "id": "CODE-AISCI-004",
+      "kind": "code",
+      "path": "src/ai_scientist/phase_state.py",
+      "line": 92
+    },
+    {
+      "id": "CODE-AISCI-005",
+      "kind": "code",
+      "path": "src/ai_scientist/phase_state.py",
+      "line": 115
+    },
+    {
+      "id": "CODE-AISCI-007",
+      "kind": "code",
+      "path": "src/ai_scientist/phase_state.py",
+      "line": 144
+    },
+    {
+      "id": "CODE-AISCI-013",
+      "kind": "code",
+      "path": "src/ai_scientist/presentation.py",
+      "line": 18
+    },
+    {
+      "id": "CODE-AISCI-002",
+      "kind": "code",
+      "path": "src/ai_scientist/project_handle.py",
+      "line": 59
+    },
+    {
+      "id": "CODE-AISCI-024",
+      "kind": "code",
+      "path": "src/ai_scientist/tdd_gate.py",
+      "line": 16
+    },
+    {
+      "id": "CODE-EXAMPLE-001",
+      "kind": "code",
+      "path": "src/example_readiness.py",
+      "line": 4
+    },
+    {
+      "id": "TEST-AISCI-008",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 70
+    },
+    {
+      "id": "TEST-AISCI-029",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 108
+    },
+    {
+      "id": "TEST-AISCI-009",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 124
+    },
+    {
+      "id": "TEST-AISCI-010",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 143
+    },
+    {
+      "id": "TEST-AISCI-011",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 161
+    },
+    {
+      "id": "TEST-AISCI-012",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 180
+    },
+    {
+      "id": "TEST-AISCI-013",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 198
+    },
+    {
+      "id": "TEST-AISCI-014",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 231
+    },
+    {
+      "id": "TEST-AISCI-030",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 250
+    },
+    {
+      "id": "TEST-AISCI-021",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 265
+    },
+    {
+      "id": "TEST-AISCI-022",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 289
+    },
+    {
+      "id": "TEST-AISCI-034",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_delegation.py",
+      "line": 312
+    },
+    {
+      "id": "TEST-AISCI-033",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_evidence_registry.py",
+      "line": 21
+    },
+    {
+      "id": "TEST-AISCI-015",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 100
+    },
+    {
+      "id": "TEST-AISCI-037",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 132
+    },
+    {
+      "id": "TEST-AISCI-016",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 148
+    },
+    {
+      "id": "TEST-AISCI-038",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 225
+    },
+    {
+      "id": "TEST-AISCI-017",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 243
+    },
+    {
+      "id": "TEST-AISCI-018",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 309
+    },
+    {
+      "id": "TEST-AISCI-039",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 336
+    },
+    {
+      "id": "TEST-AISCI-031",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 365
+    },
+    {
+      "id": "TEST-AISCI-019",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 420
+    },
+    {
+      "id": "TEST-AISCI-032",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 453
+    },
+    {
+      "id": "TEST-AISCI-004",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_phase_state.py",
+      "line": 38
+    },
+    {
+      "id": "TEST-AISCI-005",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_phase_state.py",
+      "line": 66
+    },
+    {
+      "id": "TEST-AISCI-006",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_phase_state.py",
+      "line": 95
+    },
+    {
+      "id": "TEST-AISCI-025",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_phase_state.py",
+      "line": 118
+    },
+    {
+      "id": "TEST-AISCI-026",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_phase_state.py",
+      "line": 144
+    },
+    {
+      "id": "TEST-AISCI-027",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_phase_state.py",
+      "line": 161
+    },
+    {
+      "id": "TEST-AISCI-007",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_phase_state.py",
+      "line": 172
+    },
+    {
+      "id": "TEST-AISCI-020",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_phase_state.py",
+      "line": 212
+    },
+    {
+      "id": "TEST-AISCI-002",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_project_handle.py",
+      "line": 13
+    },
+    {
+      "id": "TEST-AISCI-040",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_project_handle.py",
+      "line": 27
+    },
+    {
+      "id": "TEST-AISCI-003",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_project_handle.py",
+      "line": 41
+    },
+    {
+      "id": "TEST-AISCI-001",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_skill_packaging.py",
+      "line": 37
+    },
+    {
+      "id": "TEST-AISCI-028",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_skill_packaging.py",
+      "line": 74
+    },
+    {
+      "id": "TEST-AISCI-023",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_skill_packaging.py",
+      "line": 96
+    },
+    {
+      "id": "TEST-AISCI-036",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_skill_packaging.py",
+      "line": 127
+    },
+    {
+      "id": "TEST-AISCI-024",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_skill_packaging.py",
+      "line": 154
+    },
+    {
+      "id": "TEST-AISCI-035",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_tdd_gate.py",
+      "line": 11
+    },
+    {
       "id": "TEST-AIDS-087",
       "kind": "test",
       "path": "tests/test_analysis_assumptions.py",
@@ -1607,6 +1991,12 @@
       "kind": "test",
       "path": "tests/test_eda.py",
       "line": 81
+    },
+    {
+      "id": "TEST-EXAMPLE-001",
+      "kind": "test",
+      "path": "tests/test_example_readiness.py",
+      "line": 4
     },
     {
       "id": "TEST-AIDS-022",
@@ -3744,6 +4134,521 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AISCI-021",
+      "to": "REQ-AISCI-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-021",
+      "to": "DES-AISCI-017",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-009",
+      "to": "REQ-AISCI-008",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-009",
+      "to": "DES-AISCI-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-020",
+      "to": "REQ-AISCI-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-020",
+      "to": "DES-AISCI-016",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-001",
+      "to": "REQ-AISCI-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-001",
+      "to": "DES-AISCI-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-001",
+      "to": "REQ-AISCI-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-001",
+      "to": "DES-AISCI-007",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-022",
+      "to": "REQ-AISCI-022",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-022",
+      "to": "DES-AISCI-018",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-023",
+      "to": "REQ-AISCI-023",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-023",
+      "to": "DES-AISCI-015",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-010",
+      "to": "REQ-AISCI-009",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-010",
+      "to": "DES-AISCI-006",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-010",
+      "to": "REQ-AISCI-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-010",
+      "to": "DES-AISCI-007",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-010",
+      "to": "REQ-AISCI-021",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-010",
+      "to": "REQ-AISCI-022",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-010",
+      "to": "DES-AISCI-018",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-016",
+      "to": "REQ-AISCI-016",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-016",
+      "to": "DES-AISCI-011",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-018",
+      "to": "REQ-AISCI-018",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-018",
+      "to": "DES-AISCI-013",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-019",
+      "to": "REQ-AISCI-019",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-019",
+      "to": "DES-AISCI-014",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-015",
+      "to": "REQ-AISCI-015",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-015",
+      "to": "DES-AISCI-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-017",
+      "to": "REQ-AISCI-017",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-017",
+      "to": "DES-AISCI-012",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-017",
+      "to": "REQ-AISCI-019",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-017",
+      "to": "DES-AISCI-014",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-025",
+      "to": "REQ-AISCI-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-025",
+      "to": "DES-AISCI-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-026",
+      "to": "REQ-AISCI-023",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-026",
+      "to": "DES-AISCI-015",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-014",
+      "to": "REQ-AISCI-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-014",
+      "to": "DES-AISCI-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-012",
+      "to": "REQ-AISCI-011",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-012",
+      "to": "REQ-AISCI-012",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-012",
+      "to": "REQ-AISCI-013",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-012",
+      "to": "DES-AISCI-008",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-006",
+      "to": "REQ-AISCI-006",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-006",
+      "to": "DES-AISCI-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-006",
+      "to": "REQ-AISCI-007",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-006",
+      "to": "DES-AISCI-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-004",
+      "to": "REQ-AISCI-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-004",
+      "to": "DES-AISCI-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-005",
+      "to": "REQ-AISCI-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-005",
+      "to": "DES-AISCI-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-007",
+      "to": "REQ-AISCI-007",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-007",
+      "to": "DES-AISCI-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-013",
+      "to": "REQ-AISCI-014",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-013",
+      "to": "DES-AISCI-009",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-002",
+      "to": "REQ-AISCI-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-002",
+      "to": "DES-AISCI-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-002",
+      "to": "REQ-AISCI-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-002",
+      "to": "DES-AISCI-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-024",
+      "to": "REQ-AISCI-024",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-024",
+      "to": "DES-AISCI-019",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-EXAMPLE-001",
+      "to": "REQ-EXAMPLE-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-EXAMPLE-001",
+      "to": "DES-EXAMPLE-001",
+      "relation": "implements"
+    },
+    {
+      "from": "TEST-AISCI-008",
+      "to": "REQ-AISCI-008",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-029",
+      "to": "REQ-AISCI-008",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-009",
+      "to": "REQ-AISCI-009",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-010",
+      "to": "REQ-AISCI-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-011",
+      "to": "REQ-AISCI-011",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-012",
+      "to": "REQ-AISCI-012",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-013",
+      "to": "REQ-AISCI-013",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-014",
+      "to": "REQ-AISCI-014",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-030",
+      "to": "REQ-AISCI-014",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-021",
+      "to": "REQ-AISCI-021",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-022",
+      "to": "REQ-AISCI-022",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-034",
+      "to": "REQ-AISCI-022",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-033",
+      "to": "REQ-AISCI-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-015",
+      "to": "REQ-AISCI-015",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-037",
+      "to": "REQ-AISCI-015",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-016",
+      "to": "REQ-AISCI-016",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-038",
+      "to": "REQ-AISCI-016",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-017",
+      "to": "REQ-AISCI-017",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-018",
+      "to": "REQ-AISCI-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-039",
+      "to": "REQ-AISCI-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-031",
+      "to": "REQ-AISCI-017",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-019",
+      "to": "REQ-AISCI-019",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-032",
+      "to": "REQ-AISCI-019",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-004",
+      "to": "REQ-AISCI-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-005",
+      "to": "REQ-AISCI-005",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-006",
+      "to": "REQ-AISCI-006",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-025",
+      "to": "REQ-AISCI-006",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-026",
+      "to": "REQ-AISCI-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-027",
+      "to": "REQ-AISCI-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-007",
+      "to": "REQ-AISCI-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-020",
+      "to": "REQ-AISCI-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-002",
+      "to": "REQ-AISCI-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-040",
+      "to": "REQ-AISCI-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-003",
+      "to": "REQ-AISCI-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-001",
+      "to": "REQ-AISCI-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-028",
+      "to": "REQ-AISCI-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-023",
+      "to": "REQ-AISCI-023",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-036",
+      "to": "REQ-AISCI-023",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-024",
+      "to": "REQ-AISCI-024",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-035",
+      "to": "REQ-AISCI-024",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AIDS-087",
       "to": "REQ-AIDS-054",
       "relation": "verifies"
@@ -3891,6 +4796,11 @@
     {
       "from": "TEST-AIDS-056",
       "to": "REQ-AIDS-043",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-EXAMPLE-001",
+      "to": "REQ-EXAMPLE-001",
       "relation": "verifies"
     },
     {
@@ -4266,6 +5176,12 @@
   ],
   "diagnostics": [],
   "fingerprints": {
+    ".github/skills/japanese-prose/scripts/core.py": "62ae6ecaec379b08c0bf117ed6c232cfce794c69895fa86fd93059dbe5ae5341",
+    ".github/skills/japanese-prose/scripts/lint.py": "06df08d56c86de047d0902a2f602d30b344a9d78a4abb71faa90139dbf1e2797",
+    ".github/skills/japanese-prose/scripts/outline.py": "9b8763fa5dcc28c1d9f9d71e25f410e7c5af40625a1801579d132a5918525633",
+    ".github/skills/japanese-prose/scripts/terms.py": "790b83b8a603320a0216f0c2f39388d0ffb1ba24494960eb291c8761dc5c0a2b",
+    ".github/skills/japanese-prose/scripts/test_engine.py": "fe0915337922a5baf4a60a9965796e9710291b30b00703f69ce32f64c9e17451",
+    ".github/skills/tech-writer/scripts/lint.py": "b0c14d073f79bce5b74e523eb02ecb80e979c2e5bdca047bb538fdbde2164303",
     ".musubix/decisions/ADR-0001.md": "6e21f1b375cfa1aabdf058b1dc987f94974dc23571fe60e94ba340dc48295b0f",
     ".musubix/decisions/ADR-0002.md": "0ac86056b84b2bd6951adf4664f6217d074b79637f5d573a1833daf1831285a8",
     ".musubix/decisions/ADR-0003.md": "d36aeeec3fd830681c7efe7779b88cb3beed91770f99faf2bcdb3f8961916007",
@@ -4324,6 +5240,40 @@
     "src/ai_data_scientist/text_nlp.py": "bb7ee36f88f69ba683b82dae4fee06b3a1ff004774d57973ee60c9b0f53f3985",
     "src/ai_data_scientist/timeseries.py": "9c36ccab2c39d70815a3e5cd55e8b79679d7678107a39fda02a22ab665263dc5",
     "src/ai_data_scientist/visualization.py": "9530eab051be0934fd7d9a2bfe620c35fd522aec130e98f633156320d6f05cdb",
+    "src/ai_scientist/__init__.py": "a345a551ec27ec6fdee98a773416f6c07eb8a205ded47a9e6759edffb829f177",
+    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+    "src/ai_scientist/data_analysis.py": "c20f0d9bd383c442a1588dc326a8c7771b3c52738c5a3158f1662214aa7c4961",
+    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+    "src/ai_scientist/experimental_design.py": "2578592cc19ddf88e101d010d78a52095bd9e7d62a6a818b5016282cd76bd1f5",
+    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+    "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+    "src/ai_scientist/literature_review.py": "2ca45e00e89aab05a9ba85669a47567f95ee786e2fe72aaafc540021da388280",
+    "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+    "src/ai_scientist/mcp_external.py": "03fea05f6719311c9a953ab1aadb13fb22742f43918d6246ffb03a61dcbcf55d",
+    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+    "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
+    "src/ai_scientist/mcp_managed.py": "da4bb4aba41862dab674e6f2fed540a558bff87022feec68adf4c14955f3dda4",
+    "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
+    "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+    "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+    "src/ai_scientist/presentation.py": "0afe126b78927d0d7f1e15c54a7729dda4a9924c7d2bf80e608f945bc75ffe7f",
+    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+    "src/ai_scientist/reproducibility.py": "8b60b10265121d83f891b95acaffacc2cf398274fd6c5a95104fb6e924eb6b8d",
+    "src/ai_scientist/research_planning.py": "ee967fa8995cb70d1ecc22896eda3d586b2f06a61062fa689b69dbad1c4c3755",
+    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f",
+    "src/ai_scientist/tdd_gate.py": "d278321c459fc32cd235dc77e8a3bdc94049655bf7e4ef1e825f7b5bedc4ebf7",
+    "src/example_readiness.py": "b4deef302d05db806ccb39216aea65dcbdcc34c52b493aa81eb22842bc4bd190",
+    "tests/test_ai_scientist_delegation.py": "b7e919785ed77b2eca3893f0c791ac283b9714c72d7abf76dcc5595268a31dbb",
+    "tests/test_ai_scientist_evidence_registry.py": "e56432547cce3850a3837d9a2374f2a57be9f7fc03ec262fcb9f2bae7f319918",
+    "tests/test_ai_scientist_mcp.py": "394b710a759e18c7cbfe37315cda46798148ef2eaed02bc87a69dde7c2dfa756",
+    "tests/test_ai_scientist_phase_state.py": "0d26f43230f37d5968101e38efe2889fd2a8dc8c575dcc3d1e34fdc4e2e3cf12",
+    "tests/test_ai_scientist_project_handle.py": "02392815e0153fd76d547de9429a74c5f10c88089970ec9355d824307ebba3f4",
+    "tests/test_ai_scientist_skill_packaging.py": "9acb3d8a5ad408018c8e9253fe9f4b0095ec41e528c451300f5b49e64704a75e",
+    "tests/test_ai_scientist_tdd_gate.py": "82f8294201e8067ea658b20b7ea043e9db7df3bacd89188bfb08751abf4248ab",
     "tests/test_analysis_assumptions.py": "665331b6baaeb624bd3562989a6925c4e80a269d2d0dfce93c3acbe7b21731d8",
     "tests/test_anomaly_detection.py": "1d3cdaabb41d4dc2f7d0b0278d6645cee4d0d11557aa4519a7de0376a083d3ba",
     "tests/test_automl.py": "8143813b6142f3e83cd5117ecb0025a161963b616b4480cf76cbbe1859e5989a",
@@ -4335,6 +5285,7 @@
     "tests/test_dataset_validation.py": "3eaa02bc9c2f8005daff8e1ac6d1c4474eb2bf64ead25cdc64364ec46677cb7a",
     "tests/test_dependency_pins.py": "40aa635b09a8f4ea952266a7cfe36826383a668f619664eb68063c11afaecac5",
     "tests/test_eda.py": "c1788a18c88015b40a6edf311a3c9f80bad2de40a4a51bbfc4618f363bc6eceb",
+    "tests/test_example_readiness.py": "fc39997318a3cfecae12afaff9360d9041e8f6f989d3f29c3bb0bf6d2759b974",
     "tests/test_experiment_evaluation.py": "fb86918ae84bfa34f8e386dfc92a8b16d51d09f836da52915d4528dcc5e843b9",
     "tests/test_explainability.py": "f150b75da3143cb2d42777f8f858e628ca7db4f33a9037973ada44f80498e233",
     "tests/test_feature_engineering.py": "e25775ae6e5a5078f570dfb91f0c773d8b2846139571a47e536bf4e68cf86977",

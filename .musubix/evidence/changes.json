@@ -363,8 +363,2160 @@
             }
           },
           "order": 219
+        },
+        "red": {
+          "phase": "red",
+          "recordedAt": "2026-10-02T03:55:27.877Z",
+          "fingerprints": {
+            "impact": "57058b0c11550fc5701896870e35f67c239322f539a632e406943c1b93f4ab35",
+            "requirements": "ff4fa6661a040f105a643b4a063eb3cf46f0175fda8273b1683b070465751a18",
+            "design": "01662ccc0a2c740382973b008749170a7226552de7017e3084fde718952cdaec",
+            "implementation": "1bea84e9a8ada71c0b923c4d382d5132513db1c1f9563c481eea1c950a213d45",
+            "tests": "e51e8d1981a7a031f4be95c52a33e10370aaec1a3754ea2c624ad7bc0952384f",
+            "tdd": "6f2d98084667578112f8a89967e7db9adb46c75a83d8c201727194461803b200",
+            "requirementImplementations": {
+              "REQ-AISCI-001": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/mcp_gateway.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/data_analysis.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/experimental_design.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/latex_renderer.py",
+                  "src/ai_scientist/literature_review.py",
+                  "src/ai_scientist/manifest.py",
+                  "src/ai_scientist/manuscript.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_gateway.py",
+                  "src/ai_scientist/orchestrator.py",
+                  "src/ai_scientist/peer_review.py",
+                  "src/ai_scientist/phase_gate.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/presentation.py",
+                  "src/ai_scientist/project_config.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/reproducibility.py",
+                  "src/ai_scientist/research_planning.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/mcp_gateway.py": "ac01ea9c030e759ea6c97f809de9b44ed09f83e8321fd0b9d3e0fee818abca55",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/data_analysis.py": "a7e72ee64db82641723881dc47508dbc53b59c0d556086f0390b7eb932453b89",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/experimental_design.py": "2578592cc19ddf88e101d010d78a52095bd9e7d62a6a818b5016282cd76bd1f5",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/latex_renderer.py": "5f9bafa6d26cbf19886c51fdf06187cac90c6ce8f8fcee4b01e2d5f716b331af",
+                  "src/ai_scientist/literature_review.py": "2ca45e00e89aab05a9ba85669a47567f95ee786e2fe72aaafc540021da388280",
+                  "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+                  "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_gateway.py": "8df4865fcb6434f552707d8ce7a1ceb5629cb9d054d84c1ee125b556a19038ef",
+                  "src/ai_scientist/orchestrator.py": "4e5f051fcafa4f2de2cfdb7710e6d53de94e678e9acd2010cca503e14ad99f95",
+                  "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                  "src/ai_scientist/phase_gate.py": "2f4d1aa406e25b5dccae4722020327f8c1d1ce804ed1beb3e3163f374151e9bf",
+                  "src/ai_scientist/phase_state.py": "2e746b2df7015c82d503f0b1d76572dbe9e222e74201ed0819e09ba407dd4296",
+                  "src/ai_scientist/presentation.py": "19cfdb2cdebfaf5e326d2f4a22c9941876b15e53d59acd84aa1b1c368d989b5d",
+                  "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                  "src/ai_scientist/reproducibility.py": "8b60b10265121d83f891b95acaffacc2cf398274fd6c5a95104fb6e924eb6b8d",
+                  "src/ai_scientist/research_planning.py": "ee967fa8995cb70d1ecc22896eda3d586b2f06a61062fa689b69dbad1c4c3755",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-002": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                }
+              },
+              "REQ-AISCI-003": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                }
+              },
+              "REQ-AISCI-004": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/phase_state.py": "2e746b2df7015c82d503f0b1d76572dbe9e222e74201ed0819e09ba407dd4296",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                }
+              },
+              "REQ-AISCI-005": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/phase_state.py": "2e746b2df7015c82d503f0b1d76572dbe9e222e74201ed0819e09ba407dd4296",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                }
+              },
+              "REQ-AISCI-006": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_gate.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/phase_gate.py": "2f4d1aa406e25b5dccae4722020327f8c1d1ce804ed1beb3e3163f374151e9bf",
+                  "src/ai_scientist/phase_state.py": "2e746b2df7015c82d503f0b1d76572dbe9e222e74201ed0819e09ba407dd4296",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                }
+              },
+              "REQ-AISCI-007": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_gate.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/phase_gate.py": "2f4d1aa406e25b5dccae4722020327f8c1d1ce804ed1beb3e3163f374151e9bf",
+                  "src/ai_scientist/phase_state.py": "2e746b2df7015c82d503f0b1d76572dbe9e222e74201ed0819e09ba407dd4296",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                }
+              },
+              "REQ-AISCI-008": {
+                "paths": [
+                  "src/ai_data_scientist/mcp_gateway.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/data_analysis.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/mcp_gateway.py": "ac01ea9c030e759ea6c97f809de9b44ed09f83e8321fd0b9d3e0fee818abca55",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/data_analysis.py": "a7e72ee64db82641723881dc47508dbc53b59c0d556086f0390b7eb932453b89",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                }
+              },
+              "REQ-AISCI-009": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/latex_renderer.py",
+                  "src/ai_scientist/manuscript.py",
+                  "src/ai_scientist/project_config.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/latex_renderer.py": "5f9bafa6d26cbf19886c51fdf06187cac90c6ce8f8fcee4b01e2d5f716b331af",
+                  "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                  "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-010": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/latex_renderer.py",
+                  "src/ai_scientist/manuscript.py",
+                  "src/ai_scientist/project_config.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/latex_renderer.py": "5f9bafa6d26cbf19886c51fdf06187cac90c6ce8f8fcee4b01e2d5f716b331af",
+                  "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                  "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-011": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/peer_review.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-012": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/peer_review.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-013": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/peer_review.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-014": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/presentation.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/presentation.py": "19cfdb2cdebfaf5e326d2f4a22c9941876b15e53d59acd84aa1b1c368d989b5d",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-015": {
+                "paths": [
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_gateway.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_gateway.py": "8df4865fcb6434f552707d8ce7a1ceb5629cb9d054d84c1ee125b556a19038ef"
+                }
+              },
+              "REQ-AISCI-016": {
+                "paths": [
+                  "src/ai_scientist/mcp_config.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_config.py": "e4488fb366230bf51b7d35caa2a59318247b8cfc1db436196ebc4ce60764dd53"
+                }
+              },
+              "REQ-AISCI-017": {
+                "paths": [
+                  "src/ai_scientist/mcp_config.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_managed.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_config.py": "e4488fb366230bf51b7d35caa2a59318247b8cfc1db436196ebc4ce60764dd53",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_managed.py": "8ad38babf1f6ce6a88a1f9c78bdf3f1dad7190f7fbae60940e3954772895a07b"
+                }
+              },
+              "REQ-AISCI-018": {
+                "paths": [
+                  "src/ai_scientist/mcp_config.py",
+                  "src/ai_scientist/mcp_external.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_config.py": "e4488fb366230bf51b7d35caa2a59318247b8cfc1db436196ebc4ce60764dd53",
+                  "src/ai_scientist/mcp_external.py": "600109880157019d0637f8d046fcbe428d08e1b1befbb77fc436911de0955ee4"
+                }
+              },
+              "REQ-AISCI-019": {
+                "paths": [
+                  "src/ai_scientist/mcp_failures.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd"
+                }
+              },
+              "REQ-AISCI-020": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                }
+              },
+              "REQ-AISCI-021": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/latex_renderer.py",
+                  "src/ai_scientist/manuscript.py",
+                  "src/ai_scientist/project_config.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/latex_renderer.py": "5f9bafa6d26cbf19886c51fdf06187cac90c6ce8f8fcee4b01e2d5f716b331af",
+                  "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                  "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-022": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/latex_renderer.py",
+                  "src/ai_scientist/manuscript.py",
+                  "src/ai_scientist/project_config.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/latex_renderer.py": "5f9bafa6d26cbf19886c51fdf06187cac90c6ce8f8fcee4b01e2d5f716b331af",
+                  "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                  "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                  "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-023": {
+                "paths": [
+                  "src/ai_scientist/manifest.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f"
+                }
+              },
+              "REQ-AISCI-024": {
+                "paths": [
+                  "src/ai_scientist/tdd_gate.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/tdd_gate.py": "a18f18eef9424d13dad02d48c911f1d8f679afadbbfa0a93ecb25918b4a91c3a"
+                }
+              }
+            }
+          },
+          "order": 271
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-02T04:33:39.540Z",
+          "fingerprints": {
+            "impact": "57058b0c11550fc5701896870e35f67c239322f539a632e406943c1b93f4ab35",
+            "requirements": "ff4fa6661a040f105a643b4a063eb3cf46f0175fda8273b1683b070465751a18",
+            "design": "01662ccc0a2c740382973b008749170a7226552de7017e3084fde718952cdaec",
+            "implementation": "2bb8ab21e097862927adc4081d68c2281a76cee618555bea2538ebd4aaedc5bb",
+            "tests": "92f9af381054678dff3e0133e69170971185f457cffa243bbf03b1cc2ff749bf",
+            "tdd": "3645525b4e055cef8356d620f0a6556d8e27b5f1ab44d6703f2baf937abfdb47",
+            "requirementImplementations": {
+              "REQ-AISCI-001": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/manifest.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_gateway.py",
+                  "src/ai_scientist/orchestrator.py",
+                  "src/ai_scientist/phase_gate.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
+                  "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
+                  "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                  "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-002": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-003": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-004": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-005": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-006": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_gate.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                  "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-007": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_gate.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                  "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-008": {
+                "paths": [
+                  "src/ai_data_scientist/mcp_gateway.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/data_analysis.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/mcp_gateway.py": "ac01ea9c030e759ea6c97f809de9b44ed09f83e8321fd0b9d3e0fee818abca55",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/data_analysis.py": "c20f0d9bd383c442a1588dc326a8c7771b3c52738c5a3158f1662214aa7c4961",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-009": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/latex_renderer.py",
+                  "src/ai_scientist/manuscript.py",
+                  "src/ai_scientist/project_config.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                  "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                  "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-010": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/latex_renderer.py",
+                  "src/ai_scientist/manuscript.py",
+                  "src/ai_scientist/project_config.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                  "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                  "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-011": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/peer_review.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-012": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/peer_review.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-013": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/peer_review.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-014": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/presentation.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/presentation.py": "0afe126b78927d0d7f1e15c54a7729dda4a9924c7d2bf80e608f945bc75ffe7f",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-015": {
+                "paths": [
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_gateway.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047"
+                }
+              },
+              "REQ-AISCI-016": {
+                "paths": [
+                  "src/ai_scientist/mcp_config.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a"
+                }
+              },
+              "REQ-AISCI-017": {
+                "paths": [
+                  "src/ai_scientist/mcp_config.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_managed.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_managed.py": "da4bb4aba41862dab674e6f2fed540a558bff87022feec68adf4c14955f3dda4"
+                }
+              },
+              "REQ-AISCI-018": {
+                "paths": [
+                  "src/ai_scientist/mcp_config.py",
+                  "src/ai_scientist/mcp_external.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                  "src/ai_scientist/mcp_external.py": "03fea05f6719311c9a953ab1aadb13fb22742f43918d6246ffb03a61dcbcf55d"
+                }
+              },
+              "REQ-AISCI-019": {
+                "paths": [
+                  "src/ai_scientist/mcp_config.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_managed.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_managed.py": "da4bb4aba41862dab674e6f2fed540a558bff87022feec68adf4c14955f3dda4"
+                }
+              },
+              "REQ-AISCI-020": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-021": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/latex_renderer.py",
+                  "src/ai_scientist/manuscript.py",
+                  "src/ai_scientist/project_config.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                  "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                  "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-022": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/latex_renderer.py",
+                  "src/ai_scientist/manuscript.py",
+                  "src/ai_scientist/project_config.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                  "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                  "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-023": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/manifest.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_gateway.py",
+                  "src/ai_scientist/orchestrator.py",
+                  "src/ai_scientist/phase_gate.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
+                  "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
+                  "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                  "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              },
+              "REQ-AISCI-024": {
+                "paths": [
+                  "src/ai_scientist/tdd_gate.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/tdd_gate.py": "d278321c459fc32cd235dc77e8a3bdc94049655bf7e4ef1e825f7b5bedc4ebf7"
+                }
+              }
+            }
+          },
+          "order": 310
         }
-      }
+      },
+      "tddBatches": [
+        {
+          "requirementIds": [
+            "REQ-AISCI-004",
+            "REQ-AISCI-005",
+            "REQ-AISCI-006",
+            "REQ-AISCI-007"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T04:06:00.867Z",
+            "fingerprints": {
+              "impact": "57058b0c11550fc5701896870e35f67c239322f539a632e406943c1b93f4ab35",
+              "requirements": "ff4fa6661a040f105a643b4a063eb3cf46f0175fda8273b1683b070465751a18",
+              "design": "01662ccc0a2c740382973b008749170a7226552de7017e3084fde718952cdaec",
+              "implementation": "af4eb464c9a8c88272e662b722211478ff34b77057f05174882aa726de04e2f3",
+              "tests": "1a6ac6f753bb2b7e88e8fd0d6f054d394d3d178878dc77b6b92feb35ffa2cee1",
+              "tdd": "379d55ef9576356d1db87a2e553b5e76e623abafba4b923ce626636c2e700955",
+              "requirementImplementations": {
+                "REQ-AISCI-004": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_state.py": "6a3b9bee9ea54b8cd93b8f3d23ea0d99ccd4e941822116d9fe38680fbb8f9179",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-005": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_state.py": "6a3b9bee9ea54b8cd93b8f3d23ea0d99ccd4e941822116d9fe38680fbb8f9179",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-006": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_gate.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_gate.py": "68bd54295c937499d6e41311fc180fb45220ccd628e916c173449e287d8b39a6",
+                    "src/ai_scientist/phase_state.py": "6a3b9bee9ea54b8cd93b8f3d23ea0d99ccd4e941822116d9fe38680fbb8f9179",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-007": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_gate.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_gate.py": "68bd54295c937499d6e41311fc180fb45220ccd628e916c173449e287d8b39a6",
+                    "src/ai_scientist/phase_state.py": "6a3b9bee9ea54b8cd93b8f3d23ea0d99ccd4e941822116d9fe38680fbb8f9179",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                }
+              }
+            },
+            "order": 276
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-02T04:08:27.867Z",
+            "fingerprints": {
+              "impact": "57058b0c11550fc5701896870e35f67c239322f539a632e406943c1b93f4ab35",
+              "requirements": "ff4fa6661a040f105a643b4a063eb3cf46f0175fda8273b1683b070465751a18",
+              "design": "01662ccc0a2c740382973b008749170a7226552de7017e3084fde718952cdaec",
+              "implementation": "4c83fea06f9897199c519caadab464522278c580cf97d86996bf2b9561448c71",
+              "tests": "ba8a9ee809dfb15b1233d7ff333c371b4195c083c0662e0336942e284efd91af",
+              "tdd": "021f05c5f0a5d029eb2ae87df4bb07706805ff6d6aa4bbde2627d5fe8015967a",
+              "requirementImplementations": {
+                "REQ-AISCI-004": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-005": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-006": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_gate.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-007": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_gate.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                }
+              }
+            },
+            "order": 279
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-02T04:08:32.958Z",
+            "fingerprints": {
+              "impact": "57058b0c11550fc5701896870e35f67c239322f539a632e406943c1b93f4ab35",
+              "requirements": "ff4fa6661a040f105a643b4a063eb3cf46f0175fda8273b1683b070465751a18",
+              "design": "01662ccc0a2c740382973b008749170a7226552de7017e3084fde718952cdaec",
+              "implementation": "4c83fea06f9897199c519caadab464522278c580cf97d86996bf2b9561448c71",
+              "tests": "ba8a9ee809dfb15b1233d7ff333c371b4195c083c0662e0336942e284efd91af",
+              "tdd": "021f05c5f0a5d029eb2ae87df4bb07706805ff6d6aa4bbde2627d5fe8015967a",
+              "requirementImplementations": {
+                "REQ-AISCI-004": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-005": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-006": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_gate.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-007": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_gate.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                }
+              }
+            },
+            "order": 280
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AISCI-001",
+            "REQ-AISCI-002",
+            "REQ-AISCI-003",
+            "REQ-AISCI-008",
+            "REQ-AISCI-009",
+            "REQ-AISCI-010",
+            "REQ-AISCI-011",
+            "REQ-AISCI-012",
+            "REQ-AISCI-013",
+            "REQ-AISCI-014",
+            "REQ-AISCI-015",
+            "REQ-AISCI-016",
+            "REQ-AISCI-017",
+            "REQ-AISCI-018",
+            "REQ-AISCI-019",
+            "REQ-AISCI-020",
+            "REQ-AISCI-021",
+            "REQ-AISCI-022",
+            "REQ-AISCI-023",
+            "REQ-AISCI-024"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T04:09:05.461Z",
+            "fingerprints": {
+              "impact": "57058b0c11550fc5701896870e35f67c239322f539a632e406943c1b93f4ab35",
+              "requirements": "ff4fa6661a040f105a643b4a063eb3cf46f0175fda8273b1683b070465751a18",
+              "design": "01662ccc0a2c740382973b008749170a7226552de7017e3084fde718952cdaec",
+              "implementation": "4c83fea06f9897199c519caadab464522278c580cf97d86996bf2b9561448c71",
+              "tests": "ba8a9ee809dfb15b1233d7ff333c371b4195c083c0662e0336942e284efd91af",
+              "tdd": "021f05c5f0a5d029eb2ae87df4bb07706805ff6d6aa4bbde2627d5fe8015967a",
+              "requirementImplementations": {
+                "REQ-AISCI-001": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/mcp_gateway.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/data_analysis.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/experimental_design.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/literature_review.py",
+                    "src/ai_scientist/manifest.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_gateway.py",
+                    "src/ai_scientist/orchestrator.py",
+                    "src/ai_scientist/peer_review.py",
+                    "src/ai_scientist/phase_gate.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/presentation.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/reproducibility.py",
+                    "src/ai_scientist/research_planning.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/mcp_gateway.py": "ac01ea9c030e759ea6c97f809de9b44ed09f83e8321fd0b9d3e0fee818abca55",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/data_analysis.py": "a7e72ee64db82641723881dc47508dbc53b59c0d556086f0390b7eb932453b89",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/experimental_design.py": "2578592cc19ddf88e101d010d78a52095bd9e7d62a6a818b5016282cd76bd1f5",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "5f9bafa6d26cbf19886c51fdf06187cac90c6ce8f8fcee4b01e2d5f716b331af",
+                    "src/ai_scientist/literature_review.py": "2ca45e00e89aab05a9ba85669a47567f95ee786e2fe72aaafc540021da388280",
+                    "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_gateway.py": "8df4865fcb6434f552707d8ce7a1ceb5629cb9d054d84c1ee125b556a19038ef",
+                    "src/ai_scientist/orchestrator.py": "4e5f051fcafa4f2de2cfdb7710e6d53de94e678e9acd2010cca503e14ad99f95",
+                    "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                    "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/presentation.py": "19cfdb2cdebfaf5e326d2f4a22c9941876b15e53d59acd84aa1b1c368d989b5d",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                    "src/ai_scientist/reproducibility.py": "8b60b10265121d83f891b95acaffacc2cf398274fd6c5a95104fb6e924eb6b8d",
+                    "src/ai_scientist/research_planning.py": "ee967fa8995cb70d1ecc22896eda3d586b2f06a61062fa689b69dbad1c4c3755",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-002": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-003": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-008": {
+                  "paths": [
+                    "src/ai_data_scientist/mcp_gateway.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/data_analysis.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/mcp_gateway.py": "ac01ea9c030e759ea6c97f809de9b44ed09f83e8321fd0b9d3e0fee818abca55",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/data_analysis.py": "a7e72ee64db82641723881dc47508dbc53b59c0d556086f0390b7eb932453b89",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-009": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "5f9bafa6d26cbf19886c51fdf06187cac90c6ce8f8fcee4b01e2d5f716b331af",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-010": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "5f9bafa6d26cbf19886c51fdf06187cac90c6ce8f8fcee4b01e2d5f716b331af",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-011": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/peer_review.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-012": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/peer_review.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-013": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/peer_review.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-014": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/presentation.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/presentation.py": "19cfdb2cdebfaf5e326d2f4a22c9941876b15e53d59acd84aa1b1c368d989b5d",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-015": {
+                  "paths": [
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_gateway.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_gateway.py": "8df4865fcb6434f552707d8ce7a1ceb5629cb9d054d84c1ee125b556a19038ef"
+                  }
+                },
+                "REQ-AISCI-016": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "e4488fb366230bf51b7d35caa2a59318247b8cfc1db436196ebc4ce60764dd53"
+                  }
+                },
+                "REQ-AISCI-017": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_managed.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "e4488fb366230bf51b7d35caa2a59318247b8cfc1db436196ebc4ce60764dd53",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_managed.py": "8ad38babf1f6ce6a88a1f9c78bdf3f1dad7190f7fbae60940e3954772895a07b"
+                  }
+                },
+                "REQ-AISCI-018": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py",
+                    "src/ai_scientist/mcp_external.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "e4488fb366230bf51b7d35caa2a59318247b8cfc1db436196ebc4ce60764dd53",
+                    "src/ai_scientist/mcp_external.py": "600109880157019d0637f8d046fcbe428d08e1b1befbb77fc436911de0955ee4"
+                  }
+                },
+                "REQ-AISCI-019": {
+                  "paths": [
+                    "src/ai_scientist/mcp_failures.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd"
+                  }
+                },
+                "REQ-AISCI-020": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba"
+                  }
+                },
+                "REQ-AISCI-021": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "5f9bafa6d26cbf19886c51fdf06187cac90c6ce8f8fcee4b01e2d5f716b331af",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-022": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "80a36e1d11ebc3121dc5ccc93b0f7cd0d5f0adcffbd44256c828bc4df2ec3c45",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "5f9bafa6d26cbf19886c51fdf06187cac90c6ce8f8fcee4b01e2d5f716b331af",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "fa34f9415dd096df49333f590abb2fc8f15e0246cf8d89689f64ed9fec4820ba",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-023": {
+                  "paths": [
+                    "src/ai_scientist/manifest.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f"
+                  }
+                },
+                "REQ-AISCI-024": {
+                  "paths": [
+                    "src/ai_scientist/tdd_gate.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/tdd_gate.py": "a18f18eef9424d13dad02d48c911f1d8f679afadbbfa0a93ecb25918b4a91c3a"
+                  }
+                }
+              }
+            },
+            "order": 281
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-02T04:33:25.168Z",
+            "fingerprints": {
+              "impact": "57058b0c11550fc5701896870e35f67c239322f539a632e406943c1b93f4ab35",
+              "requirements": "ff4fa6661a040f105a643b4a063eb3cf46f0175fda8273b1683b070465751a18",
+              "design": "01662ccc0a2c740382973b008749170a7226552de7017e3084fde718952cdaec",
+              "implementation": "2bb8ab21e097862927adc4081d68c2281a76cee618555bea2538ebd4aaedc5bb",
+              "tests": "92f9af381054678dff3e0133e69170971185f457cffa243bbf03b1cc2ff749bf",
+              "tdd": "3645525b4e055cef8356d620f0a6556d8e27b5f1ab44d6703f2baf937abfdb47",
+              "requirementImplementations": {
+                "REQ-AISCI-001": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/manifest.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_gateway.py",
+                    "src/ai_scientist/orchestrator.py",
+                    "src/ai_scientist/phase_gate.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
+                    "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
+                    "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-002": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                  }
+                },
+                "REQ-AISCI-003": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                  }
+                },
+                "REQ-AISCI-008": {
+                  "paths": [
+                    "src/ai_data_scientist/mcp_gateway.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/data_analysis.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/mcp_gateway.py": "ac01ea9c030e759ea6c97f809de9b44ed09f83e8321fd0b9d3e0fee818abca55",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/data_analysis.py": "c20f0d9bd383c442a1588dc326a8c7771b3c52738c5a3158f1662214aa7c4961",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                  }
+                },
+                "REQ-AISCI-009": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-010": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-011": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/peer_review.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-012": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/peer_review.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-013": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/peer_review.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-014": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/presentation.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/presentation.py": "0afe126b78927d0d7f1e15c54a7729dda4a9924c7d2bf80e608f945bc75ffe7f",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-015": {
+                  "paths": [
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_gateway.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047"
+                  }
+                },
+                "REQ-AISCI-016": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a"
+                  }
+                },
+                "REQ-AISCI-017": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_managed.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_managed.py": "da4bb4aba41862dab674e6f2fed540a558bff87022feec68adf4c14955f3dda4"
+                  }
+                },
+                "REQ-AISCI-018": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py",
+                    "src/ai_scientist/mcp_external.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                    "src/ai_scientist/mcp_external.py": "03fea05f6719311c9a953ab1aadb13fb22742f43918d6246ffb03a61dcbcf55d"
+                  }
+                },
+                "REQ-AISCI-019": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_managed.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_managed.py": "da4bb4aba41862dab674e6f2fed540a558bff87022feec68adf4c14955f3dda4"
+                  }
+                },
+                "REQ-AISCI-020": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                  }
+                },
+                "REQ-AISCI-021": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-022": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-023": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/manifest.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_gateway.py",
+                    "src/ai_scientist/orchestrator.py",
+                    "src/ai_scientist/phase_gate.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
+                    "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
+                    "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-024": {
+                  "paths": [
+                    "src/ai_scientist/tdd_gate.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/tdd_gate.py": "d278321c459fc32cd235dc77e8a3bdc94049655bf7e4ef1e825f7b5bedc4ebf7"
+                  }
+                }
+              }
+            },
+            "order": 308
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-02T04:33:32.177Z",
+            "fingerprints": {
+              "impact": "57058b0c11550fc5701896870e35f67c239322f539a632e406943c1b93f4ab35",
+              "requirements": "ff4fa6661a040f105a643b4a063eb3cf46f0175fda8273b1683b070465751a18",
+              "design": "01662ccc0a2c740382973b008749170a7226552de7017e3084fde718952cdaec",
+              "implementation": "2bb8ab21e097862927adc4081d68c2281a76cee618555bea2538ebd4aaedc5bb",
+              "tests": "92f9af381054678dff3e0133e69170971185f457cffa243bbf03b1cc2ff749bf",
+              "tdd": "3645525b4e055cef8356d620f0a6556d8e27b5f1ab44d6703f2baf937abfdb47",
+              "requirementImplementations": {
+                "REQ-AISCI-001": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/manifest.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_gateway.py",
+                    "src/ai_scientist/orchestrator.py",
+                    "src/ai_scientist/phase_gate.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
+                    "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
+                    "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-002": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                  }
+                },
+                "REQ-AISCI-003": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                  }
+                },
+                "REQ-AISCI-008": {
+                  "paths": [
+                    "src/ai_data_scientist/mcp_gateway.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/data_analysis.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/mcp_gateway.py": "ac01ea9c030e759ea6c97f809de9b44ed09f83e8321fd0b9d3e0fee818abca55",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/data_analysis.py": "c20f0d9bd383c442a1588dc326a8c7771b3c52738c5a3158f1662214aa7c4961",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                  }
+                },
+                "REQ-AISCI-009": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-010": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-011": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/peer_review.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-012": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/peer_review.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-013": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/peer_review.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-014": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/presentation.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/presentation.py": "0afe126b78927d0d7f1e15c54a7729dda4a9924c7d2bf80e608f945bc75ffe7f",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-015": {
+                  "paths": [
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_gateway.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047"
+                  }
+                },
+                "REQ-AISCI-016": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a"
+                  }
+                },
+                "REQ-AISCI-017": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_managed.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_managed.py": "da4bb4aba41862dab674e6f2fed540a558bff87022feec68adf4c14955f3dda4"
+                  }
+                },
+                "REQ-AISCI-018": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py",
+                    "src/ai_scientist/mcp_external.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                    "src/ai_scientist/mcp_external.py": "03fea05f6719311c9a953ab1aadb13fb22742f43918d6246ffb03a61dcbcf55d"
+                  }
+                },
+                "REQ-AISCI-019": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_managed.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_managed.py": "da4bb4aba41862dab674e6f2fed540a558bff87022feec68adf4c14955f3dda4"
+                  }
+                },
+                "REQ-AISCI-020": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                  }
+                },
+                "REQ-AISCI-021": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-022": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/latex_renderer.py",
+                    "src/ai_scientist/manuscript.py",
+                    "src/ai_scientist/project_config.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/latex_renderer.py": "4e0a5df534bd9a3590555ef27e2df17a5dc405284701c8888ee110c3d8f48061",
+                    "src/ai_scientist/manuscript.py": "16a512077f64dc77dbe388fdbacf153c1a8e8f4b451fb05fca0d9a30803b91a0",
+                    "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-023": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/language.py",
+                    "src/ai_scientist/manifest.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_gateway.py",
+                    "src/ai_scientist/orchestrator.py",
+                    "src/ai_scientist/phase_gate.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py",
+                    "src/ai_scientist/skill_invocation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_data_scientist/project_manager.py": "cfa6ea79ae6fed31516ce5bc029f1bb8f63877257c93ca07a2e2508772ebde9d",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                    "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
+                    "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
+                    "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                    "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                  }
+                },
+                "REQ-AISCI-024": {
+                  "paths": [
+                    "src/ai_scientist/tdd_gate.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/tdd_gate.py": "d278321c459fc32cd235dc77e8a3bdc94049655bf7e4ef1e825f7b5bedc4ebf7"
+                  }
+                }
+              }
+            },
+            "order": 309
+          }
+        }
+      ]
     }
   ]
 }

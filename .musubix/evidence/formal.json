@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-01T14:46:45.009Z",
-  "totalRequirements": 58,
-  "modeledRequirements": 9,
-  "modeledFraction": 0.15517241379310345,
+  "generatedAt": "2026-10-02T04:37:47.956Z",
+  "totalRequirements": 82,
+  "modeledRequirements": 11,
+  "modeledFraction": 0.13414634146341464,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -79,6 +79,26 @@
           "response": "mcp_unavailable_raised",
           "withinMs": 30000
         }
+      },
+      {
+        "requirement": "REQ-AISCI-003",
+        "constraint": {
+          "kind": "conditional",
+          "condition": "workspace_missing",
+          "consequence": "create_workspace",
+          "conditionValue": true,
+          "consequenceValue": true
+        }
+      },
+      {
+        "requirement": "REQ-AISCI-006",
+        "constraint": {
+          "kind": "conditional",
+          "condition": "requested_phase_not_active_and_no_override",
+          "consequence": "block_with_named_phase",
+          "conditionValue": true,
+          "consequenceValue": true
+        }
       }
     ],
     "unsupported": [
@@ -130,7 +150,29 @@
       "REQ-AIDS-024",
       "REQ-AIDS-025",
       "REQ-AIDS-026",
-      "REQ-AIDS-033"
+      "REQ-AIDS-033",
+      "REQ-AISCI-001",
+      "REQ-AISCI-002",
+      "REQ-AISCI-004",
+      "REQ-AISCI-005",
+      "REQ-AISCI-007",
+      "REQ-AISCI-008",
+      "REQ-AISCI-009",
+      "REQ-AISCI-010",
+      "REQ-AISCI-011",
+      "REQ-AISCI-012",
+      "REQ-AISCI-013",
+      "REQ-AISCI-014",
+      "REQ-AISCI-015",
+      "REQ-AISCI-016",
+      "REQ-AISCI-017",
+      "REQ-AISCI-018",
+      "REQ-AISCI-019",
+      "REQ-AISCI-020",
+      "REQ-AISCI-021",
+      "REQ-AISCI-022",
+      "REQ-AISCI-023",
+      "REQ-AISCI-024"
     ],
     "diagnostics": [
       {
@@ -377,6 +419,116 @@
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
         "message": "REQ-AIDS-033 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-002 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-004 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-005 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-007 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-008 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-009 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-010 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-011 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-012 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-013 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-014 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-015 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-016 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-017 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-018 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-019 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-020 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-021 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-022 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-023 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AISCI-024 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       }
     ],
     "consistency": "consistent",
@@ -393,6 +545,7 @@
   "fingerprints": {
     ".musubix/features/ai-data-scientist/requirements.md": "e10141f6de0355ce888402bf957f79133c3e8a232c4fbc14edda0b1dfeed28cf",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
+    ".musubix/features/ai-scientist/requirements.md": "0813eae3d21203183b9b3804375b2c5b2b9813da2fbaffd264f134d10ca156a7",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed"
   }
 }

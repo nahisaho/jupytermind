@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
-  "runId": "e07a6575-b7b6-4341-a359-c834c003daa4",
-  "generatedAt": "2026-10-01T14:47:00.901Z",
+  "runId": "a062fae2-7253-4138-b148-77075eb10087",
+  "generatedAt": "2026-10-02T04:38:06.078Z",
   "executions": [
     {
-      "runId": "e07a6575-b7b6-4341-a359-c834c003daa4",
-      "executionId": "5b850f654d36aa749bfe7254e319a3b8f94315f9c4419dfdcef75e5a16474a96",
+      "runId": "a062fae2-7253-4138-b148-77075eb10087",
+      "executionId": "692abc38a4404c317ef9087d63fc4638feba3623e4889c94696d6cba3390cd91",
       "commandName": "test",
       "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
       "reportPath": ".musubix/evidence/native/test/aggregate.json",
       "sourceKind": "file",
-      "reportSha256": "369a1d7b732386ab1fd5b176851a414bbb02a6472738fd8a1f9eef9e6212223c",
+      "reportSha256": "2d7de428025553b01ba7a987d8dc2a451c591c1bcebf68fd4beb426bdde6e706",
       "processStatus": "completed",
       "exitCode": 0,
       "tests": [
@@ -425,9 +425,173 @@
         {
           "id": "TEST-AIDS-PYTEST-001",
           "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-007",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-008",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-009",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-010",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-011",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-012",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-013",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-014",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-015",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-016",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-017",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-018",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-019",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-020",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-021",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-022",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-023",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-024",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-025",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-026",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-027",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-028",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-029",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-030",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-031",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-032",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-033",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-034",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-035",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-036",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-037",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-038",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-039",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AISCI-040",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-EXAMPLE-001",
+          "status": "passed"
         }
       ],
-      "recordSha256": "b9659818bd175527c658c238012f417513a26e796ad9113b8dc9164aa922b3b7"
+      "recordSha256": "82a605e54a010e84b813808937a41d397c9ec1db79cfb9c070e088feaab1b452"
     }
   ],
   "observations": [

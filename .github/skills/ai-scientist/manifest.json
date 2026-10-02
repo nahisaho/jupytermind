@@ -1,0 +1,61 @@
+{
+  "research-planning": {
+    "modulePath": "ai_scientist.research_planning",
+    "functionName": "handle_research_planning",
+    "skillDependencies": []
+  },
+  "literature-review": {
+    "modulePath": "ai_scientist.literature_review",
+    "functionName": "handle_literature_review",
+    "skillDependencies": []
+  },
+  "experimental-design": {
+    "modulePath": "ai_scientist.experimental_design",
+    "functionName": "handle_experimental_design",
+    "skillDependencies": []
+  },
+  "data-analysis": {
+    "modulePath": "ai_scientist.data_analysis",
+    "functionName": "delegate_data_analysis",
+    "skillDependencies": []
+  },
+  "manuscript-writing": {
+    "modulePath": "ai_scientist.manuscript",
+    "functionName": "write_manuscript",
+    "skillDependencies": [
+      {
+        "skillId": "tech-writer",
+        "version": "0.3.0"
+      }
+    ]
+  },
+  "peer-review": {
+    "modulePath": "ai_scientist.peer_review",
+    "functionName": "review_manuscript",
+    "skillDependencies": {
+      "ja": {
+        "skillId": "japanese-prose",
+        "version": "0.3.0"
+      },
+      "en": {
+        "skillId": "tech-writer",
+        "version": "0.3.0"
+      }
+    }
+  },
+  "reproducibility-check": {
+    "modulePath": "ai_scientist.reproducibility",
+    "functionName": "handle_reproducibility_check",
+    "skillDependencies": []
+  },
+  "presentation": {
+    "modulePath": "ai_scientist.presentation",
+    "functionName": "build_presentation",
+    "skillDependencies": [
+      {
+        "skillId": "presentation-planner",
+        "version": "0.3.0"
+      }
+    ]
+  }
+}
