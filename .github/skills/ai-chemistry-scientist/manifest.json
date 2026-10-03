@@ -1,0 +1,72 @@
+{
+  "molecular-descriptors": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_molecular_descriptors",
+    "names": {
+      "en": [
+        "molecular descriptors",
+        "descriptor calculation"
+      ],
+      "ja": [
+        "分子記述子",
+        "記述子計算"
+      ]
+    }
+  },
+  "admet-prediction": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_admet_prediction",
+    "names": {
+      "en": [
+        "admet prediction",
+        "admet screening"
+      ],
+      "ja": [
+        "ADMET予測",
+        "ADMETスクリーニング"
+      ]
+    }
+  },
+  "qsar-modeling": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_qsar_modeling",
+    "names": {
+      "en": [
+        "qsar modeling",
+        "qsar regression"
+      ],
+      "ja": [
+        "QSARモデリング",
+        "QSAR回帰"
+      ]
+    }
+  },
+  "molecular-similarity": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_molecular_similarity",
+    "names": {
+      "en": [
+        "molecular similarity",
+        "similarity search"
+      ],
+      "ja": [
+        "分子類似性",
+        "類似性検索"
+      ]
+    }
+  },
+  "docking-score": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_docking_score",
+    "names": {
+      "en": [
+        "docking score",
+        "docking simulation"
+      ],
+      "ja": [
+        "ドッキングスコア",
+        "ドッキングシミュレーション"
+      ]
+    }
+  }
+}

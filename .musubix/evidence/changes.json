@@ -5580,8 +5580,713 @@
             }
           },
           "order": 521
+        },
+        "red": {
+          "phase": "red",
+          "recordedAt": "2026-10-02T22:38:53.641Z",
+          "fingerprints": {
+            "impact": "e78ccbc57367784f8b2b92b7c31579c043097baddcd24bc16b41cdcc84641a16",
+            "requirements": "ed807fc67e6349bcaa41707d81fdaef52f49e9844d4a7a46776941e1b8f1fb8b",
+            "design": "9cdde2717d7e24a93322d0778909104728dc838d5caa83a855a31e0306027f27",
+            "implementation": "0353ee502d67e4daf026257f2aa2754afee9aa9ecc0273d8ef255aa5d84518c2",
+            "tests": "bebc8797ba2a08e5d9ba41371b1e479042031147746799f60418a48d45b087ae",
+            "tdd": "d54fc8cd9dad217ec4febd4bc36033352c074327087ab28cb2939096219c2c41",
+            "requirementImplementations": {
+              "REQ-ACHEM-001": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "61cc3e8e43ac283bd31fa21d7eae62e2de0f8b8259c61d6b24129c3447972ba2",
+                  "src/ai_chemistry_scientist/dispatch.py": "51208cedb29a8a33ac4a4e0b7793e6a32691d1440f8200a2097c0219beb7ed5b",
+                  "src/ai_chemistry_scientist/docking_score.py": "9066c99d5eb496828c8a958be9ba5834521caa7106499ecc331694bb9a99bd22",
+                  "src/ai_chemistry_scientist/evidence.py": "9be0efb1bbdfce0cf943a3c5298df65789d3b029e8b5d6ee140a4a2b685ccf8a",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "bf69486a6d39619ab87dd0eb79464ff19598c43692415fe8eba29eb4cadfacb8",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "1a2e189f7c9df6c86d7e7d6f1f974cb73703863215dfcc5b4236fe9dbc1cbdfb",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "59b86942599d9c522de1c1c5f3645ac7a79a5d6f3d156f48a88064b3226d14f2",
+                  "src/ai_chemistry_scientist/validation.py": "acb45c121554d48ab53867af50098a7372fed7516d8166f994a600a73dfd6157",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-002": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "61cc3e8e43ac283bd31fa21d7eae62e2de0f8b8259c61d6b24129c3447972ba2",
+                  "src/ai_chemistry_scientist/dispatch.py": "51208cedb29a8a33ac4a4e0b7793e6a32691d1440f8200a2097c0219beb7ed5b",
+                  "src/ai_chemistry_scientist/docking_score.py": "9066c99d5eb496828c8a958be9ba5834521caa7106499ecc331694bb9a99bd22",
+                  "src/ai_chemistry_scientist/evidence.py": "9be0efb1bbdfce0cf943a3c5298df65789d3b029e8b5d6ee140a4a2b685ccf8a",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "bf69486a6d39619ab87dd0eb79464ff19598c43692415fe8eba29eb4cadfacb8",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "1a2e189f7c9df6c86d7e7d6f1f974cb73703863215dfcc5b4236fe9dbc1cbdfb",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "59b86942599d9c522de1c1c5f3645ac7a79a5d6f3d156f48a88064b3226d14f2",
+                  "src/ai_chemistry_scientist/validation.py": "acb45c121554d48ab53867af50098a7372fed7516d8166f994a600a73dfd6157",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-003": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "61cc3e8e43ac283bd31fa21d7eae62e2de0f8b8259c61d6b24129c3447972ba2",
+                  "src/ai_chemistry_scientist/dispatch.py": "51208cedb29a8a33ac4a4e0b7793e6a32691d1440f8200a2097c0219beb7ed5b",
+                  "src/ai_chemistry_scientist/docking_score.py": "9066c99d5eb496828c8a958be9ba5834521caa7106499ecc331694bb9a99bd22",
+                  "src/ai_chemistry_scientist/evidence.py": "9be0efb1bbdfce0cf943a3c5298df65789d3b029e8b5d6ee140a4a2b685ccf8a",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "bf69486a6d39619ab87dd0eb79464ff19598c43692415fe8eba29eb4cadfacb8",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "1a2e189f7c9df6c86d7e7d6f1f974cb73703863215dfcc5b4236fe9dbc1cbdfb",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "59b86942599d9c522de1c1c5f3645ac7a79a5d6f3d156f48a88064b3226d14f2",
+                  "src/ai_chemistry_scientist/validation.py": "acb45c121554d48ab53867af50098a7372fed7516d8166f994a600a73dfd6157",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-004": {
+                "paths": [
+                  "src/ai_chemistry_scientist/evidence.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/evidence.py": "9be0efb1bbdfce0cf943a3c5298df65789d3b029e8b5d6ee140a4a2b685ccf8a"
+                }
+              },
+              "REQ-ACHEM-010": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-020": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-030": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "bf69486a6d39619ab87dd0eb79464ff19598c43692415fe8eba29eb4cadfacb8",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "59b86942599d9c522de1c1c5f3645ac7a79a5d6f3d156f48a88064b3226d14f2",
+                  "src/ai_chemistry_scientist/validation.py": "acb45c121554d48ab53867af50098a7372fed7516d8166f994a600a73dfd6157"
+                }
+              },
+              "REQ-ACHEM-040": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "bf69486a6d39619ab87dd0eb79464ff19598c43692415fe8eba29eb4cadfacb8",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "1a2e189f7c9df6c86d7e7d6f1f974cb73703863215dfcc5b4236fe9dbc1cbdfb",
+                  "src/ai_chemistry_scientist/validation.py": "acb45c121554d48ab53867af50098a7372fed7516d8166f994a600a73dfd6157"
+                }
+              },
+              "REQ-ACHEM-050": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 540
+        },
+        "implementation": {
+          "phase": "implementation",
+          "recordedAt": "2026-10-02T22:55:34.914Z",
+          "fingerprints": {
+            "impact": "e78ccbc57367784f8b2b92b7c31579c043097baddcd24bc16b41cdcc84641a16",
+            "requirements": "ed807fc67e6349bcaa41707d81fdaef52f49e9844d4a7a46776941e1b8f1fb8b",
+            "design": "9cdde2717d7e24a93322d0778909104728dc838d5caa83a855a31e0306027f27",
+            "implementation": "8843cf42fcdb64aec421c4e09bb14d2f550638451c4b5ef80cf971125c2f3c60",
+            "tests": "56a95a1aaa2114e35997462f42a3dbafe7f606b15ed968789059c42eeae47f8d",
+            "tdd": "d54fc8cd9dad217ec4febd4bc36033352c074327087ab28cb2939096219c2c41",
+            "requirementImplementations": {
+              "REQ-ACHEM-001": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-002": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-003": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-004": {
+                "paths": [
+                  "src/ai_chemistry_scientist/evidence.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd"
+                }
+              },
+              "REQ-ACHEM-010": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-020": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-030": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-040": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-050": {
+                "paths": [
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              }
+            }
+          },
+          "order": 542
+        },
+        "green": {
+          "phase": "green",
+          "recordedAt": "2026-10-02T22:55:41.349Z",
+          "fingerprints": {
+            "impact": "e78ccbc57367784f8b2b92b7c31579c043097baddcd24bc16b41cdcc84641a16",
+            "requirements": "ed807fc67e6349bcaa41707d81fdaef52f49e9844d4a7a46776941e1b8f1fb8b",
+            "design": "9cdde2717d7e24a93322d0778909104728dc838d5caa83a855a31e0306027f27",
+            "implementation": "8843cf42fcdb64aec421c4e09bb14d2f550638451c4b5ef80cf971125c2f3c60",
+            "tests": "56a95a1aaa2114e35997462f42a3dbafe7f606b15ed968789059c42eeae47f8d",
+            "tdd": "d54fc8cd9dad217ec4febd4bc36033352c074327087ab28cb2939096219c2c41",
+            "requirementImplementations": {
+              "REQ-ACHEM-001": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-002": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-003": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-004": {
+                "paths": [
+                  "src/ai_chemistry_scientist/evidence.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd"
+                }
+              },
+              "REQ-ACHEM-010": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-020": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-030": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-040": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-050": {
+                "paths": [
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              }
+            }
+          },
+          "order": 543
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-02T22:55:48.441Z",
+          "fingerprints": {
+            "impact": "e78ccbc57367784f8b2b92b7c31579c043097baddcd24bc16b41cdcc84641a16",
+            "requirements": "ed807fc67e6349bcaa41707d81fdaef52f49e9844d4a7a46776941e1b8f1fb8b",
+            "design": "9cdde2717d7e24a93322d0778909104728dc838d5caa83a855a31e0306027f27",
+            "implementation": "8843cf42fcdb64aec421c4e09bb14d2f550638451c4b5ef80cf971125c2f3c60",
+            "tests": "56a95a1aaa2114e35997462f42a3dbafe7f606b15ed968789059c42eeae47f8d",
+            "tdd": "d54fc8cd9dad217ec4febd4bc36033352c074327087ab28cb2939096219c2c41",
+            "requirementImplementations": {
+              "REQ-ACHEM-001": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-002": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-003": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/dispatch.py",
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/evidence.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py",
+                  "src/ai_data_scientist/language_router.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                }
+              },
+              "REQ-ACHEM-004": {
+                "paths": [
+                  "src/ai_chemistry_scientist/evidence.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd"
+                }
+              },
+              "REQ-ACHEM-010": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-020": {
+                "paths": [
+                  "src/ai_chemistry_scientist/admet_prediction.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-030": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/qsar_modeling.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-040": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_similarity.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-050": {
+                "paths": [
+                  "src/ai_chemistry_scientist/docking_score.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              }
+            }
+          },
+          "order": 544
         }
-      }
+      },
+      "tddBatches": [
+        {
+          "requirementIds": [
+            "REQ-ACHEM-010",
+            "REQ-ACHEM-020",
+            "REQ-ACHEM-050"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T22:55:28.849Z",
+            "fingerprints": {
+              "impact": "e78ccbc57367784f8b2b92b7c31579c043097baddcd24bc16b41cdcc84641a16",
+              "requirements": "ed807fc67e6349bcaa41707d81fdaef52f49e9844d4a7a46776941e1b8f1fb8b",
+              "design": "9cdde2717d7e24a93322d0778909104728dc838d5caa83a855a31e0306027f27",
+              "implementation": "8843cf42fcdb64aec421c4e09bb14d2f550638451c4b5ef80cf971125c2f3c60",
+              "tests": "56a95a1aaa2114e35997462f42a3dbafe7f606b15ed968789059c42eeae47f8d",
+              "tdd": "d54fc8cd9dad217ec4febd4bc36033352c074327087ab28cb2939096219c2c41",
+              "requirementImplementations": {
+                "REQ-ACHEM-010": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                },
+                "REQ-ACHEM-020": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/admet_prediction.py",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                },
+                "REQ-ACHEM-050": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/docking_score.py",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/docking_score.py": "7bbffe485ea72d9a742ece578e3b11f94860d3cc00b35505adf3797030b0395e",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                }
+              }
+            },
+            "order": 541
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-ACHEM-003",
+            "REQ-ACHEM-050"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-02T23:19:09.923Z",
+            "fingerprints": {
+              "impact": "dd1cc4507a0cae3360e8747799d040b77c58ae2a2740409438a14919a685b742",
+              "requirements": "ed807fc67e6349bcaa41707d81fdaef52f49e9844d4a7a46776941e1b8f1fb8b",
+              "design": "9cdde2717d7e24a93322d0778909104728dc838d5caa83a855a31e0306027f27",
+              "implementation": "e806cf4f48ce0ee9c5ca67c384b7e29dc7ad572e037666f9a84f6949f2dee386",
+              "tests": "47080f9699533ca583b4d62264ee5065e8338441d440f630a7d7ba354330c22f",
+              "tdd": "bbab3e3c776c6b62a2317f36b9648ea9f3c5f7311f38e46d894929a14ded8853",
+              "requirementImplementations": {
+                "REQ-ACHEM-003": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/admet_prediction.py",
+                    "src/ai_chemistry_scientist/dispatch.py",
+                    "src/ai_chemistry_scientist/docking_score.py",
+                    "src/ai_chemistry_scientist/evidence.py",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/molecular_similarity.py",
+                    "src/ai_chemistry_scientist/qsar_modeling.py",
+                    "src/ai_chemistry_scientist/validation.py",
+                    "src/ai_data_scientist/language_router.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+                    "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+                    "src/ai_chemistry_scientist/docking_score.py": "bf152d0b84b80c56f50f92ad1ec6ef9820422e1b5008cdc5330fb2904d0f98da",
+                    "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                    "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+                    "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e"
+                  }
+                },
+                "REQ-ACHEM-050": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/docking_score.py",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/docking_score.py": "bf152d0b84b80c56f50f92ad1ec6ef9820422e1b5008cdc5330fb2904d0f98da",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                }
+              }
+            },
+            "order": 552
+          }
+        }
+      ]
     }
   ]
 }

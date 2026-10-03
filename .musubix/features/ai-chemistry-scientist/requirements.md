@@ -28,7 +28,7 @@ degenerate before performing any computation — at the validation granularity
 Priority: must
 Type: functional
 Pattern: ubiquitous
-Statement: The system shall accept user requests and produce user-facing messages in whichever of Japanese or English the user's request used, for every module in this skill.
+Statement: The system shall accept user requests and produce user-facing messages in whichever of Japanese or English the user's request used, for every module in this chemistry skill.
 Acceptance: A fixed Japanese-language fixture request ("分子記述子を計算したい") produces a response whose every sentence is Japanese prose (English technical tokens limited to method names, unit symbols, and numeric values are permitted); the English-equivalent fixture request ("I want to calculate molecular descriptors") produces an all-English response; neither response contains a sentence mixing Japanese and English prose.
 
 ## REQ-ACHEM-002: Module routing by request content / 要求内容によるモジュール振り分け

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-02T21:33:19.947Z",
+  "generatedAt": "2026-10-03T00:07:34.754Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -1518,6 +1518,108 @@
       "mandatory": true
     },
     {
+      "id": "CODE-ACHEM-020",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/admet_prediction.py",
+      "line": 44
+    },
+    {
+      "id": "CODE-ACHEM-916",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 77
+    },
+    {
+      "id": "CODE-ACHEM-011",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 185
+    },
+    {
+      "id": "CODE-ACHEM-021",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 193
+    },
+    {
+      "id": "CODE-ACHEM-031",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 201
+    },
+    {
+      "id": "CODE-ACHEM-041",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 209
+    },
+    {
+      "id": "CODE-ACHEM-051",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 217
+    },
+    {
+      "id": "CODE-ACHEM-001",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 225
+    },
+    {
+      "id": "CODE-ACHEM-050",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/docking_score.py",
+      "line": 64
+    },
+    {
+      "id": "CODE-ACHEM-003",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/evidence.py",
+      "line": 11
+    },
+    {
+      "id": "CODE-ACHEM-010",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/molecular_descriptors.py",
+      "line": 63
+    },
+    {
+      "id": "CODE-ACHEM-040",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/molecular_similarity.py",
+      "line": 57
+    },
+    {
+      "id": "CODE-ACHEM-030",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/qsar_modeling.py",
+      "line": 65
+    },
+    {
+      "id": "CODE-ACHEM-002",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/validation.py",
+      "line": 24
+    },
+    {
+      "id": "CODE-ACHEM-913",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/validation.py",
+      "line": 32
+    },
+    {
+      "id": "CODE-ACHEM-914",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/validation.py",
+      "line": 40
+    },
+    {
+      "id": "CODE-ACHEM-915",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/validation.py",
+      "line": 57
+    },
+    {
       "id": "CODE-AIDS-074",
       "kind": "code",
       "path": "src/ai_data_scientist/analysis_assumptions.py",
@@ -2254,6 +2356,342 @@
       "kind": "code",
       "path": "src/example_readiness.py",
       "line": 4
+    },
+    {
+      "id": "TEST-ACHEM-020",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_admet_prediction.py",
+      "line": 13
+    },
+    {
+      "id": "TEST-ACHEM-021",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_admet_prediction.py",
+      "line": 27
+    },
+    {
+      "id": "TEST-ACHEM-022",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_admet_prediction.py",
+      "line": 40
+    },
+    {
+      "id": "TEST-ACHEM-023",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_admet_prediction.py",
+      "line": 52
+    },
+    {
+      "id": "TEST-ACHEM-024",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_admet_prediction.py",
+      "line": 65
+    },
+    {
+      "id": "TEST-ACHEM-025",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_admet_prediction.py",
+      "line": 77
+    },
+    {
+      "id": "TEST-ACHEM-001",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bilingual.py",
+      "line": 25
+    },
+    {
+      "id": "TEST-ACHEM-930",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bilingual.py",
+      "line": 36
+    },
+    {
+      "id": "TEST-ACHEM-931",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bilingual.py",
+      "line": 47
+    },
+    {
+      "id": "TEST-ACHEM-932",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bilingual.py",
+      "line": 59
+    },
+    {
+      "id": "TEST-ACHEM-933",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bilingual.py",
+      "line": 71
+    },
+    {
+      "id": "TEST-ACHEM-934",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bilingual.py",
+      "line": 83
+    },
+    {
+      "id": "TEST-ACHEM-002",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 10
+    },
+    {
+      "id": "TEST-ACHEM-922",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 37
+    },
+    {
+      "id": "TEST-ACHEM-923",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 48
+    },
+    {
+      "id": "TEST-ACHEM-924",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 58
+    },
+    {
+      "id": "TEST-ACHEM-925",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 67
+    },
+    {
+      "id": "TEST-ACHEM-926",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 76
+    },
+    {
+      "id": "TEST-ACHEM-927",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 92
+    },
+    {
+      "id": "TEST-ACHEM-928",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 107
+    },
+    {
+      "id": "TEST-ACHEM-929",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 119
+    },
+    {
+      "id": "TEST-ACHEM-936",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 135
+    },
+    {
+      "id": "TEST-ACHEM-050",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_docking_score.py",
+      "line": 19
+    },
+    {
+      "id": "TEST-ACHEM-051",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_docking_score.py",
+      "line": 32
+    },
+    {
+      "id": "TEST-ACHEM-052",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_docking_score.py",
+      "line": 50
+    },
+    {
+      "id": "TEST-ACHEM-053",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_docking_score.py",
+      "line": 63
+    },
+    {
+      "id": "TEST-ACHEM-054",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_docking_score.py",
+      "line": 78
+    },
+    {
+      "id": "TEST-ACHEM-055",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_docking_score.py",
+      "line": 99
+    },
+    {
+      "id": "TEST-ACHEM-937",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_docking_score.py",
+      "line": 110
+    },
+    {
+      "id": "TEST-ACHEM-938",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_docking_score.py",
+      "line": 123
+    },
+    {
+      "id": "TEST-ACHEM-004",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_evidence.py",
+      "line": 6
+    },
+    {
+      "id": "TEST-ACHEM-920",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_evidence.py",
+      "line": 27
+    },
+    {
+      "id": "TEST-ACHEM-921",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_evidence.py",
+      "line": 43
+    },
+    {
+      "id": "TEST-ACHEM-010",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_descriptors.py",
+      "line": 11
+    },
+    {
+      "id": "TEST-ACHEM-011",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_descriptors.py",
+      "line": 27
+    },
+    {
+      "id": "TEST-ACHEM-012",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_descriptors.py",
+      "line": 40
+    },
+    {
+      "id": "TEST-ACHEM-013",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_descriptors.py",
+      "line": 52
+    },
+    {
+      "id": "TEST-ACHEM-014",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_descriptors.py",
+      "line": 61
+    },
+    {
+      "id": "TEST-ACHEM-015",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_descriptors.py",
+      "line": 73
+    },
+    {
+      "id": "TEST-ACHEM-040",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_similarity.py",
+      "line": 11
+    },
+    {
+      "id": "TEST-ACHEM-041",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_similarity.py",
+      "line": 28
+    },
+    {
+      "id": "TEST-ACHEM-042",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_similarity.py",
+      "line": 44
+    },
+    {
+      "id": "TEST-ACHEM-043",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_similarity.py",
+      "line": 60
+    },
+    {
+      "id": "TEST-ACHEM-044",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_similarity.py",
+      "line": 73
+    },
+    {
+      "id": "TEST-ACHEM-045",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_similarity.py",
+      "line": 84
+    },
+    {
+      "id": "TEST-ACHEM-030",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_qsar_modeling.py",
+      "line": 28
+    },
+    {
+      "id": "TEST-ACHEM-031",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_qsar_modeling.py",
+      "line": 44
+    },
+    {
+      "id": "TEST-ACHEM-032",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_qsar_modeling.py",
+      "line": 56
+    },
+    {
+      "id": "TEST-ACHEM-033",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_qsar_modeling.py",
+      "line": 76
+    },
+    {
+      "id": "TEST-ACHEM-034",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_qsar_modeling.py",
+      "line": 92
+    },
+    {
+      "id": "TEST-ACHEM-003",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_validation.py",
+      "line": 6
+    },
+    {
+      "id": "TEST-ACHEM-916",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_validation.py",
+      "line": 24
+    },
+    {
+      "id": "TEST-ACHEM-917",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_validation.py",
+      "line": 35
+    },
+    {
+      "id": "TEST-ACHEM-918",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_validation.py",
+      "line": 56
+    },
+    {
+      "id": "TEST-ACHEM-919",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_validation.py",
+      "line": 67
+    },
+    {
+      "id": "TEST-ACHEM-935",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_validation.py",
+      "line": 80
     },
     {
       "id": "TEST-AIMS-001",
@@ -5163,6 +5601,211 @@
       "relation": "decides"
     },
     {
+      "from": "CODE-ACHEM-020",
+      "to": "REQ-ACHEM-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-020",
+      "to": "DES-ACHEM-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-916",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-916",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-011",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-011",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-011",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-021",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-021",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-021",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-031",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-031",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-031",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-041",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-041",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-041",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-051",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-051",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-051",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-001",
+      "to": "REQ-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-001",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-001",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-050",
+      "to": "REQ-ACHEM-050",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-050",
+      "to": "DES-ACHEM-050",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-003",
+      "to": "REQ-ACHEM-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-003",
+      "to": "DES-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-010",
+      "to": "REQ-ACHEM-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-010",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-010",
+      "to": "DES-ACHEM-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-040",
+      "to": "REQ-ACHEM-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-040",
+      "to": "DES-ACHEM-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-030",
+      "to": "REQ-ACHEM-030",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-030",
+      "to": "DES-ACHEM-030",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-002",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-002",
+      "to": "DES-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-913",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-913",
+      "to": "DES-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-914",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-914",
+      "to": "DES-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-915",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-915",
+      "to": "DES-ACHEM-002",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AIDS-074",
       "to": "REQ-AIDS-054",
       "relation": "implements"
@@ -6778,6 +7421,321 @@
       "relation": "implements"
     },
     {
+      "from": "TEST-ACHEM-020",
+      "to": "REQ-ACHEM-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-021",
+      "to": "REQ-ACHEM-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-022",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-023",
+      "to": "REQ-ACHEM-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-024",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-025",
+      "to": "REQ-ACHEM-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-001",
+      "to": "REQ-ACHEM-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-930",
+      "to": "REQ-ACHEM-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-931",
+      "to": "REQ-ACHEM-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-932",
+      "to": "REQ-ACHEM-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-933",
+      "to": "REQ-ACHEM-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-934",
+      "to": "REQ-ACHEM-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-002",
+      "to": "REQ-ACHEM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-922",
+      "to": "REQ-ACHEM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-923",
+      "to": "REQ-ACHEM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-924",
+      "to": "REQ-ACHEM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-925",
+      "to": "REQ-ACHEM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-926",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-926",
+      "to": "REQ-ACHEM-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-927",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-928",
+      "to": "REQ-ACHEM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-929",
+      "to": "REQ-ACHEM-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-929",
+      "to": "REQ-ACHEM-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-936",
+      "to": "REQ-ACHEM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-050",
+      "to": "REQ-ACHEM-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-051",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-051",
+      "to": "REQ-ACHEM-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-052",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-053",
+      "to": "REQ-ACHEM-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-054",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-055",
+      "to": "REQ-ACHEM-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-937",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-938",
+      "to": "REQ-ACHEM-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-004",
+      "to": "REQ-ACHEM-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-920",
+      "to": "REQ-ACHEM-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-921",
+      "to": "REQ-ACHEM-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-010",
+      "to": "REQ-ACHEM-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-011",
+      "to": "REQ-ACHEM-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-011",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-012",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-013",
+      "to": "REQ-ACHEM-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-014",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-015",
+      "to": "REQ-ACHEM-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-040",
+      "to": "REQ-ACHEM-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-041",
+      "to": "REQ-ACHEM-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-042",
+      "to": "REQ-ACHEM-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-043",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-043",
+      "to": "REQ-ACHEM-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-044",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-045",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-030",
+      "to": "REQ-ACHEM-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-031",
+      "to": "REQ-ACHEM-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-032",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-032",
+      "to": "REQ-ACHEM-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-033",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-033",
+      "to": "REQ-ACHEM-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-034",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-003",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-916",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-917",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-918",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-919",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-935",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AIMS-001",
       "to": "REQ-AIMS-001",
       "relation": "verifies"
@@ -8079,7 +9037,7 @@
     ".musubix/decisions/ADR-0031.md": "fb92067d0729d9a0e46686aebf10cf264b9438c8f2b029449b2b01c8774b3d66",
     ".musubix/decisions/ADR-0032.md": "e7f4df0112188f25af966498c3fa27b22a92c7dcd6244656650f6c967b33f2d5",
     ".musubix/features/ai-chemistry-scientist/design.md": "3fc504cbeb47081bd487ffe325d76cc06a4b6b8b7e1b661fe40d4befcac8228a",
-    ".musubix/features/ai-chemistry-scientist/requirements.md": "f32c36d6b23b94d792bd33d3812848522a92bb16eb266ec366fbbecbb1b647ec",
+    ".musubix/features/ai-chemistry-scientist/requirements.md": "50db33cf117db410f0d028e52ab0ebe9f24b07ec410915f30e24b3764de567f9",
     ".musubix/features/ai-data-scientist/design.md": "ac47fd80066d22d91e8c4db1f86a505413171dd48d2713637877bd7e3c4ad51d",
     ".musubix/features/ai-data-scientist/requirements.md": "ca5d1702eb51bfd980c6e8427b34997b74f8936aea5a721757acd6c645b3968b",
     ".musubix/features/ai-data-scientist-ml/design.md": "5a9b6d88cda2a8e05fbfb09b8e1ea8cd3dd1c361b27c0385bef71437c9e62906",
@@ -8090,18 +9048,16 @@
     ".musubix/features/ai-scientist/requirements.md": "0813eae3d21203183b9b3804375b2c5b2b9813da2fbaffd264f134d10ca156a7",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
-    "benchmark/mcp_launcher.py": "4cc6036338392c9e28cc1bae08b56d21bedfae2b119663237202326fb55c1370",
-    "benchmark/projects/_failed-v021-1905/kaggle-v021-kaggle-exp-22-seaice/data/source_metadata/monthly_sea_ice_index_download_v1.0.py": "4f84c599b1b64b62a6ded1e8ffc53b8cb9f31c8505ea50486b2fe1b8b23ca1db",
-    "benchmark/run_benchmark.py": "26db773944b9ed50e2cd8983a71f6afd49f7be88995f084f72c45cbe23d1a181",
-    "benchmark/run_queue.py": "2bedf9ab798d179fab09c9cc8517faa593cc85272628c81d8dd6f39bd3fabc65",
-    "benchmark/runs-v021/verify/repro_issues.py": "f79117a85856294e8aef90371d2a3f50969f83d8cf480997fa2c811d329d1fd1",
-    "benchmark/runs-v021/verify/repro_new_candidates.py": "80930449f987e2c683e34cc581c4d944e9162a176319021ea7d29adcd71deabe",
-    "benchmark/runs-v023/verify/aggregate.py": "483d169426f88b0fb8602576335b20abaab03544a184d5df865ede61eff177d6",
-    "benchmark/runs-v023/verify/repro_35_record_chart.py": "5bc67c72b239e3416104fd214dd4433c8bf5b0b082264c97644bf6ee14f2aa84",
-    "benchmark/runs-v023/verify/repro_issues.py": "f79117a85856294e8aef90371d2a3f50969f83d8cf480997fa2c811d329d1fd1",
-    "benchmark/runs-v023/verify/repro_new_candidates.py": "80930449f987e2c683e34cc581c4d944e9162a176319021ea7d29adcd71deabe",
-    "benchmark/runs-v023/verify/repro_v023_candidates.py": "f230efe48ebe494a2a8865c35a75ec8ebf48779cb70f01a6970a7279b2e1103f",
     "bin/ai-data-scientist.js": "f70c764374ee721ebe18b26ed2f3da6ddd896d3c7bc5520c10f8fc0e70fd85da",
+    "src/ai_chemistry_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+    "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+    "src/ai_chemistry_scientist/docking_score.py": "bf152d0b84b80c56f50f92ad1ec6ef9820422e1b5008cdc5330fb2904d0f98da",
+    "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
+    "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+    "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
+    "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
     "src/ai_data_scientist/anomaly_detection.py": "8e991c85d27e7414ac66320d3a4fbed04a61adc484de9b4ada6923cb17a8752d",
@@ -8178,6 +9134,15 @@
     "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f",
     "src/ai_scientist/tdd_gate.py": "d278321c459fc32cd235dc77e8a3bdc94049655bf7e4ef1e825f7b5bedc4ebf7",
     "src/example_readiness.py": "b4deef302d05db806ccb39216aea65dcbdcc34c52b493aa81eb22842bc4bd190",
+    "tests/test_ai_chemistry_scientist_admet_prediction.py": "920f48f44fb5d2ce65e3b02c9431875a35e15846f4eb2b226c95328ef69ce227",
+    "tests/test_ai_chemistry_scientist_bilingual.py": "240f28e7a8952e7f3322ba9b4185e806a94cab79bf177c4aad6f35c9390015be",
+    "tests/test_ai_chemistry_scientist_dispatch.py": "95d1222dbb430eb10b3b0fef18b8e355a907162b1ad7abf0cfb469ee9085753c",
+    "tests/test_ai_chemistry_scientist_docking_score.py": "901f418ed59e8f5363ae5bad6f0a5c602c855865055e288ec66028c0525cf9d0",
+    "tests/test_ai_chemistry_scientist_evidence.py": "1fe50f1f55a948ad1170c148b28dc5c2bce52227b742e694e8911c365731dece",
+    "tests/test_ai_chemistry_scientist_molecular_descriptors.py": "613b526ea9068bd0dfea0e2204a114bdbaca9632716bf6032f0488b62e211ccb",
+    "tests/test_ai_chemistry_scientist_molecular_similarity.py": "43f455627ba3b520d707f9878d40bd3f7aaf95a2616421b017b0f4635f891ee5",
+    "tests/test_ai_chemistry_scientist_qsar_modeling.py": "b6e7f62ff7f2a1414299e854481d3188f847d51abf033da4cd47bcbcc662b945",
+    "tests/test_ai_chemistry_scientist_validation.py": "9033f020ea4317aff7d2799d2a9af26b9920fcdb146805e5178646bdbaca81ad",
     "tests/test_ai_materials_scientist_bilingual.py": "6cab8fc1263ec40af5e197061bc0ae4685db6199a68ca745ee22558f4aabbf95",
     "tests/test_ai_materials_scientist_calphad.py": "f350b84d0f4c14b2234852c06ba534f7e81228e1a371e66d7c641ac9ae841fc9",
     "tests/test_ai_materials_scientist_classical_monte_carlo.py": "a6019feecdc12c0fb8ce47390549d824c15a16fc6b1aeb736154020925950db7",

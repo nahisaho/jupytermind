@@ -24,6 +24,7 @@ dependencies = [
   "jupyter-mcp-server>=2.2,<2.3",
   "japanize-matplotlib>=1.1",
   "packaging>=23",
+  "rdkit>=2024.3",
 ]
 
 [project.optional-dependencies]

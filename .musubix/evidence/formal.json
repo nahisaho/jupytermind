@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-02T12:51:26.587Z",
-  "totalRequirements": 102,
+  "generatedAt": "2026-10-03T00:07:38.945Z",
+  "totalRequirements": 111,
   "modeledRequirements": 11,
-  "modeledFraction": 0.10784313725490197,
+  "modeledFraction": 0.0990990990990991,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -102,6 +102,15 @@
       }
     ],
     "unsupported": [
+      "REQ-ACHEM-001",
+      "REQ-ACHEM-002",
+      "REQ-ACHEM-003",
+      "REQ-ACHEM-004",
+      "REQ-ACHEM-010",
+      "REQ-ACHEM-020",
+      "REQ-ACHEM-030",
+      "REQ-ACHEM-040",
+      "REQ-ACHEM-050",
       "REQ-AIDS-001",
       "REQ-AIDS-004",
       "REQ-AIDS-005",
@@ -195,6 +204,51 @@
       "REQ-AISCI-024"
     ],
     "diagnostics": [
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-ACHEM-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-ACHEM-002 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-ACHEM-003 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-ACHEM-004 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-ACHEM-010 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-ACHEM-020 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-ACHEM-030 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-ACHEM-040 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-ACHEM-050 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
@@ -663,6 +717,7 @@
     }
   },
   "fingerprints": {
+    ".musubix/features/ai-chemistry-scientist/requirements.md": "50db33cf117db410f0d028e52ab0ebe9f24b07ec410915f30e24b3764de567f9",
     ".musubix/features/ai-data-scientist/requirements.md": "ca5d1702eb51bfd980c6e8427b34997b74f8936aea5a721757acd6c645b3968b",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "3a0ba68076174482898f059cbcdc203aca939d3b74b9422f260098808a8ed612",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",

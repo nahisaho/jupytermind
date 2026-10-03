@@ -1,19 +1,243 @@
 {
   "schemaVersion": 2,
-  "runId": "170ccac9-00b4-45ca-94fb-457f3e3d7cc3",
-  "generatedAt": "2026-10-02T12:52:11.198Z",
+  "runId": "1fe40ab5-8839-4b85-a953-d98db2b762a9",
+  "generatedAt": "2026-10-03T00:08:59.552Z",
   "executions": [
     {
-      "runId": "170ccac9-00b4-45ca-94fb-457f3e3d7cc3",
-      "executionId": "90f1c455b80e8e03bc6d723819b3c5922a93d7419d7b247806feaf388a80f7f0",
+      "runId": "1fe40ab5-8839-4b85-a953-d98db2b762a9",
+      "executionId": "489c9d3d62bfd73f11d1b49461175c73c84668985ceddea9d262c550ef21ef99",
       "commandName": "test",
       "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
       "reportPath": ".musubix/evidence/native/test/aggregate.json",
       "sourceKind": "file",
-      "reportSha256": "f6b13b7a3a8d429248fe4c3ee5af2bdc833e489466f5b84438930743a0974fa3",
+      "reportSha256": "a9669567e1f713efabd3f9f86f2625bbdf7d515429f83cd993a7904987d4fe35",
       "processStatus": "completed",
       "exitCode": 0,
       "tests": [
+        {
+          "id": "TEST-ACHEM-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-010",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-011",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-012",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-013",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-014",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-015",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-020",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-021",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-022",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-023",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-024",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-025",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-030",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-031",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-032",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-033",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-034",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-040",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-041",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-042",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-043",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-044",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-045",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-050",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-051",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-052",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-053",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-054",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-055",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-916",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-917",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-918",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-919",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-920",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-921",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-922",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-923",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-924",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-925",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-926",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-927",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-928",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-929",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-930",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-931",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-932",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-933",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-934",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-935",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-936",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-937",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-938",
+          "status": "passed"
+        },
         {
           "id": "TEST-AIDS-001",
           "status": "passed"
@@ -1015,7 +1239,7 @@
           "status": "passed"
         }
       ],
-      "recordSha256": "6f6516bb4b7ce2bdd1cd1d24462e7d6391a3a040b0cd4826c7a5519dfb0b84a4"
+      "recordSha256": "44d3130e019e93d4aca31f778f746a6472034f8159a4fb160e46c0a937d3d9d2"
     }
   ],
   "observations": [
