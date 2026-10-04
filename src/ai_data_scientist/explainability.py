@@ -2,7 +2,9 @@
 
 Implements DES-AIDS-019 plus CHANGE-011's DES-AIDS-070/071/072: preserves the
 legacy feature-importance ranking by default, and adds opt-in signed local
-contributions and permutation importance.
+contributions and permutation importance. CODE-AIDS-106 through CODE-AIDS-110
+cover importance-kind labeling, the signed-contribution provider chain
+(native pred_contrib / SHAP / linear fallback), and permutation importance.
 """
 
 from __future__ import annotations
