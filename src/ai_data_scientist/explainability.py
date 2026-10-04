@@ -53,6 +53,16 @@ def _build_feature_importance_map(
     return {name: float(value) for name, value in zip(feature_names, np.asarray(raw_importances))}
 
 
+# @id CODE-AIDS-128
+# @implements REQ-AIDS-082
+# @design DES-AIDS-070
+def _normalize_coefficient_importances(coef: Any) -> np.ndarray:
+    raw_importances = np.abs(np.asarray(coef, dtype=float))
+    if raw_importances.ndim == 2 and raw_importances.shape[0] > 1:
+        return raw_importances.mean(axis=0)
+    return raw_importances.reshape(-1)
+
+
 # @id CODE-AIDS-107
 # @implements REQ-AIDS-082
 # @design DES-AIDS-070
@@ -64,7 +74,7 @@ def _compute_default_importance(
         raw_importances = np.asarray(model.feature_importances_, dtype=float)
         importance_kind = "split"
     elif hasattr(model, "coef_"):
-        raw_importances = np.abs(np.asarray(model.coef_, dtype=float)).reshape(-1)
+        raw_importances = _normalize_coefficient_importances(model.coef_)
         importance_kind = "coefficient_magnitude"
     else:
         raise ValueError("Model exposes neither feature_importances_ nor coef_.")

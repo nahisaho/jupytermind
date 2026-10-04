@@ -248,15 +248,21 @@ ADRs: none — AutoML composes DES-AIDS-012/017 directly with no rejected altern
 Depends-On: DES-AIDS-012, DES-AIDS-017
 
 ## DES-AIDS-019: Model explainability module / モデル説明性
-Responsibilities: Compute feature importance or SHAP values for a model
-trained via DES-AIDS-012 and report them alongside a markdown
-interpretation subject to DES-AIDS-010's evidence rules.
-Interfaces: explainModel(model, df) -> ExplainabilityResult
-{feature_importances, ranking}.
-Constraints: The top-ranked feature must match the reference scikit-learn
-feature_importances_ or SHAP ordering (REQ-AIDS-021 acceptance).
+Responsibilities: Compute the default global feature-importance
+explainability artifact for fitted models supported by the default
+`explain_model(..., method="default")` contract defined in DES-AIDS-070 and
+report it subject to DES-AIDS-010's evidence rules. Models trained via
+DES-AIDS-012 are one supported source of such fitted models, not the only one.
+Interfaces: The concrete public `explain_model(...) -> ExplainabilityResult`
+contract is specified in DES-AIDS-070; this design section owns the default
+global explainability responsibility that DES-AIDS-070 refines.
+Constraints: For the default global explainability path, the top-ranked
+feature must match the reference scikit-learn `feature_importances_` ordering
+for tree-based models or the absolute-coefficient ordering defined by
+REQ-AIDS-082 for coefficient-based models
+(REQ-AIDS-021 acceptance).
 Requirements: REQ-AIDS-021
-ADRs: none — feature-importance/SHAP computation is a direct library call with no rejected alternative.
+ADRs: ADR-0053
 Depends-On: DES-AIDS-012
 
 ## DES-AIDS-070: Explainability result contract and method selection / 説明結果契約と手法選択
@@ -276,14 +282,19 @@ None, raw_predictions: list[float] | None = None, additivity_check:
 dict[str, float | bool] | None = None, scoring: str | None = None}`.
 Constraints: The default `method="default"` path must produce the same ranking
 and feature-importance values as the pre-change implementation for models using
-`feature_importances_` or `abs(coef_)`, differing only by the added metadata
-fields. `importance_kind` is `"split"` for `feature_importances_`,
-`"coefficient_magnitude"` for `abs(coef_)`, `"mean_absolute_signed_contribution"`
-for signed-contribution aggregation, and `"permutation"` for permutation
-importance.
+`feature_importances_` or single-output `abs(coef_)`, differing only by the
+added metadata fields. For supported class-aligned multiclass coefficient
+models (for example `LogisticRegression`) exposing a 2D `coef_` matrix with
+one row per class, it must aggregate global per-feature importance as
+`np.abs(coef_).mean(axis=0)` before pairing values with `feature_names`,
+preserve one scalar importance per feature instead of silently truncating
+flattened class-specific coefficients, and derive `ranking` by sorting those
+aggregated per-feature values in descending order. `importance_kind` is `"split"` for `feature_importances_`,
+`"coefficient_magnitude"` for coefficient magnitudes,
+`"mean_absolute_signed_contribution"` for signed-contribution aggregation, and
+`"permutation"` for permutation importance.
 Requirements: REQ-AIDS-082, REQ-AIDS-083, REQ-AIDS-084
-ADRs: none — this is a backward-compatible extension of an existing dataclass
-and function surface, with no competing architectural boundary decision.
+ADRs: ADR-0053
 Depends-On: DES-AIDS-019
 
 ## DES-AIDS-071: Signed-contribution provider normalization / 符号付き寄与プロバイダー正規化

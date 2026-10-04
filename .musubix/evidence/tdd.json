@@ -12349,6 +12349,172 @@
         "diagnostics": [],
         "order": 765
       }
+    },
+    {
+      "cycleId": "b8ef02cb-66af-4d50-a3de-2a9065261179",
+      "requirementId": "REQ-AIDS-021",
+      "testId": "TEST-AIDS-215",
+      "testPath": "tests/test_explainability.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "2f2b89e8ef9015bf62c1ae592b1b4222ab5e22bb4786e910f6a64fd11a36a152",
+        "commandSha256": "dcdd51fa1b419ff5fbe3ba4b569ee3b9d9cd5d693493a7a731d9755ae07e035d",
+        "outputSha256": "563ab4ca31eb33d041bc394003b11eac5e38ce6b1224297250462bfc3973210a",
+        "exitCode": 1,
+        "durationMs": 2821,
+        "testFingerprint": "2e0a87e9b941443b0a96257bb1110b9189be088d021b1873c0ac95579b69b202",
+        "sourceFingerprint": "67bba8424d58bb73f9fbd3a09cedecd517e379aac643cd93aa68342b633b85e2",
+        "executionId": "b44927d6-58de-4f74-963a-50e5b87c681a",
+        "recordedAt": "2026-10-04T20:58:58.080Z",
+        "diagnostics": [],
+        "order": 773
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "ca8355f184cc3546ced40a288e5cd4a88155d14513ba107c8eba4a009667c943",
+        "commandSha256": "dcdd51fa1b419ff5fbe3ba4b569ee3b9d9cd5d693493a7a731d9755ae07e035d",
+        "outputSha256": "a5c437bf228b9530e0080d7a8107e014d881ca5d634548bf289242b8bcc26ffe",
+        "exitCode": 0,
+        "durationMs": 2516,
+        "testFingerprint": "2e0a87e9b941443b0a96257bb1110b9189be088d021b1873c0ac95579b69b202",
+        "sourceFingerprint": "4f7cc18d4858bea1136dbea01318b50cc4d27b499f2f4e00a4a6beec279d5bc3",
+        "executionId": "a4e3176b-abef-4d8a-94da-25c788141506",
+        "recordedAt": "2026-10-04T20:59:11.713Z",
+        "diagnostics": [],
+        "order": 777
+      }
+    },
+    {
+      "cycleId": "a64e3136-e8b0-4f20-a947-e6f05061d1a4",
+      "requirementId": "REQ-AIDS-082",
+      "testId": "TEST-AIDS-215",
+      "testPath": "tests/test_explainability.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "0410f9849a526654c204f4a89aefa3781c7228e17fc0ffe17c9b6c93cbeb5f85",
+        "commandSha256": "dcdd51fa1b419ff5fbe3ba4b569ee3b9d9cd5d693493a7a731d9755ae07e035d",
+        "outputSha256": "5947389f927923744dc5aff1ee2af3d7fb279ce11922565655b775c2b1299aee",
+        "exitCode": 1,
+        "durationMs": 2753,
+        "testFingerprint": "2e0a87e9b941443b0a96257bb1110b9189be088d021b1873c0ac95579b69b202",
+        "sourceFingerprint": "67bba8424d58bb73f9fbd3a09cedecd517e379aac643cd93aa68342b633b85e2",
+        "executionId": "0017e50c-426e-413f-9a7c-430454c33c68",
+        "recordedAt": "2026-10-04T20:59:03.463Z",
+        "diagnostics": [],
+        "order": 774
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "7868426b1662ca0c7b6dd6949e75f41ce3d598947e6643323e2fc4fcc9ce6202",
+        "commandSha256": "dcdd51fa1b419ff5fbe3ba4b569ee3b9d9cd5d693493a7a731d9755ae07e035d",
+        "outputSha256": "29155ade5fd4c076319110d9f91f157ea8b0e9e9f59c031a7e70be4a21324ed8",
+        "exitCode": 0,
+        "durationMs": 2372,
+        "testFingerprint": "2e0a87e9b941443b0a96257bb1110b9189be088d021b1873c0ac95579b69b202",
+        "sourceFingerprint": "4f7cc18d4858bea1136dbea01318b50cc4d27b499f2f4e00a4a6beec279d5bc3",
+        "executionId": "0d6e51c4-29b6-43fb-a9f0-728434f92d54",
+        "recordedAt": "2026-10-04T20:59:15.841Z",
+        "diagnostics": [],
+        "order": 778
+      }
+    },
+    {
+      "cycleId": "414a51bc-6851-464c-941d-f0cdee8d7a31",
+      "requirementId": "REQ-AIDS-021",
+      "testId": "TEST-AIDS-021",
+      "testPath": "tests/test_explainability.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": false,
+        "scoped": true,
+        "resultObserved": false,
+        "testStatus": "passed",
+        "reportSha256": "1e223a545d39eb051660113cd4291dcd780154ef9d9b070fc9a0441125a8b907",
+        "commandSha256": "dcfae0e536eecea2ef6df2c4ce400cef454d8bbc51005c2265f6a860a397e3e5",
+        "outputSha256": "f9311cf68a23dcfc40a4f3f74cb8b87032462b6aa5155ed0388653c063601253",
+        "exitCode": 0,
+        "durationMs": 2297,
+        "testFingerprint": "ef0bbb03292b43db5701aaa5047d6d1fe246c1851e669e14766b7243c6b29633",
+        "sourceFingerprint": "abc27130b48f345bccf824d867b91db4fdbea335ec3e0288765c315dc0dd9058",
+        "executionId": "ecc4dbe9-c1bf-4d0e-83ec-612030bcb3f2",
+        "recordedAt": "2026-10-04T21:06:04.502Z",
+        "diagnostics": [
+          {
+            "code": "TDD_TARGET_RESULT",
+            "severity": "error",
+            "message": "red requires TEST-AIDS-021 to report failed, observed passed.",
+            "path": ".musubix/evidence/native/test/TEST-AIDS-021.json"
+          },
+          {
+            "code": "TDD_PHASE_RESULT",
+            "severity": "error",
+            "message": "red requires a completed command with nonzero exit status."
+          }
+        ],
+        "order": 780
+      }
+    },
+    {
+      "cycleId": "6824a969-306b-458d-9c2c-beb8d84d1d0f",
+      "requirementId": "REQ-AIDS-021",
+      "testId": "TEST-AIDS-021",
+      "testPath": "tests/test_explainability.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "289ea47cf46f4842dba2183755cf8feaa7b28afdc6a96eddc427beb2a28b484c",
+        "commandSha256": "dcfae0e536eecea2ef6df2c4ce400cef454d8bbc51005c2265f6a860a397e3e5",
+        "outputSha256": "d86b29dbfa545dfbd596db2118ce4852df23c7d3ddaddc50052038981855b728",
+        "exitCode": 1,
+        "durationMs": 1912,
+        "testFingerprint": "ef0bbb03292b43db5701aaa5047d6d1fe246c1851e669e14766b7243c6b29633",
+        "sourceFingerprint": "3c806676692591b96870c7d899fadc55f7a5032cda3db1b0fe971ada5a961b00",
+        "executionId": "32623ad8-7997-48b0-bc3c-6e8301c15573",
+        "recordedAt": "2026-10-04T21:06:27.194Z",
+        "diagnostics": [],
+        "order": 781
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "a1f94cafe2bc8b8a03eae9824a2f7416cf4b2616346082100ac12bb3d115b80b",
+        "commandSha256": "dcfae0e536eecea2ef6df2c4ce400cef454d8bbc51005c2265f6a860a397e3e5",
+        "outputSha256": "6cec6a6740666b0d612b18fe8a9e95597d978b18d1840824a9591cae290115f8",
+        "exitCode": 0,
+        "durationMs": 1765,
+        "testFingerprint": "ef0bbb03292b43db5701aaa5047d6d1fe246c1851e669e14766b7243c6b29633",
+        "sourceFingerprint": "628c1a93cf5e23a1e4e484370556549f83db626eda2a0bbd9692172aff155be5",
+        "executionId": "e87a9062-e3f4-423c-ad23-e8219f04d82a",
+        "recordedAt": "2026-10-04T21:06:32.721Z",
+        "diagnostics": [],
+        "order": 782
+      }
     }
   ],
   "chain": [
@@ -19059,6 +19225,90 @@
       "phaseEvidenceSha256": "3afce25379c09280b42370bb29d145f4af032086a53cc7a10a612cd818560426",
       "previousSha256": "acd0e5ba02ffb00c4ec164936f4c4c9fd2bfd63d571374ba9e29dfb7c22ea9df",
       "recordSha256": "bc6a47130e239edce4cd86c5c7a6c4d58e8cd503257e99266aee474edf72659a"
+    },
+    {
+      "sequence": 560,
+      "cycleId": "b8ef02cb-66af-4d50-a3de-2a9065261179",
+      "requirementId": "REQ-AIDS-021",
+      "testId": "TEST-AIDS-215",
+      "testPath": "tests/test_explainability.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "96b628e2a430f25e0a58a172835bc97e9d9a9f37541ec7d99388e04275b910c2",
+      "previousSha256": "bc6a47130e239edce4cd86c5c7a6c4d58e8cd503257e99266aee474edf72659a",
+      "recordSha256": "8accaf12eccf732ae6760d59a985b3e8816512e206806b98297c34660b98e648"
+    },
+    {
+      "sequence": 561,
+      "cycleId": "a64e3136-e8b0-4f20-a947-e6f05061d1a4",
+      "requirementId": "REQ-AIDS-082",
+      "testId": "TEST-AIDS-215",
+      "testPath": "tests/test_explainability.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "864289a4ca0dd8872c3b70fffa212140b08fb630e23f16af34f04ae926fb11c4",
+      "previousSha256": "8accaf12eccf732ae6760d59a985b3e8816512e206806b98297c34660b98e648",
+      "recordSha256": "0080331beaa14629127bda39ac253070be2aa9368889e7bc41bbee22e1c5a1af"
+    },
+    {
+      "sequence": 562,
+      "cycleId": "b8ef02cb-66af-4d50-a3de-2a9065261179",
+      "requirementId": "REQ-AIDS-021",
+      "testId": "TEST-AIDS-215",
+      "testPath": "tests/test_explainability.py",
+      "commandName": "test",
+      "phase": "green",
+      "phaseEvidenceSha256": "381156bb01090623a4c2d178ec41ab7664efb600513e581b9c410b46f1917e44",
+      "previousSha256": "0080331beaa14629127bda39ac253070be2aa9368889e7bc41bbee22e1c5a1af",
+      "recordSha256": "b9b9bd05c3150e18c9d207a431a2da9d1e14c4b01b6cd4574102aa25397921de"
+    },
+    {
+      "sequence": 563,
+      "cycleId": "a64e3136-e8b0-4f20-a947-e6f05061d1a4",
+      "requirementId": "REQ-AIDS-082",
+      "testId": "TEST-AIDS-215",
+      "testPath": "tests/test_explainability.py",
+      "commandName": "test",
+      "phase": "green",
+      "phaseEvidenceSha256": "63725bcee05b67d86e73ce273ec45733d01842c6516c07037caca6ea460b572c",
+      "previousSha256": "b9b9bd05c3150e18c9d207a431a2da9d1e14c4b01b6cd4574102aa25397921de",
+      "recordSha256": "b2963693608eab55c2504b6bf0c67bf9d2eeb6b843279ad50291976c85738f47"
+    },
+    {
+      "sequence": 564,
+      "cycleId": "414a51bc-6851-464c-941d-f0cdee8d7a31",
+      "requirementId": "REQ-AIDS-021",
+      "testId": "TEST-AIDS-021",
+      "testPath": "tests/test_explainability.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "ae310e1b6d665716d1dc04b255686be67a0306bd0da05cb7fdbf0bb83c91a805",
+      "previousSha256": "b2963693608eab55c2504b6bf0c67bf9d2eeb6b843279ad50291976c85738f47",
+      "recordSha256": "c0e5e28225e0db74645a12f318d377743b473a8fbb53bf50e24dad940dc8ed5b"
+    },
+    {
+      "sequence": 565,
+      "cycleId": "6824a969-306b-458d-9c2c-beb8d84d1d0f",
+      "requirementId": "REQ-AIDS-021",
+      "testId": "TEST-AIDS-021",
+      "testPath": "tests/test_explainability.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "de93cff8c911238f9d42bb3d97834bac18812a4cc46bbf6787276d0b0d0eb5db",
+      "previousSha256": "c0e5e28225e0db74645a12f318d377743b473a8fbb53bf50e24dad940dc8ed5b",
+      "recordSha256": "18d5996c1cfdfce85e0fa81d8325f1b543e40426afbbd3ccfec9ee52e1e6dbf0"
+    },
+    {
+      "sequence": 566,
+      "cycleId": "6824a969-306b-458d-9c2c-beb8d84d1d0f",
+      "requirementId": "REQ-AIDS-021",
+      "testId": "TEST-AIDS-021",
+      "testPath": "tests/test_explainability.py",
+      "commandName": "test",
+      "phase": "green",
+      "phaseEvidenceSha256": "9ef1ed54c7159b013270292c7a85b335533b50abf9460fb2e88a186a7730b5be",
+      "previousSha256": "18d5996c1cfdfce85e0fa81d8325f1b543e40426afbbd3ccfec9ee52e1e6dbf0",
+      "recordSha256": "c0cf0769bef0599cf0c13a3baff122f67ec73e4bf634bfe48b12119ed2d1aef3"
     }
   ]
 }

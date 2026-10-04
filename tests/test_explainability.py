@@ -9,6 +9,7 @@ from types import SimpleNamespace
 import numpy as np
 import pandas as pd
 import pytest
+from sklearn.linear_model import LogisticRegression
 
 from ai_data_scientist.explainability import explain_model
 from ai_data_scientist.ml_modeling import train_model
@@ -61,6 +62,34 @@ def test_TEST_AIDS_169():
 
     assert explanation.feature_importances == pytest.approx(reference)
     assert explanation.ranking == sorted(reference, key=reference.get, reverse=True)
+    assert explanation.importance_kind == "coefficient_magnitude"
+
+
+# @id TEST-AIDS-215
+# @verifies REQ-AIDS-021 REQ-AIDS-082
+def test_TEST_AIDS_215():
+    rng = np.random.RandomState(0)
+    feature_names = ["feature_0", "feature_1", "feature_2"]
+    # Deliberately use separated class centers so per-class coefficients differ.
+    x = np.vstack(
+        [
+            rng.normal(loc=[-3.0, 0.0, 0.5], scale=0.7, size=(40, 3)),
+            rng.normal(loc=[0.5, 3.0, -1.0], scale=0.7, size=(40, 3)),
+            rng.normal(loc=[3.0, -1.5, 2.0], scale=0.7, size=(40, 3)),
+        ]
+    )
+    y = np.repeat([0, 1, 2], 40)
+    model = LogisticRegression(random_state=0, max_iter=1000).fit(x, y)
+
+    explanation = explain_model(model, feature_names=feature_names)
+
+    expected_importances = np.abs(model.coef_).mean(axis=0)
+    expected_ranking = sorted(zip(feature_names, expected_importances), key=lambda kv: -kv[1])
+
+    assert explanation.feature_importances == pytest.approx(
+        dict(zip(feature_names, expected_importances))
+    )
+    assert explanation.ranking == [name for name, _ in expected_ranking]
     assert explanation.importance_kind == "coefficient_magnitude"
 
 
