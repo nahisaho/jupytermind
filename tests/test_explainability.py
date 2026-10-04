@@ -1,4 +1,8 @@
-"""Tests for model explainability (REQ-AIDS-021/082/083/084)."""
+"""Tests for model explainability (REQ-AIDS-021/082/083/084).
+
+CHANGE-011 adds TEST-AIDS-169 through TEST-AIDS-177, covering labeled
+importance kinds, signed local contributions, and permutation importance.
+"""
 
 from types import SimpleNamespace
 
