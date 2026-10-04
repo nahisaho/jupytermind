@@ -1,4 +1,10 @@
-"""Tests for visualization generation (REQ-AIDS-007)."""
+"""Tests for visualization generation (REQ-AIDS-007).
+
+CHANGE-012 adds TEST-AIDS-195 through TEST-AIDS-202 (REQ-AIDS-085..088),
+covering box/barh/heatmap chart kinds, hue-grouped series with legend
+titles, symmetric/asymmetric error bars, and the chart_metadata_from_figure
+helper.
+"""
 
 import io
 import struct
