@@ -81,7 +81,7 @@ helper). ADRs: none currently planned.
   `450 passed`.
 - [x] Release approval: explicit human sign-off (approver: nahisaho) via
   `ask_user`, approving the exact file list and the manifest hash
-  `<RELEASE_HASH>` (repo-wide `approval prepare release` manifest)
+  `2c1e58b3fb5e9ec377e6deee951d1d6aa36d68588af279e5eb4edb967d8a79ac` (repo-wide `approval prepare release` manifest)
   together with all residual risks disclosed above. `musubix3 approval
   record release` itself cannot complete for the same reasons as prior
   precedent — the full (non-`--changed`) gate it runs is blocked by
@@ -92,7 +92,7 @@ helper). ADRs: none currently planned.
 ## Status
 
 Released. Human release approval recorded (approver: nahisaho, hash
-`<RELEASE_HASH>`); `musubix3 approval record release` blocked only by
+`2c1e58b3fb5e9ec377e6deee951d1d6aa36d68588af279e5eb4edb967d8a79ac`); `musubix3 approval record release` blocked only by
 pre-existing, non-CHANGE-012 repo-wide diagnostics plus this change's own
 recording-order-debt (see above), consistent with
 CHANGE-006/CHANGE-008/CHANGE-009/CHANGE-010/CHANGE-011 precedent.
