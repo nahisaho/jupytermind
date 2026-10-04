@@ -95,7 +95,7 @@ library primitives.
   unchanged by this feature. Full suite `442 passed`.
 - [x] Release approval: explicit human sign-off (approver: nahisaho) via
   `ask_user`, approving the exact file list and the manifest hash
-  `<RELEASE_HASH>` (repo-wide `approval prepare release` manifest)
+  `5856d5effe2282cabae95b2b770526b751855cb78fa9ae8bc7e9f6e27f486aa4` (repo-wide `approval prepare release` manifest)
   together with all residual risks disclosed above. `musubix3 approval
   record release` itself cannot complete for the same reasons as prior
   precedent — the full (non-`--changed`) gate it runs is blocked by
@@ -106,7 +106,7 @@ library primitives.
 ## Status
 
 Released. Human release approval recorded (approver: nahisaho, hash
-`<RELEASE_HASH>`); `musubix3 approval record release` blocked only by
+`5856d5effe2282cabae95b2b770526b751855cb78fa9ae8bc7e9f6e27f486aa4`); `musubix3 approval record release` blocked only by
 pre-existing, non-CHANGE-011 repo-wide diagnostics plus this change's own
 recording-order-debt (see above), consistent with
 CHANGE-006/CHANGE-008/CHANGE-009/CHANGE-010 precedent.
