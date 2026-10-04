@@ -3,6 +3,9 @@
 Implements DES-AIDS-020 (REQ-AIDS-022): computes the statistical
 significance of the observed difference between two groups and reports
 the result with a bilingual markdown interpretation.
+
+CHANGE-010 (REQ-AIDS-079..081) adds paired_t/wilcoxon/paired_bootstrap
+paths (DES-AIDS-067..069, CODE-AIDS-101..105).
 """
 
 from __future__ import annotations
