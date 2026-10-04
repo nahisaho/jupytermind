@@ -98,15 +98,15 @@ Acceptance: An AutoML request on a sample dataset produces a ranked table of at 
 Priority: must
 Type: functional
 Pattern: event-driven
-Statement: When a user requests an explanation of a trained model, the system shall execute a notebook code cell that computes feature importance or SHAP values and reports them alongside a markdown interpretation.
-Acceptance: An explainability request on a trained classifier produces a feature importance ranking whose top feature matches the reference scikit-learn feature_importances_ or SHAP value ordering.
+Statement: When a user requests the default global explanation of a trained model supported by the default explainability path, the system shall execute a notebook code cell that computes and reports a documented feature-importance artifact.
+Acceptance: A default global explainability request on a trained supported model produces a feature-importance ranking whose top feature matches the reference scikit-learn `feature_importances_` ordering for tree-based models or the absolute-coefficient ordering defined by REQ-AIDS-082 for coefficient-based models.
 
 ## REQ-AIDS-082: Explainability method labeling and default compatibility / 説明手法ラベル付けと既定互換性
 Priority: must
 Type: functional
 Pattern: event-driven
-Statement: When a caller requests `explainability.explain_model` without opting into an alternate explainability method, the system shall return the existing feature-importance ranking behavior together with a global-importance-kind label that distinguishes split-based importances from coefficient-magnitude importances.
-Acceptance: Calling `explain_model(model, feature_names)` on a fitted random-forest classifier returns the same ranking and per-feature values as `model.feature_importances_`, plus `importance_kind == "split"`. Calling it on a fitted single-output linear or logistic-regression model returns the same ranking and per-feature absolute-coefficient values as before this change, plus `importance_kind == "coefficient_magnitude"`.
+Statement: When a caller requests `explainability.explain_model` without opting into an alternate explainability method, the system shall stay on the legacy global feature-importance path for tree-based and single-output coefficient models, apply the documented multiclass coefficient aggregation rule for supported class-aligned multiclass coefficient models, and return that ranking together with a global-importance-kind label that distinguishes split-based importances from coefficient-magnitude importances.
+Acceptance: Calling `explain_model(model, feature_names)` on a fitted random-forest classifier returns the same ranking and per-feature values as `model.feature_importances_`, plus `importance_kind == "split"`. Calling it on a fitted single-output linear or logistic-regression model returns per-feature absolute-coefficient values computed from `np.abs(model.coef_).reshape(-1)`, a ranking sorted from those values, and `importance_kind == "coefficient_magnitude"`. Calling it on a fitted multiclass class-aligned coefficient classifier such as `LogisticRegression`, whose `coef_` has one row per class, returns per-feature coefficient-magnitude values computed from `np.abs(model.coef_).mean(axis=0)` and a ranking sorted from those aggregated values, plus `importance_kind == "coefficient_magnitude"`.
 
 ## REQ-AIDS-083: Signed local contributions with additive consistency / 符号付き局所寄与と加法整合性
 Priority: should
