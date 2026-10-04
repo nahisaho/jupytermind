@@ -1,0 +1,67 @@
+{
+  "sequence-features": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_sequence_features",
+    "names": {
+      "en": [
+        "sequence-features",
+        "sequence feature analysis"
+      ],
+      "ja": [
+        "配列特徴量解析"
+      ]
+    }
+  },
+  "variant-effect-annotation": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_variant_effect_annotation",
+    "names": {
+      "en": [
+        "variant-effect-annotation",
+        "variant effect heuristic annotation"
+      ],
+      "ja": [
+        "バリアント効果注釈"
+      ]
+    }
+  },
+  "splice-site-strength": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_splice_site_strength",
+    "names": {
+      "en": [
+        "splice-site-strength",
+        "splice-site strength heuristic"
+      ],
+      "ja": [
+        "スプライス部位強度"
+      ]
+    }
+  },
+  "gene-set-enrichment": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_gene_set_enrichment",
+    "names": {
+      "en": [
+        "gene-set-enrichment",
+        "gene set enrichment analysis"
+      ],
+      "ja": [
+        "遺伝子セットエンリッチメント"
+      ]
+    }
+  },
+  "pairwise-sequence-alignment": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_pairwise_sequence_alignment",
+    "names": {
+      "en": [
+        "pairwise-sequence-alignment",
+        "pairwise sequence alignment"
+      ],
+      "ja": [
+        "配列アラインメント"
+      ]
+    }
+  }
+}

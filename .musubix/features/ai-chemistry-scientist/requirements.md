@@ -15,6 +15,12 @@ only to identify candidate domains, not to reuse any of its code, data, or
 external API calls): molecular descriptor calculation, ADMET heuristic
 screening, QSAR linear-regression modeling, molecular similarity search, and
 a simplified docking-score heuristic.
+This second increment extends the skill to 9 total modules by adding 4 more
+modules — drug-likeness rule screening beyond Lipinski/Veber, structural
+alert screening, molecular formula and exact mass, and heuristic target-class
+activity classification — inspired by ToolUniverse's PubChem/ChEMBL/drug-
+safety tool taxonomy (again only as domain inspiration, not to reuse any of
+its code, data, or external API calls).
 
 All modules are implemented with RDKit (required dependency) plus
 numpy/scikit-learn already present in this repository; no other external
@@ -35,8 +41,8 @@ Acceptance: A fixed Japanese-language fixture request ("分子記述子を計算
 Priority: must
 Type: functional
 Pattern: event-driven
-Statement: When a user's request text contains one of the module manifest's registered name/synonym strings for a supported method, the system shall dispatch the request to exactly that method's module handler and execute no other module, where the supported methods are molecular-descriptors, admet-prediction, qsar-modeling, molecular-similarity, and docking-score, each with both an English and a Japanese registered name/synonym list in the manifest.
-Acceptance: For each of the 5 methods, a fixture request using its registered English name and a separate fixture request using its registered Japanese name each dispatch to exactly that method's handler and no other; a fixture request containing two different methods' registered names yields a clarification question listing both candidates with no module invoked; a fixture request containing none of the registered names yields a rejection message with no module invoked.
+Statement: When a user's request text contains one of the chemistry skill manifest's registered name/synonym strings for a supported method, the system shall dispatch the request to exactly that method's module handler and execute no other module, where the supported methods are the 9 manifest-registered chemistry modules defined by REQ-ACHEM-010/020/030/040/050/060/070/080/090, each with both an English and a Japanese registered name/synonym list in the manifest.
+Acceptance: For each of the 9 methods, a fixture request using one of its registered English names and a separate fixture request using one of its registered Japanese names each dispatch to exactly that method's handler and no other; a fixture request containing two different methods' registered names yields a clarification question listing both candidates with no module invoked; a fixture request containing none of the registered names yields a rejection message with no module invoked.
 
 ## REQ-ACHEM-003: Input and parameter validation / 入力・パラメータ検証
 Priority: must
@@ -44,15 +50,15 @@ Type: functional
 Pattern: unwanted-behavior
 Statement: If a requested module's input parameters fail that module's own documented chemical-validity or numerical-adequacy domain, then the system shall reject the run and report which parameter violated which named constraint, before performing any descriptor computation, model fit, or similarity/score calculation.
 Acceptance: A single-SMILES request whose `smiles` parameter fails RDKit's `Chem.MolFromSmiles` parse (returns `None`) — for example the malformed string `"C1CC"` (unclosed ring) — is rejected with a message naming the `smiles` parameter and the constraint "must parse to a valid RDKit molecule"; no descriptor, score, or model computation is performed for that run. For a batch-capable module (REQ-ACHEM-010), a multi-SMILES request validates and rejects each input item independently: an invalid item is reported as a per-item rejection naming the `smiles` parameter and the violated constraint, while every other item in the same batch is still computed. The same per-run-or-per-item pattern (reject before computation, name the parameter and constraint) applies to every module's documented domain, including each module-specific domain listed in its own requirement below.
-Constraints: This requirement's "chemical-validity or numerical-adequacy domain" is defined per module by REQ-ACHEM-010/020/030/040/050; it does not itself define a single universal validity test applicable across all five modules. Validation granularity is per module: REQ-ACHEM-010 (batch descriptor calculation) validates and rejects each SMILES item independently without aborting the rest of the batch; REQ-ACHEM-020/030/040/050 (single-ligand/model/query modules) validate the whole run atomically and reject the entire run with no partial computation when any parameter is invalid.
+Constraints: This requirement's "chemical-validity or numerical-adequacy domain" is defined per module by REQ-ACHEM-010/020/030/040/050/060/070/080/090; it does not itself define a single universal validity test applicable across all modules in this skill. Validation granularity is per module: REQ-ACHEM-010 (batch descriptor calculation) validates and rejects each SMILES item independently without aborting the rest of the batch; REQ-ACHEM-020/030/040/050/060/070/080/090 (single-ligand/model/query modules) validate the whole run atomically and reject the entire run with no partial computation when any parameter is invalid.
 
 ## REQ-ACHEM-004: Reproducible run evidence / 再現可能な実行根拠
 Priority: must
 Type: functional
 Pattern: event-driven
 Statement: When a module run completes, the system shall record a deterministic result (produced without any random seed) with exactly three top-level keys: `metadata` (a JSON-safe dict containing at least `module`, `schema_version`, and `rdkit_version`), `parameters` (a JSON-safe dict of the resolved input parameters), and `result` (a JSON-safe dict or list of the module's output values).
-Acceptance: For each of the 5 modules, two runs with identical `parameters` against the same installed RDKit/scikit-learn versions produce `result` values that compare exactly equal (numeric fields equal via `==` for integers and within `1e-9` absolute tolerance for floats); `metadata.rdkit_version` matches the installed `rdkit.__version__` string, and for the QSAR module (REQ-ACHEM-030) `metadata.scikit_learn_version` matches the installed `sklearn.__version__` string.
-Constraints: "Deterministic" means every module's governing computation (RDKit descriptor calculation, scikit-learn `LinearRegression` least-squares fit, fingerprint similarity, or the fixed arithmetic docking-score formula) is a pure function of `parameters` and the installed RDKit/scikit-learn version, with no stochastic step and therefore no seed to record.
+Acceptance: For each of the 9 modules, two runs with identical `parameters` against the same installed RDKit/scikit-learn versions produce `result` values that compare exactly equal (numeric fields equal via `==` for integers and within `1e-9` absolute tolerance for floats); `metadata.rdkit_version` matches the installed `rdkit.__version__` string, and for the QSAR module (REQ-ACHEM-030) `metadata.scikit_learn_version` matches the installed `sklearn.__version__` string.
+Constraints: "Deterministic" means every module's governing computation (RDKit descriptor calculation, rule screening, SMARTS substructure matching, molecular-formula/exact-mass calculation, heuristic target-class classification, scikit-learn `LinearRegression` least-squares fit, fingerprint similarity, or the fixed arithmetic docking-score formula) is a pure function of `parameters` and the installed RDKit/scikit-learn version, with no stochastic step and therefore no seed to record.
 
 ## REQ-ACHEM-010: Molecular descriptor calculation / 分子記述子計算
 Priority: must
@@ -92,3 +98,51 @@ Pattern: event-driven
 Statement: When a user requests a docking score for a ligand SMILES against a pocket specification, the system shall report a heuristic docking score in the closed interval 0 to 1 for that ligand-pocket pair.
 Acceptance: For aspirin (13 heavy atoms → `ligand_volume = 195.0`; NumHDonors = 1, NumHAcceptors = 3) against a pocket spec `{pocket_volume_A3: 200.0, pocket_hba_sites: 2, pocket_hbd_sites: 1}`: `size_fit = 1 - abs(195.0 - 200.0) / 200.0 = 0.975`, `matched_pairs = min(1, 2) + min(3, 1) = 2`, `hbond_fit = 2 / max(1, 1 + 3) = 0.5`, `score = 0.5*0.975 + 0.5*0.5 = 0.7375`, each within `1e-9` absolute tolerance. A `pocket_volume_A3 <= 0` request is rejected naming `pocket_volume_A3` and the constraint "must be > 0" before any score computation.
 Constraints: The pocket specification is `pocket_volume_A3` (must be a finite number `> 0`), `pocket_hba_sites`, and `pocket_hbd_sites` (each must be a finite non-negative integer), enforced under REQ-ACHEM-003. `ligand_volume = heavy_atom_count * 15.0` (Å³, a fixed documented per-heavy-atom constant); `size_fit = clip(1 - abs(ligand_volume - pocket_volume_A3) / pocket_volume_A3, 0, 1)`; `matched_pairs = min(ligand_hbd, pocket_hba_sites) + min(ligand_hba, pocket_hbd_sites)`; `hbond_fit = matched_pairs / max(1, ligand_hbd + ligand_hba)`; `score = 0.5 * size_fit + 0.5 * hbond_fit`. A higher score denotes better heuristic geometric/polar complementarity only; this is an explicitly-labeled heuristic, not a physically accurate docking simulation (no 3D conformer generation, no energy function), and the limitation label is part of the module's output and of SKILL.md documentation.
+
+## REQ-ACHEM-060: Drug-likeness rule screening beyond Lipinski/Veber / Lipinski/Veber以外の薬物らしさルールスクリーニング
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests drug-likeness rule screening for a SMILES string, the system shall report `aromatic_ring_count`, `mol_mr`, `heavy_atom_count`, a Ghose-filter outcome (`ghose_pass`: true iff all of `160 <= MolWt <= 480`, `-0.4 <= MolLogP <= 5.6`, `40 <= MolMR <= 130`, and `20 <= heavy_atom_count <= 70` hold; `ghose_violations` naming every violated criterion in the fixed check order `MolWt`, `MolLogP`, `MolMR`, `heavy_atom_count`), and an Egan-filter outcome (`egan_pass`: true iff both `TPSA <= 131.6` and `MolLogP <= 5.88` hold; `egan_violations` naming every violated criterion in the fixed check order `TPSA`, `MolLogP`), where all of those outputs are computed from the REQ-ACHEM-010 descriptors together with aromatic ring count (`rdMolDescriptors.CalcNumAromaticRings`), molar refractivity (`Descriptors.MolMR`), and heavy-atom count (`mol.GetNumHeavyAtoms()`).
+Acceptance: For aspirin (`"CC(=O)OC1=CC=CC=C1C(=O)O"`), RDKit computes `aromatic_ring_count = 1`, `mol_mr = 44.7103 ± 0.0001` (full-precision `44.71030000000002`), and `heavy_atom_count = 13`; therefore `ghose_violations = ["heavy_atom_count"]`, `ghose_pass = false`, `egan_violations = []`, and `egan_pass = true`. For ethanol (`"CCO"`), RDKit computes `aromatic_ring_count = 0`, `mol_mr = 12.7598 ± 0.0001`, and `heavy_atom_count = 3`; therefore `ghose_violations = ["MolWt", "MolMR", "heavy_atom_count"]`, `ghose_pass = false`, `egan_violations = []`, and `egan_pass = true`. The violation-name lists for both filters are emitted only in their documented fixed criterion-check order. All floating-point fixture values in this Acceptance are compared within `1e-4` absolute tolerance (4-decimal presentation); the recorded `result` itself preserves full floating-point precision per REQ-ACHEM-004 (compared there within `1e-9` absolute tolerance), with no intentional output rounding.
+Constraints: This module extends REQ-ACHEM-020 with two additional fixed-threshold rule outcomes, Ghose and Egan, computed from descriptors that may overlap with those used by Lipinski/Veber (e.g. MolWt, MolLogP, TPSA); it reports only the Ghose and Egan pass/violation outcomes and does not re-report the Lipinski or Veber pass/violation outcomes already reported by REQ-ACHEM-020. Validation remains atomic per REQ-ACHEM-003: a request whose `smiles` parameter does not parse to a valid RDKit molecule is rejected before any descriptor or rule computation. Ghose and Egan are deterministic fixed-threshold rule screens over the computed descriptor values; no external data, no stochastic step, and no network call are involved.
+
+## REQ-ACHEM-070: Structural alert (PAINS-like) screening / 構造アラート(PAINS風)スクリーニング
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests structural alert screening for a SMILES string, the system shall report `alerts_matched` as the list of matched alert names in the fixed alert-definition order given here, with non-matching alert names omitted, and `alert_count` as its length, where matching is evaluated against exactly this fixed named SMARTS alert list on the parsed molecule: `nitro_group: [NX3](=O)=O`, `aldehyde: [CX3H1](=O)`, `michael_acceptor_enone: C=CC(=O)`, `epoxide: C1OC1`, and `free_thiol: [SX2H]`.
+Acceptance: Each of the 5 SMARTS strings in this requirement parses successfully with RDKit's `Chem.MolFromSmarts` (returns non-`None`). For the alert-rich fixture molecule `"O=CC=CC(=O)C1OC1"`, RDKit substructure matching yields `alerts_matched = ["aldehyde", "michael_acceptor_enone", "epoxide"]` and `alert_count = 3`. For aspirin (`"CC(=O)OC1=CC=CC=C1C(=O)O"`), RDKit substructure matching against the same 5 SMARTS yields `alerts_matched = []` and `alert_count = 0`.
+Constraints: Validation remains atomic per REQ-ACHEM-003: a request whose `smiles` parameter does not parse to a valid RDKit molecule is rejected before any SMARTS matching. This is an explicitly-labeled heuristic only: "Heuristic only: a small fixed illustrative SMARTS alert list, not the validated PAINS/Brenk filter catalog." / 「ヒューリスティックのみ: 固定の小規模な例示用SMARTSアラート一覧であり、検証済みのPAINS/Brenkフィルタ・カタログではない。」 The limitation label is part of the module's output and of SKILL.md documentation.
+
+## REQ-ACHEM-080: Molecular formula and exact mass / 分子式・正確質量
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests molecular formula and exact mass for a SMILES string, the system shall parse the SMILES and record a `result` containing exactly `{molecular_formula, exact_mass}` within the REQ-ACHEM-004 `RunRecord` envelope (`metadata`/`parameters`/`result`), where `molecular_formula = rdMolDescriptors.CalcMolFormula(mol)` and `exact_mass = Descriptors.ExactMolWt(mol)`.
+Acceptance: For aspirin (`"CC(=O)OC1=CC=CC=C1C(=O)O"`), RDKit returns `molecular_formula = "C9H8O4"` and `exact_mass = 180.0423 ± 0.0001` (from executed output `180.042258736`, rounded to 4 decimal places for this acceptance fixture).
+Constraints: Validation remains atomic per REQ-ACHEM-003: a request whose `smiles` parameter does not parse to a valid RDKit molecule is rejected before any formula or mass computation. Determinism and run-evidence behavior are exactly those of REQ-ACHEM-004; this module introduces no additional metadata fields beyond the existing `rdkit_version` requirement.
+
+## REQ-ACHEM-090: Heuristic target-class activity classification / 標的クラス活性ヒューリスティック分類
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests target-class activity classification for a SMILES string, the system shall report `{label, tpsa, mol_logp, mol_wt, aromatic_ring_count}`, where `tpsa`, `mol_logp`, and `mol_wt` are the REQ-ACHEM-010 descriptors, `aromatic_ring_count = rdMolDescriptors.CalcNumAromaticRings(mol)`, and `label` is assigned by this fixed decision order: first `"CNS_like"` iff `TPSA < 90` and `2.0 <= MolLogP <= 5.0`; if that test fails, then `"kinase_inhibitor_like"` iff `MolWt > 400` and `aromatic_ring_count >= 3`; otherwise `"other"`.
+Acceptance: For diazepam (`"CN1C(=O)CN=C(c2ccccc2)c2cc(Cl)ccc21"`), RDKit computes `tpsa = 32.67 ± 0.0001`, `mol_logp = 3.1538 ± 0.0001` (full-precision `3.1538000000000025`), `mol_wt = 284.746 ± 0.001`, and `aromatic_ring_count = 2`, so the label is exactly `"CNS_like"`. For nilotinib (`"CC1=C(C=C(C=C1)NC(=O)C2=CC(=CC(=C2)N3CCN(CC3)C)C(F)(F)F)NC4=NC=NC(=N4)C5=CN=CC=C5"`), RDKit computes `tpsa = 99.17 ± 0.0001`, `mol_logp = 5.00852 ± 0.0001`, `mol_wt = 548.573 ± 0.001`, and `aromatic_ring_count = 4`, so it fails the first (`"CNS_like"`) branch and is classified exactly as `"kinase_inhibitor_like"`. For aspirin (`"CC(=O)OC1=CC=CC=C1C(=O)O"`), RDKit computes `tpsa = 63.60 ± 0.0001`, `mol_logp = 1.3101 ± 0.0001`, `mol_wt = 180.159 ± 0.001`, and `aromatic_ring_count = 1`, so the label is exactly `"other"`. All floating-point fixture values in this Acceptance are compared within the stated decimal-place tolerance (presentation rounding only); the recorded `result` preserves full floating-point precision per REQ-ACHEM-004 (compared there within `1e-9` absolute tolerance), with no intentional output rounding.
+Constraints: Validation remains atomic per REQ-ACHEM-003: a request whose `smiles` parameter does not parse to a valid RDKit molecule is rejected before any descriptor or classification computation. This is an explicitly-labeled heuristic only: "Heuristic only: not a ChEMBL-trained or experimentally validated bioactivity classifier." / 「ヒューリスティックのみ: ChEMBLで学習済みでも実験的に検証済みでもない生物活性分類器ではない。」 The fixed decision order (`"CNS_like"` first, `"kinase_inhibitor_like"` second, `"other"` last) is part of the observable behavior and shall not be reordered.
+
+## Review record (second increment) / レビュー記録(第2増分)
+REQ-ACHEM-060/070/080/090 (this second increment) passed `musubix3
+requirements validate` and `musubix3 constitution validate`. An independent
+native `rubber-duck` review found 3 issues on the first pass (REQ-ACHEM-080's
+result shape conflicting with the REQ-ACHEM-004 `RunRecord` envelope, missing
+float tolerances on REQ-ACHEM-060/090 fixtures, and inaccurate
+"non-overlapping" wording in REQ-ACHEM-060); all 3 were fixed, and a second
+review round plus a final cross-file consistency check confirmed zero
+remaining issues. 本増分（REQ-ACHEM-060/070/080/090）は `musubix3 requirements
+validate` と `musubix3 constitution validate` に合格した。独立した native
+`rubber-duck` レビューは初回パスで 3 件の指摘（REQ-ACHEM-080 の結果形状が
+REQ-ACHEM-004 の `RunRecord` エンベロープと矛盾、REQ-ACHEM-060/090
+フィクスチャの浮動小数点許容誤差欠落、REQ-ACHEM-060 の「重複なし」という
+不正確な記述）を検出し、すべて修正した上で、2 回目のレビューおよび最終
+クロスファイル整合性チェックで残存課題ゼロを確認した。

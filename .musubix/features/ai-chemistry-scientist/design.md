@@ -18,7 +18,7 @@ Responsibilities: Load the static method-name-to-module manifest
 (`.github/skills/ai-chemistry-scientist/manifest.json`; each entry has
 `modulePath`, `functionName`, and bilingual `names.en`/`names.ja` lists,
 identical in shape to `ai-materials-scientist`'s manifest), classify an
-incoming bilingual user request against the 5 supported method
+incoming bilingual user request against the 9 supported method
 names/synonyms, detect the request's language (Japanese or English), and
 on exactly one match resolve `modulePath`/`functionName` to that module's
 handler wrapper function and invoke it with `(request_text, language)`
@@ -36,19 +36,28 @@ module's structured `params` from `request_text` (parsing a SMILES string
 or numeric arguments out of free text, or accepting them as
 already-structured keyword arguments from a calling context — this
 extraction is each handler wrapper's own documented responsibility, not
-`dispatch`'s); (2) for the 4 atomic-validation modules
-(DES-ACHEM-020/030/040/050) only, calling DES-ACHEM-002's
+`dispatch`'s); (2) for the 8 atomic-validation modules
+(DES-ACHEM-020/030/040/050/060/070/080/090) only, calling DES-ACHEM-002's
 `validate_parameters` on the extracted `params` first, returning a
 localized rejection `ModuleOutcome` with no further call on failure; (3)
-calling its own `run_*` function (DES-ACHEM-010..050) with the extracted
+calling its own `run_*` function (DES-ACHEM-010..090) with the extracted
 (and, for atomic modules, already-validated) `params`; (4) for
-DES-ACHEM-020's and DES-ACHEM-050's results only, substituting the raw
-result's `limitation_label_key` (e.g. `"admet_heuristic_limitation"`) with
-the matching `language`-specific fixed text from that module's own
-Responsibilities section (e.g. `admet_heuristic_limitation.en`/`.ja`),
-producing a final `result` whose `limitation_label` field is already
-localized prose; and (5) wrapping that (possibly label-substituted) raw
-`run_*` result via DES-ACHEM-003's `record_run` into a `RunRecord`.
+DES-ACHEM-020's, DES-ACHEM-050's, DES-ACHEM-070's, and DES-ACHEM-090's
+results only, substituting the raw result's `limitation_label_key` (e.g.
+`"admet_heuristic_limitation"`) with the matching `language`-specific
+fixed text from that module's own Responsibilities section (e.g.
+`admet_heuristic_limitation.en`/`.ja`), producing a final `result` whose
+`limitation_label` field is already localized prose; and (5) wrapping
+that (possibly label-substituted) raw `run_*` result via DES-ACHEM-003's
+`record_run` into a `RunRecord`. The manifest and dispatcher's internal
+method-routing tables (`_RUN_MODULE_PATHS`, `_RUN_FUNCTION_NAMES`) cover
+exactly these 9 method slugs: `molecular-descriptors`,
+`admet-prediction`, `qsar-modeling`, `molecular-similarity`,
+`docking-score`, `drug-likeness-rules`, `structural-alerts`,
+`molecular-formula-mass`, and `bioactivity-classification`;
+`_LIMITATION_LABEL_MODULES` includes exactly `admet-prediction`,
+`docking-score`, `structural-alerts`, and
+`bioactivity-classification`.
 DES-ACHEM-010 (the one per-item-validated, batch-capable module per
 ADR-0026) is the sole exception to step (2): its handler wrapper calls
 `run_molecular_descriptors` directly with no separate upfront
@@ -91,7 +100,7 @@ before any module performs a descriptor computation, model fit, or
 similarity/score calculation, and report the violated parameter and
 constraint on failure. Supports two granularities selected by the calling
 module: atomic (reject the whole run on any invalid parameter) for
-REQ-ACHEM-020/030/040/050, and per-item (reject only the invalid item,
+REQ-ACHEM-020/030/040/050/060/070/080/090, and per-item (reject only the invalid item,
 continue computing the rest) for REQ-ACHEM-010's batch SMILES input.
 Interfaces: `validate_parameters(module_name, params) -> ValidationResult`
 `{ok: true}` | `{ok: false, parameter, constraint}` for atomic validation;
@@ -128,7 +137,7 @@ Interfaces: `record_run(module_name, params, result, *, rdkit_version,
 scikit_learn_version=None) -> RunRecord` `{metadata: {module,
 schema_version, rdkit_version, [scikit_learn_version]}, parameters,
 result}`. `scikit_learn_version` is included in `metadata` only when
-supplied (REQ-ACHEM-030's QSAR module always supplies it; the other 4
+supplied (REQ-ACHEM-030's QSAR module always supplies it; the other 8
 modules omit it).
 Constraints: Re-running with identical `parameters` against the same
 installed RDKit/scikit-learn versions must reproduce a `result` that
@@ -140,11 +149,12 @@ Requirements: REQ-ACHEM-004
 ADRs: ADR-0027
 Depends-On: DES-ACHEM-001
 
-Note on DES-ACHEM-010 through DES-ACHEM-050 below: each module's
+Note on DES-ACHEM-010 through DES-ACHEM-090 below: each module's
 `run_*(...)` function is the raw, unwrapped computation entry point. For
-the 4 atomic-validation modules (DES-ACHEM-020/030/040/050), it is called
-internally by its DES-ACHEM-001 handler wrapper only after DES-ACHEM-002
-`validate_parameters` succeeds, so these 4 `run_*` functions receive only
+the 8 atomic-validation modules
+(DES-ACHEM-020/030/040/050/060/070/080/090), it is called internally by
+its DES-ACHEM-001 handler wrapper only after DES-ACHEM-002
+`validate_parameters` succeeds, so these 8 `run_*` functions receive only
 already-validated `params` and perform no parameter revalidation of their
 own; none of them is called on a validation-failure path. DES-ACHEM-010
 is the sole exception (per-item granularity, ADR-0026): its own
@@ -153,8 +163,10 @@ with computation inside `run_molecular_descriptors` itself, which its
 handler wrapper calls directly with no separate upfront
 `validate_parameters` step. Every `run_*` function's return shape
 (`DescriptorResult`, `AdmetResult`, `QsarResult`, `SimilarityResult`,
-`DockingResult`) is exactly the `result` value DES-ACHEM-003's
-`record_run` wraps into a `RunRecord`.
+`DockingResult`, `DrugLikenessRulesResult`, `StructuralAlertsResult`,
+`MolecularFormulaMassResult`, `BioactivityClassificationResult`) is
+exactly the `result` value DES-ACHEM-003's `record_run` wraps into a
+`RunRecord`.
 
 ## DES-ACHEM-010: Molecular descriptor module / 分子記述子モジュール
 Responsibilities: Parse each input SMILES with `Chem.MolFromSmiles`,
@@ -306,6 +318,123 @@ Requirements: REQ-ACHEM-050
 ADRs: ADR-0032
 Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
 
+## DES-ACHEM-060: Drug-likeness rule screening module / Lipinski/Veber以外の薬物らしさルールスクリーニングモジュール
+Responsibilities: Receive the single input SMILES already validated
+atomically by its handler wrapper via `DES-ACHEM-002.validate_parameters`
+(REQ-ACHEM-003's atomic granularity; this function performs no
+revalidation), compute DES-ACHEM-010's 7 descriptors for it together
+with `aromatic_ring_count = rdMolDescriptors.CalcNumAromaticRings(mol)`,
+`mol_mr = Descriptors.MolMR(mol)`, and `heavy_atom_count =
+mol.GetNumHeavyAtoms()`, then evaluate the Ghose criteria (`160 <= MolWt
+<= 480`, `-0.4 <= MolLogP <= 5.6`, `40 <= MolMR <= 130`, and `20 <=
+heavy_atom_count <= 70`) in that fixed check order to build
+`ghose_violations` naming every violated criterion in the fixed check
+order `MolWt`, `MolLogP`, `MolMR`, `heavy_atom_count` and `ghose_pass`
+(`true` iff all 4 hold), and the Egan criteria (`TPSA <= 131.6` and
+`MolLogP <= 5.88`) in that fixed check order to build
+`egan_violations` naming every violated criterion in the fixed check
+order `TPSA`, `MolLogP` and `egan_pass` (`true` iff both hold). This
+module extends REQ-ACHEM-020 with the two additional fixed-threshold rule
+outcomes, Ghose and Egan, computed from descriptors that may overlap with
+those used by Lipinski/Veber (e.g. `MolWt`, `MolLogP`, `TPSA`); it
+reports only the Ghose and Egan pass/violation outcomes and does not
+re-report the Lipinski or Veber pass/violation outcomes already reported
+by REQ-ACHEM-020.
+Interfaces: `run_drug_likeness_rules(smiles) -> DrugLikenessRulesResult
+{aromatic_ring_count, mol_mr, heavy_atom_count, ghose_violations:
+list[str], ghose_pass: bool, egan_violations: list[str], egan_pass:
+bool}`.
+Constraints: Criterion-check order is fixed (`MolWt`, `MolLogP`, `MolMR`,
+`heavy_atom_count` for Ghose; `TPSA`, `MolLogP` for Egan) so both
+`*_violations` lists are deterministic (REQ-ACHEM-060 Acceptance);
+invalid input is rejected by the handler wrapper under REQ-ACHEM-003
+before this function is ever called; Ghose and Egan are deterministic
+fixed-threshold rule screens over the computed descriptor values; no
+external data, no stochastic step, and no network call are involved.
+Requirements: REQ-ACHEM-060
+ADRs: ADR-0049
+Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
+
+## DES-ACHEM-070: Structural alert screening module / 構造アラート(PAINS風)スクリーニングモジュール
+Responsibilities: Receive the single input SMILES already validated
+atomically by its handler wrapper via `DES-ACHEM-002.validate_parameters`
+(REQ-ACHEM-003's atomic granularity; this function performs no
+revalidation), compile and match exactly this fixed named SMARTS alert
+list against the parsed molecule in its fixed alert-definition order:
+`nitro_group: [NX3](=O)=O`, `aldehyde: [CX3H1](=O)`,
+`michael_acceptor_enone: C=CC(=O)`, `epoxide: C1OC1`, and
+`free_thiol: [SX2H]`. Report `alerts_matched` as the list of matched
+alert names in that fixed alert-definition order, with non-matching alert
+names omitted, and `alert_count` as its length.
+Interfaces: `run_structural_alerts(smiles) -> StructuralAlertsResult
+{alerts_matched: list[str], alert_count: int, limitation_label_key}`.
+Constraints: Invalid input is rejected by the handler wrapper under
+REQ-ACHEM-003 before this function is ever called; `limitation_label_key`
+is the fixed string `"structural_alerts_heuristic_limitation"` (not yet
+localized — see DES-ACHEM-001's handler wrapper, which substitutes the
+matching `language` text from the table below into the final
+`RunRecord.result.limitation_label` field before `record_run`,
+replacing `limitation_label_key`); the same two-language text must also
+appear verbatim in SKILL.md (REQ-ACHEM-070 Constraints):
+`structural_alerts_heuristic_limitation.en` = "Heuristic only: a small
+fixed illustrative SMARTS alert list, not the validated PAINS/Brenk
+filter catalog."; `structural_alerts_heuristic_limitation.ja` =
+"ヒューリスティックのみ: 固定の小規模な例示用SMARTSアラート一覧であり、
+検証済みのPAINS/Brenkフィルタ・カタログではない。"
+Requirements: REQ-ACHEM-070
+ADRs: ADR-0050
+Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
+
+## DES-ACHEM-080: Molecular formula and exact mass module / 分子式・正確質量モジュール
+Responsibilities: Receive the single input SMILES already validated
+atomically by its handler wrapper via `DES-ACHEM-002.validate_parameters`
+(REQ-ACHEM-003's atomic granularity; this function performs no
+revalidation), parse the molecule, and compute `molecular_formula =
+rdMolDescriptors.CalcMolFormula(mol)` and `exact_mass =
+Descriptors.ExactMolWt(mol)`.
+Interfaces: `run_molecular_formula_mass(smiles) ->
+MolecularFormulaMassResult {molecular_formula, exact_mass}`.
+Constraints: Invalid input is rejected by the handler wrapper under
+REQ-ACHEM-003 before this function is ever called; determinism and
+run-evidence behavior are exactly those of REQ-ACHEM-004; this module
+introduces no additional metadata fields beyond the existing
+`rdkit_version` requirement.
+Requirements: REQ-ACHEM-080
+ADRs: ADR-0051
+Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
+
+## DES-ACHEM-090: Heuristic target-class activity classification module / 標的クラス活性ヒューリスティック分類モジュール
+Responsibilities: Receive the single input SMILES already validated
+atomically by its handler wrapper via `DES-ACHEM-002.validate_parameters`
+(REQ-ACHEM-003's atomic granularity; this function performs no
+revalidation), compute DES-ACHEM-010's `tpsa`, `mol_logp`, and `mol_wt`
+descriptors together with `aromatic_ring_count =
+rdMolDescriptors.CalcNumAromaticRings(mol)`, then assign `label` by this
+fixed decision order: first `"CNS_like"` iff `TPSA < 90` and `2.0 <=
+MolLogP <= 5.0`; if that test fails, then `"kinase_inhibitor_like"` iff
+`MolWt > 400` and `aromatic_ring_count >= 3`; otherwise `"other"`.
+Interfaces: `run_bioactivity_classification(smiles) ->
+BioactivityClassificationResult {label, tpsa, mol_logp, mol_wt,
+aromatic_ring_count, limitation_label_key}`.
+Constraints: Invalid input is rejected by the handler wrapper under
+REQ-ACHEM-003 before this function is ever called; `limitation_label_key`
+is the fixed string `"bioactivity_classifier_heuristic_limitation"` (not
+yet localized — see DES-ACHEM-001's handler wrapper, which substitutes
+the matching `language` text from the table below into the final
+`RunRecord.result.limitation_label` field before `record_run`,
+replacing `limitation_label_key`); the same two-language text must also
+appear verbatim in SKILL.md (REQ-ACHEM-090 Constraints):
+`bioactivity_classifier_heuristic_limitation.en` = "Heuristic only: not a
+ChEMBL-trained or experimentally validated bioactivity classifier.";
+`bioactivity_classifier_heuristic_limitation.ja` = "ヒューリスティックの
+み: ChEMBLで学習済みでも実験的に検証済みでもない生物活性分類器ではな
+い。"; the fixed decision order (`"CNS_like"` first,
+`"kinase_inhibitor_like"` second, `"other"` last) is part of the
+observable behavior and shall not be reordered.
+Requirements: REQ-ACHEM-090
+ADRs: ADR-0052
+Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
+
 ## Traceability summary / 追跡可能性一覧
 
 | Design component | Requirement(s) | ADR |
@@ -318,8 +447,12 @@ Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
 | DES-ACHEM-030 | REQ-ACHEM-030 | ADR-0030 |
 | DES-ACHEM-040 | REQ-ACHEM-040 | ADR-0031 |
 | DES-ACHEM-050 | REQ-ACHEM-050 | ADR-0032 |
+| DES-ACHEM-060 | REQ-ACHEM-060 | ADR-0049 |
+| DES-ACHEM-070 | REQ-ACHEM-070 | ADR-0050 |
+| DES-ACHEM-080 | REQ-ACHEM-080 | ADR-0051 |
+| DES-ACHEM-090 | REQ-ACHEM-090 | ADR-0052 |
 
-Every DES-ACHEM-010 through DES-ACHEM-050 module depends on DES-ACHEM-001
+Every DES-ACHEM-010 through DES-ACHEM-090 module depends on DES-ACHEM-001
 (dispatch), DES-ACHEM-002 (validation), and DES-ACHEM-003 (evidence
 schema); this table records the full requirement/design/ADR coverage so a
 change to any one artifact's linked IDs is immediately visible as a
@@ -329,14 +462,16 @@ mismatch.
 
 `.github/skills/ai-chemistry-scientist/SKILL.md` is a required
 implementation deliverable (alongside `manifest.json` and the
-`src/ai_chemistry_scientist/` package) and must verbatim include both
+`src/ai_chemistry_scientist/` package) and must verbatim include all
 exact bilingual limitation-label texts defined above:
-`admet_heuristic_limitation.en`/`.ja` (DES-ACHEM-020) and
-`docking_heuristic_limitation.en`/`.ja` (DES-ACHEM-050) (REQ-ACHEM-020 and
-REQ-ACHEM-050 Constraints), in both English and Japanese since
+`admet_heuristic_limitation.en`/`.ja` (DES-ACHEM-020),
+`docking_heuristic_limitation.en`/`.ja` (DES-ACHEM-050),
+`structural_alerts_heuristic_limitation.en`/`.ja` (DES-ACHEM-070), and
+`bioactivity_classifier_heuristic_limitation.en`/`.ja`
+(DES-ACHEM-090) (REQ-ACHEM-020, REQ-ACHEM-050, REQ-ACHEM-070, and
+REQ-ACHEM-090 Constraints), in both English and Japanese since
 REQ-ACHEM-001 requires every module's user-facing text to render in the
 request's language. This is a documentation-content check performed
 during implementation review, not a separate design component (it has no
-own interface/behavior beyond the four fixed strings already specified in
-DES-ACHEM-020/050).
-
+own interface/behavior beyond the eight fixed strings already specified in
+DES-ACHEM-020/050/070/090).
