@@ -9898,6 +9898,176 @@
           "order": 869
         }
       }
+    },
+    {
+      "changeId": "CHANGE-018",
+      "requirementIds": [
+        "REQ-AIDS-056"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-04T22:57:15.763Z",
+          "fingerprints": {
+            "impact": "7eeaa842095bb23540157c4e6710c23c857300ef3f9ca23523b53c1753abdc61",
+            "requirements": "88ff6b64e35aaab7cebd449c08d9c7722a5b6a80de1df7b520419570da606602",
+            "design": "43c51ce6a28db28b894ca69c5871381c31d46cd160d3a286463ce71bd384da0c",
+            "implementation": "9cbcef40b0e2e4e86a90fa49898b7cca0f0ac978e6c44b5b835962699443c5f0",
+            "tests": "11bb6cc6930e2c9ebc704bfd465f80bf238c7881382c135f0027607fcdac116e",
+            "tdd": "a2e4030b6439a4d09a540fc9988bab99283656ffe34c83b81711d120e007200c",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+                }
+              }
+            }
+          },
+          "order": 879
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-04T22:57:17.345Z",
+          "fingerprints": {
+            "impact": "7eeaa842095bb23540157c4e6710c23c857300ef3f9ca23523b53c1753abdc61",
+            "requirements": "88ff6b64e35aaab7cebd449c08d9c7722a5b6a80de1df7b520419570da606602",
+            "design": "43c51ce6a28db28b894ca69c5871381c31d46cd160d3a286463ce71bd384da0c",
+            "implementation": "9cbcef40b0e2e4e86a90fa49898b7cca0f0ac978e6c44b5b835962699443c5f0",
+            "tests": "11bb6cc6930e2c9ebc704bfd465f80bf238c7881382c135f0027607fcdac116e",
+            "tdd": "a2e4030b6439a4d09a540fc9988bab99283656ffe34c83b81711d120e007200c",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+                }
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 880
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-04T23:47:35.806Z",
+          "fingerprints": {
+            "impact": "c0e8a502013fe3da7e0d789380c171502c04d123cef7a64a1b01a30ffebabd2e",
+            "requirements": "88ff6b64e35aaab7cebd449c08d9c7722a5b6a80de1df7b520419570da606602",
+            "design": "44ffd0c0edb9751e1b88c92991d8a4908fb63fa5d649fe9360fb5c6986a061c6",
+            "implementation": "aeb291c5e4ef0dac352bbe511d8d0208a1b51377e3a985420c5553ac32d16e87",
+            "tests": "7e6c55fb6efdfa463aa26ed074637ad0055a09207f1489d98d13a33edefc252f",
+            "tdd": "911f919175afed1906c5c795e30e9c24341cf8c7d06283654713f122c604f97b",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+                }
+              }
+            }
+          },
+          "order": 908
+        },
+        "red": {
+          "phase": "red",
+          "recordedAt": "2026-10-04T23:50:21.954Z",
+          "fingerprints": {
+            "impact": "c0e8a502013fe3da7e0d789380c171502c04d123cef7a64a1b01a30ffebabd2e",
+            "requirements": "88ff6b64e35aaab7cebd449c08d9c7722a5b6a80de1df7b520419570da606602",
+            "design": "44ffd0c0edb9751e1b88c92991d8a4908fb63fa5d649fe9360fb5c6986a061c6",
+            "implementation": "95c7fd484728fea6864c658bff02885c2f268f0fc9edeae5e1d7d712fb47acea",
+            "tests": "12056ee3feeec8ee6e77e1df513b83e68deeba21c30d866319ed5ba59b9c9e0a",
+            "tdd": "9bfec73bdf6fc266e289ad48d20e69505d471cf84c45ca2c81f0ee3f727f80a8",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "ecd3d22a4eb6501b64c7588fa7d24d63e2bc2f20b4b843a93543049d51dc22e0"
+                }
+              }
+            }
+          },
+          "order": 910
+        },
+        "implementation": {
+          "phase": "implementation",
+          "recordedAt": "2026-10-04T23:50:28.604Z",
+          "fingerprints": {
+            "impact": "c0e8a502013fe3da7e0d789380c171502c04d123cef7a64a1b01a30ffebabd2e",
+            "requirements": "88ff6b64e35aaab7cebd449c08d9c7722a5b6a80de1df7b520419570da606602",
+            "design": "44ffd0c0edb9751e1b88c92991d8a4908fb63fa5d649fe9360fb5c6986a061c6",
+            "implementation": "aeb291c5e4ef0dac352bbe511d8d0208a1b51377e3a985420c5553ac32d16e87",
+            "tests": "12056ee3feeec8ee6e77e1df513b83e68deeba21c30d866319ed5ba59b9c9e0a",
+            "tdd": "9bfec73bdf6fc266e289ad48d20e69505d471cf84c45ca2c81f0ee3f727f80a8",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+                }
+              }
+            }
+          },
+          "order": 911
+        },
+        "green": {
+          "phase": "green",
+          "recordedAt": "2026-10-04T23:50:46.583Z",
+          "fingerprints": {
+            "impact": "c0e8a502013fe3da7e0d789380c171502c04d123cef7a64a1b01a30ffebabd2e",
+            "requirements": "88ff6b64e35aaab7cebd449c08d9c7722a5b6a80de1df7b520419570da606602",
+            "design": "44ffd0c0edb9751e1b88c92991d8a4908fb63fa5d649fe9360fb5c6986a061c6",
+            "implementation": "aeb291c5e4ef0dac352bbe511d8d0208a1b51377e3a985420c5553ac32d16e87",
+            "tests": "12056ee3feeec8ee6e77e1df513b83e68deeba21c30d866319ed5ba59b9c9e0a",
+            "tdd": "c629e5e2f6710d7d9e31b1814ef7a1e1bc8408129041d0bc63d64ac27f6d5c50",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+                }
+              }
+            }
+          },
+          "order": 913
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-04T23:53:30.652Z",
+          "fingerprints": {
+            "impact": "c0e8a502013fe3da7e0d789380c171502c04d123cef7a64a1b01a30ffebabd2e",
+            "requirements": "88ff6b64e35aaab7cebd449c08d9c7722a5b6a80de1df7b520419570da606602",
+            "design": "44ffd0c0edb9751e1b88c92991d8a4908fb63fa5d649fe9360fb5c6986a061c6",
+            "implementation": "aeb291c5e4ef0dac352bbe511d8d0208a1b51377e3a985420c5553ac32d16e87",
+            "tests": "12056ee3feeec8ee6e77e1df513b83e68deeba21c30d866319ed5ba59b9c9e0a",
+            "tdd": "c629e5e2f6710d7d9e31b1814ef7a1e1bc8408129041d0bc63d64ac27f6d5c50",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+                }
+              }
+            }
+          },
+          "order": 914
+        }
+      }
     }
   ]
 }
