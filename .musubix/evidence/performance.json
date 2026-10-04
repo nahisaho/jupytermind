@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
-  "runId": "10bf1d31-e4b9-4804-814c-cb35ec6b58d9",
-  "generatedAt": "2026-10-04T15:32:23.909Z",
+  "runId": "fb8078ed-48e5-41e9-a658-a1e267008df0",
+  "generatedAt": "2026-10-04T15:53:49.679Z",
   "executions": [
     {
-      "runId": "10bf1d31-e4b9-4804-814c-cb35ec6b58d9",
-      "executionId": "36d54958527268255984d320810e1bd82c5fd4e82b3af7f59abc3873b9f69061",
+      "runId": "fb8078ed-48e5-41e9-a658-a1e267008df0",
+      "executionId": "9c8828fce62ece100f57e85915fdc632039aab9843197b2da0d7c9c93a19d858",
       "commandName": "test",
       "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
       "reportPath": ".musubix/evidence/native/test/aggregate.json",
       "sourceKind": "file",
-      "reportSha256": "a5d65dc954203ed3ebc0ce3e37e66ea8dcea7364a3d8f5c9d1cd574f2eda7599",
+      "reportSha256": "3d08824623e84dfc7cbce5cc29f5f4d95a23b9d8196c8a6e5042a393dd535614",
       "processStatus": "completed",
       "exitCode": 0,
       "tests": [
@@ -355,6 +355,18 @@
           "status": "passed"
         },
         {
+          "id": "TEST-ACHEM-969",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-970",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-971",
+          "status": "passed"
+        },
+        {
           "id": "TEST-AGENOM-001",
           "status": "passed"
         },
@@ -432,6 +444,10 @@
         },
         {
           "id": "TEST-AGENOM-071",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-072",
           "status": "passed"
         },
         {
@@ -1603,11 +1619,31 @@
           "status": "passed"
         },
         {
+          "id": "TEST-ASTRUCT-079",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-080",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-082",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-083",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-084",
+          "status": "passed"
+        },
+        {
           "id": "TEST-EXAMPLE-001",
           "status": "passed"
         }
       ],
-      "recordSha256": "843ec75f78ebf2ad73d0d9102441f29e6cddfa86ee5b9082eafb22fe91ccf334"
+      "recordSha256": "1457ce837181849ac5e2a29563d34a4e9b19a0f75174def1c62b19dc80f22577"
     }
   ],
   "observations": [
