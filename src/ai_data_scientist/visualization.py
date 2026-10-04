@@ -2,6 +2,9 @@
 
 Implements DES-AIDS-009 (REQ-AIDS-007): renders a requested chart to a PNG
 image and packages it as an nbformat-compatible output MIME bundle.
+CHANGE-012's DES-AIDS-073 through DES-AIDS-076 (CODE-AIDS-111 through
+CODE-AIDS-118) add box/barh/heatmap kinds, hue-grouped series with legend
+titles, symmetric/asymmetric error bars, and chart_metadata_from_figure.
 """
 
 from __future__ import annotations
@@ -9,8 +12,10 @@ from __future__ import annotations
 import base64
 import io
 import re
+import secrets
 import warnings
 from dataclasses import dataclass, field
+from typing import Self
 
 import matplotlib
 
@@ -21,7 +26,7 @@ import pandas as pd
 
 from ai_data_scientist.project_manager import ProjectHandle, enqueue_write, next_execution_count
 
-_SUPPORTED_KINDS = ("scatter", "line", "bar", "hist")
+_SUPPORTED_KINDS = ("scatter", "line", "bar", "barh", "box", "hist", "heatmap")
 _MISSING_GLYPH_RE = re.compile(r"Glyph (\d+) .* missing from (?:current )?font")
 
 # @id CODE-AIDS-054
@@ -94,40 +99,63 @@ def _contains_japanese(text) -> bool:
         return False
     try:
         value = str(text)
-    except Exception:
+    except Exception:  # noqa: BLE001 - arbitrary user objects may raise from __str__
         return False
     return bool(_JAPANESE_CHAR_RE.search(value))
 
 
 def _plotted_data_contains_japanese(
-    df: pd.DataFrame, kind: str, x: str | None, y: str | None
+    df: pd.DataFrame,
+    kind: str,
+    x: str | None,
+    y: str | None,
+    hue: str | None = None,
+    legend_title: str | None = None,
 ) -> bool:
     """True if any plotted value/index/legend-source/auto-axis-label text
     for this ``render_chart`` call contains Japanese characters (DES-AIDS-052).
     """
-    candidates: list = []
+    candidates: list = [legend_title]
 
-    if kind == "hist":
-        candidates.extend(df[x])
+    def _add_column(column_name: str | None) -> None:
+        if column_name is None:
+            return
+        candidates.append(column_name)
+        if column_name in df.columns:
+            candidates.extend(df[column_name])
+
+    _add_column(hue)
+
+    if kind == "hist" and x is not None:
+        _add_column(x)
         candidates.append(df.index.name)
         candidates.extend(df.index)
-        candidates.append(x)
+    elif kind == "heatmap":
+        if x is not None and y is not None:
+            _add_column(x)
+            _add_column(y)
+        else:
+            candidates.extend(df.columns)
+            candidates.append(df.index.name)
+            candidates.extend(df.index)
+    elif kind == "box":
+        _add_column(x)
+        _add_column(y)
+        if x is None and y is None:
+            candidates.extend(df.columns)
     else:
         if x is not None:
-            candidates.extend(df[x])
-            candidates.append(x)
+            _add_column(x)
         else:
             candidates.append(df.index.name)
             candidates.extend(df.index)
 
         if y is not None:
-            candidates.extend(df[y])
-            candidates.append(y)
+            _add_column(y)
         else:
-            implicit_columns = [column for column in df.columns if column != x]
+            implicit_columns = [column for column in df.columns if column not in {x, hue}]
             for column in implicit_columns:
-                candidates.extend(df[column])
-                candidates.append(column)
+                _add_column(column)
 
     return any(_contains_japanese(candidate) for candidate in candidates)
 
@@ -143,6 +171,7 @@ class ChartMetadata:
     xlabel: str | None
     ylabel: str | None
     legend: bool
+    legend_title: str | None = None
     missing_glyphs: tuple[str, ...] = field(default_factory=tuple)
 
 
@@ -156,7 +185,7 @@ class RenderedChart(bytes):
 
     chart_metadata: ChartMetadata
 
-    def __new__(cls, data: bytes, chart_metadata: ChartMetadata) -> "RenderedChart":
+    def __new__(cls, data: bytes, chart_metadata: ChartMetadata) -> Self:
         instance = super().__new__(cls, data)
         instance.chart_metadata = chart_metadata
         return instance
@@ -178,13 +207,313 @@ class RenderedChart(bytes):
         return self.chart_metadata.legend
 
     @property
+    def legend_title(self) -> str | None:
+        return self.chart_metadata.legend_title
+
+    @property
     def missing_glyphs(self) -> tuple[str, ...]:
         return self.chart_metadata.missing_glyphs
+
+
+# @id CODE-AIDS-111
+# @implements REQ-AIDS-088
+# @design DES-AIDS-076
+def chart_metadata_from_figure(
+    fig, *, missing_glyphs: tuple[str, ...] | list[str] = ()
+) -> ChartMetadata:
+    """Build ``ChartMetadata`` from an existing matplotlib ``Figure``."""
+    if not fig.axes:
+        raise ValueError("Figure has no axes to inspect")
+    ax = fig.axes[0]
+    legend = ax.get_legend()
+    legend_title = None
+    if legend is not None:
+        legend_title = legend.get_title().get_text() or None
+    return ChartMetadata(
+        title=ax.get_title() or None,
+        xlabel=ax.get_xlabel() or None,
+        ylabel=ax.get_ylabel() or None,
+        legend=legend is not None,
+        legend_title=legend_title,
+        missing_glyphs=tuple(str(codepoint) for codepoint in missing_glyphs),
+    )
+
+
+def _apply_legend_title(ax, hue: str | None, legend_title: str | None) -> None:
+    legend = ax.get_legend()
+    if legend is None:
+        return
+    if legend_title is not None:
+        legend.set_title(legend_title)
+    elif hue is not None:
+        legend.set_title(hue)
+
+
+def _require_columns(df: pd.DataFrame, *columns: str | None) -> None:
+    for column in columns:
+        if column is not None and column not in df.columns:
+            raise ValueError(f"Unknown column: {column!r}")
+
+
+# @id CODE-AIDS-112
+# @implements REQ-AIDS-087
+# @design DES-AIDS-075
+def _resolve_error_values(
+    df: pd.DataFrame, spec: str | tuple[str, str] | list[str] | None
+) -> list[float] | list[list[float]] | None:
+    if spec is None:
+        return None
+    if isinstance(spec, str):
+        _require_columns(df, spec)
+        return df[spec].tolist()
+    if (
+        isinstance(spec, (tuple, list))
+        and len(spec) == 2
+        and all(isinstance(column, str) for column in spec)
+    ):
+        lower, upper = spec
+        _require_columns(df, lower, upper)
+        return [df[lower].tolist(), df[upper].tolist()]
+    raise ValueError("Error ranges must be a column name or a two-column (lower, upper) pair")
+
+
+def _group_label(value) -> str:
+    return "NaN" if pd.isna(value) else str(value)
+
+
+# @id CODE-AIDS-116
+# @implements REQ-AIDS-086
+# @design DES-AIDS-074
+def _normalize_hue_for_pivot(series: pd.Series) -> tuple[pd.Series, str]:
+    sentinel = f"__missing_hue__{secrets.token_hex(8)}"
+    existing_values = {str(value) for value in series.dropna().tolist()}
+    while sentinel in existing_values:
+        sentinel = f"__missing_hue__{secrets.token_hex(8)}"
+    normalized = series.astype("object").where(~series.isna(), sentinel)
+    return normalized, sentinel
+
+
+def _pivot_grouped_values(df: pd.DataFrame, *, x: str, hue: str, value: str) -> pd.DataFrame:
+    normalized_hue, sentinel = _normalize_hue_for_pivot(df[hue])
+    order = list(dict.fromkeys(normalized_hue.tolist()))
+    pivot_source = pd.DataFrame({x: df[x], "__hue__": normalized_hue, value: df[value]})
+    duplicates = pivot_source.duplicated(subset=[x, "__hue__"], keep=False)
+    if duplicates.any():
+        raise ValueError(
+            f"Grouped {value!r} data must be unique per ({x!r}, {hue!r}) pair; "
+            "pre-aggregate duplicate rows before plotting."
+        )
+    pivot = pivot_source.pivot(index=x, columns="__hue__", values=value)
+    pivot = pivot.reindex(columns=order)
+    pivot = pivot.rename(columns={sentinel: "NaN"})
+    return pivot
+
+
+# @id CODE-AIDS-117
+# @implements REQ-AIDS-087
+# @design DES-AIDS-075
+def _pivot_error_values(
+    df: pd.DataFrame,
+    *,
+    x: str,
+    hue: str,
+    spec: str | tuple[str, str] | list[str] | None,
+):
+    if spec is None:
+        return None
+    if isinstance(spec, str):
+        return _pivot_grouped_values(df, x=x, hue=hue, value=spec)
+    if isinstance(spec, (tuple, list)) and len(spec) == 2:
+        lower, upper = spec
+        return [
+            _pivot_grouped_values(df, x=x, hue=hue, value=lower),
+            _pivot_grouped_values(df, x=x, hue=hue, value=upper),
+        ]
+    raise ValueError("Error ranges must be a column name or a two-column (lower, upper) pair")
+
+
+# @id CODE-AIDS-113
+# @implements REQ-AIDS-086
+# @design DES-AIDS-074
+def _plot_with_hue(
+    df: pd.DataFrame,
+    *,
+    kind: str,
+    x: str | None,
+    y: str | None,
+    hue: str,
+    ax,
+    xerr: list[float] | list[list[float]] | None,
+    yerr: list[float] | list[list[float]] | None,
+) -> None:
+    _require_columns(df, hue)
+    if kind == "scatter":
+        _require_columns(df, x, y)
+        for label, group in df.groupby(hue, sort=False, dropna=False):
+            ax.errorbar(
+                group[x],
+                group[y],
+                xerr=_resolve_error_values(group, xerr),
+                yerr=_resolve_error_values(group, yerr),
+                fmt="o",
+                linestyle="none",
+                label=_group_label(label),
+            )
+        ax.legend()
+    elif kind == "line":
+        _require_columns(df, y)
+        if y is None:
+            raise ValueError("Line charts with hue require a y column")
+        for label, group in df.groupby(hue, sort=False, dropna=False):
+            x_values = group[x] if x is not None else group.index
+            ax.errorbar(
+                x_values,
+                group[y],
+                xerr=_resolve_error_values(group, xerr),
+                yerr=_resolve_error_values(group, yerr),
+                fmt="-",
+                label=_group_label(label),
+            )
+        ax.legend()
+        if x is not None:
+            ax.set_xlabel(x)
+        if y is not None:
+            ax.set_ylabel(y)
+    elif kind == "hist":
+        _require_columns(df, x)
+        for label, group in df.groupby(hue, sort=False, dropna=False):
+            ax.hist(group[x].dropna(), label=_group_label(label), alpha=0.7)
+        ax.legend()
+    elif kind in {"bar", "barh"}:
+        _require_columns(df, x, y)
+        pivot = _pivot_grouped_values(df, x=x, hue=hue, value=y)
+        kwargs = {}
+        if xerr is not None:
+            kwargs["xerr"] = _pivot_error_values(df, x=x, hue=hue, spec=xerr)
+        if yerr is not None:
+            kwargs["yerr"] = _pivot_error_values(df, x=x, hue=hue, spec=yerr)
+        pivot.plot(kind=kind, ax=ax, **kwargs)
+    else:
+        raise ValueError(f"hue is not supported for chart kind: {kind!r}")
+
+
+# @id CODE-AIDS-114
+# @implements REQ-AIDS-085
+# @design DES-AIDS-073
+def _plot_box_chart(df: pd.DataFrame, *, x: str | None, y: str | None, ax) -> None:
+    if y is None:
+        numeric = df.select_dtypes(include="number")
+        if numeric.empty:
+            raise ValueError("Box charts require at least one numeric column")
+        values = [numeric[column].dropna().tolist() for column in numeric.columns]
+        labels = [str(column) for column in numeric.columns]
+    elif x is None:
+        _require_columns(df, y)
+        values = [df[y].dropna().tolist()]
+        labels = [str(y)]
+        ax.set_ylabel(y)
+    else:
+        _require_columns(df, x, y)
+        values = []
+        labels = []
+        for label, group in df.groupby(x, sort=False, dropna=False):
+            points = group[y].dropna().tolist()
+            if not points:
+                continue
+            values.append(points)
+            labels.append(_group_label(label))
+        if not values:
+            raise ValueError("Box charts require at least one non-empty group")
+        ax.set_xlabel(x)
+        ax.set_ylabel(y)
+
+    ax.boxplot(values)
+    ax.set_xticks(range(1, len(labels) + 1))
+    ax.set_xticklabels(labels)
+
+
+# @id CODE-AIDS-115
+# @implements REQ-AIDS-085
+# @design DES-AIDS-073
+def _plot_heatmap(df: pd.DataFrame, *, x: str | None, y: str | None, ax) -> None:
+    if x is not None and y is not None:
+        _require_columns(df, x, y)
+        matrix = df[[x, y]].select_dtypes(include="number").corr()
+    else:
+        numeric = df.select_dtypes(include="number")
+        if (
+            not numeric.empty
+            and numeric.shape[0] == numeric.shape[1]
+            and list(map(str, numeric.index)) == list(map(str, numeric.columns))
+        ):
+            matrix = numeric
+        else:
+            matrix = numeric.corr()
+    if matrix.empty:
+        raise ValueError("Heatmap charts require numeric data")
+    image = ax.imshow(matrix.to_numpy(), aspect="auto")
+    ax.set_xticks(range(len(matrix.columns)))
+    ax.set_xticklabels([str(column) for column in matrix.columns])
+    ax.set_yticks(range(len(matrix.index)))
+    ax.set_yticklabels([str(index) for index in matrix.index])
+    fig = ax.figure
+    fig.colorbar(image, ax=ax)
+
+
+def _plot_with_existing_paths(
+    df: pd.DataFrame,
+    *,
+    kind: str,
+    x: str | None,
+    y: str | None,
+    ax,
+    xerr: list[float] | list[list[float]] | None,
+    yerr: list[float] | list[list[float]] | None,
+) -> None:
+    if kind == "hist":
+        if xerr is not None or yerr is not None:
+            raise ValueError("Histogram charts do not support error ranges")
+        _require_columns(df, x)
+        df[x].plot(kind="hist", ax=ax)
+        return
+
+    if kind == "scatter":
+        if xerr is None and yerr is None:
+            df.plot(kind="scatter", x=x, y=y, ax=ax)
+            return
+        _require_columns(df, x, y)
+        ax.errorbar(df[x], df[y], xerr=xerr, yerr=yerr, fmt="o", linestyle="none")
+        ax.set_xlabel(x)
+        ax.set_ylabel(y)
+        return
+
+    if kind == "line":
+        if xerr is None and yerr is None:
+            df.plot(kind="line", x=x, y=y, ax=ax)
+            return
+        if y is None:
+            raise ValueError("Line charts require y when error ranges are requested")
+        x_values = df[x] if x is not None else df.index
+        ax.errorbar(x_values, df[y], xerr=xerr, yerr=yerr, fmt="-")
+        if x is not None:
+            ax.set_xlabel(x)
+        ax.set_ylabel(y)
+        return
+
+    kwargs = {}
+    if xerr is not None:
+        kwargs["xerr"] = xerr
+    if yerr is not None:
+        kwargs["yerr"] = yerr
+    df.plot(kind=kind, x=x, y=y, ax=ax, **kwargs)
 
 
 # @id CODE-AIDS-007
 # @implements REQ-AIDS-007 REQ-AIDS-058 REQ-AIDS-060 REQ-AIDS-064
 # @design DES-AIDS-009 DES-AIDS-048 DES-AIDS-052
+# @id CODE-AIDS-118
+# @implements REQ-AIDS-085 REQ-AIDS-086 REQ-AIDS-087
+# @design DES-AIDS-073 DES-AIDS-074 DES-AIDS-075
 # CHANGE-004: returns RenderedChart (chart metadata) and widens the
 # bundled-Japanese-font trigger; see the render_chart docstring for detail.
 def render_chart(
@@ -195,6 +524,10 @@ def render_chart(
     title: str | None = None,
     xlabel: str | None = None,
     ylabel: str | None = None,
+    hue: str | None = None,
+    legend_title: str | None = None,
+    xerr: str | tuple[str, str] | list[str] | None = None,
+    yerr: str | tuple[str, str] | list[str] | None = None,
 ) -> RenderedChart:
     """Render ``df`` as ``kind`` chart and return a ``RenderedChart``.
 
@@ -213,7 +546,7 @@ def render_chart(
         raise ValueError(f"Unsupported chart kind: {kind!r}")
 
     if any(_contains_non_ascii(text) for text in (title, xlabel, ylabel)) or (
-        _plotted_data_contains_japanese(df, kind, x, y)
+        _plotted_data_contains_japanese(df, kind, x, y, hue=hue, legend_title=legend_title)
     ):
         _ensure_japanese_font()
 
@@ -221,10 +554,34 @@ def render_chart(
     try:
         with warnings.catch_warnings(record=True) as captured:
             warnings.simplefilter("always")
-            if kind == "hist":
-                df[x].plot(kind="hist", ax=ax)
+            resolved_xerr = _resolve_error_values(df, xerr)
+            resolved_yerr = _resolve_error_values(df, yerr)
+            if kind == "box":
+                _plot_box_chart(df, x=x, y=y, ax=ax)
+            elif kind == "heatmap":
+                _plot_heatmap(df, x=x, y=y, ax=ax)
+            elif hue is not None:
+                _plot_with_hue(
+                    df,
+                    kind=kind,
+                    x=x,
+                    y=y,
+                    hue=hue,
+                    ax=ax,
+                    xerr=xerr,
+                    yerr=yerr,
+                )
             else:
-                df.plot(kind=kind, x=x, y=y, ax=ax)
+                _plot_with_existing_paths(
+                    df,
+                    kind=kind,
+                    x=x,
+                    y=y,
+                    ax=ax,
+                    xerr=resolved_xerr,
+                    yerr=resolved_yerr,
+                )
+            _apply_legend_title(ax, hue=hue, legend_title=legend_title)
             if title is not None:
                 ax.set_title(title)
             if xlabel is not None:
@@ -239,7 +596,7 @@ def render_chart(
             # after font configuration above.
             try:
                 fig.tight_layout()
-            except Exception:
+            except Exception:  # noqa: BLE001 - backend/projection-specific matplotlib failure
                 # Some axes projections (e.g. 3D) raise from tight_layout();
                 # constrained_layout is a safe fallback that still
                 # repositions text to avoid clipping.
@@ -262,13 +619,7 @@ def render_chart(
                     captured_warning.lineno,
                 )
 
-        metadata = ChartMetadata(
-            title=ax.get_title() or None,
-            xlabel=ax.get_xlabel() or None,
-            ylabel=ax.get_ylabel() or None,
-            legend=ax.get_legend() is not None,
-            missing_glyphs=tuple(missing_glyphs),
-        )
+        metadata = chart_metadata_from_figure(fig, missing_glyphs=tuple(missing_glyphs))
         return RenderedChart(buffer.getvalue(), chart_metadata=metadata)
     finally:
         plt.close(fig)
@@ -286,6 +637,7 @@ def _chart_metadata_dict(chart_metadata: ChartMetadata) -> dict:
         "xlabel": chart_metadata.xlabel,
         "ylabel": chart_metadata.ylabel,
         "legend": chart_metadata.legend,
+        "legend_title": chart_metadata.legend_title,
         "missing_glyphs": list(chart_metadata.missing_glyphs),
     }
 

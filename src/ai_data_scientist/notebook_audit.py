@@ -19,7 +19,7 @@ from pathlib import Path
 import nbformat
 
 from ai_data_scientist import project_manager
-from ai_data_scientist.insight_engine import _find_evidence_cell
+from ai_data_scientist.insight_engine import AmbiguousEvidenceError, _find_evidence_cell
 
 _EVIDENCE_FENCE_PATTERN = re.compile(r"```evidence\n(.*?)\n```", re.DOTALL)
 _REQUIRED_MANIFEST_KEYS = {"execution_count", "cited_value", "claim_type"}
@@ -320,6 +320,10 @@ def audit_notebook(path: Path | str, visual_audit: bool = False) -> NotebookAudi
     unexecuted_indices: list[int] = []
     error_indices: list[int] = []
     chart_indices: list[int] = []
+    # GitHub #54: execution_count is reused across a kernel restart or when
+    # a notebook is appended to in a new session; track every index sharing
+    # a value so duplicates can be reported instead of silently ignored.
+    execution_count_indices: dict[int, list[int]] = {}
 
     # @id CODE-AIDS-058
     # @implements REQ-AIDS-048
@@ -362,6 +366,7 @@ def audit_notebook(path: Path | str, visual_audit: bool = False) -> NotebookAudi
             )
         else:
             executed_code_cell_count += 1
+            execution_count_indices.setdefault(execution_count, []).append(index)
 
         has_error = False
         has_chart = False
@@ -376,6 +381,25 @@ def audit_notebook(path: Path | str, visual_audit: bool = False) -> NotebookAudi
             findings.append(NotebookAuditFinding("error", "Code cell has an error output.", index))
         if has_chart:
             chart_indices.append(index)
+
+    # @id CODE-AIDS-126
+    # @implements REQ-AIDS-045
+    # @design DES-AIDS-033
+    # GitHub #54: report every execution_count shared by more than one code
+    # cell so a stale/reused count can't silently resolve an insight's
+    # evidence to the wrong cell without the audit flagging it.
+    for execution_count, indices in sorted(execution_count_indices.items()):
+        if len(indices) > 1:
+            findings.append(
+                NotebookAuditFinding(
+                    "warning",
+                    f"execution_count={execution_count!r} is shared by {len(indices)} "
+                    f"code cells at indices {indices}; evidence resolution for this "
+                    "execution_count is ambiguous (e.g. after a kernel restart or "
+                    "appending to the notebook in a new session).",
+                    indices[0],
+                )
+            )
 
     insight_cell_count = 0
     for index, cell in enumerate(notebook.cells):
@@ -425,7 +449,21 @@ def audit_notebook(path: Path | str, visual_audit: bool = False) -> NotebookAudi
 
             execution_count = manifest["execution_count"]
             cited_value = str(manifest["cited_value"])
-            evidence_cell = _find_evidence_cell(notebook, execution_count, cited_value)
+            try:
+                evidence_cell = _find_evidence_cell(notebook, execution_count, cited_value)
+            except AmbiguousEvidenceError:
+                findings.append(
+                    NotebookAuditFinding(
+                        "error",
+                        f"Evidence manifest{block_tag} references "
+                        f"execution_count={execution_count!r} with "
+                        f"cited_value={cited_value!r}, but more than one executed "
+                        "cell matches it; the evidentiary cell is ambiguous "
+                        "(GitHub #54).",
+                        index,
+                    )
+                )
+                continue
             if evidence_cell is None:
                 findings.append(
                     NotebookAuditFinding(
@@ -481,9 +519,23 @@ def audit_notebook(path: Path | str, visual_audit: bool = False) -> NotebookAudi
                     )
                     continue
                 entry_cited_value = entry["cited_value"]
-                entry_evidence_cell = _find_evidence_cell(
-                    notebook, entry["execution_count"], entry_cited_value
-                )
+                try:
+                    entry_evidence_cell = _find_evidence_cell(
+                        notebook, entry["execution_count"], entry_cited_value
+                    )
+                except AmbiguousEvidenceError:
+                    findings.append(
+                        NotebookAuditFinding(
+                            "error",
+                            f"supporting_evidence entry{entry_tag} references "
+                            f"execution_count={entry['execution_count']!r} with "
+                            f"cited_value={entry_cited_value!r}, but more than one "
+                            "executed cell matches it; the evidentiary cell is "
+                            "ambiguous (GitHub #54).",
+                            index,
+                        )
+                    )
+                    continue
                 if entry_evidence_cell is None:
                     findings.append(
                         NotebookAuditFinding(

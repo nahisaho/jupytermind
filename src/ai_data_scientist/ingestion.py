@@ -1,8 +1,11 @@
 """Data source ingestion.
 
 Implements DES-AIDS-005: loads CSV/Excel/database/API sources into an
-in-memory dataframe, enforcing a network allowlist and row-count limit for
-remote sources before any data is loaded (REQ-AIDS-014, REQ-AIDS-032).
+in-memory dataframe. A network allowlist is enforced before any remote
+call; a row-count limit is applied to the resulting dataframe after a
+remote (database/API) fetch completes, bounding downstream processing —
+not the fetch itself — and never applies to local CSV/Excel sources
+(REQ-AIDS-014, REQ-AIDS-032; GitHub #57).
 """
 
 from __future__ import annotations
@@ -75,6 +78,10 @@ def ingest(
     For remote ``kind`` values ("api"/"database") the host is checked
     against ``allowlist`` *before* ``fetcher`` is invoked, and the resulting
     dataframe is truncated to ``row_limit`` rows if it exceeds that limit.
+    Local ``kind`` values ("csv"/"excel") are never truncated by
+    ``row_limit``: that limit is a remote-source safety control
+    (REQ-AIDS-032), not a general ingestion cap, so a local file is always
+    loaded in full (GitHub #57).
     """
     warnings: tuple[str, ...] = ()
     if source_spec.kind == "csv":
@@ -105,7 +112,9 @@ def ingest(
     else:
         raise ValueError(f"Unsupported ingestion source kind: {source_spec.kind!r}")
 
-    truncated = len(dataframe) > row_limit
+    # GitHub #57: row_limit is a remote-source safety control (REQ-AIDS-032);
+    # local csv/excel files must never be silently truncated by it.
+    truncated = source_spec.kind in _REMOTE_KINDS and len(dataframe) > row_limit
     if truncated:
         dataframe = dataframe.iloc[:row_limit]
 

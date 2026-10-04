@@ -38,6 +38,27 @@ Pattern: event-driven
 Statement: When a user requests a statistics-estimating feature engineering transformation, the system shall provide a `fit_features(df: pandas.DataFrame, operation: str, columns: list[str]) -> FittedFeatureState` call whose stored statistics were computed from only the supplied `df`, and a separate `transform_features(fitted_state: FittedFeatureState, df: pandas.DataFrame) -> FeatureResult` call that applies those already-stored statistics to any supplied `df` without recomputing them, returning a `FeatureResult` with the same index/row order as the input and the transformed columns replaced in place.
 Acceptance: `fit_features(train_df, "scale", columns)` returns a fitted-state object whose stored mean/standard-deviation (or equivalent) for each column is bit-for-bit equal to `sklearn.preprocessing.StandardScaler().fit(train_df[columns]).mean_`/`.scale_`. Calling `transform_features(fitted_state, validation_df)` produces output equal to applying that same fitted `StandardScaler.transform` to `validation_df[columns]`, and is not equal to `StandardScaler().fit_transform(validation_df[columns])` on a fixture where the two frames' column means differ, proving validation-row statistics were never used to compute the fitted state. `transform_features(fitted_state, train_df)` (fit subset transformed by its own fitted state) reproduces the legacy single-call `engineer_features(train_df, "scale", columns)` dataframe output exactly.
 
+## REQ-AIDS-079: Paired t-test experiment evaluation / 対応のあるt検定による実験評価
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests experiment evaluation with `test="paired_t"` on aligned control and treatment observations from the same rows or folds, the system shall require both paired series to have identical index order and only finite numeric values, then evaluate the treatment-minus-control difference with a paired t-test over those matched pairs and report the resulting statistic, p-value, and markdown interpretation.
+Acceptance: On a fixed aligned numeric fixture, `evaluate_experiment(control, treatment, test="paired_t")` returns a statistic and p-value that each match `scipy.stats.ttest_rel(control, treatment)` within `1e-6`, and the returned p-value differs from `scipy.stats.ttest_ind(control, treatment)` on that same fixture, proving the paired test path was used instead of the legacy independent-samples path.
+
+## REQ-AIDS-080: Wilcoxon signed-rank experiment evaluation / Wilcoxon符号付順位検定による実験評価
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests experiment evaluation with `test="wilcoxon"` on aligned control and treatment observations from the same rows or folds, the system shall require both paired series to have identical index order and only finite numeric values, then evaluate the matched-pair differences with a Wilcoxon signed-rank test and reject any call where the paired series lengths differ.
+Acceptance: On a fixed aligned numeric fixture, `evaluate_experiment(control, treatment, test="wilcoxon")` returns a statistic and p-value that each match `scipy.stats.wilcoxon(control, treatment)` within `1e-6`. Calling the same API with unequal-length paired inputs raises `ValueError` mentioning that paired experiment tests require equal-length inputs.
+
+## REQ-AIDS-081: Paired bootstrap experiment evaluation / 対応のあるブートストラップによる実験評価
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests experiment evaluation with `test="paired_bootstrap"` on aligned control and treatment predictions or aligned fold-level scores, the system shall require the paired inputs (and `y_true`, when provided) to have identical index order and only finite numeric values, then resample matched pairs with replacement, compute a treatment-minus-control difference using either a caller-supplied metric function over aligned `y_true` and predictions or the default mean difference over the paired numeric scores, and report the observed difference together with a confidence interval and markdown interpretation without claiming a bootstrap hypothesis-test p-value.
+Acceptance: Given fixed `random_state`, `iterations`, and `confidence_level`, `evaluate_experiment(control_predictions, treatment_predictions, test="paired_bootstrap", y_true=labels, metric_fn=roc_auc_score, ...)` returns an observed difference and confidence interval matching a reference paired-bootstrap implementation on the same aligned rows within `1e-6`, returns `p_value=NaN`, and its interpretation states that the bootstrap path reports an interval estimate rather than a hypothesis-test p-value. Given aligned per-fold numeric scores and no `metric_fn`/`y_true`, the same API returns an observed difference equal to `mean(treatment - control)` and a confidence interval matching a reference paired resampling of those fold pairs within `1e-6`. Calling any paired path with a NaN or infinite value raises `ValueError` mentioning finite paired values.
+
 ## REQ-AIDS-016: Clustering and dimensionality reduction / クラスタリング・次元削減
 Priority: must
 Type: functional
@@ -80,6 +101,27 @@ Pattern: event-driven
 Statement: When a user requests an explanation of a trained model, the system shall execute a notebook code cell that computes feature importance or SHAP values and reports them alongside a markdown interpretation.
 Acceptance: An explainability request on a trained classifier produces a feature importance ranking whose top feature matches the reference scikit-learn feature_importances_ or SHAP value ordering.
 
+## REQ-AIDS-082: Explainability method labeling and default compatibility / 説明手法ラベル付けと既定互換性
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a caller requests `explainability.explain_model` without opting into an alternate explainability method, the system shall return the existing feature-importance ranking behavior together with a global-importance-kind label that distinguishes split-based importances from coefficient-magnitude importances.
+Acceptance: Calling `explain_model(model, feature_names)` on a fitted random-forest classifier returns the same ranking and per-feature values as `model.feature_importances_`, plus `importance_kind == "split"`. Calling it on a fitted single-output linear or logistic-regression model returns the same ranking and per-feature absolute-coefficient values as before this change, plus `importance_kind == "coefficient_magnitude"`.
+
+## REQ-AIDS-083: Signed local contributions with additive consistency / 符号付き局所寄与と加法整合性
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When a caller requests signed local contributions for a supported single-output regression or binary-classification model and supplies feature rows, the system shall return row-aligned signed per-feature contribution maps together with provider metadata and an additive-consistency report against the model's raw per-row output when such output is available.
+Acceptance: Calling `explain_model(..., method="signed_contributions", x=rows)` on a fitted single-output logistic-regression model returns one signed contribution map per input row, `contribution_kind` equal to either `"shap"` or `"linear"` depending on the selected provider, `importance_kind == "mean_absolute_signed_contribution"`, and an `additivity_check` whose `max_abs_error` is at most `1e-6` when compared with the model's `decision_function(rows)`. The informative feature's mean absolute contribution ranks above an injected noise feature on the acceptance fixture.
+
+## REQ-AIDS-084: Permutation importance with configurable scoring / スコア指定可能なpermutation importance
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When a caller requests permutation importance and supplies feature rows and target labels, the system shall return permutation-importance values computed with the caller-selected scoring metric when provided, or the estimator's default score otherwise, labeled with the global-importance kind `permutation`.
+Acceptance: Calling `explain_model(..., method="permutation", x=rows, y=labels, scoring="accuracy")` on an acceptance-fixture classifier returns `importance_kind == "permutation"` and ranks the informative feature above an injected noise feature using the mean permutation-importance values.
+
 ## REQ-AIDS-022: A/B testing and experiment evaluation / A/Bテスト・実験評価
 Priority: must
 Type: functional
@@ -121,3 +163,38 @@ Type: non-functional
 Pattern: ubiquitous
 Statement: The system shall perform PDF, HTML, or slide export using a locally configured conversion tool outside the Jupyter MCP execution path, restricted to read-only rendering of already-executed notebook content.
 Acceptance: A test asserts the report export operation invokes only the configured conversion tool process and issues no additional Jupyter MCP code-execution calls, verified by comparing MCP call counts before and after export.
+
+## REQ-AIDS-074: Reusable cross-validation split strategies / 再利用可能な交差検証分割戦略
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests supervised modeling with a supported cross-validation strategy, the system shall return a reusable fold plan containing the exact train/test row indices for each of the requested `n_splits` folds.
+Acceptance: A classification request on an imbalanced labeled dataset with `cv_strategy="StratifiedKFold"` and `n_splits=4` returns exactly 4 fold scores and 4 fold split pairs, every fold test set is disjoint from its own train set, every fold test set contains both classes, and the union of all fold test indices equals the full input index exactly once. A request with `cv_strategy="GroupKFold"`, `n_splits=3`, and repeated group labels returns fold splits where no group label appears in both the train and test side of the same fold. Passing a previously returned fold plan into a second call reuses the identical train/test row indices instead of generating a different split.
+
+## REQ-AIDS-075: Probability-aware configurable supervised scoring / 確率対応の教師あり学習スコア指定
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests supervised modeling with a supported `scoring` value, the system shall return scoring artifacts computed from held-out predictions, including fold-level scores plus out-of-fold predictions and, whenever cross-validation is used with an estimator that implements `predict_proba` or with a probability-based scoring mode, out-of-fold `predict_proba` probabilities aligned to the original input rows.
+Acceptance: A binary classification request with `cv_strategy="StratifiedKFold"` and `scoring="roc_auc"` returns an `oof_probabilities` artifact whose positive-class column reproduces `sklearn.metrics.roc_auc_score(y_true, y_score)` within 1e-9 and whose row index matches the input row order exactly. A request with `scoring="log_loss"` returns a metric equal to `sklearn.metrics.log_loss` on the returned out-of-fold class probabilities and is compared in lower-is-better direction. A cross-validation request using a non-probabilistic estimator with a non-probabilistic scoring mode may leave `oof_probabilities` unset while still returning aligned out-of-fold class predictions. A legacy `train_model(...)` call that omits `scoring` and `cv_strategy` continues to expose the existing classification metric keys (`accuracy`, `precision`, `recall`) or regression metric keys (`rmse`, `r2`).
+
+## REQ-AIDS-076: Shared-fold tuning and model comparison / 共通foldを使うチューニング・モデル比較
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests hyperparameter tuning or model comparison with a supported `scoring` value and/or a reusable fold plan, the system shall evaluate every candidate on that same fold plan, report each candidate's fold-level scores and returned modeling artifacts, and select the best candidate using the correct optimization direction for the requested scoring metric.
+Acceptance: A classification tuning request with two parameter sets, `scoring="roc_auc"`, and a shared `StratifiedKFold` fold plan returns candidate records whose fold splits are identical to one another and to the supplied plan, and whose `best_metric` equals the maximum candidate metric. A corresponding request with `scoring="log_loss"` returns `best_metric` equal to the minimum candidate metric. Each candidate record includes its fold scores and the reusable modeling result needed to inspect out-of-fold probabilities.
+
+## REQ-AIDS-077: Shared-fold AutoML ranking / 共通foldを使うAutoML順位付け
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When a user requests automatic model selection with a supported `scoring` value and/or a reusable fold plan, the system shall evaluate every candidate model on that same fold plan and return a ranked comparison whose sort direction matches the requested scoring metric and whose candidate records expose fold-level scores plus the underlying modeling artifacts.
+Acceptance: An AutoML classification request with at least three candidate models, `cv_strategy="StratifiedKFold"`, and `scoring="roc_auc"` returns a ranked candidate list sorted in descending metric order, with every candidate referencing the same fold plan. A corresponding request with `scoring="log_loss"` returns the ranked candidate list sorted in ascending metric order. Every candidate record includes its fold scores and the underlying modeling result carrying the out-of-fold probability predictions.
+
+## REQ-AIDS-078: Pluggable sklearn-compatible estimators with backward compatibility / 後方互換性を保つ差し替え可能な推定器
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user supplies an external sklearn-compatible estimator or candidate-estimator mapping, the system shall fit and evaluate that estimator through the existing supervised modeling, tuning, and AutoML entry points while preserving the prior default behavior for calls that omit the new estimator and cross-validation options.
+Acceptance: `train_model(..., estimator=<custom estimator>)` fits successfully and returns the requested scoring artifacts, `tune_or_compare(..., grid=[..., {"estimator": <custom estimator>, ...}])` evaluates the supplied estimator on the same scoring path as built-in models, and `run_automl(..., candidate_estimators={"custom": <custom estimator>})` ranks the supplied candidate alongside the built-in models on the same scoring path. Existing calls to `train_model`, `tune_or_compare`, and `run_automl` that omit `estimator`, `candidate_estimators`, `cv_strategy`, `cv_splits`, and `scoring` continue to use the current built-in model defaults, current train/test split behavior, and current legacy metric keys/sort direction.

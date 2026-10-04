@@ -104,6 +104,91 @@ transformation into two calls using the same `StandardScaler` primitive;
 no competing architectural alternative was considered.
 Depends-On: DES-AIDS-013
 
+## DES-AIDS-067: Paired hypothesis-test dispatch for experiment evaluation / 実験評価の対応あり仮説検定ディスパッチ
+Responsibilities: Extend `evaluate_experiment` so callers can request
+paired significance tests over aligned control/treatment rows or folds
+without changing the legacy independent-samples `test="ttest"` behavior.
+Interfaces: `evaluate_experiment(control, treatment, test, language="en",
+*, y_true=None, metric_fn=None, iterations=1000, confidence_level=0.95,
+random_state=None) -> ExperimentResult`, where `test` accepts `ttest`,
+`paired_t`, `wilcoxon`, or `paired_bootstrap`.
+Constraints: `test="ttest"` must continue to call
+`scipy.stats.ttest_ind(control, treatment)` with the same defaults as the
+pre-CHANGE-010 implementation. `test="paired_t"` must call
+`scipy.stats.ttest_rel(control, treatment)` and `test="wilcoxon"` must
+call `scipy.stats.wilcoxon(control, treatment)`. Every paired test path
+must require equal-length control/treatment inputs with identical index
+order, and must reject any NaN or infinite value before dispatch, because
+row/fold alignment and finite numeric pairs are part of the paired-
+comparison contract.
+Requirements: REQ-AIDS-079, REQ-AIDS-080
+ADRs: none — the change adds direct dispatch to SciPy's paired-test
+primitives while preserving the legacy independent-test primitive; no
+architectural alternative beyond that library-level extension was
+considered.
+Depends-On: DES-AIDS-020
+
+## DES-AIDS-068: Paired bootstrap metric-comparison engine / 対応のあるブートストラップ比較エンジン
+Responsibilities: Compare aligned control/treatment predictions or
+aligned fold-level scores by repeatedly resampling matched pair indices
+with replacement, recomputing a treatment-minus-control score difference
+for each bootstrap sample, and summarizing the resulting distribution.
+Interfaces: `paired_bootstrap(control, treatment, *, y_true=None,
+metric_fn=None, iterations=1000, confidence_level=0.95,
+random_state=None) -> ExperimentResult`, invoked internally by
+`DES-AIDS-067`'s `evaluate_experiment(...)` path for
+`test="paired_bootstrap"`. When `metric_fn` and `y_true` are both
+provided, one bootstrap iteration computes
+`metric_fn(y_true_sample, treatment_sample) - metric_fn(y_true_sample,
+control_sample)` on the same sampled row indices; when `y_true` contains
+repeated class labels, those sampled indices are drawn within each label
+stratum so class-dependent metrics such as ROC AUC stay well-defined.
+When both are omitted, one bootstrap iteration computes the mean of
+`treatment_sample - control_sample` across the sampled fold-score pairs.
+Constraints: `metric_fn` and `y_true` are an all-or-nothing pair: a
+prediction-comparison bootstrap requires both, while a fold-score
+comparison requires neither. `iterations` must be a positive integer and
+`confidence_level` must be strictly between 0 and 1. The observed
+difference is computed on the full aligned inputs before resampling, and
+the confidence interval is the empirical lower/upper quantile pair at
+`((1-confidence_level)/2, 1-(1-confidence_level)/2)` of the bootstrap
+difference distribution. This bootstrap path is interval estimation only:
+it does not claim a hypothesis-test p-value from the resampled
+distribution. When used on fold-level CV scores, the interval summarizes
+paired resampling of the reported folds but does not remove any
+cross-fold/cross-model dependence already present in those scores.
+Requirements: REQ-AIDS-081
+ADRs: none — a direct paired-resampling implementation satisfies the
+requirement without introducing a separate experiment-analysis framework.
+Depends-On: DES-AIDS-020
+
+## DES-AIDS-069: Experiment-result payload for paired comparisons / 対応比較向け実験結果ペイロード
+Responsibilities: Preserve the existing `ExperimentResult` fields used by
+the legacy t-test path while adding optional confidence-interval output
+for bootstrap comparisons and a shared interpretation path for all
+supported experiment tests.
+Interfaces: `ExperimentResult = @dataclass(frozen=True) {statistic: float,
+p_value: float, interpretation: str, confidence_interval:
+tuple[float, float] | None = None}`. For `ttest`, `paired_t`, and
+`wilcoxon`, `statistic` is the hypothesis-test statistic and
+`confidence_interval` remains `None`. For `paired_bootstrap`, `statistic`
+is the observed treatment-minus-control difference and
+`confidence_interval` contains the bootstrap interval reported to the
+caller while `p_value` is `NaN` to signal that this path does not expose
+an inferential p-value.
+Constraints: The existing positional fields (`statistic`, `p_value`,
+`interpretation`) must remain present so current `test="ttest"` callers
+continue to receive the same shape. `_interpret` remains the bilingual
+formatter for significance messaging on the hypothesis-test paths, while
+the bootstrap path uses a separate bilingual interval-estimate formatter
+that explicitly avoids significance claims.
+Requirements: REQ-AIDS-079, REQ-AIDS-080, REQ-AIDS-081
+ADRs: none — extending the existing result dataclass with an optional
+field preserves backward compatibility more directly than introducing a
+separate bootstrap-only return type.
+Depends-On: DES-AIDS-020, DES-AIDS-067, DES-AIDS-068
+Code: CODE-AIDS-101 through CODE-AIDS-105 in `experiment_evaluation.py`.
+
 ## DES-AIDS-014: Clustering & dimensionality reduction module / クラスタリング・次元削減
 Responsibilities: Fit the requested unsupervised model (clustering or
 dimensionality reduction) and report cluster assignments or reduced
@@ -174,6 +259,91 @@ Requirements: REQ-AIDS-021
 ADRs: none — feature-importance/SHAP computation is a direct library call with no rejected alternative.
 Depends-On: DES-AIDS-012
 
+## DES-AIDS-070: Explainability result contract and method selection / 説明結果契約と手法選択
+Responsibilities: Extend `src/ai_data_scientist.explainability.explain_model`
+with keyword-only method selection while preserving the legacy 2-argument call,
+and normalize every path into a single `ExplainabilityResult` contract exposing
+the existing `feature_importances`/`ranking` fields plus explicit method
+metadata.
+Interfaces: `explain_model(model, feature_names, *, method: Literal["default",
+"signed_contributions", "permutation"] = "default", x=None, y=None, scoring:
+str | None = None, n_repeats: int = 5, random_state: int = 42) ->
+ExplainabilityResult`, where `ExplainabilityResult = @dataclass(frozen=True)
+{feature_importances: dict[str, float], ranking: list[str], importance_kind:
+str, contribution_kind: str | None = None, signed_contributions:
+list[dict[str, float]] | None = None, baseline_values: list[float] | None =
+None, raw_predictions: list[float] | None = None, additivity_check:
+dict[str, float | bool] | None = None, scoring: str | None = None}`.
+Constraints: The default `method="default"` path must produce the same ranking
+and feature-importance values as the pre-change implementation for models using
+`feature_importances_` or `abs(coef_)`, differing only by the added metadata
+fields. `importance_kind` is `"split"` for `feature_importances_`,
+`"coefficient_magnitude"` for `abs(coef_)`, `"mean_absolute_signed_contribution"`
+for signed-contribution aggregation, and `"permutation"` for permutation
+importance.
+Requirements: REQ-AIDS-082, REQ-AIDS-083, REQ-AIDS-084
+ADRs: none — this is a backward-compatible extension of an existing dataclass
+and function surface, with no competing architectural boundary decision.
+Depends-On: DES-AIDS-019
+
+## DES-AIDS-071: Signed-contribution provider normalization / 符号付き寄与プロバイダー正規化
+Responsibilities: Resolve the strongest available signed-contribution provider
+for `method="signed_contributions"` in this order: native
+`model.predict(..., pred_contrib=True)`, optional `shap.Explainer`, then a
+single-output linear additive decomposition derived from `coef_` and
+`intercept_`; for supported single-output regression and binary-classification
+models, normalize the chosen provider into row-aligned signed feature
+contribution dicts, baseline values, raw-output values, and an additive-
+consistency report.
+Interfaces: Internal helpers
+`_compute_signed_contributions(model, frame, feature_names) ->
+{contribution_kind, contributions_matrix, baseline_values, raw_predictions,
+additivity_check}` and `_predict_raw_output(model, frame) -> ndarray | None`.
+Constraints: Input-row order must be preserved exactly in the returned
+`signed_contributions` list. Native `pred_contrib` outputs that include an
+extra bias column must be split into `contributions_matrix[:, :-1]` and
+`baseline_values = matrix[:, -1]`. The linear fallback supports only
+single-output regression/binary-classification models whose flattened
+`coef_` length matches `feature_names`; it computes contributions as
+`frame.to_numpy(dtype=float) * coef_` and compares
+`baseline_values + contributions.sum(axis=1)` against `decision_function(frame)`
+when available, else `predict(frame)`. If model raw-output values are
+unavailable, the result must leave `raw_predictions` unset and mark
+`additivity_check.passed` unavailable instead of synthesizing a successful
+comparison from the reconstructed sum alone. Multi-class provider outputs are
+out of scope for this change; a native or SHAP output shape that cannot be
+normalized to one contribution vector per row over `feature_names` falls
+through to the next provider or, if none remain, raises `ValueError`
+instructing the caller to install optional `shap` support or request
+`method="permutation"` instead.
+Requirements: REQ-AIDS-083
+ADRs: none — provider selection is a deterministic preference order over
+existing library capabilities, not an architectural fork.
+Depends-On: DES-AIDS-070
+Implementation: `CODE-AIDS-106`-`CODE-AIDS-110` in
+`src/ai_data_scientist/explainability.py` (CHANGE-011); native `pred_contrib`
+row-count mismatches are validated and treated as a non-fatal fall-through to
+the SHAP/linear providers rather than propagated as a raw shape error.
+
+## DES-AIDS-072: Permutation-importance path / permutation importance経路
+Responsibilities: For `method="permutation"`, validate the presence of
+feature rows and target labels, call
+`sklearn.inspection.permutation_importance`, and return mean permutation
+importances plus the scoring metadata needed to interpret them.
+Interfaces: Internal helper `_compute_permutation_importance(model, frame, y,
+feature_names, scoring, n_repeats, random_state) -> ExplainabilityResult`.
+Constraints: The helper passes `scoring` through unchanged when provided and
+passes `None` otherwise so scikit-learn uses the estimator's default score.
+The returned `feature_importances` map uses `result.importances_mean` without
+taking absolute values, because negative permutation importance is itself
+meaningful evidence of instability/noise. `ranking` sorts those mean values in
+descending order. The result sets `importance_kind == "permutation"` and
+`scoring` to the caller-supplied scorer string or `None`.
+Requirements: REQ-AIDS-084
+ADRs: none — scikit-learn already defines the relevant permutation-importance
+algorithm and scorer interface; this design only exposes it.
+Depends-On: DES-AIDS-070
+
 ## DES-AIDS-020: A/B testing & experiment evaluation module / A/Bテスト・実験評価
 Responsibilities: Compute the statistical significance of the observed
 difference between two groups and report the result with a markdown
@@ -236,3 +406,44 @@ source notebook (REQ-AIDS-025).
 Requirements: REQ-AIDS-025, REQ-AIDS-033
 ADRs: ADR-0007
 Depends-On: DES-AIDS-003
+
+## DES-AIDS-062: Reusable supervised fold-plan builder / 再利用可能な教師あり学習fold計画生成
+Responsibilities: Normalize the requested supervised-validation mode into a reusable list of train/test row-index folds, either by generating folds from `StratifiedKFold`, `KFold`, or `GroupKFold`, or by reusing a caller-supplied fold plan verbatim.
+Interfaces: `build_cv_splits(df, target, model_type, cv_strategy, n_splits, random_state, groups=None, cv_splits=None) -> list[tuple[list, list]]`, where each tuple contains train-row indices and test-row indices expressed in the dataframe's original index labels.
+Constraints: Cross-validation is supported only when `df.index.is_unique` so every emitted row label maps to exactly one row. `StratifiedKFold` is valid only for classification and must stratify on `df[target]`; `GroupKFold` requires one group label per input row and must keep every group entirely on one side of a fold. Re-supplied `cv_splits` are validated before reuse: every train/test label must exist in the dataframe index, each fold's train/test sides must be disjoint, and every input row must appear in the test side of exactly one fold so OOF artifacts are well-defined.
+Requirements: REQ-AIDS-074
+ADRs: none — the design composes scikit-learn's standard splitters directly and stores only their emitted row-index partitions, with no competing architecture considered.
+Depends-On: DES-AIDS-012
+
+## DES-AIDS-063: Probability-aware supervised evaluation results / 確率対応の教師あり学習評価結果
+Responsibilities: Extend the supervised modeling interface so a caller can request a configurable scoring metric, evaluate either one legacy holdout split or a reusable fold plan, and receive fold scores plus out-of-fold predictions/probabilities in a backward-compatible result object.
+Interfaces: `trainModel(df, target, modelType, testSize=0.2, randomState=42, scoring=None, cvStrategy=None, nSplits=5, groups=None, cvSplits=None, estimator=None, **modelParams) -> ModelResult`, where `ModelResult` keeps the legacy `{model, metrics, trainIndex, testIndex}` fields (using the first fold's indices when cross-validation is active for backward-compatible shape) and adds optional `{scoring, fold_scores, cv_splits, oof_predictions, oof_probabilities}` fields.
+Constraints: If `cvStrategy`/`cvSplits` are absent, the function stays on the existing single `train_test_split` path so prior callers observe the same split behavior and legacy metric keys. If cross-validation is active, `cv_splits` is the authoritative split artifact and `oof_predictions` are aligned to the input row order. `oof_probabilities` is populated only when the estimator implements `predict_proba`; probability-dependent scoring (`roc_auc`, `log_loss`) requires that capability and otherwise raises `ValueError` instead of silently substituting another score.
+Requirements: REQ-AIDS-074, REQ-AIDS-075
+ADRs: none — the extension augments the existing result contract around scikit-learn estimators rather than introducing a new modeling subsystem.
+Depends-On: DES-AIDS-012, DES-AIDS-062
+
+## DES-AIDS-064: Shared-fold tuning comparator / 共通foldを用いるチューニング比較器
+Responsibilities: Evaluate every hyperparameter/model candidate by delegating to the probability-aware supervised evaluation path, preserve the exact per-candidate modeling artifacts, and compute the winning candidate according to the requested scoring direction.
+Interfaces: `tuneOrCompare(df, target, grid, modelType="classification", scoring=None, cvStrategy=None, nSplits=5, groups=None, cvSplits=None) -> TuningResult {best_params, best_metric, all_candidates, scoring?, cv_splits?, best_result?}` where each `all_candidates` entry contains the candidate descriptor, the selected metric value, its fold scores, and the underlying `ModelResult`.
+Constraints: Every candidate in one invocation must use the same fold plan, either caller-supplied or generated once then reused. Higher-is-better scoring (`accuracy`, `precision`, `recall`, `roc_auc`, `r2`) selects the maximum metric, while lower-is-better scoring (`log_loss`, `rmse`) selects the minimum. Candidate ordering must not depend on dictionary iteration side effects or per-candidate re-splitting.
+Requirements: REQ-AIDS-076
+ADRs: none — the comparator is a thin policy layer over DES-AIDS-063 with no alternative orchestration architecture evaluated.
+Depends-On: DES-AIDS-017, DES-AIDS-063
+
+## DES-AIDS-065: Shared-fold AutoML candidate ranking / 共通foldを用いるAutoML候補順位付け
+Responsibilities: Build an AutoML candidate registry, evaluate each candidate through the shared-fold tuning/modeling path, and return a consistently sorted ranked comparison that exposes each candidate's fold scores and modeling artifacts.
+Interfaces: `runAutoML(df, target, modelType="classification", scoring=None, cvStrategy=None, nSplits=5, groups=None, cvSplits=None, candidateEstimators=None) -> AutoMLResult {ranked_candidates, scoring?, cv_splits?}` where each ranked candidate contains its `model_name`, selected metric value, fold scores, and underlying `ModelResult`.
+Constraints: If `candidateEstimators` is omitted, the module uses the existing built-in registry so legacy AutoML requests still evaluate the same default model set. If `candidateEstimators` is supplied, its named estimators are appended to that built-in registry and every candidate is evaluated on the exact same fold plan. Ranked output sorts descending for higher-is-better metrics and ascending for lower-is-better metrics.
+Requirements: REQ-AIDS-077, REQ-AIDS-078
+ADRs: none — AutoML continues to be a composition of existing modeling/tuning paths with an alternate candidate source, not a separate architecture.
+Depends-On: DES-AIDS-018, DES-AIDS-064
+
+## DES-AIDS-066: Pluggable estimator resolver / 差し替え可能な推定器解決器
+Responsibilities: Resolve either a built-in `model_name`, a caller-supplied estimator instance, or a caller-supplied estimator factory into a fresh sklearn-compatible estimator object for each fit across modeling, tuning, and AutoML flows.
+Interfaces: `resolve_estimator(model_type, model_name=None, estimator=None, model_params=None) -> estimator` for single-model training, and AutoML/tuning callers may pass `{name: estimator_or_factory}` or per-grid `{"estimator": estimator_or_factory}` descriptors that flow into the same resolver.
+Constraints: The resolved estimator must implement `fit` and `predict`; probability-dependent scoring also requires `predict_proba`. Built-in models preserve the current hard-coded defaults (including existing `random_state=42` injections where they already exist). External estimator instances are cloned or recreated per fit so cross-validation folds and candidate comparisons never share trained state.
+Requirements: REQ-AIDS-078
+ADRs: none — the resolver centralizes already-implicit estimator construction rules without introducing a new dependency boundary.
+Depends-On: DES-AIDS-063, DES-AIDS-064, DES-AIDS-065
+Code: CODE-AIDS-119 through CODE-AIDS-124 (renumbered at merge to avoid colliding with CHANGE-008's CODE-AIDS-094/095 in `feature_engineering.py`; see CHANGE-009.md).
