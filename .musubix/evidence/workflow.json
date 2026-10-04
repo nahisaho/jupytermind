@@ -324,6 +324,14 @@
       "status": "failed",
       "reason": "ruff check src tests is blocked by pre-existing ISC004 in src/ai_data_scientist/ingestion.py:89 outside requested scope",
       "recordedAt": "2026-10-04T14:34:46.264Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-10-04T21:09:52.976Z"
     }
   ]
 }
