@@ -38,6 +38,27 @@ Pattern: event-driven
 Statement: When a user requests a statistics-estimating feature engineering transformation, the system shall provide a `fit_features(df: pandas.DataFrame, operation: str, columns: list[str]) -> FittedFeatureState` call whose stored statistics were computed from only the supplied `df`, and a separate `transform_features(fitted_state: FittedFeatureState, df: pandas.DataFrame) -> FeatureResult` call that applies those already-stored statistics to any supplied `df` without recomputing them, returning a `FeatureResult` with the same index/row order as the input and the transformed columns replaced in place.
 Acceptance: `fit_features(train_df, "scale", columns)` returns a fitted-state object whose stored mean/standard-deviation (or equivalent) for each column is bit-for-bit equal to `sklearn.preprocessing.StandardScaler().fit(train_df[columns]).mean_`/`.scale_`. Calling `transform_features(fitted_state, validation_df)` produces output equal to applying that same fitted `StandardScaler.transform` to `validation_df[columns]`, and is not equal to `StandardScaler().fit_transform(validation_df[columns])` on a fixture where the two frames' column means differ, proving validation-row statistics were never used to compute the fitted state. `transform_features(fitted_state, train_df)` (fit subset transformed by its own fitted state) reproduces the legacy single-call `engineer_features(train_df, "scale", columns)` dataframe output exactly.
 
+## REQ-AIDS-079: Paired t-test experiment evaluation / 対応のあるt検定による実験評価
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests experiment evaluation with `test="paired_t"` on aligned control and treatment observations from the same rows or folds, the system shall require both paired series to have identical index order and only finite numeric values, then evaluate the treatment-minus-control difference with a paired t-test over those matched pairs and report the resulting statistic, p-value, and markdown interpretation.
+Acceptance: On a fixed aligned numeric fixture, `evaluate_experiment(control, treatment, test="paired_t")` returns a statistic and p-value that each match `scipy.stats.ttest_rel(control, treatment)` within `1e-6`, and the returned p-value differs from `scipy.stats.ttest_ind(control, treatment)` on that same fixture, proving the paired test path was used instead of the legacy independent-samples path.
+
+## REQ-AIDS-080: Wilcoxon signed-rank experiment evaluation / Wilcoxon符号付順位検定による実験評価
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests experiment evaluation with `test="wilcoxon"` on aligned control and treatment observations from the same rows or folds, the system shall require both paired series to have identical index order and only finite numeric values, then evaluate the matched-pair differences with a Wilcoxon signed-rank test and reject any call where the paired series lengths differ.
+Acceptance: On a fixed aligned numeric fixture, `evaluate_experiment(control, treatment, test="wilcoxon")` returns a statistic and p-value that each match `scipy.stats.wilcoxon(control, treatment)` within `1e-6`. Calling the same API with unequal-length paired inputs raises `ValueError` mentioning that paired experiment tests require equal-length inputs.
+
+## REQ-AIDS-081: Paired bootstrap experiment evaluation / 対応のあるブートストラップによる実験評価
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests experiment evaluation with `test="paired_bootstrap"` on aligned control and treatment predictions or aligned fold-level scores, the system shall require the paired inputs (and `y_true`, when provided) to have identical index order and only finite numeric values, then resample matched pairs with replacement, compute a treatment-minus-control difference using either a caller-supplied metric function over aligned `y_true` and predictions or the default mean difference over the paired numeric scores, and report the observed difference together with a confidence interval and markdown interpretation without claiming a bootstrap hypothesis-test p-value.
+Acceptance: Given fixed `random_state`, `iterations`, and `confidence_level`, `evaluate_experiment(control_predictions, treatment_predictions, test="paired_bootstrap", y_true=labels, metric_fn=roc_auc_score, ...)` returns an observed difference and confidence interval matching a reference paired-bootstrap implementation on the same aligned rows within `1e-6`, returns `p_value=NaN`, and its interpretation states that the bootstrap path reports an interval estimate rather than a hypothesis-test p-value. Given aligned per-fold numeric scores and no `metric_fn`/`y_true`, the same API returns an observed difference equal to `mean(treatment - control)` and a confidence interval matching a reference paired resampling of those fold pairs within `1e-6`. Calling any paired path with a NaN or infinite value raises `ValueError` mentioning finite paired values.
+
 ## REQ-AIDS-016: Clustering and dimensionality reduction / クラスタリング・次元削減
 Priority: must
 Type: functional

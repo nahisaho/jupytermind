@@ -104,6 +104,90 @@ transformation into two calls using the same `StandardScaler` primitive;
 no competing architectural alternative was considered.
 Depends-On: DES-AIDS-013
 
+## DES-AIDS-067: Paired hypothesis-test dispatch for experiment evaluation / 実験評価の対応あり仮説検定ディスパッチ
+Responsibilities: Extend `evaluate_experiment` so callers can request
+paired significance tests over aligned control/treatment rows or folds
+without changing the legacy independent-samples `test="ttest"` behavior.
+Interfaces: `evaluate_experiment(control, treatment, test, language="en",
+*, y_true=None, metric_fn=None, iterations=1000, confidence_level=0.95,
+random_state=None) -> ExperimentResult`, where `test` accepts `ttest`,
+`paired_t`, `wilcoxon`, or `paired_bootstrap`.
+Constraints: `test="ttest"` must continue to call
+`scipy.stats.ttest_ind(control, treatment)` with the same defaults as the
+pre-CHANGE-010 implementation. `test="paired_t"` must call
+`scipy.stats.ttest_rel(control, treatment)` and `test="wilcoxon"` must
+call `scipy.stats.wilcoxon(control, treatment)`. Every paired test path
+must require equal-length control/treatment inputs with identical index
+order, and must reject any NaN or infinite value before dispatch, because
+row/fold alignment and finite numeric pairs are part of the paired-
+comparison contract.
+Requirements: REQ-AIDS-079, REQ-AIDS-080
+ADRs: none — the change adds direct dispatch to SciPy's paired-test
+primitives while preserving the legacy independent-test primitive; no
+architectural alternative beyond that library-level extension was
+considered.
+Depends-On: DES-AIDS-020
+
+## DES-AIDS-068: Paired bootstrap metric-comparison engine / 対応のあるブートストラップ比較エンジン
+Responsibilities: Compare aligned control/treatment predictions or
+aligned fold-level scores by repeatedly resampling matched pair indices
+with replacement, recomputing a treatment-minus-control score difference
+for each bootstrap sample, and summarizing the resulting distribution.
+Interfaces: `paired_bootstrap(control, treatment, *, y_true=None,
+metric_fn=None, iterations=1000, confidence_level=0.95,
+random_state=None) -> ExperimentResult`, invoked internally by
+`DES-AIDS-067`'s `evaluate_experiment(...)` path for
+`test="paired_bootstrap"`. When `metric_fn` and `y_true` are both
+provided, one bootstrap iteration computes
+`metric_fn(y_true_sample, treatment_sample) - metric_fn(y_true_sample,
+control_sample)` on the same sampled row indices; when `y_true` contains
+repeated class labels, those sampled indices are drawn within each label
+stratum so class-dependent metrics such as ROC AUC stay well-defined.
+When both are omitted, one bootstrap iteration computes the mean of
+`treatment_sample - control_sample` across the sampled fold-score pairs.
+Constraints: `metric_fn` and `y_true` are an all-or-nothing pair: a
+prediction-comparison bootstrap requires both, while a fold-score
+comparison requires neither. `iterations` must be a positive integer and
+`confidence_level` must be strictly between 0 and 1. The observed
+difference is computed on the full aligned inputs before resampling, and
+the confidence interval is the empirical lower/upper quantile pair at
+`((1-confidence_level)/2, 1-(1-confidence_level)/2)` of the bootstrap
+difference distribution. This bootstrap path is interval estimation only:
+it does not claim a hypothesis-test p-value from the resampled
+distribution. When used on fold-level CV scores, the interval summarizes
+paired resampling of the reported folds but does not remove any
+cross-fold/cross-model dependence already present in those scores.
+Requirements: REQ-AIDS-081
+ADRs: none — a direct paired-resampling implementation satisfies the
+requirement without introducing a separate experiment-analysis framework.
+Depends-On: DES-AIDS-020
+
+## DES-AIDS-069: Experiment-result payload for paired comparisons / 対応比較向け実験結果ペイロード
+Responsibilities: Preserve the existing `ExperimentResult` fields used by
+the legacy t-test path while adding optional confidence-interval output
+for bootstrap comparisons and a shared interpretation path for all
+supported experiment tests.
+Interfaces: `ExperimentResult = @dataclass(frozen=True) {statistic: float,
+p_value: float, interpretation: str, confidence_interval:
+tuple[float, float] | None = None}`. For `ttest`, `paired_t`, and
+`wilcoxon`, `statistic` is the hypothesis-test statistic and
+`confidence_interval` remains `None`. For `paired_bootstrap`, `statistic`
+is the observed treatment-minus-control difference and
+`confidence_interval` contains the bootstrap interval reported to the
+caller while `p_value` is `NaN` to signal that this path does not expose
+an inferential p-value.
+Constraints: The existing positional fields (`statistic`, `p_value`,
+`interpretation`) must remain present so current `test="ttest"` callers
+continue to receive the same shape. `_interpret` remains the bilingual
+formatter for significance messaging on the hypothesis-test paths, while
+the bootstrap path uses a separate bilingual interval-estimate formatter
+that explicitly avoids significance claims.
+Requirements: REQ-AIDS-079, REQ-AIDS-080, REQ-AIDS-081
+ADRs: none — extending the existing result dataclass with an optional
+field preserves backward compatibility more directly than introducing a
+separate bootstrap-only return type.
+Depends-On: DES-AIDS-020, DES-AIDS-067, DES-AIDS-068
+
 ## DES-AIDS-014: Clustering & dimensionality reduction module / クラスタリング・次元削減
 Responsibilities: Fit the requested unsupervised model (clustering or
 dimensionality reduction) and report cluster assignments or reduced
