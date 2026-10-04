@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T22:28:21.043Z",
+  "generatedAt": "2026-10-04T23:11:56.566Z",
   "status": "fail",
   "checks": [
     {
@@ -34,214 +34,9 @@
     {
       "name": "trace",
       "required": true,
-      "status": "fail",
-      "summary": "3 error(s).",
-      "diagnostics": [
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-001 lacks design.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 48
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-001 lacks implementation.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 48
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-001 lacks tests.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 48
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-002 lacks design.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 56
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-002 lacks implementation.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 56
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-002 lacks tests.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 56
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-003 lacks design.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 64
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-003 lacks implementation.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 64
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-003 lacks tests.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 64
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-004 lacks design.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 72
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-004 lacks implementation.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 72
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-004 lacks tests.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 72
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-010 lacks design.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 80
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-010 lacks implementation.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 80
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-010 lacks tests.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 80
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-020 lacks design.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 88
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-020 lacks implementation.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 88
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-020 lacks tests.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 88
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-030 lacks design.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 96
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-030 lacks implementation.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 96
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-030 lacks tests.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 96
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-040 lacks design.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 104
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-040 lacks implementation.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 104
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-040 lacks tests.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 104
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-050 lacks design.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 112
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-050 lacks implementation.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 112
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AGENOM-050 lacks tests.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 112
-        },
-        {
-          "code": "TRACE_COVERAGE",
-          "severity": "error",
-          "message": "design link coverage 0.9296875 is below 1."
-        },
-        {
-          "code": "TRACE_COVERAGE",
-          "severity": "error",
-          "message": "implementation link coverage 0.9296875 is below 1."
-        },
-        {
-          "code": "TRACE_COVERAGE",
-          "severity": "error",
-          "message": "tests link coverage 0.9296875 is below 1."
-        }
-      ]
+      "status": "pass",
+      "summary": "0 error(s).",
+      "diagnostics": []
     },
     {
       "name": "graph",
@@ -254,7 +49,7 @@
       "name": "formal",
       "required": false,
       "status": "pass",
-      "summary": "12/146 requirements modeled; consistency consistent; solver not-requested.",
+      "summary": "12/159 requirements modeled; consistency consistent; solver not-requested.",
       "diagnostics": [
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -300,6 +95,26 @@
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
           "message": "REQ-ACHEM-050 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ACHEM-060 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ACHEM-070 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ACHEM-080 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ACHEM-090 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -925,6 +740,51 @@
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
           "message": "REQ-AISCI-024 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ASTRUCT-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ASTRUCT-002 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ASTRUCT-003 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ASTRUCT-004 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ASTRUCT-010 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ASTRUCT-020 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ASTRUCT-030 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ASTRUCT-040 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-ASTRUCT-050 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         }
       ],
       "durationMs": 0
@@ -946,71 +806,8 @@
       "name": "tdd",
       "required": true,
       "status": "fail",
-      "summary": "320 Red-Green TDD cycle(s) recorded.",
+      "summary": "397 Red-Green TDD cycle(s) recorded.",
       "diagnostics": [
-        {
-          "code": "TDD_REQUIREMENT_UNCOVERED",
-          "severity": "error",
-          "message": "REQ-AGENOM-001 has no valid Red-Green cycle from an authoritative verifying test.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 48
-        },
-        {
-          "code": "TDD_REQUIREMENT_UNCOVERED",
-          "severity": "error",
-          "message": "REQ-AGENOM-002 has no valid Red-Green cycle from an authoritative verifying test.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 56
-        },
-        {
-          "code": "TDD_REQUIREMENT_UNCOVERED",
-          "severity": "error",
-          "message": "REQ-AGENOM-003 has no valid Red-Green cycle from an authoritative verifying test.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 64
-        },
-        {
-          "code": "TDD_REQUIREMENT_UNCOVERED",
-          "severity": "error",
-          "message": "REQ-AGENOM-004 has no valid Red-Green cycle from an authoritative verifying test.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 72
-        },
-        {
-          "code": "TDD_REQUIREMENT_UNCOVERED",
-          "severity": "error",
-          "message": "REQ-AGENOM-010 has no valid Red-Green cycle from an authoritative verifying test.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 80
-        },
-        {
-          "code": "TDD_REQUIREMENT_UNCOVERED",
-          "severity": "error",
-          "message": "REQ-AGENOM-020 has no valid Red-Green cycle from an authoritative verifying test.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 88
-        },
-        {
-          "code": "TDD_REQUIREMENT_UNCOVERED",
-          "severity": "error",
-          "message": "REQ-AGENOM-030 has no valid Red-Green cycle from an authoritative verifying test.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 96
-        },
-        {
-          "code": "TDD_REQUIREMENT_UNCOVERED",
-          "severity": "error",
-          "message": "REQ-AGENOM-040 has no valid Red-Green cycle from an authoritative verifying test.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 104
-        },
-        {
-          "code": "TDD_REQUIREMENT_UNCOVERED",
-          "severity": "error",
-          "message": "REQ-AGENOM-050 has no valid Red-Green cycle from an authoritative verifying test.",
-          "path": ".musubix/features/ai-genomics-scientist/requirements.md",
-          "line": 112
-        },
         {
           "code": "TDD_REQUIREMENT_UNCOVERED",
           "severity": "error",
@@ -1126,7 +923,7 @@
       "name": "change-history",
       "required": true,
       "status": "fail",
-      "summary": "14 staged change(s) checked for ordered artifact and TDD evidence.",
+      "summary": "15 staged change(s) checked for ordered artifact and TDD evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_WAIVER_STALE",
@@ -2632,6 +2429,321 @@
             "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
             "recordedAt": "2026-10-04T22:27:19.855Z"
           }
+        },
+        {
+          "code": "CHANGE_TEST_CHANGED_AFTER_RED",
+          "severity": "error",
+          "message": "CHANGE-013 changed tests between Red and Green.",
+          "changeId": "CHANGE-013",
+          "detail": "REQ-ACHEM-060,REQ-ACHEM-070,REQ-ACHEM-080,REQ-ACHEM-090"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ACHEM-060 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-060"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ACHEM-060 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-060"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ACHEM-070 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-070"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ACHEM-070 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-070"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ACHEM-080 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-080"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ACHEM-080 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-080"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ACHEM-090 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-090"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ACHEM-090 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-090"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-001 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-001"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-001 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-001"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-002 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-002"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-002 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-002"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-003 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-003"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-003 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-003"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-004 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-004"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-004 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-004"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-010 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-010"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-010 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-010"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-020 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-020"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-020 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-020"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-030 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-030"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-030 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-030"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-040 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-040"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-040 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-040"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-050 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-050"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-050 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-050"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-001 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-001"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-001 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-001"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-002 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-002"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-002 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-002"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-003 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-003"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-003 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-003"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-004 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-004"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-004 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-004"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-010 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-010"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-010 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-010"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-020 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-020"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-020 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-020"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-030 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-030"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-030 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-030"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-040 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-040"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-040 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-040"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-050 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-050"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-050 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-050"
         }
       ]
     },
@@ -2639,7 +2751,7 @@
       "name": "change-completeness",
       "required": true,
       "status": "fail",
-      "summary": "3/14 staged change(s) have semantically complete evidence.",
+      "summary": "3/15 staged change(s) have semantically complete evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_WAIVER_STALE",
@@ -3624,6 +3736,160 @@
             "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
             "recordedAt": "2026-10-04T22:27:20.309Z"
           }
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ACHEM-060 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-060"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ACHEM-070 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-070"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ACHEM-080 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-080"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ACHEM-090 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-090"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-AGENOM-001 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-001"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-AGENOM-002 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-002"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-AGENOM-003 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-003"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-AGENOM-004 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-004"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-AGENOM-010 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-010"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-AGENOM-020 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-020"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-AGENOM-030 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-030"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-AGENOM-040 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-040"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-AGENOM-050 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-050"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ASTRUCT-001 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-001"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ASTRUCT-002 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-002"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ASTRUCT-003 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-003"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ASTRUCT-004 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-004"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ASTRUCT-010 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-010"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ASTRUCT-020 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-020"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ASTRUCT-030 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-030"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ASTRUCT-040 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-040"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ASTRUCT-050 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-050"
         }
       ]
     },
@@ -3632,9 +3898,9 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/ruff: completed, exit 0.",
-      "durationMs": 24,
+      "durationMs": 26,
       "exitCode": 0,
-      "stdout": "149 files already formatted\n",
+      "stdout": "194 files already formatted\n",
       "stderr": ""
     },
     {
@@ -3642,16 +3908,16 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/pytest: completed, exit 0.",
-      "durationMs": 48596,
+      "durationMs": 55340,
       "exitCode": 0,
-      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 482 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ......                    [  2%]\ntests/test_ai_chemistry_scientist_dispatch.py ...................        [  6%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [  8%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [  8%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [  9%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 11%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 12%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 14%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 15%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 17%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 20%]\n...                                                                      [ 20%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 23%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 27%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 28%]\ntests/test_ai_materials_scientist_fem.py .................               [ 32%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 35%]\n                                                                         [ 35%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 38%]\n...                                                                      [ 39%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 41%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 43%]\ntests/test_ai_scientist_delegation.py ............                       [ 45%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 45%]\ntests/test_ai_scientist_mcp.py ..........                                [ 47%]\ntests/test_ai_scientist_phase_state.py ........                          [ 49%]\ntests/test_ai_scientist_project_handle.py ...                            [ 50%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 51%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 51%]\ntests/test_analysis_assumptions.py ....                                  [ 52%]\ntests/test_anomaly_detection.py .                                        [ 52%]\ntests/test_automl.py ....                                                [ 53%]\ntests/test_cleaning.py .                                                 [ 53%]\ntests/test_clustering.py ..                                              [ 53%]\ntests/test_dashboard.py .                                                [ 54%]\ntests/test_data_definition.py .....                                      [ 55%]\ntests/test_data_quality.py .....                                         [ 56%]\ntests/test_dataset_validation.py ......                                  [ 57%]\ntests/test_dependency_pins.py ...                                        [ 58%]\ntests/test_eda.py .....                                                  [ 59%]\ntests/test_example_readiness.py .                                        [ 59%]\ntests/test_experiment_evaluation.py .............................        [ 65%]\ntests/test_explainability.py ...........                                 [ 67%]\ntests/test_feature_engineering.py ..........                             [ 69%]\ntests/test_gate_config.py .                                              [ 69%]\ntests/test_ingestion.py ........                                         [ 71%]\ntests/test_insight_engine.py ........                                    [ 73%]\ntests/test_japanese_nlp.py .                                             [ 73%]\ntests/test_jupyter_mcp_client.py ..                                      [ 73%]\ntests/test_language_router.py .                                          [ 74%]\ntests/test_lifecycle.py .....                                            [ 75%]\ntests/test_mcp_gateway.py ......                                         [ 76%]\ntests/test_mcp_runtime.py ......                                         [ 77%]\ntests/test_mcp_runtime_integration.py .                                  [ 77%]\ntests/test_ml_modeling.py ........                                       [ 79%]\ntests/test_model_tuning.py ....                                          [ 80%]\ntests/test_notebook_audit.py .......................                     [ 85%]\ntests/test_project_manager.py ..........                                 [ 87%]\ntests/test_report_export.py ...                                          [ 87%]\ntests/test_sensitivity.py ............                                   [ 90%]\ntests/test_skill_packaging.py .                                          [ 90%]\ntests/test_stats_analysis.py ..........                                  [ 92%]\ntests/test_text_nlp.py .                                                 [ 92%]\ntests/test_timeseries.py ..                                              [ 93%]\ntests/test_visual_audit.py ...........                                   [ 95%]\ntests/test_visualization.py ......................                       [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 482 passed in 46.31s =============================\n",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 579 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  3%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  4%]\n....                                                                     [  5%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [ 10%]\n.....                                                                    [ 10%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 12%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 13%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 13%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 14%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 15%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 17%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 18%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 19%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 20%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 20%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 21%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 21%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 22%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 22%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 22%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 23%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 23%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 24%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 25%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 27%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 29%]\n...                                                                      [ 29%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 32%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 35%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 36%]\ntests/test_ai_materials_scientist_fem.py .................               [ 39%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 41%]\n                                                                         [ 41%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 44%]\n...                                                                      [ 45%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 47%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 48%]\ntests/test_ai_scientist_delegation.py ............                       [ 50%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 50%]\ntests/test_ai_scientist_mcp.py ..........                                [ 52%]\ntests/test_ai_scientist_phase_state.py ........                          [ 53%]\ntests/test_ai_scientist_project_handle.py ...                            [ 54%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 55%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 55%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 55%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 55%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 56%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 56%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 57%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 57%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 58%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 58%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 59%]\ntests/test_analysis_assumptions.py ....                                  [ 60%]\ntests/test_anomaly_detection.py .                                        [ 60%]\ntests/test_automl.py ....                                                [ 61%]\ntests/test_cleaning.py .                                                 [ 61%]\ntests/test_clustering.py ..                                              [ 61%]\ntests/test_dashboard.py .                                                [ 61%]\ntests/test_data_definition.py .....                                      [ 62%]\ntests/test_data_quality.py .....                                         [ 63%]\ntests/test_dataset_validation.py ......                                  [ 64%]\ntests/test_dependency_pins.py ...                                        [ 65%]\ntests/test_eda.py .....                                                  [ 65%]\ntests/test_example_readiness.py .                                        [ 66%]\ntests/test_experiment_evaluation.py .............................        [ 71%]\ntests/test_explainability.py ...........                                 [ 73%]\ntests/test_feature_engineering.py ..........                             [ 74%]\ntests/test_gate_config.py .                                              [ 74%]\ntests/test_ingestion.py ........                                         [ 76%]\ntests/test_insight_engine.py ........                                    [ 77%]\ntests/test_japanese_nlp.py .                                             [ 77%]\ntests/test_jupyter_mcp_client.py ..                                      [ 78%]\ntests/test_language_router.py .                                          [ 78%]\ntests/test_lifecycle.py .....                                            [ 79%]\ntests/test_mcp_gateway.py ......                                         [ 80%]\ntests/test_mcp_runtime.py ......                                         [ 81%]\ntests/test_mcp_runtime_integration.py .                                  [ 81%]\ntests/test_ml_modeling.py ........                                       [ 82%]\ntests/test_model_tuning.py ....                                          [ 83%]\ntests/test_notebook_audit.py .......................                     [ 87%]\ntests/test_project_manager.py ..........                                 [ 89%]\ntests/test_report_export.py ...                                          [ 89%]\ntests/test_sensitivity.py ............                                   [ 91%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 93%]\ntests/test_text_nlp.py .                                                 [ 93%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ......................                       [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 579 passed in 52.56s =============================\n",
       "stderr": ""
     },
     {
       "name": "test-identities",
       "required": false,
       "status": "fail",
-      "summary": "399/400 annotated test IDs passed in structured command reports.",
+      "summary": "477/478 annotated test IDs passed in structured command reports.",
       "diagnostics": [
         {
           "code": "TEST_ID_NOT_PASSED",
@@ -3690,16 +3956,9 @@
     {
       "name": "model-correspondence",
       "required": true,
-      "status": "fail",
+      "status": "pass",
       "summary": "6/6 explicitly modeled requirement(s) correspond to current authoritative passing tests.",
-      "diagnostics": [
-        {
-          "code": "MODEL_CORRESPONDENCE_TRACE_STALE",
-          "severity": "error",
-          "message": "Generated trace evidence is missing, stale, or invalid.",
-          "path": ".musubix/evidence/model-correspondence.json"
-        }
-      ]
+      "diagnostics": []
     },
     {
       "name": "attestation",
@@ -3731,8 +3990,8 @@
     {
       "name": "constitution:RULE-001",
       "required": true,
-      "status": "fail",
-      "summary": "trace.errors = 3; maximum 0."
+      "status": "pass",
+      "summary": "trace.errors = 0; maximum 0."
     },
     {
       "name": "constitution:RULE-002",
@@ -3751,54 +4010,196 @@
     "requirements.errors": 0,
     "policy.errors": 0,
     "design.errors": 0,
-    "trace.errors": 3,
+    "trace.errors": 0,
     "graph.violations": 0,
     "formal.errors": 0,
-    "formal.modeledFraction": 0.0821917808219178,
+    "formal.modeledFraction": 0.07547169811320754,
     "commands.failures": 0,
     "commands.skipped": 0,
-    "tests.annotatedIds": 400,
-    "tests.executedIds": 399,
-    "tdd.cycles": 320,
-    "tdd.errors": 27,
-    "changes.count": 14,
-    "changes.errors": 146,
+    "tests.annotatedIds": 478,
+    "tests.executedIds": 477,
+    "tdd.cycles": 397,
+    "tdd.errors": 18,
+    "changes.count": 15,
+    "changes.errors": 191,
     "changes.complete": 3,
-    "changes.completenessErrors": 136,
+    "changes.completenessErrors": 158,
     "performance.budgets": 1,
     "performance.errors": 2,
-    "mutation.requirements": 122,
+    "mutation.requirements": 135,
     "mutation.coveredRequirements": 0,
     "mutation.mutants": 0,
     "mutation.errors": 0,
     "modelCorrespondence.requirements": 6,
     "modelCorrespondence.coveredRequirements": 6,
-    "modelCorrespondence.errors": 1,
+    "modelCorrespondence.errors": 0,
     "attestation.errors": 0,
     "approval.errors": 1,
-    "coverage.design": 0.9296875,
-    "coverage.implementation": 0.9296875,
-    "coverage.tests": 0.9296875
+    "coverage.design": 1,
+    "coverage.implementation": 1,
+    "coverage.tests": 1
   },
   "mode": "changed",
   "feature": null,
   "changed": [
+    ".c013backup_local/.musubix/features/ai-chemistry-scientist/design.md.final",
+    ".c013backup_local/.musubix/features/ai-chemistry-scientist/requirements.md.final",
+    ".c013backup_local/.musubix/features/ai-genomics-scientist/design.md.final",
+    ".c013backup_local/.musubix/features/ai-genomics-scientist/requirements.md.final",
+    ".c013backup_local/.musubix/features/ai-structural-biology-scientist/design.md.final",
+    ".c013backup_local/.musubix/features/ai-structural-biology-scientist/requirements.md.final",
+    ".c013backup_local/chemistry-green.sh",
+    ".c013backup_local/chemistry-red.sh",
+    ".c013backup_local/evidence/changes.pre-reset.json",
+    ".c013backup_local/gate-changed-prewaiver.json",
+    ".c013backup_local/genomics-green.sh",
+    ".c013backup_local/genomics-red.sh",
+    ".c013backup_local/manifest.txt",
+    ".c013backup_local/src/ai_chemistry_scientist/__init__.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/admet_prediction.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/bioactivity_classification.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/dispatch.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/docking_score.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/drug_likeness_rules.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/evidence.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/molecular_descriptors.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/molecular_formula_mass.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/molecular_similarity.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/qsar_modeling.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/structural_alerts.py.final",
+    ".c013backup_local/src/ai_chemistry_scientist/validation.py.final",
+    ".c013backup_local/src/ai_genomics_scientist/__init__.py.final",
+    ".c013backup_local/src/ai_genomics_scientist/dispatch.py.final",
+    ".c013backup_local/src/ai_genomics_scientist/evidence.py.final",
+    ".c013backup_local/src/ai_genomics_scientist/gene_set_enrichment.py.final",
+    ".c013backup_local/src/ai_genomics_scientist/sequence_alignment.py.final",
+    ".c013backup_local/src/ai_genomics_scientist/sequence_features.py.final",
+    ".c013backup_local/src/ai_genomics_scientist/splice_site_scoring.py.final",
+    ".c013backup_local/src/ai_genomics_scientist/validation.py.final",
+    ".c013backup_local/src/ai_genomics_scientist/variant_effect.py.final",
+    ".c013backup_local/src/ai_structural_biology_scientist/__init__.py.final",
+    ".c013backup_local/src/ai_structural_biology_scientist/contact_map.py.final",
+    ".c013backup_local/src/ai_structural_biology_scientist/dispatch.py.final",
+    ".c013backup_local/src/ai_structural_biology_scientist/evidence.py.final",
+    ".c013backup_local/src/ai_structural_biology_scientist/hydrophobicity.py.final",
+    ".c013backup_local/src/ai_structural_biology_scientist/protein_docking_score.py.final",
+    ".c013backup_local/src/ai_structural_biology_scientist/secondary_structure.py.final",
+    ".c013backup_local/src/ai_structural_biology_scientist/structural_similarity.py.final",
+    ".c013backup_local/src/ai_structural_biology_scientist/validation.py.final",
+    ".c013backup_local/structural-green.sh",
+    ".c013backup_local/structural-red.sh",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_admet_prediction.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_bilingual.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_bioactivity_classification.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_dispatch.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_docking_score.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_drug_likeness_rules.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_evidence.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_molecular_descriptors.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_molecular_formula_mass.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_molecular_similarity.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_qsar_modeling.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_structural_alerts.py.final",
+    ".c013backup_local/tests/test_ai_chemistry_scientist_validation.py.final",
+    ".c013backup_local/tests/test_ai_genomics_scientist_bilingual.py.final",
+    ".c013backup_local/tests/test_ai_genomics_scientist_dispatch.py.final",
+    ".c013backup_local/tests/test_ai_genomics_scientist_evidence.py.final",
+    ".c013backup_local/tests/test_ai_genomics_scientist_gene_set_enrichment.py.final",
+    ".c013backup_local/tests/test_ai_genomics_scientist_sequence_alignment.py.final",
+    ".c013backup_local/tests/test_ai_genomics_scientist_sequence_features.py.final",
+    ".c013backup_local/tests/test_ai_genomics_scientist_splice_site_scoring.py.final",
+    ".c013backup_local/tests/test_ai_genomics_scientist_validation.py.final",
+    ".c013backup_local/tests/test_ai_genomics_scientist_variant_effect.py.final",
+    ".c013backup_local/tests/test_ai_structural_biology_scientist_bilingual.py.final",
+    ".c013backup_local/tests/test_ai_structural_biology_scientist_contact_map.py.final",
+    ".c013backup_local/tests/test_ai_structural_biology_scientist_dispatch.py.final",
+    ".c013backup_local/tests/test_ai_structural_biology_scientist_evidence.py.final",
+    ".c013backup_local/tests/test_ai_structural_biology_scientist_hydrophobicity.py.final",
+    ".c013backup_local/tests/test_ai_structural_biology_scientist_protein_docking_score.py.final",
+    ".c013backup_local/tests/test_ai_structural_biology_scientist_secondary_structure.py.final",
+    ".c013backup_local/tests/test_ai_structural_biology_scientist_structural_similarity.py.final",
+    ".c013backup_local/tests/test_ai_structural_biology_scientist_validation.py.final",
     ".musubix/evidence/.writer-lock.json",
     ".musubix/evidence/approvals/design.json",
     ".musubix/evidence/approvals/requirements.json",
-    ".musubix/evidence/change-waivers.json",
     ".musubix/evidence/changes.json",
     ".musubix/evidence/formal.json",
     ".musubix/evidence/model-correspondence.json",
-    ".musubix/evidence/native/test/TEST-AIDS-221.json",
-    ".musubix/evidence/native/test/TEST-AIDS-222.json",
-    ".musubix/evidence/native/test/TEST-AIDS-224.json",
-    ".musubix/evidence/native/test/TEST-AIDS-225.json",
-    ".musubix/evidence/native/test/TEST-AIDS-226.json",
-    ".musubix/evidence/native/test/TEST-AIDS-227.json",
-    ".musubix/evidence/native/test/TEST-AIDS-228.json",
-    ".musubix/evidence/native/test/TEST-AIDS-229.json",
-    ".musubix/evidence/native/test/TEST-AIDS-230.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-939.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-940.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-941.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-943.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-944.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-945.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-946.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-947.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-948.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-949.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-950.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-951.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-952.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-954.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-955.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-956.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-959.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-960.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-961.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-962.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-963.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-964.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-965.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-966.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-967.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-968.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-969.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-970.json",
+    ".musubix/evidence/native/test/TEST-ACHEM-971.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-001.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-002.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-003.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-004.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-010.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-020.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-022.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-023.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-030.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-040.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-050.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-060.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-061.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-062.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-063.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-066.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-067.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-069.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-070.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-071.json",
+    ".musubix/evidence/native/test/TEST-AGENOM-072.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-002.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-003.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-004.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-005.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-010.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-020.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-030.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-041.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-050.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-060.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-061.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-062.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-071.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-072.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-073.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-074.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-075.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-076.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-077.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-078.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-079.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-080.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-082.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-083.json",
+    ".musubix/evidence/native/test/TEST-ASTRUCT-084.json",
     ".musubix/evidence/native/test/aggregate.json",
     ".musubix/evidence/order.json",
     ".musubix/evidence/performance.json",
@@ -3810,29 +4211,172 @@
     ".musubix/features/ai-genomics-scientist/trace.json",
     ".musubix/features/ai-materials-scientist/trace.json",
     ".musubix/features/ai-scientist/trace.json",
+    ".musubix/features/ai-structural-biology-scientist/trace.json",
     ".musubix/features/example/trace.json"
   ],
   "impacted": [],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "ffcd2e98830bf0e55f0b3cc4916813c50b9b9b5e",
+    "head": "fa6e0b0237bf76c722e3b1a55e017792a65cbfb0",
     "changed": [
+      ".c013backup_local/.musubix/features/ai-chemistry-scientist/design.md.final",
+      ".c013backup_local/.musubix/features/ai-chemistry-scientist/requirements.md.final",
+      ".c013backup_local/.musubix/features/ai-genomics-scientist/design.md.final",
+      ".c013backup_local/.musubix/features/ai-genomics-scientist/requirements.md.final",
+      ".c013backup_local/.musubix/features/ai-structural-biology-scientist/design.md.final",
+      ".c013backup_local/.musubix/features/ai-structural-biology-scientist/requirements.md.final",
+      ".c013backup_local/chemistry-green.sh",
+      ".c013backup_local/chemistry-red.sh",
+      ".c013backup_local/evidence/changes.pre-reset.json",
+      ".c013backup_local/gate-changed-prewaiver.json",
+      ".c013backup_local/genomics-green.sh",
+      ".c013backup_local/genomics-red.sh",
+      ".c013backup_local/manifest.txt",
+      ".c013backup_local/src/ai_chemistry_scientist/__init__.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/admet_prediction.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/bioactivity_classification.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/dispatch.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/docking_score.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/drug_likeness_rules.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/evidence.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/molecular_descriptors.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/molecular_formula_mass.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/molecular_similarity.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/qsar_modeling.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/structural_alerts.py.final",
+      ".c013backup_local/src/ai_chemistry_scientist/validation.py.final",
+      ".c013backup_local/src/ai_genomics_scientist/__init__.py.final",
+      ".c013backup_local/src/ai_genomics_scientist/dispatch.py.final",
+      ".c013backup_local/src/ai_genomics_scientist/evidence.py.final",
+      ".c013backup_local/src/ai_genomics_scientist/gene_set_enrichment.py.final",
+      ".c013backup_local/src/ai_genomics_scientist/sequence_alignment.py.final",
+      ".c013backup_local/src/ai_genomics_scientist/sequence_features.py.final",
+      ".c013backup_local/src/ai_genomics_scientist/splice_site_scoring.py.final",
+      ".c013backup_local/src/ai_genomics_scientist/validation.py.final",
+      ".c013backup_local/src/ai_genomics_scientist/variant_effect.py.final",
+      ".c013backup_local/src/ai_structural_biology_scientist/__init__.py.final",
+      ".c013backup_local/src/ai_structural_biology_scientist/contact_map.py.final",
+      ".c013backup_local/src/ai_structural_biology_scientist/dispatch.py.final",
+      ".c013backup_local/src/ai_structural_biology_scientist/evidence.py.final",
+      ".c013backup_local/src/ai_structural_biology_scientist/hydrophobicity.py.final",
+      ".c013backup_local/src/ai_structural_biology_scientist/protein_docking_score.py.final",
+      ".c013backup_local/src/ai_structural_biology_scientist/secondary_structure.py.final",
+      ".c013backup_local/src/ai_structural_biology_scientist/structural_similarity.py.final",
+      ".c013backup_local/src/ai_structural_biology_scientist/validation.py.final",
+      ".c013backup_local/structural-green.sh",
+      ".c013backup_local/structural-red.sh",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_admet_prediction.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_bilingual.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_bioactivity_classification.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_dispatch.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_docking_score.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_drug_likeness_rules.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_evidence.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_molecular_descriptors.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_molecular_formula_mass.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_molecular_similarity.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_qsar_modeling.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_structural_alerts.py.final",
+      ".c013backup_local/tests/test_ai_chemistry_scientist_validation.py.final",
+      ".c013backup_local/tests/test_ai_genomics_scientist_bilingual.py.final",
+      ".c013backup_local/tests/test_ai_genomics_scientist_dispatch.py.final",
+      ".c013backup_local/tests/test_ai_genomics_scientist_evidence.py.final",
+      ".c013backup_local/tests/test_ai_genomics_scientist_gene_set_enrichment.py.final",
+      ".c013backup_local/tests/test_ai_genomics_scientist_sequence_alignment.py.final",
+      ".c013backup_local/tests/test_ai_genomics_scientist_sequence_features.py.final",
+      ".c013backup_local/tests/test_ai_genomics_scientist_splice_site_scoring.py.final",
+      ".c013backup_local/tests/test_ai_genomics_scientist_validation.py.final",
+      ".c013backup_local/tests/test_ai_genomics_scientist_variant_effect.py.final",
+      ".c013backup_local/tests/test_ai_structural_biology_scientist_bilingual.py.final",
+      ".c013backup_local/tests/test_ai_structural_biology_scientist_contact_map.py.final",
+      ".c013backup_local/tests/test_ai_structural_biology_scientist_dispatch.py.final",
+      ".c013backup_local/tests/test_ai_structural_biology_scientist_evidence.py.final",
+      ".c013backup_local/tests/test_ai_structural_biology_scientist_hydrophobicity.py.final",
+      ".c013backup_local/tests/test_ai_structural_biology_scientist_protein_docking_score.py.final",
+      ".c013backup_local/tests/test_ai_structural_biology_scientist_secondary_structure.py.final",
+      ".c013backup_local/tests/test_ai_structural_biology_scientist_structural_similarity.py.final",
+      ".c013backup_local/tests/test_ai_structural_biology_scientist_validation.py.final",
       ".musubix/evidence/.writer-lock.json",
       ".musubix/evidence/approvals/design.json",
       ".musubix/evidence/approvals/requirements.json",
-      ".musubix/evidence/change-waivers.json",
       ".musubix/evidence/changes.json",
       ".musubix/evidence/formal.json",
       ".musubix/evidence/model-correspondence.json",
-      ".musubix/evidence/native/test/TEST-AIDS-221.json",
-      ".musubix/evidence/native/test/TEST-AIDS-222.json",
-      ".musubix/evidence/native/test/TEST-AIDS-224.json",
-      ".musubix/evidence/native/test/TEST-AIDS-225.json",
-      ".musubix/evidence/native/test/TEST-AIDS-226.json",
-      ".musubix/evidence/native/test/TEST-AIDS-227.json",
-      ".musubix/evidence/native/test/TEST-AIDS-228.json",
-      ".musubix/evidence/native/test/TEST-AIDS-229.json",
-      ".musubix/evidence/native/test/TEST-AIDS-230.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-939.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-940.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-941.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-943.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-944.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-945.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-946.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-947.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-948.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-949.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-950.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-951.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-952.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-954.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-955.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-956.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-959.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-960.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-961.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-962.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-963.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-964.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-965.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-966.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-967.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-968.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-969.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-970.json",
+      ".musubix/evidence/native/test/TEST-ACHEM-971.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-001.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-002.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-003.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-004.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-010.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-020.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-022.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-023.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-030.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-040.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-050.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-060.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-061.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-062.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-063.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-066.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-067.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-069.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-070.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-071.json",
+      ".musubix/evidence/native/test/TEST-AGENOM-072.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-002.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-003.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-004.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-005.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-010.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-020.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-030.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-041.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-050.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-060.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-061.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-062.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-071.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-072.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-073.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-074.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-075.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-076.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-077.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-078.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-079.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-080.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-082.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-083.json",
+      ".musubix/evidence/native/test/TEST-ASTRUCT-084.json",
       ".musubix/evidence/native/test/aggregate.json",
       ".musubix/evidence/order.json",
       ".musubix/evidence/performance.json",
@@ -3844,14 +4388,15 @@
       ".musubix/features/ai-genomics-scientist/trace.json",
       ".musubix/features/ai-materials-scientist/trace.json",
       ".musubix/features/ai-scientist/trace.json",
+      ".musubix/features/ai-structural-biology-scientist/trace.json",
       ".musubix/features/example/trace.json"
     ],
     "impacted": [],
-    "generatedAt": "2026-10-04T22:28:21.043Z"
+    "generatedAt": "2026-10-04T23:11:56.566Z"
   },
   "fingerprints": {
     ".github/workflows/npm-publish.yml": "5b3c9cc9f02c8b7e32568958cf306ee241d1adb5af7ab4a0bf8bf06f7047f319",
-    ".gitignore": "4b51a0b81ff334d9d164bd80fb24925f1af784ce5fdfd479b39c78ef7cb437f9",
+    ".gitignore": "97fd517743b154fae6a98dee2dcd4ab177f5e9572d2b4dee7f4e9aa70a985bb8",
     ".jupyter/collaboration_sessions.json": "39bb22b1b25e0a17109f773147f2bdd1b3c85202bb5ed4d1d327dddc3faeb04e",
     ".jupyter_ystore.db": "8574c8fd6a246cf0c903733efe9e8518d8c2c3bf0b783b405013a9b14725403e",
     ".musubix/changes/CHANGE-001.md": "6175ffc220660b299c5efc709bdac5ce8794755262ae235e68314b9af21283e1",
@@ -3865,6 +4410,7 @@
     ".musubix/changes/CHANGE-010.md": "e43a1c892dc3c0f27a5a488e710bdbb8f476c10825b5ab9dc6b8020f670f9238",
     ".musubix/changes/CHANGE-011.md": "728eb74bda120b97f9f2cc0a871bff35ad365c61a0c0d6ef70896a590b264870",
     ".musubix/changes/CHANGE-012.md": "9404d9185aeae96c7f24230b6995957bb31e7f5294188b6f088bb2e6be9eccca",
+    ".musubix/changes/CHANGE-013.md": "7ddc21cf30496873ddfccd69bcc51d672a13b9953716de3fe3431b58f2389d7b",
     ".musubix/changes/CHANGE-014.md": "9a7e8d9088792036da3e4ef96af342c9e4d896fafdf849d8b430bd49f4273f6c",
     ".musubix/changes/CHANGE-015.md": "9152404a6a6906515cbb56c91bee457ad0ea80b673b0a9de77682d2d17e9b171",
     ".musubix/changes/CHANGE-016.md": "2abc1ff662dffe9e2c6793b9e6c75c1f7b90f52877a7e2125acf965f4d71e7e2",
@@ -3895,29 +4441,52 @@
     ".musubix/decisions/ADR-0022.md": "8ecac7e9d7b3162b3c087ad8d049f4df5e673232282cf7070c1647cf457932c9",
     ".musubix/decisions/ADR-0023.md": "d5a01c7588d5fc182124c8b6153c91d0f652e63533f4bc41156e8a49161d9653",
     ".musubix/decisions/ADR-0024.md": "78492e859aa768ab60d4d3348f0fa84e10def52c3b4473c502aca9ecaf4930ab",
-    ".musubix/decisions/ADR-0025.md": "cedd1c7a139986a92bc8f3ee6c2f0a31e0fab8536a0398031b84c5e743ec7c2a",
-    ".musubix/decisions/ADR-0026.md": "16f5ee2d32d11a69a3a38f3f8a672d9642b3bf588d06688dd58777eea8e6ee83",
-    ".musubix/decisions/ADR-0027.md": "a520851af36404ec48df585b7cbd5f3bbbabc1376480974209bbe01c955150b2",
+    ".musubix/decisions/ADR-0025.md": "982ad522d72ae1e91fb388943a01f9139ee760a1a39db8afe0d8fdb04fe5b199",
+    ".musubix/decisions/ADR-0026.md": "7f91295d71ff471abf3d493e5ff7e749a9606e73d4d1d8f85dd5e0c3d8142f75",
+    ".musubix/decisions/ADR-0027.md": "86cdb3f331ee33159a3a02e8b2063523d5c794379d2c8f86bdf7d8416130ee61",
     ".musubix/decisions/ADR-0028.md": "167f5bde34278340a9500f7dbd557db5b2732d3d39277404e1713eb35084a512",
     ".musubix/decisions/ADR-0029.md": "1054466b1e98babfdf330233e3c52bd22ca5c8c1a5bafad4f466d992bbe63027",
     ".musubix/decisions/ADR-0030.md": "2695f9f7033f379f4bf798142e99356c30d77d11d4f941ed4aaee82c74088671",
     ".musubix/decisions/ADR-0031.md": "fb92067d0729d9a0e46686aebf10cf264b9438c8f2b029449b2b01c8774b3d66",
     ".musubix/decisions/ADR-0032.md": "e7f4df0112188f25af966498c3fa27b22a92c7dcd6244656650f6c967b33f2d5",
+    ".musubix/decisions/ADR-0033.md": "91231c71e9f42b0a23c2ee424afe542770f35ba2b13f20d324abefd5cec9a6c5",
+    ".musubix/decisions/ADR-0034.md": "5a83b4e1de8b0c63182120c4720d4963f6f86d5aeefdd9307263b1c6c293137e",
+    ".musubix/decisions/ADR-0035.md": "ed1230b29ea1f0c44b846b50e428c6337c4e3fa22d1b35921349ed71b3df6723",
+    ".musubix/decisions/ADR-0036.md": "48400e1116ed66afed070133b6da9cca0afd5cf658fa4dc7399008ffbcedb131",
+    ".musubix/decisions/ADR-0037.md": "275692f36d48b72e29b955473abf60da7bd390b91394d2cdeb1d23c52f524f29",
+    ".musubix/decisions/ADR-0038.md": "c1023f8c848648bdac5c046c8d1841cb29f7ab532a6ad0d25d3b38190ec8d640",
+    ".musubix/decisions/ADR-0039.md": "c1240ef2d8ebe9be7c9004f6d271c885447a01c85614092090aeb64de4a9683b",
+    ".musubix/decisions/ADR-0040.md": "26adb3f80b8e7fcc4c3815d240d24851b3caaacc5814972f5a53227befa32f7d",
+    ".musubix/decisions/ADR-0041.md": "7b87163511bbbfbde087d83e9711534abd1c996323eed99ce749e75af0331268",
+    ".musubix/decisions/ADR-0042.md": "d252c0e2bf2905ef9a65f5d86cf03560c7a6915dd4de205dfeb95a218984a585",
+    ".musubix/decisions/ADR-0043.md": "b6d9028cdcc8f086514a345270f93b3027d4b04bef9301982ada5beb3358dfa6",
+    ".musubix/decisions/ADR-0044.md": "edcf5dfacdc09e71d723d2db6e9fd75ae047ec1dea565ee10f8a78de2a23b944",
+    ".musubix/decisions/ADR-0045.md": "19ca49a7ffde4e6296cfcd605de35621e0b14d97e81fdde859e9e7f419d00b8e",
+    ".musubix/decisions/ADR-0046.md": "20645d6e55ff09a0f5c38371f0d157a354cba7097f530c340b25f79fe5648170",
+    ".musubix/decisions/ADR-0047.md": "81f3a29d50cda595066a4f353a0d3bd987df382d36b1ed425b7f168d23f43676",
+    ".musubix/decisions/ADR-0048.md": "852f407487af606d02337989001293acf33dac623e69ce8002b32ba32936de56",
+    ".musubix/decisions/ADR-0049.md": "83fa0a325e89860909df9e4ac41df4013b0ea59d1a2c4b094b92328f496f54b2",
+    ".musubix/decisions/ADR-0050.md": "6b5ad9780b7d4800c7e609956f20d2a6827c2fdefe86a932988899e33204bf10",
+    ".musubix/decisions/ADR-0051.md": "2d0c78453452700d7af652451dd681edaf00671c5251d13dd84afb31f5fdedd7",
+    ".musubix/decisions/ADR-0052.md": "24b2b804f2240177fc0e56c3e69138914bfbf17a40759385e8f8ed0539f8793d",
     ".musubix/decisions/ADR-0053.md": "87a387b7735878914fb218694d4b5ecd40312e45c933c3b39d6403ae368ac8b4",
     ".musubix/decisions/ADR-0054.md": "875b6c8911b28929568389d669ae03e8b5e7796d732c3cb8c295d0cb084a840b",
     ".musubix/decisions/ADR-0055.md": "31222fb8553a13bdcb3981d5f126a927800f9373a9586f9b539932813e098f87",
     ".musubix/decisions/ADR-0056.md": "35a308a0e5dbc5990333b7490e134978e4b6554914b87ed5ab9a527db1eecf50",
-    ".musubix/features/ai-chemistry-scientist/design.md": "3fc504cbeb47081bd487ffe325d76cc06a4b6b8b7e1b661fe40d4befcac8228a",
-    ".musubix/features/ai-chemistry-scientist/requirements.md": "50db33cf117db410f0d028e52ab0ebe9f24b07ec410915f30e24b3764de567f9",
+    ".musubix/features/ai-chemistry-scientist/design.md": "b0305099de56dd252c1e319a4a751d8b3eed23282b31f671c350af289f4fd2af",
+    ".musubix/features/ai-chemistry-scientist/requirements.md": "7ffbce1294f08612ff25ae5e2e291a101b19c26dae1a8637ee63926f0f868739",
     ".musubix/features/ai-data-scientist/design.md": "d317616c00ab4a28157841e5a94fe910013cfbdd5ee7ecd7c13ff920c05de28b",
     ".musubix/features/ai-data-scientist/requirements.md": "3cc394cb861960154c378a9a92a94b4e842410e555319fe1dbffae81a0f3d8ae",
     ".musubix/features/ai-data-scientist-ml/design.md": "667a317ab3fd6e6511e4529aa32685a733f0489ef3a2dd7d61a6fb48ddf81832",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
+    ".musubix/features/ai-genomics-scientist/design.md": "effd788d7c6d1f32bb149e2f48b018b4e2883becd3c26c161520ea4a957e5450",
     ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
     ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
     ".musubix/features/ai-scientist/design.md": "0e5f0360cb8f54a29cdbdc3c28fb9c0614d5f47d312b5046f83fda603de85539",
     ".musubix/features/ai-scientist/requirements.md": "0813eae3d21203183b9b3804375b2c5b2b9813da2fbaffd264f134d10ca156a7",
+    ".musubix/features/ai-structural-biology-scientist/design.md": "7b9e7f5b3eff9321cabf4813bdca7a4a11b80c54a93ad3db50c925eca4f81955",
+    ".musubix/features/ai-structural-biology-scientist/requirements.md": "ade8184daef2095e8a9da33e99125fe63ed81485af7f09caa5c8f227d670506c",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
     ".musubix/policy-baseline.json": "d2adfc66e01c2d8e581d2e031a604effdc30c5d28c755f47bb401a4d7dff35b6",
@@ -3925,7 +4494,7 @@
     ".pytest_cache/CACHEDIR.TAG": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
     ".pytest_cache/README.md": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
     ".pytest_cache/v/cache/lastfailed": "81cedc93aca672891b6c36a0387209c13facef06b8f6764317f161f191fce566",
-    ".pytest_cache/v/cache/nodeids": "cd6881239af8161f7cd5049fda21f27b72be33d4f738adce7ac539455cdd8960",
+    ".pytest_cache/v/cache/nodeids": "117d14f2f1e12bfe54f70ac38aef3564f7dd06d9e42e1658dcdbde48bb6ba749",
     ".ruff_cache/.gitignore": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
     ".ruff_cache/0.15.9/4191559382911397082": "fc3e3f1cc006e12aaffc7c64c5abe418e5fd37782d581ea653ea543bc06f93cc",
     ".ruff_cache/0.15.9/4220744145795592868": "df2a5d53e93b374c13dac282b6dd44111d602a52312a5d7ba9154e5311361931",
@@ -3949,6 +4518,7 @@
     ".ruff_cache/0.16.10/15596744112270782375": "21d5215ac90ddae6d95efee0bae87c5536126fef72b5d6035c2631627fec4ce1",
     ".ruff_cache/0.16.10/16462964874786468983": "1b784debe0be2cf10a3303b87b137439a35d3da7ca2c51c0bde91950feeced36",
     ".ruff_cache/0.16.10/17012502831279232791": "88bdb1d765980d9088279fb47737e65c7b187d7af87ebf53032d72263795e4cd",
+    ".ruff_cache/0.16.10/17155763606525423612": "22d99057ea75ee87456f792690c968cb5bb6b69b7537691840fc7f9fdd5db25d",
     ".ruff_cache/0.16.10/17631009658187589933": "12fd586d6787635bef21c8682eb6a0f602a3d0a9fc439ae917c9a3451de84e63",
     ".ruff_cache/0.16.10/1814470245331927227": "da6a86477e602d85d3416f4404caff6006768d729c4492ecbf621e935d37e2de",
     ".ruff_cache/0.16.10/2118296420096418577": "91f2ad83c1a49307c8bf593197d4d0471546ccf9e7f3b1d6d86a65180b122e0f",
@@ -3957,7 +4527,7 @@
     ".ruff_cache/0.16.10/3738404423831857422": "b076cca6b8aee27fde45b85eadc37ba5bf0252b9b97dffd0bec7d11c280dc32c",
     ".ruff_cache/0.16.10/3904780494491299035": "5e467facf3ba37d81c36f7cb1b58a6e8e2199f408a6180d7722fca5b956592da",
     ".ruff_cache/0.16.10/4099382895682810760": "5460344a30d95b7652d74468e69453452f51fa1b8603a93d7f427926c1fbe5c0",
-    ".ruff_cache/0.16.10/416461403828136869": "958c916531d7a8377570cd16917045e7649862da5df0d0126b752261b6f3204e",
+    ".ruff_cache/0.16.10/416461403828136869": "e02e12601ed6bf1807ff1e134ed679f54979059a58338237c977c99b47c30216",
     ".ruff_cache/0.16.10/4460349919055556597": "a6c37d8c58d124628e29f33c5828de8f0faf401387b937366dc0ba1de3901b01",
     ".ruff_cache/0.16.10/4619289710768583071": "4a11e3b01ee7fd64f23fb60d21b5afb22623f2ff699f6e2271aa5e7225c81bdd",
     ".ruff_cache/0.16.10/4645957298869186624": "2343014b697f05ea4916a41b53da651e0f180b535a4b15436a3c8709d8bcbda1",
@@ -3967,13 +4537,14 @@
     ".ruff_cache/0.16.10/5986699442381024998": "8bd70756760873ed1d45863045abdcca075cd916f9c4dfbfbc93f92365b2f133",
     ".ruff_cache/0.16.10/6500946736231510532": "64d36cbca193c6f6c6535286d69819b8d022e328cd7fe09273f5aceec8ebbe5e",
     ".ruff_cache/0.16.10/6696937100271852866": "be7af03319f86f71aeff4ff2318c52ba3e0672f693b2be456b6f9025532e3bf5",
+    ".ruff_cache/0.16.10/688394672332850735": "d3f6fda3718590f67cc11bfc4a283928874f464d21065a76506680754d5534cc",
     ".ruff_cache/0.16.10/7141331380300232914": "20503e95b2be0dca9c653af860d146465ec0a9d8c1ce1e2dbeafb0def06fd38e",
     ".ruff_cache/0.16.10/7240085295927153998": "83777bb74b3a3ee7eb5b880192d8d500fc130130190570a2e8b8bd5ee4abb01f",
     ".ruff_cache/0.16.10/7660847775461347316": "d7fae0ca7e0140e12480a4c0f20aa9c34f2e81f0b87832d22ae6bc33025b3070",
     ".ruff_cache/0.16.10/8829682673503729361": "e24bfcff986b9059bac378052254915ce351032704eeaba04a9be26d65853bef",
     ".ruff_cache/0.16.10/9201830452574903020": "5b831714dc0905b1958dea650156290e3d6206e2d4c20afeea512d47537ee97f",
     ".ruff_cache/0.16.10/9527474073797359755": "e3ecc7617fc1010a79affe3ce59aa9670f7a7cd30b218a70143ee23dc402a608",
-    ".ruff_cache/0.16.10/9994341312109798778": "e305a6c38ade16b051771ef1dd3decaaf05597b28b5536f47cf1facfc1775a14",
+    ".ruff_cache/0.16.10/9994341312109798778": "85fd3850b551f03a5af31c02c0701464239b9e56d044db3b07d89e97a1d7091a",
     ".ruff_cache/0.16.9/10368445353455821378": "1f71db5f0b2b541a58d54e8b3dcb50fb9ba26a53ab87d83bc01c5c5b5ef1728d",
     ".ruff_cache/0.16.9/10475705668944416582": "af84e7104c6973dae733e8f97dac6482d4127ceeb3ed9da0b7ef28c9ed665194",
     ".ruff_cache/0.16.9/10579984203275047153": "082280517ef72ea9903e93a392edca9814f2bd1ff42aae270e2df5dc3475e5a2",
@@ -4890,13 +5461,17 @@
     "README.md": "88e002f6ef4d6b6d372269d29537eb699dcdeb209a0d692deb8adbad5d430da7",
     "src/ai_chemistry_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
+    "src/ai_chemistry_scientist/bioactivity_classification.py": "a9c53ff1c8d25fd9903ec005073de812b4d6ee1b33517efdb72b4ae2e67d340a",
     "src/ai_chemistry_scientist/data/sample_molecules.csv": "c239f6f31a88c1a16118e57143462caab67cb7fa5596ce5dbbe3e16f8851bfd7",
-    "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+    "src/ai_chemistry_scientist/dispatch.py": "6c2e95fd19f62504c34415a33c931882212e4f40cd2db2e4ba579583cbfb6041",
     "src/ai_chemistry_scientist/docking_score.py": "bf152d0b84b80c56f50f92ad1ec6ef9820422e1b5008cdc5330fb2904d0f98da",
+    "src/ai_chemistry_scientist/drug_likeness_rules.py": "e56fd16f9404e3e320956a6a1d38a333703d32d75196069c793eb80292ec3c64",
     "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
-    "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+    "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+    "src/ai_chemistry_scientist/molecular_formula_mass.py": "117377872ff7ddd3de478f26cea45ad566e528cc2657047bad4f0f1d351f0305",
     "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
     "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+    "src/ai_chemistry_scientist/structural_alerts.py": "3caa4e1042163396752e5bc9ab5727465875a5d45697cef41e87c60a7f2f0343",
     "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
@@ -4939,8 +5514,18 @@
     "src/ai_data_scientist.egg-info/dependency_links.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
     "src/ai_data_scientist.egg-info/PKG-INFO": "bc1e030363b234717c7e1d4073fe826e1c7ebb54f2fb66af822d488816761a16",
     "src/ai_data_scientist.egg-info/requires.txt": "754cec984bbc6ab09ac9772fc8bb71419ba5876724cb5966b17ff865f4ead0e5",
-    "src/ai_data_scientist.egg-info/SOURCES.txt": "03df0677c60eb2333507281b5919f881f262708810ffd0498197fac43c0a4c9f",
-    "src/ai_data_scientist.egg-info/top_level.txt": "f9ea816ade3ffb24e98c65ccb10b7c44e897a0b8973bbd3444b3bfcdbc0e574f",
+    "src/ai_data_scientist.egg-info/SOURCES.txt": "c936bf74ce41db0141e14cdf45cf7afa0de46c47ef7d6514f4da573e6bf044d4",
+    "src/ai_data_scientist.egg-info/top_level.txt": "19013b91e34854a9789e277cbc567d872909bb36a954206d17729082e34631f2",
+    "src/ai_genomics_scientist/__init__.py": "0c9f1f38b2e526b4169a2b06b4bb78548a18464925a029d6309597ee327fb048",
+    "src/ai_genomics_scientist/data/sample_gene_sets.csv": "81dba276c7cc0a89d2ac835dfe2a7aa1a896f884a5100bb8d1ceaf3e6e6cf8ff",
+    "src/ai_genomics_scientist/dispatch.py": "ebaf896bb71e0f93ff861c452faebc0fefa606f1b6d5efc6cfe54cc8883690c2",
+    "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+    "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+    "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+    "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+    "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+    "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3",
+    "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
     "src/ai_materials_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_materials_scientist/calphad.py": "8bd4839df1a7b3c677e9d6c2444d4837c464c5e84d53608edc596f83937b9aa3",
     "src/ai_materials_scientist/classical_monte_carlo.py": "1bbf4f334f42b4494a1b4b5328744c919a6ec1db08fb7712edac804214fbf7df",
@@ -4978,16 +5563,39 @@
     "src/ai_scientist/research_planning.py": "ee967fa8995cb70d1ecc22896eda3d586b2f06a61062fa689b69dbad1c4c3755",
     "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f",
     "src/ai_scientist/tdd_gate.py": "d278321c459fc32cd235dc77e8a3bdc94049655bf7e4ef1e825f7b5bedc4ebf7",
+    "src/ai_structural_biology_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+    "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
+    "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50",
+    "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+    "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+    "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+    "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9",
     "src/example_readiness.py": "b4deef302d05db806ccb39216aea65dcbdcc34c52b493aa81eb22842bc4bd190",
+    "tests/conftest.py": "452ea14e11ea5306b4d199533af38581cce656085f02d15627ba7b5eb8e390d7",
     "tests/test_ai_chemistry_scientist_admet_prediction.py": "920f48f44fb5d2ce65e3b02c9431875a35e15846f4eb2b226c95328ef69ce227",
-    "tests/test_ai_chemistry_scientist_bilingual.py": "240f28e7a8952e7f3322ba9b4185e806a94cab79bf177c4aad6f35c9390015be",
-    "tests/test_ai_chemistry_scientist_dispatch.py": "95d1222dbb430eb10b3b0fef18b8e355a907162b1ad7abf0cfb469ee9085753c",
+    "tests/test_ai_chemistry_scientist_bilingual.py": "0c9ad31513bcf9ffc005a77c89cc2fe64827f8f7d332e2fd1d44ce63823645ca",
+    "tests/test_ai_chemistry_scientist_bioactivity_classification.py": "1148729aeb901e0c485f025f9f5f20ec3ac5421bc6b64015fa0bc123f81fb4b8",
+    "tests/test_ai_chemistry_scientist_dispatch.py": "4cdeaaacf4aa24611a67aae516045c718ebfba1322ad3660e31b912d19b151b8",
     "tests/test_ai_chemistry_scientist_docking_score.py": "901f418ed59e8f5363ae5bad6f0a5c602c855865055e288ec66028c0525cf9d0",
+    "tests/test_ai_chemistry_scientist_drug_likeness_rules.py": "694a1968d184649afcfcd5914c4482f9732961a748bf037d4e4dd75cb8a01198",
     "tests/test_ai_chemistry_scientist_evidence.py": "1fe50f1f55a948ad1170c148b28dc5c2bce52227b742e694e8911c365731dece",
     "tests/test_ai_chemistry_scientist_molecular_descriptors.py": "613b526ea9068bd0dfea0e2204a114bdbaca9632716bf6032f0488b62e211ccb",
+    "tests/test_ai_chemistry_scientist_molecular_formula_mass.py": "7c032e740800477c4a86f652a257dde2023b3a365854cdbd5cf45178c9f8ddfa",
     "tests/test_ai_chemistry_scientist_molecular_similarity.py": "43f455627ba3b520d707f9878d40bd3f7aaf95a2616421b017b0f4635f891ee5",
     "tests/test_ai_chemistry_scientist_qsar_modeling.py": "b6e7f62ff7f2a1414299e854481d3188f847d51abf033da4cd47bcbcc662b945",
+    "tests/test_ai_chemistry_scientist_structural_alerts.py": "744a1715653d7e7f24ee1eea821a46f58fa208b2aceca138d77105990b32ac50",
     "tests/test_ai_chemistry_scientist_validation.py": "9033f020ea4317aff7d2799d2a9af26b9920fcdb146805e5178646bdbaca81ad",
+    "tests/test_ai_genomics_scientist_bilingual.py": "392a32f53c3e1d72a650d8ddedc48b499fe979c39fcb4bf09855e9c8ac6a5d23",
+    "tests/test_ai_genomics_scientist_dispatch.py": "57f6e42788d7795ca81583677ed61bb43f78ae2c7a7ae9d438624e14a360fed3",
+    "tests/test_ai_genomics_scientist_evidence.py": "f7800b985a56a5fd2e3f19b88800ec58dc2fdd287d15bace4db755b7f3085820",
+    "tests/test_ai_genomics_scientist_gene_set_enrichment.py": "2e6f80d1e53028aaef1a5a5046bb2b6c3828e57caf1e54e4ab03157e18042650",
+    "tests/test_ai_genomics_scientist_sequence_alignment.py": "0fec83a3357b5ed69543ccdc1e152fbc2c19bfac16f696d10d7c46751708bac7",
+    "tests/test_ai_genomics_scientist_sequence_features.py": "09171af0300950d814a159aff53903c46cf2abb9ca8537cdc8d43d9034c08637",
+    "tests/test_ai_genomics_scientist_splice_site_scoring.py": "3df20204097f1d75c108675e8911a2ae61e7dc62b004159d26fb6be4b4c411f6",
+    "tests/test_ai_genomics_scientist_validation.py": "d6277f438960afbd72e5c43cf7c17830d4062e505852aeff15910e2cb8b8b193",
+    "tests/test_ai_genomics_scientist_variant_effect.py": "a12c32b10de9130ce61a0e195d52ae61bfd0a3e7419567a72add0eb801323437",
     "tests/test_ai_materials_scientist_bilingual.py": "6cab8fc1263ec40af5e197061bc0ae4685db6199a68ca745ee22558f4aabbf95",
     "tests/test_ai_materials_scientist_calphad.py": "f350b84d0f4c14b2234852c06ba534f7e81228e1a371e66d7c641ac9ae841fc9",
     "tests/test_ai_materials_scientist_classical_monte_carlo.py": "a6019feecdc12c0fb8ce47390549d824c15a16fc6b1aeb736154020925950db7",
@@ -5006,6 +5614,15 @@
     "tests/test_ai_scientist_project_handle.py": "02392815e0153fd76d547de9429a74c5f10c88089970ec9355d824307ebba3f4",
     "tests/test_ai_scientist_skill_packaging.py": "9acb3d8a5ad408018c8e9253fe9f4b0095ec41e528c451300f5b49e64704a75e",
     "tests/test_ai_scientist_tdd_gate.py": "82f8294201e8067ea658b20b7ea043e9db7df3bacd89188bfb08751abf4248ab",
+    "tests/test_ai_structural_biology_scientist_bilingual.py": "3d04795a577faa9e1afbd8263fea2a88ef1fd3502ea727d9839ec4d1964e3da1",
+    "tests/test_ai_structural_biology_scientist_contact_map.py": "3a2983768e2f1f9b4923bbd7ad904b314538bb287347168e079e856e350cccda",
+    "tests/test_ai_structural_biology_scientist_dispatch.py": "194ef0e4cb6810692bd933cd0a273e6e57e085e15cb6f70def0f2c20836e00ae",
+    "tests/test_ai_structural_biology_scientist_evidence.py": "460c638e55284a07c7753ca6ba60b46396932706371f0dc05d233e710b1a5d3e",
+    "tests/test_ai_structural_biology_scientist_hydrophobicity.py": "31df5a6be567df6652a731e7d3551e49395e597407d2c42c3ffb72861e5d4705",
+    "tests/test_ai_structural_biology_scientist_protein_docking_score.py": "0f181c37eafb2a32a2f0594841f8e842c34ed7789b4fcb58753666ec861d8beb",
+    "tests/test_ai_structural_biology_scientist_secondary_structure.py": "025fe0a963cb8eba56ac12d406fc6dd2792c10f74ef079701b2cefaf9cde714f",
+    "tests/test_ai_structural_biology_scientist_structural_similarity.py": "660725e1ac8fa3636fcd7b8ab419d2b0b6c9430034312ddeec7daa98e16fafdc",
+    "tests/test_ai_structural_biology_scientist_validation.py": "ca34fe16e9c0651f2f884b4831330ca1d652032dd2b16b515d8511e2e791b917",
     "tests/test_analysis_assumptions.py": "665331b6baaeb624bd3562989a6925c4e80a269d2d0dfce93c3acbe7b21731d8",
     "tests/test_anomaly_detection.py": "1d3cdaabb41d4dc2f7d0b0278d6645cee4d0d11557aa4519a7de0376a083d3ba",
     "tests/test_automl.py": "5ea36889e9cf572e8bbb26d581163e632f36d70c4049f7e220961d580a5fcce7",

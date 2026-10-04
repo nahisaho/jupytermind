@@ -205,3 +205,34 @@ Separately, repository-wide `gate`/`status` readiness remains blocked by
 genuinely unrelated, pre-existing technical debt in other changes and
 features (see Implementation Plan) that nahisaho explicitly deferred as
 an accepted residual risk rather than folding into this change's scope.
+
+## Release Approval (post-merge re-record, 2026-10-05)
+
+PR #60 was subsequently merged into `main` (merge commit `fa6e0b0`), which
+by then also included CHANGE-015 and CHANGE-016. The merge's conflict
+resolution (evidence/trace ledgers taken as `main`'s version) wiped the
+monotonic `order.json` entries backing CHANGE-013's change-record phases,
+so the full impact/requirements/design/red/implementation/green/quality
+sequence was re-recorded against this new baseline using the established
+revert-restore technique (same method used for CHANGE-015/CHANGE-016).
+No source/test/doc content changed in this step — only
+`.musubix/evidence/*.json` (85 files) and `.musubix/features/*/trace.json`
+(8 files).
+
+- 579 tests pass (`pytest -q`); `trace build`: 0 diagnostics; `graph gate`:
+  PASS; `gate --changed --json`: zero CHANGE-013-owned errors (the 12
+  pre-existing `CHANGE_ORDER_MISMATCH` diagnostics noted above are
+  unchanged and already tracked via issue #61).
+- `npx musubix3 approval record release` remains blocked by the
+  repository-wide non-`--changed`-scoped checks (`trace`, `workflow`,
+  `tdd`, `change-history`, `change-completeness`, `performance`,
+  `model-correspondence`, `constitution:RULE-001`) due to permanent,
+  pre-existing repo debt unrelated to CHANGE-013 (same precedent as
+  CHANGE-006 through CHANGE-017).
+- **Human release approval:** approver `nahisaho`, reviewed artifact hash
+  (`approval prepare release --json`, repository-wide scope):
+  `373406ce6c9e22553862147f6f0f0b126aa47f164be35046a2b20d0fc23d85f0`.
+- **Residual risks accepted (unchanged from above, reconfirmed):** the 12
+  pre-existing CHANGE-013 `CHANGE_ORDER_MISMATCH` diagnostics (issue #61);
+  repo-wide pre-existing debt across CHANGE-001/003/004/005/006/008
+  (issue #62); `WORKFLOW_INVOCATION_UNVERIFIED` (issue #63).

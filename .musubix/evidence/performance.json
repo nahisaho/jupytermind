@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
-  "runId": "320bedca-3196-4554-830d-d21d9e23f280",
-  "generatedAt": "2026-10-04T22:28:17.692Z",
+  "runId": "63c8e037-8a47-48d8-9ad2-ac93e124cfcb",
+  "generatedAt": "2026-10-04T23:11:52.516Z",
   "executions": [
     {
-      "runId": "320bedca-3196-4554-830d-d21d9e23f280",
-      "executionId": "9f9bce47e679768e081b98d9591f05f63736382a8f5a8919df4ba0520fb64a18",
+      "runId": "63c8e037-8a47-48d8-9ad2-ac93e124cfcb",
+      "executionId": "adc95804f66a9f6ba7bafc84e7cdef7f37819e2422e0d5bc14c47687dc131797",
       "commandName": "test",
       "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
       "reportPath": ".musubix/evidence/native/test/aggregate.json",
       "sourceKind": "file",
-      "reportSha256": "d7024e3a07969fe5a39c25cedb19a154abd75f230c5b5f110d02158b1a9fcb41",
+      "reportSha256": "568b1108a4f0badda5b3bdb025f370e8b3b963ba3fc4e7c2a7865e1daaa80422",
       "processStatus": "completed",
       "exitCode": 0,
       "tests": [
@@ -236,6 +236,218 @@
         },
         {
           "id": "TEST-ACHEM-938",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-939",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-940",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-941",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-943",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-944",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-945",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-946",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-947",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-948",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-949",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-950",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-951",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-952",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-953",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-954",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-955",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-956",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-957",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-958",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-959",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-960",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-961",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-962",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-963",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-964",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-965",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-966",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-967",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-968",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-969",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-970",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ACHEM-971",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-010",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-020",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-022",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-023",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-030",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-040",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-050",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-060",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-061",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-062",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-063",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-066",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-067",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-069",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-070",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-071",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AGENOM-072",
           "status": "passed"
         },
         {
@@ -1611,11 +1823,111 @@
           "status": "passed"
         },
         {
+          "id": "TEST-ASTRUCT-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-010",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-020",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-030",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-041",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-050",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-060",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-061",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-062",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-071",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-072",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-073",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-074",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-075",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-076",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-077",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-078",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-079",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-080",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-082",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-083",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ASTRUCT-084",
+          "status": "passed"
+        },
+        {
           "id": "TEST-EXAMPLE-001",
           "status": "passed"
         }
       ],
-      "recordSha256": "8200ef4d1c9bc5d3bf66fbf0be89d3e85afe924029bec16777ad16124c488306"
+      "recordSha256": "1e536c9755fdb8486bb02a2375f4eae3a933476e2216a12dbf48aafb9f3e366d"
     }
   ],
   "observations": [
