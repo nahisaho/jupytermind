@@ -95,7 +95,7 @@ architectural boundary.
   unrelated to and unchanged by this feature. Full suite `433 passed`.
 - [x] Release approval: explicit human sign-off (approver: nahisaho) via
   `ask_user`, approving the exact file list and the manifest hash
-  `<RELEASE_HASH>` (repo-wide `approval prepare release` manifest) together
+  `c203c6d02c6e06d607c156772ec96fdb02291071b193f6d2a076a56175826f7d` (repo-wide `approval prepare release` manifest) together
   with all residual risks disclosed above. `musubix3 approval record
   release` itself cannot complete for the same reasons as
   CHANGE-008/CHANGE-009's precedent — the full (non-`--changed`) gate it
@@ -106,7 +106,7 @@ architectural boundary.
 ## Status
 
 Released. Human release approval recorded (approver: nahisaho, hash
-`<RELEASE_HASH>`); `musubix3 approval record release` blocked only by
+`c203c6d02c6e06d607c156772ec96fdb02291071b193f6d2a076a56175826f7d`); `musubix3 approval record release` blocked only by
 pre-existing, non-CHANGE-010 repo-wide diagnostics plus this change's own
 recording-order-debt (see above), consistent with
 CHANGE-006/CHANGE-008/CHANGE-009 precedent.
