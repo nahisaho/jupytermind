@@ -121,3 +121,38 @@ Type: non-functional
 Pattern: ubiquitous
 Statement: The system shall perform PDF, HTML, or slide export using a locally configured conversion tool outside the Jupyter MCP execution path, restricted to read-only rendering of already-executed notebook content.
 Acceptance: A test asserts the report export operation invokes only the configured conversion tool process and issues no additional Jupyter MCP code-execution calls, verified by comparing MCP call counts before and after export.
+
+## REQ-AIDS-074: Reusable cross-validation split strategies / 再利用可能な交差検証分割戦略
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests supervised modeling with a supported cross-validation strategy, the system shall return a reusable fold plan containing the exact train/test row indices for each of the requested `n_splits` folds.
+Acceptance: A classification request on an imbalanced labeled dataset with `cv_strategy="StratifiedKFold"` and `n_splits=4` returns exactly 4 fold scores and 4 fold split pairs, every fold test set is disjoint from its own train set, every fold test set contains both classes, and the union of all fold test indices equals the full input index exactly once. A request with `cv_strategy="GroupKFold"`, `n_splits=3`, and repeated group labels returns fold splits where no group label appears in both the train and test side of the same fold. Passing a previously returned fold plan into a second call reuses the identical train/test row indices instead of generating a different split.
+
+## REQ-AIDS-075: Probability-aware configurable supervised scoring / 確率対応の教師あり学習スコア指定
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests supervised modeling with a supported `scoring` value, the system shall return scoring artifacts computed from held-out predictions, including fold-level scores plus out-of-fold predictions and, whenever cross-validation is used with an estimator that implements `predict_proba` or with a probability-based scoring mode, out-of-fold `predict_proba` probabilities aligned to the original input rows.
+Acceptance: A binary classification request with `cv_strategy="StratifiedKFold"` and `scoring="roc_auc"` returns an `oof_probabilities` artifact whose positive-class column reproduces `sklearn.metrics.roc_auc_score(y_true, y_score)` within 1e-9 and whose row index matches the input row order exactly. A request with `scoring="log_loss"` returns a metric equal to `sklearn.metrics.log_loss` on the returned out-of-fold class probabilities and is compared in lower-is-better direction. A cross-validation request using a non-probabilistic estimator with a non-probabilistic scoring mode may leave `oof_probabilities` unset while still returning aligned out-of-fold class predictions. A legacy `train_model(...)` call that omits `scoring` and `cv_strategy` continues to expose the existing classification metric keys (`accuracy`, `precision`, `recall`) or regression metric keys (`rmse`, `r2`).
+
+## REQ-AIDS-076: Shared-fold tuning and model comparison / 共通foldを使うチューニング・モデル比較
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests hyperparameter tuning or model comparison with a supported `scoring` value and/or a reusable fold plan, the system shall evaluate every candidate on that same fold plan, report each candidate's fold-level scores and returned modeling artifacts, and select the best candidate using the correct optimization direction for the requested scoring metric.
+Acceptance: A classification tuning request with two parameter sets, `scoring="roc_auc"`, and a shared `StratifiedKFold` fold plan returns candidate records whose fold splits are identical to one another and to the supplied plan, and whose `best_metric` equals the maximum candidate metric. A corresponding request with `scoring="log_loss"` returns `best_metric` equal to the minimum candidate metric. Each candidate record includes its fold scores and the reusable modeling result needed to inspect out-of-fold probabilities.
+
+## REQ-AIDS-077: Shared-fold AutoML ranking / 共通foldを使うAutoML順位付け
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When a user requests automatic model selection with a supported `scoring` value and/or a reusable fold plan, the system shall evaluate every candidate model on that same fold plan and return a ranked comparison whose sort direction matches the requested scoring metric and whose candidate records expose fold-level scores plus the underlying modeling artifacts.
+Acceptance: An AutoML classification request with at least three candidate models, `cv_strategy="StratifiedKFold"`, and `scoring="roc_auc"` returns a ranked candidate list sorted in descending metric order, with every candidate referencing the same fold plan. A corresponding request with `scoring="log_loss"` returns the ranked candidate list sorted in ascending metric order. Every candidate record includes its fold scores and the underlying modeling result carrying the out-of-fold probability predictions.
+
+## REQ-AIDS-078: Pluggable sklearn-compatible estimators with backward compatibility / 後方互換性を保つ差し替え可能な推定器
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user supplies an external sklearn-compatible estimator or candidate-estimator mapping, the system shall fit and evaluate that estimator through the existing supervised modeling, tuning, and AutoML entry points while preserving the prior default behavior for calls that omit the new estimator and cross-validation options.
+Acceptance: `train_model(..., estimator=<custom estimator>)` fits successfully and returns the requested scoring artifacts, `tune_or_compare(..., grid=[..., {"estimator": <custom estimator>, ...}])` evaluates the supplied estimator on the same scoring path as built-in models, and `run_automl(..., candidate_estimators={"custom": <custom estimator>})` ranks the supplied candidate alongside the built-in models on the same scoring path. Existing calls to `train_model`, `tune_or_compare`, and `run_automl` that omit `estimator`, `candidate_estimators`, `cv_strategy`, `cv_splits`, and `scoring` continue to use the current built-in model defaults, current train/test split behavior, and current legacy metric keys/sort direction.
