@@ -35,3 +35,18 @@ def test_TEST_AGENOM_010_computes_reference_sequence_and_rejects_only_invalid_ba
         "parameter": "sequence",
         "constraint": "must be a non-empty uppercase DNA string over {A,C,G,T} with length >= 3",
     }
+
+
+# @id TEST-AGENOM-072
+# @verifies REQ-AGENOM-010
+def test_TEST_AGENOM_072_prefers_lowest_frame_when_longest_orfs_tie():
+    from ai_genomics_scientist.sequence_features import run_sequence_features
+
+    [result] = run_sequence_features(["ATGTAATGTAA"])
+
+    assert result == {
+        "length": 11,
+        "gc_content": pytest.approx(0.18181818181818182, abs=1e-12),
+        "longest_orf": {"frame": 0, "start_index": 0, "length": 6},
+        "codon_usage": {"ATG": 1, "TAA": 1},
+    }
