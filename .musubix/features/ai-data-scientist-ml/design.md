@@ -320,6 +320,10 @@ Requirements: REQ-AIDS-083
 ADRs: none — provider selection is a deterministic preference order over
 existing library capabilities, not an architectural fork.
 Depends-On: DES-AIDS-070
+Implementation: `CODE-AIDS-106`-`CODE-AIDS-110` in
+`src/ai_data_scientist/explainability.py` (CHANGE-011); native `pred_contrib`
+row-count mismatches are validated and treated as a non-fatal fall-through to
+the SHAP/linear providers rather than propagated as a raw shape error.
 
 ## DES-AIDS-072: Permutation-importance path / permutation importance経路
 Responsibilities: For `method="permutation"`, validate the presence of
