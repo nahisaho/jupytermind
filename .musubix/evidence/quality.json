@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T15:53:51.956Z",
+  "generatedAt": "2026-10-04T20:24:34.874Z",
   "status": "fail",
   "checks": [
     {
@@ -40,13 +40,6 @@
         {
           "code": "TRACE_UNCOVERED",
           "severity": "warning",
-          "message": "REQ-ACHEM-070 lacks implementation.",
-          "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-          "line": 110
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
           "message": "REQ-AIDS-073 lacks implementation.",
           "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
           "line": 34
@@ -61,7 +54,7 @@
         {
           "code": "TRACE_COVERAGE",
           "severity": "error",
-          "message": "implementation link coverage 0.984251968503937 is below 1."
+          "message": "implementation link coverage 0.9921259842519685 is below 1."
         },
         {
           "code": "TRACE_COVERAGE",
@@ -753,7 +746,7 @@
       "name": "tdd",
       "required": true,
       "status": "fail",
-      "summary": "303 Red-Green TDD cycle(s) recorded.",
+      "summary": "320 Red-Green TDD cycle(s) recorded.",
       "diagnostics": [
         {
           "code": "TDD_REQUIREMENT_UNCOVERED",
@@ -886,20 +879,8 @@
         {
           "code": "TDD_GREEN_MISSING",
           "severity": "error",
-          "message": "TEST-ACHEM-965 has no valid passing Green phase; archive it and regenerate the complete cycle by moving .musubix/evidence/tdd.json aside and re-recording every cycle.",
-          "path": "tests/test_ai_chemistry_scientist_drug_likeness_rules.py"
-        },
-        {
-          "code": "TDD_GREEN_MISSING",
-          "severity": "error",
           "message": "TEST-ACHEM-966 has no valid passing Green phase; archive it and regenerate the complete cycle by moving .musubix/evidence/tdd.json aside and re-recording every cycle.",
           "path": "tests/test_ai_chemistry_scientist_structural_alerts.py"
-        },
-        {
-          "code": "TDD_GREEN_MISSING",
-          "severity": "error",
-          "message": "TEST-ACHEM-968 has no valid passing Green phase; archive it and regenerate the complete cycle by moving .musubix/evidence/tdd.json aside and re-recording every cycle.",
-          "path": "tests/test_ai_chemistry_scientist_bioactivity_classification.py"
         }
       ]
     },
@@ -936,6 +917,54 @@
         {
           "code": "CHANGE_WAIVER_STALE",
           "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-003 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-003 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-010 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-010 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-020 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-020 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-050 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-050 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
           "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-001 is stale.",
           "path": ".musubix/evidence/change-waivers.json"
         },
@@ -943,6 +972,30 @@
           "code": "CHANGE_WAIVER_STALE",
           "severity": "error",
           "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-002 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-003 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-010 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-020 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-050 is stale.",
           "path": ".musubix/evidence/change-waivers.json"
         },
         {
@@ -967,9 +1020,23 @@
           "requirementId": "REQ-AISCI-001"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-001 before its Green phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-001"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-002 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-002"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-002 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-002"
         },
@@ -981,9 +1048,23 @@
           "requirementId": "REQ-AISCI-003"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-003 before its Green phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-003"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-004 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-004"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-004 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-004"
         },
@@ -995,9 +1076,23 @@
           "requirementId": "REQ-AISCI-005"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-005 before its Green phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-005"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-006 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-006"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-006 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-006"
         },
@@ -1009,9 +1104,23 @@
           "requirementId": "REQ-AISCI-007"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-007 before its Green phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-007"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-008 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-008"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-008 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-008"
         },
@@ -1023,9 +1132,23 @@
           "requirementId": "REQ-AISCI-009"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-009 before its Green phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-009"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-010 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-010"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-010 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-010"
         },
@@ -1037,9 +1160,23 @@
           "requirementId": "REQ-AISCI-011"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-011 before its Green phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-011"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-012 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-012"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-012 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-012"
         },
@@ -1051,9 +1188,23 @@
           "requirementId": "REQ-AISCI-013"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-013 before its Green phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-013"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-014 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-014"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-014 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-014"
         },
@@ -1065,9 +1216,23 @@
           "requirementId": "REQ-AISCI-015"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-015 before its Green phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-015"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-016 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-016"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-016 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-016"
         },
@@ -1079,9 +1244,23 @@
           "requirementId": "REQ-AISCI-017"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-017 before its Green phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-017"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-018 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-018"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-018 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-018"
         },
@@ -1093,9 +1272,23 @@
           "requirementId": "REQ-AISCI-019"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-019 before its Green phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-019"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-020 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-020"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-020 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-020"
         },
@@ -1107,9 +1300,23 @@
           "requirementId": "REQ-AISCI-021"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-021 before its Green phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-021"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-022 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-022"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-022 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-022"
         },
@@ -1121,16 +1328,23 @@
           "requirementId": "REQ-AISCI-023"
         },
         {
-          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+          "code": "CHANGE_GREEN_UNPROVEN",
           "severity": "error",
-          "message": "CHANGE-001:REQ-AISCI-024 references TDD evidence without monotonic order; regenerate the cycle.",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-023 before its Green phase.",
           "changeId": "CHANGE-001",
-          "detail": "requirement:REQ-AISCI-024"
+          "requirementId": "REQ-AISCI-023"
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-001 has no valid Red evidence for REQ-AISCI-024 before its Red phase.",
+          "changeId": "CHANGE-001",
+          "requirementId": "REQ-AISCI-024"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-001 has no valid Green evidence for REQ-AISCI-024 before its Green phase.",
           "changeId": "CHANGE-001",
           "requirementId": "REQ-AISCI-024"
         },
@@ -1210,13 +1424,6 @@
           "requirementId": "REQ-AIMS-001"
         },
         {
-          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
-          "severity": "error",
-          "message": "CHANGE-003:REQ-AIMS-002 references TDD evidence without monotonic order; regenerate the cycle.",
-          "changeId": "CHANGE-003",
-          "detail": "requirement:REQ-AIMS-002"
-        },
-        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-002 before its Red phase.",
@@ -1287,13 +1494,6 @@
           "requirementId": "REQ-AIMS-010"
         },
         {
-          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
-          "severity": "error",
-          "message": "CHANGE-003:REQ-AIMS-020 references TDD evidence without monotonic order; regenerate the cycle.",
-          "changeId": "CHANGE-003",
-          "detail": "requirement:REQ-AIMS-020"
-        },
-        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-020 before its Red phase.",
@@ -1320,13 +1520,6 @@
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-030 before its Green phase.",
           "changeId": "CHANGE-003",
           "requirementId": "REQ-AIMS-030"
-        },
-        {
-          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
-          "severity": "error",
-          "message": "CHANGE-003:REQ-AIMS-040 references TDD evidence without monotonic order; regenerate the cycle.",
-          "changeId": "CHANGE-003",
-          "detail": "requirement:REQ-AIMS-040"
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
@@ -1409,18 +1602,6 @@
           }
         },
         {
-          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
-          "severity": "warning",
-          "message": "CHANGE-004:REQ-AIDS-060 references TDD evidence without monotonic order; regenerate the cycle.",
-          "changeId": "CHANGE-004",
-          "detail": "requirement:REQ-AIDS-060",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 trace-scanner apostrophe-masking defect (stray quote characters in comments hid @implements annotations); fixes are verified by full pytest pass and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T12:42:16.855Z"
-          }
-        },
-        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "warning",
           "message": "CHANGE-004 has no valid Red evidence for REQ-AIDS-060 before its Red phase.",
@@ -1442,18 +1623,6 @@
             "approver": "nahisaho",
             "reason": "Test files were edited after Red/Green recording to fix a musubix3 trace-scanner apostrophe-masking defect (stray quote characters in comments hid @implements annotations); fixes are verified by full pytest pass and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
             "recordedAt": "2026-10-02T12:42:24.556Z"
-          }
-        },
-        {
-          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
-          "severity": "warning",
-          "message": "CHANGE-004:REQ-AIDS-061 references TDD evidence without monotonic order; regenerate the cycle.",
-          "changeId": "CHANGE-004",
-          "detail": "requirement:REQ-AIDS-061",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 trace-scanner apostrophe-masking defect (stray quote characters in comments hid @implements annotations); fixes are verified by full pytest pass and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T12:42:17.300Z"
           }
         },
         {
@@ -1629,40 +1798,11 @@
           "requirementId": "REQ-ACHEM-002"
         },
         {
-          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
-          "severity": "warning",
-          "message": "CHANGE-005:REQ-ACHEM-003 references TDD evidence without monotonic order; regenerate the cycle.",
-          "changeId": "CHANGE-005",
-          "detail": "requirement:REQ-ACHEM-003",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:29:59.928Z"
-          }
-        },
-        {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "warning",
+          "severity": "error",
           "message": "CHANGE-005 has no valid Red evidence for REQ-ACHEM-003 before its Red phase.",
           "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-003",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:29:45.081Z"
-          }
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "warning",
-          "message": "CHANGE-005 has no valid Green evidence for REQ-ACHEM-003 before its Green phase.",
-          "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-003",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:29:45.604Z"
-          }
+          "requirementId": "REQ-ACHEM-003"
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
@@ -1690,51 +1830,17 @@
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "warning",
+          "severity": "error",
           "message": "CHANGE-005 has no valid Red evidence for REQ-ACHEM-010 before its Red phase.",
           "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-010",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:29:47.184Z"
-          }
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "warning",
-          "message": "CHANGE-005 has no valid Green evidence for REQ-ACHEM-010 before its Green phase.",
-          "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-010",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:29:47.697Z"
-          }
+          "requirementId": "REQ-ACHEM-010"
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "warning",
+          "severity": "error",
           "message": "CHANGE-005 has no valid Red evidence for REQ-ACHEM-020 before its Red phase.",
           "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-020",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:29:48.212Z"
-          }
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "warning",
-          "message": "CHANGE-005 has no valid Green evidence for REQ-ACHEM-020 before its Green phase.",
-          "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-020",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:29:48.737Z"
-          }
+          "requirementId": "REQ-ACHEM-020"
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
@@ -1786,27 +1892,10 @@
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "warning",
+          "severity": "error",
           "message": "CHANGE-005 has no valid Red evidence for REQ-ACHEM-050 before its Red phase.",
           "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-050",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:29:51.436Z"
-          }
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "warning",
-          "message": "CHANGE-005 has no valid Green evidence for REQ-ACHEM-050 before its Green phase.",
-          "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-050",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:29:52.076Z"
-          }
+          "requirementId": "REQ-ACHEM-050"
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
@@ -1883,27 +1972,6 @@
           "detail": "phase:quality"
         },
         {
-          "code": "CHANGE_PHASE_MISSING",
-          "severity": "error",
-          "message": "CHANGE-013 is missing red for REQ-ACHEM-070, REQ-ACHEM-090, REQ-AGENOM-001, REQ-AGENOM-003, REQ-AGENOM-004, REQ-AGENOM-010, REQ-AGENOM-030, REQ-ASTRUCT-001, REQ-ASTRUCT-002, REQ-ASTRUCT-010, REQ-ASTRUCT-020, REQ-ASTRUCT-040.",
-          "changeId": "CHANGE-013",
-          "detail": "phase:red"
-        },
-        {
-          "code": "CHANGE_PHASE_MISSING",
-          "severity": "error",
-          "message": "CHANGE-013 is missing implementation for REQ-ACHEM-070, REQ-ACHEM-090, REQ-AGENOM-001, REQ-AGENOM-003, REQ-AGENOM-004, REQ-AGENOM-010, REQ-AGENOM-030, REQ-ASTRUCT-001, REQ-ASTRUCT-002, REQ-ASTRUCT-010, REQ-ASTRUCT-020, REQ-ASTRUCT-040.",
-          "changeId": "CHANGE-013",
-          "detail": "phase:implementation"
-        },
-        {
-          "code": "CHANGE_PHASE_MISSING",
-          "severity": "error",
-          "message": "CHANGE-013 is missing green for REQ-ACHEM-070, REQ-ACHEM-090, REQ-AGENOM-001, REQ-AGENOM-003, REQ-AGENOM-004, REQ-AGENOM-010, REQ-AGENOM-030, REQ-ASTRUCT-001, REQ-ASTRUCT-002, REQ-ASTRUCT-003, REQ-ASTRUCT-004, REQ-ASTRUCT-010, REQ-ASTRUCT-020, REQ-ASTRUCT-030, REQ-ASTRUCT-040, REQ-ASTRUCT-050.",
-          "changeId": "CHANGE-013",
-          "detail": "phase:green"
-        },
-        {
           "code": "CHANGE_ORDER_MISMATCH",
           "severity": "error",
           "message": "CHANGE-013:red does not match the monotonic evidence order log."
@@ -1947,13 +2015,6 @@
           "code": "CHANGE_ORDER_MISMATCH",
           "severity": "error",
           "message": "CHANGE-013:green does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ACHEM-060 references TDD evidence without monotonic order; regenerate the cycle.",
-          "changeId": "CHANGE-013",
-          "detail": "requirement:REQ-ACHEM-060"
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
@@ -1972,14 +2033,154 @@
         {
           "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
           "severity": "error",
-          "message": "CHANGE-013:REQ-AGENOM-002 references TDD evidence without monotonic order; regenerate the cycle.",
+          "message": "CHANGE-013:REQ-ACHEM-070 references TDD evidence without monotonic order; regenerate the cycle.",
           "changeId": "CHANGE-013",
-          "detail": "requirement:REQ-AGENOM-002"
+          "detail": "requirement:REQ-ACHEM-070"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ACHEM-070 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-070"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ACHEM-070 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-070"
+        },
+        {
+          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+          "severity": "error",
+          "message": "CHANGE-013:REQ-ACHEM-090 references TDD evidence without monotonic order; regenerate the cycle.",
+          "changeId": "CHANGE-013",
+          "detail": "requirement:REQ-ACHEM-090"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ACHEM-090 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-090"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ACHEM-090 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ACHEM-090"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-001 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-001"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-001 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-001"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-003 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-003"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-003 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-003"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-004 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-004"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-004 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-004"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-010 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-010"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-010 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-010"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-030 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-030"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-030 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-AGENOM-030"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-001 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-001"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-001 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-001"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-002 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-002"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-002 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-002"
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-003 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-003"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-003 before its Green phase.",
           "changeId": "CHANGE-013",
           "requirementId": "REQ-ASTRUCT-003"
         },
@@ -1991,6 +2192,41 @@
           "requirementId": "REQ-ASTRUCT-004"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-004 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-004"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-010 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-010"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-010 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-010"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-020 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-020"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-020 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-020"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-030 before its Red phase.",
@@ -1998,9 +2234,37 @@
           "requirementId": "REQ-ASTRUCT-030"
         },
         {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-030 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-030"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-040 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-040"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-040 before its Green phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-040"
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "error",
           "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-050 before its Red phase.",
+          "changeId": "CHANGE-013",
+          "requirementId": "REQ-ASTRUCT-050"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-050 before its Green phase.",
           "changeId": "CHANGE-013",
           "requirementId": "REQ-ASTRUCT-050"
         }
@@ -2039,6 +2303,54 @@
         {
           "code": "CHANGE_WAIVER_STALE",
           "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-003 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-003 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-010 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-010 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-020 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-020 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-050 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-050 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
           "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-001 is stale.",
           "path": ".musubix/evidence/change-waivers.json"
         },
@@ -2046,6 +2358,30 @@
           "code": "CHANGE_WAIVER_STALE",
           "severity": "error",
           "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-002 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-003 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-010 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-020 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_STALE",
+          "severity": "error",
+          "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-050 is stale.",
           "path": ".musubix/evidence/change-waivers.json"
         },
         {
@@ -2508,15 +2844,10 @@
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "warning",
+          "severity": "error",
           "message": "CHANGE-005:REQ-ACHEM-003 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-003",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:30:01.672Z"
-          }
+          "requirementId": "REQ-ACHEM-003"
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
@@ -2532,27 +2863,17 @@
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "warning",
+          "severity": "error",
           "message": "CHANGE-005:REQ-ACHEM-010 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-010",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:30:02.720Z"
-          }
+          "requirementId": "REQ-ACHEM-010"
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "warning",
+          "severity": "error",
           "message": "CHANGE-005:REQ-ACHEM-020 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-020",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:30:03.246Z"
-          }
+          "requirementId": "REQ-ACHEM-020"
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
@@ -2580,15 +2901,10 @@
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "warning",
+          "severity": "error",
           "message": "CHANGE-005:REQ-ACHEM-050 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-005",
-          "requirementId": "REQ-ACHEM-050",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-            "recordedAt": "2026-10-02T23:30:04.956Z"
-          }
+          "requirementId": "REQ-ACHEM-050"
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
@@ -2684,11 +3000,6 @@
           "message": "CHANGE-013:REQ-ACHEM-070 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-013",
           "requirementId": "REQ-ACHEM-070"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_CODE",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ACHEM-070 lacks implementation evidence."
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
@@ -2802,7 +3113,7 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/ruff: completed, exit 0.",
-      "durationMs": 24,
+      "durationMs": 28,
       "exitCode": 0,
       "stdout": "194 files already formatted\n",
       "stderr": ""
@@ -2812,9 +3123,9 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/pytest: completed, exit 0.",
-      "durationMs": 64525,
+      "durationMs": 59086,
       "exitCode": 0,
-      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change013\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 496 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  4%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  5%]\n....                                                                     [  6%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [ 11%]\n.....                                                                    [ 12%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 14%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 15%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 16%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 17%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 18%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 20%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 21%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 22%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 23%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 24%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 25%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 25%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 26%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 26%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 26%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 27%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 27%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 28%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 29%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 31%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 34%]\n...                                                                      [ 34%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 37%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 41%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 42%]\ntests/test_ai_materials_scientist_fem.py .................               [ 45%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 48%]\n                                                                         [ 48%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 52%]\n...                                                                      [ 52%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 55%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 56%]\ntests/test_ai_scientist_delegation.py ............                       [ 58%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 59%]\ntests/test_ai_scientist_mcp.py ..........                                [ 61%]\ntests/test_ai_scientist_phase_state.py ........                          [ 62%]\ntests/test_ai_scientist_project_handle.py ...                            [ 63%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 64%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 64%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 64%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 65%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 65%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 66%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 66%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 67%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 68%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 68%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 69%]\ntests/test_analysis_assumptions.py ....                                  [ 70%]\ntests/test_anomaly_detection.py .                                        [ 70%]\ntests/test_automl.py .                                                   [ 70%]\ntests/test_cleaning.py .                                                 [ 70%]\ntests/test_clustering.py ..                                              [ 71%]\ntests/test_dashboard.py .                                                [ 71%]\ntests/test_data_definition.py .....                                      [ 72%]\ntests/test_data_quality.py .....                                         [ 73%]\ntests/test_dataset_validation.py ......                                  [ 74%]\ntests/test_dependency_pins.py ...                                        [ 75%]\ntests/test_eda.py .....                                                  [ 76%]\ntests/test_example_readiness.py .                                        [ 76%]\ntests/test_experiment_evaluation.py .                                    [ 76%]\ntests/test_explainability.py .                                           [ 77%]\ntests/test_feature_engineering.py .                                      [ 77%]\ntests/test_gate_config.py .                                              [ 77%]\ntests/test_ingestion.py ......                                           [ 78%]\ntests/test_insight_engine.py ......                                      [ 79%]\ntests/test_japanese_nlp.py .                                             [ 80%]\ntests/test_jupyter_mcp_client.py ..                                      [ 80%]\ntests/test_language_router.py .                                          [ 80%]\ntests/test_lifecycle.py .....                                            [ 81%]\ntests/test_mcp_gateway.py ......                                         [ 82%]\ntests/test_mcp_runtime.py ......                                         [ 84%]\ntests/test_mcp_runtime_integration.py .                                  [ 84%]\ntests/test_ml_modeling.py .                                              [ 84%]\ntests/test_model_tuning.py .                                             [ 84%]\ntests/test_notebook_audit.py ....................                        [ 88%]\ntests/test_project_manager.py ..........                                 [ 90%]\ntests/test_report_export.py ...                                          [ 91%]\ntests/test_sensitivity.py ....                                           [ 92%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 94%]\ntests/test_text_nlp.py .                                                 [ 94%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 97%]\ntests/test_visualization.py ..............                               [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n======================== 496 passed in 61.72s (0:01:01) ========================\n",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change013\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 496 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  4%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  5%]\n....                                                                     [  6%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [ 11%]\n.....                                                                    [ 12%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 14%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 15%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 16%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 17%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 18%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 20%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 21%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 22%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 23%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 24%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 25%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 25%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 26%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 26%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 26%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 27%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 27%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 28%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 29%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 31%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 34%]\n...                                                                      [ 34%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 37%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 41%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 42%]\ntests/test_ai_materials_scientist_fem.py .................               [ 45%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 48%]\n                                                                         [ 48%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 52%]\n...                                                                      [ 52%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 55%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 56%]\ntests/test_ai_scientist_delegation.py ............                       [ 58%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 59%]\ntests/test_ai_scientist_mcp.py ..........                                [ 61%]\ntests/test_ai_scientist_phase_state.py ........                          [ 62%]\ntests/test_ai_scientist_project_handle.py ...                            [ 63%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 64%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 64%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 64%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 65%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 65%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 66%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 66%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 67%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 68%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 68%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 69%]\ntests/test_analysis_assumptions.py ....                                  [ 70%]\ntests/test_anomaly_detection.py .                                        [ 70%]\ntests/test_automl.py .                                                   [ 70%]\ntests/test_cleaning.py .                                                 [ 70%]\ntests/test_clustering.py ..                                              [ 71%]\ntests/test_dashboard.py .                                                [ 71%]\ntests/test_data_definition.py .....                                      [ 72%]\ntests/test_data_quality.py .....                                         [ 73%]\ntests/test_dataset_validation.py ......                                  [ 74%]\ntests/test_dependency_pins.py ...                                        [ 75%]\ntests/test_eda.py .....                                                  [ 76%]\ntests/test_example_readiness.py .                                        [ 76%]\ntests/test_experiment_evaluation.py .                                    [ 76%]\ntests/test_explainability.py .                                           [ 77%]\ntests/test_feature_engineering.py .                                      [ 77%]\ntests/test_gate_config.py .                                              [ 77%]\ntests/test_ingestion.py ......                                           [ 78%]\ntests/test_insight_engine.py ......                                      [ 79%]\ntests/test_japanese_nlp.py .                                             [ 80%]\ntests/test_jupyter_mcp_client.py ..                                      [ 80%]\ntests/test_language_router.py .                                          [ 80%]\ntests/test_lifecycle.py .....                                            [ 81%]\ntests/test_mcp_gateway.py ......                                         [ 82%]\ntests/test_mcp_runtime.py ......                                         [ 84%]\ntests/test_mcp_runtime_integration.py .                                  [ 84%]\ntests/test_ml_modeling.py .                                              [ 84%]\ntests/test_model_tuning.py .                                             [ 84%]\ntests/test_notebook_audit.py ....................                        [ 88%]\ntests/test_project_manager.py ..........                                 [ 90%]\ntests/test_report_export.py ...                                          [ 91%]\ntests/test_sensitivity.py ....                                           [ 92%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 94%]\ntests/test_text_nlp.py .                                                 [ 94%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 97%]\ntests/test_visualization.py ..............                               [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 496 passed in 56.18s =============================\n",
       "stderr": ""
     },
     {
@@ -2929,12 +3240,12 @@
     "commands.skipped": 0,
     "tests.annotatedIds": 407,
     "tests.executedIds": 406,
-    "tdd.cycles": 303,
-    "tdd.errors": 24,
+    "tdd.cycles": 320,
+    "tdd.errors": 22,
     "changes.count": 8,
-    "changes.errors": 101,
+    "changes.errors": 162,
     "changes.complete": 1,
-    "changes.completenessErrors": 111,
+    "changes.completenessErrors": 126,
     "performance.budgets": 1,
     "performance.errors": 2,
     "mutation.requirements": 121,
@@ -2947,12 +3258,13 @@
     "attestation.errors": 0,
     "approval.errors": 1,
     "coverage.design": 1,
-    "coverage.implementation": 0.984251968503937,
+    "coverage.implementation": 0.9921259842519685,
     "coverage.tests": 0.9921259842519685
   },
   "mode": "changed",
   "feature": null,
   "changed": [
+    ".musubix/evidence/.writer-lock.json",
     ".musubix/evidence/formal.json",
     ".musubix/evidence/model-correspondence.json",
     ".musubix/evidence/native/test/aggregate.json",
@@ -2970,8 +3282,9 @@
   "impacted": [],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "760424ceab69707e529415f8b5353091220e734a",
+    "head": "552d881cf97703114ad1267620fdd786cff014e3",
     "changed": [
+      ".musubix/evidence/.writer-lock.json",
       ".musubix/evidence/formal.json",
       ".musubix/evidence/model-correspondence.json",
       ".musubix/evidence/native/test/aggregate.json",
@@ -2987,7 +3300,7 @@
       ".musubix/features/example/trace.json"
     ],
     "impacted": [],
-    "generatedAt": "2026-10-04T15:53:51.956Z"
+    "generatedAt": "2026-10-04T20:24:34.874Z"
   },
   "fingerprints": {
     ".git": "4dc3394d158e1b6026b8f71b1e0a81918fd65367cdefb734406453226b68420c",
@@ -3079,13 +3392,13 @@
     ".pytest_cache/v/cache/nodeids": "8e1aaf38cd316fb1d9d3a863aec2c528a26eb316e26492a9593b48178011f067",
     ".ruff_cache/.gitignore": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
     ".ruff_cache/0.16.10/11163498049728632711": "d4613eb2de8741cf55a70e5671ebd8dfabdbbaa037adda7306dc943b895cd0a9",
-    ".ruff_cache/0.16.10/11939872291099635491": "5c745549c82d4df14dcee0c93d92af9ce990066e3126f5ffcf4bcb3ecd469df3",
+    ".ruff_cache/0.16.10/11939872291099635491": "428b3e953cb29268f9482cec183c10162c4fece2c9666d2fbcb39c22f25c9987",
     ".ruff_cache/0.16.10/12887483403637577661": "3ea0c29f38e2f80266d1fe5cf80bb37313d2e7a5366e178408f43c2d508b5f50",
     ".ruff_cache/0.16.10/12928496915505956663": "aa44698a13495c3edfc72e5a0e0a1b379ed8d55d2759e1c552d485511edf4d08",
-    ".ruff_cache/0.16.10/5511903486758386333": "91486c5bb80b0f8c4541a22f64f1c3cf9fe4cdbc99bb9cc22f74cfb6d550926f",
+    ".ruff_cache/0.16.10/5511903486758386333": "87688449325f42e0965dc1cc606210669095eec77ba6da7c815f4d0bd6798844",
     ".ruff_cache/0.16.10/5786841378256198194": "10d59fa24030765e8887cc8240af24828bc97b1ee467e218c54d6ad21bc88174",
     ".ruff_cache/0.16.10/6057168664238546075": "7037f5629db4005091e6c127e5bcbf9bdb3c42a57750d5a283c1711013923fa3",
-    ".ruff_cache/0.16.10/6358219848609320073": "aced9d44250e1895c9a27525ff807a76972681f215c9d0e316c4c35e96bc6976",
+    ".ruff_cache/0.16.10/6358219848609320073": "a3bae49775cff73b7b6bcbe69b66d1ccb913cf341504c2ee7633410559165cef",
     ".ruff_cache/0.16.10/74622762440042669": "d4d96569f22a2c5aabfb0168ad54bbae7896409a1505a2a7ad14fd9dcb902a99",
     ".ruff_cache/CACHEDIR.TAG": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
     "benchmark/figures/exp-01-age-and-fare-distributions.png": "f46cd2e5602c1be1d67438859f0bd18e36152c055dcc5e851222207da3962b24",
@@ -3926,7 +4239,7 @@
     "src/ai_chemistry_scientist/molecular_formula_mass.py": "117377872ff7ddd3de478f26cea45ad566e528cc2657047bad4f0f1d351f0305",
     "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
     "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
-    "src/ai_chemistry_scientist/structural_alerts.py": "799733f63f8ab212bcabe564d6d1fcc49d08f04843ceed1a459b1ab19bb26308",
+    "src/ai_chemistry_scientist/structural_alerts.py": "3caa4e1042163396752e5bc9ab5727465875a5d45697cef41e87c60a7f2f0343",
     "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
@@ -4260,22 +4573,6 @@
     {
       "changeId": "CHANGE-005",
       "code": "CHANGE_RED_UNPROVEN",
-      "requirementId": "REQ-ACHEM-003",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:29:45.081Z"
-    },
-    {
-      "changeId": "CHANGE-005",
-      "code": "CHANGE_GREEN_UNPROVEN",
-      "requirementId": "REQ-ACHEM-003",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:29:45.604Z"
-    },
-    {
-      "changeId": "CHANGE-005",
-      "code": "CHANGE_RED_UNPROVEN",
       "requirementId": "REQ-ACHEM-004",
       "approver": "nahisaho",
       "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
@@ -4288,38 +4585,6 @@
       "approver": "nahisaho",
       "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
       "recordedAt": "2026-10-02T23:29:46.678Z"
-    },
-    {
-      "changeId": "CHANGE-005",
-      "code": "CHANGE_RED_UNPROVEN",
-      "requirementId": "REQ-ACHEM-010",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:29:47.184Z"
-    },
-    {
-      "changeId": "CHANGE-005",
-      "code": "CHANGE_GREEN_UNPROVEN",
-      "requirementId": "REQ-ACHEM-010",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:29:47.697Z"
-    },
-    {
-      "changeId": "CHANGE-005",
-      "code": "CHANGE_RED_UNPROVEN",
-      "requirementId": "REQ-ACHEM-020",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:29:48.212Z"
-    },
-    {
-      "changeId": "CHANGE-005",
-      "code": "CHANGE_GREEN_UNPROVEN",
-      "requirementId": "REQ-ACHEM-020",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:29:48.737Z"
     },
     {
       "changeId": "CHANGE-005",
@@ -4355,22 +4620,6 @@
     },
     {
       "changeId": "CHANGE-005",
-      "code": "CHANGE_RED_UNPROVEN",
-      "requirementId": "REQ-ACHEM-050",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:29:51.436Z"
-    },
-    {
-      "changeId": "CHANGE-005",
-      "code": "CHANGE_GREEN_UNPROVEN",
-      "requirementId": "REQ-ACHEM-050",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:29:52.076Z"
-    },
-    {
-      "changeId": "CHANGE-005",
       "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
       "detail": "requirement:REQ-ACHEM-003",
       "approver": "nahisaho",
@@ -4380,34 +4629,10 @@
     {
       "changeId": "CHANGE-005",
       "code": "CHANGE_COMPLETENESS_TDD",
-      "requirementId": "REQ-ACHEM-003",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:30:01.672Z"
-    },
-    {
-      "changeId": "CHANGE-005",
-      "code": "CHANGE_COMPLETENESS_TDD",
       "requirementId": "REQ-ACHEM-004",
       "approver": "nahisaho",
       "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
       "recordedAt": "2026-10-02T23:30:02.207Z"
-    },
-    {
-      "changeId": "CHANGE-005",
-      "code": "CHANGE_COMPLETENESS_TDD",
-      "requirementId": "REQ-ACHEM-010",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:30:02.720Z"
-    },
-    {
-      "changeId": "CHANGE-005",
-      "code": "CHANGE_COMPLETENESS_TDD",
-      "requirementId": "REQ-ACHEM-020",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:30:03.246Z"
     },
     {
       "changeId": "CHANGE-005",
@@ -4424,14 +4649,6 @@
       "approver": "nahisaho",
       "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
       "recordedAt": "2026-10-02T23:30:04.383Z"
-    },
-    {
-      "changeId": "CHANGE-005",
-      "code": "CHANGE_COMPLETENESS_TDD",
-      "requirementId": "REQ-ACHEM-050",
-      "approver": "nahisaho",
-      "reason": "Test files were edited after Red/Green recording to fix a musubix3 tdd evidence defect (TEST-ACHEM-937/938 ran with no docking_score module import side-effect under pytest -k isolation, so the docking-score validator never registered; fixed by adding a module-level import) and an earlier trace-scanner apostrophe-masking defect; fixes are verified by full pytest pass (376/376) and trace check --strict, but the hash-chained evidence ledger cannot be re-recorded for an already-recorded requirement batch.",
-      "recordedAt": "2026-10-02T23:30:04.956Z"
     },
     {
       "changeId": "CHANGE-006",
@@ -4487,6 +4704,54 @@
     {
       "code": "CHANGE_WAIVER_STALE",
       "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-003 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-003 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-010 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-010 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-020 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-020 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_RED_UNPROVEN:REQ-ACHEM-050 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_GREEN_UNPROVEN:REQ-ACHEM-050 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
       "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-001 is stale.",
       "path": ".musubix/evidence/change-waivers.json"
     },
@@ -4494,6 +4759,30 @@
       "code": "CHANGE_WAIVER_STALE",
       "severity": "error",
       "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-002 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-003 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-010 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-020 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_STALE",
+      "severity": "error",
+      "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-050 is stale.",
       "path": ".musubix/evidence/change-waivers.json"
     }
   ]
