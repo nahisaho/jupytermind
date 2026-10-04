@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T20:24:34.874Z",
+  "generatedAt": "2026-10-04T20:48:22.878Z",
   "status": "fail",
   "checks": [
     {
@@ -2015,258 +2015,6 @@
           "code": "CHANGE_ORDER_MISMATCH",
           "severity": "error",
           "message": "CHANGE-013:green does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ACHEM-060 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ACHEM-060"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ACHEM-060 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ACHEM-060"
-        },
-        {
-          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ACHEM-070 references TDD evidence without monotonic order; regenerate the cycle.",
-          "changeId": "CHANGE-013",
-          "detail": "requirement:REQ-ACHEM-070"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ACHEM-070 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ACHEM-070"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ACHEM-070 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ACHEM-070"
-        },
-        {
-          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ACHEM-090 references TDD evidence without monotonic order; regenerate the cycle.",
-          "changeId": "CHANGE-013",
-          "detail": "requirement:REQ-ACHEM-090"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ACHEM-090 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ACHEM-090"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ACHEM-090 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ACHEM-090"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-001 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-001"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-001 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-001"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-003 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-003"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-003 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-003"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-004 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-004"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-004 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-004"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-010 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-010"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-010 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-010"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-AGENOM-030 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-030"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-AGENOM-030 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-030"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-001 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-001"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-001 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-001"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-002 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-002"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-002 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-002"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-003 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-003"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-003 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-003"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-004 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-004"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-004 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-004"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-010 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-010"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-010 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-010"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-020 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-020"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-020 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-020"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-030 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-030"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-030 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-030"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-040 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-040"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-040 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-040"
-        },
-        {
-          "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Red evidence for REQ-ASTRUCT-050 before its Red phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-050"
-        },
-        {
-          "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
-          "message": "CHANGE-013 has no valid Green evidence for REQ-ASTRUCT-050 before its Green phase.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-050"
         }
       ]
     },
@@ -2274,7 +2022,7 @@
       "name": "change-completeness",
       "required": true,
       "status": "fail",
-      "summary": "1/8 staged change(s) have semantically complete evidence.",
+      "summary": "2/8 staged change(s) have semantically complete evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_WAIVER_STALE",
@@ -2986,125 +2734,6 @@
           "code": "CHANGE_COMPLETENESS_TEST",
           "severity": "error",
           "message": "CHANGE-008:REQ-AIDS-073 lacks authoritative annotated test declaration evidence."
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ACHEM-060 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ACHEM-060"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ACHEM-070 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ACHEM-070"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ACHEM-090 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ACHEM-090"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-AGENOM-001 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-001"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-AGENOM-003 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-003"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-AGENOM-004 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-004"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-AGENOM-010 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-010"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-AGENOM-030 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-AGENOM-030"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ASTRUCT-001 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-001"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ASTRUCT-002 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-002"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ASTRUCT-003 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-003"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ASTRUCT-004 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-004"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ASTRUCT-010 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-010"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ASTRUCT-020 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-020"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ASTRUCT-030 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-030"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ASTRUCT-040 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-040"
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
-          "message": "CHANGE-013:REQ-ASTRUCT-050 lacks bounded Red-Green TDD evidence.",
-          "changeId": "CHANGE-013",
-          "requirementId": "REQ-ASTRUCT-050"
         }
       ]
     },
@@ -3113,7 +2742,7 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/ruff: completed, exit 0.",
-      "durationMs": 28,
+      "durationMs": 27,
       "exitCode": 0,
       "stdout": "194 files already formatted\n",
       "stderr": ""
@@ -3123,9 +2752,9 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/pytest: completed, exit 0.",
-      "durationMs": 59086,
+      "durationMs": 55075,
       "exitCode": 0,
-      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change013\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 496 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  4%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  5%]\n....                                                                     [  6%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [ 11%]\n.....                                                                    [ 12%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 14%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 15%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 16%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 17%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 18%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 20%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 21%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 22%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 23%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 24%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 25%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 25%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 26%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 26%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 26%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 27%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 27%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 28%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 29%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 31%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 34%]\n...                                                                      [ 34%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 37%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 41%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 42%]\ntests/test_ai_materials_scientist_fem.py .................               [ 45%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 48%]\n                                                                         [ 48%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 52%]\n...                                                                      [ 52%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 55%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 56%]\ntests/test_ai_scientist_delegation.py ............                       [ 58%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 59%]\ntests/test_ai_scientist_mcp.py ..........                                [ 61%]\ntests/test_ai_scientist_phase_state.py ........                          [ 62%]\ntests/test_ai_scientist_project_handle.py ...                            [ 63%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 64%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 64%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 64%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 65%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 65%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 66%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 66%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 67%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 68%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 68%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 69%]\ntests/test_analysis_assumptions.py ....                                  [ 70%]\ntests/test_anomaly_detection.py .                                        [ 70%]\ntests/test_automl.py .                                                   [ 70%]\ntests/test_cleaning.py .                                                 [ 70%]\ntests/test_clustering.py ..                                              [ 71%]\ntests/test_dashboard.py .                                                [ 71%]\ntests/test_data_definition.py .....                                      [ 72%]\ntests/test_data_quality.py .....                                         [ 73%]\ntests/test_dataset_validation.py ......                                  [ 74%]\ntests/test_dependency_pins.py ...                                        [ 75%]\ntests/test_eda.py .....                                                  [ 76%]\ntests/test_example_readiness.py .                                        [ 76%]\ntests/test_experiment_evaluation.py .                                    [ 76%]\ntests/test_explainability.py .                                           [ 77%]\ntests/test_feature_engineering.py .                                      [ 77%]\ntests/test_gate_config.py .                                              [ 77%]\ntests/test_ingestion.py ......                                           [ 78%]\ntests/test_insight_engine.py ......                                      [ 79%]\ntests/test_japanese_nlp.py .                                             [ 80%]\ntests/test_jupyter_mcp_client.py ..                                      [ 80%]\ntests/test_language_router.py .                                          [ 80%]\ntests/test_lifecycle.py .....                                            [ 81%]\ntests/test_mcp_gateway.py ......                                         [ 82%]\ntests/test_mcp_runtime.py ......                                         [ 84%]\ntests/test_mcp_runtime_integration.py .                                  [ 84%]\ntests/test_ml_modeling.py .                                              [ 84%]\ntests/test_model_tuning.py .                                             [ 84%]\ntests/test_notebook_audit.py ....................                        [ 88%]\ntests/test_project_manager.py ..........                                 [ 90%]\ntests/test_report_export.py ...                                          [ 91%]\ntests/test_sensitivity.py ....                                           [ 92%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 94%]\ntests/test_text_nlp.py .                                                 [ 94%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 97%]\ntests/test_visualization.py ..............                               [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 496 passed in 56.18s =============================\n",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change013\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 496 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  4%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  5%]\n....                                                                     [  6%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [ 11%]\n.....                                                                    [ 12%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 14%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 15%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 16%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 17%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 18%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 20%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 21%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 22%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 23%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 24%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 25%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 25%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 26%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 26%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 26%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 27%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 27%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 28%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 29%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 31%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 34%]\n...                                                                      [ 34%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 37%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 41%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 42%]\ntests/test_ai_materials_scientist_fem.py .................               [ 45%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 48%]\n                                                                         [ 48%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 52%]\n...                                                                      [ 52%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 55%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 56%]\ntests/test_ai_scientist_delegation.py ............                       [ 58%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 59%]\ntests/test_ai_scientist_mcp.py ..........                                [ 61%]\ntests/test_ai_scientist_phase_state.py ........                          [ 62%]\ntests/test_ai_scientist_project_handle.py ...                            [ 63%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 64%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 64%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 64%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 65%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 65%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 66%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 66%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 67%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 68%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 68%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 69%]\ntests/test_analysis_assumptions.py ....                                  [ 70%]\ntests/test_anomaly_detection.py .                                        [ 70%]\ntests/test_automl.py .                                                   [ 70%]\ntests/test_cleaning.py .                                                 [ 70%]\ntests/test_clustering.py ..                                              [ 71%]\ntests/test_dashboard.py .                                                [ 71%]\ntests/test_data_definition.py .....                                      [ 72%]\ntests/test_data_quality.py .....                                         [ 73%]\ntests/test_dataset_validation.py ......                                  [ 74%]\ntests/test_dependency_pins.py ...                                        [ 75%]\ntests/test_eda.py .....                                                  [ 76%]\ntests/test_example_readiness.py .                                        [ 76%]\ntests/test_experiment_evaluation.py .                                    [ 76%]\ntests/test_explainability.py .                                           [ 77%]\ntests/test_feature_engineering.py .                                      [ 77%]\ntests/test_gate_config.py .                                              [ 77%]\ntests/test_ingestion.py ......                                           [ 78%]\ntests/test_insight_engine.py ......                                      [ 79%]\ntests/test_japanese_nlp.py .                                             [ 80%]\ntests/test_jupyter_mcp_client.py ..                                      [ 80%]\ntests/test_language_router.py .                                          [ 80%]\ntests/test_lifecycle.py .....                                            [ 81%]\ntests/test_mcp_gateway.py ......                                         [ 82%]\ntests/test_mcp_runtime.py ......                                         [ 84%]\ntests/test_mcp_runtime_integration.py .                                  [ 84%]\ntests/test_ml_modeling.py .                                              [ 84%]\ntests/test_model_tuning.py .                                             [ 84%]\ntests/test_notebook_audit.py ....................                        [ 88%]\ntests/test_project_manager.py ..........                                 [ 90%]\ntests/test_report_export.py ...                                          [ 91%]\ntests/test_sensitivity.py ....                                           [ 92%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 94%]\ntests/test_text_nlp.py .                                                 [ 94%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 97%]\ntests/test_visualization.py ..............                               [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 496 passed in 52.02s =============================\n",
       "stderr": ""
     },
     {
@@ -3243,9 +2872,9 @@
     "tdd.cycles": 320,
     "tdd.errors": 22,
     "changes.count": 8,
-    "changes.errors": 162,
-    "changes.complete": 1,
-    "changes.completenessErrors": 126,
+    "changes.errors": 126,
+    "changes.complete": 2,
+    "changes.completenessErrors": 109,
     "performance.budgets": 1,
     "performance.errors": 2,
     "mutation.requirements": 121,
@@ -3282,7 +2911,7 @@
   "impacted": [],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "552d881cf97703114ad1267620fdd786cff014e3",
+    "head": "b06ebdfee7ed70ae7ea1130e50844a34e48ac4c7",
     "changed": [
       ".musubix/evidence/.writer-lock.json",
       ".musubix/evidence/formal.json",
@@ -3300,7 +2929,7 @@
       ".musubix/features/example/trace.json"
     ],
     "impacted": [],
-    "generatedAt": "2026-10-04T20:24:34.874Z"
+    "generatedAt": "2026-10-04T20:48:22.878Z"
   },
   "fingerprints": {
     ".git": "4dc3394d158e1b6026b8f71b1e0a81918fd65367cdefb734406453226b68420c",
@@ -3392,13 +3021,13 @@
     ".pytest_cache/v/cache/nodeids": "8e1aaf38cd316fb1d9d3a863aec2c528a26eb316e26492a9593b48178011f067",
     ".ruff_cache/.gitignore": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
     ".ruff_cache/0.16.10/11163498049728632711": "d4613eb2de8741cf55a70e5671ebd8dfabdbbaa037adda7306dc943b895cd0a9",
-    ".ruff_cache/0.16.10/11939872291099635491": "428b3e953cb29268f9482cec183c10162c4fece2c9666d2fbcb39c22f25c9987",
+    ".ruff_cache/0.16.10/11939872291099635491": "1e584c9915097da9ca59a2c0cf91fcde19bbf332d234123ec0ffbc517f222ac6",
     ".ruff_cache/0.16.10/12887483403637577661": "3ea0c29f38e2f80266d1fe5cf80bb37313d2e7a5366e178408f43c2d508b5f50",
     ".ruff_cache/0.16.10/12928496915505956663": "aa44698a13495c3edfc72e5a0e0a1b379ed8d55d2759e1c552d485511edf4d08",
-    ".ruff_cache/0.16.10/5511903486758386333": "87688449325f42e0965dc1cc606210669095eec77ba6da7c815f4d0bd6798844",
+    ".ruff_cache/0.16.10/5511903486758386333": "ab4fd13fd9ee87cf5a9a9dca60a8e2dc57f1721baef1eb9d283d20598fcbebe6",
     ".ruff_cache/0.16.10/5786841378256198194": "10d59fa24030765e8887cc8240af24828bc97b1ee467e218c54d6ad21bc88174",
     ".ruff_cache/0.16.10/6057168664238546075": "7037f5629db4005091e6c127e5bcbf9bdb3c42a57750d5a283c1711013923fa3",
-    ".ruff_cache/0.16.10/6358219848609320073": "a3bae49775cff73b7b6bcbe69b66d1ccb913cf341504c2ee7633410559165cef",
+    ".ruff_cache/0.16.10/6358219848609320073": "9528d71f2be834826834d1c6faea3eed1150f9488288c9f77e92c1c418ddad72",
     ".ruff_cache/0.16.10/74622762440042669": "d4d96569f22a2c5aabfb0168ad54bbae7896409a1505a2a7ad14fd9dcb902a99",
     ".ruff_cache/CACHEDIR.TAG": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
     "benchmark/figures/exp-01-age-and-fare-distributions.png": "f46cd2e5602c1be1d67438859f0bd18e36152c055dcc5e851222207da3962b24",

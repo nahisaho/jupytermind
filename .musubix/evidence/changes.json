@@ -7658,6 +7658,329 @@
             }
           },
           "order": 641
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-04T20:50:00.798Z",
+          "fingerprints": {
+            "impact": "d5418e1f25490a4e0430c2ae4d23b851368bf14f9b5c9bce5f85dbbaf341f32d",
+            "requirements": "7975cd0c64adc98c34c5e7b2e4072a29854520c0d148716a30ecafb54758556d",
+            "design": "37fb395a4c890ea771dc9ea705178a607c153cdbf7e197ab15a66cfd477a3685",
+            "implementation": "c9198ab2e98162e3b029efc6f9568adf40dade91df8d834c8629eaa6156271c8",
+            "tests": "d608442be8b7a34781bdba5235b3d5cc14c2c00727c62d5bd96058de43981212",
+            "tdd": "da080fb7ca32450e989c8385a47b8bf54df30719eb7f9c0912c4e183e6aa9648",
+            "requirementImplementations": {
+              "REQ-ACHEM-060": {
+                "paths": [
+                  "src/ai_chemistry_scientist/drug_likeness_rules.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/drug_likeness_rules.py": "e56fd16f9404e3e320956a6a1d38a333703d32d75196069c793eb80292ec3c64",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-070": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/structural_alerts.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                  "src/ai_chemistry_scientist/structural_alerts.py": "3caa4e1042163396752e5bc9ab5727465875a5d45697cef41e87c60a7f2f0343",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-080": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/molecular_formula_mass.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                  "src/ai_chemistry_scientist/molecular_formula_mass.py": "117377872ff7ddd3de478f26cea45ad566e528cc2657047bad4f0f1d351f0305",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-090": {
+                "paths": [
+                  "src/ai_chemistry_scientist/bioactivity_classification.py",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/bioactivity_classification.py": "a9c53ff1c8d25fd9903ec005073de812b4d6ee1b33517efdb72b4ae2e67d340a",
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-AGENOM-001": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/dispatch.py": "ebaf896bb71e0f93ff861c452faebc0fefa606f1b6d5efc6cfe54cc8883690c2",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a"
+                }
+              },
+              "REQ-AGENOM-002": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/dispatch.py": "ebaf896bb71e0f93ff861c452faebc0fefa606f1b6d5efc6cfe54cc8883690c2",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a"
+                }
+              },
+              "REQ-AGENOM-003": {
+                "paths": [
+                  "src/ai_genomics_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3"
+                }
+              },
+              "REQ-AGENOM-004": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/dispatch.py": "ebaf896bb71e0f93ff861c452faebc0fefa606f1b6d5efc6cfe54cc8883690c2",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a"
+                }
+              },
+              "REQ-AGENOM-010": {
+                "paths": [
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3"
+                }
+              },
+              "REQ-AGENOM-020": {
+                "paths": [
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py"
+                ],
+                "fingerprints": {
+                  "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a"
+                }
+              },
+              "REQ-AGENOM-030": {
+                "paths": [
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3"
+                }
+              },
+              "REQ-AGENOM-040": {
+                "paths": [
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3"
+                }
+              },
+              "REQ-AGENOM-050": {
+                "paths": [
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3"
+                }
+              },
+              "REQ-ASTRUCT-001": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_structural_biology_scientist/contact_map.py",
+                  "src/ai_structural_biology_scientist/dispatch.py",
+                  "src/ai_structural_biology_scientist/evidence.py",
+                  "src/ai_structural_biology_scientist/hydrophobicity.py",
+                  "src/ai_structural_biology_scientist/protein_docking_score.py",
+                  "src/ai_structural_biology_scientist/secondary_structure.py",
+                  "src/ai_structural_biology_scientist/structural_similarity.py",
+                  "src/ai_structural_biology_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                  "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
+                  "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50",
+                  "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                  "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                  "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                  "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                  "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                }
+              },
+              "REQ-ASTRUCT-002": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_structural_biology_scientist/contact_map.py",
+                  "src/ai_structural_biology_scientist/dispatch.py",
+                  "src/ai_structural_biology_scientist/evidence.py",
+                  "src/ai_structural_biology_scientist/hydrophobicity.py",
+                  "src/ai_structural_biology_scientist/protein_docking_score.py",
+                  "src/ai_structural_biology_scientist/secondary_structure.py",
+                  "src/ai_structural_biology_scientist/structural_similarity.py",
+                  "src/ai_structural_biology_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                  "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
+                  "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50",
+                  "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                  "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                  "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                  "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                  "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                }
+              },
+              "REQ-ASTRUCT-003": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_structural_biology_scientist/contact_map.py",
+                  "src/ai_structural_biology_scientist/dispatch.py",
+                  "src/ai_structural_biology_scientist/evidence.py",
+                  "src/ai_structural_biology_scientist/hydrophobicity.py",
+                  "src/ai_structural_biology_scientist/protein_docking_score.py",
+                  "src/ai_structural_biology_scientist/secondary_structure.py",
+                  "src/ai_structural_biology_scientist/structural_similarity.py",
+                  "src/ai_structural_biology_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                  "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
+                  "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50",
+                  "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                  "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                  "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                  "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                  "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                }
+              },
+              "REQ-ASTRUCT-004": {
+                "paths": [
+                  "src/ai_structural_biology_scientist/evidence.py"
+                ],
+                "fingerprints": {
+                  "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50"
+                }
+              },
+              "REQ-ASTRUCT-010": {
+                "paths": [
+                  "src/ai_structural_biology_scientist/secondary_structure.py",
+                  "src/ai_structural_biology_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                  "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                }
+              },
+              "REQ-ASTRUCT-020": {
+                "paths": [
+                  "src/ai_structural_biology_scientist/hydrophobicity.py",
+                  "src/ai_structural_biology_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                  "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                }
+              },
+              "REQ-ASTRUCT-030": {
+                "paths": [
+                  "src/ai_structural_biology_scientist/protein_docking_score.py",
+                  "src/ai_structural_biology_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                  "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                }
+              },
+              "REQ-ASTRUCT-040": {
+                "paths": [
+                  "src/ai_structural_biology_scientist/structural_similarity.py",
+                  "src/ai_structural_biology_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                  "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                }
+              },
+              "REQ-ASTRUCT-050": {
+                "paths": [
+                  "src/ai_structural_biology_scientist/contact_map.py",
+                  "src/ai_structural_biology_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                  "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                }
+              }
+            }
+          },
+          "order": 835
         }
       },
       "tddBatches": [
