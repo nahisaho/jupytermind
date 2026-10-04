@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T22:19:47.483Z",
+  "generatedAt": "2026-10-04T22:28:21.043Z",
   "status": "fail",
   "checks": [
     {
@@ -229,17 +229,17 @@
         {
           "code": "TRACE_COVERAGE",
           "severity": "error",
-          "message": "design link coverage 0.928 is below 1."
+          "message": "design link coverage 0.9296875 is below 1."
         },
         {
           "code": "TRACE_COVERAGE",
           "severity": "error",
-          "message": "implementation link coverage 0.928 is below 1."
+          "message": "implementation link coverage 0.9296875 is below 1."
         },
         {
           "code": "TRACE_COVERAGE",
           "severity": "error",
-          "message": "tests link coverage 0.928 is below 1."
+          "message": "tests link coverage 0.9296875 is below 1."
         }
       ]
     },
@@ -254,7 +254,7 @@
       "name": "formal",
       "required": false,
       "status": "pass",
-      "summary": "12/143 requirements modeled; consistency consistent; solver not-requested.",
+      "summary": "12/146 requirements modeled; consistency consistent; solver not-requested.",
       "diagnostics": [
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -599,6 +599,21 @@
         {
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
+          "message": "REQ-AIDS-090 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-091 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-092 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
           "message": "REQ-AIDS-016 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
@@ -931,7 +946,7 @@
       "name": "tdd",
       "required": true,
       "status": "fail",
-      "summary": "311 Red-Green TDD cycle(s) recorded.",
+      "summary": "320 Red-Green TDD cycle(s) recorded.",
       "diagnostics": [
         {
           "code": "TDD_REQUIREMENT_UNCOVERED",
@@ -1111,7 +1126,7 @@
       "name": "change-history",
       "required": true,
       "status": "fail",
-      "summary": "13 staged change(s) checked for ordered artifact and TDD evidence.",
+      "summary": "14 staged change(s) checked for ordered artifact and TDD evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_WAIVER_STALE",
@@ -2545,6 +2560,78 @@
             "reason": "Retroactive evidence re-recording after merging CHANGE-015 into main required replaying phases against a post-merge baseline; TDD red/green cycles for TEST-AIDS-215/TEST-AIDS-021 were genuinely executed but fall outside the strict chronological window due to this replay, consistent with CHANGE-016 precedent.",
             "recordedAt": "2026-10-04T22:18:42.510Z"
           }
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-016 has no valid Red evidence for REQ-AIDS-090 before its Red phase.",
+          "changeId": "CHANGE-016",
+          "requirementId": "REQ-AIDS-090",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+            "recordedAt": "2026-10-04T22:27:16.503Z"
+          }
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-016 has no valid Green evidence for REQ-AIDS-090 before its Green phase.",
+          "changeId": "CHANGE-016",
+          "requirementId": "REQ-AIDS-090",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+            "recordedAt": "2026-10-04T22:27:16.978Z"
+          }
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-016 has no valid Red evidence for REQ-AIDS-091 before its Red phase.",
+          "changeId": "CHANGE-016",
+          "requirementId": "REQ-AIDS-091",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+            "recordedAt": "2026-10-04T22:27:17.955Z"
+          }
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-016 has no valid Green evidence for REQ-AIDS-091 before its Green phase.",
+          "changeId": "CHANGE-016",
+          "requirementId": "REQ-AIDS-091",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+            "recordedAt": "2026-10-04T22:27:18.451Z"
+          }
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-016 has no valid Red evidence for REQ-AIDS-092 before its Red phase.",
+          "changeId": "CHANGE-016",
+          "requirementId": "REQ-AIDS-092",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+            "recordedAt": "2026-10-04T22:27:19.391Z"
+          }
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-016 has no valid Green evidence for REQ-AIDS-092 before its Green phase.",
+          "changeId": "CHANGE-016",
+          "requirementId": "REQ-AIDS-092",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+            "recordedAt": "2026-10-04T22:27:19.855Z"
+          }
         }
       ]
     },
@@ -2552,7 +2639,7 @@
       "name": "change-completeness",
       "required": true,
       "status": "fail",
-      "summary": "2/13 staged change(s) have semantically complete evidence.",
+      "summary": "3/14 staged change(s) have semantically complete evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_WAIVER_STALE",
@@ -3501,6 +3588,42 @@
             "reason": "Retroactive evidence re-recording after merging CHANGE-015 into main required replaying phases against a post-merge baseline; TDD red/green cycles for TEST-AIDS-215/TEST-AIDS-021 were genuinely executed but fall outside the strict chronological window due to this replay, consistent with CHANGE-016 precedent.",
             "recordedAt": "2026-10-04T22:18:43.599Z"
           }
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "warning",
+          "message": "CHANGE-016:REQ-AIDS-090 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-016",
+          "requirementId": "REQ-AIDS-090",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+            "recordedAt": "2026-10-04T22:27:17.481Z"
+          }
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "warning",
+          "message": "CHANGE-016:REQ-AIDS-091 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-016",
+          "requirementId": "REQ-AIDS-091",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+            "recordedAt": "2026-10-04T22:27:18.914Z"
+          }
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "warning",
+          "message": "CHANGE-016:REQ-AIDS-092 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-016",
+          "requirementId": "REQ-AIDS-092",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+            "recordedAt": "2026-10-04T22:27:20.309Z"
+          }
         }
       ]
     },
@@ -3509,7 +3632,7 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/ruff: completed, exit 0.",
-      "durationMs": 21,
+      "durationMs": 24,
       "exitCode": 0,
       "stdout": "149 files already formatted\n",
       "stderr": ""
@@ -3519,16 +3642,16 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/pytest: completed, exit 0.",
-      "durationMs": 50261,
+      "durationMs": 48596,
       "exitCode": 0,
-      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 466 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ......                    [  2%]\ntests/test_ai_chemistry_scientist_dispatch.py ...................        [  6%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [  8%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [  9%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 10%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 12%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 13%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 14%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 15%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 18%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 21%]\n...                                                                      [ 21%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 24%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 28%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 29%]\ntests/test_ai_materials_scientist_fem.py .................               [ 33%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 36%]\n                                                                         [ 36%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 39%]\n...                                                                      [ 40%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 43%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 44%]\ntests/test_ai_scientist_delegation.py ............                       [ 47%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 47%]\ntests/test_ai_scientist_mcp.py ..........                                [ 49%]\ntests/test_ai_scientist_phase_state.py ........                          [ 51%]\ntests/test_ai_scientist_project_handle.py ...                            [ 51%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 53%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 53%]\ntests/test_analysis_assumptions.py ....                                  [ 54%]\ntests/test_anomaly_detection.py .                                        [ 54%]\ntests/test_automl.py ....                                                [ 55%]\ntests/test_cleaning.py .                                                 [ 55%]\ntests/test_clustering.py ..                                              [ 55%]\ntests/test_dashboard.py .                                                [ 56%]\ntests/test_data_definition.py .....                                      [ 57%]\ntests/test_data_quality.py .....                                         [ 58%]\ntests/test_dataset_validation.py ......                                  [ 59%]\ntests/test_dependency_pins.py ...                                        [ 60%]\ntests/test_eda.py .....                                                  [ 61%]\ntests/test_example_readiness.py .                                        [ 61%]\ntests/test_experiment_evaluation.py .............                        [ 64%]\ntests/test_explainability.py ...........                                 [ 66%]\ntests/test_feature_engineering.py ..........                             [ 68%]\ntests/test_gate_config.py .                                              [ 68%]\ntests/test_ingestion.py ........                                         [ 70%]\ntests/test_insight_engine.py ........                                    [ 72%]\ntests/test_japanese_nlp.py .                                             [ 72%]\ntests/test_jupyter_mcp_client.py ..                                      [ 72%]\ntests/test_language_router.py .                                          [ 73%]\ntests/test_lifecycle.py .....                                            [ 74%]\ntests/test_mcp_gateway.py ......                                         [ 75%]\ntests/test_mcp_runtime.py ......                                         [ 76%]\ntests/test_mcp_runtime_integration.py .                                  [ 77%]\ntests/test_ml_modeling.py ........                                       [ 78%]\ntests/test_model_tuning.py ....                                          [ 79%]\ntests/test_notebook_audit.py .......................                     [ 84%]\ntests/test_project_manager.py ..........                                 [ 86%]\ntests/test_report_export.py ...                                          [ 87%]\ntests/test_sensitivity.py ............                                   [ 89%]\ntests/test_skill_packaging.py .                                          [ 90%]\ntests/test_stats_analysis.py ..........                                  [ 92%]\ntests/test_text_nlp.py .                                                 [ 92%]\ntests/test_timeseries.py ..                                              [ 92%]\ntests/test_visual_audit.py ...........                                   [ 95%]\ntests/test_visualization.py ......................                       [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 466 passed in 47.96s =============================\n",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 482 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ......                    [  2%]\ntests/test_ai_chemistry_scientist_dispatch.py ...................        [  6%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [  8%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [  8%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [  9%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 11%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 12%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 14%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 15%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 17%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 20%]\n...                                                                      [ 20%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 23%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 27%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 28%]\ntests/test_ai_materials_scientist_fem.py .................               [ 32%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 35%]\n                                                                         [ 35%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 38%]\n...                                                                      [ 39%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 41%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 43%]\ntests/test_ai_scientist_delegation.py ............                       [ 45%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 45%]\ntests/test_ai_scientist_mcp.py ..........                                [ 47%]\ntests/test_ai_scientist_phase_state.py ........                          [ 49%]\ntests/test_ai_scientist_project_handle.py ...                            [ 50%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 51%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 51%]\ntests/test_analysis_assumptions.py ....                                  [ 52%]\ntests/test_anomaly_detection.py .                                        [ 52%]\ntests/test_automl.py ....                                                [ 53%]\ntests/test_cleaning.py .                                                 [ 53%]\ntests/test_clustering.py ..                                              [ 53%]\ntests/test_dashboard.py .                                                [ 54%]\ntests/test_data_definition.py .....                                      [ 55%]\ntests/test_data_quality.py .....                                         [ 56%]\ntests/test_dataset_validation.py ......                                  [ 57%]\ntests/test_dependency_pins.py ...                                        [ 58%]\ntests/test_eda.py .....                                                  [ 59%]\ntests/test_example_readiness.py .                                        [ 59%]\ntests/test_experiment_evaluation.py .............................        [ 65%]\ntests/test_explainability.py ...........                                 [ 67%]\ntests/test_feature_engineering.py ..........                             [ 69%]\ntests/test_gate_config.py .                                              [ 69%]\ntests/test_ingestion.py ........                                         [ 71%]\ntests/test_insight_engine.py ........                                    [ 73%]\ntests/test_japanese_nlp.py .                                             [ 73%]\ntests/test_jupyter_mcp_client.py ..                                      [ 73%]\ntests/test_language_router.py .                                          [ 74%]\ntests/test_lifecycle.py .....                                            [ 75%]\ntests/test_mcp_gateway.py ......                                         [ 76%]\ntests/test_mcp_runtime.py ......                                         [ 77%]\ntests/test_mcp_runtime_integration.py .                                  [ 77%]\ntests/test_ml_modeling.py ........                                       [ 79%]\ntests/test_model_tuning.py ....                                          [ 80%]\ntests/test_notebook_audit.py .......................                     [ 85%]\ntests/test_project_manager.py ..........                                 [ 87%]\ntests/test_report_export.py ...                                          [ 87%]\ntests/test_sensitivity.py ............                                   [ 90%]\ntests/test_skill_packaging.py .                                          [ 90%]\ntests/test_stats_analysis.py ..........                                  [ 92%]\ntests/test_text_nlp.py .                                                 [ 92%]\ntests/test_timeseries.py ..                                              [ 93%]\ntests/test_visual_audit.py ...........                                   [ 95%]\ntests/test_visualization.py ......................                       [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 482 passed in 46.31s =============================\n",
       "stderr": ""
     },
     {
       "name": "test-identities",
       "required": false,
       "status": "fail",
-      "summary": "388/389 annotated test IDs passed in structured command reports.",
+      "summary": "399/400 annotated test IDs passed in structured command reports.",
       "diagnostics": [
         {
           "code": "TEST_ID_NOT_PASSED",
@@ -3631,20 +3754,20 @@
     "trace.errors": 3,
     "graph.violations": 0,
     "formal.errors": 0,
-    "formal.modeledFraction": 0.08391608391608392,
+    "formal.modeledFraction": 0.0821917808219178,
     "commands.failures": 0,
     "commands.skipped": 0,
-    "tests.annotatedIds": 389,
-    "tests.executedIds": 388,
-    "tdd.cycles": 311,
+    "tests.annotatedIds": 400,
+    "tests.executedIds": 399,
+    "tdd.cycles": 320,
     "tdd.errors": 27,
-    "changes.count": 13,
+    "changes.count": 14,
     "changes.errors": 146,
-    "changes.complete": 2,
+    "changes.complete": 3,
     "changes.completenessErrors": 136,
     "performance.budgets": 1,
     "performance.errors": 2,
-    "mutation.requirements": 119,
+    "mutation.requirements": 122,
     "mutation.coveredRequirements": 0,
     "mutation.mutants": 0,
     "mutation.errors": 0,
@@ -3653,9 +3776,9 @@
     "modelCorrespondence.errors": 1,
     "attestation.errors": 0,
     "approval.errors": 1,
-    "coverage.design": 0.928,
-    "coverage.implementation": 0.928,
-    "coverage.tests": 0.928
+    "coverage.design": 0.9296875,
+    "coverage.implementation": 0.9296875,
+    "coverage.tests": 0.9296875
   },
   "mode": "changed",
   "feature": null,
@@ -3667,7 +3790,15 @@
     ".musubix/evidence/changes.json",
     ".musubix/evidence/formal.json",
     ".musubix/evidence/model-correspondence.json",
-    ".musubix/evidence/native/test/TEST-AIDS-215.json",
+    ".musubix/evidence/native/test/TEST-AIDS-221.json",
+    ".musubix/evidence/native/test/TEST-AIDS-222.json",
+    ".musubix/evidence/native/test/TEST-AIDS-224.json",
+    ".musubix/evidence/native/test/TEST-AIDS-225.json",
+    ".musubix/evidence/native/test/TEST-AIDS-226.json",
+    ".musubix/evidence/native/test/TEST-AIDS-227.json",
+    ".musubix/evidence/native/test/TEST-AIDS-228.json",
+    ".musubix/evidence/native/test/TEST-AIDS-229.json",
+    ".musubix/evidence/native/test/TEST-AIDS-230.json",
     ".musubix/evidence/native/test/aggregate.json",
     ".musubix/evidence/order.json",
     ".musubix/evidence/performance.json",
@@ -3684,7 +3815,7 @@
   "impacted": [],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "57f09bd82bdadb2a254b0101268e729a61a6ad5e",
+    "head": "ffcd2e98830bf0e55f0b3cc4916813c50b9b9b5e",
     "changed": [
       ".musubix/evidence/.writer-lock.json",
       ".musubix/evidence/approvals/design.json",
@@ -3693,7 +3824,15 @@
       ".musubix/evidence/changes.json",
       ".musubix/evidence/formal.json",
       ".musubix/evidence/model-correspondence.json",
-      ".musubix/evidence/native/test/TEST-AIDS-215.json",
+      ".musubix/evidence/native/test/TEST-AIDS-221.json",
+      ".musubix/evidence/native/test/TEST-AIDS-222.json",
+      ".musubix/evidence/native/test/TEST-AIDS-224.json",
+      ".musubix/evidence/native/test/TEST-AIDS-225.json",
+      ".musubix/evidence/native/test/TEST-AIDS-226.json",
+      ".musubix/evidence/native/test/TEST-AIDS-227.json",
+      ".musubix/evidence/native/test/TEST-AIDS-228.json",
+      ".musubix/evidence/native/test/TEST-AIDS-229.json",
+      ".musubix/evidence/native/test/TEST-AIDS-230.json",
       ".musubix/evidence/native/test/aggregate.json",
       ".musubix/evidence/order.json",
       ".musubix/evidence/performance.json",
@@ -3708,7 +3847,7 @@
       ".musubix/features/example/trace.json"
     ],
     "impacted": [],
-    "generatedAt": "2026-10-04T22:19:47.483Z"
+    "generatedAt": "2026-10-04T22:28:21.043Z"
   },
   "fingerprints": {
     ".github/workflows/npm-publish.yml": "5b3c9cc9f02c8b7e32568958cf306ee241d1adb5af7ab4a0bf8bf06f7047f319",
@@ -3728,6 +3867,7 @@
     ".musubix/changes/CHANGE-012.md": "9404d9185aeae96c7f24230b6995957bb31e7f5294188b6f088bb2e6be9eccca",
     ".musubix/changes/CHANGE-014.md": "9a7e8d9088792036da3e4ef96af342c9e4d896fafdf849d8b430bd49f4273f6c",
     ".musubix/changes/CHANGE-015.md": "9152404a6a6906515cbb56c91bee457ad0ea80b673b0a9de77682d2d17e9b171",
+    ".musubix/changes/CHANGE-016.md": "2abc1ff662dffe9e2c6793b9e6c75c1f7b90f52877a7e2125acf965f4d71e7e2",
     ".musubix/changes/CHANGE-017.md": "17962725b84c225d7ae07c958fd03c0db86f2189128ea8b27605f253d3f8c2e6",
     ".musubix/config.json": "3a39ebdb925b9a6e8a1c30d7db46e408f40254da274cc95d02c8e7ab593caec2",
     ".musubix/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
@@ -3764,12 +3904,15 @@
     ".musubix/decisions/ADR-0031.md": "fb92067d0729d9a0e46686aebf10cf264b9438c8f2b029449b2b01c8774b3d66",
     ".musubix/decisions/ADR-0032.md": "e7f4df0112188f25af966498c3fa27b22a92c7dcd6244656650f6c967b33f2d5",
     ".musubix/decisions/ADR-0053.md": "87a387b7735878914fb218694d4b5ecd40312e45c933c3b39d6403ae368ac8b4",
+    ".musubix/decisions/ADR-0054.md": "875b6c8911b28929568389d669ae03e8b5e7796d732c3cb8c295d0cb084a840b",
+    ".musubix/decisions/ADR-0055.md": "31222fb8553a13bdcb3981d5f126a927800f9373a9586f9b539932813e098f87",
+    ".musubix/decisions/ADR-0056.md": "35a308a0e5dbc5990333b7490e134978e4b6554914b87ed5ab9a527db1eecf50",
     ".musubix/features/ai-chemistry-scientist/design.md": "3fc504cbeb47081bd487ffe325d76cc06a4b6b8b7e1b661fe40d4befcac8228a",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "50db33cf117db410f0d028e52ab0ebe9f24b07ec410915f30e24b3764de567f9",
     ".musubix/features/ai-data-scientist/design.md": "d317616c00ab4a28157841e5a94fe910013cfbdd5ee7ecd7c13ff920c05de28b",
     ".musubix/features/ai-data-scientist/requirements.md": "3cc394cb861960154c378a9a92a94b4e842410e555319fe1dbffae81a0f3d8ae",
-    ".musubix/features/ai-data-scientist-ml/design.md": "79294906f51719b57109907a970ebb1e5b40bb1c44b6d3235498a36a796175fc",
-    ".musubix/features/ai-data-scientist-ml/requirements.md": "fc13bcd94376959bd3033f5df0b581f53a10e93c639af218e7b63205749363f1",
+    ".musubix/features/ai-data-scientist-ml/design.md": "667a317ab3fd6e6511e4529aa32685a733f0489ef3a2dd7d61a6fb48ddf81832",
+    ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
     ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
     ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
@@ -3782,7 +3925,7 @@
     ".pytest_cache/CACHEDIR.TAG": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
     ".pytest_cache/README.md": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
     ".pytest_cache/v/cache/lastfailed": "81cedc93aca672891b6c36a0387209c13facef06b8f6764317f161f191fce566",
-    ".pytest_cache/v/cache/nodeids": "8efb7c99f967189c845666fbdac08540c7abe01cb57fe8b79e4990b7d88c4069",
+    ".pytest_cache/v/cache/nodeids": "cd6881239af8161f7cd5049fda21f27b72be33d4f738adce7ac539455cdd8960",
     ".ruff_cache/.gitignore": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
     ".ruff_cache/0.15.9/4191559382911397082": "fc3e3f1cc006e12aaffc7c64c5abe418e5fd37782d581ea653ea543bc06f93cc",
     ".ruff_cache/0.15.9/4220744145795592868": "df2a5d53e93b374c13dac282b6dd44111d602a52312a5d7ba9154e5311361931",
@@ -3794,7 +3937,7 @@
     ".ruff_cache/0.16.10/12369975972645738066": "1234f75c7888563a3730e4257f0ae1f2b6803a886b1be034a2c9e67bba77b011",
     ".ruff_cache/0.16.10/12870217984697571422": "0576fb16690ad356020da4464475e3bd2e036a81206c04d1e31b92c364d1b6b2",
     ".ruff_cache/0.16.10/13013270708308976290": "10cbf4221ba099424ec69c98ec5f9f781f486d9d3295b8ea1f725f41773f2050",
-    ".ruff_cache/0.16.10/13571219874277570399": "2a8ee4c2db26ace47f4e9d366cb1b40a68af3d9e6fc79941962888975ce9b011",
+    ".ruff_cache/0.16.10/13571219874277570399": "729ab42f8b60021b10d1d8b51ebb166b942232e64fbd6c917ed800fda775d8c8",
     ".ruff_cache/0.16.10/13837995600546456299": "78f165c52e4e61686d61d3bd3536b3df89f9e1027e4d4288c20c27c6c9501f0c",
     ".ruff_cache/0.16.10/14794511620140444819": "610e50e8892910c1dfa7c591160cff331b78af26de30d5b851b88bc0f1a0a219",
     ".ruff_cache/0.16.10/14856303154967735353": "aa22316f7c7abab70cb956ed088ac4cf6f6381835fff90c0e2d93477ecee5daa",
@@ -3830,7 +3973,7 @@
     ".ruff_cache/0.16.10/8829682673503729361": "e24bfcff986b9059bac378052254915ce351032704eeaba04a9be26d65853bef",
     ".ruff_cache/0.16.10/9201830452574903020": "5b831714dc0905b1958dea650156290e3d6206e2d4c20afeea512d47537ee97f",
     ".ruff_cache/0.16.10/9527474073797359755": "e3ecc7617fc1010a79affe3ce59aa9670f7a7cd30b218a70143ee23dc402a608",
-    ".ruff_cache/0.16.10/9994341312109798778": "0dec0ce50f5a9e08b1bc4a94b3152468a65cdd9f12f1d8bc2a0bc6b697fdcc39",
+    ".ruff_cache/0.16.10/9994341312109798778": "e305a6c38ade16b051771ef1dd3decaaf05597b28b5536f47cf1facfc1775a14",
     ".ruff_cache/0.16.9/10368445353455821378": "1f71db5f0b2b541a58d54e8b3dcb50fb9ba26a53ab87d83bc01c5c5b5ef1728d",
     ".ruff_cache/0.16.9/10475705668944416582": "af84e7104c6973dae733e8f97dac6482d4127ceeb3ed9da0b7ef28c9ed665194",
     ".ruff_cache/0.16.9/10579984203275047153": "082280517ef72ea9903e93a392edca9814f2bd1ff42aae270e2df5dc3475e5a2",
@@ -4768,7 +4911,7 @@
     "src/ai_data_scientist/dataset_validation.py": "2ace66b016d06c0d1eab9c15ca769efb61aab901c83ff4bf067c726c1ccc0596",
     "src/ai_data_scientist/dependency_pins.py": "7f62ebf5e10cf25786700453e5bce0c1ba9428694e9f1c4ab4417bf4f8d49e60",
     "src/ai_data_scientist/eda.py": "b81e5e3ac240b3e66e30cc8f6fe57fc34a34b1fb58f72ecd955db9c6b1550ec4",
-    "src/ai_data_scientist/experiment_evaluation.py": "abf5e551c0c7a0d1a4a3c9fdf8ab3a8e5e0c80242ec44cd9a581b2d5a8089417",
+    "src/ai_data_scientist/experiment_evaluation.py": "e6ba71d476269b6068aff7b399f5a90aa7f707f332e1b5adbc5350a725c73296",
     "src/ai_data_scientist/explainability.py": "0a007c89f07554e33eae638d6b0e2d7002bf83e14b91c97a67a0011cbaf39d0e",
     "src/ai_data_scientist/feature_engineering.py": "a496f0f8a99fc18f4c6c648b447fbad76ac13b88cae298eeadac55e2ff472495",
     "src/ai_data_scientist/gate_config.py": "c9ef43241e082fbb5f73c730353b76ba37c59334b12e973afaae99bd0cee45dd",
@@ -4875,7 +5018,7 @@
     "tests/test_dependency_pins.py": "40aa635b09a8f4ea952266a7cfe36826383a668f619664eb68063c11afaecac5",
     "tests/test_eda.py": "c1788a18c88015b40a6edf311a3c9f80bad2de40a4a51bbfc4618f363bc6eceb",
     "tests/test_example_readiness.py": "fc39997318a3cfecae12afaff9360d9041e8f6f989d3f29c3bb0bf6d2759b974",
-    "tests/test_experiment_evaluation.py": "6d9c659bcff8db67d39a6765a35819ccbe6bbb1aa1e58a606a42f53b568481b6",
+    "tests/test_experiment_evaluation.py": "305e835cca9424709559497406434e3f721d8adf4ba671d909fb3749908e6366",
     "tests/test_explainability.py": "29b3005a88fc9a754857daae3456ad67de229b7d1cf4716c647384bc814f1d45",
     "tests/test_feature_engineering.py": "5117272c89e7ac8720068497d409db68b63bf7cde3b0b720cfb33f167dc483ee",
     "tests/test_gate_config.py": "4ac5cee06bd95f68897150aa8745af59fe4aad601dbced01e33354392374250c",
@@ -5302,6 +5445,78 @@
       "approver": "nahisaho",
       "reason": "Retroactive evidence re-recording after merging CHANGE-015 into main required replaying phases against a post-merge baseline; TDD red/green cycles for TEST-AIDS-215/TEST-AIDS-021 were genuinely executed but fall outside the strict chronological window due to this replay, consistent with CHANGE-016 precedent.",
       "recordedAt": "2026-10-04T22:18:43.599Z"
+    },
+    {
+      "changeId": "CHANGE-016",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-090",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+      "recordedAt": "2026-10-04T22:27:16.503Z"
+    },
+    {
+      "changeId": "CHANGE-016",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-090",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+      "recordedAt": "2026-10-04T22:27:16.978Z"
+    },
+    {
+      "changeId": "CHANGE-016",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-090",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+      "recordedAt": "2026-10-04T22:27:17.481Z"
+    },
+    {
+      "changeId": "CHANGE-016",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-091",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+      "recordedAt": "2026-10-04T22:27:17.955Z"
+    },
+    {
+      "changeId": "CHANGE-016",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-091",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+      "recordedAt": "2026-10-04T22:27:18.451Z"
+    },
+    {
+      "changeId": "CHANGE-016",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-091",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+      "recordedAt": "2026-10-04T22:27:18.914Z"
+    },
+    {
+      "changeId": "CHANGE-016",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-092",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+      "recordedAt": "2026-10-04T22:27:19.391Z"
+    },
+    {
+      "changeId": "CHANGE-016",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-092",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+      "recordedAt": "2026-10-04T22:27:19.855Z"
+    },
+    {
+      "changeId": "CHANGE-016",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-092",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merge-conflict resolution (revert-restore technique); TDD cycles were genuinely executed during original development but fall outside the strict chronological window expected by retroactive replay.",
+      "recordedAt": "2026-10-04T22:27:20.309Z"
     }
   ],
   "workflowWaivers": [],
