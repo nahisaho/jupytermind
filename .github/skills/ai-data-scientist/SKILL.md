@@ -38,11 +38,38 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
    `ai_data_scientist.language_router.detect_language(instruction_text)` and
    use its result for every reply and inserted markdown cell in this turn
    (REQ-AIDS-001).
-3. **Execute analysis code via Jupyter MCP** — call
+3. **Execute analysis code via Jupyter MCP** — `run_and_record` is a
+   **host-side** API: it takes an in-process `MCPClient` object (anything
+   exposing `.execute(code) -> dict`) and is meant for a Python process that
+   holds its own direct connection to the Jupyter MCP server/kernel. If
+   your own process has such a client, call
    `ai_data_scientist.mcp_gateway.run_and_record(client, handle, code,
-   timeout_ms=30000)`. It routes execution only through the configured MCP
-   client, enforces the timeout, and appends the executed cell only on
-   success — never a partial/corrupted cell (REQ-AIDS-003/030/031).
+   timeout_ms=30000)`; it routes execution only through that client,
+   enforces the timeout, and appends the executed cell only on success —
+   never a partial/corrupted cell (REQ-AIDS-003/030/031).
+
+   If instead you are a Copilot CLI (or similar) agent that executes code
+   by calling Jupyter MCP tools directly (e.g. `insert_execute_code_cell`)
+   — with no in-process `MCPClient` instance of your own to pass in — do
+   **not** try to construct/pass a client whose transport would submit work
+   synchronously back into the same kernel that is executing it (risks
+   deadlock/reentrancy). `run_and_record` itself cannot run in that case, so
+   you are responsible for reproducing its guarantees yourself: no
+   partial/corrupted cell on failure or timeout, and the user is notified on
+   failure (REQ-AIDS-003/030/031) — lifecycle calls alone do **not** provide
+   this; they only track run/cancellation state. At minimum: call
+   `register_run(run_id, handle.notebook_path)`, then
+   `mark_execution_start(run_id)`, invoke the MCP tool, and in a `finally`
+   block call `mark_execution_end(run_id)`; on success call
+   `mark_completed(run_id)` and on failure/timeout call `mark_failed(run_id)`
+   **and** ensure the MCP tool did not leave a partial/corrupted cell (e.g.
+   delete it if it did) and surface the failure to the user — do not rely on
+   `insert_execute_code_cell` alone to guarantee this (see step 11 for the
+   full lifecycle-call set, including `mark_write_start`/`mark_write_end`
+   if the same tool call also writes the notebook). Note the fallback
+   explicitly in the notebook or hand-off notes (e.g. "executed via MCP
+   tool, not run_and_record") so later audits are not misled into assuming
+   a host-side client was used.
 4. **Ingest data** with `ai_data_scientist.ingestion.ingest(source_spec,
    fetcher=..., allowlist=..., row_limit=...)` for CSV, Excel, database, or
    API sources; non-allowlisted hosts and over-limit responses are rejected
@@ -71,8 +98,10 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
    in the notebook JSON (REQ-AIDS-007). `render_chart`/`record_chart` render
    locally and never execute the stored code string against the live
    Jupyter kernel (REQ-AIDS-040): only reference variables already
-   established by a prior `run_and_record` call in that code string, so the
-   notebook stays consistent if a human re-runs it top-to-bottom later.
+   established by a prior successful MCP-routed execution (via
+   `run_and_record`, or the direct-MCP-tool fallback from step 3) in that
+   code string, so the notebook stays consistent if a human re-runs it
+   top-to-bottom later.
    Pass Japanese (or other non-ASCII) text in `title`/`xlabel`/`ylabel`
    freely: `render_chart` automatically switches to a bundled
    Japanese-capable font the first time such text appears in a process, so
@@ -125,7 +154,8 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
 11. **Manage long-running or cancellable work** — for any analysis that may
     run long enough that a user wants to cancel it, or that writes to the
     notebook from a background task, call
-    `ai_data_scientist.lifecycle.register_run(run_id)` first, call
+    `ai_data_scientist.lifecycle.register_run(run_id, handle.notebook_path)`
+    first (both arguments are required), call
     `mark_execution_start`/`mark_execution_end` (and
     `mark_write_start`/`mark_write_end`) around the corresponding work, check
     `is_cancel_requested(run_id)` between steps, and call
