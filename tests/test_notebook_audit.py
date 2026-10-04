@@ -566,3 +566,125 @@ def test_TEST_AIDS_143_heading_only_cell_is_not_an_insight_candidate(tmp_path):
 
     assert report.ok is True
     assert report.insight_cell_count == 0
+
+
+# @id TEST-AIDS-211
+# @verifies REQ-AIDS-045
+def test_TEST_AIDS_211_duplicate_execution_count_is_reported_as_warning(tmp_path):
+    """GitHub #54: two executed code cells sharing execution_count must be
+    reported (as a warning, since it does not necessarily indicate any
+    specific insight is wrong) instead of passing unnoticed."""
+    handle = resolve_project("audit-duplicate-execcount-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[nbformat.v4.new_output("stream", name="stdout", text="AUC=0.9500\n")],
+    )
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[nbformat.v4.new_output("stream", name="stdout", text="AUC=0.9500 baseline\n")],
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    duplicate_finding = next(
+        f for f in report.findings if "is shared by" in f.message and "execution_count" in f.message
+    )
+    assert duplicate_finding.severity == "warning"
+    assert duplicate_finding.cell_index == 0
+    assert "execution_count=1" in duplicate_finding.message
+    assert "[0, 1]" in duplicate_finding.message
+
+
+# @id TEST-AIDS-212
+# @verifies REQ-AIDS-045
+def test_TEST_AIDS_212_ambiguous_evidence_manifest_is_flagged_as_error(tmp_path):
+    """GitHub #54: an insight's evidence manifest referencing an
+    execution_count that now matches more than one executed cell's output
+    must be flagged as an error, not resolved to whichever cell is first."""
+    handle = resolve_project("audit-ambiguous-evidence-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[nbformat.v4.new_output("stream", name="stdout", text="AUC=0.9500\n")],
+    )
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[nbformat.v4.new_output("stream", name="stdout", text="AUC=0.9500 baseline\n")],
+    )
+    manifest = json.dumps(
+        {"execution_count": 1, "cited_value": "0.9500", "claim_type": "performance"}
+    )
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell(
+            f"The model reaches AUC 0.9500.\n\n```evidence\n{manifest}\n```"
+        )
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is False
+    ambiguous_finding = next(
+        f for f in report.findings if "ambiguous" in f.message and f.cell_index == 2
+    )
+    assert ambiguous_finding.severity == "error"
+
+
+# @id TEST-AIDS-292
+# @verifies REQ-AIDS-045
+def test_TEST_AIDS_292_ambiguous_supporting_evidence_entry_is_flagged_as_error(tmp_path):
+    """GitHub #54: a `supporting_evidence` entry (not just the top-level
+    evidence manifest) referencing an execution_count that matches more than
+    one executed cell's output must also be flagged as ambiguous."""
+    handle = resolve_project("audit-ambiguous-supporting-evidence-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[nbformat.v4.new_output("stream", name="stdout", text="AUC=0.9500\n")],
+    )
+    _add_code_cell(
+        notebook,
+        execution_count=2,
+        outputs=[nbformat.v4.new_output("stream", name="stdout", text="Recall=0.8800\n")],
+    )
+    _add_code_cell(
+        notebook,
+        execution_count=2,
+        outputs=[nbformat.v4.new_output("stream", name="stdout", text="Recall=0.8800 baseline\n")],
+    )
+    manifest = json.dumps(
+        {
+            "execution_count": 1,
+            "cited_value": "0.9500",
+            "claim_type": "performance",
+            "supporting_evidence": [{"execution_count": 2, "cited_value": "0.8800"}],
+        }
+    )
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell(
+            f"The model reaches AUC 0.9500, supported by Recall 0.8800.\n\n"
+            f"```evidence\n{manifest}\n```"
+        )
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is False
+    ambiguous_finding = next(
+        f
+        for f in report.findings
+        if "ambiguous" in f.message and "supporting_evidence" in f.message
+    )
+    assert ambiguous_finding.severity == "error"
+    assert ambiguous_finding.cell_index == 3

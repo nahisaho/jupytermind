@@ -74,8 +74,8 @@ Formal: {"kind":"transition","from":"evidence_executed","event":"insight_request
 Priority: must
 Type: functional
 Pattern: unwanted-behavior
-Statement: If the system cannot locate an executed evidentiary cell for a candidate insight, then the system shall withhold that insight and notify the user that supporting evidence could not be established.
-Acceptance: Simulating a failed or skipped execution before an insight request results in no insight markdown cell being written and a user visible notification message in the configured response language.
+Statement: If the system cannot locate exactly one executed evidentiary cell for a candidate insight, then the system shall withhold that insight and notify the user that supporting evidence could not be established or could not be uniquely identified.
+Acceptance: Simulating a failed or skipped execution before an insight request results in no insight markdown cell being written and a user visible notification message in the configured response language. If more than one executed code cell shares the same execution_count and output containing the cited value (GitHub #54), the insight is likewise withheld with a distinct ambiguous-evidence notification instead of silently resolving to the first matching cell.
 
 ## REQ-AIDS-011: Analysis history persistence / 分析履歴の永続化
 Priority: must
@@ -231,8 +231,8 @@ Acceptance: Given the process working directory changes to a project's notebooks
 Priority: should
 Type: functional
 Pattern: event-driven
-Statement: When a caller requests an audit of a project notebook, the system shall report, without modifying the notebook, its nbformat validity, any unexecuted or error-producing code cells, and, for every markdown cell carrying or expected to carry an evidence manifest, whether that manifest is present, well-formed, and resolves to an existing executed cell whose output actually contains the cited value.
-Acceptance: Given a notebook with at least one unexecuted code cell, one error output, one chart output, one insight cell with a valid evidence manifest, and one insight-like cell with a missing or stale evidence manifest, auditing it reports each condition tied to its originating cell index, leaves the notebook file byte-for-byte unmodified, and yields a report whose overall pass/fail status is false whenever any error-level finding exists (so it is usable as a CI gate); auditing a fully well-formed notebook yields a passing status.
+Statement: When a caller requests an audit of a project notebook, the system shall report, without modifying the notebook, its nbformat validity, any unexecuted or error-producing code cells, any execution_count value shared by more than one code cell, and, for every markdown cell carrying or expected to carry an evidence manifest, whether that manifest is present, well-formed, and resolves to exactly one existing executed cell whose output actually contains the cited value.
+Acceptance: Given a notebook with at least one unexecuted code cell, one error output, one chart output, one insight cell with a valid evidence manifest, and one insight-like cell with a missing or stale evidence manifest, auditing it reports each condition tied to its originating cell index, leaves the notebook file byte-for-byte unmodified, and yields a report whose overall pass/fail status is false whenever any error-level finding exists (so it is usable as a CI gate); auditing a fully well-formed notebook yields a passing status. Given a notebook where two code cells share the same execution_count, auditing it reports a warning-level finding naming that execution_count and the sharing cell indices (GitHub #54); given an evidence manifest whose execution_count/cited_value pair matches more than one executed cell's output, auditing it reports an error-level finding that the evidentiary cell is ambiguous rather than silently validating against whichever cell is encountered first.
 
 ## REQ-AIDS-046: Legible Japanese chart text via bundled font / バンドル済みフォントによる日本語グラフ文言の可読表示
 Priority: must

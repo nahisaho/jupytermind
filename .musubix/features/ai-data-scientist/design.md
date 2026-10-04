@@ -58,12 +58,19 @@ Depends-On: DES-AIDS-003
 
 ## DES-AIDS-005: Data ingestion module / データ取込モジュール
 Responsibilities: Load data from CSV, Excel, database, API, image, or text
-sources into an in-memory dataframe, applying authentication, network
-allowlist, and row-count limits for remote sources before load.
+sources into an in-memory dataframe, applying authentication and network
+allowlist checks before any network call for remote (database/API)
+sources, then applying row-count limits to the resulting dataframe for
+those remote sources only.
 Interfaces: ingest(sourceSpec) -> DataframeHandle, executed via
 DES-AIDS-004.executeCell.
-Constraints: Must reject non-allowlisted hosts before any network call; must
-truncate and report when a configured row limit is exceeded.
+Constraints: Must reject non-allowlisted hosts before any network call;
+after a remote ("api"/"database") fetch completes, must truncate the
+resulting dataframe to the configured row limit and report the truncation
+when the fetched row count exceeds it (this bounds downstream processing,
+not the remote transfer/fetch itself). A local ("csv"/"excel") source must
+never be truncated by the row limit (GitHub #57): it is a remote-source
+safety control (REQ-AIDS-032), not a general ingestion cap.
 Requirements: REQ-AIDS-014, REQ-AIDS-032
 ADRs: none — ingestion safety limits follow directly from REQ-AIDS-032 with no competing architectural option considered.
 Depends-On: DES-AIDS-004
@@ -140,12 +147,19 @@ Depends-On: DES-AIDS-004
 Responsibilities: Generate reasoning-based insights, attach a structured
 evidence manifest citing the source cell's execution_count and cited output
 value, validate the manifest against the actual notebook JSON, and withhold
-the insight with a user notification when no valid evidentiary cell exists.
+the insight with a user notification when no valid evidentiary cell exists
+or when more than one executed code cell shares the same
+execution_count/cited_value pair (`AmbiguousEvidenceError`, a subclass of
+`EvidenceMissingError`; GitHub #54 — duplicate execution_count values are
+common after a kernel restart or appending to a notebook in a new
+session, and silently resolving to the first match risks attributing an
+insight to the wrong evidence).
 Interfaces: proposeInsight(handle, candidateText, evidenceRefs) ->
 InsightWriteResult | WithheldNotification.
 Constraints: Must never write an insight markdown cell whose evidence
-manifest fails validation. Must use DES-AIDS-003.enqueueWrite for all cell
-writes so concurrency guarantees hold.
+manifest fails validation or resolves ambiguously. Must use
+DES-AIDS-003.enqueueWrite for all cell writes so concurrency guarantees
+hold.
 Requirements: REQ-AIDS-009, REQ-AIDS-010, REQ-AIDS-027
 ADRs: ADR-0003
 Depends-On: DES-AIDS-003, DES-AIDS-004
@@ -308,13 +322,19 @@ Depends-On: DES-AIDS-003
 Responsibilities: Load a notebook via nbformat (without writing it back),
 and report: nbformat validity; per code cell, whether execution_count is set
 and whether any output has output_type "error"; per code cell, whether an
-"image/png" output is present (chart detection); and, per markdown cell
-whose source is non-empty and does not start with a heading ("#"), whether
-it carries a `\`\`\`evidence\n{...}\n\`\`\`` fenced JSON manifest with
+"image/png" output is present (chart detection); every execution_count value
+shared by more than one code cell, reported as a warning-level finding
+naming the execution_count and the sharing cell indices (GitHub #54 — a
+reused execution_count after a kernel restart or appending to a notebook
+in a new session does not by itself invalidate any specific insight, so it
+is a warning rather than an error); and, per markdown cell whose source is
+non-empty and does not start with a heading ("#"), whether it carries a
+`\`\`\`evidence\n{...}\n\`\`\`` fenced JSON manifest with
 execution_count/cited_value/claim_type keys that resolves (via the same
-matching rule insight_engine.record_insight uses) to an existing code cell
-output containing cited_value — flagging missing or stale manifests as
-error-level findings tied to their cell index.
+matching rule insight_engine.record_insight uses) to exactly one existing
+code cell output containing cited_value — flagging missing, stale, or
+ambiguous (matching more than one code cell) manifests as error-level
+findings tied to their cell index.
 Interfaces: audit_notebook(path: Path | str) -> NotebookAuditReport, where
 NotebookAuditReport exposes nbformat_valid, unexecuted_cell_indices,
 error_cell_indices, chart_cell_indices, findings (tuple of
@@ -324,8 +344,9 @@ Constraints: Must never call nbformat.write or otherwise mutate the file on
 disk; must not raise for a structurally valid-but-incomplete notebook (e.g.
 zero cells, zero insights) — only for an unreadable/invalid notebook file,
 which is instead reported as a single error-level finding; must reuse the
-same evidence cross-check semantics as DES-AIDS-010 rather than
-re-implementing a divergent matching rule.
+same evidence cross-check semantics as DES-AIDS-010 (including its
+`AmbiguousEvidenceError` ambiguity signal) rather than re-implementing a
+divergent matching rule.
 Requirements: REQ-AIDS-045
 ADRs: ADR-0009
 Depends-On: DES-AIDS-003, DES-AIDS-010
@@ -917,32 +938,60 @@ ADRs: none — a new, isolated module with no cross-cutting dependency or archit
 Depends-On: none
 
 ## DES-AIDS-044: Bounded sensitivity-analysis plan execution / 境界付き感度分析プラン実行
-Responsibilities: A new `sensitivity` module providing `SensitivityPlan`
-(target_claim: str, dimensions: dict[str, list], metrics: list[str],
-max_specifications: int = 100) and `run_sensitivity(plan, evaluator)`.
-`run_sensitivity` first computes the Cartesian product size of
-`dimensions` and raises `SensitivityBudgetExceededError` before invoking
-`evaluator` at all if that size exceeds `plan.max_specifications`.
-Otherwise it calls `evaluator(**specification)` for every combination,
-catching any exception per-specification (recorded as a failed
-specification, not aborting the rest), and classifies the run's overall
-conclusion by comparing the sign and relative magnitude of each
-specification's reported metric value against the first (baseline)
-specification: "reversed" if any later value's sign differs from the
-baseline's, "stable" if every value shares the baseline's sign and stays
-within a configurable relative tolerance band, otherwise "attenuated"; a
-plan with fewer than two successful specifications reports "not
-comparable".
-Interfaces: sensitivity.SensitivityPlan(target_claim, dimensions, metrics,
-max_specifications=100); sensitivity.run_sensitivity(plan, evaluator:
-Callable[..., float | dict]) -> SensitivityResult (specifications:
-tuple[SpecificationResult,...], conclusion: str).
-Constraints: `evaluator` is entirely caller-supplied (no built-in
+Responsibilities: A `sensitivity` module providing `SensitivityPlan`
+(parameter_grid: dict[str, list[Any]], max_runs: int = 100) and
+`run_sensitivity(plan, analysis_fn, stability_tolerance=0.2,
+absolute_tolerance=None)`. `plan.specifications()` first computes the
+Cartesian product of `parameter_grid` and raises
+`SensitivityBudgetExceededError` before invoking `analysis_fn` at all if
+that count exceeds `plan.max_runs`. Otherwise `run_sensitivity` calls
+`analysis_fn(**specification)` for every combination, catching any
+exception per-specification (recorded on that `SensitivityResult` as
+`failed=True`/`error=str(exc)`, not aborting the rest), and classifies the
+run's overall conclusion by comparing every successful result's sign and
+magnitude against the first successful (baseline) specification:
+"reversed" if any successful value's sign differs from another's,
+"not_comparable" if the baseline value is `0` and no `absolute_tolerance`
+was given (a relative deviation would be undefined), if every
+specification failed, or if the grid itself produced zero specifications
+(e.g. a dimension with an empty alternatives list); "stable" if all
+non-zero successful values share a sign and the maximum deviation is
+within tolerance, otherwise "attenuated". The magnitude
+criterion is `absolute_tolerance` (checked against
+`max_absolute_deviation`) when the caller supplies one, else
+`stability_tolerance` (checked against `max_relative_deviation`); which
+one was used is recorded on the report as `magnitude_criterion`, and
+whether all non-zero successful values shared a sign (a value of exactly
+`0` never breaks sign agreement) is recorded as `sign_consistent`
+(GitHub #53: this correction keeps the pre-existing `stable: bool` field,
+now `True` exactly when `classification == "stable"` — including the
+"not_comparable"/empty-grid and all-failed cases, where `stable` is
+`False` — for backward compatibility).
+Interfaces: sensitivity.SensitivityPlan(parameter_grid, max_runs=100);
+sensitivity.run_sensitivity(plan, analysis_fn: Callable[..., float],
+stability_tolerance=0.2, absolute_tolerance: float | None = None) ->
+SensitivityReport(results: tuple[SensitivityResult, ...], baseline_value,
+stable, max_relative_deviation, classification, max_absolute_deviation,
+sign_consistent, magnitude_criterion), where SensitivityResult carries
+specification, value, failed, error.
+Constraints: `analysis_fn` is entirely caller-supplied (no built-in
 statistical models); the module only orchestrates the bounded grid and
 classifies stability, keeping it generic across the issue's many example
-domains (clustering, regression, preprocessing toggles).
+domains (clustering, regression, preprocessing toggles). Classification
+must never report "stable" when successful values disagree in sign, and
+must never derive a relative deviation from a zero baseline without an
+explicit `absolute_tolerance`; `stable` must never be `True` when
+`classification != "stable"`.
 Requirements: REQ-AIDS-056
 ADRs: none — a new, isolated module; no shared state or cross-cutting concern introduced.
+Known gap (tracked as GitHub #59): REQ-AIDS-056's statement also describes
+an explicit "target claim" carried by the plan; `SensitivityPlan` does not
+yet expose a `target_claim` field distinct from `parameter_grid`
+naming, so REQ-AIDS-056 is not yet fully satisfied by this design/code.
+This predates CHANGE-014 (GitHub #53 concerned only the stability
+classification, not plan shape) and is out of scope for this change; it
+is tracked as explicit follow-up work in GitHub #59 rather than silently
+resolved or silently accepted as conformant here.
 Depends-On: none
 
 ## DES-AIDS-045: Independent-dataset overlap comparison / 独立データセット重複比較

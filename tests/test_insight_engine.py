@@ -6,6 +6,7 @@ import nbformat
 import pytest
 
 from ai_data_scientist.insight_engine import (
+    AmbiguousEvidenceError,
     CitedValueNotFoundError,
     EvidenceMissingError,
     extract_cited_value,
@@ -142,3 +143,63 @@ def test_TEST_AIDS_105_stream_print_output_is_valid_evidence(tmp_path):
     assert len(notebook.cells) == 2
     _, insight_cell = notebook.cells
     assert insight_cell["cell_type"] == "markdown"
+
+
+# @id TEST-AIDS-210
+# @verifies REQ-AIDS-010
+def test_TEST_AIDS_210_duplicate_execution_count_withholds_as_ambiguous(tmp_path):
+    """GitHub #54: two executed code cells sharing the same execution_count
+    and both producing the cited value must withhold the insight with
+    AmbiguousEvidenceError, not silently resolve to the first match."""
+    handle = resolve_project("ambiguous-evidence-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    for _ in range(2):
+        cell = nbformat.v4.new_code_cell("print('AUC=0.9500')")
+        cell["execution_count"] = 1
+        cell["outputs"] = [nbformat.v4.new_output("stream", name="stdout", text="AUC=0.9500\n")]
+        notebook.cells.append(cell)
+    with handle.notebook_path.open("w", encoding="utf-8") as fh:
+        nbformat.write(notebook, fh)
+
+    with pytest.raises(AmbiguousEvidenceError, match="ambiguous"):
+        record_insight(
+            handle,
+            insight_text="The model reaches AUC 0.9500.",
+            evidence_execution_count=1,
+            cited_value="0.9500",
+            claim_type="performance",
+            language="en",
+        )
+
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    assert len(notebook.cells) == 2  # only the two seeded code cells; nothing written
+
+
+# @id TEST-AIDS-290
+# @verifies REQ-AIDS-010
+def test_TEST_AIDS_290_duplicate_execution_count_withholds_as_ambiguous_ja(tmp_path):
+    """Same as the English case, but checks the Japanese notification text
+    required by REQ-AIDS-010's "configured response language" clause."""
+    handle = resolve_project("ambiguous-evidence-project-ja", projects_root=tmp_path)
+    ensure_notebook(handle)
+
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    for _ in range(2):
+        cell = nbformat.v4.new_code_cell("print('AUC=0.9500')")
+        cell["execution_count"] = 1
+        cell["outputs"] = [nbformat.v4.new_output("stream", name="stdout", text="AUC=0.9500\n")]
+        notebook.cells.append(cell)
+    with handle.notebook_path.open("w", encoding="utf-8") as fh:
+        nbformat.write(notebook, fh)
+
+    with pytest.raises(AmbiguousEvidenceError, match="一意"):
+        record_insight(
+            handle,
+            insight_text="モデルはAUC 0.9500に到達した。",
+            evidence_execution_count=1,
+            cited_value="0.9500",
+            claim_type="performance",
+            language="ja",
+        )
