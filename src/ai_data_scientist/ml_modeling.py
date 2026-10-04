@@ -259,9 +259,7 @@ def _validate_cv_splits(
         test_counts.update(test_labels)
 
     missing_test_labels = [label for label in index if test_counts[label] == 0]
-    duplicate_test_coverage = [
-        label for label, count in test_counts.items() if count > 1
-    ]
+    duplicate_test_coverage = [label for label, count in test_counts.items() if count > 1]
     if missing_test_labels:
         raise ValueError(
             "cv_splits must assign every row to exactly one test fold; "
@@ -286,11 +284,15 @@ def _classification_metrics(
         "recall": float(recall_score(y_true, predictions, average="macro", zero_division=0)),
     }
     if scoring and scoring not in metrics:
-        metrics[scoring] = compute_score("classification", scoring, y_true, predictions, probabilities)
+        metrics[scoring] = compute_score(
+            "classification", scoring, y_true, predictions, probabilities
+        )
     return metrics
 
 
-def _regression_metrics(y_true: pd.Series, predictions: pd.Series, scoring: str | None) -> dict[str, float]:
+def _regression_metrics(
+    y_true: pd.Series, predictions: pd.Series, scoring: str | None
+) -> dict[str, float]:
     metrics = {
         "rmse": float(np.sqrt(mean_squared_error(y_true, predictions))),
         "r2": float(r2_score(y_true, predictions)),
@@ -358,7 +360,9 @@ def train_model(
         model.fit(x.loc[train_idx], y.loc[train_idx])
         predictions = pd.Series(model.predict(x.loc[test_idx]), index=test_idx)
         probabilities = (
-            _predict_probabilities(model, x.loc[test_idx]) if model_type == "classification" else None
+            _predict_probabilities(model, x.loc[test_idx])
+            if model_type == "classification"
+            else None
         )
         metrics = (
             _classification_metrics(y.loc[test_idx], predictions, scoring, probabilities)
@@ -397,11 +401,15 @@ def train_model(
         )
         if fold_probabilities is not None:
             if oof_probabilities is None:
-                oof_probabilities = pd.DataFrame(index=df.index, columns=fold_probabilities.columns, dtype=float)
+                oof_probabilities = pd.DataFrame(
+                    index=df.index, columns=fold_probabilities.columns, dtype=float
+                )
             oof_probabilities.loc[test_idx, fold_probabilities.columns] = fold_probabilities
 
         fold_scores.append(
-            compute_score(model_type, selected_scoring, y_test, fold_predictions, fold_probabilities)
+            compute_score(
+                model_type, selected_scoring, y_test, fold_predictions, fold_probabilities
+            )
         )
 
     final_model = resolve_estimator(

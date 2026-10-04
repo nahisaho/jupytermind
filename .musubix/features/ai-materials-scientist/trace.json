@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T13:24:09.078Z",
+  "generatedAt": "2026-10-04T13:33:52.274Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -2140,13 +2140,13 @@
       "id": "CODE-AIDS-008",
       "kind": "code",
       "path": "src/ai_data_scientist/ml_modeling.py",
-      "line": 303
+      "line": 305
     },
     {
       "id": "CODE-AIDS-122",
       "kind": "code",
       "path": "src/ai_data_scientist/ml_modeling.py",
-      "line": 335
+      "line": 337
     },
     {
       "id": "CODE-AIDS-019",
@@ -3733,19 +3733,19 @@
       "line": 27
     },
     {
-      "id": "TEST-AIDS-157",
+      "id": "TEST-AIDS-191",
       "kind": "test",
       "path": "tests/test_automl.py",
       "line": 48
     },
     {
-      "id": "TEST-AIDS-158",
+      "id": "TEST-AIDS-192",
       "kind": "test",
       "path": "tests/test_automl.py",
       "line": 78
     },
     {
-      "id": "TEST-AIDS-159",
+      "id": "TEST-AIDS-193",
       "kind": "test",
       "path": "tests/test_automl.py",
       "line": 96
@@ -3973,6 +3973,24 @@
       "line": 112
     },
     {
+      "id": "TEST-AIDS-157",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 121
+    },
+    {
+      "id": "TEST-AIDS-158",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 133
+    },
+    {
+      "id": "TEST-AIDS-159",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 149
+    },
+    {
       "id": "TEST-AIDS-PYTEST-001",
       "kind": "test",
       "path": "tests/test_gate_config.py",
@@ -4189,7 +4207,25 @@
       "line": 31
     },
     {
-      "id": "TEST-AIDS-160",
+      "id": "TEST-AIDS-185",
+      "kind": "test",
+      "path": "tests/test_ml_modeling.py",
+      "line": 56
+    },
+    {
+      "id": "TEST-AIDS-186",
+      "kind": "test",
+      "path": "tests/test_ml_modeling.py",
+      "line": 104
+    },
+    {
+      "id": "TEST-AIDS-187",
+      "kind": "test",
+      "path": "tests/test_ml_modeling.py",
+      "line": 132
+    },
+    {
+      "id": "TEST-AIDS-194",
       "kind": "test",
       "path": "tests/test_ml_modeling.py",
       "line": 175
@@ -4199,6 +4235,24 @@
       "kind": "test",
       "path": "tests/test_model_tuning.py",
       "line": 27
+    },
+    {
+      "id": "TEST-AIDS-188",
+      "kind": "test",
+      "path": "tests/test_model_tuning.py",
+      "line": 51
+    },
+    {
+      "id": "TEST-AIDS-189",
+      "kind": "test",
+      "path": "tests/test_model_tuning.py",
+      "line": 86
+    },
+    {
+      "id": "TEST-AIDS-190",
+      "kind": "test",
+      "path": "tests/test_model_tuning.py",
+      "line": 109
     },
     {
       "id": "TEST-AIDS-059",
@@ -9244,17 +9298,17 @@
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-157",
+      "from": "TEST-AIDS-191",
       "to": "REQ-AIDS-077",
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-158",
+      "from": "TEST-AIDS-192",
       "to": "REQ-AIDS-077",
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-159",
+      "from": "TEST-AIDS-193",
       "to": "REQ-AIDS-078",
       "relation": "verifies"
     },
@@ -9649,37 +9703,37 @@
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-151",
+      "from": "TEST-AIDS-185",
       "to": "REQ-AIDS-074",
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-151",
+      "from": "TEST-AIDS-185",
       "to": "REQ-AIDS-075",
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-152",
+      "from": "TEST-AIDS-186",
       "to": "REQ-AIDS-074",
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-152",
+      "from": "TEST-AIDS-186",
       "to": "REQ-AIDS-075",
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-153",
+      "from": "TEST-AIDS-187",
       "to": "REQ-AIDS-075",
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-153",
+      "from": "TEST-AIDS-187",
       "to": "REQ-AIDS-078",
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-160",
+      "from": "TEST-AIDS-194",
       "to": "REQ-AIDS-074",
       "relation": "verifies"
     },
@@ -9689,17 +9743,17 @@
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-154",
+      "from": "TEST-AIDS-188",
       "to": "REQ-AIDS-076",
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-155",
+      "from": "TEST-AIDS-189",
       "to": "REQ-AIDS-076",
       "relation": "verifies"
     },
     {
-      "from": "TEST-AIDS-156",
+      "from": "TEST-AIDS-190",
       "to": "REQ-AIDS-078",
       "relation": "verifies"
     },
@@ -10089,71 +10143,7 @@
       "relation": "verifies"
     }
   ],
-  "diagnostics": [
-    {
-      "code": "TRACE_DUPLICATE",
-      "severity": "error",
-      "message": "Duplicate global ID TEST-AIDS-157.",
-      "path": "tests/test_feature_engineering.py",
-      "line": 121
-    },
-    {
-      "code": "TRACE_DUPLICATE",
-      "severity": "error",
-      "message": "Duplicate global ID TEST-AIDS-158.",
-      "path": "tests/test_feature_engineering.py",
-      "line": 133
-    },
-    {
-      "code": "TRACE_DUPLICATE",
-      "severity": "error",
-      "message": "Duplicate global ID TEST-AIDS-159.",
-      "path": "tests/test_feature_engineering.py",
-      "line": 149
-    },
-    {
-      "code": "TRACE_DUPLICATE",
-      "severity": "error",
-      "message": "Duplicate global ID TEST-AIDS-151.",
-      "path": "tests/test_ml_modeling.py",
-      "line": 56
-    },
-    {
-      "code": "TRACE_DUPLICATE",
-      "severity": "error",
-      "message": "Duplicate global ID TEST-AIDS-152.",
-      "path": "tests/test_ml_modeling.py",
-      "line": 104
-    },
-    {
-      "code": "TRACE_DUPLICATE",
-      "severity": "error",
-      "message": "Duplicate global ID TEST-AIDS-153.",
-      "path": "tests/test_ml_modeling.py",
-      "line": 132
-    },
-    {
-      "code": "TRACE_DUPLICATE",
-      "severity": "error",
-      "message": "Duplicate global ID TEST-AIDS-154.",
-      "path": "tests/test_model_tuning.py",
-      "line": 51
-    },
-    {
-      "code": "TRACE_DUPLICATE",
-      "severity": "error",
-      "message": "Duplicate global ID TEST-AIDS-155.",
-      "path": "tests/test_model_tuning.py",
-      "line": 86
-    },
-    {
-      "code": "TRACE_DUPLICATE",
-      "severity": "error",
-      "message": "Duplicate global ID TEST-AIDS-156.",
-      "path": "tests/test_model_tuning.py",
-      "line": 109
-    }
-  ],
+  "diagnostics": [],
   "fingerprints": {
     ".github/skills/japanese-prose/scripts/core.py": "62ae6ecaec379b08c0bf117ed6c232cfce794c69895fa86fd93059dbe5ae5341",
     ".github/skills/japanese-prose/scripts/lint.py": "06df08d56c86de047d0902a2f602d30b344a9d78a4abb71faa90139dbf1e2797",
@@ -10218,7 +10208,7 @@
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
     "src/ai_data_scientist/anomaly_detection.py": "8e991c85d27e7414ac66320d3a4fbed04a61adc484de9b4ada6923cb17a8752d",
-    "src/ai_data_scientist/automl.py": "928062150302f6edbf2c223d2d6e87d0c106bc598a69c9d30f60849c19ac83b6",
+    "src/ai_data_scientist/automl.py": "e1b067fd7068b3f7e7b2dc4f0554028da9fd6328265d7e8e2c1155b371569c19",
     "src/ai_data_scientist/cleaning.py": "8060c69112efe6aae6f0afdff6e464d601a76b5b62455e5d673916edfd4207ea",
     "src/ai_data_scientist/cli.py": "0f3b779e0896c67c9ac321dae40af4259b0d1583e2ad8f7af036adb496d0a4f2",
     "src/ai_data_scientist/clustering.py": "2b9011a2dfbb2e9318518dedf90b186d58eace35f03d1c28d6d47937c4a79bd0",
@@ -10242,7 +10232,7 @@
     "src/ai_data_scientist/mcp_gateway.py": "ac01ea9c030e759ea6c97f809de9b44ed09f83e8321fd0b9d3e0fee818abca55",
     "src/ai_data_scientist/mcp_runtime.py": "581a55e71bd8812e1e6758ff7ed35ce3356daa1988549911fe39f70b6bf2dc1a",
     "src/ai_data_scientist/mcp_transport.py": "b4bc766c3eabcc452976e34c330e1e40b78605565063f31627013582778a52e6",
-    "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c",
+    "src/ai_data_scientist/ml_modeling.py": "89bb871de96ac4c1230e27cc7b1b5ebac8d30da2689476b3b67f984d2075d38a",
     "src/ai_data_scientist/model_tuning.py": "adb3b7bac8a50608224de1b07ae7b870e384d37032a2e051a7f51eab6fafe8eb",
     "src/ai_data_scientist/notebook_audit.py": "d96f1cae080bc58dde26259ff7dd88e1a910e5baebac5aeea4198499d39767d0",
     "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
@@ -10320,7 +10310,7 @@
     "tests/test_ai_scientist_tdd_gate.py": "82f8294201e8067ea658b20b7ea043e9db7df3bacd89188bfb08751abf4248ab",
     "tests/test_analysis_assumptions.py": "665331b6baaeb624bd3562989a6925c4e80a269d2d0dfce93c3acbe7b21731d8",
     "tests/test_anomaly_detection.py": "1d3cdaabb41d4dc2f7d0b0278d6645cee4d0d11557aa4519a7de0376a083d3ba",
-    "tests/test_automl.py": "33ed4c01773075dc727e58dcb58d3d9edb99d2ee6883db9886530aab015f6e7d",
+    "tests/test_automl.py": "5ea36889e9cf572e8bbb26d581163e632f36d70c4049f7e220961d580a5fcce7",
     "tests/test_cleaning.py": "83face0b0f1ddcd158def39d0a711444b717b0416dc1f1b7bc021bc71723942e",
     "tests/test_clustering.py": "9175839a04a67f4e66ebe7856b77bc36715dd9e2b3acc8e37460027272fc2557",
     "tests/test_dashboard.py": "4e2358a3a6582809facb218355ae496de8cfb2b873a53977ec22bfbdcb5a3e15",
@@ -10343,8 +10333,8 @@
     "tests/test_mcp_gateway.py": "d8ee0ddbdf0f299af259270b46b9772f1cbc6554c92c55dda8cccd04138e8d46",
     "tests/test_mcp_runtime_integration.py": "ac3e3e10c590fd0d5af7d69ae48558316fc01206f2d10d8702b6598a31c3c9bb",
     "tests/test_mcp_runtime.py": "ddc6a67c2565f205986a34f94cedf39c5a7fa7f8f5089d89f84ca881be6242c0",
-    "tests/test_ml_modeling.py": "a19eac753eb52883259f22b757c6421f9b3038549216c9925b8d68509d1126eb",
-    "tests/test_model_tuning.py": "b1bbed9e6163797abde3bab1e64e4b94aa6fb492cb8c5c6bb5e3854a27f83651",
+    "tests/test_ml_modeling.py": "ecb20f0d8ae7bd30812666dc6786549c568737713e94091c730330bbc88648bb",
+    "tests/test_model_tuning.py": "85166cebf88b3d97eb17e617e139d8de6613453c9e2ebfab96f096f71f099a7a",
     "tests/test_notebook_audit.py": "d90afc0e0ff5cbd9a11c3887b9b7b232a5ba0ed4d73e3e39b9992f6a7d65453f",
     "tests/test_project_manager.py": "cc10feed6a73359a6480e71a07571d2d6ee799ad906dd450dba2d4a343689309",
     "tests/test_report_export.py": "9640608629a523fc0b124d6fca0e7b5448869d672289b5bec3e9011e4e477fea",

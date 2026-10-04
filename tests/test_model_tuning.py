@@ -50,7 +50,7 @@ def test_TEST_AIDS_019():
 
 # @id TEST-AIDS-188
 # @verifies REQ-AIDS-076
-def test_TEST_AIDS_154():
+def test_TEST_AIDS_188():
     df = _make_classification_df()
     shared_splits = train_model(
         df,
@@ -85,7 +85,7 @@ def test_TEST_AIDS_154():
 
 # @id TEST-AIDS-189
 # @verifies REQ-AIDS-076
-def test_TEST_AIDS_155():
+def test_TEST_AIDS_189():
     df = _make_classification_df()
     grid = [
         {"model_name": "logistic_regression", "C": 0.25},
@@ -108,7 +108,7 @@ def test_TEST_AIDS_155():
 
 # @id TEST-AIDS-190
 # @verifies REQ-AIDS-078
-def test_TEST_AIDS_156():
+def test_TEST_AIDS_190():
     df = _make_classification_df()
     grid = [
         {"estimator": LogisticRegression(max_iter=1000), "C": 0.25},
@@ -126,4 +126,7 @@ def test_TEST_AIDS_156():
     )
 
     assert result.best_params in grid
-    assert all(isinstance(candidate["result"].model, LogisticRegression) for candidate in result.all_candidates)
+    assert all(
+        isinstance(candidate["result"].model, LogisticRegression)
+        for candidate in result.all_candidates
+    )

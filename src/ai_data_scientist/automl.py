@@ -76,7 +76,9 @@ def run_automl(
         cv_splits=cv_splits,
     )
     candidates = []
-    for model_name, estimator in build_candidate_estimators(model_type, candidate_estimators).items():
+    for model_name, estimator in build_candidate_estimators(
+        model_type, candidate_estimators
+    ).items():
         result = train_model(
             df,
             target=target,
@@ -99,5 +101,9 @@ def run_automl(
             }
         )
 
-    ranked = sorted(candidates, key=lambda candidate: candidate["metric"], reverse=_metric_direction(model_type, scoring))
+    ranked = sorted(
+        candidates,
+        key=lambda candidate: candidate["metric"],
+        reverse=_metric_direction(model_type, scoring),
+    )
     return AutoMLResult(ranked_candidates=ranked, scoring=metric_name, cv_splits=shared_cv_splits)

@@ -47,7 +47,7 @@ def test_TEST_AIDS_020():
 
 # @id TEST-AIDS-191
 # @verifies REQ-AIDS-077
-def test_TEST_AIDS_157():
+def test_TEST_AIDS_191():
     df = _make_classification_df()
     shared_splits = train_model(
         df,
@@ -77,7 +77,7 @@ def test_TEST_AIDS_157():
 
 # @id TEST-AIDS-192
 # @verifies REQ-AIDS-077
-def test_TEST_AIDS_158():
+def test_TEST_AIDS_192():
     df = _make_classification_df()
 
     result = run_automl(
@@ -95,7 +95,7 @@ def test_TEST_AIDS_158():
 
 # @id TEST-AIDS-193
 # @verifies REQ-AIDS-078
-def test_TEST_AIDS_159():
+def test_TEST_AIDS_193():
     df = _make_classification_df()
 
     result = run_automl(

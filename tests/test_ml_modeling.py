@@ -55,7 +55,7 @@ def test_TEST_AIDS_008():
 
 # @id TEST-AIDS-185
 # @verifies REQ-AIDS-074 REQ-AIDS-075
-def test_TEST_AIDS_151():
+def test_TEST_AIDS_185():
     df, _ = _make_classification_fixture()
 
     result = train_model(
@@ -103,7 +103,7 @@ def test_TEST_AIDS_151():
 
 # @id TEST-AIDS-186
 # @verifies REQ-AIDS-074 REQ-AIDS-075
-def test_TEST_AIDS_152():
+def test_TEST_AIDS_186():
     df, groups = _make_classification_fixture()
 
     result = train_model(
@@ -131,7 +131,7 @@ def test_TEST_AIDS_152():
 
 # @id TEST-AIDS-187
 # @verifies REQ-AIDS-075 REQ-AIDS-078
-def test_TEST_AIDS_153():
+def test_TEST_AIDS_187():
     df, _ = _make_classification_fixture()
 
     probabilistic_result = train_model(
@@ -183,7 +183,7 @@ def test_TEST_AIDS_153():
         ([([0, 1, 2], [3]), ([2, 3], [0, 1, 4, 5])], "missing test coverage"),
     ],
 )
-def test_TEST_AIDS_160(cv_splits, message):
+def test_TEST_AIDS_194(cv_splits, message):
     df, _ = _make_classification_fixture()
     small_df = df.iloc[:6].copy()
 
