@@ -90,9 +90,9 @@ def test_TEST_ASTRUCT_071_accepts_numpy_integer_window_sizes_as_positive_odd_int
     ]
 
 
-# @id TEST-ASTRUCT-080
+# @id TEST-ASTRUCT-083
 # @verifies REQ-ASTRUCT-020
-def test_TEST_ASTRUCT_080_uses_only_in_bounds_residues_when_window_exceeds_sequence_length():
+def test_TEST_ASTRUCT_083_uses_only_in_bounds_residues_when_window_exceeds_sequence_length():
     from ai_structural_biology_scientist.hydrophobicity import run_hydrophobicity
 
     result = run_hydrophobicity("AKV", window_size=9, burial_threshold=10.0)

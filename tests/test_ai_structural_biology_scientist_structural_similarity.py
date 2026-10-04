@@ -53,9 +53,9 @@ def test_TEST_ASTRUCT_073_accepts_tuple_coordinate_sets_for_the_same_kabsch_supe
     )
 
 
-# @id TEST-ASTRUCT-081
+# @id TEST-ASTRUCT-084
 # @verifies REQ-ASTRUCT-040
-def test_TEST_ASTRUCT_081_enforces_proper_rotation_for_mirrored_tetrahedron_inputs():
+def test_TEST_ASTRUCT_084_enforces_proper_rotation_for_mirrored_tetrahedron_inputs():
     from ai_structural_biology_scientist.structural_similarity import run_structural_similarity
 
     structure_a = [

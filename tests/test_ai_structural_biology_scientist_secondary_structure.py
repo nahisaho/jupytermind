@@ -60,9 +60,9 @@ def test_TEST_ASTRUCT_074_breaks_exact_propensity_ties_in_documented_helix_sheet
     assert secondary_structure.run_secondary_structure("A")["secondary_structure"] == "E"
 
 
-# @id TEST-ASTRUCT-079
+# @id TEST-ASTRUCT-082
 # @verifies REQ-ASTRUCT-010
-def test_TEST_ASTRUCT_079_handles_a_single_residue_sequence_with_unit_fractions():
+def test_TEST_ASTRUCT_082_handles_a_single_residue_sequence_with_unit_fractions():
     from ai_structural_biology_scientist.secondary_structure import run_secondary_structure
 
     result = run_secondary_structure("A")
