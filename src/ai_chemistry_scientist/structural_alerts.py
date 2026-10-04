@@ -15,11 +15,22 @@ ALERT_SMARTS = (
     ("epoxide", "C1OC1"),
     ("free_thiol", "[SX2H]"),
 )
+
+
+def _compile_alert_queries():
+    compiled_queries = []
+    for name, smarts in ALERT_SMARTS:
+        query = Chem.MolFromSmarts(smarts)
+        if query is None:
+            raise ValueError(f"structural alert SMARTS for {name!r} failed to compile: {smarts}")
+        compiled_queries.append((name, query))
+    return tuple(compiled_queries)
+
+
 # Pre-compiled once at import time (DES-ACHEM-070's fixed alert list never
 # changes at runtime), rather than re-parsing every SMARTS pattern string on
-# every call; this also fails fast at import if a pattern is ever malformed
-# instead of silently returning a ``None`` query molecule at call time.
-_ALERT_QUERIES = tuple((name, Chem.MolFromSmarts(smarts)) for name, smarts in ALERT_SMARTS)
+# every call.
+_ALERT_QUERIES = _compile_alert_queries()
 LIMITATION_LABEL_KEY = "structural_alerts_heuristic_limitation"
 LIMITATION_LABEL_TEXT = {
     "en": "Heuristic only: a small fixed illustrative SMARTS alert list, not the validated PAINS/Brenk filter catalog.",

@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import importlib
+import sys
+
 from rdkit import Chem
 
 _ALERT_RICH = "O=CC=CC(=O)C1OC1"
@@ -108,3 +111,65 @@ def test_TEST_ACHEM_966_validator_rejects_dummy_atom_smiles_as_chemically_undefi
         "parameter": "smiles",
         "constraint": "must parse to a valid RDKit molecule",
     }
+
+
+# @id TEST-ACHEM-969
+# @verifies REQ-ACHEM-070
+def test_TEST_ACHEM_969_structural_alert_queries_fail_fast_when_any_smarts_is_malformed(
+    monkeypatch,
+):
+    import pytest
+
+    module_name = "ai_chemistry_scientist.structural_alerts"
+    original_module = sys.modules.pop(module_name, None)
+    original_mol_from_smarts = Chem.MolFromSmarts
+
+    def _fake_mol_from_smarts(smarts):
+        if smarts == "[NX3](=O)=O":
+            return None
+        return original_mol_from_smarts(smarts)
+
+    monkeypatch.setattr(Chem, "MolFromSmarts", _fake_mol_from_smarts)
+
+    try:
+        with pytest.raises(ValueError, match="nitro_group"):
+            importlib.import_module(module_name)
+    finally:
+        sys.modules.pop(module_name, None)
+        if original_module is not None:
+            sys.modules[module_name] = original_module
+
+
+# @id TEST-ACHEM-970
+# @verifies REQ-ACHEM-070
+def test_TEST_ACHEM_970_each_named_alert_matches_real_smiles():
+    from ai_chemistry_scientist.structural_alerts import run_structural_alerts
+
+    # nitro_group's approved fixed SMARTS (REQ-ACHEM-070) is `[NX3](=O)=O`, a
+    # neutral-nitrogen pattern. Real RDKit-parsed nitro groups are
+    # charge-separated (`[N+](=O)[O-]`), so this fixed heuristic SMARTS never
+    # matches any actually-parseable nitro-containing molecule; this is a
+    # known, approved, documented heuristic limitation (REQ-ACHEM-070's
+    # Acceptance only requires the SMARTS to compile, not to match any
+    # specific molecule), not a defect to silently work around here.
+    expected_examples = {
+        "aldehyde": "CC=O",
+        "michael_acceptor_enone": "CC=CC(=O)C",
+        "epoxide": "CC1OC1",
+        "free_thiol": "CCS",
+    }
+
+    for expected_alert, smiles in expected_examples.items():
+        result = run_structural_alerts(smiles)
+        assert result["alerts_matched"] == [expected_alert]
+        assert result["alert_count"] == 1
+
+    all_alerts_result = run_structural_alerts("CC=O.CC=CC(=O)C.CC1OC1.CCS")
+
+    assert all_alerts_result["alerts_matched"] == list(expected_examples)
+    assert all_alerts_result["alert_count"] == len(expected_examples)
+
+    # Confirms the known limitation explicitly: a real nitro-containing
+    # molecule never matches the approved fixed `nitro_group` SMARTS.
+    nitro_result = run_structural_alerts("C[N+](=O)[O-]")
+    assert "nitro_group" not in nitro_result["alerts_matched"]
