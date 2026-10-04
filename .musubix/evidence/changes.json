@@ -8927,6 +8927,454 @@
             },
             "order": 813
           }
+        },
+        {
+          "requirementIds": [
+            "REQ-ASTRUCT-001",
+            "REQ-ASTRUCT-002",
+            "REQ-ASTRUCT-003",
+            "REQ-ASTRUCT-004",
+            "REQ-ASTRUCT-010",
+            "REQ-ASTRUCT-020",
+            "REQ-ASTRUCT-030",
+            "REQ-ASTRUCT-040",
+            "REQ-ASTRUCT-050"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T20:41:10.729Z",
+            "fingerprints": {
+              "impact": "d5418e1f25490a4e0430c2ae4d23b851368bf14f9b5c9bce5f85dbbaf341f32d",
+              "requirements": "7975cd0c64adc98c34c5e7b2e4072a29854520c0d148716a30ecafb54758556d",
+              "design": "37fb395a4c890ea771dc9ea705178a607c153cdbf7e197ab15a66cfd477a3685",
+              "implementation": "3d5364f2ef7a755e3647b943a501358320b97712fc72d653c4a1a14b09e613ea",
+              "tests": "d608442be8b7a34781bdba5235b3d5cc14c2c00727c62d5bd96058de43981212",
+              "tdd": "943492eae773e8bf70ae63d753fe2d1bba113755b1ffca28eaccee6a72a7aa49",
+              "requirementImplementations": {
+                "REQ-ASTRUCT-001": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/dispatch.py",
+                    "src/ai_structural_biology_scientist/evidence.py",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_structural_biology_scientist/contact_map.py": "b62455470513f59c4474163959e01eaa25a4c5e1c1dc07612e9542b3d70874dd",
+                    "src/ai_structural_biology_scientist/dispatch.py": "826185b36f883e2e58f8f62da112639ad9e7bf539c7281f71ade005208da935b",
+                    "src/ai_structural_biology_scientist/evidence.py": "a244a064e1958e703d7775e0165e54dde35abdca8abb6c7b4d07a2d211e1d29f",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "740e42f8c3873daad8af18287a2376d913e3edd54a8c61d456a403d0abf71aa6",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "10334f7d0afac6037c0d0443eaab789828ed3b29d6539364038e7ced957fd91a",
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "20fc01c68b7d2a7edda4e5e89bdacacc5b2e5b557928eb0e43ac84e068ab6e16",
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "4b1e4e24a35d1fbcd13fd1d736917d29cdb70985c1832ceaa4fb951995f198f8",
+                    "src/ai_structural_biology_scientist/validation.py": "46ca92a536056e96e94264b4f626f098663091ff3567f7d8f9c7738bdfa63da8"
+                  }
+                },
+                "REQ-ASTRUCT-002": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/dispatch.py",
+                    "src/ai_structural_biology_scientist/evidence.py",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_structural_biology_scientist/contact_map.py": "b62455470513f59c4474163959e01eaa25a4c5e1c1dc07612e9542b3d70874dd",
+                    "src/ai_structural_biology_scientist/dispatch.py": "826185b36f883e2e58f8f62da112639ad9e7bf539c7281f71ade005208da935b",
+                    "src/ai_structural_biology_scientist/evidence.py": "a244a064e1958e703d7775e0165e54dde35abdca8abb6c7b4d07a2d211e1d29f",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "740e42f8c3873daad8af18287a2376d913e3edd54a8c61d456a403d0abf71aa6",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "10334f7d0afac6037c0d0443eaab789828ed3b29d6539364038e7ced957fd91a",
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "20fc01c68b7d2a7edda4e5e89bdacacc5b2e5b557928eb0e43ac84e068ab6e16",
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "4b1e4e24a35d1fbcd13fd1d736917d29cdb70985c1832ceaa4fb951995f198f8",
+                    "src/ai_structural_biology_scientist/validation.py": "46ca92a536056e96e94264b4f626f098663091ff3567f7d8f9c7738bdfa63da8"
+                  }
+                },
+                "REQ-ASTRUCT-003": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/dispatch.py",
+                    "src/ai_structural_biology_scientist/evidence.py",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_structural_biology_scientist/contact_map.py": "b62455470513f59c4474163959e01eaa25a4c5e1c1dc07612e9542b3d70874dd",
+                    "src/ai_structural_biology_scientist/dispatch.py": "826185b36f883e2e58f8f62da112639ad9e7bf539c7281f71ade005208da935b",
+                    "src/ai_structural_biology_scientist/evidence.py": "a244a064e1958e703d7775e0165e54dde35abdca8abb6c7b4d07a2d211e1d29f",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "740e42f8c3873daad8af18287a2376d913e3edd54a8c61d456a403d0abf71aa6",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "10334f7d0afac6037c0d0443eaab789828ed3b29d6539364038e7ced957fd91a",
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "20fc01c68b7d2a7edda4e5e89bdacacc5b2e5b557928eb0e43ac84e068ab6e16",
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "4b1e4e24a35d1fbcd13fd1d736917d29cdb70985c1832ceaa4fb951995f198f8",
+                    "src/ai_structural_biology_scientist/validation.py": "46ca92a536056e96e94264b4f626f098663091ff3567f7d8f9c7738bdfa63da8"
+                  }
+                },
+                "REQ-ASTRUCT-004": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/evidence.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/evidence.py": "a244a064e1958e703d7775e0165e54dde35abdca8abb6c7b4d07a2d211e1d29f"
+                  }
+                },
+                "REQ-ASTRUCT-010": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "20fc01c68b7d2a7edda4e5e89bdacacc5b2e5b557928eb0e43ac84e068ab6e16",
+                    "src/ai_structural_biology_scientist/validation.py": "46ca92a536056e96e94264b4f626f098663091ff3567f7d8f9c7738bdfa63da8"
+                  }
+                },
+                "REQ-ASTRUCT-020": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "740e42f8c3873daad8af18287a2376d913e3edd54a8c61d456a403d0abf71aa6",
+                    "src/ai_structural_biology_scientist/validation.py": "46ca92a536056e96e94264b4f626f098663091ff3567f7d8f9c7738bdfa63da8"
+                  }
+                },
+                "REQ-ASTRUCT-030": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "10334f7d0afac6037c0d0443eaab789828ed3b29d6539364038e7ced957fd91a",
+                    "src/ai_structural_biology_scientist/validation.py": "46ca92a536056e96e94264b4f626f098663091ff3567f7d8f9c7738bdfa63da8"
+                  }
+                },
+                "REQ-ASTRUCT-040": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "4b1e4e24a35d1fbcd13fd1d736917d29cdb70985c1832ceaa4fb951995f198f8",
+                    "src/ai_structural_biology_scientist/validation.py": "46ca92a536056e96e94264b4f626f098663091ff3567f7d8f9c7738bdfa63da8"
+                  }
+                },
+                "REQ-ASTRUCT-050": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/contact_map.py": "b62455470513f59c4474163959e01eaa25a4c5e1c1dc07612e9542b3d70874dd",
+                    "src/ai_structural_biology_scientist/validation.py": "46ca92a536056e96e94264b4f626f098663091ff3567f7d8f9c7738bdfa63da8"
+                  }
+                }
+              }
+            },
+            "order": 823
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T20:42:32.483Z",
+            "fingerprints": {
+              "impact": "d5418e1f25490a4e0430c2ae4d23b851368bf14f9b5c9bce5f85dbbaf341f32d",
+              "requirements": "7975cd0c64adc98c34c5e7b2e4072a29854520c0d148716a30ecafb54758556d",
+              "design": "37fb395a4c890ea771dc9ea705178a607c153cdbf7e197ab15a66cfd477a3685",
+              "implementation": "c9198ab2e98162e3b029efc6f9568adf40dade91df8d834c8629eaa6156271c8",
+              "tests": "d608442be8b7a34781bdba5235b3d5cc14c2c00727c62d5bd96058de43981212",
+              "tdd": "943492eae773e8bf70ae63d753fe2d1bba113755b1ffca28eaccee6a72a7aa49",
+              "requirementImplementations": {
+                "REQ-ASTRUCT-001": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/dispatch.py",
+                    "src/ai_structural_biology_scientist/evidence.py",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                    "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
+                    "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-002": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/dispatch.py",
+                    "src/ai_structural_biology_scientist/evidence.py",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                    "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
+                    "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-003": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/dispatch.py",
+                    "src/ai_structural_biology_scientist/evidence.py",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                    "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
+                    "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-004": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/evidence.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50"
+                  }
+                },
+                "REQ-ASTRUCT-010": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-020": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-030": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-040": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-050": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                }
+              }
+            },
+            "order": 824
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T20:43:06.830Z",
+            "fingerprints": {
+              "impact": "d5418e1f25490a4e0430c2ae4d23b851368bf14f9b5c9bce5f85dbbaf341f32d",
+              "requirements": "7975cd0c64adc98c34c5e7b2e4072a29854520c0d148716a30ecafb54758556d",
+              "design": "37fb395a4c890ea771dc9ea705178a607c153cdbf7e197ab15a66cfd477a3685",
+              "implementation": "c9198ab2e98162e3b029efc6f9568adf40dade91df8d834c8629eaa6156271c8",
+              "tests": "d608442be8b7a34781bdba5235b3d5cc14c2c00727c62d5bd96058de43981212",
+              "tdd": "da080fb7ca32450e989c8385a47b8bf54df30719eb7f9c0912c4e183e6aa9648",
+              "requirementImplementations": {
+                "REQ-ASTRUCT-001": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/dispatch.py",
+                    "src/ai_structural_biology_scientist/evidence.py",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                    "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
+                    "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-002": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/dispatch.py",
+                    "src/ai_structural_biology_scientist/evidence.py",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                    "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
+                    "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-003": {
+                  "paths": [
+                    "src/ai_data_scientist/language_router.py",
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/dispatch.py",
+                    "src/ai_structural_biology_scientist/evidence.py",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                    "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                    "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
+                    "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50",
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-004": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/evidence.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50"
+                  }
+                },
+                "REQ-ASTRUCT-010": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/secondary_structure.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-020": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/hydrophobicity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-030": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/protein_docking_score.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-040": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/structural_similarity.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                },
+                "REQ-ASTRUCT-050": {
+                  "paths": [
+                    "src/ai_structural_biology_scientist/contact_map.py",
+                    "src/ai_structural_biology_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+                    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9"
+                  }
+                }
+              }
+            },
+            "order": 834
+          }
         }
       ]
     }
