@@ -1241,6 +1241,11 @@ Constraints: Existing calls for `scatter`/`line`/`bar`/`hist` without the new ke
 Requirements: REQ-AIDS-085
 ADRs: none — this is a localized extension of the existing visualization module with no new architectural boundary.
 Depends-On: DES-AIDS-009, DES-AIDS-048
+Implementation: `CODE-AIDS-111`-`CODE-AIDS-118` in
+`src/ai_data_scientist/visualization.py` (CHANGE-012); test IDs
+`TEST-AIDS-195`-`202` (renumbered from the original draft's
+`TEST-AIDS-177`-`184` to avoid a collision with CHANGE-011's
+`TEST-AIDS-177`).
 
 ## DES-AIDS-074: Hue-driven series splitting and legend-title capture / hueによる系列分割と凡例タイトル取得
 Responsibilities: Add optional `hue: str | None = None` and `legend_title: str | None = None` parameters to `visualization.render_chart`, plus a small internal plotting path that activates only when hue-driven grouping or explicit legend-title override is requested. For `scatter`, `line`, and `hist`, iterate `df.groupby(hue, sort=False)` and draw one matplotlib series per distinct hue value with `label=str(group_value)` so a legend is produced deterministically in input order. For `bar` and `barh`, reshape to a pivoted table indexed by `x`, columned by `hue`, and valued by `y`, then hand that table to pandas plotting so each hue level becomes a separate legend series; before pivoting, normalize missing hue values to a guaranteed-noncolliding sentinel so they survive the reshape and are then relabeled back to the visible `"NaN"` legend entry. After plotting any chart kind, if a legend exists and `legend_title` is provided, set that rendered legend title; otherwise, when hue was used, set the legend title to the hue column name. Extend `ChartMetadata` with an additive `legend_title: str | None = None` field and expose a forwarding `RenderedChart.legend_title` property so authoring metadata records the rendered legend title alongside the existing boolean `legend` field.
