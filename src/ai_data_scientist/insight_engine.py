@@ -27,6 +27,22 @@ class CitedValueNotFoundError(ValueError):
     """Raised when a cited-value pattern has no match in a result's output."""
 
 
+# @id CODE-AIDS-125
+# @implements REQ-AIDS-010
+# @design DES-AIDS-010
+class AmbiguousEvidenceError(EvidenceMissingError):
+    """Raised when more than one executed cell matches the same evidence.
+
+    GitHub #54: duplicate ``execution_count`` values (common after a kernel
+    restart or appending to a notebook in a new session) can make more than
+    one code cell match an insight's ``execution_count``/``cited_value``
+    pair. Silently resolving to whichever cell is encountered first risks
+    attributing an insight to the wrong evidence, so this is raised instead
+    (a subclass of ``EvidenceMissingError`` so callers that already treat
+    missing evidence as "withhold the insight" handle this the same way).
+    """
+
+
 # @id CODE-AIDS-047
 # @implements REQ-AIDS-039
 # @design DES-AIDS-027
@@ -51,23 +67,50 @@ def extract_cited_value(result: dict, pattern: str) -> str:
     return match.group(1) if match.lastindex else match.group(0)
 
 
+def _cell_output_contains(cell, cited_value: str) -> bool:
+    for output in cell.get("outputs", []):
+        for value in output.get("data", {}).values():
+            if cited_value in str(value):
+                return True
+        # GitHub #29: execute_result/display_data outputs store their
+        # payload under "data", but print()-produced stream output stores
+        # it under "text" instead; a value genuinely printed by the
+        # executed cell is equally valid evidence.
+        if output.get("output_type") == "stream" and cited_value in str(output.get("text", "")):
+            return True
+    return False
+
+
+def _matching_evidence_cells(notebook, execution_count: int, cited_value: str) -> list:
+    """Return every code cell whose execution_count/output matches evidence."""
+    return [
+        cell
+        for cell in notebook.cells
+        if cell.get("cell_type") == "code"
+        and cell.get("execution_count") == execution_count
+        and _cell_output_contains(cell, cited_value)
+    ]
+
+
 def _find_evidence_cell(notebook, execution_count: int, cited_value: str):
-    for cell in notebook.cells:
-        if cell.get("cell_type") != "code":
-            continue
-        if cell.get("execution_count") != execution_count:
-            continue
-        for output in cell.get("outputs", []):
-            for value in output.get("data", {}).values():
-                if cited_value in str(value):
-                    return cell
-            # GitHub #29: execute_result/display_data outputs store their
-            # payload under "data", but print()-produced stream output
-            # stores it under "text" instead; a value genuinely printed by
-            # the executed cell is equally valid evidence.
-            if output.get("output_type") == "stream" and cited_value in str(output.get("text", "")):
-                return cell
-    return None
+    """Return the single code cell matching this evidence, or ``None``.
+
+    GitHub #54 (CODE-AIDS-125, REQ-AIDS-010): raises
+    ``AmbiguousEvidenceError`` instead of silently returning the first
+    match when more than one code cell shares the same ``execution_count``
+    and both produced ``cited_value`` in their output (e.g. after a kernel
+    restart or appending to a notebook in a new session re-uses an
+    ``execution_count``); callers must not guess which cell is the real
+    evidentiary basis.
+    """
+    matches = _matching_evidence_cells(notebook, execution_count, cited_value)
+    if len(matches) > 1:
+        raise AmbiguousEvidenceError(
+            f"{len(matches)} executed cells share execution_count="
+            f"{execution_count!r} and an output containing {cited_value!r}; "
+            "the evidentiary cell is ambiguous."
+        )
+    return matches[0] if matches else None
 
 
 # @id CODE-AIDS-009
@@ -91,10 +134,23 @@ def record_insight(
 
     Verifies the executed evidentiary cell exists and actually produced
     ``cited_value`` before writing anything; raises ``EvidenceMissingError``
-    (REQ-AIDS-010) without touching the notebook otherwise.
+    (REQ-AIDS-010) without touching the notebook otherwise. Raises
+    ``AmbiguousEvidenceError`` (a subclass of ``EvidenceMissingError``)
+    instead of guessing when more than one executed cell matches the same
+    ``execution_count``/``cited_value`` pair (GitHub #54).
     """
     notebook = nbformat.read(handle.notebook_path, as_version=4)
-    evidence_cell = _find_evidence_cell(notebook, evidence_execution_count, cited_value)
+    try:
+        evidence_cell = _find_evidence_cell(notebook, evidence_execution_count, cited_value)
+    except AmbiguousEvidenceError as exc:
+        message = (
+            f"Insight '{insight_text}' の根拠セルが一意に決まらないため記録を保留しました"
+            f"(execution_count={evidence_execution_count}の実行済みセルが複数あり、"
+            "いずれも該当する出力を含みます)。"
+            if language == "ja"
+            else (f"Withheld insight '{insight_text}': evidence is ambiguous ({exc}).")
+        )
+        raise AmbiguousEvidenceError(message) from exc
     if evidence_cell is None:
         message = (
             f"Insight '{insight_text}' に根拠となる実行済みセル(execution_count="

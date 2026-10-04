@@ -130,3 +130,31 @@ def test_TEST_AIDS_136_ambiguous_single_column_tab_header_warns(tmp_path):
     assert result.column_count == 1
     assert len(result.warnings) == 1
     assert "delimiter" in result.warnings[0].lower()
+
+
+# @id TEST-AIDS-203
+# @verifies REQ-AIDS-032
+def test_TEST_AIDS_203_local_csv_is_never_row_limit_truncated(tmp_path):
+    """GitHub #57: row_limit is a remote-source safety control (REQ-AIDS-032
+    only names "a database or API source"); a local CSV file larger than
+    row_limit must still be loaded in full, not silently truncated."""
+    path = tmp_path / "big.csv"
+    path.write_text("a\n" + "\n".join(str(i) for i in range(150)))
+
+    result = ingest(SourceSpec(kind="csv", location=str(path)), row_limit=100)
+
+    assert result.row_count == 150
+    assert result.truncated is False
+
+
+# @id TEST-AIDS-204
+# @verifies REQ-AIDS-032
+def test_TEST_AIDS_204_local_excel_is_never_row_limit_truncated(tmp_path):
+    """GitHub #57: same guarantee as TEST-AIDS-203, for "excel"."""
+    path = tmp_path / "big.xlsx"
+    pd.DataFrame({"a": range(150)}).to_excel(path, index=False)
+
+    result = ingest(SourceSpec(kind="excel", location=str(path)), row_limit=100)
+
+    assert result.row_count == 150
+    assert result.truncated is False
