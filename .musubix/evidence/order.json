@@ -5665,6 +5665,30 @@
       "phase": "red",
       "previousSha256": "d46bcc925b2a2e85b123a243d46056c14238c195a7888314df3d3b449ebcf3e9",
       "recordSha256": "2835cb1032d0856cf3605a3c73306d4d1e45782cc5927a0ed72bf9dfbc8b7f43"
+    },
+    {
+      "sequence": 696,
+      "kind": "change",
+      "entityId": "CHANGE-009",
+      "phase": "implementation",
+      "previousSha256": "2835cb1032d0856cf3605a3c73306d4d1e45782cc5927a0ed72bf9dfbc8b7f43",
+      "recordSha256": "78ae079560c0db8cd16802ed5830f6b1afefe01c73395892eb30f0a0dd6f2ddd"
+    },
+    {
+      "sequence": 697,
+      "kind": "change",
+      "entityId": "CHANGE-009",
+      "phase": "green",
+      "previousSha256": "78ae079560c0db8cd16802ed5830f6b1afefe01c73395892eb30f0a0dd6f2ddd",
+      "recordSha256": "08475b14318b40d2a4afd6ba2003cc2009524e8b4955ff5305a597164435d374"
+    },
+    {
+      "sequence": 698,
+      "kind": "change",
+      "entityId": "CHANGE-009",
+      "phase": "quality",
+      "previousSha256": "08475b14318b40d2a4afd6ba2003cc2009524e8b4955ff5305a597164435d374",
+      "recordSha256": "1b16131a2766550271926c8dc651f3f03beff925d65614a54d75d0fe061cea51"
     }
   ]
 }
