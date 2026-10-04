@@ -88,3 +88,35 @@ def test_TEST_ASTRUCT_071_accepts_numpy_integer_window_sizes_as_positive_odd_int
         },
         {"position": 2, "residue": "L", "kd_value": 3.8, "window_average": 3.8, "label": "exposed"},
     ]
+
+
+# @id TEST-ASTRUCT-080
+# @verifies REQ-ASTRUCT-020
+def test_TEST_ASTRUCT_080_uses_only_in_bounds_residues_when_window_exceeds_sequence_length():
+    from ai_structural_biology_scientist.hydrophobicity import run_hydrophobicity
+
+    result = run_hydrophobicity("AKV", window_size=9, burial_threshold=10.0)
+
+    assert result["residues"] == [
+        {
+            "position": 0,
+            "residue": "A",
+            "kd_value": 1.8,
+            "window_average": pytest.approx(0.7000000000000002, abs=1e-9),
+            "label": "exposed",
+        },
+        {
+            "position": 1,
+            "residue": "K",
+            "kd_value": -3.9,
+            "window_average": pytest.approx(0.7000000000000002, abs=1e-9),
+            "label": "exposed",
+        },
+        {
+            "position": 2,
+            "residue": "V",
+            "kd_value": 4.2,
+            "window_average": pytest.approx(0.7000000000000002, abs=1e-9),
+            "label": "exposed",
+        },
+    ]

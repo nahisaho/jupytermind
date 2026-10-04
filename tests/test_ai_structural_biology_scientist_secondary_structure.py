@@ -58,3 +58,20 @@ def test_TEST_ASTRUCT_074_breaks_exact_propensity_ties_in_documented_helix_sheet
 
     monkeypatch.setitem(secondary_structure._PROPENSITIES, "A", (0.5, 1.0, 1.0))
     assert secondary_structure.run_secondary_structure("A")["secondary_structure"] == "E"
+
+
+# @id TEST-ASTRUCT-079
+# @verifies REQ-ASTRUCT-010
+def test_TEST_ASTRUCT_079_handles_a_single_residue_sequence_with_unit_fractions():
+    from ai_structural_biology_scientist.secondary_structure import run_secondary_structure
+
+    result = run_secondary_structure("A")
+
+    assert result == {
+        "residues": [{"position": 0, "residue": "A", "class": "H"}],
+        "secondary_structure": "H",
+        "helix_fraction": 1.0,
+        "sheet_fraction": 0.0,
+        "coil_fraction": 0.0,
+        "limitation_label_key": "secondary_structure_heuristic_limitation",
+    }
