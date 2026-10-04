@@ -1,11 +1,5 @@
 # CHANGE-010: Add paired experiment-comparison support for `experiment_evaluation` (#50)
 
-> **DRAFT — NOT YET APPROVED**
->
-> This change document is a working draft prepared for later human review in
-> the orchestrating session. No musubix approval/evidence-recording commands
-> have been run from this parallel worktree.
-
 ## Summary
 
 Add first-class paired-comparison support to
@@ -66,5 +60,53 @@ architectural boundary.
   preservation.
 - [x] Run the module's full pytest file
   (`tests/test_experiment_evaluation.py`) to confirm green behavior.
-- [ ] Obtain human requirements/design/release approval and record official
-  musubix evidence from the orchestrating session after merge serialization.
+- [x] ID collision reconciliation at merge: confirmed `CODE-AIDS-101`–`105`
+  and `TEST-AIDS-161`–`168` had no collisions against `main` (already
+  including CHANGE-009's `CODE-AIDS-119`–`124`/`TEST-AIDS-185`–`194`
+  ranges) or against CHANGE-011/CHANGE-012's reserved ranges; no
+  renumbering was necessary.
+- [x] Human approval of requirements/design draft (approver: nahisaho,
+  `approval record requirements`/`approval record design`, both current;
+  design was re-approved once after a legitimate DES-AIDS-069 code-ID
+  cross-reference edit).
+- [x] Merged `change-010-paired-tests` into `main` (clean merge, no
+  conflicts); full suite `433 passed` after merge and after a ruff format
+  fix.
+- [x] TDD Red/Green per requirement: 8 tests (`TEST-AIDS-161`–`168`) each
+  individually recorded red (against `experiment_evaluation.py` temporarily
+  reverted to the pre-CHANGE-010 `main` state) then green (against the
+  restored full implementation).
+- [x] `trace build`/`trace check --strict` (clean), `graph index`/`graph
+  gate` (PASS, no cycles).
+- [x] Quality gate (`gate --changed --json`): no new diagnostics
+  attributable to this change beyond the same structural category
+  CHANGE-008/CHANGE-009 already disclosed — `change-history`/
+  `change-completeness` report `CHANGE_RED_UNPROVEN`/
+  `CHANGE_GREEN_UNPROVEN`/`CHANGE_COMPLETENESS_TDD` for
+  REQ-AIDS-079–081 because this change's Red/Green evidence was recorded
+  after the worktree merge rather than via genuine incremental
+  step-by-step TDD (same root cause and same already-accepted precedent as
+  CHANGE-006/CHANGE-008/CHANGE-009); no `CHANGE_COMPLETENESS_ADR`
+  diagnostic applies (no ADRs declared). All other failing checks
+  (`workflow`/`tdd`/`performance`/`test-identities`) are pre-existing,
+  previously-disclosed repo-wide items (CHANGE-001/003/004/005/008 ADR/TDD
+  completeness gaps, legacy `TEST-AIMS-002`/`TEST-AIMS-040` evidence,
+  `WORKFLOW_INVOCATION_UNVERIFIED`, performance-counter provenance) —
+  unrelated to and unchanged by this feature. Full suite `433 passed`.
+- [x] Release approval: explicit human sign-off (approver: nahisaho) via
+  `ask_user`, approving the exact file list and the manifest hash
+  `<RELEASE_HASH>` (repo-wide `approval prepare release` manifest) together
+  with all residual risks disclosed above. `musubix3 approval record
+  release` itself cannot complete for the same reasons as
+  CHANGE-008/CHANGE-009's precedent — the full (non-`--changed`) gate it
+  runs is blocked by pre-existing, non-CHANGE-010 diagnostics plus this
+  change's own recording-order-debt from retroactive evidence recording.
+- [x] Commit, push, close #50.
+
+## Status
+
+Released. Human release approval recorded (approver: nahisaho, hash
+`<RELEASE_HASH>`); `musubix3 approval record release` blocked only by
+pre-existing, non-CHANGE-010 repo-wide diagnostics plus this change's own
+recording-order-debt (see above), consistent with
+CHANGE-006/CHANGE-008/CHANGE-009 precedent.
