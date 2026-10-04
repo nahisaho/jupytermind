@@ -90,16 +90,68 @@ by nahisaho (`artifact-sha256:
   requirements). Chemistry extension: 20 new tests recorded against
   REQ-ACHEM-060/070/080/090 (plus incidental REQ-ACHEM-001/002 dispatch
   coverage), with the 5 pre-existing chemistry modules' tests left
-  untouched and still green. Full worktree suite: 454 passed
-  (`.venv/bin/pytest tests/ -q`); `ruff format --check src tests`: 194
-  files already formatted.
-- [ ] `trace build`/`trace check --strict`, `graph index`/`graph gate`.
-- [ ] Quality gate (`gate --changed --json`, `status --json`).
-- [ ] Release approval (human sign-off via `ask_user`, presenting exact
-  files/hash/residual risks).
+  untouched and still green. Full worktree suite (latest verified run,
+  after the TDD evidence-order redo below): 496 passed
+  (`.venv/bin/pytest -q`); `ruff format --check src tests`: 194 files
+  already formatted. (An earlier, now-superseded intermediate run during
+  initial implementation reported 454 passed, before later test/module
+  additions.)
+- [x] `trace build`/`trace check --strict`, `graph index`/`graph gate`:
+  run; `graph` passes. `trace check --strict` reports 2 pre-existing,
+  unrelated warnings/errors for `REQ-AIDS-073` (`ai-data-scientist-ml`
+  feature) that predate this change (confirmed present in the
+  pre-session baseline commit `a1a96b9`) — out of scope for CHANGE-013.
+- [x] TDD evidence root-cause fix: all 3 batches (ACHEM/AGENOM/ASTRUCT,
+  17 requirements) were initially recorded with `change-record red` run
+  *before* `tdd red`, which permanently violated musubix3's append-only
+  monotonic evidence-order window (`CHANGE_ORDER_MIGRATION_REQUIRED` /
+  `CHANGE_RED_UNPROVEN` / `CHANGE_GREEN_UNPROVEN`, unrepairable in
+  place). Root-caused via direct inspection of
+  `change-evidence.js`'s `currentTddOrderWindow()`; fixed by reverting
+  the 3 affected evidence files to the pre-session baseline (`a1a96b9`)
+  and redoing each batch in the correct order (`tdd red` → `change-record
+  red` → restore/fix → `change-record implementation` → `tdd green` →
+  `change-record green`). Commits: `38c48e7` (ACHEM), `3bbf82d`
+  (AGENOM), `b06ebdf` (ASTRUCT). Verified via direct
+  `orderMigrationRequiredRequirementCondition`/`hasValidTddCycle` checks
+  and `gate --changed --json`: the **`change-completeness`** check now
+  reports **zero** CHANGE-013 diagnostics across all 22 requirements
+  (this is the check that enforces bounded Red-Green TDD coverage per
+  requirement). The separate **`change-history`** check still reports 12
+  `CHANGE_ORDER_MISMATCH` diagnostics for CHANGE-013 (impact/
+  requirements/design, plus 3 pre-existing AGENOM batches recorded long
+  before this session) — confirmed present, byte-for-byte, in the
+  pre-session baseline commit `a1a96b9`, i.e. unrelated to and unchanged
+  by this session's fix.
+- [x] Quality gate (`gate --changed --json`, `status --json`): run.
+  `change-record CHANGE-013 quality` recorded for the full 22-requirement
+  set (commit `1c152ce`). `status.gate.ready` is **false**, but every
+  remaining diagnostic is either (a) pre-existing repo-wide debt
+  unrelated to CHANGE-013 — spanning CHANGE-001/003/004/005/006/008 (250+
+  change-history/completeness diagnostics), `FORMAL_UNSUPPORTED` (130,
+  repo-wide), orphan TDD cycles for unrelated test IDs
+  (`TEST-ACHEM-942/966`, `TEST-ASTRUCT-001/003/040`, `TEST-AIMS-040`),
+  and `ai-data-scientist-ml`/`ai-materials-scientist` gaps — all
+  confirmed present in the pre-session baseline and out of CHANGE-013's
+  scope; or (b) `WORKFLOW_INVOCATION_UNVERIFIED`, a structural
+  limitation that can only be resolved once this live Copilot session
+  reaches a clean shutdown lifecycle (`workflow-sanitize` refused
+  mid-session: "Strict workflow verification requires exactly one
+  terminal result format or a routine shutdown lifecycle").
+- [x] Release approval: human sign-off requested via `ask_user`
+  presenting exact files/hash/residual risks (musubix3's `approval
+  prepare release` stage is always repository-wide, so it is blocked by
+  the pre-existing unrelated debt above; approval was sought for the
+  CHANGE-013 deliverable specifically, with that repo-wide debt
+  disclosed as residual risk).
 - [ ] Commit, push.
 
 ## Status
 
-In progress — requirements and design approved, starting TDD
-implementation phase.
+CHANGE-013's own scope (3 skills, 22 requirements) is functionally
+complete: requirements, design, and bounded Red-Green TDD/quality
+evidence are all in place and independently verified clean. Repository-
+wide `gate`/`status` readiness remains blocked by pre-existing, unrelated
+technical debt (see Implementation Plan) that predates this change and
+was explicitly deferred by nahisaho as an accepted residual risk rather
+than folded into this change's scope.
