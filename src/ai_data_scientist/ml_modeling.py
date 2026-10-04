@@ -3,6 +3,10 @@
 Implements DES-AIDS-012 (REQ-AIDS-008): splits a dataframe into train/test
 partitions, trains the requested classification or regression model, and
 reports the appropriate evaluation metrics for that model type.
+
+CHANGE-009 (REQ-AIDS-074..078) extends this module with pluggable
+cv_strategy/cv_splits/scoring and estimator-resolution support; see
+CODE-AIDS-119..122 for the annotated extension points.
 """
 
 from __future__ import annotations
