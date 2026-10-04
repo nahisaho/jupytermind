@@ -1,4 +1,8 @@
-"""Tests for A/B testing and experiment evaluation (REQ-AIDS-022)."""
+"""Tests for A/B testing and experiment evaluation (REQ-AIDS-022).
+
+CHANGE-010 (REQ-AIDS-079..081) adds TEST-AIDS-161..168 for paired
+significance tests (paired_t, wilcoxon, paired_bootstrap).
+"""
 
 from collections.abc import Callable
 
