@@ -1,5 +1,6 @@
 """Tests for visualization generation (REQ-AIDS-007)."""
 
+import io
 import struct
 from pathlib import Path
 
@@ -397,3 +398,317 @@ def test_TEST_AIDS_145_build_image_output_plain_bytes_has_no_chart_metadata():
     output = build_image_output(plain_bytes)
 
     assert "chart" not in output.get("metadata", {})
+
+
+# @id TEST-AIDS-195
+# @verifies REQ-AIDS-085
+def test_TEST_AIDS_195_render_chart_supports_box_barh_and_heatmap(monkeypatch):
+    closed_figures = []
+    original_close = plt.close
+
+    def _capture_close(fig=None):
+        if fig is not None:
+            closed_figures.append(fig)
+
+    monkeypatch.setattr(plt, "close", _capture_close)
+    try:
+        box_df = pd.DataFrame(
+            {"group": ["A", "A", "B", "B"], "value": [1.0, 3.0, 2.0, 4.0]}
+        )
+        box_result = render_chart(box_df, kind="box", x="group", y="value")
+        assert box_result[:8] == b"\x89PNG\r\n\x1a\n"
+        assert box_result.xlabel == "group"
+        assert box_result.ylabel == "value"
+
+        barh_df = pd.DataFrame(
+            {
+                "label": [
+                    "A very long category label for alpha",
+                    "An equally long category label for beta",
+                ],
+                "value": [10, 20],
+            }
+        )
+        barh_result = render_chart(barh_df, kind="barh", x="label", y="value")
+        assert barh_result[:8] == b"\x89PNG\r\n\x1a\n"
+        assert isinstance(barh_result, bytes)
+
+        heatmap_df = pd.DataFrame({"x": [1, 2, 3], "y": [2, 4, 6], "z": [0, 1, 0]})
+        heatmap_result = render_chart(heatmap_df, kind="heatmap", x="x", y="y")
+        assert heatmap_result[:8] == b"\x89PNG\r\n\x1a\n"
+        assert heatmap_result.legend is False
+
+        heatmap_figure = closed_figures[-1]
+        heatmap_array = heatmap_figure.axes[0].images[0].get_array()
+        assert heatmap_array.shape == (2, 2)
+
+        corr_df = heatmap_df[["x", "y"]].corr()
+        matrix_result = render_chart(corr_df, kind="heatmap")
+        assert matrix_result[:8] == b"\x89PNG\r\n\x1a\n"
+        matrix_figure = closed_figures[-1]
+        matrix_array = matrix_figure.axes[0].images[0].get_array()
+        assert matrix_array.tolist() == corr_df.to_numpy().tolist()
+    finally:
+        monkeypatch.setattr(plt, "close", original_close)
+        for fig in closed_figures:
+            original_close(fig)
+
+
+# @id TEST-AIDS-196
+# @verifies REQ-AIDS-086
+def test_TEST_AIDS_196_render_chart_scatter_hue_sets_legend_title(monkeypatch):
+    closed_figures = []
+    original_close = plt.close
+
+    def _capture_close(fig=None):
+        if fig is not None:
+            closed_figures.append(fig)
+
+    monkeypatch.setattr(plt, "close", _capture_close)
+    try:
+        df = pd.DataFrame(
+            {
+                "x": [1, 2, 3, 4],
+                "y": [10, 12, 8, 9],
+                "group": ["A", "A", "B", "B"],
+            }
+        )
+
+        result = render_chart(
+            df,
+            kind="scatter",
+            x="x",
+            y="y",
+            hue="group",
+            legend_title="Cluster",
+        )
+
+        assert result[:8] == b"\x89PNG\r\n\x1a\n"
+        assert result.legend is True
+        assert result.legend_title == "Cluster"
+        assert closed_figures[-1].axes[0].get_legend().get_title().get_text() == "Cluster"
+
+        default_result = render_chart(df, kind="scatter", x="x", y="y", hue="group")
+        assert default_result.legend is True
+        assert default_result.legend_title == "group"
+    finally:
+        monkeypatch.setattr(plt, "close", original_close)
+        for fig in closed_figures:
+            original_close(fig)
+
+
+# @id TEST-AIDS-197
+# @verifies REQ-AIDS-086
+def test_TEST_AIDS_197_render_chart_legend_title_overrides_existing_multiseries_legend(
+    monkeypatch,
+):
+    closed_figures = []
+    original_close = plt.close
+
+    def _capture_close(fig=None):
+        if fig is not None:
+            closed_figures.append(fig)
+
+    monkeypatch.setattr(plt, "close", _capture_close)
+    try:
+        df = pd.DataFrame({"x": [1, 2, 3], "a": [1, 4, 9], "b": [2, 3, 5]})
+
+        result = render_chart(df, kind="line", x="x", y=None, legend_title="Series")
+
+        assert result[:8] == b"\x89PNG\r\n\x1a\n"
+        assert result.legend is True
+        assert result.legend_title == "Series"
+        assert closed_figures[-1].axes[0].get_legend().get_title().get_text() == "Series"
+    finally:
+        monkeypatch.setattr(plt, "close", original_close)
+        for fig in closed_figures:
+            original_close(fig)
+
+
+# @id TEST-AIDS-198
+# @verifies REQ-AIDS-087
+def test_TEST_AIDS_198_render_chart_supports_symmetric_and_asymmetric_error_ranges(
+    monkeypatch,
+):
+    closed_figures = []
+    original_close = plt.close
+
+    def _capture_close(fig=None):
+        if fig is not None:
+            closed_figures.append(fig)
+
+    monkeypatch.setattr(plt, "close", _capture_close)
+    try:
+        bar_df = pd.DataFrame({"x": ["A", "B"], "y": [10, 12], "err": [1.0, 1.5]})
+        bar_result = render_chart(bar_df, kind="bar", x="x", y="y", yerr="err")
+        assert bar_result[:8] == b"\x89PNG\r\n\x1a\n"
+        assert any(collection.__class__.__name__ == "LineCollection" for collection in closed_figures[-1].axes[0].collections)
+
+        barh_df = pd.DataFrame(
+            {
+                "x": ["A", "B"],
+                "y": [10, 12],
+                "low": [0.5, 0.75],
+                "high": [1.0, 1.25],
+            }
+        )
+        barh_result = render_chart(barh_df, kind="barh", x="x", y="y", xerr=("low", "high"))
+        assert barh_result[:8] == b"\x89PNG\r\n\x1a\n"
+        assert any(collection.__class__.__name__ == "LineCollection" for collection in closed_figures[-1].axes[0].collections)
+    finally:
+        monkeypatch.setattr(plt, "close", original_close)
+        for fig in closed_figures:
+            original_close(fig)
+
+
+# @id TEST-AIDS-199
+# @verifies REQ-AIDS-088
+def test_TEST_AIDS_199_chart_metadata_from_figure_supports_auditable_external_figures(
+    tmp_path,
+):
+    from ai_data_scientist.visualization import RenderedChart, chart_metadata_from_figure
+
+    fig, ax = plt.subplots()
+    try:
+        ax.plot([1, 2, 3], [3, 5, 4], label="Series A")
+        ax.set_title("Growth")
+        ax.set_xlabel("Quarter")
+        ax.set_ylabel("Revenue")
+        ax.legend(title="Series")
+
+        metadata = chart_metadata_from_figure(fig)
+        assert metadata.title == "Growth"
+        assert metadata.xlabel == "Quarter"
+        assert metadata.ylabel == "Revenue"
+        assert metadata.legend is True
+        assert metadata.legend_title == "Series"
+        assert metadata.missing_glyphs == ()
+
+        buffer = io.BytesIO()
+        fig.savefig(buffer, format="png")
+        rendered = RenderedChart(buffer.getvalue(), metadata)
+
+        handle = resolve_project("external-chart-metadata-project", projects_root=tmp_path)
+        ensure_notebook(handle)
+        record_chart(handle, "external matplotlib figure", rendered)
+
+        notebook = nbformat.read(handle.notebook_path, as_version=4)
+        chart_metadata = notebook.cells[0]["metadata"]["chart"]
+        assert chart_metadata["title"] == "Growth"
+        assert chart_metadata["xlabel"] == "Quarter"
+        assert chart_metadata["ylabel"] == "Revenue"
+        assert chart_metadata["legend"] is True
+        assert chart_metadata["legend_title"] == "Series"
+        assert chart_metadata["missing_glyphs"] == []
+    finally:
+        plt.close(fig)
+
+
+# @id TEST-AIDS-200
+# @verifies REQ-AIDS-086 REQ-AIDS-087
+def test_TEST_AIDS_200_grouped_bar_chart_supports_hue_and_error_ranges(monkeypatch):
+    closed_figures = []
+    original_close = plt.close
+
+    def _capture_close(fig=None):
+        if fig is not None:
+            closed_figures.append(fig)
+
+    monkeypatch.setattr(plt, "close", _capture_close)
+    try:
+        df = pd.DataFrame(
+            {
+                "category": ["A", "A", "B", "B"],
+                "group": ["g1", "g2", "g1", "g2"],
+                "mean": [1.0, 1.5, 2.0, 2.5],
+                "err": [0.1, 0.2, 0.15, 0.25],
+            }
+        )
+
+        result = render_chart(
+            df,
+            kind="bar",
+            x="category",
+            y="mean",
+            hue="group",
+            yerr="err",
+            legend_title="Group",
+        )
+
+        assert result[:8] == b"\x89PNG\r\n\x1a\n"
+        assert result.legend is True
+        assert result.legend_title == "Group"
+        assert any(
+            collection.__class__.__name__ == "LineCollection"
+            for collection in closed_figures[-1].axes[0].collections
+        )
+    finally:
+        monkeypatch.setattr(plt, "close", original_close)
+        for fig in closed_figures:
+            original_close(fig)
+
+
+# @id TEST-AIDS-201
+# @verifies REQ-AIDS-086 REQ-AIDS-087
+def test_TEST_AIDS_201_grouped_bar_and_barh_preserve_nan_hue_series(monkeypatch):
+    closed_figures = []
+    original_close = plt.close
+
+    def _capture_close(fig=None):
+        if fig is not None:
+            closed_figures.append(fig)
+
+    monkeypatch.setattr(plt, "close", _capture_close)
+    try:
+        df = pd.DataFrame(
+            {
+                "category": ["A", "A", "B", "B"],
+                "group": ["g1", None, "g1", None],
+                "mean": [1.0, 1.5, 2.0, 2.5],
+                "err": [0.1, 0.2, 0.15, 0.25],
+            }
+        )
+
+        for kind, xerr, yerr in (("bar", None, "err"), ("barh", "err", None)):
+            result = render_chart(
+                df,
+                kind=kind,
+                x="category",
+                y="mean",
+                hue="group",
+                xerr=xerr,
+                yerr=yerr,
+                legend_title="Group",
+            )
+
+            assert result[:8] == b"\x89PNG\r\n\x1a\n"
+            assert result.legend is True
+            assert result.legend_title == "Group"
+            labels = closed_figures[-1].axes[0].get_legend_handles_labels()[1]
+            assert labels == ["g1", "NaN"]
+            assert any(
+                collection.__class__.__name__ == "LineCollection"
+                for collection in closed_figures[-1].axes[0].collections
+            )
+    finally:
+        monkeypatch.setattr(plt, "close", original_close)
+        for fig in closed_figures:
+            original_close(fig)
+
+
+# @id TEST-AIDS-202
+# @verifies REQ-AIDS-086 REQ-AIDS-087
+def test_TEST_AIDS_202_grouped_bar_duplicate_x_hue_pairs_raise_value_error():
+    df = pd.DataFrame(
+        {
+            "category": ["A", "A"],
+            "group": ["g1", "g1"],
+            "mean": [1.0, 1.5],
+            "err": [0.1, 0.2],
+        }
+    )
+
+    import pytest
+
+    with pytest.raises(ValueError, match="unique per .*pair"):
+        render_chart(df, kind="bar", x="category", y="mean", hue="group", yerr="err")

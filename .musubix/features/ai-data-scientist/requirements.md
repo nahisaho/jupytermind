@@ -422,3 +422,32 @@ Type: functional
 Pattern: event-driven
 Statement: When audit_visual_outputs inspects a chart cell's image outputs, the system shall read each image output's own metadata["chart"] mapping to audit that image (identifying it in findings by its (cell_index, output_index) pair), falling back to the enclosing cell's metadata["chart"] only when the cell contains exactly one image output and that output's own metadata has no "chart" key.
 Acceptance: Given a notebook containing only an output produced by the fixed build_image_output (REQ-AIDS-071), with no cell-level metadata["chart"], audit_notebook(..., visual_audit=True) reports no "unaudited" finding for that cell; given a single cell containing two image outputs where each has its own distinct, valid metadata["chart"] (one complete, one with a missing title), audit_visual_outputs reports findings keyed to each image's own (cell_index, output_index), flagging only the one missing a title, rather than conflating or applying one image's metadata to the other; given an image output whose own metadata["chart"] is present but empty or not a mapping, that specific output is reported "unaudited" and does not fall back to the cell-level mapping even when the cell-level mapping is valid; existing single-image, cell-level-only metadata["chart"] behavior (REQ-AIDS-061) continues to work unchanged when no output-level metadata is present.
+
+
+## REQ-AIDS-085: Additional render_chart kinds for grouped distributions and matrix views / 群比較・行列表現向けrender_chart種類の拡張
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When render_chart is called with kind "box" or "barh" or "heatmap", the system shall render that chart as PNG output instead of rejecting the kind as unsupported.
+Acceptance: Given a dataframe with categorical group labels and numeric values, calling render_chart(df, kind="box", x="group", y="value") returns valid PNG bytes whose rendered-chart metadata reports the x-axis label as "group" and the y-axis label as "value"; given a dataframe with long category labels and numeric values, calling render_chart(df, kind="barh", x="label", y="value") returns valid PNG bytes without raising and preserves the ordinary RenderedChart bytes contract; given a dataframe with numeric columns x, y, z, calling render_chart(df, kind="heatmap") returns valid PNG bytes visualizing the correlation matrix of all numeric columns, and calling render_chart(df, kind="heatmap", x="x", y="y") returns valid PNG bytes visualizing the 2x2 correlation matrix of those selected numeric columns; given a square numeric dataframe whose index and columns already name the same variables (for example a precomputed correlation matrix), calling render_chart(df_corr, kind="heatmap") visualizes those matrix values directly without recomputing a second correlation matrix; existing render_chart calls for scatter/line/bar/hist with no new parameters continue to work unchanged.
+
+## REQ-AIDS-086: Legend control for grouped chart rendering / グループ化チャート描画における凡例制御
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When render_chart is called with a hue column for a scatter or line or bar or barh or hist chart, the system shall render one plotted series per distinct hue value and attach a legend whose title is legend_title when provided, otherwise the hue column name.
+Acceptance: Given a dataframe with x, y, and group columns, calling render_chart(df, kind="scatter", x="x", y="y", hue="group", legend_title="Cluster") returns a RenderedChart whose legend attribute is True and whose legend_title attribute is "Cluster"; given the same call without legend_title, the returned legend_title is "group"; given an existing multi-series line chart request that already renders a legend without hue, passing only legend_title updates that legend's title while preserving the plotted data and existing PNG-bytes compatibility.
+
+## REQ-AIDS-087: Error-range arguments for render_chart / render_chartにおける誤差範囲引数
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When render_chart is called for a scatter or line or bar or barh chart with xerr and/or yerr naming one dataframe column for symmetric errors or two dataframe columns for lower/upper asymmetric errors, the system shall render those error ranges aligned to the plotted points or bars.
+Acceptance: Given a dataframe with x, y, and err columns, calling render_chart(df, kind="bar", x="x", y="y", yerr="err") returns valid PNG bytes and draws one vertical error range per rendered bar; given a dataframe with x, y, low, and high columns, calling render_chart(df, kind="barh", x="x", y="y", xerr=("low", "high")) returns valid PNG bytes and draws one horizontal asymmetric error range per rendered bar; omitting xerr/yerr preserves the current rendering behavior unchanged.
+
+## REQ-AIDS-088: Chart metadata helper for externally drawn matplotlib figures / 外部描画matplotlib Figure向けチャートメタデータ補助
+Priority: must
+Type: functional
+Pattern: ubiquitous
+Statement: The system shall provide a chart_metadata_from_figure(fig) helper that builds ChartMetadata from an existing matplotlib Figure so externally drawn charts can be wrapped as auditable RenderedChart outputs without hand-assembling metadata mappings.
+Acceptance: Given a matplotlib Figure whose first plotting axes has a title, x-axis label, y-axis label, and legend, calling chart_metadata_from_figure(fig) returns a ChartMetadata object whose title/xlabel/ylabel/legend fields match the rendered figure and whose legend_title field matches the rendered legend title; wrapping saved PNG bytes as RenderedChart(png_bytes, chart_metadata_from_figure(fig)) and passing that object to record_chart persists the same chart metadata into the notebook cell metadata["chart"] mapping, with missing_glyphs defaulting to an empty tuple when no warning list is supplied.
