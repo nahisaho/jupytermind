@@ -9,7 +9,7 @@ from ai_chemistry_scientist.validation import fail, ok, register_validator
 
 _MODULE_NAME = "structural-alerts"
 ALERT_SMARTS = (
-    ("nitro_group", "[N+](=O)[O-]"),
+    ("nitro_group", "[NX3](=O)=O"),
     ("aldehyde", "[CX3H1](=O)"),
     ("michael_acceptor_enone", "C=CC(=O)"),
     ("epoxide", "C1OC1"),
