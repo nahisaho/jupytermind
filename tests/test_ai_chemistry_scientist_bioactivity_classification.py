@@ -132,3 +132,31 @@ def test_TEST_ACHEM_968_validator_rejects_dummy_atom_smiles_as_chemically_undefi
         "parameter": "smiles",
         "constraint": "must parse to a valid RDKit molecule",
     }
+
+
+# @id TEST-ACHEM-971
+# @verifies REQ-ACHEM-090
+@pytest.mark.parametrize(
+    ("descriptors", "aromatic_ring_count", "expected_label"),
+    [
+        ({"tpsa": 89.9, "mol_logp": 2.0, "mol_wt": 400.0}, 3, "CNS_like"),
+        ({"tpsa": 89.9, "mol_logp": 5.0, "mol_wt": 450.0}, 3, "CNS_like"),
+        ({"tpsa": 95.0, "mol_logp": 2.0, "mol_wt": 400.0}, 3, "other"),
+        ({"tpsa": 95.0, "mol_logp": 2.0, "mol_wt": 400.1}, 3, "kinase_inhibitor_like"),
+    ],
+)
+def test_TEST_ACHEM_971_documented_boundary_semantics_stay_exact(
+    monkeypatch, descriptors, aromatic_ring_count, expected_label
+):
+    import ai_chemistry_scientist.bioactivity_classification as mod
+
+    sentinel_mol = object()
+    monkeypatch.setattr(mod, "parse_smiles", lambda smiles: sentinel_mol)
+    monkeypatch.setattr(mod, "compute_descriptors", lambda mol: descriptors)
+    monkeypatch.setattr(
+        mod.rdMolDescriptors, "CalcNumAromaticRings", lambda mol: aromatic_ring_count
+    )
+
+    result = mod.run_bioactivity_classification("boundary-fixture")
+
+    assert result["label"] == expected_label

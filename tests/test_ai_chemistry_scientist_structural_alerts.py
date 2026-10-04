@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import importlib
+import sys
+
 from rdkit import Chem
 
 _ALERT_RICH = "O=CC=CC(=O)C1OC1"
@@ -80,7 +83,7 @@ def test_TEST_ACHEM_962_alerts_are_reported_in_definition_order_not_match_order(
 
     class _FakeMol:
         def HasSubstructMatch(self, pattern):
-            return pattern in {"[NX3](=O)=O", "C1OC1", "[SX2H]"}
+            return pattern in {"[N+](=O)[O-]", "C1OC1", "[SX2H]"}
 
     monkeypatch.setattr(mod, "parse_smiles", lambda smiles: _FakeMol())
     # Alert queries are pre-compiled at import time (not re-compiled per
@@ -108,3 +111,54 @@ def test_TEST_ACHEM_966_validator_rejects_dummy_atom_smiles_as_chemically_undefi
         "parameter": "smiles",
         "constraint": "must parse to a valid RDKit molecule",
     }
+
+
+# @id TEST-ACHEM-969
+# @verifies REQ-ACHEM-070
+def test_TEST_ACHEM_969_structural_alert_queries_fail_fast_when_any_smarts_is_malformed(
+    monkeypatch,
+):
+    import pytest
+
+    module_name = "ai_chemistry_scientist.structural_alerts"
+    original_module = sys.modules.pop(module_name, None)
+    original_mol_from_smarts = Chem.MolFromSmarts
+
+    def _fake_mol_from_smarts(smarts):
+        if smarts == "[N+](=O)[O-]":
+            return None
+        return original_mol_from_smarts(smarts)
+
+    monkeypatch.setattr(Chem, "MolFromSmarts", _fake_mol_from_smarts)
+
+    try:
+        with pytest.raises(ValueError, match="nitro_group"):
+            importlib.import_module(module_name)
+    finally:
+        sys.modules.pop(module_name, None)
+        if original_module is not None:
+            sys.modules[module_name] = original_module
+
+
+# @id TEST-ACHEM-970
+# @verifies REQ-ACHEM-070
+def test_TEST_ACHEM_970_each_named_alert_and_all_five_match_real_smiles():
+    from ai_chemistry_scientist.structural_alerts import run_structural_alerts
+
+    expected_examples = {
+        "nitro_group": "C[N+](=O)[O-]",
+        "aldehyde": "CC=O",
+        "michael_acceptor_enone": "CC=CC(=O)C",
+        "epoxide": "CC1OC1",
+        "free_thiol": "CCS",
+    }
+
+    for expected_alert, smiles in expected_examples.items():
+        result = run_structural_alerts(smiles)
+        assert result["alerts_matched"] == [expected_alert]
+        assert result["alert_count"] == 1
+
+    all_alerts_result = run_structural_alerts("C[N+](=O)[O-].CC=O.CC=CC(=O)C.CC1OC1.CCS")
+
+    assert all_alerts_result["alerts_matched"] == list(expected_examples)
+    assert all_alerts_result["alert_count"] == len(expected_examples)
