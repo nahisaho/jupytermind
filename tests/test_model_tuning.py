@@ -48,7 +48,7 @@ def test_TEST_AIDS_019():
     assert len(result.all_candidates) == len(grid)
 
 
-# @id TEST-AIDS-154
+# @id TEST-AIDS-188
 # @verifies REQ-AIDS-076
 def test_TEST_AIDS_154():
     df = _make_classification_df()
@@ -83,7 +83,7 @@ def test_TEST_AIDS_154():
         assert candidate["result"].cv_splits == shared_splits
 
 
-# @id TEST-AIDS-155
+# @id TEST-AIDS-189
 # @verifies REQ-AIDS-076
 def test_TEST_AIDS_155():
     df = _make_classification_df()
@@ -106,7 +106,7 @@ def test_TEST_AIDS_155():
     assert result.best_metric == min(candidate_metrics)
 
 
-# @id TEST-AIDS-156
+# @id TEST-AIDS-190
 # @verifies REQ-AIDS-078
 def test_TEST_AIDS_156():
     df = _make_classification_df()

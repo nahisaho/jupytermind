@@ -45,7 +45,7 @@ def test_TEST_AIDS_020():
         assert "metric" in candidate
 
 
-# @id TEST-AIDS-157
+# @id TEST-AIDS-191
 # @verifies REQ-AIDS-077
 def test_TEST_AIDS_157():
     df = _make_classification_df()
@@ -75,7 +75,7 @@ def test_TEST_AIDS_157():
         assert candidate["result"].cv_splits == shared_splits
 
 
-# @id TEST-AIDS-158
+# @id TEST-AIDS-192
 # @verifies REQ-AIDS-077
 def test_TEST_AIDS_158():
     df = _make_classification_df()
@@ -93,7 +93,7 @@ def test_TEST_AIDS_158():
     assert metrics == sorted(metrics)
 
 
-# @id TEST-AIDS-159
+# @id TEST-AIDS-193
 # @verifies REQ-AIDS-078
 def test_TEST_AIDS_159():
     df = _make_classification_df()

@@ -7446,6 +7446,208 @@
           "order": 671
         }
       }
+    },
+    {
+      "changeId": "CHANGE-009",
+      "requirementIds": [
+        "REQ-AIDS-074",
+        "REQ-AIDS-075",
+        "REQ-AIDS-076",
+        "REQ-AIDS-077",
+        "REQ-AIDS-078"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-04T13:22:51.718Z",
+          "fingerprints": {
+            "impact": "3620d5af7acdf9f1e46725f7fd36e3a1ab2d97b2f69bd726fbeefe0dd8235492",
+            "requirements": "7a812d9bb5daee416e19d716d4ff609d8b2df494621f7d4994aa88a4e71a282b",
+            "design": "8faedac3cb3500532f51c4c7f38e30fc8195045f48208822fbfa73f62a1d94ea",
+            "implementation": "26f2b6600330390ec4700ccd9038b65a09131aedb9c97f8da48541d8415383d3",
+            "tests": "860b0a7f7e95ebb42612d7983fdbec3ab71f4fa05876ff4b9dad39b8266a9f9f",
+            "tdd": "717429afcccad7470e2fc520074bdafbd1da8744fd0201818fa0ebf9f8034cb1",
+            "requirementImplementations": {
+              "REQ-AIDS-074": {
+                "paths": [
+                  "src/ai_data_scientist/ml_modeling.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c"
+                }
+              },
+              "REQ-AIDS-075": {
+                "paths": [
+                  "src/ai_data_scientist/ml_modeling.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c"
+                }
+              },
+              "REQ-AIDS-076": {
+                "paths": [
+                  "src/ai_data_scientist/ml_modeling.py",
+                  "src/ai_data_scientist/model_tuning.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c",
+                  "src/ai_data_scientist/model_tuning.py": "adb3b7bac8a50608224de1b07ae7b870e384d37032a2e051a7f51eab6fafe8eb"
+                }
+              },
+              "REQ-AIDS-077": {
+                "paths": [
+                  "src/ai_data_scientist/automl.py",
+                  "src/ai_data_scientist/ml_modeling.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/automl.py": "928062150302f6edbf2c223d2d6e87d0c106bc598a69c9d30f60849c19ac83b6",
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c"
+                }
+              },
+              "REQ-AIDS-078": {
+                "paths": [
+                  "src/ai_data_scientist/automl.py",
+                  "src/ai_data_scientist/ml_modeling.py",
+                  "src/ai_data_scientist/model_tuning.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/automl.py": "928062150302f6edbf2c223d2d6e87d0c106bc598a69c9d30f60849c19ac83b6",
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c",
+                  "src/ai_data_scientist/model_tuning.py": "adb3b7bac8a50608224de1b07ae7b870e384d37032a2e051a7f51eab6fafe8eb"
+                }
+              }
+            }
+          },
+          "order": 672
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-04T13:23:25.917Z",
+          "fingerprints": {
+            "impact": "3620d5af7acdf9f1e46725f7fd36e3a1ab2d97b2f69bd726fbeefe0dd8235492",
+            "requirements": "7a812d9bb5daee416e19d716d4ff609d8b2df494621f7d4994aa88a4e71a282b",
+            "design": "8faedac3cb3500532f51c4c7f38e30fc8195045f48208822fbfa73f62a1d94ea",
+            "implementation": "26f2b6600330390ec4700ccd9038b65a09131aedb9c97f8da48541d8415383d3",
+            "tests": "860b0a7f7e95ebb42612d7983fdbec3ab71f4fa05876ff4b9dad39b8266a9f9f",
+            "tdd": "717429afcccad7470e2fc520074bdafbd1da8744fd0201818fa0ebf9f8034cb1",
+            "requirementImplementations": {
+              "REQ-AIDS-074": {
+                "paths": [
+                  "src/ai_data_scientist/ml_modeling.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c"
+                }
+              },
+              "REQ-AIDS-075": {
+                "paths": [
+                  "src/ai_data_scientist/ml_modeling.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c"
+                }
+              },
+              "REQ-AIDS-076": {
+                "paths": [
+                  "src/ai_data_scientist/ml_modeling.py",
+                  "src/ai_data_scientist/model_tuning.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c",
+                  "src/ai_data_scientist/model_tuning.py": "adb3b7bac8a50608224de1b07ae7b870e384d37032a2e051a7f51eab6fafe8eb"
+                }
+              },
+              "REQ-AIDS-077": {
+                "paths": [
+                  "src/ai_data_scientist/automl.py",
+                  "src/ai_data_scientist/ml_modeling.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/automl.py": "928062150302f6edbf2c223d2d6e87d0c106bc598a69c9d30f60849c19ac83b6",
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c"
+                }
+              },
+              "REQ-AIDS-078": {
+                "paths": [
+                  "src/ai_data_scientist/automl.py",
+                  "src/ai_data_scientist/ml_modeling.py",
+                  "src/ai_data_scientist/model_tuning.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/automl.py": "928062150302f6edbf2c223d2d6e87d0c106bc598a69c9d30f60849c19ac83b6",
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c",
+                  "src/ai_data_scientist/model_tuning.py": "adb3b7bac8a50608224de1b07ae7b870e384d37032a2e051a7f51eab6fafe8eb"
+                }
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 673
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-04T13:24:10.090Z",
+          "fingerprints": {
+            "impact": "3620d5af7acdf9f1e46725f7fd36e3a1ab2d97b2f69bd726fbeefe0dd8235492",
+            "requirements": "7a812d9bb5daee416e19d716d4ff609d8b2df494621f7d4994aa88a4e71a282b",
+            "design": "85859c8048bbc867611bb6bb85c3417a449ab1c9e5610dc30b1b31a2731c2d0a",
+            "implementation": "26f2b6600330390ec4700ccd9038b65a09131aedb9c97f8da48541d8415383d3",
+            "tests": "860b0a7f7e95ebb42612d7983fdbec3ab71f4fa05876ff4b9dad39b8266a9f9f",
+            "tdd": "717429afcccad7470e2fc520074bdafbd1da8744fd0201818fa0ebf9f8034cb1",
+            "requirementImplementations": {
+              "REQ-AIDS-074": {
+                "paths": [
+                  "src/ai_data_scientist/ml_modeling.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c"
+                }
+              },
+              "REQ-AIDS-075": {
+                "paths": [
+                  "src/ai_data_scientist/ml_modeling.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c"
+                }
+              },
+              "REQ-AIDS-076": {
+                "paths": [
+                  "src/ai_data_scientist/ml_modeling.py",
+                  "src/ai_data_scientist/model_tuning.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c",
+                  "src/ai_data_scientist/model_tuning.py": "adb3b7bac8a50608224de1b07ae7b870e384d37032a2e051a7f51eab6fafe8eb"
+                }
+              },
+              "REQ-AIDS-077": {
+                "paths": [
+                  "src/ai_data_scientist/automl.py",
+                  "src/ai_data_scientist/ml_modeling.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/automl.py": "928062150302f6edbf2c223d2d6e87d0c106bc598a69c9d30f60849c19ac83b6",
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c"
+                }
+              },
+              "REQ-AIDS-078": {
+                "paths": [
+                  "src/ai_data_scientist/automl.py",
+                  "src/ai_data_scientist/ml_modeling.py",
+                  "src/ai_data_scientist/model_tuning.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/automl.py": "928062150302f6edbf2c223d2d6e87d0c106bc598a69c9d30f60849c19ac83b6",
+                  "src/ai_data_scientist/ml_modeling.py": "f277ad9793bb6ae59ec55ce1c7c9eff1b4f8d36917702651b083ff5f0c07052c",
+                  "src/ai_data_scientist/model_tuning.py": "adb3b7bac8a50608224de1b07ae7b870e384d37032a2e051a7f51eab6fafe8eb"
+                }
+              }
+            }
+          },
+          "order": 674
+        }
+      }
     }
   ]
 }

@@ -276,3 +276,4 @@ Constraints: The resolved estimator must implement `fit` and `predict`; probabil
 Requirements: REQ-AIDS-078
 ADRs: none — the resolver centralizes already-implicit estimator construction rules without introducing a new dependency boundary.
 Depends-On: DES-AIDS-063, DES-AIDS-064, DES-AIDS-065
+Code: CODE-AIDS-119 through CODE-AIDS-124 (renumbered at merge to avoid colliding with CHANGE-008's CODE-AIDS-094/095 in `feature_engineering.py`; see CHANGE-009.md).
