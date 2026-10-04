@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 
+import json
+
+import pytest
+
 
 # @id TEST-ASTRUCT-002
 # @verifies REQ-ASTRUCT-002
@@ -63,3 +67,32 @@ def test_TEST_ASTRUCT_062_handler_accepts_already_structured_parameters_from_cal
         "validated secondary-structure predictor (no windowing, no real Chou-Fasman "
         "statistics)."
     )
+
+
+# @id TEST-ASTRUCT-079
+# @verifies REQ-ASTRUCT-002
+def test_TEST_ASTRUCT_079_dispatch_rejects_malformed_manifest_entries_with_a_clear_error(
+    tmp_path,
+):
+    from ai_structural_biology_scientist.dispatch import dispatch
+
+    manifest_path = tmp_path / "manifest.json"
+    manifest_path.write_text(
+        json.dumps(
+            {
+                "secondary-structure-heuristic": {
+                    "modulePath": "ai_structural_biology_scientist.dispatch",
+                    "names": {"en": ["secondary structure"], "ja": ["二次構造"]},
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(
+        ValueError,
+        match=(
+            "manifest entry 'secondary-structure-heuristic' must define a string 'functionName'"
+        ),
+    ):
+        dispatch("I want to evaluate secondary structure", manifest_path=manifest_path)

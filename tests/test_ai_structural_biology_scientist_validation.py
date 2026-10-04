@@ -5,6 +5,7 @@ from __future__ import annotations
 from types import MappingProxyType
 
 import numpy as np
+import pytest
 
 
 # @id TEST-ASTRUCT-003
@@ -141,3 +142,19 @@ def test_TEST_ASTRUCT_075_validate_parameters_accepts_mapping_inputs_and_numpy_i
     )
 
     assert valid == {"ok": True}
+
+
+# @id TEST-ASTRUCT-080
+# @verifies REQ-ASTRUCT-003
+def test_TEST_ASTRUCT_080_register_validator_rejects_duplicate_module_registration():
+    from ai_structural_biology_scientist.validation import ok, register_validator
+
+    module_name = "test-duplicate-validator"
+
+    register_validator(module_name, lambda params: ok())
+
+    with pytest.raises(
+        ValueError,
+        match="validator already registered for module 'test-duplicate-validator'",
+    ):
+        register_validator(module_name, lambda params: ok())

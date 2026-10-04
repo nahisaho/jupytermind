@@ -79,6 +79,10 @@ def _ensure_validator_registered(module_name: str) -> None:
 # @design DES-ASTRUCT-002
 def register_validator(module_name: str, validator: ValidatorFn) -> None:
     """Register ``module_name``'s documented atomic validator."""
+    if module_name in _REGISTRY:
+        raise ValueError(  # noqa: TRY004
+            f"validator already registered for module '{module_name}'"
+        )
     _REGISTRY[module_name] = validator
 
 

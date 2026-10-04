@@ -40,12 +40,45 @@ _RUN_FUNCTION_NAMES = {
     "structural-similarity-rmsd": "run_structural_similarity",
     "residue-contact-map": "run_contact_map",
 }
+_SUPPORTED_LANGUAGES = ("en", "ja")
+
+
+def _require_manifest_string(entry: dict[str, Any], method: str, field_name: str) -> None:
+    value = entry.get(field_name)
+    if not isinstance(value, str) or value == "":
+        raise ValueError(  # noqa: TRY004
+            f"manifest entry '{method}' must define a string '{field_name}'"
+        )
+
+
+def _validate_manifest(manifest: Any) -> dict[str, dict[str, Any]]:
+    if not isinstance(manifest, dict):
+        raise ValueError("manifest must be a JSON object")  # noqa: TRY004
+
+    for method, entry in manifest.items():
+        if not isinstance(entry, dict):
+            raise ValueError(f"manifest entry '{method}' must be a JSON object")  # noqa: TRY004
+        _require_manifest_string(entry, method, "modulePath")
+        _require_manifest_string(entry, method, "functionName")
+        names = entry.get("names")
+        if not isinstance(names, dict):
+            raise ValueError(f"manifest entry '{method}' must define an object 'names'")  # noqa: TRY004
+        for language in _SUPPORTED_LANGUAGES:
+            candidates = names.get(language)
+            if not isinstance(candidates, list) or any(
+                not isinstance(candidate, str) or candidate == "" for candidate in candidates
+            ):
+                raise ValueError(  # noqa: TRY004
+                    f"manifest entry '{method}' must define a list of non-empty strings at "
+                    f"'names.{language}'"
+                )
+    return manifest
 
 
 def load_manifest(manifest_path: Path | None = None) -> dict:
     """Load the static method-name-to-module manifest."""
     path = manifest_path or DEFAULT_MANIFEST_PATH
-    return json.loads(path.read_text(encoding="utf-8"))
+    return _validate_manifest(json.loads(path.read_text(encoding="utf-8")))
 
 
 def _matched_methods(request_text: str, manifest: dict) -> list[str]:
