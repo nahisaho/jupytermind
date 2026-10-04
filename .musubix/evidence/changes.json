@@ -7900,6 +7900,95 @@
           "order": 698
         }
       }
+    },
+    {
+      "changeId": "CHANGE-010",
+      "requirementIds": [
+        "REQ-AIDS-079",
+        "REQ-AIDS-080",
+        "REQ-AIDS-081"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-04T14:04:50.991Z",
+          "fingerprints": {
+            "impact": "d7f0060f74ac8f67ffe89f8ef30ca66dafcbe90d20ee50ff423efd644875f928",
+            "requirements": "5876792d3849450049754f7f54b97b827c61796dc8fa99f455c3fcf36715ae7e",
+            "design": "e337bf31c0ab58b856a91e17388afe04b722b31e7ec351d9d54c3e22bfc7e05d",
+            "implementation": "bd0480eb83d7279dcfa139483ebf1513c0bddccefc88bd8ca2891d270138acea",
+            "tests": "a95c478768d0081d2a7809e2b807173b5ef183069250d852e58c7619916f3157",
+            "tdd": "a5bd5f7f8aa5eefdc97734914cc6d1b356ee1af34cd29742ba45b5cb0068e508",
+            "requirementImplementations": {
+              "REQ-AIDS-079": {
+                "paths": [
+                  "src/ai_data_scientist/experiment_evaluation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/experiment_evaluation.py": "1b6e119dd6d1b3b1b30ed45a4c117c2baa75ea7e909d241c2f406e1fe2d9704e"
+                }
+              },
+              "REQ-AIDS-080": {
+                "paths": [
+                  "src/ai_data_scientist/experiment_evaluation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/experiment_evaluation.py": "1b6e119dd6d1b3b1b30ed45a4c117c2baa75ea7e909d241c2f406e1fe2d9704e"
+                }
+              },
+              "REQ-AIDS-081": {
+                "paths": [
+                  "src/ai_data_scientist/experiment_evaluation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/experiment_evaluation.py": "1b6e119dd6d1b3b1b30ed45a4c117c2baa75ea7e909d241c2f406e1fe2d9704e"
+                }
+              }
+            }
+          },
+          "order": 699
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-04T14:04:55.856Z",
+          "fingerprints": {
+            "impact": "d7f0060f74ac8f67ffe89f8ef30ca66dafcbe90d20ee50ff423efd644875f928",
+            "requirements": "5876792d3849450049754f7f54b97b827c61796dc8fa99f455c3fcf36715ae7e",
+            "design": "e337bf31c0ab58b856a91e17388afe04b722b31e7ec351d9d54c3e22bfc7e05d",
+            "implementation": "bd0480eb83d7279dcfa139483ebf1513c0bddccefc88bd8ca2891d270138acea",
+            "tests": "a95c478768d0081d2a7809e2b807173b5ef183069250d852e58c7619916f3157",
+            "tdd": "a5bd5f7f8aa5eefdc97734914cc6d1b356ee1af34cd29742ba45b5cb0068e508",
+            "requirementImplementations": {
+              "REQ-AIDS-079": {
+                "paths": [
+                  "src/ai_data_scientist/experiment_evaluation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/experiment_evaluation.py": "1b6e119dd6d1b3b1b30ed45a4c117c2baa75ea7e909d241c2f406e1fe2d9704e"
+                }
+              },
+              "REQ-AIDS-080": {
+                "paths": [
+                  "src/ai_data_scientist/experiment_evaluation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/experiment_evaluation.py": "1b6e119dd6d1b3b1b30ed45a4c117c2baa75ea7e909d241c2f406e1fe2d9704e"
+                }
+              },
+              "REQ-AIDS-081": {
+                "paths": [
+                  "src/ai_data_scientist/experiment_evaluation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/experiment_evaluation.py": "1b6e119dd6d1b3b1b30ed45a4c117c2baa75ea7e909d241c2f406e1fe2d9704e"
+                }
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 700
+        }
+      }
     }
   ]
 }

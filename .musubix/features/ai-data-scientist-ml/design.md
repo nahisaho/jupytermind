@@ -187,6 +187,7 @@ ADRs: none — extending the existing result dataclass with an optional
 field preserves backward compatibility more directly than introducing a
 separate bootstrap-only return type.
 Depends-On: DES-AIDS-020, DES-AIDS-067, DES-AIDS-068
+Code: CODE-AIDS-101 through CODE-AIDS-105 in `experiment_evaluation.py`.
 
 ## DES-AIDS-014: Clustering & dimensionality reduction module / クラスタリング・次元削減
 Responsibilities: Fit the requested unsupervised model (clustering or

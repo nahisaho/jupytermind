@@ -5689,6 +5689,22 @@
       "phase": "quality",
       "previousSha256": "08475b14318b40d2a4afd6ba2003cc2009524e8b4955ff5305a597164435d374",
       "recordSha256": "1b16131a2766550271926c8dc651f3f03beff925d65614a54d75d0fe061cea51"
+    },
+    {
+      "sequence": 699,
+      "kind": "change",
+      "entityId": "CHANGE-010",
+      "phase": "impact",
+      "previousSha256": "1b16131a2766550271926c8dc651f3f03beff925d65614a54d75d0fe061cea51",
+      "recordSha256": "777abf8c2ea267a42fd5c0b5b3fc29b8554b30cabdf39a2bdd8260c3b505ccd3"
+    },
+    {
+      "sequence": 700,
+      "kind": "change",
+      "entityId": "CHANGE-010",
+      "phase": "requirements",
+      "previousSha256": "777abf8c2ea267a42fd5c0b5b3fc29b8554b30cabdf39a2bdd8260c3b505ccd3",
+      "recordSha256": "303d246efc2614eab6582df1f2849ca602933b493d2fd819492de6dd25582540"
     }
   ]
 }
