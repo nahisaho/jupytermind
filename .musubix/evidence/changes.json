@@ -8865,6 +8865,359 @@
           "order": 769
         }
       }
+    },
+    {
+      "changeId": "CHANGE-016",
+      "requirementIds": [
+        "REQ-AIDS-090",
+        "REQ-AIDS-091",
+        "REQ-AIDS-092"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-04T20:18:18.639Z",
+          "fingerprints": {
+            "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+            "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+            "design": "dc572a7ee597686b49ef44a9d907fea49fc1c4fcc285fbb540a9f5ed6631b712",
+            "implementation": "6250bf45efeb180a27a31d663964ce9fbf9850d3ce38051ebf8ea2209f69e2a0",
+            "tests": "12343c385db1a64a146bca61f95322def064b21d77916f373185a34ee819c597",
+            "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+            "requirementImplementations": {
+              "REQ-AIDS-090": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-091": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-092": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 784
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-04T20:18:21.599Z",
+          "fingerprints": {
+            "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+            "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+            "design": "dc572a7ee597686b49ef44a9d907fea49fc1c4fcc285fbb540a9f5ed6631b712",
+            "implementation": "6250bf45efeb180a27a31d663964ce9fbf9850d3ce38051ebf8ea2209f69e2a0",
+            "tests": "12343c385db1a64a146bca61f95322def064b21d77916f373185a34ee819c597",
+            "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+            "requirementImplementations": {
+              "REQ-AIDS-090": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-091": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-092": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 785
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-04T20:18:24.779Z",
+          "fingerprints": {
+            "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+            "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+            "design": "5cfbf8f5f29e3b01926f02e5f8847cb4508124a17d380d01553e71d23d00ea35",
+            "implementation": "6250bf45efeb180a27a31d663964ce9fbf9850d3ce38051ebf8ea2209f69e2a0",
+            "tests": "12343c385db1a64a146bca61f95322def064b21d77916f373185a34ee819c597",
+            "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+            "requirementImplementations": {
+              "REQ-AIDS-090": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-091": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-092": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 786
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-04T20:18:54.554Z",
+          "fingerprints": {
+            "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+            "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+            "design": "5cfbf8f5f29e3b01926f02e5f8847cb4508124a17d380d01553e71d23d00ea35",
+            "implementation": "a94589b445e5f29e5105780c7f915052f36e01c53c86b269d3b44b88079b604f",
+            "tests": "99bfb3dc4ccae7c699cf570ef63b0e8ee0cf8ecaa76314dec8f0597af8a6711f",
+            "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+            "requirementImplementations": {
+              "REQ-AIDS-090": {
+                "paths": [
+                  "src/ai_data_scientist/analysis_assumptions.py",
+                  "src/ai_data_scientist/experiment_evaluation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
+                  "src/ai_data_scientist/experiment_evaluation.py": "aa2470b7bf544ad6251777a50f7ca9a7c060a4b424c1a412b170f9c5ee3fce6a"
+                }
+              },
+              "REQ-AIDS-091": {
+                "paths": [
+                  "src/ai_data_scientist/analysis_assumptions.py",
+                  "src/ai_data_scientist/experiment_evaluation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
+                  "src/ai_data_scientist/experiment_evaluation.py": "aa2470b7bf544ad6251777a50f7ca9a7c060a4b424c1a412b170f9c5ee3fce6a"
+                }
+              },
+              "REQ-AIDS-092": {
+                "paths": [
+                  "src/ai_data_scientist/analysis_assumptions.py",
+                  "src/ai_data_scientist/experiment_evaluation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
+                  "src/ai_data_scientist/experiment_evaluation.py": "aa2470b7bf544ad6251777a50f7ca9a7c060a4b424c1a412b170f9c5ee3fce6a"
+                }
+              }
+            }
+          },
+          "order": 796
+        }
+      },
+      "tddBatches": [
+        {
+          "requirementIds": [
+            "REQ-AIDS-090"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T20:18:28.350Z",
+            "fingerprints": {
+              "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+              "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+              "design": "5cfbf8f5f29e3b01926f02e5f8847cb4508124a17d380d01553e71d23d00ea35",
+              "implementation": "6250bf45efeb180a27a31d663964ce9fbf9850d3ce38051ebf8ea2209f69e2a0",
+              "tests": "5d2002f9c6068eef1bc5ba710d1ffd0691e2661382cd0c74fa4cf8dd22dc8adf",
+              "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+              "requirementImplementations": {
+                "REQ-AIDS-090": {
+                  "paths": [],
+                  "fingerprints": {}
+                }
+              }
+            },
+            "order": 787
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T20:18:31.129Z",
+            "fingerprints": {
+              "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+              "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+              "design": "5cfbf8f5f29e3b01926f02e5f8847cb4508124a17d380d01553e71d23d00ea35",
+              "implementation": "23497a3512e00a9f1db4921efd25527155aa07bdd66ecbe3029c80a7d3e8b965",
+              "tests": "5d2002f9c6068eef1bc5ba710d1ffd0691e2661382cd0c74fa4cf8dd22dc8adf",
+              "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+              "requirementImplementations": {
+                "REQ-AIDS-090": {
+                  "paths": [
+                    "src/ai_data_scientist/experiment_evaluation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/experiment_evaluation.py": "39cd636c12099970cf1b4a7702510af0e8f3d1fe2a1c1c4dc15f6c67b3516226"
+                  }
+                }
+              }
+            },
+            "order": 788
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T20:18:33.265Z",
+            "fingerprints": {
+              "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+              "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+              "design": "5cfbf8f5f29e3b01926f02e5f8847cb4508124a17d380d01553e71d23d00ea35",
+              "implementation": "23497a3512e00a9f1db4921efd25527155aa07bdd66ecbe3029c80a7d3e8b965",
+              "tests": "5d2002f9c6068eef1bc5ba710d1ffd0691e2661382cd0c74fa4cf8dd22dc8adf",
+              "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+              "requirementImplementations": {
+                "REQ-AIDS-090": {
+                  "paths": [
+                    "src/ai_data_scientist/experiment_evaluation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/experiment_evaluation.py": "39cd636c12099970cf1b4a7702510af0e8f3d1fe2a1c1c4dc15f6c67b3516226"
+                  }
+                }
+              }
+            },
+            "order": 789
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIDS-091"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T20:18:40.297Z",
+            "fingerprints": {
+              "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+              "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+              "design": "5cfbf8f5f29e3b01926f02e5f8847cb4508124a17d380d01553e71d23d00ea35",
+              "implementation": "23497a3512e00a9f1db4921efd25527155aa07bdd66ecbe3029c80a7d3e8b965",
+              "tests": "c216e3931f0ad23b78e8b618db94f413642d6356f1c9bc551e4f5be9a630ab11",
+              "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+              "requirementImplementations": {
+                "REQ-AIDS-091": {
+                  "paths": [],
+                  "fingerprints": {}
+                }
+              }
+            },
+            "order": 790
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T20:18:42.668Z",
+            "fingerprints": {
+              "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+              "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+              "design": "5cfbf8f5f29e3b01926f02e5f8847cb4508124a17d380d01553e71d23d00ea35",
+              "implementation": "0e2ef5ea4597fc45d8bc1ed4cd4a6bd32062a18aad4853074c53eaee34759589",
+              "tests": "c216e3931f0ad23b78e8b618db94f413642d6356f1c9bc551e4f5be9a630ab11",
+              "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+              "requirementImplementations": {
+                "REQ-AIDS-091": {
+                  "paths": [
+                    "src/ai_data_scientist/experiment_evaluation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/experiment_evaluation.py": "5eb73c27d891295474a1537d5b07f711830a3f05b133c893edc2a516ae35ee99"
+                  }
+                }
+              }
+            },
+            "order": 791
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T20:18:44.624Z",
+            "fingerprints": {
+              "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+              "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+              "design": "5cfbf8f5f29e3b01926f02e5f8847cb4508124a17d380d01553e71d23d00ea35",
+              "implementation": "0e2ef5ea4597fc45d8bc1ed4cd4a6bd32062a18aad4853074c53eaee34759589",
+              "tests": "c216e3931f0ad23b78e8b618db94f413642d6356f1c9bc551e4f5be9a630ab11",
+              "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+              "requirementImplementations": {
+                "REQ-AIDS-091": {
+                  "paths": [
+                    "src/ai_data_scientist/experiment_evaluation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/experiment_evaluation.py": "5eb73c27d891295474a1537d5b07f711830a3f05b133c893edc2a516ae35ee99"
+                  }
+                }
+              }
+            },
+            "order": 792
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIDS-092"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T20:18:46.850Z",
+            "fingerprints": {
+              "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+              "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+              "design": "5cfbf8f5f29e3b01926f02e5f8847cb4508124a17d380d01553e71d23d00ea35",
+              "implementation": "0e2ef5ea4597fc45d8bc1ed4cd4a6bd32062a18aad4853074c53eaee34759589",
+              "tests": "99bfb3dc4ccae7c699cf570ef63b0e8ee0cf8ecaa76314dec8f0597af8a6711f",
+              "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+              "requirementImplementations": {
+                "REQ-AIDS-092": {
+                  "paths": [],
+                  "fingerprints": {}
+                }
+              }
+            },
+            "order": 793
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T20:18:49.040Z",
+            "fingerprints": {
+              "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+              "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+              "design": "5cfbf8f5f29e3b01926f02e5f8847cb4508124a17d380d01553e71d23d00ea35",
+              "implementation": "a94589b445e5f29e5105780c7f915052f36e01c53c86b269d3b44b88079b604f",
+              "tests": "99bfb3dc4ccae7c699cf570ef63b0e8ee0cf8ecaa76314dec8f0597af8a6711f",
+              "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+              "requirementImplementations": {
+                "REQ-AIDS-092": {
+                  "paths": [
+                    "src/ai_data_scientist/analysis_assumptions.py",
+                    "src/ai_data_scientist/experiment_evaluation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
+                    "src/ai_data_scientist/experiment_evaluation.py": "aa2470b7bf544ad6251777a50f7ca9a7c060a4b424c1a412b170f9c5ee3fce6a"
+                  }
+                }
+              }
+            },
+            "order": 794
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T20:18:51.951Z",
+            "fingerprints": {
+              "impact": "ac9f1cef3957809cd7130c7d06e836eb3ebb0bc1b02140a6b258ceb6c6d55400",
+              "requirements": "858941f5392194f22f0431db5083e8e60f43345381a4cc19ac237c2dad4b2187",
+              "design": "5cfbf8f5f29e3b01926f02e5f8847cb4508124a17d380d01553e71d23d00ea35",
+              "implementation": "a94589b445e5f29e5105780c7f915052f36e01c53c86b269d3b44b88079b604f",
+              "tests": "99bfb3dc4ccae7c699cf570ef63b0e8ee0cf8ecaa76314dec8f0597af8a6711f",
+              "tdd": "7d1ed7bec5c4441e621c44febfa9c76c29770fc7fa2aa30d818046fc0d5c4840",
+              "requirementImplementations": {
+                "REQ-AIDS-092": {
+                  "paths": [
+                    "src/ai_data_scientist/analysis_assumptions.py",
+                    "src/ai_data_scientist/experiment_evaluation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
+                    "src/ai_data_scientist/experiment_evaluation.py": "aa2470b7bf544ad6251777a50f7ca9a7c060a4b424c1a412b170f9c5ee3fce6a"
+                  }
+                }
+              }
+            },
+            "order": 795
+          }
+        }
+      ]
     }
   ]
 }

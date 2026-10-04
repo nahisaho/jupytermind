@@ -59,6 +59,27 @@ Pattern: event-driven
 Statement: When a user requests experiment evaluation with `test="paired_bootstrap"` on aligned control and treatment predictions or aligned fold-level scores, the system shall require the paired inputs (and `y_true`, when provided) to have identical index order and only finite numeric values, then resample matched pairs with replacement, compute a treatment-minus-control difference using either a caller-supplied metric function over aligned `y_true` and predictions or the default mean difference over the paired numeric scores, and report the observed difference together with a confidence interval and markdown interpretation without claiming a bootstrap hypothesis-test p-value.
 Acceptance: Given fixed `random_state`, `iterations`, and `confidence_level`, `evaluate_experiment(control_predictions, treatment_predictions, test="paired_bootstrap", y_true=labels, metric_fn=roc_auc_score, ...)` returns an observed difference and confidence interval matching a reference paired-bootstrap implementation on the same aligned rows within `1e-6`, returns `p_value=NaN`, and its interpretation states that the bootstrap path reports an interval estimate rather than a hypothesis-test p-value. Given aligned per-fold numeric scores and no `metric_fn`/`y_true`, the same API returns an observed difference equal to `mean(treatment - control)` and a confidence interval matching a reference paired resampling of those fold pairs within `1e-6`. Calling any paired path with a NaN or infinite value raises `ValueError` mentioning finite paired values.
 
+## REQ-AIDS-090: Repeated multi-seed experiment comparison summary / 複数seed反復比較サマリ
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a caller requests a repeated experiment comparison across multiple split seeds (and optionally model seeds), the system shall rerun the same control-versus-treatment comparison once per requested seed, preserve the per-seed metric values and treatment-minus-control improvements, and report an aggregate summary containing the mean improvement, a seed-variability estimate, and fold-sign counts showing how many aligned comparisons were positive, zero, or negative.
+Acceptance: Given three requested split seeds and a deterministic comparison callback that returns per-seed `(control_metric, treatment_metric)` pairs of `(0.812100, 0.812250)`, `(0.812040, 0.812126)`, and `(0.812080, 0.812166)`, the repeated-comparison API returns exactly those three per-seed results in seed order, per-seed improvements of `0.000150`, `0.000086`, and `0.000086` within `1e-9`, `mean_improvement == 0.00010733333333333333` within `1e-12`, `seed_variability == 0.000064` within `1e-12`, and sign counts indicating three positive paired comparisons and zero zero/negative paired comparisons.
+
+## REQ-AIDS-091: Seed-variability-based adoption threshold classification / seed揺れベース採用閾値分類
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a caller requests an adoption judgment from a repeated-comparison summary, the system shall compute an adoption threshold from the observed seed variability, record that threshold alongside the summary, and classify a candidate improvement as `adopt`, `within_seed_variability`, or `regression` according to whether the improvement is greater than the threshold, between zero and the threshold inclusive, or below zero.
+Acceptance: Given a repeated-comparison summary whose observed `seed_variability` is `0.000064`, the threshold API returns `threshold == 0.000064` within `1e-12`, classifies `0.000021` and `0.000063` as `within_seed_variability`, classifies `0.000080` as `adopt`, and classifies `-0.000005` as `regression`.
+
+## REQ-AIDS-092: Selection-bias holdout evaluation / 選択バイアスのホールドアウト評価
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a caller requests a holdout evaluation for configuration selection bias on labeled rows, the system shall split the input rows into mutually disjoint training, selection, and final-evaluation partitions with proportions `0.6`, `0.2`, and `0.2`, choose the winning configuration using only the selection partition, and report both the selection-time improvement and the final-evaluation improvement together with their difference as an optimism/selection-bias measure.
+Acceptance: Given 10 labeled rows, `train_fraction=0.6`, `selection_fraction=0.2`, `evaluation_fraction=0.2`, and `split_seed=42`, the holdout-bias API passes one deterministic callback exactly three mutually disjoint index partitions whose lengths are `6`, `2`, and `2` and whose union equals the original 10-row index exactly once. On a fixed callback fixture where configuration `candidate_a` scores `+0.000224` versus baseline on the selection partition and `+0.000135` on the final-evaluation partition while every other candidate scores worse on selection, the API selects `candidate_a`, reports `selection_improvement == 0.000224` within `1e-12`, `evaluation_improvement == 0.000135` within `1e-12`, and `optimism == 0.000089` within `1e-12`.
+
 ## REQ-AIDS-016: Clustering and dimensionality reduction / クラスタリング・次元削減
 Priority: must
 Type: functional

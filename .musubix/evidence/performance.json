@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
-  "runId": "20327228-3446-45a3-8abb-41209e62a050",
-  "generatedAt": "2026-10-04T14:58:23.402Z",
+  "runId": "031f8546-4548-4374-997d-75bdf9dc388f",
+  "generatedAt": "2026-10-04T21:29:28.636Z",
   "executions": [
     {
-      "runId": "20327228-3446-45a3-8abb-41209e62a050",
-      "executionId": "ed3093cb1bac238e05b0d5b4b105a55aa0281b6b23e2c8fbd6e06382b60eb7c7",
+      "runId": "031f8546-4548-4374-997d-75bdf9dc388f",
+      "executionId": "5f1626fbf5e085730bdbc05ddf29f5cf4726b57a1478a6099e80b3723055ba0c",
       "commandName": "test",
       "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
       "reportPath": ".musubix/evidence/native/test/aggregate.json",
       "sourceKind": "file",
-      "reportSha256": "7853527ec61bed9bb369a4f8f6a4f88299695988a889de8134db20ede22f4e79",
+      "reportSha256": "5fb6cf5cd37d811a40ec594286305ad93c9e03cbb93716a19e2f949fa75deaea",
       "processStatus": "completed",
       "exitCode": 0,
       "tests": [
@@ -1007,6 +1007,50 @@
           "status": "passed"
         },
         {
+          "id": "TEST-AIDS-220",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-221",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-222",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-223",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-224",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-225",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-226",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-227",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-228",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-229",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-230",
+          "status": "passed"
+        },
+        {
           "id": "TEST-AIDS-PYTEST-001",
           "status": "passed"
         },
@@ -1507,7 +1551,7 @@
           "status": "passed"
         }
       ],
-      "recordSha256": "08a7582733bf6e5c1fa68bac5376215d3cf4675ab0c7c8ed929c95ff9012d184"
+      "recordSha256": "d68afc4d1babd34f0ebded77f4a7c91cdcf67e53059bc7f81728f38245abeade"
     }
   ],
   "observations": [

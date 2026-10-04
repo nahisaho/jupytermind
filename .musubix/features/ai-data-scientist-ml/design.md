@@ -189,6 +189,85 @@ separate bootstrap-only return type.
 Depends-On: DES-AIDS-020, DES-AIDS-067, DES-AIDS-068
 Code: CODE-AIDS-101 through CODE-AIDS-105 in `experiment_evaluation.py`.
 
+## DES-AIDS-090: Repeated multi-seed experiment comparison aggregator / 複数seed反復比較集約器
+Responsibilities: Repeat one control-versus-treatment comparison across a
+caller-supplied sequence of split seeds (and optional model seeds), preserve
+the per-seed metrics and treatment-minus-control improvements, and summarize
+their central tendency, seed variability, and paired sign counts in one
+reusable result object.
+Interfaces: `summarize_seed_variability(compare_fn, *, split_seeds,
+model_seeds=None) -> SeedComparisonSummary`, where `compare_fn(split_seed,
+model_seed)` returns one comparison result for that seed pair and
+`SeedComparisonSummary = @dataclass(frozen=True) {results:
+tuple[SeedComparisonResult, ...], mean_improvement: float,
+seed_variability: float, sign_counts: dict[str, int]}`. Each
+`SeedComparisonResult` stores the requested `split_seed`, the effective
+`model_seed`, the control metric, the treatment metric, and the derived
+improvement.
+Constraints: Results preserve the requested seed order exactly so notebook
+callers can relate each returned row to the seed they supplied. The
+improvement for each seed is always `treatment_metric - control_metric`.
+`mean_improvement` is the arithmetic mean of those per-seed improvements.
+`seed_variability` is the observed improvement range
+`max(improvements) - min(improvements)`, matching the adoption-threshold
+examples in REQ-AIDS-090/091. `sign_counts` reports the number of positive,
+zero, and negative paired improvements across the repeated comparisons.
+Requirements: REQ-AIDS-090
+ADRs: ADR-0054
+Depends-On: DES-AIDS-020
+
+## DES-AIDS-091: Seed-variability adoption-threshold classifier / seed揺れ採用閾値分類器
+Responsibilities: Convert the observed variability from
+`DES-AIDS-090` into an explicit adoption threshold and classify a candidate
+improvement as adoption-worthy, within observed seed noise, or regression.
+Interfaces: `judge_improvement(summary, candidate_improvement=None,
+threshold=None) -> AdoptionDecision`, where
+`AdoptionDecision = @dataclass(frozen=True) {candidate_improvement: float,
+threshold: float, classification: str}` and omitting `candidate_improvement`
+uses `summary.mean_improvement`.
+Constraints: Unless a caller explicitly overrides it, `threshold` equals
+`summary.seed_variability` exactly. Classification is `"adopt"` only when
+`candidate_improvement > threshold`, `"within_seed_variability"` when
+`0 <= candidate_improvement <= threshold`, and `"regression"` when
+`candidate_improvement < 0`. The decision payload records both the threshold
+and the measured improvement so downstream notebook commentary can explain why
+an apparently positive gain was not adopted.
+Requirements: REQ-AIDS-091
+ADRs: ADR-0055
+Depends-On: DES-AIDS-090
+
+## DES-AIDS-092: Three-way holdout selection-bias evaluator / 3分割ホールドアウト選択バイアス評価器
+Responsibilities: Partition labeled rows into train/selection/final-evaluation
+subsets, select the best candidate configuration using only the selection
+subset, and report both the selection-time and final-evaluation improvements so
+optimism from configuration selection is measurable.
+Interfaces: `evaluate_selection_bias_holdout(df, target, *, baseline,
+candidates, evaluate_candidate_fn, split_seed=42, train_fraction=0.6,
+selection_fraction=0.2, evaluation_fraction=0.2, assumption_manifest=None) ->
+SelectionBiasHoldoutResult`, where `evaluate_candidate_fn(train_df,
+selection_df, evaluation_df, baseline, candidates)` returns per-candidate
+selection/evaluation metrics and the chosen winner, and
+`SelectionBiasHoldoutResult = @dataclass(frozen=True) {train_index:
+tuple, selection_index: tuple, evaluation_index: tuple, selected_candidate:
+str, selection_improvement: float, evaluation_improvement: float,
+optimism: float, assumption_findings: tuple | None = None}`.
+Constraints: The three partitions are mutually disjoint and their union equals
+the input rows exactly once. The default fractions must split rows in the
+60/20/20 pattern requested by REQ-AIDS-092, with rounding handled so the three
+partition lengths still sum exactly to the full row count. Candidate selection
+must use only selection-partition metrics; final-evaluation metrics are read
+only after the winner is fixed. `optimism` is
+`selection_improvement - evaluation_improvement`, so a positive value quantifies
+selection optimism. Integration with `analysis_assumptions` is optional and
+non-blocking in this change: when `assumption_manifest` is supplied, the result
+may carry findings/assumptions about using a dedicated selection split, but the
+core evaluator must not require that module to operate.
+Requirements: REQ-AIDS-092
+ADRs: ADR-0056
+Depends-On: DES-AIDS-020
+Code: CODE-AIDS-131 through CODE-AIDS-140 in `experiment_evaluation.py` and,
+optionally, `analysis_assumptions.py`.
+
 ## DES-AIDS-014: Clustering & dimensionality reduction module / クラスタリング・次元削減
 Responsibilities: Fit the requested unsupervised model (clustering or
 dimensionality reduction) and report cluster assignments or reduced

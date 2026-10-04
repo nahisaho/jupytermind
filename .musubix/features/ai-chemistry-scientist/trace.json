@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T14:57:28.622Z",
+  "generatedAt": "2026-10-04T21:28:37.200Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -192,6 +192,24 @@
       "id": "ADR-0032",
       "kind": "adr",
       "path": ".musubix/decisions/ADR-0032.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0054",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0054.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0055",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0055.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0056",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0056.md",
       "line": 1
     },
     {
@@ -1082,118 +1100,136 @@
       "line": 165
     },
     {
-      "id": "DES-AIDS-014",
+      "id": "DES-AIDS-090",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
       "line": 192
     },
     {
-      "id": "DES-AIDS-015",
+      "id": "DES-AIDS-091",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 204
+      "line": 219
     },
     {
-      "id": "DES-AIDS-016",
-      "kind": "design",
-      "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 215
-    },
-    {
-      "id": "DES-AIDS-017",
-      "kind": "design",
-      "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 227
-    },
-    {
-      "id": "DES-AIDS-018",
+      "id": "DES-AIDS-092",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
       "line": 239
     },
     {
+      "id": "DES-AIDS-014",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist-ml/design.md",
+      "line": 271
+    },
+    {
+      "id": "DES-AIDS-015",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist-ml/design.md",
+      "line": 283
+    },
+    {
+      "id": "DES-AIDS-016",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist-ml/design.md",
+      "line": 294
+    },
+    {
+      "id": "DES-AIDS-017",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist-ml/design.md",
+      "line": 306
+    },
+    {
+      "id": "DES-AIDS-018",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist-ml/design.md",
+      "line": 318
+    },
+    {
       "id": "DES-AIDS-019",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 250
+      "line": 329
     },
     {
       "id": "DES-AIDS-070",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 262
+      "line": 341
     },
     {
       "id": "DES-AIDS-071",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 289
+      "line": 368
     },
     {
       "id": "DES-AIDS-072",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 328
+      "line": 407
     },
     {
       "id": "DES-AIDS-020",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 347
+      "line": 426
     },
     {
       "id": "DES-AIDS-021",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 359
+      "line": 438
     },
     {
       "id": "DES-AIDS-022",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 372
+      "line": 451
     },
     {
       "id": "DES-AIDS-023",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 384
+      "line": 463
     },
     {
       "id": "DES-AIDS-024",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 396
+      "line": 475
     },
     {
       "id": "DES-AIDS-062",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 410
+      "line": 489
     },
     {
       "id": "DES-AIDS-063",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 418
+      "line": 497
     },
     {
       "id": "DES-AIDS-064",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 426
+      "line": 505
     },
     {
       "id": "DES-AIDS-065",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 434
+      "line": 513
     },
     {
       "id": "DES-AIDS-066",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
-      "line": 442
+      "line": 521
     },
     {
       "id": "REQ-AIDS-008",
@@ -1238,143 +1274,164 @@
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-016",
+      "id": "REQ-AIDS-090",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 62,
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-017",
+      "id": "REQ-AIDS-091",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 69,
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-018",
+      "id": "REQ-AIDS-092",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 76,
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-019",
+      "id": "REQ-AIDS-016",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 83,
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-020",
+      "id": "REQ-AIDS-017",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 90,
-      "mandatory": false
+      "mandatory": true
     },
     {
-      "id": "REQ-AIDS-021",
+      "id": "REQ-AIDS-018",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 97,
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-082",
+      "id": "REQ-AIDS-019",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 104,
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-083",
+      "id": "REQ-AIDS-020",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 111,
       "mandatory": false
     },
     {
-      "id": "REQ-AIDS-084",
+      "id": "REQ-AIDS-021",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 118,
-      "mandatory": false
+      "mandatory": true
     },
     {
-      "id": "REQ-AIDS-022",
+      "id": "REQ-AIDS-082",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 125,
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-023",
+      "id": "REQ-AIDS-083",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 132,
-      "mandatory": true
+      "mandatory": false
     },
     {
-      "id": "REQ-AIDS-024",
+      "id": "REQ-AIDS-084",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 139,
       "mandatory": false
     },
     {
-      "id": "REQ-AIDS-025",
+      "id": "REQ-AIDS-022",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 146,
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-026",
+      "id": "REQ-AIDS-023",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 153,
-      "mandatory": false
-    },
-    {
-      "id": "REQ-AIDS-033",
-      "kind": "requirement",
-      "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
-      "line": 160,
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-074",
+      "id": "REQ-AIDS-024",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+      "line": 160,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AIDS-025",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 167,
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-075",
+      "id": "REQ-AIDS-026",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 174,
-      "mandatory": true
+      "mandatory": false
     },
     {
-      "id": "REQ-AIDS-076",
+      "id": "REQ-AIDS-033",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 181,
       "mandatory": true
     },
     {
-      "id": "REQ-AIDS-077",
+      "id": "REQ-AIDS-074",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
       "line": 188,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIDS-075",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+      "line": 195,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIDS-076",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+      "line": 202,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIDS-077",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+      "line": 209,
       "mandatory": false
     },
     {
       "id": "REQ-AIDS-078",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
-      "line": 195,
+      "line": 216,
       "mandatory": true
     },
     {
@@ -2099,37 +2156,97 @@
       "id": "CODE-AIDS-101",
       "kind": "code",
       "path": "src/ai_data_scientist/experiment_evaluation.py",
-      "line": 26
+      "line": 31
+    },
+    {
+      "id": "CODE-AIDS-131",
+      "kind": "code",
+      "path": "src/ai_data_scientist/experiment_evaluation.py",
+      "line": 42
+    },
+    {
+      "id": "CODE-AIDS-132",
+      "kind": "code",
+      "path": "src/ai_data_scientist/experiment_evaluation.py",
+      "line": 54
+    },
+    {
+      "id": "CODE-AIDS-133",
+      "kind": "code",
+      "path": "src/ai_data_scientist/experiment_evaluation.py",
+      "line": 65
+    },
+    {
+      "id": "CODE-AIDS-134",
+      "kind": "code",
+      "path": "src/ai_data_scientist/experiment_evaluation.py",
+      "line": 75
     },
     {
       "id": "CODE-AIDS-102",
       "kind": "code",
       "path": "src/ai_data_scientist/experiment_evaluation.py",
-      "line": 83
+      "line": 136
     },
     {
       "id": "CODE-AIDS-022",
       "kind": "code",
       "path": "src/ai_data_scientist/experiment_evaluation.py",
-      "line": 126
+      "line": 179
     },
     {
       "id": "CODE-AIDS-103",
       "kind": "code",
       "path": "src/ai_data_scientist/experiment_evaluation.py",
-      "line": 143
+      "line": 196
+    },
+    {
+      "id": "CODE-AIDS-135",
+      "kind": "code",
+      "path": "src/ai_data_scientist/experiment_evaluation.py",
+      "line": 255
+    },
+    {
+      "id": "CODE-AIDS-136",
+      "kind": "code",
+      "path": "src/ai_data_scientist/experiment_evaluation.py",
+      "line": 269
+    },
+    {
+      "id": "CODE-AIDS-137",
+      "kind": "code",
+      "path": "src/ai_data_scientist/experiment_evaluation.py",
+      "line": 321
+    },
+    {
+      "id": "CODE-AIDS-138",
+      "kind": "code",
+      "path": "src/ai_data_scientist/experiment_evaluation.py",
+      "line": 352
+    },
+    {
+      "id": "CODE-AIDS-139",
+      "kind": "code",
+      "path": "src/ai_data_scientist/experiment_evaluation.py",
+      "line": 408
+    },
+    {
+      "id": "CODE-AIDS-140",
+      "kind": "code",
+      "path": "src/ai_data_scientist/experiment_evaluation.py",
+      "line": 458
     },
     {
       "id": "CODE-AIDS-104",
       "kind": "code",
       "path": "src/ai_data_scientist/experiment_evaluation.py",
-      "line": 202
+      "line": 534
     },
     {
       "id": "CODE-AIDS-105",
       "kind": "code",
       "path": "src/ai_data_scientist/experiment_evaluation.py",
-      "line": 271
+      "line": 603
     },
     {
       "id": "CODE-AIDS-107",
@@ -4211,55 +4328,121 @@
       "id": "TEST-AIDS-022",
       "kind": "test",
       "path": "tests/test_experiment_evaluation.py",
-      "line": 18
+      "line": 19
     },
     {
       "id": "TEST-AIDS-161",
       "kind": "test",
       "path": "tests/test_experiment_evaluation.py",
-      "line": 102
+      "line": 103
     },
     {
       "id": "TEST-AIDS-162",
       "kind": "test",
       "path": "tests/test_experiment_evaluation.py",
-      "line": 119
+      "line": 120
     },
     {
       "id": "TEST-AIDS-163",
       "kind": "test",
       "path": "tests/test_experiment_evaluation.py",
-      "line": 134
+      "line": 135
     },
     {
       "id": "TEST-AIDS-164",
       "kind": "test",
       "path": "tests/test_experiment_evaluation.py",
-      "line": 144
+      "line": 145
     },
     {
       "id": "TEST-AIDS-165",
       "kind": "test",
       "path": "tests/test_experiment_evaluation.py",
-      "line": 180
+      "line": 181
     },
     {
       "id": "TEST-AIDS-166",
       "kind": "test",
       "path": "tests/test_experiment_evaluation.py",
-      "line": 208
+      "line": 209
     },
     {
       "id": "TEST-AIDS-167",
       "kind": "test",
       "path": "tests/test_experiment_evaluation.py",
-      "line": 227
+      "line": 228
     },
     {
       "id": "TEST-AIDS-168",
       "kind": "test",
       "path": "tests/test_experiment_evaluation.py",
-      "line": 248
+      "line": 249
+    },
+    {
+      "id": "TEST-AIDS-220",
+      "kind": "test",
+      "path": "tests/test_experiment_evaluation.py",
+      "line": 278
+    },
+    {
+      "id": "TEST-AIDS-223",
+      "kind": "test",
+      "path": "tests/test_experiment_evaluation.py",
+      "line": 305
+    },
+    {
+      "id": "TEST-AIDS-221",
+      "kind": "test",
+      "path": "tests/test_experiment_evaluation.py",
+      "line": 328
+    },
+    {
+      "id": "TEST-AIDS-222",
+      "kind": "test",
+      "path": "tests/test_experiment_evaluation.py",
+      "line": 356
+    },
+    {
+      "id": "TEST-AIDS-224",
+      "kind": "test",
+      "path": "tests/test_experiment_evaluation.py",
+      "line": 426
+    },
+    {
+      "id": "TEST-AIDS-225",
+      "kind": "test",
+      "path": "tests/test_experiment_evaluation.py",
+      "line": 467
+    },
+    {
+      "id": "TEST-AIDS-226",
+      "kind": "test",
+      "path": "tests/test_experiment_evaluation.py",
+      "line": 506
+    },
+    {
+      "id": "TEST-AIDS-227",
+      "kind": "test",
+      "path": "tests/test_experiment_evaluation.py",
+      "line": 570
+    },
+    {
+      "id": "TEST-AIDS-228",
+      "kind": "test",
+      "path": "tests/test_experiment_evaluation.py",
+      "line": 589
+    },
+    {
+      "id": "TEST-AIDS-229",
+      "kind": "test",
+      "path": "tests/test_experiment_evaluation.py",
+      "line": 627
+    },
+    {
+      "id": "TEST-AIDS-230",
+      "kind": "test",
+      "path": "tests/test_experiment_evaluation.py",
+      "line": 643
     },
     {
       "id": "TEST-AIDS-021",
@@ -6122,6 +6305,51 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-AIDS-090",
+      "to": "REQ-AIDS-090",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0054",
+      "to": "DES-AIDS-090",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIDS-090",
+      "to": "DES-AIDS-020",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-091",
+      "to": "REQ-AIDS-091",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0055",
+      "to": "DES-AIDS-091",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIDS-091",
+      "to": "DES-AIDS-090",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-092",
+      "to": "REQ-AIDS-092",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0056",
+      "to": "DES-AIDS-092",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIDS-092",
+      "to": "DES-AIDS-020",
+      "relation": "depends-on"
+    },
+    {
       "from": "DES-AIDS-014",
       "to": "REQ-AIDS-016",
       "relation": "satisfies"
@@ -7337,6 +7565,46 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AIDS-131",
+      "to": "REQ-AIDS-090",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-131",
+      "to": "DES-AIDS-090",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-132",
+      "to": "REQ-AIDS-090",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-132",
+      "to": "DES-AIDS-090",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-133",
+      "to": "REQ-AIDS-091",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-133",
+      "to": "DES-AIDS-091",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-134",
+      "to": "REQ-AIDS-092",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-134",
+      "to": "DES-AIDS-092",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AIDS-102",
       "to": "REQ-AIDS-079",
       "relation": "implements"
@@ -7389,6 +7657,76 @@
     {
       "from": "CODE-AIDS-103",
       "to": "DES-AIDS-069",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-135",
+      "to": "REQ-AIDS-090",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-135",
+      "to": "REQ-AIDS-092",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-135",
+      "to": "DES-AIDS-090",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-135",
+      "to": "DES-AIDS-092",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-136",
+      "to": "REQ-AIDS-090",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-136",
+      "to": "DES-AIDS-090",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-137",
+      "to": "REQ-AIDS-091",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-137",
+      "to": "DES-AIDS-091",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-138",
+      "to": "REQ-AIDS-092",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-138",
+      "to": "DES-AIDS-092",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-139",
+      "to": "REQ-AIDS-092",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-139",
+      "to": "DES-AIDS-092",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-140",
+      "to": "REQ-AIDS-092",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-140",
+      "to": "DES-AIDS-092",
       "relation": "implements"
     },
     {
@@ -10377,6 +10715,61 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AIDS-220",
+      "to": "REQ-AIDS-090",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-223",
+      "to": "REQ-AIDS-090",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-221",
+      "to": "REQ-AIDS-091",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-222",
+      "to": "REQ-AIDS-092",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-224",
+      "to": "REQ-AIDS-092",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-225",
+      "to": "REQ-AIDS-092",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-226",
+      "to": "REQ-AIDS-092",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-227",
+      "to": "REQ-AIDS-090",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-228",
+      "to": "REQ-AIDS-091",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-229",
+      "to": "REQ-AIDS-090",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-230",
+      "to": "REQ-AIDS-091",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AIDS-021",
       "to": "REQ-AIDS-021",
       "relation": "verifies"
@@ -11202,12 +11595,15 @@
     ".musubix/decisions/ADR-0030.md": "2695f9f7033f379f4bf798142e99356c30d77d11d4f941ed4aaee82c74088671",
     ".musubix/decisions/ADR-0031.md": "fb92067d0729d9a0e46686aebf10cf264b9438c8f2b029449b2b01c8774b3d66",
     ".musubix/decisions/ADR-0032.md": "e7f4df0112188f25af966498c3fa27b22a92c7dcd6244656650f6c967b33f2d5",
+    ".musubix/decisions/ADR-0054.md": "875b6c8911b28929568389d669ae03e8b5e7796d732c3cb8c295d0cb084a840b",
+    ".musubix/decisions/ADR-0055.md": "31222fb8553a13bdcb3981d5f126a927800f9373a9586f9b539932813e098f87",
+    ".musubix/decisions/ADR-0056.md": "35a308a0e5dbc5990333b7490e134978e4b6554914b87ed5ab9a527db1eecf50",
     ".musubix/features/ai-chemistry-scientist/design.md": "3fc504cbeb47081bd487ffe325d76cc06a4b6b8b7e1b661fe40d4befcac8228a",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "50db33cf117db410f0d028e52ab0ebe9f24b07ec410915f30e24b3764de567f9",
     ".musubix/features/ai-data-scientist/design.md": "f285d27f276f407dacf7a5c1b1b5db8d607932a88e1f2488e5c8a47034275912",
     ".musubix/features/ai-data-scientist/requirements.md": "1feef66dd4b9747b37a8685619282ba549f4ad7fb61ba2fe5527416ddac8c22d",
-    ".musubix/features/ai-data-scientist-ml/design.md": "3b28f9d59a689d5707d44f553acc3b75484ea82cb7848abf7e466d86594b0da9",
-    ".musubix/features/ai-data-scientist-ml/requirements.md": "acf8edfe207c3e9824c0f1b9c91ae44498c2c7c1a0e03f14ac0114b35c1beb68",
+    ".musubix/features/ai-data-scientist-ml/design.md": "02abce240176b00f213bb7eb06ad8f0c052d2b36f178dc5b0ac9c294f85958a3",
+    ".musubix/features/ai-data-scientist-ml/requirements.md": "15239caaeb5c6d3873f810171a66e54326f91feb9aed4304d3d0a4047c2fb03e",
     ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
     ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
@@ -11238,7 +11634,7 @@
     "src/ai_data_scientist/dataset_validation.py": "2ace66b016d06c0d1eab9c15ca769efb61aab901c83ff4bf067c726c1ccc0596",
     "src/ai_data_scientist/dependency_pins.py": "7f62ebf5e10cf25786700453e5bce0c1ba9428694e9f1c4ab4417bf4f8d49e60",
     "src/ai_data_scientist/eda.py": "b81e5e3ac240b3e66e30cc8f6fe57fc34a34b1fb58f72ecd955db9c6b1550ec4",
-    "src/ai_data_scientist/experiment_evaluation.py": "abf5e551c0c7a0d1a4a3c9fdf8ab3a8e5e0c80242ec44cd9a581b2d5a8089417",
+    "src/ai_data_scientist/experiment_evaluation.py": "e6ba71d476269b6068aff7b399f5a90aa7f707f332e1b5adbc5350a725c73296",
     "src/ai_data_scientist/explainability.py": "24304edd7d1da8cd30dfecd948b963aed0fd1d1c422880b3a42f05612661a77c",
     "src/ai_data_scientist/feature_engineering.py": "a496f0f8a99fc18f4c6c648b447fbad76ac13b88cae298eeadac55e2ff472495",
     "src/ai_data_scientist/gate_config.py": "c9ef43241e082fbb5f73c730353b76ba37c59334b12e973afaae99bd0cee45dd",
@@ -11340,7 +11736,7 @@
     "tests/test_dependency_pins.py": "40aa635b09a8f4ea952266a7cfe36826383a668f619664eb68063c11afaecac5",
     "tests/test_eda.py": "c1788a18c88015b40a6edf311a3c9f80bad2de40a4a51bbfc4618f363bc6eceb",
     "tests/test_example_readiness.py": "fc39997318a3cfecae12afaff9360d9041e8f6f989d3f29c3bb0bf6d2759b974",
-    "tests/test_experiment_evaluation.py": "6d9c659bcff8db67d39a6765a35819ccbe6bbb1aa1e58a606a42f53b568481b6",
+    "tests/test_experiment_evaluation.py": "305e835cca9424709559497406434e3f721d8adf4ba671d909fb3749908e6366",
     "tests/test_explainability.py": "ff378f2683daef1da1846eaac54e26f037c15e2b6ec0d1f64249d9029a7975a5",
     "tests/test_feature_engineering.py": "5117272c89e7ac8720068497d409db68b63bf7cde3b0b720cfb33f167dc483ee",
     "tests/test_gate_config.py": "4ac5cee06bd95f68897150aa8745af59fe4aad601dbced01e33354392374250c",
