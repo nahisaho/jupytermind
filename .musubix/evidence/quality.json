@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T21:09:09.277Z",
+  "generatedAt": "2026-10-04T21:41:00.012Z",
   "status": "fail",
   "checks": [
     {
@@ -34,34 +34,9 @@
     {
       "name": "trace",
       "required": true,
-      "status": "fail",
-      "summary": "2 error(s).",
-      "diagnostics": [
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AIDS-073 lacks implementation.",
-          "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
-          "line": 34
-        },
-        {
-          "code": "TRACE_UNCOVERED",
-          "severity": "warning",
-          "message": "REQ-AIDS-073 lacks tests.",
-          "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
-          "line": 34
-        },
-        {
-          "code": "TRACE_COVERAGE",
-          "severity": "error",
-          "message": "implementation link coverage 0.9921259842519685 is below 1."
-        },
-        {
-          "code": "TRACE_COVERAGE",
-          "severity": "error",
-          "message": "tests link coverage 0.9921259842519685 is below 1."
-        }
-      ]
+      "status": "pass",
+      "summary": "0 error(s).",
+      "diagnostics": []
     },
     {
       "name": "graph",
@@ -74,7 +49,7 @@
       "name": "formal",
       "required": false,
       "status": "pass",
-      "summary": "11/141 requirements modeled; consistency consistent; solver not-requested.",
+      "summary": "12/156 requirements modeled; consistency consistent; solver not-requested.",
       "diagnostics": [
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -394,6 +369,21 @@
         {
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
+          "message": "REQ-AIDS-085 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-086 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-087 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
           "message": "REQ-AIDS-008 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
@@ -405,6 +395,21 @@
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
           "message": "REQ-AIDS-073 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-079 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-080 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-081 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -439,6 +444,21 @@
         {
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
+          "message": "REQ-AIDS-082 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-083 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-084 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
           "message": "REQ-AIDS-022 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
@@ -465,6 +485,31 @@
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
           "message": "REQ-AIDS-033 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-074 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-075 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-076 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-077 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-078 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -733,7 +778,7 @@
       "name": "workflow",
       "required": true,
       "status": "fail",
-      "summary": "40 workflow declaration(s) are not fully reconciled with Copilot invocation events.",
+      "summary": "41 workflow declaration(s) are not fully reconciled with Copilot invocation events.",
       "diagnostics": [
         {
           "code": "WORKFLOW_INVOCATION_UNVERIFIED",
@@ -751,6 +796,27 @@
         {
           "code": "TDD_REQUIREMENT_UNCOVERED",
           "severity": "error",
+          "message": "REQ-AIDS-085 has no valid Red-Green cycle from an authoritative verifying test.",
+          "path": ".musubix/features/ai-data-scientist/requirements.md",
+          "line": 427
+        },
+        {
+          "code": "TDD_REQUIREMENT_UNCOVERED",
+          "severity": "error",
+          "message": "REQ-AIDS-086 has no valid Red-Green cycle from an authoritative verifying test.",
+          "path": ".musubix/features/ai-data-scientist/requirements.md",
+          "line": 434
+        },
+        {
+          "code": "TDD_REQUIREMENT_UNCOVERED",
+          "severity": "error",
+          "message": "REQ-AIDS-088 has no valid Red-Green cycle from an authoritative verifying test.",
+          "path": ".musubix/features/ai-data-scientist/requirements.md",
+          "line": 448
+        },
+        {
+          "code": "TDD_REQUIREMENT_UNCOVERED",
+          "severity": "error",
           "message": "REQ-AIDS-073 has no valid Red-Green cycle from an authoritative verifying test.",
           "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
           "line": 34
@@ -758,9 +824,83 @@
         {
           "code": "TDD_REQUIREMENT_UNCOVERED",
           "severity": "error",
+          "message": "REQ-AIDS-079 has no valid Red-Green cycle from an authoritative verifying test.",
+          "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+          "line": 41
+        },
+        {
+          "code": "TDD_REQUIREMENT_UNCOVERED",
+          "severity": "error",
+          "message": "REQ-AIDS-080 has no valid Red-Green cycle from an authoritative verifying test.",
+          "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+          "line": 48
+        },
+        {
+          "code": "TDD_REQUIREMENT_UNCOVERED",
+          "severity": "error",
+          "message": "REQ-AIDS-081 has no valid Red-Green cycle from an authoritative verifying test.",
+          "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+          "line": 55
+        },
+        {
+          "code": "TDD_REQUIREMENT_UNCOVERED",
+          "severity": "error",
+          "message": "REQ-AIDS-082 has no valid Red-Green cycle from an authoritative verifying test.",
+          "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+          "line": 104
+        },
+        {
+          "code": "TDD_REQUIREMENT_UNCOVERED",
+          "severity": "error",
+          "message": "REQ-AIDS-074 has no valid Red-Green cycle from an authoritative verifying test.",
+          "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+          "line": 167
+        },
+        {
+          "code": "TDD_REQUIREMENT_UNCOVERED",
+          "severity": "error",
+          "message": "REQ-AIDS-075 has no valid Red-Green cycle from an authoritative verifying test.",
+          "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+          "line": 174
+        },
+        {
+          "code": "TDD_REQUIREMENT_UNCOVERED",
+          "severity": "error",
+          "message": "REQ-AIDS-076 has no valid Red-Green cycle from an authoritative verifying test.",
+          "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+          "line": 181
+        },
+        {
+          "code": "TDD_REQUIREMENT_UNCOVERED",
+          "severity": "error",
+          "message": "REQ-AIDS-078 has no valid Red-Green cycle from an authoritative verifying test.",
+          "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+          "line": 195
+        },
+        {
+          "code": "TDD_REQUIREMENT_UNCOVERED",
+          "severity": "error",
           "message": "REQ-AIMS-040 has no valid Red-Green cycle from an authoritative verifying test.",
           "path": ".musubix/features/ai-materials-scientist/requirements.md",
           "line": 87
+        },
+        {
+          "code": "TDD_TEST_STALE",
+          "severity": "error",
+          "message": "TEST-AIDS-015 changed after its latest passing TDD phase.",
+          "path": "tests/test_feature_engineering.py"
+        },
+        {
+          "code": "TDD_TEST_STALE",
+          "severity": "error",
+          "message": "TEST-AIDS-021 changed after its latest passing TDD phase.",
+          "path": "tests/test_explainability.py"
+        },
+        {
+          "code": "TDD_TEST_STALE",
+          "severity": "error",
+          "message": "TEST-AIDS-022 changed after its latest passing TDD phase.",
+          "path": "tests/test_experiment_evaluation.py"
         },
         {
           "code": "TDD_TEST_STALE",
@@ -997,6 +1137,120 @@
           "severity": "error",
           "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-050 is stale.",
           "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-032 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-032 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-032 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-045 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-045 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-045 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-056 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-056 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-056 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_ORDER_MIGRATION_REQUIRED:requirement:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_RECORD_MISSING",
+          "severity": "error",
+          "message": "CHANGE-009 has a change document but no chronology record.",
+          "changeId": "CHANGE-009"
+        },
+        {
+          "code": "CHANGE_RECORD_MISSING",
+          "severity": "error",
+          "message": "CHANGE-010 has a change document but no chronology record.",
+          "changeId": "CHANGE-010"
+        },
+        {
+          "code": "CHANGE_RECORD_MISSING",
+          "severity": "error",
+          "message": "CHANGE-011 has a change document but no chronology record.",
+          "changeId": "CHANGE-011"
+        },
+        {
+          "code": "CHANGE_RECORD_MISSING",
+          "severity": "error",
+          "message": "CHANGE-012 has a change document but no chronology record.",
+          "changeId": "CHANGE-012"
+        },
+        {
+          "code": "CHANGE_RECORD_MISSING",
+          "severity": "error",
+          "message": "CHANGE-014 has a change document but no chronology record.",
+          "changeId": "CHANGE-014"
+        },
+        {
+          "code": "CHANGE_RECORD_MISSING",
+          "severity": "error",
+          "message": "CHANGE-017 has a change document but no chronology record.",
+          "changeId": "CHANGE-017"
         },
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
@@ -1948,66 +2202,6 @@
           "message": "CHANGE-008 is missing green for REQ-AIDS-015, REQ-AIDS-073.",
           "changeId": "CHANGE-008",
           "detail": "phase:green"
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:impact does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:requirements does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:design does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:red does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:implementation does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:green does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:red does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:implementation does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:green does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:red does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:implementation does not match the monotonic evidence order log."
-        },
-        {
-          "code": "CHANGE_ORDER_MISMATCH",
-          "severity": "error",
-          "message": "CHANGE-013:green does not match the monotonic evidence order log."
         }
       ]
     },
@@ -2123,6 +2317,84 @@
           "code": "CHANGE_WAIVER_STALE",
           "severity": "error",
           "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-050 is stale.",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-032 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-032 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-032 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-045 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-045 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-045 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-056 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-056 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-056 is malformed: CHANGE-014 is not a known change..",
+          "path": ".musubix/evidence/change-waivers.json"
+        },
+        {
+          "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+          "severity": "error",
+          "message": "Waiver for CHANGE-014:CHANGE_ORDER_MIGRATION_REQUIRED:requirement:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
           "path": ".musubix/evidence/change-waivers.json"
         },
         {
@@ -2717,16 +2989,6 @@
           "code": "CHANGE_COMPLETENESS_ADR",
           "severity": "error",
           "message": "CHANGE-008:REQ-AIDS-073 lacks ADR evidence."
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_CODE",
-          "severity": "error",
-          "message": "CHANGE-008:REQ-AIDS-073 lacks implementation evidence."
-        },
-        {
-          "code": "CHANGE_COMPLETENESS_TEST",
-          "severity": "error",
-          "message": "CHANGE-008:REQ-AIDS-073 lacks authoritative annotated test declaration evidence."
         }
       ]
     },
@@ -2735,7 +2997,7 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/ruff: completed, exit 0.",
-      "durationMs": 25,
+      "durationMs": 22,
       "exitCode": 0,
       "stdout": "194 files already formatted\n",
       "stderr": ""
@@ -2745,16 +3007,16 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/pytest: completed, exit 0.",
-      "durationMs": 50469,
+      "durationMs": 48950,
       "exitCode": 0,
-      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change013\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 496 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  4%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  5%]\n....                                                                     [  6%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [ 11%]\n.....                                                                    [ 12%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 14%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 15%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 16%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 17%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 18%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 20%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 21%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 22%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 23%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 24%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 25%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 25%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 26%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 26%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 26%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 27%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 27%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 28%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 29%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 31%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 34%]\n...                                                                      [ 34%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 37%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 41%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 42%]\ntests/test_ai_materials_scientist_fem.py .................               [ 45%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 48%]\n                                                                         [ 48%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 52%]\n...                                                                      [ 52%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 55%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 56%]\ntests/test_ai_scientist_delegation.py ............                       [ 58%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 59%]\ntests/test_ai_scientist_mcp.py ..........                                [ 61%]\ntests/test_ai_scientist_phase_state.py ........                          [ 62%]\ntests/test_ai_scientist_project_handle.py ...                            [ 63%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 64%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 64%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 64%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 65%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 65%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 66%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 66%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 67%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 68%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 68%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 69%]\ntests/test_analysis_assumptions.py ....                                  [ 70%]\ntests/test_anomaly_detection.py .                                        [ 70%]\ntests/test_automl.py .                                                   [ 70%]\ntests/test_cleaning.py .                                                 [ 70%]\ntests/test_clustering.py ..                                              [ 71%]\ntests/test_dashboard.py .                                                [ 71%]\ntests/test_data_definition.py .....                                      [ 72%]\ntests/test_data_quality.py .....                                         [ 73%]\ntests/test_dataset_validation.py ......                                  [ 74%]\ntests/test_dependency_pins.py ...                                        [ 75%]\ntests/test_eda.py .....                                                  [ 76%]\ntests/test_example_readiness.py .                                        [ 76%]\ntests/test_experiment_evaluation.py .                                    [ 76%]\ntests/test_explainability.py .                                           [ 77%]\ntests/test_feature_engineering.py .                                      [ 77%]\ntests/test_gate_config.py .                                              [ 77%]\ntests/test_ingestion.py ......                                           [ 78%]\ntests/test_insight_engine.py ......                                      [ 79%]\ntests/test_japanese_nlp.py .                                             [ 80%]\ntests/test_jupyter_mcp_client.py ..                                      [ 80%]\ntests/test_language_router.py .                                          [ 80%]\ntests/test_lifecycle.py .....                                            [ 81%]\ntests/test_mcp_gateway.py ......                                         [ 82%]\ntests/test_mcp_runtime.py ......                                         [ 84%]\ntests/test_mcp_runtime_integration.py .                                  [ 84%]\ntests/test_ml_modeling.py .                                              [ 84%]\ntests/test_model_tuning.py .                                             [ 84%]\ntests/test_notebook_audit.py ....................                        [ 88%]\ntests/test_project_manager.py ..........                                 [ 90%]\ntests/test_report_export.py ...                                          [ 91%]\ntests/test_sensitivity.py ....                                           [ 92%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 94%]\ntests/test_text_nlp.py .                                                 [ 94%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 97%]\ntests/test_visualization.py ..............                               [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 496 passed in 47.96s =============================\n",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /tmp/pr60-work\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: metadata-3.1.1, json-report-1.5.0, platformdirs-4.12.3, Faker-40.40.0, anyio-4.15.1\ncollected 562 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  3%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  4%]\n....                                                                     [  5%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [ 10%]\n.....                                                                    [ 11%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 12%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 13%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 14%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 15%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 16%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 17%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 18%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 20%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 21%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 21%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 22%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 22%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 22%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 23%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 23%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 24%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 24%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 24%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 25%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 27%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 30%]\n...                                                                      [ 30%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 33%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 36%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 37%]\ntests/test_ai_materials_scientist_fem.py .................               [ 40%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 43%]\n                                                                         [ 43%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 45%]\n...                                                                      [ 46%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 48%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 49%]\ntests/test_ai_scientist_delegation.py ............                       [ 51%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 52%]\ntests/test_ai_scientist_mcp.py ..........                                [ 53%]\ntests/test_ai_scientist_phase_state.py ........                          [ 55%]\ntests/test_ai_scientist_project_handle.py ...                            [ 55%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 56%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 56%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 57%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 57%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 58%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 58%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 59%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 59%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 60%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 60%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 61%]\ntests/test_analysis_assumptions.py ....                                  [ 62%]\ntests/test_anomaly_detection.py .                                        [ 62%]\ntests/test_automl.py ....                                                [ 62%]\ntests/test_cleaning.py .                                                 [ 63%]\ntests/test_clustering.py ..                                              [ 63%]\ntests/test_dashboard.py .                                                [ 63%]\ntests/test_data_definition.py .....                                      [ 64%]\ntests/test_data_quality.py .....                                         [ 65%]\ntests/test_dataset_validation.py ......                                  [ 66%]\ntests/test_dependency_pins.py ...                                        [ 67%]\ntests/test_eda.py .....                                                  [ 67%]\ntests/test_example_readiness.py .                                        [ 68%]\ntests/test_experiment_evaluation.py .............                        [ 70%]\ntests/test_explainability.py ..........                                  [ 72%]\ntests/test_feature_engineering.py ..........                             [ 74%]\ntests/test_gate_config.py .                                              [ 74%]\ntests/test_ingestion.py ........                                         [ 75%]\ntests/test_insight_engine.py ........                                    [ 77%]\ntests/test_japanese_nlp.py .                                             [ 77%]\ntests/test_jupyter_mcp_client.py ..                                      [ 77%]\ntests/test_language_router.py .                                          [ 77%]\ntests/test_lifecycle.py .....                                            [ 78%]\ntests/test_mcp_gateway.py ......                                         [ 79%]\ntests/test_mcp_runtime.py ......                                         [ 80%]\ntests/test_mcp_runtime_integration.py .                                  [ 80%]\ntests/test_ml_modeling.py ........                                       [ 82%]\ntests/test_model_tuning.py ....                                          [ 83%]\ntests/test_notebook_audit.py .......................                     [ 87%]\ntests/test_project_manager.py ..........                                 [ 88%]\ntests/test_report_export.py ...                                          [ 89%]\ntests/test_sensitivity.py ............                                   [ 91%]\ntests/test_skill_packaging.py .                                          [ 91%]\ntests/test_stats_analysis.py ..........                                  [ 93%]\ntests/test_text_nlp.py .                                                 [ 93%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ......................                       [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 562 passed in 46.60s =============================\n",
       "stderr": ""
     },
     {
       "name": "test-identities",
       "required": false,
       "status": "fail",
-      "summary": "406/407 annotated test IDs passed in structured command reports.",
+      "summary": "465/466 annotated test IDs passed in structured command reports.",
       "diagnostics": [
         {
           "code": "TEST_ID_NOT_PASSED",
@@ -2793,16 +3055,9 @@
     {
       "name": "model-correspondence",
       "required": true,
-      "status": "fail",
+      "status": "pass",
       "summary": "6/6 explicitly modeled requirement(s) correspond to current authoritative passing tests.",
-      "diagnostics": [
-        {
-          "code": "MODEL_CORRESPONDENCE_TRACE_STALE",
-          "severity": "error",
-          "message": "Generated trace evidence is missing, stale, or invalid.",
-          "path": ".musubix/evidence/model-correspondence.json"
-        }
-      ]
+      "diagnostics": []
     },
     {
       "name": "attestation",
@@ -2815,8 +3070,20 @@
       "name": "approval",
       "required": true,
       "status": "fail",
-      "summary": "2/3 approval stage(s) are current.",
+      "summary": "0/3 approval stage(s) are current.",
       "diagnostics": [
+        {
+          "code": "APPROVAL_STALE",
+          "severity": "error",
+          "message": "requirements approval does not match the current artifact manifest.",
+          "path": ".musubix/evidence/approvals/requirements.json"
+        },
+        {
+          "code": "APPROVAL_STALE",
+          "severity": "error",
+          "message": "design approval does not match the current artifact manifest.",
+          "path": ".musubix/evidence/approvals/design.json"
+        },
         {
           "code": "APPROVAL_MISSING",
           "severity": "error",
@@ -2834,8 +3101,8 @@
     {
       "name": "constitution:RULE-001",
       "required": true,
-      "status": "fail",
-      "summary": "trace.errors = 2; maximum 0."
+      "status": "pass",
+      "summary": "trace.errors = 0; maximum 0."
     },
     {
       "name": "constitution:RULE-002",
@@ -2854,52 +3121,88 @@
     "requirements.errors": 0,
     "policy.errors": 0,
     "design.errors": 0,
-    "trace.errors": 2,
+    "trace.errors": 0,
     "graph.violations": 0,
     "formal.errors": 0,
-    "formal.modeledFraction": 0.07801418439716312,
+    "formal.modeledFraction": 0.07692307692307693,
     "commands.failures": 0,
     "commands.skipped": 0,
-    "tests.annotatedIds": 407,
-    "tests.executedIds": 406,
+    "tests.annotatedIds": 466,
+    "tests.executedIds": 465,
     "tdd.cycles": 320,
-    "tdd.errors": 22,
+    "tdd.errors": 36,
     "changes.count": 8,
-    "changes.errors": 125,
+    "changes.errors": 132,
     "changes.complete": 2,
-    "changes.completenessErrors": 109,
+    "changes.completenessErrors": 120,
     "performance.budgets": 1,
     "performance.errors": 2,
-    "mutation.requirements": 121,
+    "mutation.requirements": 132,
     "mutation.coveredRequirements": 0,
     "mutation.mutants": 0,
     "mutation.errors": 0,
     "modelCorrespondence.requirements": 6,
     "modelCorrespondence.coveredRequirements": 6,
-    "modelCorrespondence.errors": 1,
+    "modelCorrespondence.errors": 0,
     "attestation.errors": 0,
-    "approval.errors": 1,
+    "approval.errors": 3,
     "coverage.design": 1,
-    "coverage.implementation": 0.9921259842519685,
-    "coverage.tests": 0.9921259842519685
+    "coverage.implementation": 1,
+    "coverage.tests": 1
   },
-  "mode": "full",
+  "mode": "changed",
   "feature": null,
   "changed": [
-    ".musubix/evidence/.writer-lock.json"
+    ".musubix/evidence/.writer-lock.json",
+    ".musubix/evidence/changes.json",
+    ".musubix/evidence/formal.json",
+    ".musubix/evidence/model-correspondence.json",
+    ".musubix/evidence/native/test/aggregate.json",
+    ".musubix/evidence/order.json",
+    ".musubix/evidence/performance.json",
+    ".musubix/evidence/quality.json",
+    ".musubix/features/ai-chemistry-scientist/trace.json",
+    ".musubix/features/ai-data-scientist-ml/trace.json",
+    ".musubix/features/ai-data-scientist/trace.json",
+    ".musubix/features/ai-genomics-scientist/trace.json",
+    ".musubix/features/ai-materials-scientist/trace.json",
+    ".musubix/features/ai-scientist/trace.json",
+    ".musubix/features/ai-structural-biology-scientist/trace.json",
+    ".musubix/features/example/trace.json",
+    "gate-changed.err",
+    "gate-changed.json",
+    "status.json"
   ],
   "impacted": [],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "1c152ce687fe7e78f914e4f6a8b36b374e323c8a",
+    "head": "68e09c43350064db11bdba40b0d552d24242353d",
     "changed": [
-      ".musubix/evidence/.writer-lock.json"
+      ".musubix/evidence/.writer-lock.json",
+      ".musubix/evidence/changes.json",
+      ".musubix/evidence/formal.json",
+      ".musubix/evidence/model-correspondence.json",
+      ".musubix/evidence/native/test/aggregate.json",
+      ".musubix/evidence/order.json",
+      ".musubix/evidence/performance.json",
+      ".musubix/evidence/quality.json",
+      ".musubix/features/ai-chemistry-scientist/trace.json",
+      ".musubix/features/ai-data-scientist-ml/trace.json",
+      ".musubix/features/ai-data-scientist/trace.json",
+      ".musubix/features/ai-genomics-scientist/trace.json",
+      ".musubix/features/ai-materials-scientist/trace.json",
+      ".musubix/features/ai-scientist/trace.json",
+      ".musubix/features/ai-structural-biology-scientist/trace.json",
+      ".musubix/features/example/trace.json",
+      "gate-changed.err",
+      "gate-changed.json",
+      "status.json"
     ],
     "impacted": [],
-    "generatedAt": "2026-10-04T20:51:13.082Z"
+    "generatedAt": "2026-10-04T21:41:00.012Z"
   },
   "fingerprints": {
-    ".git": "4dc3394d158e1b6026b8f71b1e0a81918fd65367cdefb734406453226b68420c",
+    ".git": "2ae195ae4b9cab63034ab59691936e74198fa9f1a4ea896f2ddf8ce82de55776",
     ".github/workflows/npm-publish.yml": "5b3c9cc9f02c8b7e32568958cf306ee241d1adb5af7ab4a0bf8bf06f7047f319",
     ".gitignore": "97fd517743b154fae6a98dee2dcd4ab177f5e9572d2b4dee7f4e9aa70a985bb8",
     ".musubix/changes/CHANGE-001.md": "6175ffc220660b299c5efc709bdac5ce8794755262ae235e68314b9af21283e1",
@@ -2908,8 +3211,14 @@
     ".musubix/changes/CHANGE-004.md": "3fc5eb2b93e9deedccec01fd54265e88f8fc5b54e0176fd64054df980c8be5b4",
     ".musubix/changes/CHANGE-005.md": "394ed5c9f654071f979a64697d2978ea08d6ca9dcf4c33ffcecf9bff4bbdc36e",
     ".musubix/changes/CHANGE-006.md": "618373ef505460d2a4a6999dc4ae33e815621f67ee1e6da38bc5aee2d08e1fde",
-    ".musubix/changes/CHANGE-008.md": "87bc0c3cfe0032985cfddd3db7ba69c46cef3c73cc03a61e156456c19e5fa703",
-    ".musubix/changes/CHANGE-013.md": "2b6af2d13aff747a38ff63ed9661905ed4a6aac585019d7295ff13f8d4d256ef",
+    ".musubix/changes/CHANGE-008.md": "4167ae7f19a128837fec78875241f95422af1fcdc8397109a3f9cc0a2c6b058b",
+    ".musubix/changes/CHANGE-009.md": "4106489f014cabe69c7b3087f1c344531425dad085090423a3b3e65129c981bb",
+    ".musubix/changes/CHANGE-010.md": "e43a1c892dc3c0f27a5a488e710bdbb8f476c10825b5ab9dc6b8020f670f9238",
+    ".musubix/changes/CHANGE-011.md": "728eb74bda120b97f9f2cc0a871bff35ad365c61a0c0d6ef70896a590b264870",
+    ".musubix/changes/CHANGE-012.md": "9404d9185aeae96c7f24230b6995957bb31e7f5294188b6f088bb2e6be9eccca",
+    ".musubix/changes/CHANGE-013.md": "7ddc21cf30496873ddfccd69bcc51d672a13b9953716de3fe3431b58f2389d7b",
+    ".musubix/changes/CHANGE-014.md": "9a7e8d9088792036da3e4ef96af342c9e4d896fafdf849d8b430bd49f4273f6c",
+    ".musubix/changes/CHANGE-017.md": "17962725b84c225d7ae07c958fd03c0db86f2189128ea8b27605f253d3f8c2e6",
     ".musubix/config.json": "3a39ebdb925b9a6e8a1c30d7db46e408f40254da274cc95d02c8e7ab593caec2",
     ".musubix/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
     ".musubix/decisions/ADR-0001.md": "6e21f1b375cfa1aabdf058b1dc987f94974dc23571fe60e94ba340dc48295b0f",
@@ -2966,12 +3275,12 @@
     ".musubix/decisions/ADR-0052.md": "24b2b804f2240177fc0e56c3e69138914bfbf17a40759385e8f8ed0539f8793d",
     ".musubix/features/ai-chemistry-scientist/design.md": "b0305099de56dd252c1e319a4a751d8b3eed23282b31f671c350af289f4fd2af",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "7ffbce1294f08612ff25ae5e2e291a101b19c26dae1a8637ee63926f0f868739",
-    ".musubix/features/ai-data-scientist/design.md": "e56eab9b5824a1eb1dee073383a8e8471f75acc3c8af2a4a40cea42f36c075b8",
-    ".musubix/features/ai-data-scientist/requirements.md": "b021a2bee519a82da95f8bbdf1a922eeac4bcd86124cf2f63534f110a25e9d21",
-    ".musubix/features/ai-data-scientist-ml/design.md": "8ce280f1878834570c4f3846adbf178e331df4bf83cc39288dde96754a91728a",
-    ".musubix/features/ai-data-scientist-ml/requirements.md": "dca723888b37fdad767a9e314d84545921b55556fbe328cb122822ea510325ee",
+    ".musubix/features/ai-data-scientist/design.md": "d317616c00ab4a28157841e5a94fe910013cfbdd5ee7ecd7c13ff920c05de28b",
+    ".musubix/features/ai-data-scientist/requirements.md": "3cc394cb861960154c378a9a92a94b4e842410e555319fe1dbffae81a0f3d8ae",
+    ".musubix/features/ai-data-scientist-ml/design.md": "3b28f9d59a689d5707d44f553acc3b75484ea82cb7848abf7e466d86594b0da9",
+    ".musubix/features/ai-data-scientist-ml/requirements.md": "acf8edfe207c3e9824c0f1b9c91ae44498c2c7c1a0e03f14ac0114b35c1beb68",
     ".musubix/features/ai-genomics-scientist/design.md": "effd788d7c6d1f32bb149e2f48b018b4e2883becd3c26c161520ea4a957e5450",
-    ".musubix/features/ai-genomics-scientist/requirements.md": "0cb0afc550e68b8fe1d5ef86bf3e2922741b877946a740f912f7f4d987644442",
+    ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
     ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
     ".musubix/features/ai-scientist/design.md": "0e5f0360cb8f54a29cdbdc3c28fb9c0614d5f47d312b5046f83fda603de85539",
@@ -2984,18 +3293,16 @@
     ".pytest_cache/.gitignore": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd",
     ".pytest_cache/CACHEDIR.TAG": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
     ".pytest_cache/README.md": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
-    ".pytest_cache/v/cache/lastfailed": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
-    ".pytest_cache/v/cache/nodeids": "8e1aaf38cd316fb1d9d3a863aec2c528a26eb316e26492a9593b48178011f067",
+    ".pytest_cache/v/cache/nodeids": "7e61ff65b633006b5738d3db419e8ce3f07ecda21f03c2d80d1cd1c5fcf72e79",
     ".ruff_cache/.gitignore": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
-    ".ruff_cache/0.16.10/11163498049728632711": "d4613eb2de8741cf55a70e5671ebd8dfabdbbaa037adda7306dc943b895cd0a9",
-    ".ruff_cache/0.16.10/11939872291099635491": "1e584c9915097da9ca59a2c0cf91fcde19bbf332d234123ec0ffbc517f222ac6",
-    ".ruff_cache/0.16.10/12887483403637577661": "3ea0c29f38e2f80266d1fe5cf80bb37313d2e7a5366e178408f43c2d508b5f50",
-    ".ruff_cache/0.16.10/12928496915505956663": "aa44698a13495c3edfc72e5a0e0a1b379ed8d55d2759e1c552d485511edf4d08",
-    ".ruff_cache/0.16.10/5511903486758386333": "ab4fd13fd9ee87cf5a9a9dca60a8e2dc57f1721baef1eb9d283d20598fcbebe6",
-    ".ruff_cache/0.16.10/5786841378256198194": "10d59fa24030765e8887cc8240af24828bc97b1ee467e218c54d6ad21bc88174",
-    ".ruff_cache/0.16.10/6057168664238546075": "7037f5629db4005091e6c127e5bcbf9bdb3c42a57750d5a283c1711013923fa3",
-    ".ruff_cache/0.16.10/6358219848609320073": "9528d71f2be834826834d1c6faea3eed1150f9488288c9f77e92c1c418ddad72",
-    ".ruff_cache/0.16.10/74622762440042669": "d4d96569f22a2c5aabfb0168ad54bbae7896409a1505a2a7ad14fd9dcb902a99",
+    ".ruff_cache/0.16.10/17551884588350019392": "9f3439c92e84e1bc27b7a6ad395e81b4364c1592a21953f002c8ddf4183d62f7",
+    ".ruff_cache/0.16.10/17763135534047689173": "a755264dc9f13a7e774ace37a52094a197ff9bbe12cecde818aaff3fa50ecd65",
+    ".ruff_cache/0.16.10/1890091845181593709": "471368a2feda6bee04007ba464fc463f5eccdd421a1c715a07eb77b3e2cfb764",
+    ".ruff_cache/0.16.10/1937015536003387028": "e264efcfdf4764c933be70b54fdd8cbde5738a235948cb10e0ef0343d7d46ba5",
+    ".ruff_cache/0.16.10/3823174164355378771": "a2141a6dda263b5f500728e51006742dee7fc70ed46d14b9938066e9624786ec",
+    ".ruff_cache/0.16.10/6694967010168528436": "3f20ef5874bb76b52a6da07e53cca6b5daa019e30531ce36af444e31aeebb37d",
+    ".ruff_cache/0.16.10/9722236712707621692": "32bed4bc15f3802f38c343555f2d86d8871ddc249f8cd34f05f2425f0bca7241",
+    ".ruff_cache/0.16.10/9900384339423904361": "e8aabc90f6c2b95ec41feb5d23071c04a92d8cda5756aa134e74c33235e249a9",
     ".ruff_cache/CACHEDIR.TAG": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
     "benchmark/figures/exp-01-age-and-fare-distributions.png": "f46cd2e5602c1be1d67438859f0bd18e36152c055dcc5e851222207da3962b24",
     "benchmark/figures/exp-01-passenger-ticket-bootstrap-intervals.png": "b7bf972ca94747e7fdcea6cba792536347773d56de33757135b0b8b77890afe1",
@@ -3817,6 +4124,8 @@
     "benchmark/white-paper-v0.2.0.md": "3518f4dcfd36d951ea456d0e1d8a709fa5433fd477360f388d2039745ad842f2",
     "bin/ai-data-scientist.js": "f70c764374ee721ebe18b26ed2f3da6ddd896d3c7bc5520c10f8fc0e70fd85da",
     "CHANGELOG.md": "11e644e49b90da25160e139ed63980ba1cd1c9c643949b1e86680c95b7cef224",
+    "gate-changed.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "gate-changed.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "LICENSE": "3363377bb6dce0fc69aff81727073c71f93a9dcfce3d42c7f64bcebef644b726",
     "package-lock.json": "3a66e0dbd232dac6a4a7e399d2dd9e312db7a4e6e899a47cf01b32d80feff76e",
     "package.json": "e96c4a73007d140ebd301c67b16f0fef169c11f9835fdcaca463602a8811bb8b",
@@ -3840,7 +4149,7 @@
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
     "src/ai_data_scientist/anomaly_detection.py": "8e991c85d27e7414ac66320d3a4fbed04a61adc484de9b4ada6923cb17a8752d",
-    "src/ai_data_scientist/automl.py": "f867bf8081f0d72011356466c30690452035dec090e90f99c05daf1023e964da",
+    "src/ai_data_scientist/automl.py": "e1b067fd7068b3f7e7b2dc4f0554028da9fd6328265d7e8e2c1155b371569c19",
     "src/ai_data_scientist/cleaning.py": "8060c69112efe6aae6f0afdff6e464d601a76b5b62455e5d673916edfd4207ea",
     "src/ai_data_scientist/cli.py": "0f3b779e0896c67c9ac321dae40af4259b0d1583e2ad8f7af036adb496d0a4f2",
     "src/ai_data_scientist/clustering.py": "2b9011a2dfbb2e9318518dedf90b186d58eace35f03d1c28d6d47937c4a79bd0",
@@ -3850,12 +4159,12 @@
     "src/ai_data_scientist/dataset_validation.py": "2ace66b016d06c0d1eab9c15ca769efb61aab901c83ff4bf067c726c1ccc0596",
     "src/ai_data_scientist/dependency_pins.py": "7f62ebf5e10cf25786700453e5bce0c1ba9428694e9f1c4ab4417bf4f8d49e60",
     "src/ai_data_scientist/eda.py": "b81e5e3ac240b3e66e30cc8f6fe57fc34a34b1fb58f72ecd955db9c6b1550ec4",
-    "src/ai_data_scientist/experiment_evaluation.py": "d333684c4dd4fbd80e943b5faac5254ac202a09cfde388d30b27c699d02ad45a",
-    "src/ai_data_scientist/explainability.py": "7ec63a3108773741ee4161516329f858931db70a803def21c66957fa369a1b45",
-    "src/ai_data_scientist/feature_engineering.py": "882c1e0d0da761f8c40d8298745e3cb2801bfd0d84424e4f3c202fdbaab5cbe1",
+    "src/ai_data_scientist/experiment_evaluation.py": "abf5e551c0c7a0d1a4a3c9fdf8ab3a8e5e0c80242ec44cd9a581b2d5a8089417",
+    "src/ai_data_scientist/explainability.py": "24304edd7d1da8cd30dfecd948b963aed0fd1d1c422880b3a42f05612661a77c",
+    "src/ai_data_scientist/feature_engineering.py": "a496f0f8a99fc18f4c6c648b447fbad76ac13b88cae298eeadac55e2ff472495",
     "src/ai_data_scientist/gate_config.py": "c9ef43241e082fbb5f73c730353b76ba37c59334b12e973afaae99bd0cee45dd",
-    "src/ai_data_scientist/ingestion.py": "9e1045d9921eeb30ab08111fd394be90454d86d88ddb8116509471b316d029dc",
-    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+    "src/ai_data_scientist/ingestion.py": "4833480c2b1a5f2b954b46670254c78dd1734787e45cd15b2871341cd7b3c621",
+    "src/ai_data_scientist/insight_engine.py": "aa1c5cdc5f1fcc06754a736efd6a164ab9602da186d200994b1c8df7cb8b9a24",
     "src/ai_data_scientist/japanese_nlp.py": "49ee7fabf2f60de41fadfdc2238ef032bbdc953cded2611c5069200cd672905e",
     "src/ai_data_scientist/jupyter_launcher.py": "a6cb2e9b439f6655d62aa99d35caacd99091de3da5f7cd0e3d2b2d92713dad13",
     "src/ai_data_scientist/jupyter_mcp_client.py": "e2e3fb23388b010a6f8af3644a1c816b0266dddc2ee439f26fcee94616791463",
@@ -3864,17 +4173,22 @@
     "src/ai_data_scientist/mcp_gateway.py": "ac01ea9c030e759ea6c97f809de9b44ed09f83e8321fd0b9d3e0fee818abca55",
     "src/ai_data_scientist/mcp_runtime.py": "581a55e71bd8812e1e6758ff7ed35ce3356daa1988549911fe39f70b6bf2dc1a",
     "src/ai_data_scientist/mcp_transport.py": "b4bc766c3eabcc452976e34c330e1e40b78605565063f31627013582778a52e6",
-    "src/ai_data_scientist/ml_modeling.py": "774e7f12fa5ba0cac2a5559ef9abaf8db67445e659b86b18dbc607a9cb5bd6a9",
-    "src/ai_data_scientist/model_tuning.py": "2e4cdbc8895c319876ef3a0274e7247408063ac31c8b59825051a2bdd2ad1faf",
-    "src/ai_data_scientist/notebook_audit.py": "d96f1cae080bc58dde26259ff7dd88e1a910e5baebac5aeea4198499d39767d0",
+    "src/ai_data_scientist/ml_modeling.py": "287ceda6679c1f862e033d2ef8f95bc337c3b209bfa7271547d26dc23ca5f2f2",
+    "src/ai_data_scientist/model_tuning.py": "adb3b7bac8a50608224de1b07ae7b870e384d37032a2e051a7f51eab6fafe8eb",
+    "src/ai_data_scientist/notebook_audit.py": "ad8c0342b2ee2c384d9cb90d21388ab872a1ccfdc0fd0acefbd662b37a308e9f",
     "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
     "src/ai_data_scientist/report_export.py": "29f1d2ccc4d3cd8208d7a4ba043a976b60caec863f9a2ad701017e0bf8b82510",
-    "src/ai_data_scientist/sensitivity.py": "8236d2c5ef3bc9c3ba597489cc60d974234b98367c6519bf2065929cbfe40e33",
+    "src/ai_data_scientist/sensitivity.py": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84",
     "src/ai_data_scientist/skill_packaging.py": "90597141eda3af0b96a0e667612cb1e2d0c3f7deb58d2dca923d716946966de1",
     "src/ai_data_scientist/stats_analysis.py": "7aa2beb6816c98f4c9a90cc480cf3cd3ea3c81e18ea4045e5c461cf76022fde9",
     "src/ai_data_scientist/text_nlp.py": "bb7ee36f88f69ba683b82dae4fee06b3a1ff004774d57973ee60c9b0f53f3985",
     "src/ai_data_scientist/timeseries.py": "9c36ccab2c39d70815a3e5cd55e8b79679d7678107a39fda02a22ab665263dc5",
-    "src/ai_data_scientist/visualization.py": "f6794cae24992328c1d821a1d39423946cf6a8ed516f19340c27e291ead90733",
+    "src/ai_data_scientist/visualization.py": "a506d43a3756f5c101c435c2bb14b64594c61b99b406b7f192f77fd293f54bd5",
+    "src/ai_data_scientist.egg-info/dependency_links.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "src/ai_data_scientist.egg-info/PKG-INFO": "bc1e030363b234717c7e1d4073fe826e1c7ebb54f2fb66af822d488816761a16",
+    "src/ai_data_scientist.egg-info/requires.txt": "754cec984bbc6ab09ac9772fc8bb71419ba5876724cb5966b17ff865f4ead0e5",
+    "src/ai_data_scientist.egg-info/SOURCES.txt": "c936bf74ce41db0141e14cdf45cf7afa0de46c47ef7d6514f4da573e6bf044d4",
+    "src/ai_data_scientist.egg-info/top_level.txt": "19013b91e34854a9789e277cbc567d872909bb36a954206d17729082e34631f2",
     "src/ai_genomics_scientist/__init__.py": "0c9f1f38b2e526b4169a2b06b4bb78548a18464925a029d6309597ee327fb048",
     "src/ai_genomics_scientist/data/sample_gene_sets.csv": "81dba276c7cc0a89d2ac835dfe2a7aa1a896f884a5100bb8d1ceaf3e6e6cf8ff",
     "src/ai_genomics_scientist/dispatch.py": "ebaf896bb71e0f93ff861c452faebc0fefa606f1b6d5efc6cfe54cc8883690c2",
@@ -3932,6 +4246,7 @@
     "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
     "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9",
     "src/example_readiness.py": "b4deef302d05db806ccb39216aea65dcbdcc34c52b493aa81eb22842bc4bd190",
+    "status.json": "1c5aa432da1f9abfc320d49850825f6c1f1a40641b4519e0a5885b3f0a5f70f6",
     "tests/conftest.py": "452ea14e11ea5306b4d199533af38581cce656085f02d15627ba7b5eb8e390d7",
     "tests/test_ai_chemistry_scientist_admet_prediction.py": "920f48f44fb5d2ce65e3b02c9431875a35e15846f4eb2b226c95328ef69ce227",
     "tests/test_ai_chemistry_scientist_bilingual.py": "0c9ad31513bcf9ffc005a77c89cc2fe64827f8f7d332e2fd1d44ce63823645ca",
@@ -3984,7 +4299,7 @@
     "tests/test_ai_structural_biology_scientist_validation.py": "ca34fe16e9c0651f2f884b4831330ca1d652032dd2b16b515d8511e2e791b917",
     "tests/test_analysis_assumptions.py": "665331b6baaeb624bd3562989a6925c4e80a269d2d0dfce93c3acbe7b21731d8",
     "tests/test_anomaly_detection.py": "1d3cdaabb41d4dc2f7d0b0278d6645cee4d0d11557aa4519a7de0376a083d3ba",
-    "tests/test_automl.py": "8143813b6142f3e83cd5117ecb0025a161963b616b4480cf76cbbe1859e5989a",
+    "tests/test_automl.py": "5ea36889e9cf572e8bbb26d581163e632f36d70c4049f7e220961d580a5fcce7",
     "tests/test_cleaning.py": "83face0b0f1ddcd158def39d0a711444b717b0416dc1f1b7bc021bc71723942e",
     "tests/test_clustering.py": "9175839a04a67f4e66ebe7856b77bc36715dd9e2b3acc8e37460027272fc2557",
     "tests/test_dashboard.py": "4e2358a3a6582809facb218355ae496de8cfb2b873a53977ec22bfbdcb5a3e15",
@@ -3994,12 +4309,12 @@
     "tests/test_dependency_pins.py": "40aa635b09a8f4ea952266a7cfe36826383a668f619664eb68063c11afaecac5",
     "tests/test_eda.py": "c1788a18c88015b40a6edf311a3c9f80bad2de40a4a51bbfc4618f363bc6eceb",
     "tests/test_example_readiness.py": "fc39997318a3cfecae12afaff9360d9041e8f6f989d3f29c3bb0bf6d2759b974",
-    "tests/test_experiment_evaluation.py": "fb86918ae84bfa34f8e386dfc92a8b16d51d09f836da52915d4528dcc5e843b9",
-    "tests/test_explainability.py": "f150b75da3143cb2d42777f8f858e628ca7db4f33a9037973ada44f80498e233",
-    "tests/test_feature_engineering.py": "e25775ae6e5a5078f570dfb91f0c773d8b2846139571a47e536bf4e68cf86977",
+    "tests/test_experiment_evaluation.py": "6d9c659bcff8db67d39a6765a35819ccbe6bbb1aa1e58a606a42f53b568481b6",
+    "tests/test_explainability.py": "ff378f2683daef1da1846eaac54e26f037c15e2b6ec0d1f64249d9029a7975a5",
+    "tests/test_feature_engineering.py": "5117272c89e7ac8720068497d409db68b63bf7cde3b0b720cfb33f167dc483ee",
     "tests/test_gate_config.py": "4ac5cee06bd95f68897150aa8745af59fe4aad601dbced01e33354392374250c",
-    "tests/test_ingestion.py": "98de63b733b719d2c009878f23753961fb4a2335bd52a75c5f035f9294a1bb9d",
-    "tests/test_insight_engine.py": "2b1b418c17ee48d4f87a7c16d526a81287980e458b5297ea995510de8b0a0e80",
+    "tests/test_ingestion.py": "36ddd49975db76e5cb028d8c849f557a7cc90a394274f549577d54393416aee5",
+    "tests/test_insight_engine.py": "b85c8f0ceb7ccb3fcb57e448f1eaf9aacfde2d510a119668b9974870abf5c101",
     "tests/test_japanese_nlp.py": "a5aaca651bf8f5dd44015833d01a52c0c0a45ce104875f04da4c20d2fdcd9325",
     "tests/test_jupyter_mcp_client.py": "ff8a83b02041e4119dbe1f635adc5f70cd4b1ec50bb78f837971ce84feab6282",
     "tests/test_language_router.py": "27a278cb085fb9bf97fb6c8298fcdc39c9a40462de5f1fcafade143f924682ba",
@@ -4007,18 +4322,18 @@
     "tests/test_mcp_gateway.py": "d8ee0ddbdf0f299af259270b46b9772f1cbc6554c92c55dda8cccd04138e8d46",
     "tests/test_mcp_runtime_integration.py": "ac3e3e10c590fd0d5af7d69ae48558316fc01206f2d10d8702b6598a31c3c9bb",
     "tests/test_mcp_runtime.py": "ddc6a67c2565f205986a34f94cedf39c5a7fa7f8f5089d89f84ca881be6242c0",
-    "tests/test_ml_modeling.py": "7023a333da56f3e39d672946b8481742f22d118d66e5e5afc14113b916865e39",
-    "tests/test_model_tuning.py": "b924be0cb1f7be508ca6697e032e2dc45bb154d67e53c8a588f0c9b4dd351f62",
-    "tests/test_notebook_audit.py": "d90afc0e0ff5cbd9a11c3887b9b7b232a5ba0ed4d73e3e39b9992f6a7d65453f",
+    "tests/test_ml_modeling.py": "ecb20f0d8ae7bd30812666dc6786549c568737713e94091c730330bbc88648bb",
+    "tests/test_model_tuning.py": "85166cebf88b3d97eb17e617e139d8de6613453c9e2ebfab96f096f71f099a7a",
+    "tests/test_notebook_audit.py": "e77255d3c73f14d0f208808385c22aea17b6ba5c48ad727eaf59f7459fb6ea44",
     "tests/test_project_manager.py": "cc10feed6a73359a6480e71a07571d2d6ee799ad906dd450dba2d4a343689309",
     "tests/test_report_export.py": "9640608629a523fc0b124d6fca0e7b5448869d672289b5bec3e9011e4e477fea",
-    "tests/test_sensitivity.py": "0f3aeaa8efb61acdb268d900264cf91bd0dc04455c07a92b859c6a7c7956a4c9",
+    "tests/test_sensitivity.py": "557e6f4b7246783bb3f9f5ab1a51c41a327ab0635962a8d969e1f5c314968a29",
     "tests/test_skill_packaging.py": "73cfcef96b5e5364334a76cfb402f2b5b956ac830e9ce9f8f5d1c3ad543a1c5c",
     "tests/test_stats_analysis.py": "4defa94a791c68fe640cf6008d2a24030775bfc048f7276bc6f99ccea64f6124",
     "tests/test_text_nlp.py": "fd80ec14405d2eafc9def8bbf0e4e763a3b36e340f3aff4c6d6c69360dc69274",
     "tests/test_timeseries.py": "263103dc868f7a5d994c30b63640725af49bb1ac8bcc488f084075a758a7fdd0",
     "tests/test_visual_audit.py": "d8a7377f739f6172c3ea3e90fe937b0f47d85f134fbf0fa760df698550a01d1e",
-    "tests/test_visualization.py": "fb6b7a225b83b6650c09a22e00a866b700d428e7fdbb1e8e787bd47823914fc2",
+    "tests/test_visualization.py": "ca134d91e2f69cc0ccd1228230d59397391d24359fca2fcedbcbd161c4b6f2a1",
     "uv.lock": "290bdaddf4890a96c51d6b4a65f6f566acdfbd60bbe8e661ffa58ce6abe3c604"
   },
   "waivers": [
@@ -4379,6 +4694,84 @@
       "code": "CHANGE_WAIVER_STALE",
       "severity": "error",
       "message": "Waiver for CHANGE-005:CHANGE_COMPLETENESS_TDD:REQ-ACHEM-050 is stale.",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-032 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-032 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-032 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-045 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-045 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-045 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_RED_UNPROVEN:REQ-AIDS-056 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_GREEN_UNPROVEN:REQ-AIDS-056 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_COMPLETENESS_TDD:REQ-AIDS-056 is malformed: CHANGE-014 is not a known change..",
+      "path": ".musubix/evidence/change-waivers.json"
+    },
+    {
+      "code": "CHANGE_WAIVER_EVIDENCE_MALFORMED",
+      "severity": "error",
+      "message": "Waiver for CHANGE-014:CHANGE_ORDER_MIGRATION_REQUIRED:requirement:REQ-AIDS-010 is malformed: CHANGE-014 is not a known change..",
       "path": ".musubix/evidence/change-waivers.json"
     }
   ]

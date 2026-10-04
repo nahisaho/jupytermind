@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T20:17:13.439Z",
+  "generatedAt": "2026-10-04T21:40:05.837Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -195,6 +195,126 @@
       "line": 1
     },
     {
+      "id": "ADR-0033",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0033.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0034",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0034.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0035",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0035.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0036",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0036.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0037",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0037.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0038",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0038.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0039",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0039.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0040",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0040.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0041",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0041.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0042",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0042.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0043",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0043.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0044",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0044.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0045",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0045.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0046",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0046.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0047",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0047.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0048",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0048.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0049",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0049.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0050",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0050.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0051",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0051.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0052",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0052.md",
+      "line": 1
+    },
+    {
       "id": "DES-ACHEM-001",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
@@ -204,105 +324,157 @@
       "id": "DES-ACHEM-002",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 87
+      "line": 96
     },
     {
       "id": "DES-ACHEM-003",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 113
+      "line": 122
     },
     {
       "id": "DES-ACHEM-010",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 159
+      "line": 171
     },
     {
       "id": "DES-ACHEM-020",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 179
+      "line": 191
     },
     {
       "id": "DES-ACHEM-030",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 211
+      "line": 223
     },
     {
       "id": "DES-ACHEM-040",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 253
+      "line": 265
     },
     {
       "id": "DES-ACHEM-050",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 277
+      "line": 289
+    },
+    {
+      "id": "DES-ACHEM-060",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 321
+    },
+    {
+      "id": "DES-ACHEM-070",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 358
+    },
+    {
+      "id": "DES-ACHEM-080",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 388
+    },
+    {
+      "id": "DES-ACHEM-090",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 406
     },
     {
       "id": "REQ-ACHEM-001",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 27,
+      "line": 33,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-002",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 34,
+      "line": 40,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-003",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 41,
+      "line": 47,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-004",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 49,
+      "line": 55,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-010",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 57,
+      "line": 63,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-020",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 64,
+      "line": 70,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-030",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 72,
+      "line": 78,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-040",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 80,
+      "line": 86,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-050",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 88,
+      "line": 94,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-060",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 102,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-070",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 110,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-080",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 118,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-090",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 126,
       "mandatory": true
     },
     {
@@ -1378,6 +1550,54 @@
       "mandatory": true
     },
     {
+      "id": "DES-AGENOM-001",
+      "kind": "design",
+      "path": ".musubix/features/ai-genomics-scientist/design.md",
+      "line": 16
+    },
+    {
+      "id": "DES-AGENOM-002",
+      "kind": "design",
+      "path": ".musubix/features/ai-genomics-scientist/design.md",
+      "line": 60
+    },
+    {
+      "id": "DES-AGENOM-003",
+      "kind": "design",
+      "path": ".musubix/features/ai-genomics-scientist/design.md",
+      "line": 90
+    },
+    {
+      "id": "DES-AGENOM-010",
+      "kind": "design",
+      "path": ".musubix/features/ai-genomics-scientist/design.md",
+      "line": 128
+    },
+    {
+      "id": "DES-AGENOM-020",
+      "kind": "design",
+      "path": ".musubix/features/ai-genomics-scientist/design.md",
+      "line": 154
+    },
+    {
+      "id": "DES-AGENOM-030",
+      "kind": "design",
+      "path": ".musubix/features/ai-genomics-scientist/design.md",
+      "line": 177
+    },
+    {
+      "id": "DES-AGENOM-040",
+      "kind": "design",
+      "path": ".musubix/features/ai-genomics-scientist/design.md",
+      "line": 214
+    },
+    {
+      "id": "DES-AGENOM-050",
+      "kind": "design",
+      "path": ".musubix/features/ai-genomics-scientist/design.md",
+      "line": 251
+    },
+    {
       "id": "REQ-AGENOM-001",
       "kind": "requirement",
       "path": ".musubix/features/ai-genomics-scientist/requirements.md",
@@ -1867,6 +2087,117 @@
       "mandatory": true
     },
     {
+      "id": "DES-ASTRUCT-001",
+      "kind": "design",
+      "path": ".musubix/features/ai-structural-biology-scientist/design.md",
+      "line": 18
+    },
+    {
+      "id": "DES-ASTRUCT-002",
+      "kind": "design",
+      "path": ".musubix/features/ai-structural-biology-scientist/design.md",
+      "line": 82
+    },
+    {
+      "id": "DES-ASTRUCT-003",
+      "kind": "design",
+      "path": ".musubix/features/ai-structural-biology-scientist/design.md",
+      "line": 117
+    },
+    {
+      "id": "DES-ASTRUCT-010",
+      "kind": "design",
+      "path": ".musubix/features/ai-structural-biology-scientist/design.md",
+      "line": 150
+    },
+    {
+      "id": "DES-ASTRUCT-020",
+      "kind": "design",
+      "path": ".musubix/features/ai-structural-biology-scientist/design.md",
+      "line": 182
+    },
+    {
+      "id": "DES-ASTRUCT-030",
+      "kind": "design",
+      "path": ".musubix/features/ai-structural-biology-scientist/design.md",
+      "line": 204
+    },
+    {
+      "id": "DES-ASTRUCT-040",
+      "kind": "design",
+      "path": ".musubix/features/ai-structural-biology-scientist/design.md",
+      "line": 236
+    },
+    {
+      "id": "DES-ASTRUCT-050",
+      "kind": "design",
+      "path": ".musubix/features/ai-structural-biology-scientist/design.md",
+      "line": 265
+    },
+    {
+      "id": "REQ-ASTRUCT-001",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
+      "line": 40,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ASTRUCT-002",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
+      "line": 47,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ASTRUCT-003",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
+      "line": 54,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ASTRUCT-004",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
+      "line": 62,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ASTRUCT-010",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
+      "line": 70,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ASTRUCT-020",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
+      "line": 78,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ASTRUCT-030",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
+      "line": 86,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ASTRUCT-040",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
+      "line": 94,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ASTRUCT-050",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
+      "line": 102,
+      "mandatory": true
+    },
+    {
       "id": "DES-EXAMPLE-001",
       "kind": "design",
       "path": ".musubix/features/example/design.md",
@@ -1886,52 +2217,100 @@
       "line": 44
     },
     {
+      "id": "CODE-ACHEM-920",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/bioactivity_classification.py",
+      "line": 28
+    },
+    {
+      "id": "CODE-ACHEM-090",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/bioactivity_classification.py",
+      "line": 42
+    },
+    {
       "id": "CODE-ACHEM-916",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 77
+      "line": 96
     },
     {
       "id": "CODE-ACHEM-011",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 185
+      "line": 208
     },
     {
       "id": "CODE-ACHEM-021",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 193
+      "line": 216
     },
     {
       "id": "CODE-ACHEM-031",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 201
+      "line": 224
     },
     {
       "id": "CODE-ACHEM-041",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 209
+      "line": 232
     },
     {
       "id": "CODE-ACHEM-051",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 217
+      "line": 240
+    },
+    {
+      "id": "CODE-ACHEM-061",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 248
+    },
+    {
+      "id": "CODE-ACHEM-071",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 256
+    },
+    {
+      "id": "CODE-ACHEM-081",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 264
+    },
+    {
+      "id": "CODE-ACHEM-091",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 272
     },
     {
       "id": "CODE-ACHEM-001",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 225
+      "line": 280
     },
     {
       "id": "CODE-ACHEM-050",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/docking_score.py",
       "line": 64
+    },
+    {
+      "id": "CODE-ACHEM-917",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/drug_likeness_rules.py",
+      "line": 44
+    },
+    {
+      "id": "CODE-ACHEM-060",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/drug_likeness_rules.py",
+      "line": 58
     },
     {
       "id": "CODE-ACHEM-003",
@@ -1943,7 +2322,19 @@
       "id": "CODE-ACHEM-010",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/molecular_descriptors.py",
-      "line": 63
+      "line": 68
+    },
+    {
+      "id": "CODE-ACHEM-919",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/molecular_formula_mass.py",
+      "line": 13
+    },
+    {
+      "id": "CODE-ACHEM-080",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/molecular_formula_mass.py",
+      "line": 27
     },
     {
       "id": "CODE-ACHEM-040",
@@ -1956,6 +2347,18 @@
       "kind": "code",
       "path": "src/ai_chemistry_scientist/qsar_modeling.py",
       "line": 65
+    },
+    {
+      "id": "CODE-ACHEM-918",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/structural_alerts.py",
+      "line": 44
+    },
+    {
+      "id": "CODE-ACHEM-070",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/structural_alerts.py",
+      "line": 58
     },
     {
       "id": "CODE-ACHEM-002",
@@ -2618,6 +3021,102 @@
       "line": 669
     },
     {
+      "id": "CODE-AGENOM-011",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/dispatch.py",
+      "line": 152
+    },
+    {
+      "id": "CODE-AGENOM-021",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/dispatch.py",
+      "line": 160
+    },
+    {
+      "id": "CODE-AGENOM-031",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/dispatch.py",
+      "line": 168
+    },
+    {
+      "id": "CODE-AGENOM-041",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/dispatch.py",
+      "line": 176
+    },
+    {
+      "id": "CODE-AGENOM-051",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/dispatch.py",
+      "line": 184
+    },
+    {
+      "id": "CODE-AGENOM-006",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/dispatch.py",
+      "line": 205
+    },
+    {
+      "id": "CODE-AGENOM-001",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/evidence.py",
+      "line": 24
+    },
+    {
+      "id": "CODE-AGENOM-040",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/gene_set_enrichment.py",
+      "line": 52
+    },
+    {
+      "id": "CODE-AGENOM-050",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/sequence_alignment.py",
+      "line": 32
+    },
+    {
+      "id": "CODE-AGENOM-010",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/sequence_features.py",
+      "line": 81
+    },
+    {
+      "id": "CODE-AGENOM-030",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/splice_site_scoring.py",
+      "line": 58
+    },
+    {
+      "id": "CODE-AGENOM-002",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/validation.py",
+      "line": 40
+    },
+    {
+      "id": "CODE-AGENOM-003",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/validation.py",
+      "line": 48
+    },
+    {
+      "id": "CODE-AGENOM-004",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/validation.py",
+      "line": 62
+    },
+    {
+      "id": "CODE-AGENOM-005",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/validation.py",
+      "line": 70
+    },
+    {
+      "id": "CODE-AGENOM-020",
+      "kind": "code",
+      "path": "src/ai_genomics_scientist/variant_effect.py",
+      "line": 133
+    },
+    {
       "id": "CODE-AIMS-070",
       "kind": "code",
       "path": "src/ai_materials_scientist/calphad.py",
@@ -2918,6 +3417,96 @@
       "line": 16
     },
     {
+      "id": "CODE-ASTRUCT-050",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/contact_map.py",
+      "line": 56
+    },
+    {
+      "id": "CODE-ASTRUCT-901",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/dispatch.py",
+      "line": 98
+    },
+    {
+      "id": "CODE-ASTRUCT-011",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/dispatch.py",
+      "line": 177
+    },
+    {
+      "id": "CODE-ASTRUCT-021",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/dispatch.py",
+      "line": 185
+    },
+    {
+      "id": "CODE-ASTRUCT-031",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/dispatch.py",
+      "line": 193
+    },
+    {
+      "id": "CODE-ASTRUCT-041",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/dispatch.py",
+      "line": 201
+    },
+    {
+      "id": "CODE-ASTRUCT-051",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/dispatch.py",
+      "line": 209
+    },
+    {
+      "id": "CODE-ASTRUCT-001",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/dispatch.py",
+      "line": 230
+    },
+    {
+      "id": "CODE-ASTRUCT-003",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/evidence.py",
+      "line": 24
+    },
+    {
+      "id": "CODE-ASTRUCT-020",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/hydrophobicity.py",
+      "line": 66
+    },
+    {
+      "id": "CODE-ASTRUCT-030",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/protein_docking_score.py",
+      "line": 63
+    },
+    {
+      "id": "CODE-ASTRUCT-010",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/secondary_structure.py",
+      "line": 61
+    },
+    {
+      "id": "CODE-ASTRUCT-040",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/structural_similarity.py",
+      "line": 41
+    },
+    {
+      "id": "CODE-ASTRUCT-002",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/validation.py",
+      "line": 77
+    },
+    {
+      "id": "CODE-ASTRUCT-902",
+      "kind": "code",
+      "path": "src/ai_structural_biology_scientist/validation.py",
+      "line": 89
+    },
+    {
       "id": "CODE-EXAMPLE-001",
       "kind": "code",
       "path": "src/example_readiness.py",
@@ -2963,37 +3552,91 @@
       "id": "TEST-ACHEM-001",
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_bilingual.py",
-      "line": 25
+      "line": 27
     },
     {
       "id": "TEST-ACHEM-930",
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_bilingual.py",
-      "line": 36
+      "line": 38
     },
     {
       "id": "TEST-ACHEM-931",
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_bilingual.py",
-      "line": 47
+      "line": 49
     },
     {
       "id": "TEST-ACHEM-932",
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_bilingual.py",
-      "line": 59
+      "line": 61
     },
     {
       "id": "TEST-ACHEM-933",
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_bilingual.py",
-      "line": 71
+      "line": 73
     },
     {
       "id": "TEST-ACHEM-934",
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_bilingual.py",
-      "line": 83
+      "line": 85
+    },
+    {
+      "id": "TEST-ACHEM-957",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bilingual.py",
+      "line": 97
+    },
+    {
+      "id": "TEST-ACHEM-958",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bilingual.py",
+      "line": 119
+    },
+    {
+      "id": "TEST-ACHEM-949",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bioactivity_classification.py",
+      "line": 12
+    },
+    {
+      "id": "TEST-ACHEM-950",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bioactivity_classification.py",
+      "line": 59
+    },
+    {
+      "id": "TEST-ACHEM-951",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bioactivity_classification.py",
+      "line": 73
+    },
+    {
+      "id": "TEST-ACHEM-952",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bioactivity_classification.py",
+      "line": 87
+    },
+    {
+      "id": "TEST-ACHEM-964",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bioactivity_classification.py",
+      "line": 98
+    },
+    {
+      "id": "TEST-ACHEM-968",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bioactivity_classification.py",
+      "line": 123
+    },
+    {
+      "id": "TEST-ACHEM-971",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_bioactivity_classification.py",
+      "line": 137
     },
     {
       "id": "TEST-ACHEM-002",
@@ -3056,6 +3699,36 @@
       "line": 135
     },
     {
+      "id": "TEST-ACHEM-953",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 146
+    },
+    {
+      "id": "TEST-ACHEM-954",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 173
+    },
+    {
+      "id": "TEST-ACHEM-955",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 192
+    },
+    {
+      "id": "TEST-ACHEM-956",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 208
+    },
+    {
+      "id": "TEST-ACHEM-960",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_dispatch.py",
+      "line": 226
+    },
+    {
       "id": "TEST-ACHEM-050",
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_docking_score.py",
@@ -3102,6 +3775,36 @@
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_docking_score.py",
       "line": 123
+    },
+    {
+      "id": "TEST-ACHEM-939",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_drug_likeness_rules.py",
+      "line": 11
+    },
+    {
+      "id": "TEST-ACHEM-940",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_drug_likeness_rules.py",
+      "line": 61
+    },
+    {
+      "id": "TEST-ACHEM-941",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_drug_likeness_rules.py",
+      "line": 75
+    },
+    {
+      "id": "TEST-ACHEM-961",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_drug_likeness_rules.py",
+      "line": 86
+    },
+    {
+      "id": "TEST-ACHEM-965",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_drug_likeness_rules.py",
+      "line": 112
     },
     {
       "id": "TEST-ACHEM-004",
@@ -3156,6 +3859,36 @@
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_molecular_descriptors.py",
       "line": 73
+    },
+    {
+      "id": "TEST-ACHEM-946",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_formula_mass.py",
+      "line": 10
+    },
+    {
+      "id": "TEST-ACHEM-947",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_formula_mass.py",
+      "line": 21
+    },
+    {
+      "id": "TEST-ACHEM-948",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_formula_mass.py",
+      "line": 35
+    },
+    {
+      "id": "TEST-ACHEM-963",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_formula_mass.py",
+      "line": 46
+    },
+    {
+      "id": "TEST-ACHEM-967",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_molecular_formula_mass.py",
+      "line": 66
     },
     {
       "id": "TEST-ACHEM-040",
@@ -3224,6 +3957,54 @@
       "line": 92
     },
     {
+      "id": "TEST-ACHEM-959",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structural_alerts.py",
+      "line": 14
+    },
+    {
+      "id": "TEST-ACHEM-943",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structural_alerts.py",
+      "line": 39
+    },
+    {
+      "id": "TEST-ACHEM-944",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structural_alerts.py",
+      "line": 53
+    },
+    {
+      "id": "TEST-ACHEM-945",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structural_alerts.py",
+      "line": 68
+    },
+    {
+      "id": "TEST-ACHEM-962",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structural_alerts.py",
+      "line": 79
+    },
+    {
+      "id": "TEST-ACHEM-966",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structural_alerts.py",
+      "line": 102
+    },
+    {
+      "id": "TEST-ACHEM-969",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structural_alerts.py",
+      "line": 116
+    },
+    {
+      "id": "TEST-ACHEM-970",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structural_alerts.py",
+      "line": 143
+    },
+    {
       "id": "TEST-ACHEM-003",
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_validation.py",
@@ -3258,6 +4039,132 @@
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_validation.py",
       "line": 80
+    },
+    {
+      "id": "TEST-AGENOM-001",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_bilingual.py",
+      "line": 26
+    },
+    {
+      "id": "TEST-AGENOM-061",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_bilingual.py",
+      "line": 81
+    },
+    {
+      "id": "TEST-AGENOM-002",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_dispatch.py",
+      "line": 6
+    },
+    {
+      "id": "TEST-AGENOM-022",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_dispatch.py",
+      "line": 39
+    },
+    {
+      "id": "TEST-AGENOM-023",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_dispatch.py",
+      "line": 72
+    },
+    {
+      "id": "TEST-AGENOM-062",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_dispatch.py",
+      "line": 90
+    },
+    {
+      "id": "TEST-AGENOM-004",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_evidence.py",
+      "line": 30
+    },
+    {
+      "id": "TEST-AGENOM-070",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_evidence.py",
+      "line": 106
+    },
+    {
+      "id": "TEST-AGENOM-040",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_gene_set_enrichment.py",
+      "line": 10
+    },
+    {
+      "id": "TEST-AGENOM-071",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_gene_set_enrichment.py",
+      "line": 66
+    },
+    {
+      "id": "TEST-AGENOM-050",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_sequence_alignment.py",
+      "line": 8
+    },
+    {
+      "id": "TEST-AGENOM-069",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_sequence_alignment.py",
+      "line": 29
+    },
+    {
+      "id": "TEST-AGENOM-010",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_sequence_features.py",
+      "line": 10
+    },
+    {
+      "id": "TEST-AGENOM-072",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_sequence_features.py",
+      "line": 40
+    },
+    {
+      "id": "TEST-AGENOM-030",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_splice_site_scoring.py",
+      "line": 10
+    },
+    {
+      "id": "TEST-AGENOM-067",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_splice_site_scoring.py",
+      "line": 28
+    },
+    {
+      "id": "TEST-AGENOM-003",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_validation.py",
+      "line": 8
+    },
+    {
+      "id": "TEST-AGENOM-060",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_validation.py",
+      "line": 56
+    },
+    {
+      "id": "TEST-AGENOM-063",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_validation.py",
+      "line": 70
+    },
+    {
+      "id": "TEST-AGENOM-020",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_variant_effect.py",
+      "line": 8
+    },
+    {
+      "id": "TEST-AGENOM-066",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_variant_effect.py",
+      "line": 60
     },
     {
       "id": "TEST-AIMS-001",
@@ -3996,6 +4903,156 @@
       "kind": "test",
       "path": "tests/test_ai_scientist_tdd_gate.py",
       "line": 11
+    },
+    {
+      "id": "TEST-ASTRUCT-005",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_bilingual.py",
+      "line": 24
+    },
+    {
+      "id": "TEST-ASTRUCT-050",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_contact_map.py",
+      "line": 10
+    },
+    {
+      "id": "TEST-ASTRUCT-076",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_contact_map.py",
+      "line": 37
+    },
+    {
+      "id": "TEST-ASTRUCT-002",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_dispatch.py",
+      "line": 10
+    },
+    {
+      "id": "TEST-ASTRUCT-062",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_dispatch.py",
+      "line": 55
+    },
+    {
+      "id": "TEST-ASTRUCT-079",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_dispatch.py",
+      "line": 72
+    },
+    {
+      "id": "TEST-ASTRUCT-004",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_evidence.py",
+      "line": 10
+    },
+    {
+      "id": "TEST-ASTRUCT-060",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_evidence.py",
+      "line": 42
+    },
+    {
+      "id": "TEST-ASTRUCT-077",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_evidence.py",
+      "line": 68
+    },
+    {
+      "id": "TEST-ASTRUCT-020",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_hydrophobicity.py",
+      "line": 11
+    },
+    {
+      "id": "TEST-ASTRUCT-071",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_hydrophobicity.py",
+      "line": 73
+    },
+    {
+      "id": "TEST-ASTRUCT-083",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_hydrophobicity.py",
+      "line": 93
+    },
+    {
+      "id": "TEST-ASTRUCT-030",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_protein_docking_score.py",
+      "line": 12
+    },
+    {
+      "id": "TEST-ASTRUCT-072",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_protein_docking_score.py",
+      "line": 44
+    },
+    {
+      "id": "TEST-ASTRUCT-078",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_protein_docking_score.py",
+      "line": 61
+    },
+    {
+      "id": "TEST-ASTRUCT-010",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_secondary_structure.py",
+      "line": 10
+    },
+    {
+      "id": "TEST-ASTRUCT-074",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_secondary_structure.py",
+      "line": 49
+    },
+    {
+      "id": "TEST-ASTRUCT-082",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_secondary_structure.py",
+      "line": 63
+    },
+    {
+      "id": "TEST-ASTRUCT-041",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_structural_similarity.py",
+      "line": 11
+    },
+    {
+      "id": "TEST-ASTRUCT-073",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_structural_similarity.py",
+      "line": 39
+    },
+    {
+      "id": "TEST-ASTRUCT-084",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_structural_similarity.py",
+      "line": 56
+    },
+    {
+      "id": "TEST-ASTRUCT-003",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_validation.py",
+      "line": 11
+    },
+    {
+      "id": "TEST-ASTRUCT-061",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_validation.py",
+      "line": 100
+    },
+    {
+      "id": "TEST-ASTRUCT-075",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_validation.py",
+      "line": 122
+    },
+    {
+      "id": "TEST-ASTRUCT-080",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_validation.py",
+      "line": 147
     },
     {
       "id": "TEST-AIDS-087",
@@ -5424,6 +6481,106 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-ACHEM-060",
+      "to": "REQ-ACHEM-060",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0049",
+      "to": "DES-ACHEM-060",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-060",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-060",
+      "to": "DES-ACHEM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-060",
+      "to": "DES-ACHEM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-070",
+      "to": "REQ-ACHEM-070",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0050",
+      "to": "DES-ACHEM-070",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-070",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-070",
+      "to": "DES-ACHEM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-070",
+      "to": "DES-ACHEM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-080",
+      "to": "REQ-ACHEM-080",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0051",
+      "to": "DES-ACHEM-080",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-080",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-080",
+      "to": "DES-ACHEM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-080",
+      "to": "DES-ACHEM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-090",
+      "to": "REQ-ACHEM-090",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0052",
+      "to": "DES-ACHEM-090",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-090",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-090",
+      "to": "DES-ACHEM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-090",
+      "to": "DES-ACHEM-003",
+      "relation": "depends-on"
+    },
+    {
       "from": "DES-AIDS-001",
       "to": "REQ-AIDS-012",
       "relation": "satisfies"
@@ -6479,6 +7636,201 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-AGENOM-001",
+      "to": "REQ-AGENOM-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AGENOM-001",
+      "to": "REQ-AGENOM-002",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0033",
+      "to": "DES-AGENOM-001",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AGENOM-002",
+      "to": "REQ-AGENOM-003",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AGENOM-002",
+      "to": "REQ-AGENOM-010",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AGENOM-002",
+      "to": "REQ-AGENOM-020",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AGENOM-002",
+      "to": "REQ-AGENOM-030",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AGENOM-002",
+      "to": "REQ-AGENOM-040",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AGENOM-002",
+      "to": "REQ-AGENOM-050",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0034",
+      "to": "DES-AGENOM-002",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AGENOM-002",
+      "to": "DES-AGENOM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-003",
+      "to": "REQ-AGENOM-004",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0035",
+      "to": "DES-AGENOM-003",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AGENOM-003",
+      "to": "DES-AGENOM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-010",
+      "to": "REQ-AGENOM-010",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0036",
+      "to": "DES-AGENOM-010",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AGENOM-010",
+      "to": "DES-AGENOM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-010",
+      "to": "DES-AGENOM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-010",
+      "to": "DES-AGENOM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-020",
+      "to": "REQ-AGENOM-020",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0037",
+      "to": "DES-AGENOM-020",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AGENOM-020",
+      "to": "DES-AGENOM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-020",
+      "to": "DES-AGENOM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-020",
+      "to": "DES-AGENOM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-030",
+      "to": "REQ-AGENOM-030",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0038",
+      "to": "DES-AGENOM-030",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AGENOM-030",
+      "to": "DES-AGENOM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-030",
+      "to": "DES-AGENOM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-030",
+      "to": "DES-AGENOM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-040",
+      "to": "REQ-AGENOM-040",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0039",
+      "to": "DES-AGENOM-040",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AGENOM-040",
+      "to": "DES-AGENOM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-040",
+      "to": "DES-AGENOM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-040",
+      "to": "DES-AGENOM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-050",
+      "to": "REQ-AGENOM-050",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0040",
+      "to": "DES-AGENOM-050",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AGENOM-050",
+      "to": "DES-AGENOM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-050",
+      "to": "DES-AGENOM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AGENOM-050",
+      "to": "DES-AGENOM-003",
+      "relation": "depends-on"
+    },
+    {
       "from": "DES-AIMS-001",
       "to": "REQ-AIMS-001",
       "relation": "satisfies"
@@ -6994,6 +8346,176 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-ASTRUCT-001",
+      "to": "REQ-ASTRUCT-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-ASTRUCT-001",
+      "to": "REQ-ASTRUCT-002",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0041",
+      "to": "DES-ASTRUCT-001",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ASTRUCT-002",
+      "to": "REQ-ASTRUCT-003",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0042",
+      "to": "DES-ASTRUCT-002",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ASTRUCT-002",
+      "to": "DES-ASTRUCT-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-003",
+      "to": "REQ-ASTRUCT-004",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0043",
+      "to": "DES-ASTRUCT-003",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ASTRUCT-003",
+      "to": "DES-ASTRUCT-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-010",
+      "to": "REQ-ASTRUCT-010",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0044",
+      "to": "DES-ASTRUCT-010",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ASTRUCT-010",
+      "to": "DES-ASTRUCT-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-010",
+      "to": "DES-ASTRUCT-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-010",
+      "to": "DES-ASTRUCT-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-020",
+      "to": "REQ-ASTRUCT-020",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0045",
+      "to": "DES-ASTRUCT-020",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ASTRUCT-020",
+      "to": "DES-ASTRUCT-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-020",
+      "to": "DES-ASTRUCT-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-020",
+      "to": "DES-ASTRUCT-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-030",
+      "to": "REQ-ASTRUCT-030",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0046",
+      "to": "DES-ASTRUCT-030",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ASTRUCT-030",
+      "to": "DES-ASTRUCT-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-030",
+      "to": "DES-ASTRUCT-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-030",
+      "to": "DES-ASTRUCT-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-040",
+      "to": "REQ-ASTRUCT-040",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0047",
+      "to": "DES-ASTRUCT-040",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ASTRUCT-040",
+      "to": "DES-ASTRUCT-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-040",
+      "to": "DES-ASTRUCT-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-040",
+      "to": "DES-ASTRUCT-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-050",
+      "to": "REQ-ASTRUCT-050",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0048",
+      "to": "DES-ASTRUCT-050",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ASTRUCT-050",
+      "to": "DES-ASTRUCT-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-050",
+      "to": "DES-ASTRUCT-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-050",
+      "to": "DES-ASTRUCT-003",
+      "relation": "depends-on"
+    },
+    {
       "from": "DES-EXAMPLE-001",
       "to": "REQ-EXAMPLE-001",
       "relation": "satisfies"
@@ -7014,6 +8536,31 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-ACHEM-920",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-920",
+      "to": "REQ-ACHEM-090",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-920",
+      "to": "DES-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-090",
+      "to": "REQ-ACHEM-090",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-090",
+      "to": "DES-ACHEM-090",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-ACHEM-916",
       "to": "REQ-ACHEM-002",
       "relation": "implements"
@@ -7095,6 +8642,66 @@
     },
     {
       "from": "CODE-ACHEM-051",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-061",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-061",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-061",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-071",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-071",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-071",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-081",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-081",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-081",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-091",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-091",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-091",
       "to": "DES-ACHEM-001",
       "relation": "implements"
     },
@@ -7124,6 +8731,31 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-ACHEM-917",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-917",
+      "to": "REQ-ACHEM-060",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-917",
+      "to": "DES-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-060",
+      "to": "REQ-ACHEM-060",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-060",
+      "to": "DES-ACHEM-060",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-ACHEM-003",
       "to": "REQ-ACHEM-004",
       "relation": "implements"
@@ -7149,6 +8781,31 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-ACHEM-919",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-919",
+      "to": "REQ-ACHEM-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-919",
+      "to": "DES-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-080",
+      "to": "REQ-ACHEM-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-080",
+      "to": "DES-ACHEM-080",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-ACHEM-040",
       "to": "REQ-ACHEM-040",
       "relation": "implements"
@@ -7166,6 +8823,31 @@
     {
       "from": "CODE-ACHEM-030",
       "to": "DES-ACHEM-030",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-918",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-918",
+      "to": "REQ-ACHEM-070",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-918",
+      "to": "DES-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-070",
+      "to": "REQ-ACHEM-070",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-070",
+      "to": "DES-ACHEM-070",
       "relation": "implements"
     },
     {
@@ -8619,6 +10301,196 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AGENOM-011",
+      "to": "REQ-AGENOM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-011",
+      "to": "REQ-AGENOM-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-011",
+      "to": "DES-AGENOM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-021",
+      "to": "REQ-AGENOM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-021",
+      "to": "REQ-AGENOM-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-021",
+      "to": "DES-AGENOM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-031",
+      "to": "REQ-AGENOM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-031",
+      "to": "REQ-AGENOM-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-031",
+      "to": "DES-AGENOM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-041",
+      "to": "REQ-AGENOM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-041",
+      "to": "REQ-AGENOM-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-041",
+      "to": "DES-AGENOM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-051",
+      "to": "REQ-AGENOM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-051",
+      "to": "REQ-AGENOM-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-051",
+      "to": "DES-AGENOM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-006",
+      "to": "REQ-AGENOM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-006",
+      "to": "REQ-AGENOM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-006",
+      "to": "DES-AGENOM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-001",
+      "to": "REQ-AGENOM-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-001",
+      "to": "DES-AGENOM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-040",
+      "to": "REQ-AGENOM-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-040",
+      "to": "DES-AGENOM-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-050",
+      "to": "REQ-AGENOM-050",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-050",
+      "to": "DES-AGENOM-050",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-010",
+      "to": "REQ-AGENOM-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-010",
+      "to": "DES-AGENOM-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-030",
+      "to": "REQ-AGENOM-030",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-030",
+      "to": "DES-AGENOM-030",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-002",
+      "to": "REQ-AGENOM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-002",
+      "to": "DES-AGENOM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-003",
+      "to": "REQ-AGENOM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-003",
+      "to": "DES-AGENOM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-004",
+      "to": "REQ-AGENOM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-004",
+      "to": "DES-AGENOM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-005",
+      "to": "REQ-AGENOM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-005",
+      "to": "DES-AGENOM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-020",
+      "to": "REQ-AGENOM-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AGENOM-020",
+      "to": "DES-AGENOM-020",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AIMS-070",
       "to": "REQ-AIMS-070",
       "relation": "implements"
@@ -9309,6 +11181,186 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-ASTRUCT-050",
+      "to": "REQ-ASTRUCT-050",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-050",
+      "to": "DES-ASTRUCT-050",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-901",
+      "to": "REQ-ASTRUCT-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-901",
+      "to": "DES-ASTRUCT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-011",
+      "to": "REQ-ASTRUCT-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-011",
+      "to": "REQ-ASTRUCT-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-011",
+      "to": "DES-ASTRUCT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-021",
+      "to": "REQ-ASTRUCT-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-021",
+      "to": "REQ-ASTRUCT-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-021",
+      "to": "DES-ASTRUCT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-031",
+      "to": "REQ-ASTRUCT-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-031",
+      "to": "REQ-ASTRUCT-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-031",
+      "to": "DES-ASTRUCT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-041",
+      "to": "REQ-ASTRUCT-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-041",
+      "to": "REQ-ASTRUCT-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-041",
+      "to": "DES-ASTRUCT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-051",
+      "to": "REQ-ASTRUCT-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-051",
+      "to": "REQ-ASTRUCT-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-051",
+      "to": "DES-ASTRUCT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-001",
+      "to": "REQ-ASTRUCT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-001",
+      "to": "REQ-ASTRUCT-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-001",
+      "to": "DES-ASTRUCT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-003",
+      "to": "REQ-ASTRUCT-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-003",
+      "to": "DES-ASTRUCT-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-020",
+      "to": "REQ-ASTRUCT-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-020",
+      "to": "DES-ASTRUCT-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-030",
+      "to": "REQ-ASTRUCT-030",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-030",
+      "to": "DES-ASTRUCT-030",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-010",
+      "to": "REQ-ASTRUCT-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-010",
+      "to": "DES-ASTRUCT-010",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-040",
+      "to": "REQ-ASTRUCT-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-040",
+      "to": "DES-ASTRUCT-040",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-002",
+      "to": "REQ-ASTRUCT-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-002",
+      "to": "DES-ASTRUCT-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-902",
+      "to": "REQ-ASTRUCT-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ASTRUCT-902",
+      "to": "DES-ASTRUCT-002",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-EXAMPLE-001",
       "to": "REQ-EXAMPLE-001",
       "relation": "implements"
@@ -9379,6 +11431,56 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-ACHEM-957",
+      "to": "REQ-ACHEM-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-958",
+      "to": "REQ-ACHEM-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-949",
+      "to": "REQ-ACHEM-090",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-950",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-950",
+      "to": "REQ-ACHEM-090",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-951",
+      "to": "REQ-ACHEM-090",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-952",
+      "to": "REQ-ACHEM-090",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-964",
+      "to": "REQ-ACHEM-090",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-968",
+      "to": "REQ-ACHEM-090",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-971",
+      "to": "REQ-ACHEM-090",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-ACHEM-002",
       "to": "REQ-ACHEM-002",
       "relation": "verifies"
@@ -9439,6 +11541,41 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-ACHEM-953",
+      "to": "REQ-ACHEM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-954",
+      "to": "REQ-ACHEM-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-955",
+      "to": "REQ-ACHEM-080",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-955",
+      "to": "REQ-ACHEM-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-956",
+      "to": "REQ-ACHEM-090",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-960",
+      "to": "REQ-ACHEM-080",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-960",
+      "to": "REQ-ACHEM-004",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-ACHEM-050",
       "to": "REQ-ACHEM-050",
       "relation": "verifies"
@@ -9481,6 +11618,36 @@
     {
       "from": "TEST-ACHEM-938",
       "to": "REQ-ACHEM-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-939",
+      "to": "REQ-ACHEM-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-940",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-940",
+      "to": "REQ-ACHEM-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-941",
+      "to": "REQ-ACHEM-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-961",
+      "to": "REQ-ACHEM-060",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-965",
+      "to": "REQ-ACHEM-060",
       "relation": "verifies"
     },
     {
@@ -9531,6 +11698,36 @@
     {
       "from": "TEST-ACHEM-015",
       "to": "REQ-ACHEM-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-946",
+      "to": "REQ-ACHEM-080",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-947",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-947",
+      "to": "REQ-ACHEM-080",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-948",
+      "to": "REQ-ACHEM-080",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-963",
+      "to": "REQ-ACHEM-080",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-967",
+      "to": "REQ-ACHEM-080",
       "relation": "verifies"
     },
     {
@@ -9604,6 +11801,51 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-ACHEM-959",
+      "to": "REQ-ACHEM-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-943",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-943",
+      "to": "REQ-ACHEM-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-944",
+      "to": "REQ-ACHEM-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-945",
+      "to": "REQ-ACHEM-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-962",
+      "to": "REQ-ACHEM-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-966",
+      "to": "REQ-ACHEM-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-969",
+      "to": "REQ-ACHEM-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-970",
+      "to": "REQ-ACHEM-070",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-ACHEM-003",
       "to": "REQ-ACHEM-003",
       "relation": "verifies"
@@ -9631,6 +11873,121 @@
     {
       "from": "TEST-ACHEM-935",
       "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-001",
+      "to": "REQ-AGENOM-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-061",
+      "to": "REQ-AGENOM-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-002",
+      "to": "REQ-AGENOM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-022",
+      "to": "REQ-AGENOM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-023",
+      "to": "REQ-AGENOM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-023",
+      "to": "REQ-AGENOM-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-062",
+      "to": "REQ-AGENOM-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-004",
+      "to": "REQ-AGENOM-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-070",
+      "to": "REQ-AGENOM-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-040",
+      "to": "REQ-AGENOM-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-071",
+      "to": "REQ-AGENOM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-071",
+      "to": "REQ-AGENOM-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-050",
+      "to": "REQ-AGENOM-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-069",
+      "to": "REQ-AGENOM-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-010",
+      "to": "REQ-AGENOM-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-072",
+      "to": "REQ-AGENOM-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-030",
+      "to": "REQ-AGENOM-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-067",
+      "to": "REQ-AGENOM-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-003",
+      "to": "REQ-AGENOM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-060",
+      "to": "REQ-AGENOM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-063",
+      "to": "REQ-AGENOM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-020",
+      "to": "REQ-AGENOM-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AGENOM-066",
+      "to": "REQ-AGENOM-020",
       "relation": "verifies"
     },
     {
@@ -10246,6 +12603,131 @@
     {
       "from": "TEST-AISCI-035",
       "to": "REQ-AISCI-024",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-005",
+      "to": "REQ-ASTRUCT-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-050",
+      "to": "REQ-ASTRUCT-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-076",
+      "to": "REQ-ASTRUCT-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-002",
+      "to": "REQ-ASTRUCT-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-062",
+      "to": "REQ-ASTRUCT-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-079",
+      "to": "REQ-ASTRUCT-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-004",
+      "to": "REQ-ASTRUCT-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-060",
+      "to": "REQ-ASTRUCT-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-077",
+      "to": "REQ-ASTRUCT-004",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-020",
+      "to": "REQ-ASTRUCT-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-071",
+      "to": "REQ-ASTRUCT-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-083",
+      "to": "REQ-ASTRUCT-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-030",
+      "to": "REQ-ASTRUCT-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-072",
+      "to": "REQ-ASTRUCT-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-078",
+      "to": "REQ-ASTRUCT-030",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-010",
+      "to": "REQ-ASTRUCT-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-074",
+      "to": "REQ-ASTRUCT-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-082",
+      "to": "REQ-ASTRUCT-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-041",
+      "to": "REQ-ASTRUCT-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-073",
+      "to": "REQ-ASTRUCT-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-084",
+      "to": "REQ-ASTRUCT-040",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-003",
+      "to": "REQ-ASTRUCT-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-061",
+      "to": "REQ-ASTRUCT-050",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-075",
+      "to": "REQ-ASTRUCT-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-080",
+      "to": "REQ-ASTRUCT-003",
       "relation": "verifies"
     },
     {
@@ -11391,36 +13873,63 @@
     ".musubix/decisions/ADR-0022.md": "8ecac7e9d7b3162b3c087ad8d049f4df5e673232282cf7070c1647cf457932c9",
     ".musubix/decisions/ADR-0023.md": "d5a01c7588d5fc182124c8b6153c91d0f652e63533f4bc41156e8a49161d9653",
     ".musubix/decisions/ADR-0024.md": "78492e859aa768ab60d4d3348f0fa84e10def52c3b4473c502aca9ecaf4930ab",
-    ".musubix/decisions/ADR-0025.md": "cedd1c7a139986a92bc8f3ee6c2f0a31e0fab8536a0398031b84c5e743ec7c2a",
-    ".musubix/decisions/ADR-0026.md": "16f5ee2d32d11a69a3a38f3f8a672d9642b3bf588d06688dd58777eea8e6ee83",
-    ".musubix/decisions/ADR-0027.md": "a520851af36404ec48df585b7cbd5f3bbbabc1376480974209bbe01c955150b2",
+    ".musubix/decisions/ADR-0025.md": "982ad522d72ae1e91fb388943a01f9139ee760a1a39db8afe0d8fdb04fe5b199",
+    ".musubix/decisions/ADR-0026.md": "7f91295d71ff471abf3d493e5ff7e749a9606e73d4d1d8f85dd5e0c3d8142f75",
+    ".musubix/decisions/ADR-0027.md": "86cdb3f331ee33159a3a02e8b2063523d5c794379d2c8f86bdf7d8416130ee61",
     ".musubix/decisions/ADR-0028.md": "167f5bde34278340a9500f7dbd557db5b2732d3d39277404e1713eb35084a512",
     ".musubix/decisions/ADR-0029.md": "1054466b1e98babfdf330233e3c52bd22ca5c8c1a5bafad4f466d992bbe63027",
     ".musubix/decisions/ADR-0030.md": "2695f9f7033f379f4bf798142e99356c30d77d11d4f941ed4aaee82c74088671",
     ".musubix/decisions/ADR-0031.md": "fb92067d0729d9a0e46686aebf10cf264b9438c8f2b029449b2b01c8774b3d66",
     ".musubix/decisions/ADR-0032.md": "e7f4df0112188f25af966498c3fa27b22a92c7dcd6244656650f6c967b33f2d5",
-    ".musubix/features/ai-chemistry-scientist/design.md": "3fc504cbeb47081bd487ffe325d76cc06a4b6b8b7e1b661fe40d4befcac8228a",
-    ".musubix/features/ai-chemistry-scientist/requirements.md": "50db33cf117db410f0d028e52ab0ebe9f24b07ec410915f30e24b3764de567f9",
+    ".musubix/decisions/ADR-0033.md": "91231c71e9f42b0a23c2ee424afe542770f35ba2b13f20d324abefd5cec9a6c5",
+    ".musubix/decisions/ADR-0034.md": "5a83b4e1de8b0c63182120c4720d4963f6f86d5aeefdd9307263b1c6c293137e",
+    ".musubix/decisions/ADR-0035.md": "ed1230b29ea1f0c44b846b50e428c6337c4e3fa22d1b35921349ed71b3df6723",
+    ".musubix/decisions/ADR-0036.md": "48400e1116ed66afed070133b6da9cca0afd5cf658fa4dc7399008ffbcedb131",
+    ".musubix/decisions/ADR-0037.md": "275692f36d48b72e29b955473abf60da7bd390b91394d2cdeb1d23c52f524f29",
+    ".musubix/decisions/ADR-0038.md": "c1023f8c848648bdac5c046c8d1841cb29f7ab532a6ad0d25d3b38190ec8d640",
+    ".musubix/decisions/ADR-0039.md": "c1240ef2d8ebe9be7c9004f6d271c885447a01c85614092090aeb64de4a9683b",
+    ".musubix/decisions/ADR-0040.md": "26adb3f80b8e7fcc4c3815d240d24851b3caaacc5814972f5a53227befa32f7d",
+    ".musubix/decisions/ADR-0041.md": "7b87163511bbbfbde087d83e9711534abd1c996323eed99ce749e75af0331268",
+    ".musubix/decisions/ADR-0042.md": "d252c0e2bf2905ef9a65f5d86cf03560c7a6915dd4de205dfeb95a218984a585",
+    ".musubix/decisions/ADR-0043.md": "b6d9028cdcc8f086514a345270f93b3027d4b04bef9301982ada5beb3358dfa6",
+    ".musubix/decisions/ADR-0044.md": "edcf5dfacdc09e71d723d2db6e9fd75ae047ec1dea565ee10f8a78de2a23b944",
+    ".musubix/decisions/ADR-0045.md": "19ca49a7ffde4e6296cfcd605de35621e0b14d97e81fdde859e9e7f419d00b8e",
+    ".musubix/decisions/ADR-0046.md": "20645d6e55ff09a0f5c38371f0d157a354cba7097f530c340b25f79fe5648170",
+    ".musubix/decisions/ADR-0047.md": "81f3a29d50cda595066a4f353a0d3bd987df382d36b1ed425b7f168d23f43676",
+    ".musubix/decisions/ADR-0048.md": "852f407487af606d02337989001293acf33dac623e69ce8002b32ba32936de56",
+    ".musubix/decisions/ADR-0049.md": "83fa0a325e89860909df9e4ac41df4013b0ea59d1a2c4b094b92328f496f54b2",
+    ".musubix/decisions/ADR-0050.md": "6b5ad9780b7d4800c7e609956f20d2a6827c2fdefe86a932988899e33204bf10",
+    ".musubix/decisions/ADR-0051.md": "2d0c78453452700d7af652451dd681edaf00671c5251d13dd84afb31f5fdedd7",
+    ".musubix/decisions/ADR-0052.md": "24b2b804f2240177fc0e56c3e69138914bfbf17a40759385e8f8ed0539f8793d",
+    ".musubix/features/ai-chemistry-scientist/design.md": "b0305099de56dd252c1e319a4a751d8b3eed23282b31f671c350af289f4fd2af",
+    ".musubix/features/ai-chemistry-scientist/requirements.md": "7ffbce1294f08612ff25ae5e2e291a101b19c26dae1a8637ee63926f0f868739",
     ".musubix/features/ai-data-scientist/design.md": "d317616c00ab4a28157841e5a94fe910013cfbdd5ee7ecd7c13ff920c05de28b",
     ".musubix/features/ai-data-scientist/requirements.md": "3cc394cb861960154c378a9a92a94b4e842410e555319fe1dbffae81a0f3d8ae",
     ".musubix/features/ai-data-scientist-ml/design.md": "3b28f9d59a689d5707d44f553acc3b75484ea82cb7848abf7e466d86594b0da9",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "acf8edfe207c3e9824c0f1b9c91ae44498c2c7c1a0e03f14ac0114b35c1beb68",
+    ".musubix/features/ai-genomics-scientist/design.md": "effd788d7c6d1f32bb149e2f48b018b4e2883becd3c26c161520ea4a957e5450",
     ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
     ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
     ".musubix/features/ai-scientist/design.md": "0e5f0360cb8f54a29cdbdc3c28fb9c0614d5f47d312b5046f83fda603de85539",
     ".musubix/features/ai-scientist/requirements.md": "0813eae3d21203183b9b3804375b2c5b2b9813da2fbaffd264f134d10ca156a7",
+    ".musubix/features/ai-structural-biology-scientist/design.md": "7b9e7f5b3eff9321cabf4813bdca7a4a11b80c54a93ad3db50c925eca4f81955",
+    ".musubix/features/ai-structural-biology-scientist/requirements.md": "ade8184daef2095e8a9da33e99125fe63ed81485af7f09caa5c8f227d670506c",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
     "bin/ai-data-scientist.js": "f70c764374ee721ebe18b26ed2f3da6ddd896d3c7bc5520c10f8fc0e70fd85da",
     "src/ai_chemistry_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
-    "src/ai_chemistry_scientist/dispatch.py": "a33e88998947919700208ef7c3f5b54c25f956397ae4278e3c2b0dc15f3e8475",
+    "src/ai_chemistry_scientist/bioactivity_classification.py": "a9c53ff1c8d25fd9903ec005073de812b4d6ee1b33517efdb72b4ae2e67d340a",
+    "src/ai_chemistry_scientist/dispatch.py": "6c2e95fd19f62504c34415a33c931882212e4f40cd2db2e4ba579583cbfb6041",
     "src/ai_chemistry_scientist/docking_score.py": "bf152d0b84b80c56f50f92ad1ec6ef9820422e1b5008cdc5330fb2904d0f98da",
+    "src/ai_chemistry_scientist/drug_likeness_rules.py": "e56fd16f9404e3e320956a6a1d38a333703d32d75196069c793eb80292ec3c64",
     "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
-    "src/ai_chemistry_scientist/molecular_descriptors.py": "df70450a7b47588017d10262fdd7451ffa5e46a5e68b8109fa9b6ddc625101ab",
+    "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+    "src/ai_chemistry_scientist/molecular_formula_mass.py": "117377872ff7ddd3de478f26cea45ad566e528cc2657047bad4f0f1d351f0305",
     "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
     "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+    "src/ai_chemistry_scientist/structural_alerts.py": "3caa4e1042163396752e5bc9ab5727465875a5d45697cef41e87c60a7f2f0343",
     "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
@@ -11460,6 +13969,15 @@
     "src/ai_data_scientist/text_nlp.py": "bb7ee36f88f69ba683b82dae4fee06b3a1ff004774d57973ee60c9b0f53f3985",
     "src/ai_data_scientist/timeseries.py": "9c36ccab2c39d70815a3e5cd55e8b79679d7678107a39fda02a22ab665263dc5",
     "src/ai_data_scientist/visualization.py": "a506d43a3756f5c101c435c2bb14b64594c61b99b406b7f192f77fd293f54bd5",
+    "src/ai_genomics_scientist/__init__.py": "0c9f1f38b2e526b4169a2b06b4bb78548a18464925a029d6309597ee327fb048",
+    "src/ai_genomics_scientist/dispatch.py": "ebaf896bb71e0f93ff861c452faebc0fefa606f1b6d5efc6cfe54cc8883690c2",
+    "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+    "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+    "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+    "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+    "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+    "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3",
+    "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
     "src/ai_materials_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_materials_scientist/calphad.py": "8bd4839df1a7b3c677e9d6c2444d4837c464c5e84d53608edc596f83937b9aa3",
     "src/ai_materials_scientist/classical_monte_carlo.py": "1bbf4f334f42b4494a1b4b5328744c919a6ec1db08fb7712edac804214fbf7df",
@@ -11497,16 +14015,39 @@
     "src/ai_scientist/research_planning.py": "ee967fa8995cb70d1ecc22896eda3d586b2f06a61062fa689b69dbad1c4c3755",
     "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f",
     "src/ai_scientist/tdd_gate.py": "d278321c459fc32cd235dc77e8a3bdc94049655bf7e4ef1e825f7b5bedc4ebf7",
+    "src/ai_structural_biology_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
+    "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
+    "src/ai_structural_biology_scientist/evidence.py": "91345b8036e165a6fb15d3f12d95d18d17f58b14a08a72b087a8773c15800d50",
+    "src/ai_structural_biology_scientist/hydrophobicity.py": "718287f07c6fd6883bf540e5b4c9454d180497d8702394d37fe1a439f608660b",
+    "src/ai_structural_biology_scientist/protein_docking_score.py": "c4d941222ca46e64d3c7fd2f0806000d36027cf07a0fa77bbca20a1036d8b669",
+    "src/ai_structural_biology_scientist/secondary_structure.py": "3e6994afd7fa625cdd3c6490032741f2d1cf07ca7226b33fc85b66bba9e451db",
+    "src/ai_structural_biology_scientist/structural_similarity.py": "acb39d6f77612ef455da729958fe90a64a80897c35d5dcb33a2bd9d76ad8fad1",
+    "src/ai_structural_biology_scientist/validation.py": "fbd397217049a86eed0af9bb04b64337521304b1afbb18733a62f3ddf41d61a9",
     "src/example_readiness.py": "b4deef302d05db806ccb39216aea65dcbdcc34c52b493aa81eb22842bc4bd190",
+    "tests/conftest.py": "452ea14e11ea5306b4d199533af38581cce656085f02d15627ba7b5eb8e390d7",
     "tests/test_ai_chemistry_scientist_admet_prediction.py": "920f48f44fb5d2ce65e3b02c9431875a35e15846f4eb2b226c95328ef69ce227",
-    "tests/test_ai_chemistry_scientist_bilingual.py": "240f28e7a8952e7f3322ba9b4185e806a94cab79bf177c4aad6f35c9390015be",
-    "tests/test_ai_chemistry_scientist_dispatch.py": "95d1222dbb430eb10b3b0fef18b8e355a907162b1ad7abf0cfb469ee9085753c",
+    "tests/test_ai_chemistry_scientist_bilingual.py": "0c9ad31513bcf9ffc005a77c89cc2fe64827f8f7d332e2fd1d44ce63823645ca",
+    "tests/test_ai_chemistry_scientist_bioactivity_classification.py": "1148729aeb901e0c485f025f9f5f20ec3ac5421bc6b64015fa0bc123f81fb4b8",
+    "tests/test_ai_chemistry_scientist_dispatch.py": "4cdeaaacf4aa24611a67aae516045c718ebfba1322ad3660e31b912d19b151b8",
     "tests/test_ai_chemistry_scientist_docking_score.py": "901f418ed59e8f5363ae5bad6f0a5c602c855865055e288ec66028c0525cf9d0",
+    "tests/test_ai_chemistry_scientist_drug_likeness_rules.py": "694a1968d184649afcfcd5914c4482f9732961a748bf037d4e4dd75cb8a01198",
     "tests/test_ai_chemistry_scientist_evidence.py": "1fe50f1f55a948ad1170c148b28dc5c2bce52227b742e694e8911c365731dece",
     "tests/test_ai_chemistry_scientist_molecular_descriptors.py": "613b526ea9068bd0dfea0e2204a114bdbaca9632716bf6032f0488b62e211ccb",
+    "tests/test_ai_chemistry_scientist_molecular_formula_mass.py": "7c032e740800477c4a86f652a257dde2023b3a365854cdbd5cf45178c9f8ddfa",
     "tests/test_ai_chemistry_scientist_molecular_similarity.py": "43f455627ba3b520d707f9878d40bd3f7aaf95a2616421b017b0f4635f891ee5",
     "tests/test_ai_chemistry_scientist_qsar_modeling.py": "b6e7f62ff7f2a1414299e854481d3188f847d51abf033da4cd47bcbcc662b945",
+    "tests/test_ai_chemistry_scientist_structural_alerts.py": "744a1715653d7e7f24ee1eea821a46f58fa208b2aceca138d77105990b32ac50",
     "tests/test_ai_chemistry_scientist_validation.py": "9033f020ea4317aff7d2799d2a9af26b9920fcdb146805e5178646bdbaca81ad",
+    "tests/test_ai_genomics_scientist_bilingual.py": "392a32f53c3e1d72a650d8ddedc48b499fe979c39fcb4bf09855e9c8ac6a5d23",
+    "tests/test_ai_genomics_scientist_dispatch.py": "57f6e42788d7795ca81583677ed61bb43f78ae2c7a7ae9d438624e14a360fed3",
+    "tests/test_ai_genomics_scientist_evidence.py": "f7800b985a56a5fd2e3f19b88800ec58dc2fdd287d15bace4db755b7f3085820",
+    "tests/test_ai_genomics_scientist_gene_set_enrichment.py": "2e6f80d1e53028aaef1a5a5046bb2b6c3828e57caf1e54e4ab03157e18042650",
+    "tests/test_ai_genomics_scientist_sequence_alignment.py": "0fec83a3357b5ed69543ccdc1e152fbc2c19bfac16f696d10d7c46751708bac7",
+    "tests/test_ai_genomics_scientist_sequence_features.py": "09171af0300950d814a159aff53903c46cf2abb9ca8537cdc8d43d9034c08637",
+    "tests/test_ai_genomics_scientist_splice_site_scoring.py": "3df20204097f1d75c108675e8911a2ae61e7dc62b004159d26fb6be4b4c411f6",
+    "tests/test_ai_genomics_scientist_validation.py": "d6277f438960afbd72e5c43cf7c17830d4062e505852aeff15910e2cb8b8b193",
+    "tests/test_ai_genomics_scientist_variant_effect.py": "a12c32b10de9130ce61a0e195d52ae61bfd0a3e7419567a72add0eb801323437",
     "tests/test_ai_materials_scientist_bilingual.py": "6cab8fc1263ec40af5e197061bc0ae4685db6199a68ca745ee22558f4aabbf95",
     "tests/test_ai_materials_scientist_calphad.py": "f350b84d0f4c14b2234852c06ba534f7e81228e1a371e66d7c641ac9ae841fc9",
     "tests/test_ai_materials_scientist_classical_monte_carlo.py": "a6019feecdc12c0fb8ce47390549d824c15a16fc6b1aeb736154020925950db7",
@@ -11525,6 +14066,15 @@
     "tests/test_ai_scientist_project_handle.py": "02392815e0153fd76d547de9429a74c5f10c88089970ec9355d824307ebba3f4",
     "tests/test_ai_scientist_skill_packaging.py": "9acb3d8a5ad408018c8e9253fe9f4b0095ec41e528c451300f5b49e64704a75e",
     "tests/test_ai_scientist_tdd_gate.py": "82f8294201e8067ea658b20b7ea043e9db7df3bacd89188bfb08751abf4248ab",
+    "tests/test_ai_structural_biology_scientist_bilingual.py": "3d04795a577faa9e1afbd8263fea2a88ef1fd3502ea727d9839ec4d1964e3da1",
+    "tests/test_ai_structural_biology_scientist_contact_map.py": "3a2983768e2f1f9b4923bbd7ad904b314538bb287347168e079e856e350cccda",
+    "tests/test_ai_structural_biology_scientist_dispatch.py": "194ef0e4cb6810692bd933cd0a273e6e57e085e15cb6f70def0f2c20836e00ae",
+    "tests/test_ai_structural_biology_scientist_evidence.py": "460c638e55284a07c7753ca6ba60b46396932706371f0dc05d233e710b1a5d3e",
+    "tests/test_ai_structural_biology_scientist_hydrophobicity.py": "31df5a6be567df6652a731e7d3551e49395e597407d2c42c3ffb72861e5d4705",
+    "tests/test_ai_structural_biology_scientist_protein_docking_score.py": "0f181c37eafb2a32a2f0594841f8e842c34ed7789b4fcb58753666ec861d8beb",
+    "tests/test_ai_structural_biology_scientist_secondary_structure.py": "025fe0a963cb8eba56ac12d406fc6dd2792c10f74ef079701b2cefaf9cde714f",
+    "tests/test_ai_structural_biology_scientist_structural_similarity.py": "660725e1ac8fa3636fcd7b8ab419d2b0b6c9430034312ddeec7daa98e16fafdc",
+    "tests/test_ai_structural_biology_scientist_validation.py": "ca34fe16e9c0651f2f884b4831330ca1d652032dd2b16b515d8511e2e791b917",
     "tests/test_analysis_assumptions.py": "665331b6baaeb624bd3562989a6925c4e80a269d2d0dfce93c3acbe7b21731d8",
     "tests/test_anomaly_detection.py": "1d3cdaabb41d4dc2f7d0b0278d6645cee4d0d11557aa4519a7de0376a083d3ba",
     "tests/test_automl.py": "5ea36889e9cf572e8bbb26d581163e632f36d70c4049f7e220961d580a5fcce7",

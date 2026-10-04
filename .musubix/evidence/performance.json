@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
-  "runId": "7508242b-77f0-47a5-9dcd-347978f81980",
-  "generatedAt": "2026-10-04T21:09:06.771Z",
+  "runId": "dc6d6891-a1e8-422b-ae50-6a88424af92c",
+  "generatedAt": "2026-10-04T21:40:57.841Z",
   "executions": [
     {
-      "runId": "7508242b-77f0-47a5-9dcd-347978f81980",
-      "executionId": "fc46a1e23e54440cd923f82fdcbeb35934cbe6de96db19778077be51d334dc8e",
+      "runId": "dc6d6891-a1e8-422b-ae50-6a88424af92c",
+      "executionId": "da115b494e3fc43e6d506e95f7920b7fcd656424b478a3b5db10287e642b5265",
       "commandName": "test",
       "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
       "reportPath": ".musubix/evidence/native/test/aggregate.json",
       "sourceKind": "file",
-      "reportSha256": "e9825f4c844f0e803cc5d61dae88e24707f955ee5b3f7085c47f2cabd7f8cccb",
+      "reportSha256": "4d8ef7b003ce3805057d688732430efde368910299ae203493f0e4963519b54d",
       "processStatus": "completed",
       "exitCode": 0,
       "tests": [
@@ -1043,6 +1043,242 @@
           "status": "passed"
         },
         {
+          "id": "TEST-AIDS-151",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-152",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-153",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-154",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-155",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-156",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-157",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-158",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-159",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-161",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-162",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-163",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-164",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-165",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-166",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-167",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-168",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-169",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-170",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-171",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-172",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-173",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-174",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-175",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-176",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-177",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-185",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-186",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-187",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-188",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-189",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-190",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-191",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-192",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-193",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-194",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-195",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-196",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-197",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-198",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-199",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-200",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-201",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-202",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-203",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-204",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-205",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-206",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-207",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-208",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-209",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-210",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-211",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-212",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-213",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-214",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-290",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-291",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-292",
+          "status": "passed"
+        },
+        {
           "id": "TEST-AIDS-PYTEST-001",
           "status": "passed"
         },
@@ -1643,7 +1879,7 @@
           "status": "passed"
         }
       ],
-      "recordSha256": "517d6db7a05cb07610b3de214b4cfa86811651c45891e0bf4cad8e6a0a399c27"
+      "recordSha256": "e0a2069fc2f3b3250522dd2c68476cb1c375103636c31b62d1bc27d2e875cdda"
     }
   ],
   "observations": [
