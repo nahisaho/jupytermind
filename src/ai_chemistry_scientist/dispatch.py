@@ -12,10 +12,14 @@ import rdkit
 # module's `register_validator`/`register_batch_item_validator` call runs
 # before any `validate_parameters` lookup below.
 import ai_chemistry_scientist.admet_prediction as _admet_prediction  # noqa: F401
+import ai_chemistry_scientist.bioactivity_classification as _bioactivity_classification  # noqa: F401
 import ai_chemistry_scientist.docking_score as _docking_score  # noqa: F401
+import ai_chemistry_scientist.drug_likeness_rules as _drug_likeness_rules  # noqa: F401
 import ai_chemistry_scientist.molecular_descriptors as _molecular_descriptors  # noqa: F401
+import ai_chemistry_scientist.molecular_formula_mass as _molecular_formula_mass  # noqa: F401
 import ai_chemistry_scientist.molecular_similarity as _molecular_similarity  # noqa: F401
 import ai_chemistry_scientist.qsar_modeling as _qsar_modeling  # noqa: F401
+import ai_chemistry_scientist.structural_alerts as _structural_alerts  # noqa: F401
 from ai_chemistry_scientist.evidence import record_run
 from ai_chemistry_scientist.validation import validate_parameters
 from ai_data_scientist.language_router import detect_language as _detect_language
@@ -32,7 +36,14 @@ _PER_ITEM_VALIDATED_MODULES = frozenset({"molecular-descriptors"})
 
 #: modules whose raw result's `limitation_label_key` is substituted with the
 #: matching `language`-specific text before `record_run` (DES-ACHEM-001).
-_LIMITATION_LABEL_MODULES = frozenset({"admet-prediction", "docking-score"})
+_LIMITATION_LABEL_MODULES = frozenset(
+    {
+        "admet-prediction",
+        "docking-score",
+        "structural-alerts",
+        "bioactivity-classification",
+    }
+)
 
 _RUN_MODULE_PATHS = {
     "molecular-descriptors": "ai_chemistry_scientist.molecular_descriptors",
@@ -40,6 +51,10 @@ _RUN_MODULE_PATHS = {
     "qsar-modeling": "ai_chemistry_scientist.qsar_modeling",
     "molecular-similarity": "ai_chemistry_scientist.molecular_similarity",
     "docking-score": "ai_chemistry_scientist.docking_score",
+    "drug-likeness-rules": "ai_chemistry_scientist.drug_likeness_rules",
+    "structural-alerts": "ai_chemistry_scientist.structural_alerts",
+    "molecular-formula-mass": "ai_chemistry_scientist.molecular_formula_mass",
+    "bioactivity-classification": "ai_chemistry_scientist.bioactivity_classification",
 }
 _RUN_FUNCTION_NAMES = {
     "molecular-descriptors": "run_molecular_descriptors",
@@ -47,6 +62,10 @@ _RUN_FUNCTION_NAMES = {
     "qsar-modeling": "run_qsar_modeling",
     "molecular-similarity": "run_molecular_similarity",
     "docking-score": "run_docking_score",
+    "drug-likeness-rules": "run_drug_likeness_rules",
+    "structural-alerts": "run_structural_alerts",
+    "molecular-formula-mass": "run_molecular_formula_mass",
+    "bioactivity-classification": "run_bioactivity_classification",
 }
 
 
@@ -117,11 +136,13 @@ def _localize_limitation_label(method: str, result: dict, language: str) -> dict
     """Substitute `limitation_label_key` with its `language` text (DES-ACHEM-001)."""
     if method not in _LIMITATION_LABEL_MODULES:
         return result
-    module = importlib.import_module(
-        "ai_chemistry_scientist.admet_prediction"
-        if method == "admet-prediction"
-        else "ai_chemistry_scientist.docking_score"
-    )
+    module_path = {
+        "admet-prediction": "ai_chemistry_scientist.admet_prediction",
+        "docking-score": "ai_chemistry_scientist.docking_score",
+        "structural-alerts": "ai_chemistry_scientist.structural_alerts",
+        "bioactivity-classification": "ai_chemistry_scientist.bioactivity_classification",
+    }[method]
+    module = importlib.import_module(module_path)
     key = result["limitation_label_key"]
     assert key == module.LIMITATION_LABEL_KEY
     text = module.LIMITATION_LABEL_TEXT[language]
@@ -140,7 +161,9 @@ def _no_params_outcome(language: str) -> dict:
     }
 
 
-def _handle_module(method: str, request_text: str, language: str) -> dict:
+def _handle_module(
+    method: str, request_text: str, language: str, params: dict | None = None
+) -> dict:
     """Shared handler-wrapper body for ``method`` (DES-ACHEM-001's `handle_<method>`).
 
     Extracts params from ``request_text``, validates (except for the
@@ -148,12 +171,12 @@ def _handle_module(method: str, request_text: str, language: str) -> dict:
     localizes limitation labels, and wraps the result into a RunRecord
     (DES-ACHEM-003) — a `ModuleOutcome`.
     """
-    params = extract_params(request_text)
-    if params is None:
+    resolved_params = params if params is not None else extract_params(request_text)
+    if resolved_params is None:
         return _no_params_outcome(language)
 
     if method not in _PER_ITEM_VALIDATED_MODULES:
-        validation = validate_parameters(method, params)
+        validation = validate_parameters(method, resolved_params)
         if not validation["ok"]:
             return {
                 "ok": False,
@@ -163,7 +186,7 @@ def _handle_module(method: str, request_text: str, language: str) -> dict:
             }
 
     run_function = _resolve_run_function(method)
-    result = run_function(**params)
+    result = run_function(**resolved_params)
     result = _localize_limitation_label(method, result, language)
 
     extra_kwargs = {}
@@ -174,7 +197,7 @@ def _handle_module(method: str, request_text: str, language: str) -> dict:
 
     run_record = record_run(
         module_name=method,
-        params=params,
+        params=resolved_params,
         result=result,
         rdkit_version=rdkit.__version__,
         **extra_kwargs,
@@ -185,41 +208,73 @@ def _handle_module(method: str, request_text: str, language: str) -> dict:
 # @id CODE-ACHEM-011
 # @implements REQ-ACHEM-002 REQ-ACHEM-003
 # @design DES-ACHEM-001
-def handle_molecular_descriptors(request_text: str, language: str) -> dict:
+def handle_molecular_descriptors(request_text: str, language: str, **params) -> dict:
     """Handler wrapper for the molecular-descriptors module (DES-ACHEM-010)."""
-    return _handle_module("molecular-descriptors", request_text, language)
+    return _handle_module("molecular-descriptors", request_text, language, params or None)
 
 
 # @id CODE-ACHEM-021
 # @implements REQ-ACHEM-002 REQ-ACHEM-003
 # @design DES-ACHEM-001
-def handle_admet_prediction(request_text: str, language: str) -> dict:
+def handle_admet_prediction(request_text: str, language: str, **params) -> dict:
     """Handler wrapper for the admet-prediction module (DES-ACHEM-020)."""
-    return _handle_module("admet-prediction", request_text, language)
+    return _handle_module("admet-prediction", request_text, language, params or None)
 
 
 # @id CODE-ACHEM-031
 # @implements REQ-ACHEM-002 REQ-ACHEM-003
 # @design DES-ACHEM-001
-def handle_qsar_modeling(request_text: str, language: str) -> dict:
+def handle_qsar_modeling(request_text: str, language: str, **params) -> dict:
     """Handler wrapper for the qsar-modeling module (DES-ACHEM-030)."""
-    return _handle_module("qsar-modeling", request_text, language)
+    return _handle_module("qsar-modeling", request_text, language, params or None)
 
 
 # @id CODE-ACHEM-041
 # @implements REQ-ACHEM-002 REQ-ACHEM-003
 # @design DES-ACHEM-001
-def handle_molecular_similarity(request_text: str, language: str) -> dict:
+def handle_molecular_similarity(request_text: str, language: str, **params) -> dict:
     """Handler wrapper for the molecular-similarity module (DES-ACHEM-040)."""
-    return _handle_module("molecular-similarity", request_text, language)
+    return _handle_module("molecular-similarity", request_text, language, params or None)
 
 
 # @id CODE-ACHEM-051
 # @implements REQ-ACHEM-002 REQ-ACHEM-003
 # @design DES-ACHEM-001
-def handle_docking_score(request_text: str, language: str) -> dict:
+def handle_docking_score(request_text: str, language: str, **params) -> dict:
     """Handler wrapper for the docking-score module (DES-ACHEM-050)."""
-    return _handle_module("docking-score", request_text, language)
+    return _handle_module("docking-score", request_text, language, params or None)
+
+
+# @id CODE-ACHEM-061
+# @implements REQ-ACHEM-002 REQ-ACHEM-003
+# @design DES-ACHEM-001
+def handle_drug_likeness_rules(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the drug-likeness-rules module (DES-ACHEM-060)."""
+    return _handle_module("drug-likeness-rules", request_text, language, params or None)
+
+
+# @id CODE-ACHEM-071
+# @implements REQ-ACHEM-002 REQ-ACHEM-003
+# @design DES-ACHEM-001
+def handle_structural_alerts(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the structural-alerts module (DES-ACHEM-070)."""
+    return _handle_module("structural-alerts", request_text, language, params or None)
+
+
+# @id CODE-ACHEM-081
+# @implements REQ-ACHEM-002 REQ-ACHEM-003
+# @design DES-ACHEM-001
+def handle_molecular_formula_mass(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the molecular-formula-mass module (DES-ACHEM-080)."""
+    return _handle_module("molecular-formula-mass", request_text, language, params or None)
+
+
+# @id CODE-ACHEM-091
+# @implements REQ-ACHEM-002 REQ-ACHEM-003
+# @design DES-ACHEM-001
+def handle_bioactivity_classification(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the bioactivity-classification module (DES-ACHEM-090)."""
+    return _handle_module("bioactivity-classification", request_text, language, params or None)
 
 
 # @id CODE-ACHEM-001

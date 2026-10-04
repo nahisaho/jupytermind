@@ -68,5 +68,61 @@
         "ドッキングシミュレーション"
       ]
     }
+  },
+  "drug-likeness-rules": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_drug_likeness_rules",
+    "names": {
+      "en": [
+        "drug-likeness rules",
+        "drug-likeness screening"
+      ],
+      "ja": [
+        "薬物らしさルール",
+        "薬物らしさルールスクリーニング"
+      ]
+    }
+  },
+  "structural-alerts": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_structural_alerts",
+    "names": {
+      "en": [
+        "structural alerts",
+        "structural alert screening"
+      ],
+      "ja": [
+        "構造アラート",
+        "構造アラートスクリーニング"
+      ]
+    }
+  },
+  "molecular-formula-mass": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_molecular_formula_mass",
+    "names": {
+      "en": [
+        "molecular formula and exact mass",
+        "formula and exact mass"
+      ],
+      "ja": [
+        "分子式と正確質量",
+        "分子式・正確質量"
+      ]
+    }
+  },
+  "bioactivity-classification": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_bioactivity_classification",
+    "names": {
+      "en": [
+        "target-class activity classification",
+        "bioactivity classification"
+      ],
+      "ja": [
+        "標的クラス活性分類",
+        "生物活性分類"
+      ]
+    }
   }
 }

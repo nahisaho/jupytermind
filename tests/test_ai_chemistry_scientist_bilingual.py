@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import re
 
+import pytest
+
 _JAPANESE_RE = re.compile(
     "[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\u4e00-\u9fff\u3400-\u4dbf\uff66-\uff9f]"
 )
@@ -90,3 +92,47 @@ def test_TEST_ACHEM_934_english_rejection_is_pure_english_prose():
     assert result["outcome"] == "rejected"
     assert result["language"] == "en"
     assert _is_all_english_prose(result["rejected_method"])
+
+
+# @id TEST-ACHEM-957
+# @verifies REQ-ACHEM-001
+@pytest.mark.parametrize(
+    "request_text",
+    [
+        "Run drug-likeness screening",
+        "Run structural alert screening",
+        "Compute molecular formula and exact mass",
+        "Run bioactivity classification",
+    ],
+)
+def test_TEST_ACHEM_957_new_method_english_requests_produce_english_dispatch_response(
+    request_text,
+):
+    from ai_chemistry_scientist.dispatch import dispatch
+
+    result = dispatch(request_text)
+
+    assert result["language"] == "en"
+    assert result["outcome"] == "dispatch"
+
+
+# @id TEST-ACHEM-958
+# @verifies REQ-ACHEM-001
+@pytest.mark.parametrize(
+    "request_text",
+    [
+        "薬物らしさルールスクリーニングを実行してください",
+        "構造アラートスクリーニングを実行してください",
+        "分子式・正確質量を計算してください",
+        "生物活性分類を実行してください",
+    ],
+)
+def test_TEST_ACHEM_958_new_method_japanese_requests_produce_japanese_dispatch_response(
+    request_text,
+):
+    from ai_chemistry_scientist.dispatch import dispatch
+
+    result = dispatch(request_text)
+
+    assert result["language"] == "ja"
+    assert result["outcome"] == "dispatch"

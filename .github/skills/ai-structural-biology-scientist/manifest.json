@@ -1,0 +1,72 @@
+{
+  "secondary-structure-heuristic": {
+    "modulePath": "ai_structural_biology_scientist.dispatch",
+    "functionName": "handle_secondary_structure",
+    "names": {
+      "en": [
+        "secondary structure",
+        "secondary-structure heuristic"
+      ],
+      "ja": [
+        "二次構造",
+        "二次構造ヒューリスティック"
+      ]
+    }
+  },
+  "hydrophobicity-burial-heuristic": {
+    "modulePath": "ai_structural_biology_scientist.dispatch",
+    "functionName": "handle_hydrophobicity",
+    "names": {
+      "en": [
+        "per-residue hydrophobicity",
+        "hydrophobicity burial heuristic"
+      ],
+      "ja": [
+        "残基ごとの疎水性・埋没度",
+        "疎水性・埋没度ヒューリスティック"
+      ]
+    }
+  },
+  "protein-protein-docking-score": {
+    "modulePath": "ai_structural_biology_scientist.dispatch",
+    "functionName": "handle_protein_docking_score",
+    "names": {
+      "en": [
+        "protein-protein docking score",
+        "protein docking score"
+      ],
+      "ja": [
+        "タンパク質間ドッキングスコア",
+        "タンパク質ドッキングスコア"
+      ]
+    }
+  },
+  "structural-similarity-rmsd": {
+    "modulePath": "ai_structural_biology_scientist.dispatch",
+    "functionName": "handle_structural_similarity",
+    "names": {
+      "en": [
+        "structural similarity rmsd",
+        "structural similarity"
+      ],
+      "ja": [
+        "構造類似性RMSD",
+        "構造類似性"
+      ]
+    }
+  },
+  "residue-contact-map": {
+    "modulePath": "ai_structural_biology_scientist.dispatch",
+    "functionName": "handle_contact_map",
+    "names": {
+      "en": [
+        "residue contact map",
+        "contact map"
+      ],
+      "ja": [
+        "残基コンタクトマップ",
+        "コンタクトマップ"
+      ]
+    }
+  }
+}

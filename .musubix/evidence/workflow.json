@@ -298,6 +298,32 @@
       "status": "failed",
       "reason": "CHANGE-006 (ai-data-scientist defect fixes #40,#42,#43,#44,#45,#47) implementation, TDD (399/399 tests, zero regressions), trace/graph gates, and documentation are complete with zero CHANGE-006-scoped blocking errors except CHANGE_COMPLETENESS_ADR (7 occurrences, non-waivable, pre-existing musubix3-upgrade gap shared with CHANGE-001/CHANGE-004). Human (nahisaho) reviewed and approved the release content/risk via explicit ask_user confirmation, but 'approval record release' could not persist a release.json because it requires repo-wide workflow/tdd/change-history/change-completeness/performance checks to pass across ALL historical changes, not just CHANGE-006, mirroring the identical CHANGE-003/004/005 precedent.",
       "recordedAt": "2026-10-04T11:32:22.488Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-10-04T13:41:53.650Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "failed",
+      "reason": "Chemistry increment implemented and chemistry tests passed, but CHANGE-013 remains gate-incomplete due unrelated project-wide trace/TDD/workflow/change-history issues and unfinished genomics/structural-biology requirements.",
+      "recordedAt": "2026-10-04T13:49:58.390Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "failed",
+      "reason": "ruff check src tests is blocked by pre-existing ISC004 in src/ai_data_scientist/ingestion.py:89 outside requested scope",
+      "recordedAt": "2026-10-04T14:34:46.264Z"
     }
   ]
 }

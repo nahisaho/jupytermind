@@ -141,3 +141,100 @@ def test_TEST_ACHEM_936_matches_candidate_despite_extra_internal_whitespace():
 
     assert result["outcome"] == "dispatch"
     assert result["module"] == "molecular-descriptors"
+
+
+# @id TEST-ACHEM-953
+# @verifies REQ-ACHEM-002
+@pytest.mark.parametrize(
+    ("request_text", "expected_module"),
+    [
+        ("Run drug-likeness screening", "drug-likeness-rules"),
+        ("薬物らしさルールスクリーニングを実行してください", "drug-likeness-rules"),
+        ("Run structural alert screening", "structural-alerts"),
+        ("構造アラートスクリーニングを実行してください", "structural-alerts"),
+        ("Compute molecular formula and exact mass", "molecular-formula-mass"),
+        ("分子式・正確質量を計算してください", "molecular-formula-mass"),
+        ("Run bioactivity classification", "bioactivity-classification"),
+        ("生物活性分類を実行してください", "bioactivity-classification"),
+    ],
+)
+def test_TEST_ACHEM_953_dispatches_new_methods_to_exactly_one_matched_module(
+    request_text, expected_module
+):
+    from ai_chemistry_scientist.dispatch import dispatch
+
+    result = dispatch(request_text)
+
+    assert result["outcome"] == "dispatch"
+    assert result["module"] == expected_module
+    assert "handler_result" in result
+
+
+# @id TEST-ACHEM-954
+# @verifies REQ-ACHEM-070
+def test_TEST_ACHEM_954_structural_alert_limitation_label_is_localized_by_dispatch():
+    from ai_chemistry_scientist.dispatch import dispatch
+
+    en_result = dispatch(f'structural alert screening {{"smiles": "{_ASPIRIN}"}}')
+    ja_result = dispatch(f'構造アラートスクリーニング {{"smiles": "{_ASPIRIN}"}}')
+
+    en_label = en_result["handler_result"]["run_record"]["result"]["limitation_label"]
+    ja_label = ja_result["handler_result"]["run_record"]["result"]["limitation_label"]
+
+    assert en_label == (
+        "Heuristic only: a small fixed illustrative SMARTS alert list, not the "
+        "validated PAINS/Brenk filter catalog."
+    )
+    assert ja_label.startswith("ヒューリスティックのみ")
+    assert "limitation_label_key" not in en_result["handler_result"]["run_record"]["result"]
+
+
+# @id TEST-ACHEM-955
+# @verifies REQ-ACHEM-080 REQ-ACHEM-004
+def test_TEST_ACHEM_955_dispatch_wraps_formula_mass_result_in_run_record():
+    from ai_chemistry_scientist.dispatch import dispatch
+
+    result = dispatch(f'molecular formula and exact mass {{"smiles": "{_ASPIRIN}"}}')
+
+    assert result["handler_result"]["ok"] is True
+    run_record = result["handler_result"]["run_record"]
+    assert set(run_record.keys()) == {"metadata", "parameters", "result"}
+    assert run_record["result"] == {
+        "molecular_formula": "C9H8O4",
+        "exact_mass": pytest.approx(180.042258736, abs=1e-9),
+    }
+
+
+# @id TEST-ACHEM-956
+# @verifies REQ-ACHEM-090
+def test_TEST_ACHEM_956_bioactivity_limitation_label_is_localized_by_dispatch():
+    from ai_chemistry_scientist.dispatch import dispatch
+
+    en_result = dispatch(f'bioactivity classification {{"smiles": "{_ASPIRIN}"}}')
+    ja_result = dispatch(f'生物活性分類 {{"smiles": "{_ASPIRIN}"}}')
+
+    en_label = en_result["handler_result"]["run_record"]["result"]["limitation_label"]
+    ja_label = ja_result["handler_result"]["run_record"]["result"]["limitation_label"]
+
+    assert en_label == (
+        "Heuristic only: not a ChEMBL-trained or experimentally validated bioactivity classifier."
+    )
+    assert ja_label.startswith("ヒューリスティックのみ")
+    assert "limitation_label_key" not in en_result["handler_result"]["run_record"]["result"]
+
+
+# @id TEST-ACHEM-960
+# @verifies REQ-ACHEM-080 REQ-ACHEM-004
+def test_TEST_ACHEM_960_handler_accepts_structured_kwargs_from_calling_context():
+    from ai_chemistry_scientist.dispatch import handle_molecular_formula_mass
+
+    result = handle_molecular_formula_mass(
+        "request text without embedded JSON", "en", smiles=_ASPIRIN
+    )
+
+    assert result["ok"] is True
+    assert result["run_record"]["parameters"] == {"smiles": _ASPIRIN}
+    assert result["run_record"]["result"] == {
+        "molecular_formula": "C9H8O4",
+        "exact_mass": pytest.approx(180.042258736, abs=1e-9),
+    }

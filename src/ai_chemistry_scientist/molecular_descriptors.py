@@ -31,7 +31,12 @@ def parse_smiles(smiles: str):
     """Parse ``smiles`` with RDKit, returning ``None`` on failure."""
     if not isinstance(smiles, str) or not smiles:
         return None
-    return Chem.MolFromSmiles(smiles)
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        return None
+    if any(atom.GetAtomicNum() == 0 for atom in mol.GetAtoms()):
+        return None
+    return mol
 
 
 def compute_descriptors(mol) -> dict:
