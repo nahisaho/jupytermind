@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T14:15:30.884Z",
-  "totalRequirements": 136,
+  "generatedAt": "2026-10-04T14:39:17.528Z",
+  "totalRequirements": 139,
   "modeledRequirements": 11,
-  "modeledFraction": 0.08088235294117647,
+  "modeledFraction": 0.07913669064748201,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -173,6 +173,9 @@
       "REQ-AIDS-019",
       "REQ-AIDS-020",
       "REQ-AIDS-021",
+      "REQ-AIDS-082",
+      "REQ-AIDS-083",
+      "REQ-AIDS-084",
       "REQ-AIDS-022",
       "REQ-AIDS-023",
       "REQ-AIDS-024",
@@ -587,6 +590,21 @@
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
+        "message": "REQ-AIDS-082 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-083 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-084 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
         "message": "REQ-AIDS-022 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
@@ -869,7 +887,7 @@
   "fingerprints": {
     ".musubix/features/ai-chemistry-scientist/requirements.md": "50db33cf117db410f0d028e52ab0ebe9f24b07ec410915f30e24b3764de567f9",
     ".musubix/features/ai-data-scientist/requirements.md": "b021a2bee519a82da95f8bbdf1a922eeac4bcd86124cf2f63534f110a25e9d21",
-    ".musubix/features/ai-data-scientist-ml/requirements.md": "2d79803876e2ac97e370a69389854c54e4b53a6d5a9dc222309db6c4b2aa333f",
+    ".musubix/features/ai-data-scientist-ml/requirements.md": "acf8edfe207c3e9824c0f1b9c91ae44498c2c7c1a0e03f14ac0114b35c1beb68",
     ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
     ".musubix/features/ai-scientist/requirements.md": "0813eae3d21203183b9b3804375b2c5b2b9813da2fbaffd264f134d10ca156a7",

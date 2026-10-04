@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T14:16:23.782Z",
+  "generatedAt": "2026-10-04T14:40:14.498Z",
   "status": "fail",
   "checks": [
     {
@@ -229,17 +229,17 @@
         {
           "code": "TRACE_COVERAGE",
           "severity": "error",
-          "message": "design link coverage 0.9256198347107438 is below 1."
+          "message": "design link coverage 0.9262295081967213 is below 1."
         },
         {
           "code": "TRACE_COVERAGE",
           "severity": "error",
-          "message": "implementation link coverage 0.9256198347107438 is below 1."
+          "message": "implementation link coverage 0.9262295081967213 is below 1."
         },
         {
           "code": "TRACE_COVERAGE",
           "severity": "error",
-          "message": "tests link coverage 0.9256198347107438 is below 1."
+          "message": "tests link coverage 0.9262295081967213 is below 1."
         }
       ]
     },
@@ -254,7 +254,7 @@
       "name": "formal",
       "required": false,
       "status": "pass",
-      "summary": "11/136 requirements modeled; consistency consistent; solver not-requested.",
+      "summary": "11/139 requirements modeled; consistency consistent; solver not-requested.",
       "diagnostics": [
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -614,6 +614,21 @@
         {
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
+          "message": "REQ-AIDS-082 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-083 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-084 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
           "message": "REQ-AIDS-022 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
@@ -901,7 +916,7 @@
       "name": "tdd",
       "required": true,
       "status": "fail",
-      "summary": "277 Red-Green TDD cycle(s) recorded.",
+      "summary": "286 Red-Green TDD cycle(s) recorded.",
       "diagnostics": [
         {
           "code": "TDD_REQUIREMENT_UNCOVERED",
@@ -972,6 +987,12 @@
           "message": "REQ-AIMS-040 has no valid Red-Green cycle from an authoritative verifying test.",
           "path": ".musubix/features/ai-materials-scientist/requirements.md",
           "line": 87
+        },
+        {
+          "code": "TDD_TEST_STALE",
+          "severity": "error",
+          "message": "TEST-AIDS-021 changed after its latest passing TDD phase.",
+          "path": "tests/test_explainability.py"
         },
         {
           "code": "TDD_TEST_STALE",
@@ -1075,7 +1096,7 @@
       "name": "change-history",
       "required": true,
       "status": "fail",
-      "summary": "9 staged change(s) checked for ordered artifact and TDD evidence.",
+      "summary": "10 staged change(s) checked for ordered artifact and TDD evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
@@ -2137,6 +2158,48 @@
           "message": "CHANGE-010 has no valid Green evidence for REQ-AIDS-081 before its Green phase.",
           "changeId": "CHANGE-010",
           "requirementId": "REQ-AIDS-081"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-011 has no valid Red evidence for REQ-AIDS-082 before its Red phase.",
+          "changeId": "CHANGE-011",
+          "requirementId": "REQ-AIDS-082"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-011 has no valid Green evidence for REQ-AIDS-082 before its Green phase.",
+          "changeId": "CHANGE-011",
+          "requirementId": "REQ-AIDS-082"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-011 has no valid Red evidence for REQ-AIDS-083 before its Red phase.",
+          "changeId": "CHANGE-011",
+          "requirementId": "REQ-AIDS-083"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-011 has no valid Green evidence for REQ-AIDS-083 before its Green phase.",
+          "changeId": "CHANGE-011",
+          "requirementId": "REQ-AIDS-083"
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-011 has no valid Red evidence for REQ-AIDS-084 before its Red phase.",
+          "changeId": "CHANGE-011",
+          "requirementId": "REQ-AIDS-084"
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "error",
+          "message": "CHANGE-011 has no valid Green evidence for REQ-AIDS-084 before its Green phase.",
+          "changeId": "CHANGE-011",
+          "requirementId": "REQ-AIDS-084"
         }
       ]
     },
@@ -2144,7 +2207,7 @@
       "name": "change-completeness",
       "required": true,
       "status": "fail",
-      "summary": "2/9 staged change(s) have semantically complete evidence.",
+      "summary": "2/10 staged change(s) have semantically complete evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_COMPLETENESS_TDD",
@@ -2864,6 +2927,42 @@
           "code": "CHANGE_COMPLETENESS_ADR",
           "severity": "error",
           "message": "CHANGE-010:REQ-AIDS-081 lacks ADR evidence."
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-011:REQ-AIDS-082 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-011",
+          "requirementId": "REQ-AIDS-082"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_ADR",
+          "severity": "error",
+          "message": "CHANGE-011:REQ-AIDS-082 lacks ADR evidence."
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-011:REQ-AIDS-083 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-011",
+          "requirementId": "REQ-AIDS-083"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_ADR",
+          "severity": "error",
+          "message": "CHANGE-011:REQ-AIDS-083 lacks ADR evidence."
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "error",
+          "message": "CHANGE-011:REQ-AIDS-084 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-011",
+          "requirementId": "REQ-AIDS-084"
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_ADR",
+          "severity": "error",
+          "message": "CHANGE-011:REQ-AIDS-084 lacks ADR evidence."
         }
       ]
     },
@@ -2872,7 +2971,7 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/ruff: completed, exit 0.",
-      "durationMs": 30,
+      "durationMs": 28,
       "exitCode": 0,
       "stdout": "149 files already formatted\n",
       "stderr": ""
@@ -2882,16 +2981,16 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/pytest: completed, exit 0.",
-      "durationMs": 49674,
+      "durationMs": 53405,
       "exitCode": 0,
-      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 433 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ......                    [  2%]\ntests/test_ai_chemistry_scientist_dispatch.py ...................        [  7%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [  9%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [  9%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 11%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 13%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 14%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 15%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 17%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 19%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 22%]\n...                                                                      [ 23%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 26%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 30%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 31%]\ntests/test_ai_materials_scientist_fem.py .................               [ 35%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 39%]\n                                                                         [ 39%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 42%]\n...                                                                      [ 43%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 46%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 48%]\ntests/test_ai_scientist_delegation.py ............                       [ 50%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 51%]\ntests/test_ai_scientist_mcp.py ..........                                [ 53%]\ntests/test_ai_scientist_phase_state.py ........                          [ 55%]\ntests/test_ai_scientist_project_handle.py ...                            [ 55%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 57%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 57%]\ntests/test_analysis_assumptions.py ....                                  [ 58%]\ntests/test_anomaly_detection.py .                                        [ 58%]\ntests/test_automl.py ....                                                [ 59%]\ntests/test_cleaning.py .                                                 [ 59%]\ntests/test_clustering.py ..                                              [ 60%]\ntests/test_dashboard.py .                                                [ 60%]\ntests/test_data_definition.py .....                                      [ 61%]\ntests/test_data_quality.py .....                                         [ 62%]\ntests/test_dataset_validation.py ......                                  [ 63%]\ntests/test_dependency_pins.py ...                                        [ 64%]\ntests/test_eda.py .....                                                  [ 65%]\ntests/test_example_readiness.py .                                        [ 66%]\ntests/test_experiment_evaluation.py .............                        [ 69%]\ntests/test_explainability.py .                                           [ 69%]\ntests/test_feature_engineering.py ..........                             [ 71%]\ntests/test_gate_config.py .                                              [ 71%]\ntests/test_ingestion.py ......                                           [ 73%]\ntests/test_insight_engine.py ......                                      [ 74%]\ntests/test_japanese_nlp.py .                                             [ 74%]\ntests/test_jupyter_mcp_client.py ..                                      [ 75%]\ntests/test_language_router.py .                                          [ 75%]\ntests/test_lifecycle.py .....                                            [ 76%]\ntests/test_mcp_gateway.py ......                                         [ 78%]\ntests/test_mcp_runtime.py ......                                         [ 79%]\ntests/test_mcp_runtime_integration.py .                                  [ 79%]\ntests/test_ml_modeling.py ........                                       [ 81%]\ntests/test_model_tuning.py ....                                          [ 82%]\ntests/test_notebook_audit.py ....................                        [ 87%]\ntests/test_project_manager.py ..........                                 [ 89%]\ntests/test_report_export.py ...                                          [ 90%]\ntests/test_sensitivity.py ....                                           [ 90%]\ntests/test_skill_packaging.py .                                          [ 91%]\ntests/test_stats_analysis.py ..........                                  [ 93%]\ntests/test_text_nlp.py .                                                 [ 93%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ..............                               [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 433 passed in 47.33s =============================\n",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 442 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ......                    [  2%]\ntests/test_ai_chemistry_scientist_dispatch.py ...................        [  7%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [  8%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [  9%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 10%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 12%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 14%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 15%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 16%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 19%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 22%]\n...                                                                      [ 22%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 26%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 30%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 31%]\ntests/test_ai_materials_scientist_fem.py .................               [ 35%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 38%]\n                                                                         [ 38%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 42%]\n...                                                                      [ 42%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 45%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 47%]\ntests/test_ai_scientist_delegation.py ............                       [ 49%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 50%]\ntests/test_ai_scientist_mcp.py ..........                                [ 52%]\ntests/test_ai_scientist_phase_state.py ........                          [ 54%]\ntests/test_ai_scientist_project_handle.py ...                            [ 54%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 55%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 56%]\ntests/test_analysis_assumptions.py ....                                  [ 57%]\ntests/test_anomaly_detection.py .                                        [ 57%]\ntests/test_automl.py ....                                                [ 58%]\ntests/test_cleaning.py .                                                 [ 58%]\ntests/test_clustering.py ..                                              [ 58%]\ntests/test_dashboard.py .                                                [ 59%]\ntests/test_data_definition.py .....                                      [ 60%]\ntests/test_data_quality.py .....                                         [ 61%]\ntests/test_dataset_validation.py ......                                  [ 62%]\ntests/test_dependency_pins.py ...                                        [ 63%]\ntests/test_eda.py .....                                                  [ 64%]\ntests/test_example_readiness.py .                                        [ 64%]\ntests/test_experiment_evaluation.py .............                        [ 67%]\ntests/test_explainability.py ..........                                  [ 69%]\ntests/test_feature_engineering.py ..........                             [ 72%]\ntests/test_gate_config.py .                                              [ 72%]\ntests/test_ingestion.py ......                                           [ 73%]\ntests/test_insight_engine.py ......                                      [ 75%]\ntests/test_japanese_nlp.py .                                             [ 75%]\ntests/test_jupyter_mcp_client.py ..                                      [ 75%]\ntests/test_language_router.py .                                          [ 76%]\ntests/test_lifecycle.py .....                                            [ 77%]\ntests/test_mcp_gateway.py ......                                         [ 78%]\ntests/test_mcp_runtime.py ......                                         [ 79%]\ntests/test_mcp_runtime_integration.py .                                  [ 80%]\ntests/test_ml_modeling.py ........                                       [ 81%]\ntests/test_model_tuning.py ....                                          [ 82%]\ntests/test_notebook_audit.py ....................                        [ 87%]\ntests/test_project_manager.py ..........                                 [ 89%]\ntests/test_report_export.py ...                                          [ 90%]\ntests/test_sensitivity.py ....                                           [ 91%]\ntests/test_skill_packaging.py .                                          [ 91%]\ntests/test_stats_analysis.py ..........                                  [ 93%]\ntests/test_text_nlp.py .                                                 [ 93%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ..............                               [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 442 passed in 50.87s =============================\n",
       "stderr": ""
     },
     {
       "name": "test-identities",
       "required": false,
       "status": "fail",
-      "summary": "355/356 annotated test IDs passed in structured command reports.",
+      "summary": "364/365 annotated test IDs passed in structured command reports.",
       "diagnostics": [
         {
           "code": "TEST_ID_NOT_PASSED",
@@ -2994,20 +3093,20 @@
     "trace.errors": 3,
     "graph.violations": 0,
     "formal.errors": 0,
-    "formal.modeledFraction": 0.08088235294117647,
+    "formal.modeledFraction": 0.07913669064748201,
     "commands.failures": 0,
     "commands.skipped": 0,
-    "tests.annotatedIds": 356,
-    "tests.executedIds": 355,
-    "tdd.cycles": 277,
-    "tdd.errors": 26,
-    "changes.count": 9,
-    "changes.errors": 85,
+    "tests.annotatedIds": 365,
+    "tests.executedIds": 364,
+    "tdd.cycles": 286,
+    "tdd.errors": 27,
+    "changes.count": 10,
+    "changes.errors": 91,
     "changes.complete": 2,
-    "changes.completenessErrors": 99,
+    "changes.completenessErrors": 105,
     "performance.budgets": 1,
     "performance.errors": 2,
-    "mutation.requirements": 115,
+    "mutation.requirements": 116,
     "mutation.coveredRequirements": 0,
     "mutation.mutants": 0,
     "mutation.errors": 0,
@@ -3016,20 +3115,27 @@
     "modelCorrespondence.errors": 1,
     "attestation.errors": 0,
     "approval.errors": 1,
-    "coverage.design": 0.9256198347107438,
-    "coverage.implementation": 0.9256198347107438,
-    "coverage.tests": 0.9256198347107438
+    "coverage.design": 0.9262295081967213,
+    "coverage.implementation": 0.9262295081967213,
+    "coverage.tests": 0.9262295081967213
   },
   "mode": "changed",
   "feature": null,
   "changed": [
+    ".musubix/evidence/approvals/design.json",
+    ".musubix/evidence/approvals/requirements.json",
     ".musubix/evidence/changes.json",
-    ".musubix/evidence/formal.json",
-    ".musubix/evidence/model-correspondence.json",
-    ".musubix/evidence/native/test/aggregate.json",
+    ".musubix/evidence/native/test/TEST-AIDS-169.json",
+    ".musubix/evidence/native/test/TEST-AIDS-170.json",
+    ".musubix/evidence/native/test/TEST-AIDS-171.json",
+    ".musubix/evidence/native/test/TEST-AIDS-172.json",
+    ".musubix/evidence/native/test/TEST-AIDS-173.json",
+    ".musubix/evidence/native/test/TEST-AIDS-174.json",
+    ".musubix/evidence/native/test/TEST-AIDS-175.json",
+    ".musubix/evidence/native/test/TEST-AIDS-176.json",
+    ".musubix/evidence/native/test/TEST-AIDS-177.json",
     ".musubix/evidence/order.json",
-    ".musubix/evidence/performance.json",
-    ".musubix/evidence/quality.json",
+    ".musubix/evidence/tdd.json",
     ".musubix/features/ai-chemistry-scientist/trace.json",
     ".musubix/features/ai-data-scientist-ml/trace.json",
     ".musubix/features/ai-data-scientist/trace.json",
@@ -3041,15 +3147,22 @@
   "impacted": [],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "30d1a061da027297be40e657ab76a7e46f3bedc6",
+    "head": "ccc44df209582d1a2935cfaf936d98dd4e85a9d1",
     "changed": [
+      ".musubix/evidence/approvals/design.json",
+      ".musubix/evidence/approvals/requirements.json",
       ".musubix/evidence/changes.json",
-      ".musubix/evidence/formal.json",
-      ".musubix/evidence/model-correspondence.json",
-      ".musubix/evidence/native/test/aggregate.json",
+      ".musubix/evidence/native/test/TEST-AIDS-169.json",
+      ".musubix/evidence/native/test/TEST-AIDS-170.json",
+      ".musubix/evidence/native/test/TEST-AIDS-171.json",
+      ".musubix/evidence/native/test/TEST-AIDS-172.json",
+      ".musubix/evidence/native/test/TEST-AIDS-173.json",
+      ".musubix/evidence/native/test/TEST-AIDS-174.json",
+      ".musubix/evidence/native/test/TEST-AIDS-175.json",
+      ".musubix/evidence/native/test/TEST-AIDS-176.json",
+      ".musubix/evidence/native/test/TEST-AIDS-177.json",
       ".musubix/evidence/order.json",
-      ".musubix/evidence/performance.json",
-      ".musubix/evidence/quality.json",
+      ".musubix/evidence/tdd.json",
       ".musubix/features/ai-chemistry-scientist/trace.json",
       ".musubix/features/ai-data-scientist-ml/trace.json",
       ".musubix/features/ai-data-scientist/trace.json",
@@ -3059,7 +3172,7 @@
       ".musubix/features/example/trace.json"
     ],
     "impacted": [],
-    "generatedAt": "2026-10-04T14:16:23.782Z"
+    "generatedAt": "2026-10-04T14:40:14.498Z"
   },
   "fingerprints": {
     ".github/workflows/npm-publish.yml": "5b3c9cc9f02c8b7e32568958cf306ee241d1adb5af7ab4a0bf8bf06f7047f319",
@@ -3074,7 +3187,8 @@
     ".musubix/changes/CHANGE-006.md": "618373ef505460d2a4a6999dc4ae33e815621f67ee1e6da38bc5aee2d08e1fde",
     ".musubix/changes/CHANGE-008.md": "4167ae7f19a128837fec78875241f95422af1fcdc8397109a3f9cc0a2c6b058b",
     ".musubix/changes/CHANGE-009.md": "4106489f014cabe69c7b3087f1c344531425dad085090423a3b3e65129c981bb",
-    ".musubix/changes/CHANGE-010.md": "7751ffdf3c21de20a70db7f41037a299b872897837ce860b50d315c5b1ba5b53",
+    ".musubix/changes/CHANGE-010.md": "e43a1c892dc3c0f27a5a488e710bdbb8f476c10825b5ab9dc6b8020f670f9238",
+    ".musubix/changes/CHANGE-011.md": "5d91904a66bf6c2c1394b6c2d9b27cd8ea69f7cc7188f7b15c4a46685bd196e8",
     ".musubix/config.json": "3a39ebdb925b9a6e8a1c30d7db46e408f40254da274cc95d02c8e7ab593caec2",
     ".musubix/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
     ".musubix/decisions/ADR-0001.md": "6e21f1b375cfa1aabdf058b1dc987f94974dc23571fe60e94ba340dc48295b0f",
@@ -3113,8 +3227,8 @@
     ".musubix/features/ai-chemistry-scientist/requirements.md": "50db33cf117db410f0d028e52ab0ebe9f24b07ec410915f30e24b3764de567f9",
     ".musubix/features/ai-data-scientist/design.md": "e56eab9b5824a1eb1dee073383a8e8471f75acc3c8af2a4a40cea42f36c075b8",
     ".musubix/features/ai-data-scientist/requirements.md": "b021a2bee519a82da95f8bbdf1a922eeac4bcd86124cf2f63534f110a25e9d21",
-    ".musubix/features/ai-data-scientist-ml/design.md": "bc05baea94782c70cfd7ea22f46750808562c80a9b1f41feb790406d945259f4",
-    ".musubix/features/ai-data-scientist-ml/requirements.md": "2d79803876e2ac97e370a69389854c54e4b53a6d5a9dc222309db6c4b2aa333f",
+    ".musubix/features/ai-data-scientist-ml/design.md": "3b28f9d59a689d5707d44f553acc3b75484ea82cb7848abf7e466d86594b0da9",
+    ".musubix/features/ai-data-scientist-ml/requirements.md": "acf8edfe207c3e9824c0f1b9c91ae44498c2c7c1a0e03f14ac0114b35c1beb68",
     ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
     ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
@@ -3127,17 +3241,55 @@
     ".pytest_cache/CACHEDIR.TAG": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
     ".pytest_cache/README.md": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
     ".pytest_cache/v/cache/lastfailed": "81cedc93aca672891b6c36a0387209c13facef06b8f6764317f161f191fce566",
-    ".pytest_cache/v/cache/nodeids": "78fdaf136742d4b6e982e18c0beea96e3129cc8e7b023efc0409de6af6fd36e9",
+    ".pytest_cache/v/cache/nodeids": "0bc05e9770a941088eb2e57159c34178ad0674147096a40afbc67c8e356b2961",
     ".ruff_cache/.gitignore": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
     ".ruff_cache/0.15.9/4191559382911397082": "fc3e3f1cc006e12aaffc7c64c5abe418e5fd37782d581ea653ea543bc06f93cc",
     ".ruff_cache/0.15.9/4220744145795592868": "df2a5d53e93b374c13dac282b6dd44111d602a52312a5d7ba9154e5311361931",
     ".ruff_cache/0.15.9/600621789967670937": "46a07735ce853fb9e66913078c31e71eed643cf94dd4cfdb0d79d581e6c2b0c2",
-    ".ruff_cache/0.16.10/10550840520434942523": "b2eb3c473ae999f186f7353d48e9c01a8a44c02d3dd2b6b17a60cf9fa238751a",
-    ".ruff_cache/0.16.10/13571219874277570399": "ead71c64b0cad7a2a6f36a9ef0b7742f968e9b7363ec9258f0c0bbc6ce65d519",
-    ".ruff_cache/0.16.10/15235692344943166425": "a8fdfe221c561cfde1ebe02cd8c66aa3e1a9752e4cd89f04a4de1f170f4ec28e",
-    ".ruff_cache/0.16.10/3904780494491299035": "a5a8ec93eeb896a3cb4f083c1f274ef90351a47d3b0a2651256fe8fcbf9a922c",
-    ".ruff_cache/0.16.10/416461403828136869": "288e2cbb6e16458838311c545a146aa8cda3155cf0f9eef386e34ea7337dcf9b",
-    ".ruff_cache/0.16.10/9994341312109798778": "11c2bcfa3f321a02b563e1f876d4880d47865e7344d2dd0bc948c37e97c4ed94",
+    ".ruff_cache/0.16.10/10550840520434942523": "09d9984dd37be225877452ee7b658e8ebbecc5f2d8c665b97ddbf149a47c56ec",
+    ".ruff_cache/0.16.10/11830549478875007029": "8d0bac4e26f4a40f266c671faff4d50930308268e0532c3c73057e474c331c92",
+    ".ruff_cache/0.16.10/12069119289335521443": "24c5eb89246acb4bcf53d5d0d48b4589f5f27c5cbeda1132a9f4d5c7b9be31fa",
+    ".ruff_cache/0.16.10/1224398317309533824": "98a1da78a04f816d1ef7289436187ac092ae7d89f040f0d725c202585b4edca0",
+    ".ruff_cache/0.16.10/12369975972645738066": "1234f75c7888563a3730e4257f0ae1f2b6803a886b1be034a2c9e67bba77b011",
+    ".ruff_cache/0.16.10/12870217984697571422": "0576fb16690ad356020da4464475e3bd2e036a81206c04d1e31b92c364d1b6b2",
+    ".ruff_cache/0.16.10/13013270708308976290": "10cbf4221ba099424ec69c98ec5f9f781f486d9d3295b8ea1f725f41773f2050",
+    ".ruff_cache/0.16.10/13571219874277570399": "9b26774c229158ce3acae82d395d5d6789ad0ff97b5f5c998d6c8611bf5753ca",
+    ".ruff_cache/0.16.10/13837995600546456299": "78f165c52e4e61686d61d3bd3536b3df89f9e1027e4d4288c20c27c6c9501f0c",
+    ".ruff_cache/0.16.10/14794511620140444819": "610e50e8892910c1dfa7c591160cff331b78af26de30d5b851b88bc0f1a0a219",
+    ".ruff_cache/0.16.10/14856303154967735353": "aa22316f7c7abab70cb956ed088ac4cf6f6381835fff90c0e2d93477ecee5daa",
+    ".ruff_cache/0.16.10/14957844892998025809": "392a00d8227b29fc7f5e92bb9bbc11db699555e03da3952f96bb786e65f7e8ee",
+    ".ruff_cache/0.16.10/15003385753040834205": "915a624467111d06718672a0caf0bad6efc5271e565c92be29d4414cceac1c43",
+    ".ruff_cache/0.16.10/15057610177691831179": "c859fd35da52fc86f012e8b9d8475b38f734259d9faae1387aabbe78351e2a4e",
+    ".ruff_cache/0.16.10/15092824824012858490": "b2d5a6bc5c0114969e7b42383aa2d888143b53b7068cedf221e2355c5ede7ba6",
+    ".ruff_cache/0.16.10/15235692344943166425": "0e738e368570696207e75f08a2eb8eebdea1e80ea06bd0130daaa1e9901c61f9",
+    ".ruff_cache/0.16.10/15596744112270782375": "21d5215ac90ddae6d95efee0bae87c5536126fef72b5d6035c2631627fec4ce1",
+    ".ruff_cache/0.16.10/16462964874786468983": "1b784debe0be2cf10a3303b87b137439a35d3da7ca2c51c0bde91950feeced36",
+    ".ruff_cache/0.16.10/17012502831279232791": "88bdb1d765980d9088279fb47737e65c7b187d7af87ebf53032d72263795e4cd",
+    ".ruff_cache/0.16.10/17631009658187589933": "12fd586d6787635bef21c8682eb6a0f602a3d0a9fc439ae917c9a3451de84e63",
+    ".ruff_cache/0.16.10/1814470245331927227": "da6a86477e602d85d3416f4404caff6006768d729c4492ecbf621e935d37e2de",
+    ".ruff_cache/0.16.10/2118296420096418577": "91f2ad83c1a49307c8bf593197d4d0471546ccf9e7f3b1d6d86a65180b122e0f",
+    ".ruff_cache/0.16.10/3112103084249423044": "d078ed92c0eb0b20af014afd8d03a9841a74e72a9c46b8394af571babe50e0c2",
+    ".ruff_cache/0.16.10/3483473850603932264": "f850c2f7294d2e5aaaf17346742badfdb31e14b9050207781df870556a243fd0",
+    ".ruff_cache/0.16.10/3738404423831857422": "b076cca6b8aee27fde45b85eadc37ba5bf0252b9b97dffd0bec7d11c280dc32c",
+    ".ruff_cache/0.16.10/3904780494491299035": "5e467facf3ba37d81c36f7cb1b58a6e8e2199f408a6180d7722fca5b956592da",
+    ".ruff_cache/0.16.10/4099382895682810760": "5460344a30d95b7652d74468e69453452f51fa1b8603a93d7f427926c1fbe5c0",
+    ".ruff_cache/0.16.10/416461403828136869": "958c916531d7a8377570cd16917045e7649862da5df0d0126b752261b6f3204e",
+    ".ruff_cache/0.16.10/4460349919055556597": "a6c37d8c58d124628e29f33c5828de8f0faf401387b937366dc0ba1de3901b01",
+    ".ruff_cache/0.16.10/4619289710768583071": "4a11e3b01ee7fd64f23fb60d21b5afb22623f2ff699f6e2271aa5e7225c81bdd",
+    ".ruff_cache/0.16.10/4645957298869186624": "2343014b697f05ea4916a41b53da651e0f180b535a4b15436a3c8709d8bcbda1",
+    ".ruff_cache/0.16.10/4686781314144850450": "e3ed7cb9495ede92f5bd8ed0f842cfeb1b9fcb0ba6ac3a7d33e27ee911e9abac",
+    ".ruff_cache/0.16.10/5537204904848061383": "dad81c84143f898f7e802eb3642cada1de75cfaa2cccb63248585b3d80e4dc49",
+    ".ruff_cache/0.16.10/5835609165915474306": "9ee7acd39e78f59921e08b9262e80f294946cbdf8e413e596268dd4a0798dc0b",
+    ".ruff_cache/0.16.10/5986699442381024998": "8bd70756760873ed1d45863045abdcca075cd916f9c4dfbfbc93f92365b2f133",
+    ".ruff_cache/0.16.10/6500946736231510532": "64d36cbca193c6f6c6535286d69819b8d022e328cd7fe09273f5aceec8ebbe5e",
+    ".ruff_cache/0.16.10/6696937100271852866": "be7af03319f86f71aeff4ff2318c52ba3e0672f693b2be456b6f9025532e3bf5",
+    ".ruff_cache/0.16.10/7141331380300232914": "20503e95b2be0dca9c653af860d146465ec0a9d8c1ce1e2dbeafb0def06fd38e",
+    ".ruff_cache/0.16.10/7240085295927153998": "83777bb74b3a3ee7eb5b880192d8d500fc130130190570a2e8b8bd5ee4abb01f",
+    ".ruff_cache/0.16.10/7660847775461347316": "d7fae0ca7e0140e12480a4c0f20aa9c34f2e81f0b87832d22ae6bc33025b3070",
+    ".ruff_cache/0.16.10/8829682673503729361": "e24bfcff986b9059bac378052254915ce351032704eeaba04a9be26d65853bef",
+    ".ruff_cache/0.16.10/9201830452574903020": "5b831714dc0905b1958dea650156290e3d6206e2d4c20afeea512d47537ee97f",
+    ".ruff_cache/0.16.10/9527474073797359755": "e3ecc7617fc1010a79affe3ce59aa9670f7a7cd30b218a70143ee23dc402a608",
+    ".ruff_cache/0.16.10/9994341312109798778": "aa62c80cf81e99330024fcad04b901737e1c594da13155ec7ec2175cfc8d21cf",
     ".ruff_cache/0.16.9/10368445353455821378": "1f71db5f0b2b541a58d54e8b3dcb50fb9ba26a53ab87d83bc01c5c5b5ef1728d",
     ".ruff_cache/0.16.9/10475705668944416582": "af84e7104c6973dae733e8f97dac6482d4127ceeb3ed9da0b7ef28c9ed665194",
     ".ruff_cache/0.16.9/10579984203275047153": "082280517ef72ea9903e93a392edca9814f2bd1ff42aae270e2df5dc3475e5a2",
@@ -4076,7 +4228,7 @@
     "src/ai_data_scientist/dependency_pins.py": "7f62ebf5e10cf25786700453e5bce0c1ba9428694e9f1c4ab4417bf4f8d49e60",
     "src/ai_data_scientist/eda.py": "b81e5e3ac240b3e66e30cc8f6fe57fc34a34b1fb58f72ecd955db9c6b1550ec4",
     "src/ai_data_scientist/experiment_evaluation.py": "abf5e551c0c7a0d1a4a3c9fdf8ab3a8e5e0c80242ec44cd9a581b2d5a8089417",
-    "src/ai_data_scientist/explainability.py": "7ec63a3108773741ee4161516329f858931db70a803def21c66957fa369a1b45",
+    "src/ai_data_scientist/explainability.py": "24304edd7d1da8cd30dfecd948b963aed0fd1d1c422880b3a42f05612661a77c",
     "src/ai_data_scientist/feature_engineering.py": "a496f0f8a99fc18f4c6c648b447fbad76ac13b88cae298eeadac55e2ff472495",
     "src/ai_data_scientist/gate_config.py": "c9ef43241e082fbb5f73c730353b76ba37c59334b12e973afaae99bd0cee45dd",
     "src/ai_data_scientist/ingestion.py": "9e1045d9921eeb30ab08111fd394be90454d86d88ddb8116509471b316d029dc",
@@ -4183,7 +4335,7 @@
     "tests/test_eda.py": "c1788a18c88015b40a6edf311a3c9f80bad2de40a4a51bbfc4618f363bc6eceb",
     "tests/test_example_readiness.py": "fc39997318a3cfecae12afaff9360d9041e8f6f989d3f29c3bb0bf6d2759b974",
     "tests/test_experiment_evaluation.py": "6d9c659bcff8db67d39a6765a35819ccbe6bbb1aa1e58a606a42f53b568481b6",
-    "tests/test_explainability.py": "f150b75da3143cb2d42777f8f858e628ca7db4f33a9037973ada44f80498e233",
+    "tests/test_explainability.py": "ff378f2683daef1da1846eaac54e26f037c15e2b6ec0d1f64249d9029a7975a5",
     "tests/test_feature_engineering.py": "5117272c89e7ac8720068497d409db68b63bf7cde3b0b720cfb33f167dc483ee",
     "tests/test_gate_config.py": "4ac5cee06bd95f68897150aa8745af59fe4aad601dbced01e33354392374250c",
     "tests/test_ingestion.py": "98de63b733b719d2c009878f23753961fb4a2335bd52a75c5f035f9294a1bb9d",

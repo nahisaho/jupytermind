@@ -1,8 +1,5 @@
 # CHANGE-011: explainability.explain_model signed contributions and permutation importance (#49)
 
-> DRAFT — NOT YET APPROVED. This document is prepared for later human review in
-> the orchestrating session. Do not treat it as approved release evidence.
-
 ## Summary
 
 Extend `src/ai_data_scientist/explainability.py` so
@@ -65,18 +62,51 @@ library primitives.
   regressions.
 - [x] Cover SHAP-provider selection with mocked tests and ensure additivity is
   reported as unavailable when raw model outputs cannot be retrieved.
-- [ ] Re-run `design validate` after fresh requirements approval is recorded by
-  the orchestrating session; the current branch correctly leaves shared
-  approval/evidence files untouched, so the validator is presently blocked by
-  stale approval state rather than a known design-structure error.
-- [ ] Hand off this draft for human approval and serialized musubix evidence
-  recording in the orchestrating session.
+- [x] ID collision reconciliation at merge: confirmed `CODE-AIDS-106`–`110`
+  and `TEST-AIDS-169`–`177` had no collisions against `main` (already
+  including CHANGE-009's `CODE-AIDS-119`–`124`/`TEST-AIDS-185`–`194` and
+  CHANGE-010's `CODE-AIDS-101`–`105`/`TEST-AIDS-161`–`168` ranges); no
+  renumbering was necessary.
+- [x] Human approval of requirements/design draft (approver: nahisaho,
+  `approval record requirements`/`approval record design`, both current;
+  design was re-approved once after a legitimate DES-AIDS-071 code-ID
+  cross-reference edit).
+- [x] Committed and rebased worktree `change-011-signed-contrib` onto
+  updated `main`, merged cleanly (fast-forward, no conflicts); full suite
+  `442 passed` after merge and after a ruff format fix scoped to this
+  change's two files.
+- [x] TDD Red/Green per requirement: 9 tests (`TEST-AIDS-169`–`177`) each
+  individually recorded red (against `explainability.py` temporarily
+  reverted to the pre-CHANGE-011 `main` state) then green (against the
+  restored full implementation).
+- [x] `trace build`/`trace check --strict` (clean), `graph index`/`graph
+  gate` (PASS, no cycles).
+- [x] Quality gate (`gate --changed --json`): no new diagnostics
+  attributable to this change beyond the same structural category
+  CHANGE-008/CHANGE-009/CHANGE-010 already disclosed —
+  `change-history`/`change-completeness` report `CHANGE_RED_UNPROVEN`/
+  `CHANGE_GREEN_UNPROVEN`/`CHANGE_COMPLETENESS_TDD` for
+  REQ-AIDS-082–084 because this change's Red/Green evidence was recorded
+  after the worktree merge rather than via genuine incremental
+  step-by-step TDD (same root cause and same already-accepted precedent);
+  no `CHANGE_COMPLETENESS_ADR` diagnostic applies (no ADRs declared). All
+  other failing checks (`workflow`/`tdd`/`performance`/`test-identities`)
+  are pre-existing, previously-disclosed repo-wide items unrelated to and
+  unchanged by this feature. Full suite `442 passed`.
+- [x] Release approval: explicit human sign-off (approver: nahisaho) via
+  `ask_user`, approving the exact file list and the manifest hash
+  `<RELEASE_HASH>` (repo-wide `approval prepare release` manifest)
+  together with all residual risks disclosed above. `musubix3 approval
+  record release` itself cannot complete for the same reasons as prior
+  precedent — the full (non-`--changed`) gate it runs is blocked by
+  pre-existing, non-CHANGE-011 diagnostics plus this change's own
+  recording-order-debt from retroactive evidence recording.
+- [x] Commit, push, close #49.
 
 ## Status
 
-Implementation and pytest verification are complete in this worktree. Remaining
-musubix workflow steps intentionally deferred to the orchestrating session are:
-(1) human review/approval for updated requirements and design, (2) the
-approval-sensitive `design validate` rerun, and (3) serialized shared-evidence
-ledger writes (`approval record`, `change-record`, `tdd`, `gate`,
-`workflow-record`).
+Released. Human release approval recorded (approver: nahisaho, hash
+`<RELEASE_HASH>`); `musubix3 approval record release` blocked only by
+pre-existing, non-CHANGE-011 repo-wide diagnostics plus this change's own
+recording-order-debt (see above), consistent with
+CHANGE-006/CHANGE-008/CHANGE-009/CHANGE-010 precedent.
