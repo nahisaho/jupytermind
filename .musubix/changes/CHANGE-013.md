@@ -125,19 +125,22 @@ by nahisaho (`artifact-sha256:
   by this session's fix.
 - [x] Quality gate (`gate --changed --json`, `status --json`): run.
   `change-record CHANGE-013 quality` recorded for the full 22-requirement
-  set (commit `1c152ce`). `status.gate.ready` is **false**, but every
-  remaining diagnostic is either (a) pre-existing repo-wide debt
-  unrelated to CHANGE-013 — spanning CHANGE-001/003/004/005/006/008 (250+
+  set (commit `1c152ce`). `status.gate.ready` is **false**. Diagnostics
+  break down as: (a) 12 CHANGE-013-scoped, pre-existing `change-history`
+  `CHANGE_ORDER_MISMATCH` entries described above (not introduced by this
+  session, but still CHANGE-013's own unresolved historical-evidence
+  records); (b) pre-existing repo-wide debt genuinely unrelated to
+  CHANGE-013 — spanning CHANGE-001/003/004/005/006/008 (250+
   change-history/completeness diagnostics), `FORMAL_UNSUPPORTED` (130,
   repo-wide), orphan TDD cycles for unrelated test IDs
   (`TEST-ACHEM-942/966`, `TEST-ASTRUCT-001/003/040`, `TEST-AIMS-040`),
   and `ai-data-scientist-ml`/`ai-materials-scientist` gaps — all
-  confirmed present in the pre-session baseline and out of CHANGE-013's
-  scope; or (b) `WORKFLOW_INVOCATION_UNVERIFIED`, a structural
-  limitation that can only be resolved once this live Copilot session
-  reaches a clean shutdown lifecycle (`workflow-sanitize` refused
-  mid-session: "Strict workflow verification requires exactly one
-  terminal result format or a routine shutdown lifecycle").
+  confirmed present in the pre-session baseline; or (c)
+  `WORKFLOW_INVOCATION_UNVERIFIED`, a structural limitation that can only
+  be resolved once this live Copilot session reaches a clean shutdown
+  lifecycle (`workflow-sanitize` refused mid-session: "Strict workflow
+  verification requires exactly one terminal result format or a routine
+  shutdown lifecycle").
 - [x] Release approval: human sign-off requested via `ask_user`
   presenting exact files/hash/residual risks (musubix3's `approval
   prepare release` stage is always repository-wide, so it is blocked by
@@ -150,8 +153,15 @@ by nahisaho (`artifact-sha256:
 
 CHANGE-013's own scope (3 skills, 22 requirements) is functionally
 complete: requirements, design, and bounded Red-Green TDD/quality
-evidence are all in place and independently verified clean. Repository-
-wide `gate`/`status` readiness remains blocked by pre-existing, unrelated
-technical debt (see Implementation Plan) that predates this change and
-was explicitly deferred by nahisaho as an accepted residual risk rather
-than folded into this change's scope.
+evidence are all in place, and `change-completeness` (the check that
+enforces bounded Red-Green TDD coverage per requirement) reports zero
+CHANGE-013 diagnostics. CHANGE-013 itself still carries 12 pre-existing,
+unchanged `change-history` `CHANGE_ORDER_MISMATCH` diagnostics (impact/
+requirements/design plus 3 very old AGENOM batches) — these predate this
+session (confirmed byte-identical in baseline commit `a1a96b9`) and were
+not introduced by this remediation, but they are CHANGE-013's own
+unresolved historical-evidence records, not external/unrelated debt.
+Separately, repository-wide `gate`/`status` readiness remains blocked by
+genuinely unrelated, pre-existing technical debt in other changes and
+features (see Implementation Plan) that nahisaho explicitly deferred as
+an accepted residual risk rather than folding into this change's scope.
