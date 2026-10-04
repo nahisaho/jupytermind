@@ -12,6 +12,7 @@ import pytest
 from scipy import stats as scipy_stats
 from sklearn.metrics import roc_auc_score
 
+from ai_data_scientist import experiment_evaluation
 from ai_data_scientist.experiment_evaluation import evaluate_experiment
 
 
@@ -272,3 +273,392 @@ def test_TEST_AIDS_168_paired_paths_require_identical_indexes(
 
     with pytest.raises(ValueError, match="identical indexes|paired input index"):
         evaluate_experiment(control, treatment, test=test_name, **kwargs)
+
+
+# @id TEST-AIDS-220
+# @verifies REQ-AIDS-090
+def test_TEST_AIDS_220_summarize_seed_variability_reports_mean_range_and_sign_counts():
+    expected_pairs = {
+        42: (0.812100, 0.812250),
+        7: (0.812040, 0.812126),
+        2026: (0.812080, 0.812166),
+    }
+
+    def compare_fn(split_seed: int, model_seed: int | None):
+        assert model_seed is None
+        return expected_pairs[split_seed]
+
+    summary = experiment_evaluation.summarize_seed_variability(
+        compare_fn,
+        split_seeds=[42, 7, 2026],
+    )
+
+    assert [result.split_seed for result in summary.results] == [42, 7, 2026]
+    assert [result.improvement for result in summary.results] == pytest.approx(
+        [0.000150, 0.000086, 0.000086], abs=1e-9
+    )
+    assert summary.mean_improvement == pytest.approx(0.00010733333333333333, abs=1e-12)
+    assert summary.seed_variability == pytest.approx(0.000064, abs=1e-12)
+    assert summary.sign_counts == {"positive": 3, "zero": 0, "negative": 0}
+
+
+# @id TEST-AIDS-223
+# @verifies REQ-AIDS-090
+def test_TEST_AIDS_223_summarize_seed_variability_preserves_optional_model_seeds():
+    summary = experiment_evaluation.summarize_seed_variability(
+        lambda split_seed, model_seed: {
+            (101, 11): (0.8100, 0.8200),
+            (102, 12): (0.8100, 0.8100),
+            (103, 13): (0.8100, 0.8000),
+        }[(split_seed, model_seed)],
+        split_seeds=[101, 102, 103],
+        model_seeds=[11, 12, 13],
+    )
+
+    assert [result.split_seed for result in summary.results] == [101, 102, 103]
+    assert [result.model_seed for result in summary.results] == [11, 12, 13]
+    assert [result.improvement for result in summary.results] == pytest.approx(
+        [0.0100, 0.0000, -0.0100], abs=1e-12
+    )
+    assert summary.mean_improvement == pytest.approx(0.0, abs=1e-12)
+    assert summary.seed_variability == pytest.approx(0.02, abs=1e-12)
+    assert summary.sign_counts == {"positive": 1, "zero": 1, "negative": 1}
+
+
+# @id TEST-AIDS-221
+# @verifies REQ-AIDS-091
+def test_TEST_AIDS_221_judge_improvement_uses_seed_variability_threshold():
+    summary = experiment_evaluation.summarize_seed_variability(
+        lambda split_seed, model_seed: {
+            42: (0.812100, 0.812250),
+            7: (0.812040, 0.812126),
+            2026: (0.812080, 0.812166),
+        }[split_seed],
+        split_seeds=[42, 7, 2026],
+    )
+
+    threshold_decision = experiment_evaluation.judge_improvement(
+        summary, candidate_improvement=0.000021
+    )
+    near_threshold = experiment_evaluation.judge_improvement(
+        summary, candidate_improvement=0.000063
+    )
+    adopted = experiment_evaluation.judge_improvement(summary, candidate_improvement=0.000080)
+    regression = experiment_evaluation.judge_improvement(summary, candidate_improvement=-0.000005)
+
+    assert threshold_decision.threshold == pytest.approx(0.000064, abs=1e-12)
+    assert threshold_decision.classification == "within_seed_variability"
+    assert near_threshold.classification == "within_seed_variability"
+    assert adopted.classification == "adopt"
+    assert regression.classification == "regression"
+
+
+# @id TEST-AIDS-222
+# @verifies REQ-AIDS-092
+def test_TEST_AIDS_222_selection_bias_holdout_reports_selection_and_evaluation_gains():
+    df = pd.DataFrame(
+        {
+            "feature": np.linspace(0.0, 0.9, 10),
+            "target": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+        },
+        index=[f"row_{idx}" for idx in range(10)],
+    )
+    callback_calls: list[tuple[tuple[str, ...], tuple[str, ...], tuple[str, ...]]] = []
+
+    def evaluate_candidate_fn(
+        train_df: pd.DataFrame,
+        selection_df: pd.DataFrame,
+        evaluation_df: pd.DataFrame,
+        baseline: str,
+        candidates: list[str],
+    ) -> dict[str, object]:
+        callback_calls.append(
+            (
+                tuple(train_df.index),
+                tuple(selection_df.index),
+                tuple(evaluation_df.index),
+            )
+        )
+        assert baseline == "baseline"
+        assert candidates == ["candidate_a", "candidate_b"]
+        return {
+            "selected_candidate": "candidate_a",
+            "selection_metrics": {
+                "baseline": 0.800000,
+                "candidate_a": 0.800224,
+                "candidate_b": 0.800180,
+            },
+            "evaluation_metrics": {
+                "baseline": 0.799000,
+                "candidate_a": 0.799135,
+                "candidate_b": 0.799100,
+            },
+        }
+
+    result = experiment_evaluation.evaluate_selection_bias_holdout(
+        df,
+        "target",
+        baseline="baseline",
+        candidates=["candidate_a", "candidate_b"],
+        evaluate_candidate_fn=evaluate_candidate_fn,
+        split_seed=42,
+        train_fraction=0.6,
+        selection_fraction=0.2,
+        evaluation_fraction=0.2,
+    )
+
+    assert len(callback_calls) == 1
+    train_index, selection_index, evaluation_index = callback_calls[0]
+    assert len(train_index) == 6
+    assert len(selection_index) == 2
+    assert len(evaluation_index) == 2
+    assert set(train_index).isdisjoint(selection_index)
+    assert set(train_index).isdisjoint(evaluation_index)
+    assert set(selection_index).isdisjoint(evaluation_index)
+    assert set(train_index) | set(selection_index) | set(evaluation_index) == set(df.index)
+
+    assert result.selected_candidate == "candidate_a"
+    assert result.selection_improvement == pytest.approx(0.000224, abs=1e-12)
+    assert result.evaluation_improvement == pytest.approx(0.000135, abs=1e-12)
+    assert result.optimism == pytest.approx(0.000089, abs=1e-12)
+
+
+# @id TEST-AIDS-224
+# @verifies REQ-AIDS-092
+def test_TEST_AIDS_224_selection_bias_holdout_uses_selection_winner_not_evaluation_preference():
+    df = pd.DataFrame(
+        {
+            "feature": np.linspace(0.0, 0.9, 10),
+            "target": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+        },
+        index=[f"row_{idx}" for idx in range(10)],
+    )
+
+    result = experiment_evaluation.evaluate_selection_bias_holdout(
+        df,
+        "target",
+        baseline="baseline",
+        candidates=["candidate_a", "candidate_b"],
+        evaluate_candidate_fn=lambda train_df, selection_df, evaluation_df, baseline, candidates: {
+            "selected_candidate": "candidate_b",
+            "selection_metrics": {
+                "baseline": 0.800000,
+                "candidate_a": 0.800224,
+                "candidate_b": 0.800180,
+            },
+            "evaluation_metrics": {
+                "baseline": 0.799000,
+                "candidate_a": 0.799135,
+                "candidate_b": 0.799210,
+            },
+        },
+        split_seed=42,
+        train_fraction=0.6,
+        selection_fraction=0.2,
+        evaluation_fraction=0.2,
+    )
+
+    assert result.selected_candidate == "candidate_a"
+    assert result.selection_improvement == pytest.approx(0.000224, abs=1e-12)
+    assert result.evaluation_improvement == pytest.approx(0.000135, abs=1e-12)
+    assert result.optimism == pytest.approx(0.000089, abs=1e-12)
+
+
+# @id TEST-AIDS-225
+# @verifies REQ-AIDS-092
+def test_TEST_AIDS_225_selection_bias_holdout_breaks_selection_ties_by_candidate_order():
+    df = pd.DataFrame(
+        {
+            "feature": np.linspace(0.0, 0.9, 10),
+            "target": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+        },
+        index=[f"row_{idx}" for idx in range(10)],
+    )
+
+    result = experiment_evaluation.evaluate_selection_bias_holdout(
+        df,
+        "target",
+        baseline="baseline",
+        candidates=["candidate_c", "candidate_a", "candidate_b"],
+        evaluate_candidate_fn=lambda train_df, selection_df, evaluation_df, baseline, candidates: {
+            "selected_candidate": "candidate_b",
+            "selection_metrics": {
+                "baseline": 0.800000,
+                "candidate_c": 0.800210,
+                "candidate_a": 0.800210,
+                "candidate_b": 0.800210,
+            },
+            "evaluation_metrics": {
+                "baseline": 0.799000,
+                "candidate_c": 0.799120,
+                "candidate_a": 0.799150,
+                "candidate_b": 0.799190,
+            },
+        },
+    )
+
+    assert result.selected_candidate == "candidate_c"
+    assert result.selection_improvement == pytest.approx(0.000210, abs=1e-12)
+    assert result.evaluation_improvement == pytest.approx(0.000120, abs=1e-12)
+    assert result.optimism == pytest.approx(0.000090, abs=1e-12)
+
+
+# @id TEST-AIDS-226
+# @verifies REQ-AIDS-092
+@pytest.mark.parametrize(
+    ("row_count", "fractions", "expected_lengths"),
+    [
+        (3, (0.8, 0.1, 0.1), (1, 1, 1)),
+        (11, (0.6, 0.2, 0.2), (7, 2, 2)),
+    ],
+)
+def test_TEST_AIDS_226_selection_bias_holdout_keeps_all_partitions_non_empty(
+    row_count: int,
+    fractions: tuple[float, float, float],
+    expected_lengths: tuple[int, int, int],
+):
+    df = pd.DataFrame(
+        {
+            "feature": np.linspace(0.0, float(row_count - 1), row_count),
+            "target": [idx % 2 for idx in range(row_count)],
+        },
+        index=[f"row_{idx}" for idx in range(row_count)],
+    )
+    observed_partition_lengths: list[tuple[int, int, int]] = []
+
+    def evaluate_candidate_fn(
+        train_df: pd.DataFrame,
+        selection_df: pd.DataFrame,
+        evaluation_df: pd.DataFrame,
+        baseline: str,
+        candidates: list[str],
+    ) -> dict[str, object]:
+        observed_partition_lengths.append(
+            (len(train_df.index), len(selection_df.index), len(evaluation_df.index))
+        )
+        return {
+            "selection_metrics": {
+                "baseline": 0.8,
+                "candidate_a": 0.81,
+            },
+            "evaluation_metrics": {
+                "baseline": 0.79,
+                "candidate_a": 0.80,
+            },
+        }
+
+    result = experiment_evaluation.evaluate_selection_bias_holdout(
+        df,
+        "target",
+        baseline="baseline",
+        candidates=["candidate_a"],
+        evaluate_candidate_fn=evaluate_candidate_fn,
+        train_fraction=fractions[0],
+        selection_fraction=fractions[1],
+        evaluation_fraction=fractions[2],
+    )
+
+    assert observed_partition_lengths == [expected_lengths]
+    assert all(length > 0 for length in observed_partition_lengths[0])
+    assert (
+        len(result.train_index),
+        len(result.selection_index),
+        len(result.evaluation_index),
+    ) == expected_lengths
+
+
+# @id TEST-AIDS-227
+# @verifies REQ-AIDS-090
+@pytest.mark.parametrize(
+    "metric_pair",
+    [
+        (float("nan"), 0.81),
+        (0.80, float("inf")),
+    ],
+)
+def test_TEST_AIDS_227_summarize_seed_variability_rejects_non_finite_metrics(
+    metric_pair: tuple[float, float],
+):
+    with pytest.raises(ValueError, match="finite metric values"):
+        experiment_evaluation.summarize_seed_variability(
+            lambda split_seed, model_seed: metric_pair,
+            split_seeds=[42],
+        )
+
+
+# @id TEST-AIDS-228
+# @verifies REQ-AIDS-091
+def test_TEST_AIDS_228_judge_improvement_handles_boundary_and_one_seed_cases():
+    summary = experiment_evaluation.summarize_seed_variability(
+        lambda split_seed, model_seed: {
+            42: (0.812100, 0.812250),
+            7: (0.812040, 0.812126),
+            2026: (0.812080, 0.812166),
+        }[split_seed],
+        split_seeds=[42, 7, 2026],
+    )
+    one_seed_summary = experiment_evaluation.summarize_seed_variability(
+        lambda split_seed, model_seed: (0.812100, 0.812131),
+        split_seeds=[99],
+    )
+
+    assert (
+        experiment_evaluation.judge_improvement(summary, candidate_improvement=0.0).classification
+        == "within_seed_variability"
+    )
+    assert (
+        experiment_evaluation.judge_improvement(
+            summary, candidate_improvement=summary.seed_variability
+        ).classification
+        == "within_seed_variability"
+    )
+    assert (
+        experiment_evaluation.judge_improvement(
+            summary,
+            candidate_improvement=0.000001,
+            threshold=0.0,
+        ).classification
+        == "adopt"
+    )
+    assert one_seed_summary.seed_variability == pytest.approx(0.0, abs=1e-12)
+    assert experiment_evaluation.judge_improvement(one_seed_summary).classification == "adopt"
+
+
+# @id TEST-AIDS-229
+# @verifies REQ-AIDS-090
+def test_TEST_AIDS_229_summarize_seed_variability_accepts_array_like_split_seeds():
+    summary = experiment_evaluation.summarize_seed_variability(
+        lambda split_seed, model_seed: {
+            101: (0.8000, 0.8100),
+            102: (0.8000, 0.8120),
+        }[split_seed],
+        split_seeds=np.array([101, 102]),
+    )
+
+    assert [result.split_seed for result in summary.results] == [101, 102]
+    assert summary.mean_improvement == pytest.approx(0.011, abs=1e-12)
+    assert summary.seed_variability == pytest.approx(0.002, abs=1e-12)
+
+
+# @id TEST-AIDS-230
+# @verifies REQ-AIDS-091
+@pytest.mark.parametrize(
+    ("kwargs", "message"),
+    [
+        ({"candidate_improvement": float("nan")}, "finite candidate_improvement"),
+        ({"candidate_improvement": float("inf")}, "finite candidate_improvement"),
+        ({"threshold": float("nan")}, "finite threshold"),
+        ({"threshold": float("-inf")}, "finite threshold"),
+    ],
+)
+def test_TEST_AIDS_230_judge_improvement_rejects_non_finite_inputs(
+    kwargs: dict[str, float],
+    message: str,
+):
+    summary = experiment_evaluation.summarize_seed_variability(
+        lambda split_seed, model_seed: (0.812100, 0.812131),
+        split_seeds=[99],
+    )
+
+    with pytest.raises(ValueError, match=message):
+        experiment_evaluation.judge_improvement(summary, **kwargs)
