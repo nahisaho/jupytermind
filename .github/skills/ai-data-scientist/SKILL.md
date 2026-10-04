@@ -59,17 +59,22 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
    failure (REQ-AIDS-003/030/031) — lifecycle calls alone do **not** provide
    this; they only track run/cancellation state. At minimum: call
    `register_run(run_id, handle.notebook_path)`, then
-   `mark_execution_start(run_id)`, invoke the MCP tool, and in a `finally`
-   block call `mark_execution_end(run_id)`; on success call
-   `mark_completed(run_id)` and on failure/timeout call `mark_failed(run_id)`
-   **and** ensure the MCP tool did not leave a partial/corrupted cell (e.g.
-   delete it if it did) and surface the failure to the user — do not rely on
+   `mark_execution_start(run_id)` before invoking the MCP tool. On success,
+   call `mark_execution_end(run_id)` and then `mark_completed(run_id)`. On a
+   failure that truly corresponds to the kernel execution having stopped, call
+   `mark_execution_end(run_id)` and `mark_failed(run_id)` **and** ensure the
+   MCP tool did not leave a partial/corrupted cell (e.g. delete it if it did)
+   and surface the failure to the user — do not rely on
    `insert_execute_code_cell` alone to guarantee this (see step 11 for the
    full lifecycle-call set, including `mark_write_start`/`mark_write_end`
-   if the same tool call also writes the notebook). Note the fallback
-   explicitly in the notebook or hand-off notes (e.g. "executed via MCP
-   tool, not run_and_record") so later audits are not misled into assuming
-   a host-side client was used.
+   if the same tool call also writes the notebook). If a direct-MCP-tool
+   timeout only means the host stopped waiting for output and the kernel may
+   still be running, do **not** immediately clear lifecycle execution state as
+   though the cell had finished; first confirm real completion by the methods
+   in step 11, then close the lifecycle record consistently with the actual
+   outcome. Note the fallback explicitly in the notebook or hand-off notes
+   (e.g. "executed via MCP tool, not run_and_record") so later audits are not
+   misled into assuming a host-side client was used.
 4. **Ingest data** with `ai_data_scientist.ingestion.ingest(source_spec,
    fetcher=..., allowlist=..., row_limit=...)` for CSV, Excel, database, or
    API sources; non-allowlisted hosts and over-limit responses are rejected
@@ -162,8 +167,43 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
     `mark_completed`/`mark_failed` at the end. A caller elsewhere can call
     `request_cancel(run_id)` (cooperative only — it cannot interrupt a cell
     already executing in the kernel) and `wait_for_quiescence(run_id)` to
-    block until that run is no longer mid-execution/mid-write
-    (REQ-AIDS-051).
+    wait until that run becomes quiescent **or** the supplied timeout elapses;
+    inspect the returned status before assuming execution/write activity has
+    fully settled (REQ-AIDS-051). For Copilot CLI / direct-Jupyter-MCP operation,
+    `insert_execute_code_cell`-style tools may stop waiting for output after
+    roughly 120 seconds even while the kernel keeps running the cell; treat
+    that as **execution still unconfirmed**, not as proof that the run is
+    finished. Therefore:
+    - Split any work likely to exceed that wait window into restartable units
+      such as fold-by-fold training, stage-by-stage preprocessing, or
+      checkpointed batch chunks, with each unit persisting its own durable
+      output before the next unit begins.
+    - After any host/tool timeout, **do not execute another cell yet**. First
+      confirm completion with an actual idle/quiescent signal: the active MCP
+      session reports the kernel as idle if that capability is truly available
+      in your environment, and/or your own orchestration still shows full
+      lifecycle quiescence. `lifecycle.get_run_status` /
+      `wait_for_quiescence` are useful only when your orchestration keeps the
+      lifecycle counters aligned with the kernel's real completion state; in
+      the simple direct-tool fallback where a timeout path immediately runs
+      `mark_execution_end`/`mark_failed`, those lifecycle calls alone are **not**
+      sufficient proof that the kernel is idle. When you do rely on lifecycle
+      state, require full quiescence (`active_cell_executions == 0`,
+      `pending_notebook_writes == 0`, and `locks_held == 0`), not just the
+      first two counters. A durable result/checkpoint file is valuable for
+      resume/restart, but by itself does **not** prove that the timed-out cell
+      has finished; if no real idle/quiescent signal is available yet,
+      completion remains unconfirmed and you still must not submit another
+      cell on that kernel. In that situation, treat the current kernel/session
+      as unsafe to reuse for follow-up cells and resume only from the latest
+      durable checkpoint/cache/result shard in a fresh kernel/session (or
+      another execution context whose clean idle state you can actually
+      verify).
+    - If the run was cancelled or interrupted, resume from the latest durable
+      cache/checkpoint/result shard (for example a completed fold's model or
+      metrics file) instead of restarting the whole job in one giant cell.
+      Prefer idempotent chunks that can be skipped safely when their output
+      already exists.
 12. **Record what each field actually means** — before relying on a
     column's unit or definition in an insight, build a
     `ai_data_scientist.data_definition.DataDefinitionManifest` via
