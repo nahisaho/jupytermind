@@ -598,6 +598,84 @@
       "order": 583,
       "previousSha256": "6ad7c6cfdda57993d80ce29f9b2bac4f30cc943ece52136898576d4dd33b4a5e",
       "payloadSha256": "a9ea08c7317f6353859f7b1aab8c37ab02a66455e8a9d7471f3e073f216a6d3c"
+    },
+    {
+      "changeId": "CHANGE-006",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-066",
+      "approver": "nahisaho",
+      "reason": "REQ-AIDS-066's initial TDD green (order 588) was recorded before change-record implementation (order 590) due to a sequencing mistake early in CHANGE-006's TDD loop; fix is verified by full pytest pass, trace check --strict, and a later correctly-ordered re-confirmation (tdd red order 627), but the hash-chained change-record phases for this requirement batch are already locked and cannot be re-recorded.",
+      "recordedAt": "2026-10-04T11:07:01.808Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "d0b22f3747d174f29ff06c456cd5b6aa698766888b3505226e93ba815f729f83",
+      "order": 628,
+      "previousSha256": "a9ea08c7317f6353859f7b1aab8c37ab02a66455e8a9d7471f3e073f216a6d3c",
+      "payloadSha256": "6ca166b9cb57ba6ef10fbeaee3b269232543dd749b0c6d0e39d180a7b9400ca1"
+    },
+    {
+      "changeId": "CHANGE-006",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-066",
+      "approver": "nahisaho",
+      "reason": "Same root cause as the paired CHANGE_RED_UNPROVEN waiver: REQ-AIDS-066's TDD green (order 588) predates change-record implementation (order 590), violating the required red->change-record-red->implementation->green->change-record-green ordering. Fix is verified by full pytest pass, trace check --strict, and a later correctly-ordered re-confirmation (tdd red order 627, restored implementation confirmed green); the locked change-record phases cannot be re-recorded.",
+      "recordedAt": "2026-10-04T11:07:09.383Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "d0b22f3747d174f29ff06c456cd5b6aa698766888b3505226e93ba815f729f83",
+      "order": 629,
+      "previousSha256": "6ca166b9cb57ba6ef10fbeaee3b269232543dd749b0c6d0e39d180a7b9400ca1",
+      "payloadSha256": "ba21e870237c3603918c67551663d95efd606ea30fbe4710b9775bce2e1f7daa"
+    },
+    {
+      "changeId": "CHANGE-006",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-066",
+      "approver": "nahisaho",
+      "reason": "Downstream of the CHANGE_RED_UNPROVEN/CHANGE_GREEN_UNPROVEN waivers above: the bounded Red-Green TDD evidence check fails only because of the same out-of-order recording (tdd green order 588 before change-record implementation order 590), not because the fix is unverified. Full pytest pass and trace check --strict confirm the fix.",
+      "recordedAt": "2026-10-04T11:07:10.220Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "d0b22f3747d174f29ff06c456cd5b6aa698766888b3505226e93ba815f729f83",
+      "order": 630,
+      "previousSha256": "ba21e870237c3603918c67551663d95efd606ea30fbe4710b9775bce2e1f7daa",
+      "payloadSha256": "12f4dea0b1aa33e77efe1be96344768a139dd6ef94e4a5d924a6bf0a9b7e277d"
+    },
+    {
+      "changeId": "CHANGE-006",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-066",
+      "approver": "nahisaho",
+      "reason": "REQ-AIDS-066's change-record red/implementation/green phases (orders 589/590/591) are chronologically locked before the fully-corrected TDD evidence could be produced. A fresh tdd red (order 627) and tdd green (order 632) independently re-prove the fix in proper sequence, and the full 399-test pytest suite passes, but the immutable change-record phase orders cannot be re-recorded to satisfy the bounded-cycle order check.",
+      "recordedAt": "2026-10-04T11:13:07.648Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "9a777755e53e2d79556dd1d86b01ffadad730ad34f92e355d69f2a8448d29b44",
+      "order": 633,
+      "previousSha256": "12f4dea0b1aa33e77efe1be96344768a139dd6ef94e4a5d924a6bf0a9b7e277d",
+      "payloadSha256": "3cec594d0e014a67f69f317cd6d0b9c4ebfe54c33842b26a3726cb7dc4829f5b"
+    },
+    {
+      "changeId": "CHANGE-006",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-066",
+      "approver": "nahisaho",
+      "reason": "Same root cause as the paired CHANGE_RED_UNPROVEN waiver: the fully-corrected tdd red (order 627) and tdd green (order 632) prove the fix, but the change-record green phase (order 591) was recorded before this later, properly-ordered TDD cycle, so it falls outside the fingerprint-bounded window the gate checks against. Full pytest pass confirms the fix is genuine.",
+      "recordedAt": "2026-10-04T11:13:08.381Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "9a777755e53e2d79556dd1d86b01ffadad730ad34f92e355d69f2a8448d29b44",
+      "order": 634,
+      "previousSha256": "3cec594d0e014a67f69f317cd6d0b9c4ebfe54c33842b26a3726cb7dc4829f5b",
+      "payloadSha256": "82418c445c5e06d55a6e1156f72cdc863e091e96528332f85defa432dc276952"
+    },
+    {
+      "changeId": "CHANGE-006",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-066",
+      "approver": "nahisaho",
+      "reason": "Downstream of the CHANGE_RED_UNPROVEN/CHANGE_GREEN_UNPROVEN waivers above: the bounded Red-Green TDD completeness check fails only because the fully-corrected tdd red/green cycle (orders 627/632) falls after the locked change-record phases (589/590/591), not because the fix is unverified. Full pytest pass and trace check --strict confirm the fix.",
+      "recordedAt": "2026-10-04T11:13:09.055Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "9a777755e53e2d79556dd1d86b01ffadad730ad34f92e355d69f2a8448d29b44",
+      "order": 635,
+      "previousSha256": "82418c445c5e06d55a6e1156f72cdc863e091e96528332f85defa432dc276952",
+      "payloadSha256": "567e23988e43d84e89a15afc010ca250e7bbb59f6bc93ef3e9dc020645e0559d"
     }
   ]
 }

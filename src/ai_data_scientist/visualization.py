@@ -274,15 +274,43 @@ def render_chart(
         plt.close(fig)
 
 
+# @id CODE-AIDS-091
+# @implements REQ-AIDS-071
+# @design DES-AIDS-059
+def _chart_metadata_dict(chart_metadata: ChartMetadata) -> dict:
+    """Build the JSON-serializable metadata dict shared by
+    ``build_image_output`` (output-level) and ``record_chart`` (cell-level)
+    for a rendered chart's authoring metadata (DES-AIDS-059)."""
+    return {
+        "title": chart_metadata.title,
+        "xlabel": chart_metadata.xlabel,
+        "ylabel": chart_metadata.ylabel,
+        "legend": chart_metadata.legend,
+        "missing_glyphs": list(chart_metadata.missing_glyphs),
+    }
+
+
 # @id CODE-AIDS-034
-# @implements REQ-AIDS-007
-# @design DES-AIDS-009
+# @implements REQ-AIDS-007 REQ-AIDS-071
+# @design DES-AIDS-009 DES-AIDS-059
 def build_image_output(png_bytes: bytes) -> nbformat.NotebookNode:
-    """Wrap PNG bytes as an nbformat execute_result output with image/png data."""
+    """Wrap PNG bytes as an nbformat execute_result output with image/png data.
+
+    When ``png_bytes`` is a ``RenderedChart`` (the result of
+    ``render_chart``), its ``chart_metadata`` is additionally persisted into
+    the output's own ``metadata["chart"]`` mapping (REQ-AIDS-071), so a
+    single image output is independently auditable even outside
+    ``record_chart``'s cell-level metadata. Plain ``bytes`` leave
+    ``metadata`` empty, preserving prior behavior.
+    """
     encoded = base64.b64encode(png_bytes).decode("ascii")
+    metadata = {}
+    if isinstance(png_bytes, RenderedChart):
+        metadata["chart"] = _chart_metadata_dict(png_bytes.chart_metadata)
     return nbformat.v4.new_output(
         "execute_result",
         data={"image/png": encoded, "text/plain": "<matplotlib chart>"},
+        metadata=metadata,
     )
 
 
@@ -321,14 +349,7 @@ def record_chart(handle: ProjectHandle, code: str, png_bytes: bytes) -> int:
         output["execution_count"] = execution_count
         cell["outputs"] = [output]
         if isinstance(png_bytes, RenderedChart):
-            metadata = png_bytes.chart_metadata
-            cell["metadata"]["chart"] = {
-                "title": metadata.title,
-                "xlabel": metadata.xlabel,
-                "ylabel": metadata.ylabel,
-                "legend": metadata.legend,
-                "missing_glyphs": list(metadata.missing_glyphs),
-            }
+            cell["metadata"]["chart"] = _chart_metadata_dict(png_bytes.chart_metadata)
         nb.cells.append(cell)
 
     enqueue_write(handle, add_cell)

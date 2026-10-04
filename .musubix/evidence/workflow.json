@@ -281,6 +281,23 @@
       "status": "failed",
       "reason": "CHANGE-005 (ai-chemistry-scientist) implementation, TDD, and documentation are complete with zero CHANGE-005-scoped gate errors; release approval could not be recorded because 'approval record release' requires repo-wide workflow/tdd/change-history/change-completeness/performance checks to pass, and these fail only due to pre-existing, unrelated issues (CHANGE-001 ai-scientist, ai-materials-scientist TDD evidence, ai-data-scientist performance provenance, workflow log reconciliation) outside this change's scope, mirroring CHANGE-003's precedent.",
       "recordedAt": "2026-10-03T00:10:27.764Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-10-04T11:32:08.986Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "failed",
+      "reason": "CHANGE-006 (ai-data-scientist defect fixes #40,#42,#43,#44,#45,#47) implementation, TDD (399/399 tests, zero regressions), trace/graph gates, and documentation are complete with zero CHANGE-006-scoped blocking errors except CHANGE_COMPLETENESS_ADR (7 occurrences, non-waivable, pre-existing musubix3-upgrade gap shared with CHANGE-001/CHANGE-004). Human (nahisaho) reviewed and approved the release content/risk via explicit ask_user confirmation, but 'approval record release' could not persist a release.json because it requires repo-wide workflow/tdd/change-history/change-completeness/performance checks to pass across ALL historical changes, not just CHANGE-006, mirroring the identical CHANGE-003/004/005 precedent.",
+      "recordedAt": "2026-10-04T11:32:22.488Z"
     }
   ]
 }

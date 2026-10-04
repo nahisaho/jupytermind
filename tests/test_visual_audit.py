@@ -157,3 +157,121 @@ def test_TEST_AIDS_110_cell_without_image_output_is_not_flagged_unaudited():
 
     findings = audit_visual_outputs(notebook, (0,))
     assert findings == ()
+
+
+def _add_two_image_cell(notebook, metadata_a=None, metadata_b=None):
+    """A code cell with two image outputs, each independently carrying its
+    own ``metadata["chart"]`` (or none), used to verify REQ-AIDS-072's
+    per-output matching never applies one image's metadata to its sibling.
+    """
+    cell = nbformat.v4.new_code_cell("render_chart(...); render_chart(...)")
+    cell["execution_count"] = 1
+    outputs = []
+    for metadata in (metadata_a, metadata_b):
+        encoded = base64.b64encode(_png(100, 100, uniform=False)).decode("ascii")
+        output = nbformat.v4.new_output("execute_result", data={"image/png": encoded})
+        if metadata is not None:
+            output["metadata"] = {"chart": metadata}
+        outputs.append(output)
+    cell["outputs"] = outputs
+    notebook.cells.append(cell)
+    return cell
+
+
+_COMPLETE_METADATA = {
+    "missing_glyphs": [],
+    "title": "Expenditure",
+    "xlabel": "Year",
+    "ylabel": "Value",
+    "legend": "Legend",
+}
+
+
+# @id TEST-AIDS-146
+# @verifies REQ-AIDS-072 REQ-AIDS-053
+def test_TEST_AIDS_146_output_level_metadata_is_authoritative_over_cell_level():
+    """GitHub #40: build_image_output now writes output-level metadata; the
+    audit must read it directly rather than only the cell-level copy."""
+    notebook = nbformat.v4.new_notebook()
+    cell = nbformat.v4.new_code_cell("render_chart(...)")
+    cell["execution_count"] = 1
+    encoded = base64.b64encode(_png(100, 100, uniform=False)).decode("ascii")
+    output = nbformat.v4.new_output("execute_result", data={"image/png": encoded})
+    output["metadata"] = {"chart": _COMPLETE_METADATA}
+    cell["outputs"] = [output]
+    # Deliberately no cell-level metadata at all.
+    notebook.cells.append(cell)
+
+    findings = audit_visual_outputs(notebook, (0,))
+    assert findings == ()
+
+
+# @id TEST-AIDS-147
+# @verifies REQ-AIDS-072
+def test_TEST_AIDS_147_two_images_each_use_only_their_own_output_metadata():
+    notebook = nbformat.v4.new_notebook()
+    _add_two_image_cell(
+        notebook,
+        metadata_a=_COMPLETE_METADATA,
+        metadata_b={**_COMPLETE_METADATA, "missing_glyphs": [25903]},
+    )
+
+    findings = audit_visual_outputs(notebook, (0,))
+    missing_glyph_findings = [f for f in findings if f.code == "missing_glyphs"]
+    assert len(missing_glyph_findings) == 1
+    assert missing_glyph_findings[0].output_index == 1
+    assert not any(f.output_index == 0 and f.code == "missing_glyphs" for f in findings)
+
+
+# @id TEST-AIDS-148
+# @verifies REQ-AIDS-072
+def test_TEST_AIDS_148_single_image_falls_back_to_cell_level_metadata_when_output_metadata_absent():
+    """A single image output with no metadata key at all still falls back to
+    the cell-level metadata (preserves record_chart's existing contract)."""
+    notebook = nbformat.v4.new_notebook()
+    cell = nbformat.v4.new_code_cell("render_chart(...)")
+    cell["execution_count"] = 1
+    encoded = base64.b64encode(_png(100, 100, uniform=False)).decode("ascii")
+    output = nbformat.v4.new_output("execute_result", data={"image/png": encoded})
+    cell["outputs"] = [output]
+    cell["metadata"]["chart"] = _COMPLETE_METADATA
+    notebook.cells.append(cell)
+
+    findings = audit_visual_outputs(notebook, (0,))
+    assert findings == ()
+
+
+# @id TEST-AIDS-149
+# @verifies REQ-AIDS-072
+def test_TEST_AIDS_149_empty_output_metadata_does_not_fall_back_to_cell_level():
+    """REQ-AIDS-072's explicit no-fallback rule: a present-but-empty
+    output-level metadata value is "unaudited" directly, even though the
+    cell has usable cell-level metadata and only one image output."""
+    notebook = nbformat.v4.new_notebook()
+    cell = nbformat.v4.new_code_cell("render_chart(...)")
+    cell["execution_count"] = 1
+    encoded = base64.b64encode(_png(100, 100, uniform=False)).decode("ascii")
+    output = nbformat.v4.new_output("execute_result", data={"image/png": encoded})
+    output["metadata"] = {"chart": {}}
+    cell["outputs"] = [output]
+    cell["metadata"]["chart"] = _COMPLETE_METADATA
+    notebook.cells.append(cell)
+
+    findings = audit_visual_outputs(notebook, (0,))
+    codes = {f.code for f in findings}
+    assert "unaudited" in codes
+
+
+# @id TEST-AIDS-150
+# @verifies REQ-AIDS-072
+def test_TEST_AIDS_150_two_images_no_metadata_at_all_does_not_fall_back_to_cell_level():
+    """With more than one image output, no fallback to cell-level metadata
+    ever applies, even if every output lacks its own metadata key."""
+    notebook = nbformat.v4.new_notebook()
+    _add_two_image_cell(notebook, metadata_a=None, metadata_b=None)
+    notebook.cells[0]["metadata"]["chart"] = _COMPLETE_METADATA
+
+    findings = audit_visual_outputs(notebook, (0,))
+    unaudited = [f for f in findings if f.code == "unaudited"]
+    assert len(unaudited) == 2
+    assert {f.output_index for f in unaudited} == {0, 1}

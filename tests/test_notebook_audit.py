@@ -267,3 +267,302 @@ def test_TEST_AIDS_069_trailing_unexecuted_cell_without_audit_call_still_fails(t
 
     assert report.ok is False
     assert report.unexecuted_cell_indices == (1,)
+
+
+# @id TEST-AIDS-128
+# @verifies REQ-AIDS-066
+def test_TEST_AIDS_128_insight_body_contradicting_cited_value_warns(tmp_path):
+    """GitHub #45: the body claims "0.123" while the verified cited_value is
+    "0.954"; this must surface a warning without failing report.ok."""
+    handle = resolve_project("audit-contradiction-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[nbformat.v4.new_output("stream", name="stdout", text="macro_f1=0.954\n")],
+    )
+    manifest = json.dumps(
+        {"execution_count": 1, "cited_value": "0.954", "claim_type": "metric"},
+        separators=(",", ":"),
+    )
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell(
+            f"macro-F1 は 0.123 と低く、モデルは使えません。\n\n```evidence\n{manifest}\n```"
+        )
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is True
+    contradiction_findings = [
+        f for f in report.findings if f.severity == "warning" and "0.954" in f.message
+    ]
+    assert len(contradiction_findings) == 1
+    assert contradiction_findings[0].cell_index == 1
+
+
+# @id TEST-AIDS-129
+# @verifies REQ-AIDS-066
+def test_TEST_AIDS_129_insight_body_mentioning_cited_value_has_no_contradiction_warning(tmp_path):
+    handle = resolve_project("audit-no-contradiction-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[nbformat.v4.new_output("stream", name="stdout", text="macro_f1=0.954\n")],
+    )
+    manifest = json.dumps(
+        {"execution_count": 1, "cited_value": "0.954", "claim_type": "metric"},
+        separators=(",", ":"),
+    )
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell(
+            f"macro-F1 は 0.954 と高く、良好です。\n\n```evidence\n{manifest}\n```"
+        )
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is True
+    assert not any(f.severity == "warning" and "0.954" in f.message for f in report.findings)
+
+
+# @id TEST-AIDS-130
+# @verifies REQ-AIDS-066
+def test_TEST_AIDS_130_insight_body_with_rounded_restatement_has_no_contradiction_warning(tmp_path):
+    handle = resolve_project("audit-rounded-ok-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[nbformat.v4.new_output("stream", name="stdout", text="macro_f1=0.954\n")],
+    )
+    manifest = json.dumps(
+        {"execution_count": 1, "cited_value": "0.954", "claim_type": "metric"},
+        separators=(",", ":"),
+    )
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell(
+            f"macro-F1 は 0.95 と高く、良好です。\n\n```evidence\n{manifest}\n```"
+        )
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is True
+    assert not any(f.severity == "warning" and "0.954" in f.message for f in report.findings)
+
+
+# @id TEST-AIDS-137
+# @verifies REQ-AIDS-069
+def test_TEST_AIDS_137_second_evidence_block_with_stale_value_is_flagged(tmp_path):
+    """GitHub #44: a cell with two ```evidence blocks must have both
+    validated, not only the first."""
+    handle = resolve_project("audit-multi-evidence-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[
+            nbformat.v4.new_output("execute_result", data={"text/plain": "0.42"}, execution_count=1)
+        ],
+    )
+    first_manifest = json.dumps(
+        {"execution_count": 1, "cited_value": "0.42", "claim_type": "correlation"},
+        separators=(",", ":"),
+    )
+    second_manifest = json.dumps(
+        {"execution_count": 1, "cited_value": "0.99", "claim_type": "correlation"},
+        separators=(",", ":"),
+    )
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell(
+            f"First claim is fine.\n\n```evidence\n{first_manifest}\n```\n\n"
+            f"Second claim is stale.\n\n```evidence\n{second_manifest}\n```"
+        )
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is False
+    error_messages = [f.message for f in report.findings if f.severity == "error"]
+    assert any(
+        "0.99" in message or "missing or stale evidence" in message for message in error_messages
+    )
+    stale_finding = next(
+        f for f in report.findings if f.severity == "error" and "0.99" in f.message
+    )
+    assert stale_finding.cell_index == 1
+
+
+# @id TEST-AIDS-138
+# @verifies REQ-AIDS-069
+def test_TEST_AIDS_138_malformed_evidence_block_is_reported_not_skipped(tmp_path):
+    handle = resolve_project("audit-malformed-evidence-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[
+            nbformat.v4.new_output("execute_result", data={"text/plain": "0.42"}, execution_count=1)
+        ],
+    )
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell("Broken claim.\n\n```evidence\n{not valid json\n```")
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is False
+    assert any(
+        f.severity == "error" and "malformed evidence block" in f.message.lower()
+        for f in report.findings
+    )
+
+
+# @id TEST-AIDS-139
+# @verifies REQ-AIDS-069
+def test_TEST_AIDS_139_supporting_evidence_entry_unresolved_is_flagged(tmp_path):
+    handle = resolve_project("audit-supporting-evidence-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[
+            nbformat.v4.new_output("execute_result", data={"text/plain": "0.42"}, execution_count=1)
+        ],
+    )
+    manifest = json.dumps(
+        {
+            "execution_count": 1,
+            "cited_value": "0.42",
+            "claim_type": "correlation",
+            "supporting_evidence": [{"execution_count": 1, "cited_value": "9.99"}],
+        },
+        separators=(",", ":"),
+    )
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell(
+            f"Claim with unresolved supporting evidence.\n\n```evidence\n{manifest}\n```"
+        )
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is False
+    assert any(f.severity == "error" and "9.99" in f.message for f in report.findings)
+
+
+# @id TEST-AIDS-140
+# @verifies REQ-AIDS-069
+def test_TEST_AIDS_140_malformed_supporting_evidence_entry_is_flagged(tmp_path):
+    handle = resolve_project("audit-malformed-supporting-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[
+            nbformat.v4.new_output("execute_result", data={"text/plain": "0.42"}, execution_count=1)
+        ],
+    )
+    manifest = json.dumps(
+        {
+            "execution_count": 1,
+            "cited_value": "0.42",
+            "claim_type": "correlation",
+            "supporting_evidence": [{"execution_count": "not-an-int", "cited_value": "0.42"}],
+        },
+        separators=(",", ":"),
+    )
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell(
+            f"Claim with malformed supporting evidence.\n\n```evidence\n{manifest}\n```"
+        )
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is False
+    assert any(
+        f.severity == "error" and "malformed supporting_evidence" in f.message.lower()
+        for f in report.findings
+    )
+
+
+# @id TEST-AIDS-141
+# @verifies REQ-AIDS-069
+def test_TEST_AIDS_141_single_well_formed_block_without_supporting_evidence_unchanged(tmp_path):
+    handle = resolve_project("audit-single-block-unchanged-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(
+        notebook,
+        execution_count=1,
+        outputs=[
+            nbformat.v4.new_output("execute_result", data={"text/plain": "0.42"}, execution_count=1)
+        ],
+    )
+    manifest = json.dumps(
+        {"execution_count": 1, "cited_value": "0.42", "claim_type": "correlation"},
+        separators=(",", ":"),
+    )
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell(f"相関は0.42です。\n\n```evidence\n{manifest}\n```")
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is True
+    assert report.insight_cell_count == 1
+
+
+# @id TEST-AIDS-142
+# @verifies REQ-AIDS-070
+def test_TEST_AIDS_142_heading_prefixed_result_paragraph_without_evidence_is_flagged(tmp_path):
+    """GitHub #43: a heading-prefixed cell with a genuine result paragraph
+    and no evidence manifest must be flagged, not silently excluded."""
+    handle = resolve_project("audit-heading-no-evidence-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(notebook, execution_count=1)
+    notebook.cells.append(
+        nbformat.v4.new_markdown_cell("## 結果\n平均購入額は9.9万円で、喫煙者は非喫煙者の3倍です。")
+    )
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is False
+    missing_finding = next(f for f in report.findings if "no evidence manifest" in f.message)
+    assert missing_finding.cell_index == 1
+
+
+# @id TEST-AIDS-143
+# @verifies REQ-AIDS-070
+def test_TEST_AIDS_143_heading_only_cell_is_not_an_insight_candidate(tmp_path):
+    handle = resolve_project("audit-heading-only-project", projects_root=tmp_path)
+    ensure_notebook(handle)
+    notebook = nbformat.read(handle.notebook_path, as_version=4)
+    _add_code_cell(notebook, execution_count=1)
+    notebook.cells.append(nbformat.v4.new_markdown_cell("## 結果\n"))
+    _write(handle, notebook)
+
+    report = audit_notebook(handle.notebook_path)
+
+    assert report.ok is True
+    assert report.insight_cell_count == 0

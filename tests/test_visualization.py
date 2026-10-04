@@ -367,3 +367,33 @@ def test_TEST_AIDS_127_tick_label_legend_only_japanese_uses_bundled_font(monkeyp
         assert result.missing_glyphs == ()
     finally:
         plt.rcParams["font.family"] = original_family
+
+
+# @id TEST-AIDS-144
+# @verifies REQ-AIDS-071
+def test_TEST_AIDS_144_build_image_output_persists_output_level_chart_metadata():
+    """GitHub #40: build_image_output should persist the rendered chart's
+    metadata on the output itself, not only via record_chart's cell-level
+    metadata, so a single image output is independently auditable."""
+    df = pd.DataFrame({"x": [1, 2, 3, 4], "y": [10, 20, 15, 25]})
+    rendered = render_chart(df, kind="scatter", x="x", y="y", title="T", xlabel="X", ylabel="Y")
+
+    output = build_image_output(rendered)
+
+    assert output["metadata"]["chart"]["title"] == "T"
+    assert output["metadata"]["chart"]["xlabel"] == "X"
+    assert output["metadata"]["chart"]["ylabel"] == "Y"
+    assert "legend" in output["metadata"]["chart"]
+    assert "missing_glyphs" in output["metadata"]["chart"]
+
+
+# @id TEST-AIDS-145
+# @verifies REQ-AIDS-071
+def test_TEST_AIDS_145_build_image_output_plain_bytes_has_no_chart_metadata():
+    df = pd.DataFrame({"x": [1, 2, 3, 4], "y": [10, 20, 15, 25]})
+    rendered = render_chart(df, kind="scatter", x="x", y="y")
+    plain_bytes = bytes(rendered)
+
+    output = build_image_output(plain_bytes)
+
+    assert "chart" not in output.get("metadata", {})

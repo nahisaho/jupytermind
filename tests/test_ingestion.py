@@ -72,3 +72,61 @@ def test_TEST_AIDS_032():
     )
     assert result.row_count == 10
     assert result.truncated is True
+
+
+# @id TEST-AIDS-133
+# @verifies REQ-AIDS-068
+def test_TEST_AIDS_133_tab_delimited_csv_is_sniffed_and_split(tmp_path):
+    """GitHub #42: a tab-delimited ".csv" file must not collapse into one
+    concatenated column."""
+    path = tmp_path / "data.csv"
+    path.write_text("a\tb\tc\n1\t2\t3\n4\t5\t6\n")
+
+    result = ingest(SourceSpec(kind="csv", location=str(path)))
+
+    assert list(result.dataframe.columns) == ["a", "b", "c"]
+    assert result.row_count == 2
+    assert result.column_count == 3
+    assert result.warnings == ()
+
+
+# @id TEST-AIDS-134
+# @verifies REQ-AIDS-068
+def test_TEST_AIDS_134_semicolon_delimited_csv_is_sniffed_and_split(tmp_path):
+    path = tmp_path / "data.csv"
+    path.write_text("a;b;c\n1;2;3\n4;5;6\n")
+
+    result = ingest(SourceSpec(kind="csv", location=str(path)))
+
+    assert list(result.dataframe.columns) == ["a", "b", "c"]
+    assert result.column_count == 3
+    assert result.warnings == ()
+
+
+# @id TEST-AIDS-135
+# @verifies REQ-AIDS-068
+def test_TEST_AIDS_135_comma_delimited_csv_behavior_unchanged(tmp_path):
+    path = _write_csv(tmp_path)
+
+    result = ingest(SourceSpec(kind="csv", location=str(path)))
+
+    assert list(result.dataframe.columns) == ["a", "b", "c"]
+    assert result.row_count == 2
+    assert result.column_count == 3
+    assert result.warnings == ()
+
+
+# @id TEST-AIDS-136
+# @verifies REQ-AIDS-068
+def test_TEST_AIDS_136_ambiguous_single_column_tab_header_warns(tmp_path):
+    """A pathological single-row-single-column-looking file whose header
+    still contains a literal tab must warn about a likely delimiter
+    mismatch when sniffing cannot confidently resolve a delimiter."""
+    path = tmp_path / "data.csv"
+    path.write_text("a\tb\n1\n")
+
+    result = ingest(SourceSpec(kind="csv", location=str(path)))
+
+    assert result.column_count == 1
+    assert len(result.warnings) == 1
+    assert "delimiter" in result.warnings[0].lower()

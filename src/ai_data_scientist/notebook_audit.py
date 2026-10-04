@@ -49,6 +49,7 @@ class VisualAuditFinding:
     code: str  # e.g. "missing_glyphs", "near_empty_image", "missing_label"
     severity: str  # "error" | "warning"
     details: dict = field(default_factory=dict)
+    output_index: int | None = None
 
 
 @dataclass(frozen=True)
@@ -72,17 +73,56 @@ class NotebookAuditReport:
         return not any(finding.severity == "error" for finding in self.findings)
 
 
-def _extract_evidence_manifest(markdown_source: str) -> dict | None:
-    match = _EVIDENCE_FENCE_PATTERN.search(markdown_source)
-    if match is None:
-        return None
+# @id CODE-AIDS-089
+# @implements REQ-AIDS-069
+# @design DES-AIDS-057
+def _extract_evidence_manifests(markdown_source: str) -> list[dict | None]:
+    """Return every ```evidence fenced block's parsed JSON payload, in
+    appearance order. A block that fails to parse as a JSON object yields
+    ``None`` (not silently omitted), so malformed blocks are still reported.
+    """
+    manifests: list[dict | None] = []
+    for match in _EVIDENCE_FENCE_PATTERN.finditer(markdown_source):
+        try:
+            payload = json.loads(match.group(1))
+        except json.JSONDecodeError:
+            manifests.append(None)
+            continue
+        manifests.append(payload if isinstance(payload, dict) else None)
+    return manifests
+
+
+# @id CODE-AIDS-086
+# @implements REQ-AIDS-066
+# @design DES-AIDS-054
+def _strip_evidence_fences(markdown_source: str) -> str:
+    """Return ``markdown_source`` with every ```evidence fenced block removed."""
+    return _EVIDENCE_FENCE_PATTERN.sub("", markdown_source)
+
+
+def _body_mentions_value(body_text: str, cited_value: str) -> bool:
+    """``True`` iff ``body_text`` mentions ``cited_value``, verbatim or as a
+    rounding-equivalent decimal (REQ-AIDS-066).
+
+    Non-numeric ``cited_value``s (e.g. categorical/"OK" claim types) fall
+    back to the plain substring check only, per DES-AIDS-054.
+    """
+    if cited_value in body_text:
+        return True
     try:
-        payload = json.loads(match.group(1))
-    except json.JSONDecodeError:
-        return None
-    return payload if isinstance(payload, dict) else None
+        cited_float = float(cited_value)
+    except ValueError:
+        return False
+    for candidate in re.findall(r"-?\d+\.\d+", body_text):
+        decimals = len(candidate.split(".")[1])
+        if round(float(candidate), decimals) == round(cited_float, decimals):
+            return True
+    return False
 
 
+# @id CODE-AIDS-090
+# @implements REQ-AIDS-070
+# @design DES-AIDS-058
 def _looks_like_insight_candidate(markdown_source: str) -> bool:
     stripped = markdown_source.strip()
     if not stripped:
@@ -93,7 +133,22 @@ def _looks_like_insight_candidate(markdown_source: str) -> bool:
     # regardless of a leading heading.
     if _EVIDENCE_FENCE_PATTERN.search(stripped):
         return True
-    return not stripped.startswith("#")
+    if not stripped.startswith("#"):
+        return True
+    # GitHub #43: a heading-prefixed cell with no evidence fence was
+    # unconditionally excluded even when it carries a genuine result
+    # paragraph after the heading. Strip leading heading line(s) (and any
+    # blank lines directly between them) and re-apply the same candidacy
+    # decision to whatever non-heading text remains.
+    remainder_lines = stripped.splitlines()
+    while remainder_lines and (
+        remainder_lines[0].lstrip().startswith("#") or not remainder_lines[0].strip()
+    ):
+        remainder_lines.pop(0)
+    remainder = "\n".join(remainder_lines).strip()
+    if not remainder:
+        return False
+    return _looks_like_insight_candidate(remainder)
 
 
 def _png_dimensions(png_bytes: bytes) -> tuple[int, int] | None:
@@ -107,67 +162,87 @@ def _png_dimensions(png_bytes: bytes) -> tuple[int, int] | None:
 # @id CODE-AIDS-073
 # @implements REQ-AIDS-053
 # @design DES-AIDS-041
+# @id CODE-AIDS-092
+# @implements REQ-AIDS-072
+# @design DES-AIDS-060
 def audit_visual_outputs(
     notebook, chart_cell_indices: tuple[int, ...]
 ) -> tuple[VisualAuditFinding, ...]:
-    """Inspect each chart cell's authoring metadata and image output.
+    """Inspect each chart cell's image outputs individually.
 
-    Reads ``cell["metadata"]["chart"]`` (written by callers such as
-    ``visualization.record_chart``) for ``missing_glyphs``, ``title``,
-    ``xlabel``, ``ylabel`` and ``legend``; and decodes the cell's
-    ``image/png`` output to approximate whether it is suspiciously
-    near-empty (DES-AIDS-041).
+    Each image output's own ``output["metadata"]["chart"]`` (written by
+    ``visualization.build_image_output``, REQ-AIDS-071) is authoritative.
+    Only when a cell has exactly one qualifying image output AND that
+    output has no ``"chart"`` key at all (not merely empty/invalid) does
+    this fall back to the cell-level ``cell["metadata"]["chart"]``
+    (preserving ``record_chart``'s pre-REQ-AIDS-071 contract). Every
+    finding is tagged with the specific ``output_index`` it concerns
+    (DES-AIDS-060), so one image's metadata is never applied to a sibling.
     """
     findings: list[VisualAuditFinding] = []
     for index in chart_cell_indices:
         cell = notebook.cells[index]
-        has_image_output = any(
-            output.get("data", {}).get("image/png") for output in cell.get("outputs", [])
-        )
-        chart_metadata = cell.get("metadata", {}).get("chart")
+        image_outputs = [
+            (output_index, output)
+            for output_index, output in enumerate(cell.get("outputs", []))
+            if output.get("data", {}).get("image/png")
+        ]
+        cell_metadata = cell.get("metadata", {}).get("chart")
 
-        # GitHub #28: a chart-bearing cell whose authoring metadata is
-        # absent, empty, or not a mapping must be flagged "unaudited"
-        # rather than silently treated as passing the glyph/label checks
-        # below, which require a usable mapping to read from.
-        if has_image_output and not (isinstance(chart_metadata, dict) and chart_metadata):
-            findings.append(
-                VisualAuditFinding(
-                    chart_cell_index=index,
-                    code="unaudited",
-                    severity="warning",
-                    details={},
-                )
-            )
-        if not isinstance(chart_metadata, dict):
-            chart_metadata = {}
+        for output_index, output in image_outputs:
+            output_metadata = output.get("metadata", {})
+            has_output_chart_key = "chart" in output_metadata
+            chart_metadata = output_metadata.get("chart")
+            if (
+                not has_output_chart_key
+                and len(image_outputs) == 1
+                and isinstance(cell_metadata, dict)
+                and cell_metadata
+            ):
+                chart_metadata = cell_metadata
 
-        missing_glyphs = chart_metadata.get("missing_glyphs")
-        if missing_glyphs:
-            findings.append(
-                VisualAuditFinding(
-                    chart_cell_index=index,
-                    code="missing_glyphs",
-                    severity="error",
-                    details={"codepoints": missing_glyphs},
-                )
-            )
-
-        for label_field in ("title", "xlabel", "ylabel", "legend"):
-            if chart_metadata and not chart_metadata.get(label_field):
+            # GitHub #28/#40: an image output whose resolved authoring
+            # metadata is absent, empty, or not a mapping must be flagged
+            # "unaudited" rather than silently treated as passing the
+            # glyph/label checks below, which require a usable mapping.
+            if not (isinstance(chart_metadata, dict) and chart_metadata):
                 findings.append(
                     VisualAuditFinding(
                         chart_cell_index=index,
-                        code="missing_label",
+                        code="unaudited",
                         severity="warning",
-                        details={"field": label_field},
+                        details={},
+                        output_index=output_index,
+                    )
+                )
+            if not isinstance(chart_metadata, dict):
+                chart_metadata = {}
+
+            missing_glyphs = chart_metadata.get("missing_glyphs")
+            if missing_glyphs:
+                findings.append(
+                    VisualAuditFinding(
+                        chart_cell_index=index,
+                        code="missing_glyphs",
+                        severity="error",
+                        details={"codepoints": missing_glyphs},
+                        output_index=output_index,
                     )
                 )
 
-        for output in cell.get("outputs", []):
+            for label_field in ("title", "xlabel", "ylabel", "legend"):
+                if chart_metadata and not chart_metadata.get(label_field):
+                    findings.append(
+                        VisualAuditFinding(
+                            chart_cell_index=index,
+                            code="missing_label",
+                            severity="warning",
+                            details={"field": label_field},
+                            output_index=output_index,
+                        )
+                    )
+
             encoded = output.get("data", {}).get("image/png")
-            if not encoded:
-                continue
             png_bytes = base64.b64decode(encoded)
             dimensions = _png_dimensions(png_bytes)
             if dimensions is None:
@@ -182,6 +257,7 @@ def audit_visual_outputs(
                         code="near_empty_image",
                         severity="error",
                         details={"bytes_per_pixel": bytes_per_pixel},
+                        output_index=output_index,
                     )
                 )
 
@@ -309,8 +385,8 @@ def audit_notebook(path: Path | str, visual_audit: bool = False) -> NotebookAudi
         if not _looks_like_insight_candidate(source):
             continue
 
-        manifest = _extract_evidence_manifest(source)
-        if manifest is None:
+        manifests = _extract_evidence_manifests(source)
+        if not manifests:
             findings.append(
                 NotebookAuditFinding(
                     "error",
@@ -322,30 +398,103 @@ def audit_notebook(path: Path | str, visual_audit: bool = False) -> NotebookAudi
             continue
 
         insight_cell_count += 1
-        missing_keys = _REQUIRED_MANIFEST_KEYS - manifest.keys()
-        if missing_keys:
-            findings.append(
-                NotebookAuditFinding(
-                    "error",
-                    f"Evidence manifest is missing required keys: {sorted(missing_keys)}.",
-                    index,
+        for block_index, manifest in enumerate(manifests):
+            block_tag = f" (block {block_index})" if len(manifests) > 1 else ""
+            if manifest is None:
+                findings.append(
+                    NotebookAuditFinding(
+                        "error",
+                        f"Malformed evidence block{block_tag}: the ```evidence fenced "
+                        "block is not well-formed JSON object.",
+                        index,
+                    )
                 )
-            )
-            continue
+                continue
 
-        execution_count = manifest["execution_count"]
-        cited_value = str(manifest["cited_value"])
-        evidence_cell = _find_evidence_cell(notebook, execution_count, cited_value)
-        if evidence_cell is None:
-            findings.append(
-                NotebookAuditFinding(
-                    "error",
-                    f"Evidence manifest references execution_count={execution_count!r} "
-                    f"with cited_value={cited_value!r}, but no executed cell output "
-                    "contains it (missing or stale evidence).",
-                    index,
+            missing_keys = _REQUIRED_MANIFEST_KEYS - manifest.keys()
+            if missing_keys:
+                findings.append(
+                    NotebookAuditFinding(
+                        "error",
+                        f"Evidence manifest{block_tag} is missing required keys: "
+                        f"{sorted(missing_keys)}.",
+                        index,
+                    )
                 )
-            )
+                continue
+
+            execution_count = manifest["execution_count"]
+            cited_value = str(manifest["cited_value"])
+            evidence_cell = _find_evidence_cell(notebook, execution_count, cited_value)
+            if evidence_cell is None:
+                findings.append(
+                    NotebookAuditFinding(
+                        "error",
+                        f"Evidence manifest{block_tag} references "
+                        f"execution_count={execution_count!r} with "
+                        f"cited_value={cited_value!r}, but no executed cell output "
+                        "contains it (missing or stale evidence).",
+                        index,
+                    )
+                )
+            elif not _body_mentions_value(_strip_evidence_fences(source), cited_value):
+                findings.append(
+                    NotebookAuditFinding(
+                        "warning",
+                        f"Insight body text does not mention the cited value "
+                        f"{cited_value!r}{block_tag} (verbatim or as a "
+                        "rounding-equivalent number); verify the claim still "
+                        "matches the evidence.",
+                        index,
+                    )
+                )
+
+            supporting_evidence = manifest.get("supporting_evidence")
+            if supporting_evidence is None:
+                continue
+            if not isinstance(supporting_evidence, list):
+                findings.append(
+                    NotebookAuditFinding(
+                        "error",
+                        f"Malformed supporting_evidence{block_tag}: expected a list.",
+                        index,
+                    )
+                )
+                continue
+            for entry_index, entry in enumerate(supporting_evidence):
+                entry_tag = f"{block_tag} supporting_evidence[{entry_index}]"
+                if (
+                    not isinstance(entry, dict)
+                    or not isinstance(entry.get("execution_count"), int)
+                    or isinstance(entry.get("execution_count"), bool)
+                    or not isinstance(entry.get("cited_value"), str)
+                    or not entry.get("cited_value")
+                ):
+                    findings.append(
+                        NotebookAuditFinding(
+                            "error",
+                            f"Malformed supporting_evidence entry{entry_tag}: "
+                            "expected a mapping with an int execution_count and "
+                            "a non-empty str cited_value.",
+                            index,
+                        )
+                    )
+                    continue
+                entry_cited_value = entry["cited_value"]
+                entry_evidence_cell = _find_evidence_cell(
+                    notebook, entry["execution_count"], entry_cited_value
+                )
+                if entry_evidence_cell is None:
+                    findings.append(
+                        NotebookAuditFinding(
+                            "error",
+                            f"supporting_evidence entry{entry_tag} references "
+                            f"execution_count={entry['execution_count']!r} with "
+                            f"cited_value={entry_cited_value!r}, but no executed "
+                            "cell output contains it (missing or stale evidence).",
+                            index,
+                        )
+                    )
 
     visual_findings: tuple[VisualAuditFinding, ...] = ()
     if visual_audit:

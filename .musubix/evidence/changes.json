@@ -6287,6 +6287,950 @@
           }
         }
       ]
+    },
+    {
+      "changeId": "CHANGE-006",
+      "requirementIds": [
+        "REQ-AIDS-053",
+        "REQ-AIDS-066",
+        "REQ-AIDS-067",
+        "REQ-AIDS-068",
+        "REQ-AIDS-069",
+        "REQ-AIDS-070",
+        "REQ-AIDS-071",
+        "REQ-AIDS-072"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-04T10:36:20.133Z",
+          "fingerprints": {
+            "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+            "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+            "design": "4d8f3bc8fb3e88b7a5e1148147bccce913c3016f2b05197fbebdd887af7c645a",
+            "implementation": "e806cf4f48ce0ee9c5ca67c384b7e29dc7ad572e037666f9a84f6949f2dee386",
+            "tests": "47080f9699533ca583b4d62264ee5065e8338441d440f630a7d7ba354330c22f",
+            "tdd": "e916c1e1df1ee6e923b2e35291bebc804d9f81241494b735087353ca98e2721a",
+            "requirementImplementations": {
+              "REQ-AIDS-053": {
+                "paths": [
+                  "src/ai_data_scientist/__init__.py",
+                  "src/ai_data_scientist/insight_engine.py",
+                  "src/ai_data_scientist/notebook_audit.py",
+                  "src/ai_data_scientist/project_manager.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                  "src/ai_data_scientist/notebook_audit.py": "74dc2962abe4c59b930fbac20194631050d2be43c31e8668350d55a4b2378ddb",
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                }
+              },
+              "REQ-AIDS-066": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-067": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-068": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-069": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-070": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-071": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-072": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 584
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-04T10:36:38.453Z",
+          "fingerprints": {
+            "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+            "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+            "design": "4d8f3bc8fb3e88b7a5e1148147bccce913c3016f2b05197fbebdd887af7c645a",
+            "implementation": "e806cf4f48ce0ee9c5ca67c384b7e29dc7ad572e037666f9a84f6949f2dee386",
+            "tests": "47080f9699533ca583b4d62264ee5065e8338441d440f630a7d7ba354330c22f",
+            "tdd": "e916c1e1df1ee6e923b2e35291bebc804d9f81241494b735087353ca98e2721a",
+            "requirementImplementations": {
+              "REQ-AIDS-053": {
+                "paths": [
+                  "src/ai_data_scientist/__init__.py",
+                  "src/ai_data_scientist/insight_engine.py",
+                  "src/ai_data_scientist/notebook_audit.py",
+                  "src/ai_data_scientist/project_manager.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                  "src/ai_data_scientist/notebook_audit.py": "74dc2962abe4c59b930fbac20194631050d2be43c31e8668350d55a4b2378ddb",
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                }
+              },
+              "REQ-AIDS-066": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-067": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-068": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-069": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-070": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-071": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-072": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 585
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-04T10:38:02.937Z",
+          "fingerprints": {
+            "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+            "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+            "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+            "implementation": "e806cf4f48ce0ee9c5ca67c384b7e29dc7ad572e037666f9a84f6949f2dee386",
+            "tests": "47080f9699533ca583b4d62264ee5065e8338441d440f630a7d7ba354330c22f",
+            "tdd": "e916c1e1df1ee6e923b2e35291bebc804d9f81241494b735087353ca98e2721a",
+            "requirementImplementations": {
+              "REQ-AIDS-053": {
+                "paths": [
+                  "src/ai_data_scientist/__init__.py",
+                  "src/ai_data_scientist/insight_engine.py",
+                  "src/ai_data_scientist/notebook_audit.py",
+                  "src/ai_data_scientist/project_manager.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                  "src/ai_data_scientist/notebook_audit.py": "74dc2962abe4c59b930fbac20194631050d2be43c31e8668350d55a4b2378ddb",
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                }
+              },
+              "REQ-AIDS-066": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-067": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-068": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-069": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-070": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-071": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-072": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 586
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-04T11:08:20.352Z",
+          "fingerprints": {
+            "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+            "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+            "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+            "implementation": "6380914eaf7c8effed55e8d36e4f8c1b8bcc96f3907f758b1798cebd2001ecb1",
+            "tests": "7ea137a9857d293d274fd7a1b00e328bd284eefafd7aced26560f5ffd8acf0c5",
+            "tdd": "c8401fd56d4c85595efb6590cf4da3fa0907a16f586ee40088f53cbded09a61e",
+            "requirementImplementations": {
+              "REQ-AIDS-053": {
+                "paths": [
+                  "src/ai_data_scientist/__init__.py",
+                  "src/ai_data_scientist/insight_engine.py",
+                  "src/ai_data_scientist/notebook_audit.py",
+                  "src/ai_data_scientist/project_manager.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                  "src/ai_data_scientist/notebook_audit.py": "d96f1cae080bc58dde26259ff7dd88e1a910e5baebac5aeea4198499d39767d0",
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                }
+              },
+              "REQ-AIDS-066": {
+                "paths": [
+                  "src/ai_data_scientist/__init__.py",
+                  "src/ai_data_scientist/insight_engine.py",
+                  "src/ai_data_scientist/notebook_audit.py",
+                  "src/ai_data_scientist/project_manager.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                  "src/ai_data_scientist/notebook_audit.py": "d96f1cae080bc58dde26259ff7dd88e1a910e5baebac5aeea4198499d39767d0",
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                }
+              },
+              "REQ-AIDS-067": {
+                "paths": [
+                  "src/ai_data_scientist/stats_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/stats_analysis.py": "7aa2beb6816c98f4c9a90cc480cf3cd3ea3c81e18ea4045e5c461cf76022fde9"
+                }
+              },
+              "REQ-AIDS-068": {
+                "paths": [
+                  "src/ai_data_scientist/ingestion.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/ingestion.py": "9e1045d9921eeb30ab08111fd394be90454d86d88ddb8116509471b316d029dc"
+                }
+              },
+              "REQ-AIDS-069": {
+                "paths": [
+                  "src/ai_data_scientist/__init__.py",
+                  "src/ai_data_scientist/insight_engine.py",
+                  "src/ai_data_scientist/notebook_audit.py",
+                  "src/ai_data_scientist/project_manager.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                  "src/ai_data_scientist/notebook_audit.py": "d96f1cae080bc58dde26259ff7dd88e1a910e5baebac5aeea4198499d39767d0",
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                }
+              },
+              "REQ-AIDS-070": {
+                "paths": [
+                  "src/ai_data_scientist/__init__.py",
+                  "src/ai_data_scientist/insight_engine.py",
+                  "src/ai_data_scientist/notebook_audit.py",
+                  "src/ai_data_scientist/project_manager.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                  "src/ai_data_scientist/notebook_audit.py": "d96f1cae080bc58dde26259ff7dd88e1a910e5baebac5aeea4198499d39767d0",
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                }
+              },
+              "REQ-AIDS-071": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_data_scientist/visualization.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                  "src/ai_data_scientist/visualization.py": "f6794cae24992328c1d821a1d39423946cf6a8ed516f19340c27e291ead90733"
+                }
+              },
+              "REQ-AIDS-072": {
+                "paths": [
+                  "src/ai_data_scientist/__init__.py",
+                  "src/ai_data_scientist/insight_engine.py",
+                  "src/ai_data_scientist/notebook_audit.py",
+                  "src/ai_data_scientist/project_manager.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                  "src/ai_data_scientist/notebook_audit.py": "d96f1cae080bc58dde26259ff7dd88e1a910e5baebac5aeea4198499d39767d0",
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                }
+              }
+            }
+          },
+          "order": 631
+        }
+      },
+      "tddBatches": [
+        {
+          "requirementIds": [
+            "REQ-AIDS-066"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T10:41:24.232Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "dbdf64c7c9d829f17e77c55e384e2a3a16db9bb15fc3a9c9b3dce438a80147e0",
+              "tests": "55e7921a9f8fc5ac818b7a7aaa6a240747d7910072d4832a347670f96d1bb34d",
+              "tdd": "bb99cefd77d8542bd1eda5a4d27df801510deba76850af40d1b9077009514eec",
+              "requirementImplementations": {
+                "REQ-AIDS-066": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "850828ffeef975e69a363d3c3cbda7e91d0cd67dfc17d042e0ce8b21a2033717",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 589
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T10:42:00.681Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "a3280600987f5a464340c89c77f5c405c102f35f5ab06503727ec40530b484b2",
+              "tests": "55e7921a9f8fc5ac818b7a7aaa6a240747d7910072d4832a347670f96d1bb34d",
+              "tdd": "bb99cefd77d8542bd1eda5a4d27df801510deba76850af40d1b9077009514eec",
+              "requirementImplementations": {
+                "REQ-AIDS-066": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "ea1255636f0f6834da6dbe59c0cf50c8a425ed573d04bc83466920674100dcb1",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 590
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T10:42:06.250Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "a3280600987f5a464340c89c77f5c405c102f35f5ab06503727ec40530b484b2",
+              "tests": "55e7921a9f8fc5ac818b7a7aaa6a240747d7910072d4832a347670f96d1bb34d",
+              "tdd": "bb99cefd77d8542bd1eda5a4d27df801510deba76850af40d1b9077009514eec",
+              "requirementImplementations": {
+                "REQ-AIDS-066": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "ea1255636f0f6834da6dbe59c0cf50c8a425ed573d04bc83466920674100dcb1",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 591
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIDS-067"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T10:42:57.157Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "a3280600987f5a464340c89c77f5c405c102f35f5ab06503727ec40530b484b2",
+              "tests": "3b0841518d13b272d3627893beb10b7e31062d75e66cf78f2c902c6a5fa4ee03",
+              "tdd": "f0bdcff1430ac1766a2f731c0f90a4ff59c45bea7674e8de70719a412742bc7a",
+              "requirementImplementations": {
+                "REQ-AIDS-067": {
+                  "paths": [],
+                  "fingerprints": {}
+                }
+              }
+            },
+            "order": 593
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T10:43:15.035Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "27767307373b4c7e555e07053a42433e8c7d5820200918bb26e35560d300979c",
+              "tests": "3b0841518d13b272d3627893beb10b7e31062d75e66cf78f2c902c6a5fa4ee03",
+              "tdd": "f0bdcff1430ac1766a2f731c0f90a4ff59c45bea7674e8de70719a412742bc7a",
+              "requirementImplementations": {
+                "REQ-AIDS-067": {
+                  "paths": [
+                    "src/ai_data_scientist/stats_analysis.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/stats_analysis.py": "7aa2beb6816c98f4c9a90cc480cf3cd3ea3c81e18ea4045e5c461cf76022fde9"
+                  }
+                }
+              }
+            },
+            "order": 594
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T10:43:24.382Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "27767307373b4c7e555e07053a42433e8c7d5820200918bb26e35560d300979c",
+              "tests": "3b0841518d13b272d3627893beb10b7e31062d75e66cf78f2c902c6a5fa4ee03",
+              "tdd": "dd9a4a143a52cd9f263ec4ee8b5c729b9bb34c17a3eefe9e4fe9f88d51eb5d85",
+              "requirementImplementations": {
+                "REQ-AIDS-067": {
+                  "paths": [
+                    "src/ai_data_scientist/stats_analysis.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/stats_analysis.py": "7aa2beb6816c98f4c9a90cc480cf3cd3ea3c81e18ea4045e5c461cf76022fde9"
+                  }
+                }
+              }
+            },
+            "order": 596
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIDS-068"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T10:43:59.043Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "27767307373b4c7e555e07053a42433e8c7d5820200918bb26e35560d300979c",
+              "tests": "c5f9019e7df921eae059bcf85e82331e555591bfc2892bb07be980dc5d0eaac1",
+              "tdd": "68eb7f19062f86098311c06b73e486ff38d448d9f3970422ab6e20a89831a240",
+              "requirementImplementations": {
+                "REQ-AIDS-068": {
+                  "paths": [],
+                  "fingerprints": {}
+                }
+              }
+            },
+            "order": 598
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T10:45:31.772Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "ae76d464ef42af031fc474c5c7d98b2368f5445284a5e4b645795e218e7f7fa2",
+              "tests": "c5f9019e7df921eae059bcf85e82331e555591bfc2892bb07be980dc5d0eaac1",
+              "tdd": "68eb7f19062f86098311c06b73e486ff38d448d9f3970422ab6e20a89831a240",
+              "requirementImplementations": {
+                "REQ-AIDS-068": {
+                  "paths": [
+                    "src/ai_data_scientist/ingestion.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/ingestion.py": "9e1045d9921eeb30ab08111fd394be90454d86d88ddb8116509471b316d029dc"
+                  }
+                }
+              }
+            },
+            "order": 599
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T10:45:35.994Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "ae76d464ef42af031fc474c5c7d98b2368f5445284a5e4b645795e218e7f7fa2",
+              "tests": "c5f9019e7df921eae059bcf85e82331e555591bfc2892bb07be980dc5d0eaac1",
+              "tdd": "7615ec5e1f15cf7a35782fb35b1e1856da54aad0e754528152e13312e3f23efd",
+              "requirementImplementations": {
+                "REQ-AIDS-068": {
+                  "paths": [
+                    "src/ai_data_scientist/ingestion.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/ingestion.py": "9e1045d9921eeb30ab08111fd394be90454d86d88ddb8116509471b316d029dc"
+                  }
+                }
+              }
+            },
+            "order": 601
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIDS-069"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T10:46:21.784Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "ae76d464ef42af031fc474c5c7d98b2368f5445284a5e4b645795e218e7f7fa2",
+              "tests": "0c713a1b06c7bcdd9a6cc394665e8aa4271c7ae452986c4ffa33e817a76bfd16",
+              "tdd": "b450708ce3dc83fbebf50a9b7d41bd52064bb77c0b3ab6358163992b800341e7",
+              "requirementImplementations": {
+                "REQ-AIDS-069": {
+                  "paths": [],
+                  "fingerprints": {}
+                }
+              }
+            },
+            "order": 603
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T10:47:53.444Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "9c731b6b0425791e3721cb8e2ef2af47563fd64dcc25a3e689b694ad6fd350d1",
+              "tests": "0c713a1b06c7bcdd9a6cc394665e8aa4271c7ae452986c4ffa33e817a76bfd16",
+              "tdd": "b450708ce3dc83fbebf50a9b7d41bd52064bb77c0b3ab6358163992b800341e7",
+              "requirementImplementations": {
+                "REQ-AIDS-069": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "ca3761dbaa75c58994f3ce8fb87c26e3ae7cf847f1b0c05b04fa4af05dc284fd",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 604
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T10:47:59.603Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "9c731b6b0425791e3721cb8e2ef2af47563fd64dcc25a3e689b694ad6fd350d1",
+              "tests": "0c713a1b06c7bcdd9a6cc394665e8aa4271c7ae452986c4ffa33e817a76bfd16",
+              "tdd": "75386d4a8caca7d3ddddb3621ab3bb64031e8550137e946d490e9f272a9962ce",
+              "requirementImplementations": {
+                "REQ-AIDS-069": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "ca3761dbaa75c58994f3ce8fb87c26e3ae7cf847f1b0c05b04fa4af05dc284fd",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 606
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIDS-070"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T10:48:28.123Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "9c731b6b0425791e3721cb8e2ef2af47563fd64dcc25a3e689b694ad6fd350d1",
+              "tests": "07aff2524250eab99052e8585c56d174239462ba5452d28cbacb419f5f239db7",
+              "tdd": "3a05362c37af8c16e2677a6c189423c846d81b01a0278a93ae139198bc0884d7",
+              "requirementImplementations": {
+                "REQ-AIDS-070": {
+                  "paths": [],
+                  "fingerprints": {}
+                }
+              }
+            },
+            "order": 608
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T10:49:44.318Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "8feabd9c04d51c6a6358fc13f0e51836e247b4f9d84c75f31642da9a69f1c8ae",
+              "tests": "07aff2524250eab99052e8585c56d174239462ba5452d28cbacb419f5f239db7",
+              "tdd": "3a05362c37af8c16e2677a6c189423c846d81b01a0278a93ae139198bc0884d7",
+              "requirementImplementations": {
+                "REQ-AIDS-070": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "23bec28eee86edaaace4a71bc38548075cf9b35d8fc5ac4b9b783b90a7bd773c",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 609
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T10:49:50.762Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "8feabd9c04d51c6a6358fc13f0e51836e247b4f9d84c75f31642da9a69f1c8ae",
+              "tests": "07aff2524250eab99052e8585c56d174239462ba5452d28cbacb419f5f239db7",
+              "tdd": "d0d25a59c9b38d5ac8c7e27556b7489f1966d7907cb0ee515dc610b2ff2ee63f",
+              "requirementImplementations": {
+                "REQ-AIDS-070": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "23bec28eee86edaaace4a71bc38548075cf9b35d8fc5ac4b9b783b90a7bd773c",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 611
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIDS-071"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T10:50:53.061Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "8feabd9c04d51c6a6358fc13f0e51836e247b4f9d84c75f31642da9a69f1c8ae",
+              "tests": "4f7da4e6f3f95d68a77a0d063e35e7aea3a5cf457559525c129d96ecdf5fa0bd",
+              "tdd": "50e8d37952790ee452e3a876eb1d4131a04e967a49bd087e8bb759e40fd3a8ec",
+              "requirementImplementations": {
+                "REQ-AIDS-071": {
+                  "paths": [],
+                  "fingerprints": {}
+                }
+              }
+            },
+            "order": 613
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T10:52:13.529Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "1bede0f808a299fd78855c9196cbf851eff6c8bd562019fcde02102a06c18dac",
+              "tests": "4f7da4e6f3f95d68a77a0d063e35e7aea3a5cf457559525c129d96ecdf5fa0bd",
+              "tdd": "50e8d37952790ee452e3a876eb1d4131a04e967a49bd087e8bb759e40fd3a8ec",
+              "requirementImplementations": {
+                "REQ-AIDS-071": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_data_scientist/visualization.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                    "src/ai_data_scientist/visualization.py": "f6794cae24992328c1d821a1d39423946cf6a8ed516f19340c27e291ead90733"
+                  }
+                }
+              }
+            },
+            "order": 614
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T10:52:20.605Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "1bede0f808a299fd78855c9196cbf851eff6c8bd562019fcde02102a06c18dac",
+              "tests": "4f7da4e6f3f95d68a77a0d063e35e7aea3a5cf457559525c129d96ecdf5fa0bd",
+              "tdd": "85cf4032957eb863ba59e1bc560f610606a17b7c84496894a0ebdf056b7421fa",
+              "requirementImplementations": {
+                "REQ-AIDS-071": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_data_scientist/visualization.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                    "src/ai_data_scientist/visualization.py": "f6794cae24992328c1d821a1d39423946cf6a8ed516f19340c27e291ead90733"
+                  }
+                }
+              }
+            },
+            "order": 616
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIDS-072"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T10:52:55.796Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "1bede0f808a299fd78855c9196cbf851eff6c8bd562019fcde02102a06c18dac",
+              "tests": "767cb18f84a1264449e36077254e252f5d1d2fd0c8589329749dbcbe21d58d80",
+              "tdd": "353431df2e51715a1c2ca8f932dfffce490266f7492b5d7d0da3d198e3e603fd",
+              "requirementImplementations": {
+                "REQ-AIDS-072": {
+                  "paths": [],
+                  "fingerprints": {}
+                }
+              }
+            },
+            "order": 618
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T10:54:23.652Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "6380914eaf7c8effed55e8d36e4f8c1b8bcc96f3907f758b1798cebd2001ecb1",
+              "tests": "767cb18f84a1264449e36077254e252f5d1d2fd0c8589329749dbcbe21d58d80",
+              "tdd": "353431df2e51715a1c2ca8f932dfffce490266f7492b5d7d0da3d198e3e603fd",
+              "requirementImplementations": {
+                "REQ-AIDS-072": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "d96f1cae080bc58dde26259ff7dd88e1a910e5baebac5aeea4198499d39767d0",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 619
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T10:54:29.663Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "6380914eaf7c8effed55e8d36e4f8c1b8bcc96f3907f758b1798cebd2001ecb1",
+              "tests": "767cb18f84a1264449e36077254e252f5d1d2fd0c8589329749dbcbe21d58d80",
+              "tdd": "d2d846590ddbacd51d63f989bd3f1ad1801d07063a8e9a895b4051e1af4d8af9",
+              "requirementImplementations": {
+                "REQ-AIDS-072": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "d96f1cae080bc58dde26259ff7dd88e1a910e5baebac5aeea4198499d39767d0",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 621
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AIDS-053"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T10:55:50.708Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "e26662631a31cfb74e2941e70125abd8da07190252c0792908a655964ba92b6e",
+              "tests": "7ea137a9857d293d274fd7a1b00e328bd284eefafd7aced26560f5ffd8acf0c5",
+              "tdd": "c935900e2b7cc7d76d6c383ef36fe0a4ecd77fc573b35f189bb16a0b1d70e3bf",
+              "requirementImplementations": {
+                "REQ-AIDS-053": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "74dc2962abe4c59b930fbac20194631050d2be43c31e8668350d55a4b2378ddb",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 623
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T10:55:59.581Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "6380914eaf7c8effed55e8d36e4f8c1b8bcc96f3907f758b1798cebd2001ecb1",
+              "tests": "7ea137a9857d293d274fd7a1b00e328bd284eefafd7aced26560f5ffd8acf0c5",
+              "tdd": "c935900e2b7cc7d76d6c383ef36fe0a4ecd77fc573b35f189bb16a0b1d70e3bf",
+              "requirementImplementations": {
+                "REQ-AIDS-053": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "d96f1cae080bc58dde26259ff7dd88e1a910e5baebac5aeea4198499d39767d0",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 624
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T10:56:05.781Z",
+            "fingerprints": {
+              "impact": "9fda0d6b6e54f6dbbac18e24c48a0ecfa57dbd1b9f515f7f54d89fb32e497cd8",
+              "requirements": "0d972a2b275963fa1503e46bcf736c7eef51e3e3beef19198594695b8f339489",
+              "design": "8a5a98a383d92bfefb2607fff9f0f2d0c4f6cc1920a8be7885f07438db98fa5d",
+              "implementation": "6380914eaf7c8effed55e8d36e4f8c1b8bcc96f3907f758b1798cebd2001ecb1",
+              "tests": "7ea137a9857d293d274fd7a1b00e328bd284eefafd7aced26560f5ffd8acf0c5",
+              "tdd": "cb326e73a36fe032c026554976b1720a0bbc1d8356b2676ed9fc13b59b0b7e86",
+              "requirementImplementations": {
+                "REQ-AIDS-053": {
+                  "paths": [
+                    "src/ai_data_scientist/__init__.py",
+                    "src/ai_data_scientist/insight_engine.py",
+                    "src/ai_data_scientist/notebook_audit.py",
+                    "src/ai_data_scientist/project_manager.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                    "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
+                    "src/ai_data_scientist/notebook_audit.py": "d96f1cae080bc58dde26259ff7dd88e1a910e5baebac5aeea4198499d39767d0",
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                  }
+                }
+              }
+            },
+            "order": 626
+          }
+        }
+      ]
     }
   ]
 }

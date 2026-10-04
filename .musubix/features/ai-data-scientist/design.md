@@ -977,3 +977,258 @@ implemented, extension point.
 Requirements: REQ-AIDS-057
 ADRs: none — a new, isolated module; no shared state or cross-cutting concern introduced.
 Depends-On: none
+
+## DES-AIDS-054: Insight body text cross-checked against its cited value / Insight本文と引用値の整合確認
+Responsibilities: In `notebook_audit`, add a helper
+`_strip_evidence_fences(markdown_source) -> str` that removes every
+evidence-fenced block (the existing "evidence" code-fence convention, via
+`_EVIDENCE_FENCE_PATTERN.sub`) and returns the remaining text. Add a helper
+`_body_mentions_value(body_text: str, cited_value: str) -> bool` that first
+checks a plain substring match; when `cited_value` parses as a `float`, it
+additionally scans `body_text` for decimal-looking numbers (`re.findall`
+against `-?\d+\.\d+`), and for each candidate rounds both the candidate and
+`cited_value` to the candidate's own number of decimal places, returning
+`True` on any match (satisfying REQ-AIDS-066's documented-rounding
+tolerance, e.g. body "0.95" matching cited "0.954" at 2 decimal places).
+In `audit_notebook`'s insight-validation loop, once an evidence block's
+primary `cited_value` is confirmed to resolve against a real executed cell
+(the existing `_find_evidence_cell` check), call
+`_body_mentions_value(_strip_evidence_fences(source), cited_value)`; when
+`False`, append a warning-severity `NotebookAuditFinding` naming the cell
+index and the unmentioned cited value. This check applies only to each
+evidence block's primary `cited_value` (REQ-AIDS-066's scope); it runs once
+per resolved evidence block when DES-AIDS-057 extends validation to
+multiple blocks, but deliberately does *not* run against
+`supporting_evidence` entries' `cited_value`s, which DES-AIDS-057 validates
+only for evidence-resolution, not body-text mention. This never affects
+`report.ok`, since it is `warning`-severity only (REQ-AIDS-066 explicitly
+scopes this to a warning, not an error, to avoid false positives on
+reasonable paraphrases that still contain the precise figure as text).
+Interfaces: notebook_audit._strip_evidence_fences(markdown_source: str) -> str
+(module-private); notebook_audit._body_mentions_value(body_text: str,
+cited_value: str) -> bool (module-private).
+Constraints: Must not change `report.ok` for any existing passing notebook
+(warning-only); must not require a second notebook read or re-parsing
+beyond the markdown source already in memory; numeric rounding comparison
+only applies when `cited_value` is float-parseable, falling back to plain
+substring matching otherwise (covers non-numeric claim types such as
+"OK"/categorical labels).
+Requirements: REQ-AIDS-066
+ADRs: none — a narrow, additive warning-only check layered on the existing
+evidence-resolution step; no new external dependency or architectural
+tradeoff.
+Depends-On: DES-AIDS-010, DES-AIDS-033, DES-AIDS-035
+
+## DES-AIDS-055: Explicit non-computable correlation interpretation for NaN statistics / NaN統計量に対する算出不能の明示
+Responsibilities: In `stats_analysis.correlation`'s `_interpret` helper, add
+`import math` to the module's existing imports, then add an early
+`math.isnan(coefficient) or math.isnan(p_value)` guard before the
+existing significance-threshold branch (DES-AIDS-051); when it fires,
+return the language-appropriate "correlation could not be computed"
+sentence (mirroring the existing `language="ja"`/`"en"` branching
+convention already used for the significance and magnitude/direction
+sentences) instead of falling into the `p_value >= significance_threshold`
+comparison, which is always `False` for NaN in Python and would otherwise
+silently fall through to a spurious magnitude/direction claim (the root
+cause of GitHub #47). This guard must run before any NaN p-value reaches
+the existing p-value display/formatting step (DES-AIDS-053's bounded
+display), since that step is not meant to format a non-numeric result.
+The numeric `coefficient`/`p_value` fields returned by `correlation` are
+untouched (still whatever `scipy_stats.pearsonr` produced, including NaN)
+— only the generated interpretation text changes.
+Interfaces: no public signature change; `stats_analysis.correlation`'s
+internal `_interpret` control flow gains one additional guarded branch
+evaluated before DES-AIDS-051's existing significance check; module gains
+a top-level `import math`.
+Constraints: Must not alter behavior for any finite coefficient/p_value
+pair (DES-AIDS-051/REQ-AIDS-063's existing significance-gated behavior is
+preserved unchanged for all non-NaN inputs); must check NaN on both
+`coefficient` and `p_value` independently (either alone can be NaN
+depending on which scipy code path produced it).
+Requirements: REQ-AIDS-067
+ADRs: none — a single additional guard clause in an existing conditional
+chain; no new dependency (`math` is standard library) or structural
+tradeoff.
+Depends-On: DES-AIDS-051, DES-AIDS-053
+
+## DES-AIDS-056: Delimiter-sniffing CSV ingestion with mismatch warning / 区切り文字検出付きCSV取込と不一致警告
+Responsibilities: In `ingestion.ingest`'s CSV branch, before calling
+`pandas.read_csv`, read a new, bounded text sample (e.g. the file's first
+few kilobytes/lines, decoded as UTF-8 with errors replaced — a fresh,
+locally-scoped read introduced by this design, not a reuse of any existing
+REQ-AIDS-032 remote-fetcher dataframe-row-limit mechanism, which applies
+only after a dataframe already exists) and run
+`csv.Sniffer().sniff(sample, delimiters=",\t;")` inside a
+`try/except csv.Error`. Track whether sniffing succeeded. On success, pass
+the sniffed delimiter as `read_csv(..., sep=sniffed_delimiter)`. On
+`csv.Error` (ambiguous sample), fall back to the existing default
+comma-separated `read_csv` call unchanged, and record that fallback
+occurred. After the dataframe is produced, append a mismatch warning (e.g.
+f"CSV was parsed with the comma fallback as a single column named
+{name!r}; the file may use a tab or semicolon delimiter instead.") to the
+result's new `warnings` field only when all three hold: sniffing fell back
+(did not
+succeed), the comma-parsed fallback produced exactly one column, and that
+column's header name contains a literal tab (`"\t"`) or semicolon (`";"`)
+character — a successfully sniffed, confidently-parsed result (even a
+single genuine column) never receives this warning. Add a new
+`warnings: tuple[str, ...] = ()` field to the `IngestionResult` dataclass
+(additive, keyword-defaulted — preserves every existing positional/keyword
+construction call site).
+Interfaces: `IngestionResult.warnings: tuple[str, ...]` (new field,
+default `()`); no change to `ingest`'s public signature.
+Constraints: Must not change ingestion behavior for any non-CSV source
+kind; must not change the dataframe produced for a genuinely comma- or
+semicolon- or tab-delimited file beyond correctly splitting its columns
+(no row-count/value changes); the delimiter set considered is fixed to
+comma/tab/semicolon (REQ-AIDS-068's named set) — no generalized arbitrary-
+delimiter configuration is introduced by this design; the mismatch warning
+is gated strictly on sniff-fallback, never emitted after a successful
+sniff.
+Requirements: REQ-AIDS-068
+ADRs: none — `csv.Sniffer` is the standard-library mechanism for this
+exact problem; no architectural tradeoff beyond using it directly.
+Depends-On: none (introduces a new, self-contained sampling/sniffing step)
+
+## DES-AIDS-057: Exhaustive evidence-manifest validation within a single insight cell / 単一Insightセル内の全エビデンス網羅検証
+Responsibilities: Replace `notebook_audit._extract_evidence_manifest`'s
+single `.search()` call with a new
+`_extract_evidence_manifests(markdown_source) -> list[dict | None]`
+that uses `_EVIDENCE_FENCE_PATTERN.finditer()` to collect every fenced
+block's parsed JSON payload in appearance order, yielding `None` (not
+silently skipping the block) for a block that fails `json.loads` or
+parses to a non-dict — the audit loop below turns each `None` entry into
+an error-severity finding rather than treating it as absent, so a
+malformed block can never be mistaken for "no block present". In
+`audit_notebook`'s insight loop, iterate every block returned (instead of
+only the first): a block whose payload is `None` produces an error-severity
+"malformed evidence block" finding tagged with its 0-based block index;
+a well-formed block's payload runs through the existing required-keys/
+evidence-resolution checks (and DES-AIDS-054's primary-citation
+body-mention check), each finding likewise tagged with its block index
+when more than one block exists. For each well-formed manifest,
+additionally read an optional `supporting_evidence` field; when present,
+require it to be a `list` whose every entry is a `dict` with an `int`
+`execution_count` and a non-empty `str` `cited_value` — any entry failing
+this shape check produces an error-severity finding ("malformed
+supporting_evidence entry") identifying the cell and entry index;
+well-formed entries are resolved via the same `_find_evidence_cell` call
+used for the primary citation, producing the same "evidence not found"
+error finding on failure. A cell with zero evidence fences at all still
+produces the existing single "missing evidence manifest" finding
+unchanged (only a cell with at least one fence enters this per-block
+validation). `insight_cell_count` continues to increment once per
+qualifying cell (not per block), matching existing report semantics.
+Interfaces: notebook_audit._extract_evidence_manifests(markdown_source: str)
+-> list[dict | None] (module-private, replaces the single-result
+`_extract_evidence_manifest` call site within `audit_notebook`; the old
+singular helper is kept only if still referenced elsewhere, otherwise
+removed in the same change to avoid dead code).
+Constraints: Must preserve current behavior exactly for a cell with
+exactly one well-formed evidence block and no `supporting_evidence` field;
+must never silently drop a malformed block's error from the report; must
+not assume `supporting_evidence` entries appear in any file this
+repository does not already construct in its own test fixtures (no
+backward-compatibility burden for an undocumented field).
+Requirements: REQ-AIDS-069
+ADRs: none — a direct extension of the existing single-block parsing
+helper to multiple blocks plus one well-defined nested schema; no
+alternative design meaningfully reduces complexity further.
+Depends-On: DES-AIDS-033, DES-AIDS-054
+
+## DES-AIDS-058: Heading-prefixed result paragraphs recognized as insight candidates / 見出し付き結論段落のInsight候補認定
+Responsibilities: Rewrite `notebook_audit._looks_like_insight_candidate` so
+that, for a heading-prefixed cell (`stripped.startswith("#")`), it strips
+every leading heading line (lines matching `^#+\s*.*$` from the start of
+the stripped text, consuming consecutive heading lines and the blank
+lines directly between them) and recurses the *same* candidacy decision
+(the existing evidence-fence-present-or-non-heading-remainder logic) on
+whatever non-heading text remains, rather than returning `False`
+unconditionally once an evidence fence is absent. When the remainder after
+stripping heading lines is empty, the cell is not a candidate (preserves
+pure section-heading cells, e.g. "## 結果" alone). This directly reuses
+the pre-existing non-heading-cell heuristic instead of introducing new,
+broader candidacy criteria, bounding the requirement's scope to exactly
+what REQ-AIDS-070 and GitHub #43 describe.
+Interfaces: no public signature change;
+`notebook_audit._looks_like_insight_candidate(markdown_source: str) -> bool`
+internal control flow gains heading-stripping plus a recursive/iterative
+check on the remainder.
+Constraints: Must not change the existing #30 behavior (a heading-prefixed
+cell that already carries an evidence fence remains a candidate); must not
+treat a heading-only cell (no body after the heading) as a candidate.
+Requirements: REQ-AIDS-070
+ADRs: none — narrows an existing exclusion rule to match the already-
+established non-heading heuristic; no new structural decision.
+Depends-On: DES-AIDS-033, DES-AIDS-036
+
+## DES-AIDS-059: Output-level chart metadata persisted by build_image_output / build_image_outputによる出力側チャートメタデータ永続化
+Responsibilities: Update `visualization.build_image_output` to accept its
+existing single `png_bytes` parameter and, when `isinstance(png_bytes,
+RenderedChart)`, construct the same title/xlabel/ylabel/legend/
+missing_glyphs dict shape DES-AIDS-049's `record_chart` already builds for
+cell-level metadata (extracted into a shared module-private
+`_chart_metadata_dict(chart_metadata: ChartMetadata) -> dict` helper reused
+by both call sites to avoid duplicating the field list), and pass it as
+`metadata={"chart": ...}` to `nbformat.v4.new_output(...)`. For plain
+`bytes` input, `metadata` is omitted (empty), preserving current behavior.
+`record_chart` is unchanged by this design (it already calls
+`build_image_output` and separately sets cell-level metadata; it now
+additionally benefits from output-level metadata "for free" since
+`build_image_output` sets it internally) — this is a deliberate shared-
+helper reuse, not a behavior change to `record_chart` itself.
+Interfaces: visualization.build_image_output(png_bytes: bytes) -> NotebookNode
+(signature unchanged; return value's `.metadata["chart"]` is now populated
+when `png_bytes` is a `RenderedChart`); visualization._chart_metadata_dict
+(chart_metadata: ChartMetadata) -> dict (new, module-private, shared with
+DES-AIDS-049's `record_chart` path).
+Constraints: Must not change the PNG/base64 payload already written to
+`data["image/png"]`; must not require call-site changes at any existing
+`build_image_output` caller (additive metadata only).
+Requirements: REQ-AIDS-071
+ADRs: none — a narrow extension of an existing wrapper function reusing an
+already-established metadata dict shape.
+Depends-On: DES-AIDS-048, DES-AIDS-049
+
+## DES-AIDS-060: Per-image chart-metadata matching during visual audit / 視覚監査における画像単位でのチャートメタデータ照合
+Responsibilities: Rewrite `notebook_audit.audit_visual_outputs`'s per-cell
+loop to iterate image outputs individually (`enumerate(cell.get("outputs",
+[]))`, filtering to those with `data["image/png"]`) instead of computing
+one `chart_metadata` value per cell. For each image output at index
+`output_index`, resolve its metadata as: (1) `output.get("metadata",
+{}).get("chart")` when that is a non-empty `dict`; else (2), only when the
+cell contains exactly one qualifying image output and that output's own
+`metadata` has no `"chart"` key at all (distinct from an empty/invalid one,
+per REQ-AIDS-072's explicit no-fallback-on-malformed-output-metadata rule),
+the existing cell-level `cell.get("metadata", {}).get("chart")`; else (3)
+`None`. When resolution yields `None` (or an invalid non-dict/empty
+value), emit the existing "unaudited" finding tagged with
+`(cell_index, output_index)` instead of a bare cell index, and treat the
+metadata as `{}` for the subsequent missing_glyphs/label checks (unchanged
+logic, now run per-output instead of per-cell). The near-empty-image byte
+scan already iterates per-output and is unaffected structurally; it is
+simply tagged with the same `(cell_index, output_index)` pair for
+consistency. `VisualAuditFinding` gains an additive `output_index: int |
+None = None` field (defaulted, so every existing test construction and
+comparison of `VisualAuditFinding(...)` without this field continues to
+work unchanged).
+Interfaces: notebook_audit.VisualAuditFinding gains `output_index: int |
+None = None` (additive, backward-compatible field); 
+notebook_audit.audit_visual_outputs(notebook, chart_cell_indices) ->
+tuple[VisualAuditFinding, ...] (signature unchanged, internal per-cell loop
+replaced with a per-output loop as described).
+Constraints: Must preserve every existing single-image-per-cell test's
+finding content and count unchanged (output_index populated but not
+previously asserted); must not apply one image's valid metadata to a
+sibling image in the same cell under any circumstance.
+Requirements: REQ-AIDS-072
+ADRs: none — a direct generalization of an existing per-cell loop to a
+per-output loop with an additive dataclass field; no alternative shape
+plausibly reduces risk further given the existing test surface.
+Depends-On: DES-AIDS-041, DES-AIDS-059
+
+Note: this design, together with DES-AIDS-059, is exactly the mechanism
+REQ-AIDS-053's updated acceptance text now cross-references ("an image
+output whose own output-level `metadata["chart"]` ... and whose enclosing
+code cell's `metadata["chart"]` are both absent, empty, or non-mapping").
+

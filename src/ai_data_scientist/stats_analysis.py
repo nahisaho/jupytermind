@@ -7,6 +7,7 @@ response language.
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 
 import pandas as pd
@@ -30,12 +31,22 @@ def p_display(p_value: float) -> str:
     return f"p={p_value:.4g}"
 
 
+# @id CODE-AIDS-087
+# @implements REQ-AIDS-067
+# @design DES-AIDS-055
 def _interpret(
     r: float,
     p_value: float,
     language: str,
     significance_threshold: float = 0.05,
 ) -> str:
+    if math.isnan(r) or math.isnan(p_value):
+        if language == "ja":
+            return "相関係数を算出できません(統計量がNaNです)。欠損値を確認してください。"
+        return (
+            "The correlation could not be computed (the statistic is NaN); "
+            "check the input columns for missing values."
+        )
     p_text = p_display(p_value)
     if p_value >= significance_threshold:
         if language == "ja":

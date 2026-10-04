@@ -126,3 +126,46 @@ def test_TEST_AIDS_126_interpretation_uses_bounded_pvalue_display(monkeypatch):
 
     ja_result = correlation(df, "a", "b", language="ja")
     assert "p < 1e-4" in ja_result.interpretation
+
+
+# @id TEST-AIDS-131
+# @verifies REQ-AIDS-067
+def test_TEST_AIDS_131_nan_statistic_states_could_not_be_computed(monkeypatch):
+    """GitHub #47: a NaN coefficient/p-value (e.g. from a column with missing
+    values) must not be silently described as a magnitude/direction/
+    significance claim."""
+    import math
+
+    import ai_data_scientist.stats_analysis as stats_analysis
+
+    monkeypatch.setattr(
+        stats_analysis.scipy_stats, "pearsonr", lambda a, b: (math.nan, math.nan), raising=False
+    )
+    df = pd.DataFrame({"a": [1, 2, 3], "b": [3, 1, 2]})
+
+    en_result = correlation(df, "a", "b", language="en")
+    assert "could not be computed" in en_result.interpretation
+    assert "strong" not in en_result.interpretation
+    assert "weak" not in en_result.interpretation
+    assert "no statistically clear correlation" not in en_result.interpretation
+    assert math.isnan(en_result.statistic)
+    assert math.isnan(en_result.p_value)
+
+    ja_result = correlation(df, "a", "b", language="ja")
+    assert "算出できません" in ja_result.interpretation or "算出不能" in ja_result.interpretation
+
+
+# @id TEST-AIDS-132
+# @verifies REQ-AIDS-067
+def test_TEST_AIDS_132_nan_coefficient_only_also_states_could_not_be_computed(monkeypatch):
+    import math
+
+    import ai_data_scientist.stats_analysis as stats_analysis
+
+    monkeypatch.setattr(
+        stats_analysis.scipy_stats, "pearsonr", lambda a, b: (math.nan, 0.5), raising=False
+    )
+    df = pd.DataFrame({"a": [1, 2, 3], "b": [3, 1, 2]})
+
+    result = correlation(df, "a", "b", language="en")
+    assert "could not be computed" in result.interpretation
