@@ -92,7 +92,9 @@ def _validate_paired_inputs(
     if len(control) != len(treatment):
         raise ValueError("Paired experiment tests require equal-length inputs.")
     if not control.index.equals(treatment.index):
-        raise ValueError("Paired experiment tests require control and treatment to share identical indexes.")
+        raise ValueError(
+            "Paired experiment tests require control and treatment to share identical indexes."
+        )
 
     control_series = _as_numeric_series(control, name="control")
     treatment_series = _as_numeric_series(treatment, name="treatment")
@@ -103,7 +105,9 @@ def _validate_paired_inputs(
     truth_series = None
     if y_true is not None:
         if len(y_true) != len(control):
-            raise ValueError("Paired bootstrap requires y_true to align with control and treatment.")
+            raise ValueError(
+                "Paired bootstrap requires y_true to align with control and treatment."
+            )
         if not y_true.index.equals(control.index):
             raise ValueError("Paired bootstrap requires y_true to share the paired input index.")
         truth_series = _as_numeric_series(y_true, name="y_true")

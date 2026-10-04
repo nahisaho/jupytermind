@@ -78,14 +78,13 @@ def _paired_bootstrap_reference(
         if metric_fn is None:
             return float((treatment_sample - control_sample).mean())
         assert y_true_sample is not None
-        return float(metric_fn(y_true_sample, treatment_sample) - metric_fn(y_true_sample, control_sample))
+        return float(
+            metric_fn(y_true_sample, treatment_sample) - metric_fn(y_true_sample, control_sample)
+        )
 
     observed_difference = compute_difference()
     bootstrap_differences = np.array(
-        [
-            compute_difference(sample_indices())
-            for _ in range(iterations)
-        ],
+        [compute_difference(sample_indices()) for _ in range(iterations)],
         dtype=float,
     )
     alpha = 1.0 - confidence_level
