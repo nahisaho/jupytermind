@@ -9419,6 +9419,232 @@
           }
         }
       ]
+    },
+    {
+      "changeId": "CHANGE-015",
+      "requirementIds": [
+        "REQ-AIDS-021",
+        "REQ-AIDS-082"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-04T21:54:40.772Z",
+          "fingerprints": {
+            "impact": "6a4045082c2b182c2cb6bad166acc3aad23c1f852619528be203dee42dbd666b",
+            "requirements": "71f71897717c13a92285e177bd988b2697688d94b67186557e3e16af6ea5507f",
+            "design": "e5e6b70eab51367654965c964ea0e2a0c8955f7512ea40d3f81c9964c3654ce7",
+            "implementation": "2e440f1076f356f23c1bd0d7db0df0e825fd967ce426534652cf6ed8882b1093",
+            "tests": "d73ec69bd4940f21f465d86a1c5c49aeb205d1b9c955c9486878806c69b40aa2",
+            "tdd": "6d49c11000ce8940b95ea2813ce824f768398630f84f0a61da64066b9e898e86",
+            "requirementImplementations": {
+              "REQ-AIDS-021": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "24304edd7d1da8cd30dfecd948b963aed0fd1d1c422880b3a42f05612661a77c"
+                }
+              },
+              "REQ-AIDS-082": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "24304edd7d1da8cd30dfecd948b963aed0fd1d1c422880b3a42f05612661a77c"
+                }
+              }
+            }
+          },
+          "order": 830
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-04T21:54:46.915Z",
+          "fingerprints": {
+            "impact": "6a4045082c2b182c2cb6bad166acc3aad23c1f852619528be203dee42dbd666b",
+            "requirements": "fe8d6c0ba36509bab5ebcd9f5d7d052afd92305cc00eeddb3ee3f1b1e77a4d6c",
+            "design": "e5e6b70eab51367654965c964ea0e2a0c8955f7512ea40d3f81c9964c3654ce7",
+            "implementation": "2e440f1076f356f23c1bd0d7db0df0e825fd967ce426534652cf6ed8882b1093",
+            "tests": "d73ec69bd4940f21f465d86a1c5c49aeb205d1b9c955c9486878806c69b40aa2",
+            "tdd": "6d49c11000ce8940b95ea2813ce824f768398630f84f0a61da64066b9e898e86",
+            "requirementImplementations": {
+              "REQ-AIDS-021": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "24304edd7d1da8cd30dfecd948b963aed0fd1d1c422880b3a42f05612661a77c"
+                }
+              },
+              "REQ-AIDS-082": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "24304edd7d1da8cd30dfecd948b963aed0fd1d1c422880b3a42f05612661a77c"
+                }
+              }
+            }
+          },
+          "order": 831
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-04T21:54:53.409Z",
+          "fingerprints": {
+            "impact": "6a4045082c2b182c2cb6bad166acc3aad23c1f852619528be203dee42dbd666b",
+            "requirements": "fe8d6c0ba36509bab5ebcd9f5d7d052afd92305cc00eeddb3ee3f1b1e77a4d6c",
+            "design": "76b92efeadbe65fb3cf2d4a20ec004d55a9d57f27192c3abc675e119225f51c6",
+            "implementation": "2e440f1076f356f23c1bd0d7db0df0e825fd967ce426534652cf6ed8882b1093",
+            "tests": "d73ec69bd4940f21f465d86a1c5c49aeb205d1b9c955c9486878806c69b40aa2",
+            "tdd": "6d49c11000ce8940b95ea2813ce824f768398630f84f0a61da64066b9e898e86",
+            "requirementImplementations": {
+              "REQ-AIDS-021": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "24304edd7d1da8cd30dfecd948b963aed0fd1d1c422880b3a42f05612661a77c"
+                }
+              },
+              "REQ-AIDS-082": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "24304edd7d1da8cd30dfecd948b963aed0fd1d1c422880b3a42f05612661a77c"
+                }
+              }
+            }
+          },
+          "order": 832
+        },
+        "red": {
+          "phase": "red",
+          "recordedAt": "2026-10-04T22:15:49.743Z",
+          "fingerprints": {
+            "impact": "6a4045082c2b182c2cb6bad166acc3aad23c1f852619528be203dee42dbd666b",
+            "requirements": "fe8d6c0ba36509bab5ebcd9f5d7d052afd92305cc00eeddb3ee3f1b1e77a4d6c",
+            "design": "76b92efeadbe65fb3cf2d4a20ec004d55a9d57f27192c3abc675e119225f51c6",
+            "implementation": "2e440f1076f356f23c1bd0d7db0df0e825fd967ce426534652cf6ed8882b1093",
+            "tests": "7161572c411402f8456755c168e31ba7b7dd09e9ee75a89e7a251ee02c2c0c16",
+            "tdd": "3eda275b3586a5955c945c7c97f4e0b05db025f9084f4743698a78c082f45d07",
+            "requirementImplementations": {
+              "REQ-AIDS-021": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "24304edd7d1da8cd30dfecd948b963aed0fd1d1c422880b3a42f05612661a77c"
+                }
+              },
+              "REQ-AIDS-082": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "24304edd7d1da8cd30dfecd948b963aed0fd1d1c422880b3a42f05612661a77c"
+                }
+              }
+            }
+          },
+          "order": 834
+        },
+        "implementation": {
+          "phase": "implementation",
+          "recordedAt": "2026-10-04T22:16:08.204Z",
+          "fingerprints": {
+            "impact": "6a4045082c2b182c2cb6bad166acc3aad23c1f852619528be203dee42dbd666b",
+            "requirements": "fe8d6c0ba36509bab5ebcd9f5d7d052afd92305cc00eeddb3ee3f1b1e77a4d6c",
+            "design": "76b92efeadbe65fb3cf2d4a20ec004d55a9d57f27192c3abc675e119225f51c6",
+            "implementation": "8e885c457f7ebeba98679d547964c0b7318b327c069557a609b1d637afe91ed4",
+            "tests": "7161572c411402f8456755c168e31ba7b7dd09e9ee75a89e7a251ee02c2c0c16",
+            "tdd": "94089df7cf304cb7261dde5373797dc0b8ba209f79b36634b70874c8f60d1f8d",
+            "requirementImplementations": {
+              "REQ-AIDS-021": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "0a007c89f07554e33eae638d6b0e2d7002bf83e14b91c97a67a0011cbaf39d0e"
+                }
+              },
+              "REQ-AIDS-082": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "0a007c89f07554e33eae638d6b0e2d7002bf83e14b91c97a67a0011cbaf39d0e"
+                }
+              }
+            }
+          },
+          "order": 836
+        },
+        "green": {
+          "phase": "green",
+          "recordedAt": "2026-10-04T22:16:13.145Z",
+          "fingerprints": {
+            "impact": "6a4045082c2b182c2cb6bad166acc3aad23c1f852619528be203dee42dbd666b",
+            "requirements": "fe8d6c0ba36509bab5ebcd9f5d7d052afd92305cc00eeddb3ee3f1b1e77a4d6c",
+            "design": "76b92efeadbe65fb3cf2d4a20ec004d55a9d57f27192c3abc675e119225f51c6",
+            "implementation": "8e885c457f7ebeba98679d547964c0b7318b327c069557a609b1d637afe91ed4",
+            "tests": "7161572c411402f8456755c168e31ba7b7dd09e9ee75a89e7a251ee02c2c0c16",
+            "tdd": "94089df7cf304cb7261dde5373797dc0b8ba209f79b36634b70874c8f60d1f8d",
+            "requirementImplementations": {
+              "REQ-AIDS-021": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "0a007c89f07554e33eae638d6b0e2d7002bf83e14b91c97a67a0011cbaf39d0e"
+                }
+              },
+              "REQ-AIDS-082": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "0a007c89f07554e33eae638d6b0e2d7002bf83e14b91c97a67a0011cbaf39d0e"
+                }
+              }
+            }
+          },
+          "order": 837
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-04T22:17:14.729Z",
+          "fingerprints": {
+            "impact": "6a4045082c2b182c2cb6bad166acc3aad23c1f852619528be203dee42dbd666b",
+            "requirements": "fe8d6c0ba36509bab5ebcd9f5d7d052afd92305cc00eeddb3ee3f1b1e77a4d6c",
+            "design": "76b92efeadbe65fb3cf2d4a20ec004d55a9d57f27192c3abc675e119225f51c6",
+            "implementation": "8e885c457f7ebeba98679d547964c0b7318b327c069557a609b1d637afe91ed4",
+            "tests": "7161572c411402f8456755c168e31ba7b7dd09e9ee75a89e7a251ee02c2c0c16",
+            "tdd": "94089df7cf304cb7261dde5373797dc0b8ba209f79b36634b70874c8f60d1f8d",
+            "requirementImplementations": {
+              "REQ-AIDS-021": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "0a007c89f07554e33eae638d6b0e2d7002bf83e14b91c97a67a0011cbaf39d0e"
+                }
+              },
+              "REQ-AIDS-082": {
+                "paths": [
+                  "src/ai_data_scientist/explainability.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/explainability.py": "0a007c89f07554e33eae638d6b0e2d7002bf83e14b91c97a67a0011cbaf39d0e"
+                }
+              }
+            }
+          },
+          "order": 838
+        }
+      }
     }
   ]
 }

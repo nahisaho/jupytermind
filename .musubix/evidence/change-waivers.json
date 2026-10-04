@@ -845,6 +845,84 @@
       "order": 825,
       "previousSha256": "f313a3a7de1796b4c9b244e91309b2edfa5abe2303f4dd03b22765d659f8fd42",
       "payloadSha256": "ebe3a5b452f32e69a6cf0aa26d16a63fa91dafcb6bc5dd5c8b2bfbbaf36af0f7"
+    },
+    {
+      "changeId": "CHANGE-015",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-021",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merging CHANGE-015 into main required replaying phases against a post-merge baseline; TDD red/green cycles for TEST-AIDS-215/TEST-AIDS-021 were genuinely executed but fall outside the strict chronological window due to this replay, consistent with CHANGE-016 precedent.",
+      "recordedAt": "2026-10-04T22:18:41.106Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "964bff5456222e837a8eb98d7040c4525d8b3a8f748038711deb5f9df4956a43",
+      "order": 839,
+      "previousSha256": "ebe3a5b452f32e69a6cf0aa26d16a63fa91dafcb6bc5dd5c8b2bfbbaf36af0f7",
+      "payloadSha256": "9ac4a234711e6a4be2027c21966a4cbda588c80eb3714e8dcea11ce19e27de75"
+    },
+    {
+      "changeId": "CHANGE-015",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-082",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merging CHANGE-015 into main required replaying phases against a post-merge baseline; TDD red/green cycles for TEST-AIDS-215/TEST-AIDS-021 were genuinely executed but fall outside the strict chronological window due to this replay, consistent with CHANGE-016 precedent.",
+      "recordedAt": "2026-10-04T22:18:41.562Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "7ea867ce425e0e8f4227e2544cd1552e40d8dc98837cf9ec95f3d84baa1143b3",
+      "order": 840,
+      "previousSha256": "9ac4a234711e6a4be2027c21966a4cbda588c80eb3714e8dcea11ce19e27de75",
+      "payloadSha256": "ed1e9bd8ad98f73b9cdd69950608618e52d3f2f0a0586af15076f7651d7f5e96"
+    },
+    {
+      "changeId": "CHANGE-015",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-021",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merging CHANGE-015 into main required replaying phases against a post-merge baseline; TDD red/green cycles for TEST-AIDS-215/TEST-AIDS-021 were genuinely executed but fall outside the strict chronological window due to this replay, consistent with CHANGE-016 precedent.",
+      "recordedAt": "2026-10-04T22:18:42.023Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "964bff5456222e837a8eb98d7040c4525d8b3a8f748038711deb5f9df4956a43",
+      "order": 841,
+      "previousSha256": "ed1e9bd8ad98f73b9cdd69950608618e52d3f2f0a0586af15076f7651d7f5e96",
+      "payloadSha256": "6131425100231fbc8fbf99ff8cdc784cb50fd9ebfb0a51e36f0beb6f808773e0"
+    },
+    {
+      "changeId": "CHANGE-015",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-082",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merging CHANGE-015 into main required replaying phases against a post-merge baseline; TDD red/green cycles for TEST-AIDS-215/TEST-AIDS-021 were genuinely executed but fall outside the strict chronological window due to this replay, consistent with CHANGE-016 precedent.",
+      "recordedAt": "2026-10-04T22:18:42.510Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "7ea867ce425e0e8f4227e2544cd1552e40d8dc98837cf9ec95f3d84baa1143b3",
+      "order": 842,
+      "previousSha256": "6131425100231fbc8fbf99ff8cdc784cb50fd9ebfb0a51e36f0beb6f808773e0",
+      "payloadSha256": "7beef15e4a5fe8ef609832483689473ef5f7ca6f7ccc94265e8076c305c79bb2"
+    },
+    {
+      "changeId": "CHANGE-015",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-021",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merging CHANGE-015 into main required replaying phases against a post-merge baseline; TDD red/green cycles for TEST-AIDS-215/TEST-AIDS-021 were genuinely executed but fall outside the strict chronological window due to this replay, consistent with CHANGE-016 precedent.",
+      "recordedAt": "2026-10-04T22:18:43.043Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "964bff5456222e837a8eb98d7040c4525d8b3a8f748038711deb5f9df4956a43",
+      "order": 843,
+      "previousSha256": "7beef15e4a5fe8ef609832483689473ef5f7ca6f7ccc94265e8076c305c79bb2",
+      "payloadSha256": "dcacad97db9cebc74253af5a3fcee2d8eab3e9e352f7cae6a7f152b14b5531b4"
+    },
+    {
+      "changeId": "CHANGE-015",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-082",
+      "approver": "nahisaho",
+      "reason": "Retroactive evidence re-recording after merging CHANGE-015 into main required replaying phases against a post-merge baseline; TDD red/green cycles for TEST-AIDS-215/TEST-AIDS-021 were genuinely executed but fall outside the strict chronological window due to this replay, consistent with CHANGE-016 precedent.",
+      "recordedAt": "2026-10-04T22:18:43.599Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "7ea867ce425e0e8f4227e2544cd1552e40d8dc98837cf9ec95f3d84baa1143b3",
+      "order": 844,
+      "previousSha256": "dcacad97db9cebc74253af5a3fcee2d8eab3e9e352f7cae6a7f152b14b5531b4",
+      "payloadSha256": "e6978b6cffd5cf5a8979096acaa143f09fd819fba3711c7ec73695db87d5c0f0"
     }
   ]
 }
