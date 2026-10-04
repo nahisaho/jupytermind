@@ -27,16 +27,82 @@ ADRs: none — model-type selection follows directly from the user's request wit
 Depends-On: DES-AIDS-004
 
 ## DES-AIDS-013: Feature engineering module / 特徴量エンジニアリング
-Responsibilities: Apply the requested encoding, scaling, or feature
-selection transformation to a dataframe and report the resulting feature
-set.
-Interfaces: engineerFeatures(df, operation, columns) -> FeatureResult
-{dataframe, added_columns, removed_columns}.
+Responsibilities: Apply the requested encoding, scaling, row-wise
+aggregation, categorical interaction, missing-value flagging, or
+explicit-edge binning transformation to a dataframe and report the
+resulting feature set as a structured column-name-to-definition mapping.
+(Feature-selection support named in REQ-AIDS-015's statement predates this
+change, has no acceptance criterion or implemented operation, and remains
+out of CHANGE-008's scope — tracked as a pre-existing gap, not introduced
+or newly accepted here.)
+Interfaces: `engineer_features(df: DataFrame, operation: str, columns:
+list[str] | None = None, **params) -> FeatureResult` executed via
+`DES-AIDS-004.executeCell`, where `FeatureResult = {dataframe,
+added_columns, removed_columns, definitions: dict[str, str] =
+field(default_factory=dict)}` (the new `definitions` field defaults to an
+empty dict, so existing 3-positional-argument `FeatureResult(...)`
+construction stays valid). `operation` accepts `one_hot`, `scale`,
+`aggregate`, `interaction`, `missing_flag`, or `bin`. Operation-specific
+`**params`: `aggregate` requires `group_col: str`, `agg_func: Literal["mean",
+"sum", "count_eq"]`, and (only for `count_eq`) `compare_value`, with
+`columns` naming the source column(s) to aggregate — one output column per
+`columns` entry; `interaction` requires `col_a: str`, `col_b: str`;
+`missing_flag` uses `columns` only; `bin` requires `edges: list[float]` and
+`columns` naming the single column to bin. Unknown/missing required params
+for the given `operation` raise `ValueError`.
 Constraints: One-hot encoding output must match the pandas get_dummies
-reference output exactly (REQ-AIDS-015 acceptance).
+reference output exactly (REQ-AIDS-015 acceptance). Aggregation uses
+`groupby(group_col)[source_col].transform(...)` semantics with nulls
+excluded from `mean`/`sum` and treated as non-matching for `count_eq`
+(`df[source_col].eq(compare_value).groupby(df[group_col]).transform("sum")`
+is the `count_eq` reference). Interaction concatenates `astype("string")`
+values with a `"__"` separator and nulls propagate. Binning requires
+explicit monotonically increasing edges and matches `pandas.cut(...,
+right=True, include_lowest=True)`, mapping out-of-range values to null.
+Every added column has a non-empty `definitions` entry naming the operation
+and source column(s). Existing `one_hot`/`scale` calls keep their current
+`FeatureResult.dataframe`/`added_columns`/`removed_columns` values
+unchanged.
 Requirements: REQ-AIDS-015
 ADRs: none — pandas/scikit-learn provide the transformation primitives directly; no rejected alternative was evaluated.
 Depends-On: DES-AIDS-004
+
+## DES-AIDS-061: Leakage-safe fit/transform feature engineering API / リーク防止fit/transform API
+Responsibilities: Separate statistics estimation from transformation
+application for statistics-estimating `engineer_features` operations
+(currently `scale`), so a model-selection/cross-validation caller can fit
+on a training fold and transform a disjoint fold without ever deriving
+statistics from the held-out rows.
+Interfaces: `fit_features(df: DataFrame, operation: Literal["scale"],
+columns: list[str]) -> FittedFeatureState` where `FittedFeatureState =
+@dataclass(frozen=True) {operation: str, columns: tuple[str, ...], scaler:
+StandardScaler}` and `scaler` is exactly the object produced by
+`StandardScaler().fit(df[list(columns)])` (no other state is held for the
+currently-supported `scale` operation); `transform_features(fitted_state:
+FittedFeatureState, df: DataFrame) -> FeatureResult`, selecting
+`df[list(fitted_state.columns)]` in `fitted_state.columns` order and
+calling `fitted_state.scaler.transform(...)` on it — never re-fitting —
+then returning a `FeatureResult` whose `dataframe` preserves `df`'s
+index/row order with the transformed columns replaced in place.
+Constraints: `fit_features(df, "scale", columns).scaler.mean_`/`.scale_`
+must be bit-for-bit equal to a `StandardScaler` fitted only on
+`df[columns]`. `transform_features` must never read or recompute
+statistics from its `df` argument; it only applies
+`fitted_state.scaler.transform`. `transform_features(fitted_state, df)`
+called with the same `df` the `fitted_state` was fit from must reproduce
+the legacy single-call `engineer_features(df, "scale", columns)` output
+exactly, so the existing entry point can be re-implemented in terms of this
+pair without behavior drift. A fit column with zero training-fold variance
+keeps scikit-learn's `StandardScaler` convention of `scale_=1` for that
+column (confirmed: `StandardScaler().fit([[1.0],[1.0],[1.0]]).scale_ ==
+[1.0]`), so its transform output reduces to mean-centering without a
+division-by-zero error; this requires no special-case code beyond
+delegating to `StandardScaler`.
+Requirements: REQ-AIDS-073
+ADRs: none — this narrowly splits an existing scikit-learn-backed
+transformation into two calls using the same `StandardScaler` primitive;
+no competing architectural alternative was considered.
+Depends-On: DES-AIDS-013
 
 ## DES-AIDS-014: Clustering & dimensionality reduction module / クラスタリング・次元削減
 Responsibilities: Fit the requested unsupervised model (clustering or

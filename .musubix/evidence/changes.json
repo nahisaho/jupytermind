@@ -7231,6 +7231,97 @@
           }
         }
       ]
+    },
+    {
+      "changeId": "CHANGE-008",
+      "requirementIds": [
+        "REQ-AIDS-015",
+        "REQ-AIDS-073"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-04T12:07:25.459Z",
+          "fingerprints": {
+            "impact": "637112669b5292619ac0d00c6c69b7bc5670d7316f72faf98a455789a80af5bd",
+            "requirements": "9e09bf7f362f5642f41cb17172a9fa2b8e016fe5bbb923441bbca61570e7a205",
+            "design": "8d0202d2649802a744f8555a2ed05f3e3364630ea5a7aa5614c7dd84d9467b80",
+            "implementation": "6380914eaf7c8effed55e8d36e4f8c1b8bcc96f3907f758b1798cebd2001ecb1",
+            "tests": "7ea137a9857d293d274fd7a1b00e328bd284eefafd7aced26560f5ffd8acf0c5",
+            "tdd": "f0a1cb88520ff3fe4caf06a95cc0f635ec5f1c023249e2d2a1af1c52b88e3d33",
+            "requirementImplementations": {
+              "REQ-AIDS-015": {
+                "paths": [
+                  "src/ai_data_scientist/feature_engineering.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/feature_engineering.py": "882c1e0d0da761f8c40d8298745e3cb2801bfd0d84424e4f3c202fdbaab5cbe1"
+                }
+              },
+              "REQ-AIDS-073": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 636
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-04T12:07:44.569Z",
+          "fingerprints": {
+            "impact": "637112669b5292619ac0d00c6c69b7bc5670d7316f72faf98a455789a80af5bd",
+            "requirements": "9e09bf7f362f5642f41cb17172a9fa2b8e016fe5bbb923441bbca61570e7a205",
+            "design": "8d0202d2649802a744f8555a2ed05f3e3364630ea5a7aa5614c7dd84d9467b80",
+            "implementation": "6380914eaf7c8effed55e8d36e4f8c1b8bcc96f3907f758b1798cebd2001ecb1",
+            "tests": "7ea137a9857d293d274fd7a1b00e328bd284eefafd7aced26560f5ffd8acf0c5",
+            "tdd": "f0a1cb88520ff3fe4caf06a95cc0f635ec5f1c023249e2d2a1af1c52b88e3d33",
+            "requirementImplementations": {
+              "REQ-AIDS-015": {
+                "paths": [
+                  "src/ai_data_scientist/feature_engineering.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/feature_engineering.py": "882c1e0d0da761f8c40d8298745e3cb2801bfd0d84424e4f3c202fdbaab5cbe1"
+                }
+              },
+              "REQ-AIDS-073": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 637
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-04T12:15:58.578Z",
+          "fingerprints": {
+            "impact": "637112669b5292619ac0d00c6c69b7bc5670d7316f72faf98a455789a80af5bd",
+            "requirements": "9e09bf7f362f5642f41cb17172a9fa2b8e016fe5bbb923441bbca61570e7a205",
+            "design": "e3709f14ccd4b9df02cad022f855d9ef1b081b2d30665e573ca374a5f7d89b4e",
+            "implementation": "6380914eaf7c8effed55e8d36e4f8c1b8bcc96f3907f758b1798cebd2001ecb1",
+            "tests": "7ea137a9857d293d274fd7a1b00e328bd284eefafd7aced26560f5ffd8acf0c5",
+            "tdd": "f0a1cb88520ff3fe4caf06a95cc0f635ec5f1c023249e2d2a1af1c52b88e3d33",
+            "requirementImplementations": {
+              "REQ-AIDS-015": {
+                "paths": [
+                  "src/ai_data_scientist/feature_engineering.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/feature_engineering.py": "882c1e0d0da761f8c40d8298745e3cb2801bfd0d84424e4f3c202fdbaab5cbe1"
+                }
+              },
+              "REQ-AIDS-073": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 638
+        }
+      }
     }
   ]
 }
