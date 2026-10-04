@@ -48,9 +48,7 @@ def _build_ranking(feature_importances: dict[str, float]) -> list[str]:
 def _build_feature_importance_map(
     feature_names: list[str], raw_importances: np.ndarray
 ) -> dict[str, float]:
-    return {
-        name: float(value) for name, value in zip(feature_names, np.asarray(raw_importances))
-    }
+    return {name: float(value) for name, value in zip(feature_names, np.asarray(raw_importances))}
 
 
 # @id CODE-AIDS-107
@@ -128,8 +126,7 @@ def _finalize_signed_result(
         max_abs_error = float(np.max(np.abs(reconstructed - raw_predictions)))
         passed = bool(max_abs_error <= 1e-6)
     signed_contributions = [
-        {name: float(value) for name, value in zip(feature_names, row)}
-        for row in contributions
+        {name: float(value) for name, value in zip(feature_names, row)} for row in contributions
     ]
     feature_importances = _build_feature_importance_map(
         feature_names, np.mean(np.abs(contributions), axis=0)

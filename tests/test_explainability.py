@@ -223,7 +223,9 @@ def test_TEST_AIDS_174(monkeypatch):
             return values[:, 0] * 2.0 + values[:, 1] * -0.5 + 1.0
 
     rows = pd.DataFrame({"signal": [1.0, 3.0], "noise": [2.0, 1.0]})
-    monkeypatch.setattr("ai_data_scientist.explainability.import_module", lambda name: FakeShapModule())
+    monkeypatch.setattr(
+        "ai_data_scientist.explainability.import_module", lambda name: FakeShapModule()
+    )
 
     explanation = explain_model(
         LinearModelWithoutRawAccess(),
@@ -288,7 +290,9 @@ def test_TEST_AIDS_176(monkeypatch):
             return run
 
     rows = pd.DataFrame({"signal": [1.0, 3.0], "noise": [2.0, 1.0]})
-    monkeypatch.setattr("ai_data_scientist.explainability.import_module", lambda name: FakeShapModule())
+    monkeypatch.setattr(
+        "ai_data_scientist.explainability.import_module", lambda name: FakeShapModule()
+    )
 
     explanation = explain_model(
         InvalidPredContribWithShapFallbackModel(),
