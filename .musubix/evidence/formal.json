@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T14:39:17.528Z",
-  "totalRequirements": 139,
-  "modeledRequirements": 11,
-  "modeledFraction": 0.07913669064748201,
+  "generatedAt": "2026-10-04T14:57:30.920Z",
+  "totalRequirements": 143,
+  "modeledRequirements": 12,
+  "modeledFraction": 0.08391608391608392,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -34,6 +34,11 @@
       {
         "requirement": "REQ-AIDS-049",
         "atom": "[\"system\",\"expose a stable workspace-root-anchored data directory path on every resolved projecthandle, together with a helper that creates it, so dataset files written during a session land under the same stable project root as the notebook\"]",
+        "positive": true
+      },
+      {
+        "requirement": "REQ-AIDS-088",
+        "atom": "[\"system\",\"provide a chart_metadata_from_figure(fig) helper that builds chartmetadata from an existing matplotlib figure so externally drawn charts can be wrapped as auditable renderedchart outputs without hand-assembling metadata mappings\"]",
         "positive": true
       },
       {
@@ -161,6 +166,9 @@
       "REQ-AIDS-070",
       "REQ-AIDS-071",
       "REQ-AIDS-072",
+      "REQ-AIDS-085",
+      "REQ-AIDS-086",
+      "REQ-AIDS-087",
       "REQ-AIDS-008",
       "REQ-AIDS-015",
       "REQ-AIDS-073",
@@ -530,6 +538,21 @@
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
+        "message": "REQ-AIDS-085 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-086 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-087 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
         "message": "REQ-AIDS-008 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
@@ -886,7 +909,7 @@
   },
   "fingerprints": {
     ".musubix/features/ai-chemistry-scientist/requirements.md": "50db33cf117db410f0d028e52ab0ebe9f24b07ec410915f30e24b3764de567f9",
-    ".musubix/features/ai-data-scientist/requirements.md": "b021a2bee519a82da95f8bbdf1a922eeac4bcd86124cf2f63534f110a25e9d21",
+    ".musubix/features/ai-data-scientist/requirements.md": "1feef66dd4b9747b37a8685619282ba549f4ad7fb61ba2fe5527416ddac8c22d",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "acf8edfe207c3e9824c0f1b9c91ae44498c2c7c1a0e03f14ac0114b35c1beb68",
     ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",

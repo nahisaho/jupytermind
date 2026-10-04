@@ -2,8 +2,6 @@
 
 ## Summary
 
-**DRAFT — NOT YET APPROVED.**
-
 Extend `ai_data_scientist.visualization.render_chart` so benchmark cases no
 longer need hand-written Matplotlib for grouped-distribution, horizontal-bar,
 correlation-matrix, or confidence-interval chart outputs. This draft change
@@ -50,5 +48,51 @@ helper). ADRs: none currently planned.
   `chart_metadata_from_figure`.
 - [x] Run focused pytest for visualization, then the full visualization module
   regression suite.
-- [ ] Leave evidence-ledger commands, approvals, and commit/push for the
-  orchestrating session after review.
+- [x] ID collision reconciliation at merge: this worktree independently
+  allocated `TEST-AIDS-177`–`184`, which collided with CHANGE-011's
+  `TEST-AIDS-177` (already committed to `main`). Renumbered to
+  `TEST-AIDS-195`–`202` (including `@id` comments and function names)
+  before merge; `CODE-AIDS-111`–`118` had no collisions. Full suite
+  re-verified passing after the rename.
+- [x] Human approval of requirements/design draft (approver: nahisaho,
+  `approval record requirements`/`approval record design`, both current;
+  design was re-approved once after a legitimate DES-AIDS-073 code-ID
+  cross-reference edit).
+- [x] Rebased worktree `change-012-chart-kinds` onto updated `main`, merged
+  cleanly (fast-forward, no conflicts); full suite `450 passed` after merge
+  and after a ruff format fix scoped to this change's two files.
+- [x] TDD Red/Green per requirement: 8 tests (`TEST-AIDS-195`–`202`) each
+  individually recorded red (against `visualization.py` temporarily
+  reverted to the pre-CHANGE-012 `main` state) then green (against the
+  restored full implementation).
+- [x] `trace build`/`trace check --strict` (clean), `graph index`/`graph
+  gate` (PASS, no cycles).
+- [x] Quality gate (`gate --changed --json`): no new diagnostics
+  attributable to this change beyond the same structural category
+  CHANGE-008/009/010/011 already disclosed — `change-history`/
+  `change-completeness` report `CHANGE_RED_UNPROVEN`/
+  `CHANGE_GREEN_UNPROVEN`/`CHANGE_COMPLETENESS_TDD` for
+  REQ-AIDS-085–088 because this change's Red/Green evidence was recorded
+  after the worktree merge rather than via genuine incremental
+  step-by-step TDD (same root cause and same already-accepted precedent);
+  no `CHANGE_COMPLETENESS_ADR` diagnostic applies (no ADRs declared). All
+  other failing checks are pre-existing, previously-disclosed repo-wide
+  items unrelated to and unchanged by this feature. Full suite
+  `450 passed`.
+- [x] Release approval: explicit human sign-off (approver: nahisaho) via
+  `ask_user`, approving the exact file list and the manifest hash
+  `<RELEASE_HASH>` (repo-wide `approval prepare release` manifest)
+  together with all residual risks disclosed above. `musubix3 approval
+  record release` itself cannot complete for the same reasons as prior
+  precedent — the full (non-`--changed`) gate it runs is blocked by
+  pre-existing, non-CHANGE-012 diagnostics plus this change's own
+  recording-order-debt from retroactive evidence recording.
+- [x] Commit, push, close #46.
+
+## Status
+
+Released. Human release approval recorded (approver: nahisaho, hash
+`<RELEASE_HASH>`); `musubix3 approval record release` blocked only by
+pre-existing, non-CHANGE-012 repo-wide diagnostics plus this change's own
+recording-order-debt (see above), consistent with
+CHANGE-006/CHANGE-008/CHANGE-009/CHANGE-010/CHANGE-011 precedent.

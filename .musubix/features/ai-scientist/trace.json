@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T14:39:15.210Z",
+  "generatedAt": "2026-10-04T14:57:28.622Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -588,6 +588,30 @@
       "line": 1193
     },
     {
+      "id": "DES-AIDS-073",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist/design.md",
+      "line": 1237
+    },
+    {
+      "id": "DES-AIDS-074",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist/design.md",
+      "line": 1250
+    },
+    {
+      "id": "DES-AIDS-075",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist/design.md",
+      "line": 1258
+    },
+    {
+      "id": "DES-AIDS-076",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist/design.md",
+      "line": 1266
+    },
+    {
       "id": "REQ-AIDS-001",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist/requirements.md",
@@ -991,6 +1015,34 @@
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist/requirements.md",
       "line": 419,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIDS-085",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 427,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIDS-086",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 434,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIDS-087",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 441,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AIDS-088",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 448,
       "mandatory": true
     },
     {
@@ -2473,43 +2525,85 @@
       "id": "CODE-AIDS-054",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
-      "line": 27
+      "line": 32
     },
     {
       "id": "CODE-AIDS-084",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
-      "line": 66
+      "line": 71
     },
     {
       "id": "CODE-AIDS-085",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
-      "line": 135
+      "line": 163
+    },
+    {
+      "id": "CODE-AIDS-111",
+      "kind": "code",
+      "path": "src/ai_data_scientist/visualization.py",
+      "line": 218
+    },
+    {
+      "id": "CODE-AIDS-112",
+      "kind": "code",
+      "path": "src/ai_data_scientist/visualization.py",
+      "line": 258
+    },
+    {
+      "id": "CODE-AIDS-116",
+      "kind": "code",
+      "path": "src/ai_data_scientist/visualization.py",
+      "line": 284
+    },
+    {
+      "id": "CODE-AIDS-117",
+      "kind": "code",
+      "path": "src/ai_data_scientist/visualization.py",
+      "line": 312
+    },
+    {
+      "id": "CODE-AIDS-113",
+      "kind": "code",
+      "path": "src/ai_data_scientist/visualization.py",
+      "line": 335
+    },
+    {
+      "id": "CODE-AIDS-114",
+      "kind": "code",
+      "path": "src/ai_data_scientist/visualization.py",
+      "line": 400
+    },
+    {
+      "id": "CODE-AIDS-115",
+      "kind": "code",
+      "path": "src/ai_data_scientist/visualization.py",
+      "line": 435
     },
     {
       "id": "CODE-AIDS-007",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
-      "line": 185
+      "line": 511
     },
     {
       "id": "CODE-AIDS-091",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
-      "line": 277
+      "line": 628
     },
     {
       "id": "CODE-AIDS-034",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
-      "line": 293
+      "line": 645
     },
     {
       "id": "CODE-AIDS-035",
       "kind": "code",
       "path": "src/ai_data_scientist/visualization.py",
-      "line": 317
+      "line": 669
     },
     {
       "id": "CODE-AIMS-070",
@@ -4927,85 +5021,133 @@
       "id": "TEST-AIDS-007",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 20
+      "line": 27
     },
     {
       "id": "TEST-AIDS-039",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 50
+      "line": 57
     },
     {
       "id": "TEST-AIDS-049",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 73
+      "line": 80
     },
     {
       "id": "TEST-AIDS-064",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 94
+      "line": 101
     },
     {
       "id": "TEST-AIDS-065",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 113
+      "line": 120
     },
     {
       "id": "TEST-AIDS-107",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 139
+      "line": 146
     },
     {
       "id": "TEST-AIDS-111",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 170
+      "line": 177
     },
     {
       "id": "TEST-AIDS-113",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 254
+      "line": 261
     },
     {
       "id": "TEST-AIDS-114",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 280
+      "line": 287
     },
     {
       "id": "TEST-AIDS-115",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 295
+      "line": 302
     },
     {
       "id": "TEST-AIDS-116",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 326
+      "line": 333
     },
     {
       "id": "TEST-AIDS-127",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 345
+      "line": 352
     },
     {
       "id": "TEST-AIDS-144",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 372
+      "line": 379
     },
     {
       "id": "TEST-AIDS-145",
       "kind": "test",
       "path": "tests/test_visualization.py",
-      "line": 390
+      "line": 397
+    },
+    {
+      "id": "TEST-AIDS-195",
+      "kind": "test",
+      "path": "tests/test_visualization.py",
+      "line": 409
+    },
+    {
+      "id": "TEST-AIDS-196",
+      "kind": "test",
+      "path": "tests/test_visualization.py",
+      "line": 461
+    },
+    {
+      "id": "TEST-AIDS-197",
+      "kind": "test",
+      "path": "tests/test_visualization.py",
+      "line": 504
+    },
+    {
+      "id": "TEST-AIDS-198",
+      "kind": "test",
+      "path": "tests/test_visualization.py",
+      "line": 532
+    },
+    {
+      "id": "TEST-AIDS-199",
+      "kind": "test",
+      "path": "tests/test_visualization.py",
+      "line": 574
+    },
+    {
+      "id": "TEST-AIDS-200",
+      "kind": "test",
+      "path": "tests/test_visualization.py",
+      "line": 617
+    },
+    {
+      "id": "TEST-AIDS-201",
+      "kind": "test",
+      "path": "tests/test_visualization.py",
+      "line": 661
+    },
+    {
+      "id": "TEST-AIDS-202",
+      "kind": "test",
+      "path": "tests/test_visualization.py",
+      "line": 709
     }
   ],
   "edges": [
@@ -5836,6 +5978,61 @@
     },
     {
       "from": "DES-AIDS-060",
+      "to": "DES-AIDS-059",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-073",
+      "to": "REQ-AIDS-085",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AIDS-073",
+      "to": "DES-AIDS-009",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-073",
+      "to": "DES-AIDS-048",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-074",
+      "to": "REQ-AIDS-086",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AIDS-074",
+      "to": "DES-AIDS-073",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-075",
+      "to": "REQ-AIDS-087",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AIDS-075",
+      "to": "DES-AIDS-073",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-076",
+      "to": "REQ-AIDS-088",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-AIDS-076",
+      "to": "DES-AIDS-048",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-076",
+      "to": "DES-AIDS-049",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-076",
       "to": "DES-AIDS-059",
       "relation": "depends-on"
     },
@@ -8105,6 +8302,76 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AIDS-111",
+      "to": "REQ-AIDS-088",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-111",
+      "to": "DES-AIDS-076",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-112",
+      "to": "REQ-AIDS-087",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-112",
+      "to": "DES-AIDS-075",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-116",
+      "to": "REQ-AIDS-086",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-116",
+      "to": "DES-AIDS-074",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-117",
+      "to": "REQ-AIDS-087",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-117",
+      "to": "DES-AIDS-075",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-113",
+      "to": "REQ-AIDS-086",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-113",
+      "to": "DES-AIDS-074",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-114",
+      "to": "REQ-AIDS-085",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-114",
+      "to": "DES-AIDS-073",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-115",
+      "to": "REQ-AIDS-085",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-115",
+      "to": "DES-AIDS-073",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AIDS-007",
       "to": "REQ-AIDS-007",
       "relation": "implements"
@@ -8137,6 +8404,36 @@
     {
       "from": "CODE-AIDS-007",
       "to": "DES-AIDS-052",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-007",
+      "to": "REQ-AIDS-085",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-007",
+      "to": "REQ-AIDS-086",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-007",
+      "to": "REQ-AIDS-087",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-007",
+      "to": "DES-AIDS-073",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-007",
+      "to": "DES-AIDS-074",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-007",
+      "to": "DES-AIDS-075",
       "relation": "implements"
     },
     {
@@ -10808,6 +11105,61 @@
       "from": "TEST-AIDS-145",
       "to": "REQ-AIDS-071",
       "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-195",
+      "to": "REQ-AIDS-085",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-196",
+      "to": "REQ-AIDS-086",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-197",
+      "to": "REQ-AIDS-086",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-198",
+      "to": "REQ-AIDS-087",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-199",
+      "to": "REQ-AIDS-088",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-200",
+      "to": "REQ-AIDS-086",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-200",
+      "to": "REQ-AIDS-087",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-201",
+      "to": "REQ-AIDS-086",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-201",
+      "to": "REQ-AIDS-087",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-202",
+      "to": "REQ-AIDS-086",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-202",
+      "to": "REQ-AIDS-087",
+      "relation": "verifies"
     }
   ],
   "diagnostics": [],
@@ -10852,8 +11204,8 @@
     ".musubix/decisions/ADR-0032.md": "e7f4df0112188f25af966498c3fa27b22a92c7dcd6244656650f6c967b33f2d5",
     ".musubix/features/ai-chemistry-scientist/design.md": "3fc504cbeb47081bd487ffe325d76cc06a4b6b8b7e1b661fe40d4befcac8228a",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "50db33cf117db410f0d028e52ab0ebe9f24b07ec410915f30e24b3764de567f9",
-    ".musubix/features/ai-data-scientist/design.md": "e56eab9b5824a1eb1dee073383a8e8471f75acc3c8af2a4a40cea42f36c075b8",
-    ".musubix/features/ai-data-scientist/requirements.md": "b021a2bee519a82da95f8bbdf1a922eeac4bcd86124cf2f63534f110a25e9d21",
+    ".musubix/features/ai-data-scientist/design.md": "f285d27f276f407dacf7a5c1b1b5db8d607932a88e1f2488e5c8a47034275912",
+    ".musubix/features/ai-data-scientist/requirements.md": "1feef66dd4b9747b37a8685619282ba549f4ad7fb61ba2fe5527416ddac8c22d",
     ".musubix/features/ai-data-scientist-ml/design.md": "3b28f9d59a689d5707d44f553acc3b75484ea82cb7848abf7e466d86594b0da9",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "acf8edfe207c3e9824c0f1b9c91ae44498c2c7c1a0e03f14ac0114b35c1beb68",
     ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
@@ -10910,7 +11262,7 @@
     "src/ai_data_scientist/stats_analysis.py": "7aa2beb6816c98f4c9a90cc480cf3cd3ea3c81e18ea4045e5c461cf76022fde9",
     "src/ai_data_scientist/text_nlp.py": "bb7ee36f88f69ba683b82dae4fee06b3a1ff004774d57973ee60c9b0f53f3985",
     "src/ai_data_scientist/timeseries.py": "9c36ccab2c39d70815a3e5cd55e8b79679d7678107a39fda02a22ab665263dc5",
-    "src/ai_data_scientist/visualization.py": "f6794cae24992328c1d821a1d39423946cf6a8ed516f19340c27e291ead90733",
+    "src/ai_data_scientist/visualization.py": "a506d43a3756f5c101c435c2bb14b64594c61b99b406b7f192f77fd293f54bd5",
     "src/ai_materials_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_materials_scientist/calphad.py": "8bd4839df1a7b3c677e9d6c2444d4837c464c5e84d53608edc596f83937b9aa3",
     "src/ai_materials_scientist/classical_monte_carlo.py": "1bbf4f334f42b4494a1b4b5328744c919a6ec1db08fb7712edac804214fbf7df",
@@ -11012,6 +11364,6 @@
     "tests/test_text_nlp.py": "fd80ec14405d2eafc9def8bbf0e4e763a3b36e340f3aff4c6d6c69360dc69274",
     "tests/test_timeseries.py": "263103dc868f7a5d994c30b63640725af49bb1ac8bcc488f084075a758a7fdd0",
     "tests/test_visual_audit.py": "d8a7377f739f6172c3ea3e90fe937b0f47d85f134fbf0fa760df698550a01d1e",
-    "tests/test_visualization.py": "fb6b7a225b83b6650c09a22e00a866b700d428e7fdbb1e8e787bd47823914fc2"
+    "tests/test_visualization.py": "ca134d91e2f69cc0ccd1228230d59397391d24359fca2fcedbcbd161c4b6f2a1"
   }
 }
