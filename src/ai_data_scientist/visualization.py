@@ -2,6 +2,9 @@
 
 Implements DES-AIDS-009 (REQ-AIDS-007): renders a requested chart to a PNG
 image and packages it as an nbformat-compatible output MIME bundle.
+CHANGE-012's DES-AIDS-073 through DES-AIDS-076 (CODE-AIDS-111 through
+CODE-AIDS-118) add box/barh/heatmap kinds, hue-grouped series with legend
+titles, symmetric/asymmetric error bars, and chart_metadata_from_figure.
 """
 
 from __future__ import annotations
