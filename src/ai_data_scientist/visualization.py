@@ -263,8 +263,10 @@ def _resolve_error_values(
     if isinstance(spec, str):
         _require_columns(df, spec)
         return df[spec].tolist()
-    if isinstance(spec, (tuple, list)) and len(spec) == 2 and all(
-        isinstance(column, str) for column in spec
+    if (
+        isinstance(spec, (tuple, list))
+        and len(spec) == 2
+        and all(isinstance(column, str) for column in spec)
     ):
         lower, upper = spec
         _require_columns(df, lower, upper)
@@ -288,9 +290,7 @@ def _normalize_hue_for_pivot(series: pd.Series) -> tuple[pd.Series, str]:
     return normalized, sentinel
 
 
-def _pivot_grouped_values(
-    df: pd.DataFrame, *, x: str, hue: str, value: str
-) -> pd.DataFrame:
+def _pivot_grouped_values(df: pd.DataFrame, *, x: str, hue: str, value: str) -> pd.DataFrame:
     normalized_hue, sentinel = _normalize_hue_for_pivot(df[hue])
     order = list(dict.fromkeys(normalized_hue.tolist()))
     pivot_source = pd.DataFrame({x: df[x], "__hue__": normalized_hue, value: df[value]})

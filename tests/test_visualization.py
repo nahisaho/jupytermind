@@ -412,9 +412,7 @@ def test_TEST_AIDS_195_render_chart_supports_box_barh_and_heatmap(monkeypatch):
 
     monkeypatch.setattr(plt, "close", _capture_close)
     try:
-        box_df = pd.DataFrame(
-            {"group": ["A", "A", "B", "B"], "value": [1.0, 3.0, 2.0, 4.0]}
-        )
+        box_df = pd.DataFrame({"group": ["A", "A", "B", "B"], "value": [1.0, 3.0, 2.0, 4.0]})
         box_result = render_chart(box_df, kind="box", x="group", y="value")
         assert box_result[:8] == b"\x89PNG\r\n\x1a\n"
         assert box_result.xlabel == "group"
@@ -542,7 +540,10 @@ def test_TEST_AIDS_198_render_chart_supports_symmetric_and_asymmetric_error_rang
         bar_df = pd.DataFrame({"x": ["A", "B"], "y": [10, 12], "err": [1.0, 1.5]})
         bar_result = render_chart(bar_df, kind="bar", x="x", y="y", yerr="err")
         assert bar_result[:8] == b"\x89PNG\r\n\x1a\n"
-        assert any(collection.__class__.__name__ == "LineCollection" for collection in closed_figures[-1].axes[0].collections)
+        assert any(
+            collection.__class__.__name__ == "LineCollection"
+            for collection in closed_figures[-1].axes[0].collections
+        )
 
         barh_df = pd.DataFrame(
             {
@@ -554,7 +555,10 @@ def test_TEST_AIDS_198_render_chart_supports_symmetric_and_asymmetric_error_rang
         )
         barh_result = render_chart(barh_df, kind="barh", x="x", y="y", xerr=("low", "high"))
         assert barh_result[:8] == b"\x89PNG\r\n\x1a\n"
-        assert any(collection.__class__.__name__ == "LineCollection" for collection in closed_figures[-1].axes[0].collections)
+        assert any(
+            collection.__class__.__name__ == "LineCollection"
+            for collection in closed_figures[-1].axes[0].collections
+        )
     finally:
         monkeypatch.setattr(plt, "close", original_close)
         for fig in closed_figures:
