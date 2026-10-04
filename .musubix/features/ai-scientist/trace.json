@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T15:52:42.208Z",
+  "generatedAt": "2026-10-04T20:02:58.729Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -2152,6 +2152,18 @@
       "kind": "code",
       "path": "src/ai_chemistry_scientist/qsar_modeling.py",
       "line": 65
+    },
+    {
+      "id": "CODE-ACHEM-918",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/structural_alerts.py",
+      "line": 44
+    },
+    {
+      "id": "CODE-ACHEM-070",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/structural_alerts.py",
+      "line": 58
     },
     {
       "id": "CODE-ACHEM-002",
@@ -7862,6 +7874,31 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-ACHEM-918",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-918",
+      "to": "REQ-ACHEM-070",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-918",
+      "to": "DES-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-070",
+      "to": "REQ-ACHEM-070",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-070",
+      "to": "DES-ACHEM-070",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-ACHEM-002",
       "to": "REQ-ACHEM-003",
       "relation": "implements"
@@ -12180,7 +12217,7 @@
     "src/ai_chemistry_scientist/molecular_formula_mass.py": "117377872ff7ddd3de478f26cea45ad566e528cc2657047bad4f0f1d351f0305",
     "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
     "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
-    "src/ai_chemistry_scientist/structural_alerts.py": "799733f63f8ab212bcabe564d6d1fcc49d08f04843ceed1a459b1ab19bb26308",
+    "src/ai_chemistry_scientist/structural_alerts.py": "3caa4e1042163396752e5bc9ab5727465875a5d45697cef41e87c60a7f2f0343",
     "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",

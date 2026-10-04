@@ -8485,6 +8485,158 @@
             },
             "order": 791
           }
+        },
+        {
+          "requirementIds": [
+            "REQ-ACHEM-060",
+            "REQ-ACHEM-070",
+            "REQ-ACHEM-090"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-04T19:51:56.797Z",
+            "fingerprints": {
+              "impact": "d5418e1f25490a4e0430c2ae4d23b851368bf14f9b5c9bce5f85dbbaf341f32d",
+              "requirements": "7975cd0c64adc98c34c5e7b2e4072a29854520c0d148716a30ecafb54758556d",
+              "design": "37fb395a4c890ea771dc9ea705178a607c153cdbf7e197ab15a66cfd477a3685",
+              "implementation": "5f94f574595ab80c4d14c45427607236f296ed80962195047cd46933b55707a7",
+              "tests": "d608442be8b7a34781bdba5235b3d5cc14c2c00727c62d5bd96058de43981212",
+              "tdd": "73130cf904adfb1f0e4897f4b722687e32e1c08ba5ac7be25fc82536cfba94c8",
+              "requirementImplementations": {
+                "REQ-ACHEM-060": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/drug_likeness_rules.py",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/drug_likeness_rules.py": "e56fd16f9404e3e320956a6a1d38a333703d32d75196069c793eb80292ec3c64",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "827f704f8dda5477a5a9af9469df078b2847316075b1905bff05eff6178f989f",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                },
+                "REQ-ACHEM-070": {
+                  "paths": [],
+                  "fingerprints": {}
+                },
+                "REQ-ACHEM-090": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/bioactivity_classification.py",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/bioactivity_classification.py": "a9c53ff1c8d25fd9903ec005073de812b4d6ee1b33517efdb72b4ae2e67d340a",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "827f704f8dda5477a5a9af9469df078b2847316075b1905bff05eff6178f989f",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                }
+              }
+            },
+            "order": 792
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-04T20:02:42.971Z",
+            "fingerprints": {
+              "impact": "d5418e1f25490a4e0430c2ae4d23b851368bf14f9b5c9bce5f85dbbaf341f32d",
+              "requirements": "7975cd0c64adc98c34c5e7b2e4072a29854520c0d148716a30ecafb54758556d",
+              "design": "37fb395a4c890ea771dc9ea705178a607c153cdbf7e197ab15a66cfd477a3685",
+              "implementation": "c9198ab2e98162e3b029efc6f9568adf40dade91df8d834c8629eaa6156271c8",
+              "tests": "d608442be8b7a34781bdba5235b3d5cc14c2c00727c62d5bd96058de43981212",
+              "tdd": "7ba3179929ec79bc334525ba35bc838baa0f461d0551971401dd0ce478bae72a",
+              "requirementImplementations": {
+                "REQ-ACHEM-060": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/drug_likeness_rules.py",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/drug_likeness_rules.py": "e56fd16f9404e3e320956a6a1d38a333703d32d75196069c793eb80292ec3c64",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                },
+                "REQ-ACHEM-070": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/structural_alerts.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                    "src/ai_chemistry_scientist/structural_alerts.py": "3caa4e1042163396752e5bc9ab5727465875a5d45697cef41e87c60a7f2f0343",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                },
+                "REQ-ACHEM-090": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/bioactivity_classification.py",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/bioactivity_classification.py": "a9c53ff1c8d25fd9903ec005073de812b4d6ee1b33517efdb72b4ae2e67d340a",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                }
+              }
+            },
+            "order": 796
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-04T20:02:59.926Z",
+            "fingerprints": {
+              "impact": "d5418e1f25490a4e0430c2ae4d23b851368bf14f9b5c9bce5f85dbbaf341f32d",
+              "requirements": "7975cd0c64adc98c34c5e7b2e4072a29854520c0d148716a30ecafb54758556d",
+              "design": "37fb395a4c890ea771dc9ea705178a607c153cdbf7e197ab15a66cfd477a3685",
+              "implementation": "c9198ab2e98162e3b029efc6f9568adf40dade91df8d834c8629eaa6156271c8",
+              "tests": "d608442be8b7a34781bdba5235b3d5cc14c2c00727c62d5bd96058de43981212",
+              "tdd": "efb4fe5084474f1048780b36e8f9a298500bcdbe70ff1dd4439946d8851135f9",
+              "requirementImplementations": {
+                "REQ-ACHEM-060": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/drug_likeness_rules.py",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/drug_likeness_rules.py": "e56fd16f9404e3e320956a6a1d38a333703d32d75196069c793eb80292ec3c64",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                },
+                "REQ-ACHEM-070": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/structural_alerts.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                    "src/ai_chemistry_scientist/structural_alerts.py": "3caa4e1042163396752e5bc9ab5727465875a5d45697cef41e87c60a7f2f0343",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                },
+                "REQ-ACHEM-090": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/bioactivity_classification.py",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/bioactivity_classification.py": "a9c53ff1c8d25fd9903ec005073de812b4d6ee1b33517efdb72b4ae2e67d340a",
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                }
+              }
+            },
+            "order": 800
+          }
         }
       ]
     }

@@ -27,7 +27,7 @@ def _compile_alert_queries():
     return tuple(compiled_queries)
 
 
-# Pre-compiled once at import time (DES-ACHEM-070's fixed alert list never
+# Pre-compiled once at import time (the DES-ACHEM-070 fixed alert list never
 # changes at runtime), rather than re-parsing every SMARTS pattern string on
 # every call.
 _ALERT_QUERIES = _compile_alert_queries()
@@ -59,7 +59,12 @@ register_validator(_MODULE_NAME, _structural_alerts_validator)
 # @implements REQ-ACHEM-070
 # @design DES-ACHEM-070
 def run_structural_alerts(smiles: str) -> dict:
-    """Match the fixed SMARTS alert list against ``smiles``."""
+    """Match the fixed SMARTS alert list against ``smiles``.
+
+    ``_ALERT_QUERIES`` is guaranteed non-``None`` for every entry by
+    ``_compile_alert_queries()`` at import time (CHANGE-013 hardening), so
+    this function never needs to re-check for a malformed SMARTS query.
+    """
     mol = parse_smiles(smiles)
     if mol is None:
         raise ValueError("smiles must already be validated by the handler wrapper")
