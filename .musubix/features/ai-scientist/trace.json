@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-04T12:15:57.654Z",
+  "generatedAt": "2026-10-04T12:52:13.907Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -1838,10 +1838,28 @@
       "line": 19
     },
     {
+      "id": "CODE-AIDS-093",
+      "kind": "code",
+      "path": "src/ai_data_scientist/feature_engineering.py",
+      "line": 41
+    },
+    {
       "id": "CODE-AIDS-015",
       "kind": "code",
       "path": "src/ai_data_scientist/feature_engineering.py",
-      "line": 25
+      "line": 57
+    },
+    {
+      "id": "CODE-AIDS-094",
+      "kind": "code",
+      "path": "src/ai_data_scientist/feature_engineering.py",
+      "line": 143
+    },
+    {
+      "id": "CODE-AIDS-095",
+      "kind": "code",
+      "path": "src/ai_data_scientist/feature_engineering.py",
+      "line": 155
     },
     {
       "id": "CODE-AIDS-013",
@@ -3791,7 +3809,61 @@
       "id": "TEST-AIDS-015",
       "kind": "test",
       "path": "tests/test_feature_engineering.py",
-      "line": 8
+      "line": 15
+    },
+    {
+      "id": "TEST-AIDS-151",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 34
+    },
+    {
+      "id": "TEST-AIDS-152",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 50
+    },
+    {
+      "id": "TEST-AIDS-153",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 70
+    },
+    {
+      "id": "TEST-AIDS-154",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 86
+    },
+    {
+      "id": "TEST-AIDS-155",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 99
+    },
+    {
+      "id": "TEST-AIDS-156",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 112
+    },
+    {
+      "id": "TEST-AIDS-157",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 121
+    },
+    {
+      "id": "TEST-AIDS-158",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 133
+    },
+    {
+      "id": "TEST-AIDS-159",
+      "kind": "test",
+      "path": "tests/test_feature_engineering.py",
+      "line": 149
     },
     {
       "id": "TEST-AIDS-PYTEST-001",
@@ -6404,6 +6476,16 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AIDS-093",
+      "to": "REQ-AIDS-073",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-093",
+      "to": "DES-AIDS-061",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AIDS-015",
       "to": "REQ-AIDS-015",
       "relation": "implements"
@@ -6411,6 +6493,26 @@
     {
       "from": "CODE-AIDS-015",
       "to": "DES-AIDS-013",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-094",
+      "to": "REQ-AIDS-073",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-094",
+      "to": "DES-AIDS-061",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-095",
+      "to": "REQ-AIDS-073",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-095",
+      "to": "DES-AIDS-061",
       "relation": "implements"
     },
     {
@@ -9004,6 +9106,51 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AIDS-151",
+      "to": "REQ-AIDS-015",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-152",
+      "to": "REQ-AIDS-015",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-153",
+      "to": "REQ-AIDS-015",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-154",
+      "to": "REQ-AIDS-015",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-155",
+      "to": "REQ-AIDS-015",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-156",
+      "to": "REQ-AIDS-015",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-157",
+      "to": "REQ-AIDS-073",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-158",
+      "to": "REQ-AIDS-073",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-159",
+      "to": "REQ-AIDS-073",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AIDS-PYTEST-001",
       "to": "REQ-AIDS-013",
       "relation": "verifies"
@@ -9661,7 +9808,7 @@
     "src/ai_data_scientist/eda.py": "b81e5e3ac240b3e66e30cc8f6fe57fc34a34b1fb58f72ecd955db9c6b1550ec4",
     "src/ai_data_scientist/experiment_evaluation.py": "d333684c4dd4fbd80e943b5faac5254ac202a09cfde388d30b27c699d02ad45a",
     "src/ai_data_scientist/explainability.py": "7ec63a3108773741ee4161516329f858931db70a803def21c66957fa369a1b45",
-    "src/ai_data_scientist/feature_engineering.py": "882c1e0d0da761f8c40d8298745e3cb2801bfd0d84424e4f3c202fdbaab5cbe1",
+    "src/ai_data_scientist/feature_engineering.py": "a496f0f8a99fc18f4c6c648b447fbad76ac13b88cae298eeadac55e2ff472495",
     "src/ai_data_scientist/gate_config.py": "c9ef43241e082fbb5f73c730353b76ba37c59334b12e973afaae99bd0cee45dd",
     "src/ai_data_scientist/ingestion.py": "9e1045d9921eeb30ab08111fd394be90454d86d88ddb8116509471b316d029dc",
     "src/ai_data_scientist/insight_engine.py": "8e3bb7f540fc55dd6915d5fe6a36f6250eb796b68ba68b8003f307d2e3b66cf5",
@@ -9763,7 +9910,7 @@
     "tests/test_example_readiness.py": "fc39997318a3cfecae12afaff9360d9041e8f6f989d3f29c3bb0bf6d2759b974",
     "tests/test_experiment_evaluation.py": "fb86918ae84bfa34f8e386dfc92a8b16d51d09f836da52915d4528dcc5e843b9",
     "tests/test_explainability.py": "f150b75da3143cb2d42777f8f858e628ca7db4f33a9037973ada44f80498e233",
-    "tests/test_feature_engineering.py": "e25775ae6e5a5078f570dfb91f0c773d8b2846139571a47e536bf4e68cf86977",
+    "tests/test_feature_engineering.py": "5117272c89e7ac8720068497d409db68b63bf7cde3b0b720cfb33f167dc483ee",
     "tests/test_gate_config.py": "4ac5cee06bd95f68897150aa8745af59fe4aad601dbced01e33354392374250c",
     "tests/test_ingestion.py": "98de63b733b719d2c009878f23753961fb4a2335bd52a75c5f035f9294a1bb9d",
     "tests/test_insight_engine.py": "2b1b418c17ee48d4f87a7c16d526a81287980e458b5297ea995510de8b0a0e80",

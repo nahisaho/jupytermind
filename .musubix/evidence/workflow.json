@@ -298,6 +298,62 @@
       "status": "failed",
       "reason": "CHANGE-006 (ai-data-scientist defect fixes #40,#42,#43,#44,#45,#47) implementation, TDD (399/399 tests, zero regressions), trace/graph gates, and documentation are complete with zero CHANGE-006-scoped blocking errors except CHANGE_COMPLETENESS_ADR (7 occurrences, non-waivable, pre-existing musubix3-upgrade gap shared with CHANGE-001/CHANGE-004). Human (nahisaho) reviewed and approved the release content/risk via explicit ask_user confirmation, but 'approval record release' could not persist a release.json because it requires repo-wide workflow/tdd/change-history/change-completeness/performance checks to pass across ALL historical changes, not just CHANGE-006, mirroring the identical CHANGE-003/004/005 precedent.",
       "recordedAt": "2026-10-04T11:32:22.488Z"
+    },
+    {
+      "skill": "sdd-requirements",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-10-04T12:22:03.176Z"
+    },
+    {
+      "skill": "sdd-requirements",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-10-04T12:23:18.178Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-10-04T12:23:18.741Z"
+    },
+    {
+      "skill": "sdd-requirements",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-10-04T12:23:24.570Z"
+    },
+    {
+      "skill": "sdd-requirements",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-10-04T12:34:47.256Z"
+    },
+    {
+      "skill": "sdd-requirements",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-10-04T12:37:17.490Z"
+    },
+    {
+      "skill": "sdd-requirements",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-10-04T12:49:23.253Z"
     }
   ]
 }
