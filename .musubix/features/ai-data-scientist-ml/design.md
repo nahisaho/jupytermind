@@ -259,6 +259,87 @@ Requirements: REQ-AIDS-021
 ADRs: none — feature-importance/SHAP computation is a direct library call with no rejected alternative.
 Depends-On: DES-AIDS-012
 
+## DES-AIDS-070: Explainability result contract and method selection / 説明結果契約と手法選択
+Responsibilities: Extend `src/ai_data_scientist.explainability.explain_model`
+with keyword-only method selection while preserving the legacy 2-argument call,
+and normalize every path into a single `ExplainabilityResult` contract exposing
+the existing `feature_importances`/`ranking` fields plus explicit method
+metadata.
+Interfaces: `explain_model(model, feature_names, *, method: Literal["default",
+"signed_contributions", "permutation"] = "default", x=None, y=None, scoring:
+str | None = None, n_repeats: int = 5, random_state: int = 42) ->
+ExplainabilityResult`, where `ExplainabilityResult = @dataclass(frozen=True)
+{feature_importances: dict[str, float], ranking: list[str], importance_kind:
+str, contribution_kind: str | None = None, signed_contributions:
+list[dict[str, float]] | None = None, baseline_values: list[float] | None =
+None, raw_predictions: list[float] | None = None, additivity_check:
+dict[str, float | bool] | None = None, scoring: str | None = None}`.
+Constraints: The default `method="default"` path must produce the same ranking
+and feature-importance values as the pre-change implementation for models using
+`feature_importances_` or `abs(coef_)`, differing only by the added metadata
+fields. `importance_kind` is `"split"` for `feature_importances_`,
+`"coefficient_magnitude"` for `abs(coef_)`, `"mean_absolute_signed_contribution"`
+for signed-contribution aggregation, and `"permutation"` for permutation
+importance.
+Requirements: REQ-AIDS-082, REQ-AIDS-083, REQ-AIDS-084
+ADRs: none — this is a backward-compatible extension of an existing dataclass
+and function surface, with no competing architectural boundary decision.
+Depends-On: DES-AIDS-019
+
+## DES-AIDS-071: Signed-contribution provider normalization / 符号付き寄与プロバイダー正規化
+Responsibilities: Resolve the strongest available signed-contribution provider
+for `method="signed_contributions"` in this order: native
+`model.predict(..., pred_contrib=True)`, optional `shap.Explainer`, then a
+single-output linear additive decomposition derived from `coef_` and
+`intercept_`; for supported single-output regression and binary-classification
+models, normalize the chosen provider into row-aligned signed feature
+contribution dicts, baseline values, raw-output values, and an additive-
+consistency report.
+Interfaces: Internal helpers
+`_compute_signed_contributions(model, frame, feature_names) ->
+{contribution_kind, contributions_matrix, baseline_values, raw_predictions,
+additivity_check}` and `_predict_raw_output(model, frame) -> ndarray | None`.
+Constraints: Input-row order must be preserved exactly in the returned
+`signed_contributions` list. Native `pred_contrib` outputs that include an
+extra bias column must be split into `contributions_matrix[:, :-1]` and
+`baseline_values = matrix[:, -1]`. The linear fallback supports only
+single-output regression/binary-classification models whose flattened
+`coef_` length matches `feature_names`; it computes contributions as
+`frame.to_numpy(dtype=float) * coef_` and compares
+`baseline_values + contributions.sum(axis=1)` against `decision_function(frame)`
+when available, else `predict(frame)`. If model raw-output values are
+unavailable, the result must leave `raw_predictions` unset and mark
+`additivity_check.passed` unavailable instead of synthesizing a successful
+comparison from the reconstructed sum alone. Multi-class provider outputs are
+out of scope for this change; a native or SHAP output shape that cannot be
+normalized to one contribution vector per row over `feature_names` falls
+through to the next provider or, if none remain, raises `ValueError`
+instructing the caller to install optional `shap` support or request
+`method="permutation"` instead.
+Requirements: REQ-AIDS-083
+ADRs: none — provider selection is a deterministic preference order over
+existing library capabilities, not an architectural fork.
+Depends-On: DES-AIDS-070
+
+## DES-AIDS-072: Permutation-importance path / permutation importance経路
+Responsibilities: For `method="permutation"`, validate the presence of
+feature rows and target labels, call
+`sklearn.inspection.permutation_importance`, and return mean permutation
+importances plus the scoring metadata needed to interpret them.
+Interfaces: Internal helper `_compute_permutation_importance(model, frame, y,
+feature_names, scoring, n_repeats, random_state) -> ExplainabilityResult`.
+Constraints: The helper passes `scoring` through unchanged when provided and
+passes `None` otherwise so scikit-learn uses the estimator's default score.
+The returned `feature_importances` map uses `result.importances_mean` without
+taking absolute values, because negative permutation importance is itself
+meaningful evidence of instability/noise. `ranking` sorts those mean values in
+descending order. The result sets `importance_kind == "permutation"` and
+`scoring` to the caller-supplied scorer string or `None`.
+Requirements: REQ-AIDS-084
+ADRs: none — scikit-learn already defines the relevant permutation-importance
+algorithm and scorer interface; this design only exposes it.
+Depends-On: DES-AIDS-070
+
 ## DES-AIDS-020: A/B testing & experiment evaluation module / A/Bテスト・実験評価
 Responsibilities: Compute the statistical significance of the observed
 difference between two groups and report the result with a markdown

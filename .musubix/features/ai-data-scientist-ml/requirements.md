@@ -101,6 +101,27 @@ Pattern: event-driven
 Statement: When a user requests an explanation of a trained model, the system shall execute a notebook code cell that computes feature importance or SHAP values and reports them alongside a markdown interpretation.
 Acceptance: An explainability request on a trained classifier produces a feature importance ranking whose top feature matches the reference scikit-learn feature_importances_ or SHAP value ordering.
 
+## REQ-AIDS-082: Explainability method labeling and default compatibility / 説明手法ラベル付けと既定互換性
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a caller requests `explainability.explain_model` without opting into an alternate explainability method, the system shall return the existing feature-importance ranking behavior together with a global-importance-kind label that distinguishes split-based importances from coefficient-magnitude importances.
+Acceptance: Calling `explain_model(model, feature_names)` on a fitted random-forest classifier returns the same ranking and per-feature values as `model.feature_importances_`, plus `importance_kind == "split"`. Calling it on a fitted single-output linear or logistic-regression model returns the same ranking and per-feature absolute-coefficient values as before this change, plus `importance_kind == "coefficient_magnitude"`.
+
+## REQ-AIDS-083: Signed local contributions with additive consistency / 符号付き局所寄与と加法整合性
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When a caller requests signed local contributions for a supported single-output regression or binary-classification model and supplies feature rows, the system shall return row-aligned signed per-feature contribution maps together with provider metadata and an additive-consistency report against the model's raw per-row output when such output is available.
+Acceptance: Calling `explain_model(..., method="signed_contributions", x=rows)` on a fitted single-output logistic-regression model returns one signed contribution map per input row, `contribution_kind` equal to either `"shap"` or `"linear"` depending on the selected provider, `importance_kind == "mean_absolute_signed_contribution"`, and an `additivity_check` whose `max_abs_error` is at most `1e-6` when compared with the model's `decision_function(rows)`. The informative feature's mean absolute contribution ranks above an injected noise feature on the acceptance fixture.
+
+## REQ-AIDS-084: Permutation importance with configurable scoring / スコア指定可能なpermutation importance
+Priority: should
+Type: functional
+Pattern: event-driven
+Statement: When a caller requests permutation importance and supplies feature rows and target labels, the system shall return permutation-importance values computed with the caller-selected scoring metric when provided, or the estimator's default score otherwise, labeled with the global-importance kind `permutation`.
+Acceptance: Calling `explain_model(..., method="permutation", x=rows, y=labels, scoring="accuracy")` on an acceptance-fixture classifier returns `importance_kind == "permutation"` and ranks the informative feature above an injected noise feature using the mean permutation-importance values.
+
 ## REQ-AIDS-022: A/B testing and experiment evaluation / A/Bテスト・実験評価
 Priority: must
 Type: functional
