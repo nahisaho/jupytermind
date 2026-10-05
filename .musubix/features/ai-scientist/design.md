@@ -30,8 +30,7 @@ to directly. Must call DES-AISCI-004.checkGate before manifest lookup
 whenever `requestedPhase` differs from the active phase. Must follow the
 same structural conventions as `ai-data-scientist`'s SKILL.md.
 Requirements: REQ-AISCI-001
-ADRs: none — packaging conventions are fixed by existing repository
-structure, not a new trade-off.
+ADRs: ADR-0073
 Depends-On: DES-AISCI-002, DES-AISCI-003, DES-AISCI-004, DES-AISCI-015
 
 ## DES-AISCI-002: Shared project handle resolver / 共有プロジェクトハンドル解決
@@ -51,9 +50,7 @@ Constraints: Must reject any project name ai-data-scientist's
 validation regex). Must create each phase subdirectory at most once per
 workspace and must be idempotent across process-working-directory changes.
 Requirements: REQ-AISCI-002, REQ-AISCI-003
-ADRs: none — this is a direct, non-competing reuse of ai-data-scientist's
-existing ADR-0004/ADR-0005-governed contract; no new trade-off is
-introduced here.
+ADRs: ADR-0074
 Depends-On: none
 
 ## DES-AISCI-003: Phase state store / フェーズ状態ストア
@@ -74,8 +71,7 @@ ai-data-scientist's notebook writer). Must never skip a phase in the fixed
 order when advancing automatically. Must never persist a completion whose
 evidence check failed.
 Requirements: REQ-AISCI-004, REQ-AISCI-005
-ADRs: none — a straightforward state-machine persisted as JSON; no
-alternative architecture was weighed.
+ADRs: ADR-0075
 Depends-On: DES-AISCI-002, DES-AISCI-017
 
 ## DES-AISCI-004: Phase-gate enforcer / フェーズゲート制御
@@ -98,8 +94,7 @@ completion status persisted by DES-AISCI-003; it is scoped to exactly one
 dispatch call. Every override record must be persisted before the gated
 request is dispatched, not only returned to the caller.
 Requirements: REQ-AISCI-006, REQ-AISCI-007
-ADRs: none — override semantics are a direct restatement of the
-requirement with no competing design considered.
+ADRs: ADR-0076
 Depends-On: DES-AISCI-003
 
 ## DES-AISCI-005: ai-data-scientist delegation adapter / ai-data-scientist委譲アダプタ
@@ -129,8 +124,7 @@ skill-registry pinning applies to this repository's own
 `aidsHandle.notebook_path == researchHandle.notebook_path` before use, and
 fail the delegation if they diverge rather than silently proceeding.
 Requirements: REQ-AISCI-008
-ADRs: none — this is a direct call-through to an already-governed sibling
-contract (REQ-AIDS-002/003/028/044); no new trade-off.
+ADRs: ADR-0077
 Depends-On: DES-AISCI-002, DES-AISCI-003, DES-AISCI-016
 
 ## DES-AISCI-006: tech-writer delegation adapter (manuscript-writing) / tech-writer委譲アダプタ（論文執筆）
@@ -147,7 +141,7 @@ Constraints: Must always request Markdown output from tech-writer (it has
 no format parameter); any non-Markdown final format is produced only by
 DES-AISCI-018, never requested from tech-writer itself.
 Requirements: REQ-AISCI-009
-ADRs: none — a direct skill-invocation call-through; no competing design.
+ADRs: ADR-0078
 Depends-On: DES-AISCI-002, DES-AISCI-003, DES-AISCI-016
 
 ## DES-AISCI-007: Manuscript language metadata recorder / 原稿言語メタデータ記録
@@ -162,8 +156,7 @@ Interfaces: recordManuscriptLanguage(manuscriptArtifact, sourceInstruction)
 Constraints: Must reuse DES-AISCI-001's detectLanguage function; must not
 introduce a second, independently-tuned language classifier.
 Requirements: REQ-AISCI-010
-ADRs: none — direct reuse of an existing detection function; no
-alternative considered.
+ADRs: ADR-0079
 Depends-On: DES-AISCI-001, DES-AISCI-006
 
 ## DES-AISCI-008: Peer-review language router / 査読フェーズ言語ルーター
@@ -181,8 +174,7 @@ Constraints: The `ja`/`en` branch choice must be a deterministic lookup on
 the persisted metadata field, never a re-detection or heuristic guess; no
 third branch silently falls back to either skill.
 Requirements: REQ-AISCI-011, REQ-AISCI-012, REQ-AISCI-013
-ADRs: none — the two-branch-plus-block behavior is a direct restatement of
-the requirement; no alternative routing design was considered.
+ADRs: ADR-0080
 Depends-On: DES-AISCI-003, DES-AISCI-007, DES-AISCI-016
 
 ## DES-AISCI-009: presentation-planner delegation adapter / presentation-planner委譲アダプタ
@@ -198,7 +190,7 @@ Constraints: Must pass the manuscript path produced by the manuscript-writing
 phase (post-format-rendering if LaTeX was configured is not required —
 presentation-planner only needs the content, not the rendered format).
 Requirements: REQ-AISCI-014
-ADRs: none — a direct skill-invocation call-through; no competing design.
+ADRs: ADR-0081
 Depends-On: DES-AISCI-002, DES-AISCI-003, DES-AISCI-006, DES-AISCI-016
 
 ## DES-AISCI-010: MCP tool-call gateway / MCPツール呼び出しゲートウェイ
@@ -215,8 +207,7 @@ Constraints: Must be the sole code path phases use for domain-tool access;
 no phase handler may hold its own HTTP/socket client; `phase` is required
 on every call so DES-AISCI-014 can always report it.
 Requirements: REQ-AISCI-015
-ADRs: none — mirrors ai-data-scientist's existing DES-AIDS-004 MCP-gateway
-pattern (ADR-0002) applied to a different tool domain; no new trade-off.
+ADRs: ADR-0082
 Depends-On: DES-AISCI-011, DES-AISCI-012, DES-AISCI-013, DES-AISCI-014
 
 ## DES-AISCI-011: MCP server configuration loader / MCPサーバー設定ローダー
@@ -240,7 +231,7 @@ Constraints: Validation must run fully before any server is started or
 connected to; validation must reject a managed entry whose `launchCommand`
 or `endpointTemplate` does not contain the literal `{port}` placeholder.
 Requirements: REQ-AISCI-016
-ADRs: none — a direct schema-validation restatement of the requirement.
+ADRs: ADR-0083
 Depends-On: none
 
 ## DES-AISCI-012: Managed MCP process manager / 管理対象MCPプロセス管理
@@ -265,8 +256,7 @@ only to 127.0.0.1; must not mark a runtime healthy/reusable until its
 health check returns HTTP 200; `stop(serverName)` must terminate only the
 process registered under that name.
 Requirements: REQ-AISCI-017
-ADRs: none — direct reapplication of the already-governed DES-AIDS-025/
-ADR-0008 pattern to a new tool domain; no new trade-off.
+ADRs: ADR-0084
 Depends-On: DES-AISCI-011, DES-AISCI-014
 
 ## DES-AISCI-013: External MCP connector / 外部MCPコネクタ
@@ -275,7 +265,7 @@ pre-supplied endpoint URL without starting or stopping any process.
 Interfaces: connectExternalServer(entry) -> McpClient.
 Constraints: Must never spawn a process for an external-mode entry.
 Requirements: REQ-AISCI-018
-ADRs: none — a direct, minimal connector with no architectural alternative.
+ADRs: ADR-0085
 Depends-On: DES-AISCI-011
 
 ## DES-AISCI-014: MCP unavailability classifier / MCP接続断分類器
@@ -292,7 +282,7 @@ Constraints: Must never allow a phase to record completion evidence derived
 from a failed MCP call; must not depend on DES-AISCI-010 (callers depend on
 this component, not the reverse, to avoid a dependency cycle).
 Requirements: REQ-AISCI-019
-ADRs: none — a direct error-classification restatement of the requirement.
+ADRs: ADR-0086
 Depends-On: none
 
 ## DES-AISCI-015: Phase-handler manifest and sibling-skill registry verifier / フェーズハンドラ一覧とスキルレジストリ検証
@@ -329,10 +319,7 @@ Constraints: Verification must run once at startup, before any phase
 dispatch, must attempt to import every declared module function, and must
 check both the `ja` and `en` entries of peer-review's skillDependencies.
 Requirements: REQ-AISCI-023
-ADRs: none — the module-plus-declared-skill-dependencies manifest directly
-represents the implementation reality that every phase handler is a module
-function, some of which internally delegate to pinned sibling skills; no
-competing schema was considered.
+ADRs: ADR-0087
 Depends-On: none
 
 ## DES-AISCI-016: Evidence registry / 証跡レジストリ
@@ -351,8 +338,7 @@ single-writer pattern) so a crash mid-write cannot corrupt the registry;
 every phase handler must call `record_evidence` for its own produced
 artifact(s) before reporting the phase's work as done.
 Requirements: REQ-AISCI-020
-ADRs: none — a direct, minimal append-only registry; no alternative
-storage design was considered.
+ADRs: ADR-0088
 Depends-On: DES-AISCI-002
 
 ## DES-AISCI-017: Evidence-gated phase completion / 証跡によるフェーズ完了判定
@@ -367,7 +353,7 @@ depends on this component, not the reverse, to avoid a dependency cycle).
 Constraints: An artifact tagged for a different phase must not satisfy this
 check; zero artifacts must not satisfy this check.
 Requirements: REQ-AISCI-020
-ADRs: none — a direct metadata-presence check with no alternative design.
+ADRs: ADR-0089
 Depends-On: DES-AISCI-016
 
 ## DES-AISCI-018: Manuscript format configuration and LaTeX renderer / 原稿形式設定とLaTeXレンダラー
@@ -385,8 +371,7 @@ Constraints: The LaTeX renderer must preserve tech-writer's section content
 (no section dropped or reordered); it must never be invoked with Markdown
 configured.
 Requirements: REQ-AISCI-021, REQ-AISCI-022
-ADRs: none — a direct, single rendering path per configured format; no
-competing design considered.
+ADRs: ADR-0090
 Depends-On: DES-AISCI-006
 
 ## DES-AISCI-019: TDD verification gate / TDD検証ゲート
@@ -401,6 +386,5 @@ workflow gating.
 Constraints: Zero failing and zero unapproved skipped tests; this gate does
 not itself certify correctness beyond what the executed tests check.
 Requirements: REQ-AISCI-024
-ADRs: none — this is a process gate, not an architectural component with
-alternatives.
+ADRs: ADR-0091
 Depends-On: DES-AISCI-005
