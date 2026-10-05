@@ -32,10 +32,15 @@ reported in #51.
 - Existing feature: `ai-data-scientist-ml`.
 - Touches: `src/ai_data_scientist/feature_engineering.py` and
   `tests/test_feature_engineering.py`.
-- No new skill boundary; no ADRs (`DES-AIDS-013` amendment and new
-  `DES-AIDS-061` both declare "ADRs: none" — pandas/scikit-learn supply the
-  transformation primitives directly, consistent with the project's
-  established narrow-bugfix/extension convention).
+- No new skill boundary. Originally recorded "ADRs: none" for both
+  `DES-AIDS-013` and `DES-AIDS-061` (pandas/scikit-learn supply the
+  transformation primitives directly). **Superseded 2026-10 (GitHub #62
+  debt remediation)**: `CHANGE_COMPLETENESS_ADR` is a non-waivable gate
+  diagnostic regardless of an "ADRs: none" design declaration, so real
+  ADRs were authored and linked — ADR-0058 for `DES-AIDS-013`/
+  REQ-AIDS-015, ADR-0059 for `DES-AIDS-061`/REQ-AIDS-073 — documenting
+  the same pandas/scikit-learn-direct rationale with explicit rejected
+  alternatives.
 - **Residual leakage risk, explicitly out of scope**: `fit_features`/
   `transform_features` only cover the `scale` operation. `aggregate`
   (and any other statistics-estimating operation) is **not** leakage-safe
@@ -82,8 +87,9 @@ Requirements: REQ-AIDS-015 (amended), REQ-AIDS-073 (new).
 Design: DES-AIDS-013 (amended — new `operation` values, `**params`
 contract, backward-compatible `definitions` field on `FeatureResult`),
 DES-AIDS-061 (new — `fit_features`/`transform_features` leakage-safe API,
-`FittedFeatureState` dataclass). ADRs: none for both (see each entry's
-"ADRs: none" justification).
+`FittedFeatureState` dataclass). Originally "ADRs: none" for both; now
+ADR-0058 (DES-AIDS-013) and ADR-0059 (DES-AIDS-061) per the #62
+remediation noted in Scope above.
 
 Both requirements.md and design.md passed `musubix3` structural validation
 and two rounds of native `rubber-duck` review each (requirements: fixed a
@@ -140,3 +146,27 @@ Released. Human release approval recorded (approver: nahisaho, hash
 `musubix3 approval record release` blocked only by pre-existing,
 non-CHANGE-008 repo-wide diagnostics (see above), consistent with
 CHANGE-006 precedent.
+
+## Debt Remediation Approval (GitHub #62, 2026-10-05)
+
+Approver: nahisaho (human, via ask_user). Artifact SHA-256 (`approval
+prepare release --json`): `08432a96ee236491d5cb595d6fb0547e7eb9a05234c981a045646f51d8c75965`.
+
+Scope: 8 waivers recorded (CHANGE_ORDER_MIGRATION_REQUIRED×2,
+CHANGE_RED_UNPROVEN×2, CHANGE_GREEN_UNPROVEN×2,
+CHANGE_COMPLETENESS_TDD×2 — all downgraded error→warning, reasons
+reference pre-order-tracking legacy evidence, code/tests verified
+currently green); 2 real ADRs authored (ADR-0058, ADR-0059) to close the
+non-waivable CHANGE_COMPLETENESS_ADR gaps, linked from design.md.
+
+Verification: 580/580 tests pass; `trace build` 0 diagnostics;
+`graph gate` PASS; `gate --changed --json` shows 0 CHANGE-008-owned
+error-severity diagnostics (8 waived warnings remain, intentionally).
+Residual risk: the 8 waived diagnostics represent accepted, documented
+debt (pre-order-tracking evidence) rather than resolved evidence; a true
+fix would require regenerating the original TDD cycles' order numbers,
+which is not feasible without rewriting history. `npx musubix3 approval
+record release` is blocked repo-wide by remaining debt in CHANGE-001/003/
+004/005/006/009-012/014/017 and other pre-existing diagnostics (tracked
+under #62 and other untracked repo-wide debt); approval is recorded here
+directly per the established workaround.
