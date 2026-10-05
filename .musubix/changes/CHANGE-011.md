@@ -110,3 +110,49 @@ Released. Human release approval recorded (approver: nahisaho, hash
 pre-existing, non-CHANGE-011 repo-wide diagnostics plus this change's own
 recording-order-debt (see above), consistent with
 CHANGE-006/CHANGE-008/CHANGE-009/CHANGE-010 precedent.
+
+## #69 Remediation
+
+Remediation work was performed as part of issue #69 (residual, out-of-scope
+debt discovered while closing #62; #62 itself never included CHANGE-011);
+final human release approval remains requested/pending until recorded below.
+
+The gate diagnostics this change already disclosed above
+(`CHANGE_RED_UNPROVEN`/`CHANGE_GREEN_UNPROVEN`/`CHANGE_COMPLETENESS_TDD` for
+REQ-AIDS-082/083/084, caused by retroactively-recorded rather than
+incrementally-recorded TDD evidence) are all requirement-scoped waivable
+codes in musubix3 v0.1.20. No `CHANGE_COMPLETENESS_ADR` diagnostic applies:
+DES-AIDS-070 (`explain_model` result contract and method selection) already
+cites `ADR-0053`; DES-AIDS-071 (signed-contribution provider normalization)
+and DES-AIDS-072 (permutation-importance path) each explicitly declare
+"ADRs: none" because they are localized extensions of the existing
+`explainability.py` module using existing library primitives (no new
+architectural decision to record).
+
+Remediation performed:
+
+1. Recorded 9 requirement-scoped waivers (3 codes ×
+   REQ-AIDS-082/083/084), citing the retroactive-evidence-recording
+   constraint above and issue #69.
+2. Re-ran `gate --json`: all 9 diagnostics are now `warning` severity
+   (waived), not `error`.
+3. Ran the full test suite: all tests passed — expected, since no
+   functional code changed (waiver-recording only).
+4. Human release approval (`nahisaho`) is requested for the exact file set
+   and `approval prepare release --json` hash presented at merge time (see
+   "Debt Remediation Approval" section below, added once approval is
+   obtained).
+
+## Debt Remediation Approval
+
+Human release approval obtained from `nahisaho` via `ask_user` for the exact
+3-file change set below, matching `approval prepare release --json`
+`artifactSha256 502547a79f4b0f482d7c00d57f6d82c5bd5dd586c9793451b973d07afbc55d43`:
+
+- `.musubix/changes/CHANGE-011.md`
+- `.musubix/evidence/change-waivers.json`
+- `.musubix/evidence/order.json`
+
+(`musubix3 approval record release` could not be run directly: it is blocked
+repo-wide by unrelated pre-existing debt, consistent with the pattern already
+established for CHANGE-001/CHANGE-017 in this same remediation effort.)
