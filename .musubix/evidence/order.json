@@ -10470,6 +10470,66 @@
       "requirementId": "REQ-AIDS-078",
       "previousSha256": "64dcaa16539942b202970270a4b30b7223f5e987254dbb20ae730918cc95afd6",
       "recordSha256": "bb51fbfc21c357f512d54c10e8ce9960dac947a370232897c6391aba1e810195"
+    },
+    {
+      "sequence": 1243,
+      "kind": "change",
+      "entityId": "CHANGE-014",
+      "phase": "waiver",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-045",
+      "previousSha256": "bb51fbfc21c357f512d54c10e8ce9960dac947a370232897c6391aba1e810195",
+      "recordSha256": "9db701e2d0d31552591e24f73bc41a2a1fce652f811e915be15cabe26e5f34f1"
+    },
+    {
+      "sequence": 1244,
+      "kind": "change",
+      "entityId": "CHANGE-014",
+      "phase": "waiver",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-045",
+      "previousSha256": "9db701e2d0d31552591e24f73bc41a2a1fce652f811e915be15cabe26e5f34f1",
+      "recordSha256": "a7faf9a485e37a836e1fbe64e6475247b09e350306560b1b32fdec925c71fe89"
+    },
+    {
+      "sequence": 1245,
+      "kind": "change",
+      "entityId": "CHANGE-014",
+      "phase": "waiver",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-045",
+      "previousSha256": "a7faf9a485e37a836e1fbe64e6475247b09e350306560b1b32fdec925c71fe89",
+      "recordSha256": "bfe5516c8266cdca720ad29ae5e458f32ed134a09301b6eaf84c3336b8f38ca0"
+    },
+    {
+      "sequence": 1246,
+      "kind": "change",
+      "entityId": "CHANGE-014",
+      "phase": "waiver",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-056",
+      "previousSha256": "bfe5516c8266cdca720ad29ae5e458f32ed134a09301b6eaf84c3336b8f38ca0",
+      "recordSha256": "d7d17cdd2f0d8de28280c16193d7566e22fb1ab09de7d511b63f597c4f20868d"
+    },
+    {
+      "sequence": 1247,
+      "kind": "change",
+      "entityId": "CHANGE-014",
+      "phase": "waiver",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-056",
+      "previousSha256": "d7d17cdd2f0d8de28280c16193d7566e22fb1ab09de7d511b63f597c4f20868d",
+      "recordSha256": "189baf39568f28ab113543fea9f3b696e6f1a9a11ba5ffb67c31be4a250eac01"
+    },
+    {
+      "sequence": 1248,
+      "kind": "change",
+      "entityId": "CHANGE-014",
+      "phase": "waiver",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-056",
+      "previousSha256": "189baf39568f28ab113543fea9f3b696e6f1a9a11ba5ffb67c31be4a250eac01",
+      "recordSha256": "acfd801a5dad5c42633a6499d52201c454a9507dc707d9046c259cce6bc79727"
     }
   ]
 }

@@ -3481,6 +3481,84 @@
       "order": 1242,
       "previousSha256": "ba5a156326ffbddaed91e668767d6957034e40e31325161bdd1173f01a2b2ce1",
       "payloadSha256": "bdce206768534d114309613a43ee9976dc3d7da39c03809a72f0e1149e0b9306"
+    },
+    {
+      "changeId": "CHANGE-014",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-045",
+      "approver": "nahisaho",
+      "reason": "test-dry-run",
+      "recordedAt": "2026-10-05T10:03:53.892Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "697d06bc4e7e16d2062eccba46480017874c7395cf4826feaf09cf5ca67ad169",
+      "order": 1243,
+      "previousSha256": "bdce206768534d114309613a43ee9976dc3d7da39c03809a72f0e1149e0b9306",
+      "payloadSha256": "90bba2aa0c10cd76a600e0de5f9c90492acb9068e3147551ef5f1f8690fd1ad9"
+    },
+    {
+      "changeId": "CHANGE-014",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-045",
+      "approver": "nahisaho",
+      "reason": "Re-recorded after prior waiver (recorded 2026-10-04) went stale following a later unrelated evidence-ledger rebuild (CHANGE-018's re-record-against-merged-baseline pass touched shared TDD aggregate evidence). Same root cause as the original waiver: genuine stub-based Red/Green TDD evidence was recorded earlier in session, but staged change-record phase checkpoints were recorded afterward while reconstructing temporal ordering; the hash-chained ledger cannot retroactively reorder evidence into the change-record phase window. Full pytest suite and trace check --strict confirm the underlying fix remains genuine; only the waiver's evidence-snapshot binding needed refreshing. See issue #69.",
+      "recordedAt": "2026-10-05T10:04:15.284Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "697d06bc4e7e16d2062eccba46480017874c7395cf4826feaf09cf5ca67ad169",
+      "order": 1244,
+      "previousSha256": "90bba2aa0c10cd76a600e0de5f9c90492acb9068e3147551ef5f1f8690fd1ad9",
+      "payloadSha256": "e14831808d3f54a341771ace605f6502648009e1b31f51620d04324e6136db7b"
+    },
+    {
+      "changeId": "CHANGE-014",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-045",
+      "approver": "nahisaho",
+      "reason": "Re-recorded after prior waiver (recorded 2026-10-04) went stale following a later unrelated evidence-ledger rebuild (CHANGE-018's re-record-against-merged-baseline pass touched shared TDD aggregate evidence). Same root cause as the original waiver: genuine stub-based Red/Green TDD evidence was recorded earlier in session, but staged change-record phase checkpoints were recorded afterward while reconstructing temporal ordering; the hash-chained ledger cannot retroactively reorder evidence into the change-record phase window. Full pytest suite and trace check --strict confirm the underlying fix remains genuine; only the waiver's evidence-snapshot binding needed refreshing. See issue #69.",
+      "recordedAt": "2026-10-05T10:04:15.865Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "697d06bc4e7e16d2062eccba46480017874c7395cf4826feaf09cf5ca67ad169",
+      "order": 1245,
+      "previousSha256": "e14831808d3f54a341771ace605f6502648009e1b31f51620d04324e6136db7b",
+      "payloadSha256": "7912a411bdeef84b7a8af9256f13453c587d6140ea492b652838240a12cbaf13"
+    },
+    {
+      "changeId": "CHANGE-014",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-056",
+      "approver": "nahisaho",
+      "reason": "Re-recorded after prior waiver (recorded 2026-10-04) went stale following a later unrelated evidence-ledger rebuild (CHANGE-018's re-record-against-merged-baseline pass touched shared TDD aggregate evidence). Same root cause as the original waiver: genuine stub-based Red/Green TDD evidence was recorded earlier in session, but staged change-record phase checkpoints were recorded afterward while reconstructing temporal ordering; the hash-chained ledger cannot retroactively reorder evidence into the change-record phase window. Full pytest suite and trace check --strict confirm the underlying fix remains genuine; only the waiver's evidence-snapshot binding needed refreshing. See issue #69.",
+      "recordedAt": "2026-10-05T10:04:16.447Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "3ce32f3f96d6ecd459aaedb1658e5c587ca6e2e0fb0044e8ac2f5e0d7b10bb25",
+      "order": 1246,
+      "previousSha256": "7912a411bdeef84b7a8af9256f13453c587d6140ea492b652838240a12cbaf13",
+      "payloadSha256": "2069084fc47a0039d12d888102460ace78f6aa5c5c64c73948bbd12c53e2c520"
+    },
+    {
+      "changeId": "CHANGE-014",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-056",
+      "approver": "nahisaho",
+      "reason": "Re-recorded after prior waiver (recorded 2026-10-04) went stale following a later unrelated evidence-ledger rebuild (CHANGE-018's re-record-against-merged-baseline pass touched shared TDD aggregate evidence). Same root cause as the original waiver: genuine stub-based Red/Green TDD evidence was recorded earlier in session, but staged change-record phase checkpoints were recorded afterward while reconstructing temporal ordering; the hash-chained ledger cannot retroactively reorder evidence into the change-record phase window. Full pytest suite and trace check --strict confirm the underlying fix remains genuine; only the waiver's evidence-snapshot binding needed refreshing. See issue #69.",
+      "recordedAt": "2026-10-05T10:04:17.038Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "3ce32f3f96d6ecd459aaedb1658e5c587ca6e2e0fb0044e8ac2f5e0d7b10bb25",
+      "order": 1247,
+      "previousSha256": "2069084fc47a0039d12d888102460ace78f6aa5c5c64c73948bbd12c53e2c520",
+      "payloadSha256": "3a64487c9159f5cbbf3f53bd15d0412de4d9347afd877b0d84379ebfb01838da"
+    },
+    {
+      "changeId": "CHANGE-014",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-056",
+      "approver": "nahisaho",
+      "reason": "Re-recorded after prior waiver (recorded 2026-10-04) went stale following a later unrelated evidence-ledger rebuild (CHANGE-018's re-record-against-merged-baseline pass touched shared TDD aggregate evidence). Same root cause as the original waiver: genuine stub-based Red/Green TDD evidence was recorded earlier in session, but staged change-record phase checkpoints were recorded afterward while reconstructing temporal ordering; the hash-chained ledger cannot retroactively reorder evidence into the change-record phase window. Full pytest suite and trace check --strict confirm the underlying fix remains genuine; only the waiver's evidence-snapshot binding needed refreshing. See issue #69.",
+      "recordedAt": "2026-10-05T10:04:38.003Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "3ce32f3f96d6ecd459aaedb1658e5c587ca6e2e0fb0044e8ac2f5e0d7b10bb25",
+      "order": 1248,
+      "previousSha256": "3a64487c9159f5cbbf3f53bd15d0412de4d9347afd877b0d84379ebfb01838da",
+      "payloadSha256": "43745325dc7fd4fe1fd3ec3abffbcb7cdbb6949848006db915f147fd81bbd98d"
     }
   ]
 }

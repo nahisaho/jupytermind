@@ -184,3 +184,77 @@ resolved: a mischaracterization of #54's requirement-text change (see
 Scope), a premature completion checklist, the `run_sensitivity`
 non-finite-value bug, and a test-coverage gap for ambiguous
 `supporting_evidence` entries. Full suite: `465 passed`.
+
+## #69 Remediation
+
+This section documents remediation of residual gate debt tracked by issue
+#69, separate from and in addition to the "Released" approval above (that
+approval is **not** reopened by this section; it describes the original
+release and remains valid for the original scope).
+
+At the time of the original release, 13 requirement-scoped waivers were
+already recorded, covering all four affected requirements: 3 TDD codes
+(`CHANGE_RED_UNPROVEN`/`CHANGE_GREEN_UNPROVEN`/`CHANGE_COMPLETENESS_TDD`)
+each for REQ-AIDS-010, REQ-AIDS-032, REQ-AIDS-045, and REQ-AIDS-056 (12
+waivers), plus `CHANGE_ORDER_MIGRATION_REQUIRED` for REQ-AIDS-010 (1
+waiver). Of these, the 7 covering REQ-AIDS-010/REQ-AIDS-032 (the 6 TDD
+waivers plus the migration waiver) remained genuine and valid. A fresh
+repo-wide `gate --json` run under issue #69
+additionally found:
+
+1. **Six stale waivers** (`CHANGE_WAIVER_STALE`) for REQ-AIDS-045 and
+   REQ-AIDS-056 (`CHANGE_RED_UNPROVEN`/`CHANGE_GREEN_UNPROVEN`/
+   `CHANGE_COMPLETENESS_TDD` each). These two requirements' waivers were
+   recorded later in the original session (after REQ-AIDS-010/032's), and a
+   later, unrelated evidence-ledger rebuild (CHANGE-018's "re-record
+   evidence against merged main baseline" pass, which touched shared TDD
+   aggregate evidence) changed the snapshot the waivers were bound to,
+   invalidating them. This is not a reopened TDD gap — it is the waiver's
+   evidence-snapshot binding going stale, the same underlying root cause
+   (retroactive hash-chained evidence-ordering constraint; see issue #39)
+   as the original waivers, just needing the snapshot refreshed.
+2. **One `CHANGE_COMPLETENESS_ADR` error** for REQ-AIDS-032: `DES-AIDS-005`
+   declared "ADRs: none" even though this requirement's row-limit
+   truncation rule (the #57 fix: `row_limit` applies only to remote
+   `api`/`database` sources, never local `csv`/`excel`) is exactly the kind
+   of as-built architectural decision `musubix3`'s `hasAdr` check expects
+   documented. This gap was not disclosed in the original Implementation
+   Plan, which predates this check becoming enforced for this requirement.
+
+Remediation performed:
+
+1. Re-recorded the 6 stale waivers for REQ-AIDS-045/REQ-AIDS-056 against
+   the current evidence snapshot via `change waiver record`, citing the
+   same root cause as the original waivers plus the later rebuild that
+   invalidated them. Gate confirms all 6 are `warning` again (not stale).
+2. Authored **ADR-0104** (row_limit truncation scoped to remote
+   `api`/`database` sources only via a `source_spec.kind` check at
+   truncation time, never local `csv`/`excel`, DES-AIDS-005) and linked it
+   from `design.md`'s "ADRs: none" line for DES-AIDS-005. `trace build`: 0
+   diagnostics. Re-ran `gate --json`: `CHANGE_COMPLETENESS_ADR` for
+   REQ-AIDS-032 is resolved (not waived).
+3. Re-ran the full test suite: all tests pass — expected, since no
+   functional code changed (ADR authoring and waiver re-recording only).
+4. This remediation pass's own human release approval (`nahisaho`) is
+   requested for the exact file set and `approval prepare release --json`
+   hash presented at merge time (see "Debt Remediation Approval" section
+   below, added once approval is obtained).
+
+## Debt Remediation Approval
+
+Approved by `nahisaho` on the following file set and
+`approval prepare release --json` hash:
+
+- `.musubix/changes/CHANGE-014.md`
+- `.musubix/features/ai-data-scientist/design.md`
+- `.musubix/features/ai-data-scientist/trace.json`
+- `.musubix/evidence/change-waivers.json`
+- `.musubix/evidence/order.json`
+- `.musubix/decisions/ADR-0104.md`
+
+`artifactSha256`: `04d8b8a6efda9420c2979045919b7ae827f0a825faff814466af2cc52dd6f22f`
+
+This approval covers only the #69 remediation work described above
+(stale-waiver re-recording and ADR authoring); it does not reopen or
+modify the original feature's "Released" approval described in the
+"## Status" section.
