@@ -236,3 +236,57 @@ No source/test/doc content changed in this step — only
   pre-existing CHANGE-013 `CHANGE_ORDER_MISMATCH` diagnostics (issue #61);
   repo-wide pre-existing debt across CHANGE-001/003/004/005/006/008
   (issue #62); `WORKFLOW_INVOCATION_UNVERIFIED` (issue #63).
+
+## Release Approval (TDD-ordering bug fix re-record, 2026-10-05)
+
+After the above post-merge re-record, independent verification of the
+pushed commit (`642e55c`) found the replay evidence contained a genuine
+TDD-ordering defect: individual `tdd red`/`tdd green` records for several
+batches were sequenced on the wrong side of their batch `change-record
+red`/`implementation`/`green` checkpoints in `.musubix/evidence/order.json`
+(e.g. a batch's `change-record red` checkpoint recorded *before* some of
+its constituent `tdd red` calls, and `tdd green` calls recorded *before*
+the batch's `change-record implementation` checkpoint — both violate
+musubix3's `validCycle` invariant requiring
+`red.order > requirements.order`, `red.order <= redCheckpoint.order`,
+`green.order > implementationCheckpoint.order`,
+`green.order <= greenCheckpoint.order`). This was root-caused directly
+from `change.ts`'s `validCycle` logic and confirmed via raw `order.json`
+sequence inspection, not just gate-summary trust.
+
+The evidence was replayed a further time (same revert-restore technique),
+this time with the ordering invariant checked explicitly at every step:
+for each of the ACHEM/AGENOM/ASTRUCT batches, all constituent `tdd red`
+calls were run and sequence-checked, then `change-record ... red`, then
+source restored to green state, then `change-record ... implementation`,
+then — only after that checkpoint — all constituent `tdd green` calls,
+then `change-record ... green`. No source/test/doc content changed; only
+`.musubix/evidence/*.json` and `.musubix/features/*/trace.json`.
+
+Verified ordering (sequence numbers from `.musubix/evidence/order.json`):
+- ACHEM: tdd red 882–910 → change red 911 → change implementation 912 →
+  tdd green 913–941 → change green 942
+- AGENOM: tdd red 943–965 → change red 966 → change implementation 967 →
+  tdd green 968–990 → change green 991
+- ASTRUCT: tdd red 992–1016 → change red 1017 → change implementation
+  1018 → tdd green 1019–1043 → change green 1044
+- quality: 1045
+
+Independent verification performed directly (not relying on self-report):
+`pytest -q` → 579 passed; `trace build` → 0 diagnostics; `graph gate` →
+PASS; `gate --changed --json` → CHANGE-013-owned diagnostics = 0 (overall
+`status: fail` remains due to the same pre-existing, unrelated repo-wide
+debt as before — issues #61/#62/#63 — not reintroduced by this fix).
+
+- `npx musubix3 approval record release` again refused:
+  `"Release approval requires passing non-approval quality checks:
+  workflow, tdd, change-history, change-completeness, performance."`
+  — same repository-wide precedent as above; blocked by pre-existing,
+  unrelated debt, not by anything in CHANGE-013's own scope.
+- **Human release approval:** approver `nahisaho`, reviewed artifact hash
+  (`approval prepare release --json`, repository-wide scope):
+  `47fa8b26fb2230fa96b96f959f72a71c6a23911bafe0d9fe680fd1f173925a1e`.
+- **Residual risks accepted (unchanged, reconfirmed):** the pre-existing
+  CHANGE-013 `CHANGE_ORDER_MISMATCH` diagnostics (issue #61); repo-wide
+  pre-existing debt across CHANGE-001/003/004/005/006/008 (issue #62);
+  `WORKFLOW_INVOCATION_UNVERIFIED` (issue #63).
