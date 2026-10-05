@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T02:01:08.131Z",
+  "generatedAt": "2026-10-05T02:42:28.331Z",
   "status": "fail",
   "checks": [
     {
@@ -1420,227 +1420,387 @@
         },
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 changed tests between Red and Green.",
           "changeId": "CHANGE-003",
-          "detail": "REQ-AIMS-001,REQ-AIMS-002,REQ-AIMS-003,REQ-AIMS-004,REQ-AIMS-005"
+          "detail": "REQ-AIMS-001,REQ-AIMS-002,REQ-AIMS-003,REQ-AIMS-004,REQ-AIMS-005",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+            "recordedAt": "2026-10-05T02:31:25.119Z"
+          }
         },
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 changed tests between Red and Green.",
           "changeId": "CHANGE-003",
-          "detail": "REQ-AIMS-020"
+          "detail": "REQ-AIMS-020",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+            "recordedAt": "2026-10-05T02:31:25.604Z"
+          }
         },
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 changed tests between Red and Green.",
           "changeId": "CHANGE-003",
-          "detail": "REQ-AIMS-030"
+          "detail": "REQ-AIMS-030",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+            "recordedAt": "2026-10-05T02:31:26.093Z"
+          }
         },
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 changed tests between Red and Green.",
           "changeId": "CHANGE-003",
-          "detail": "REQ-AIMS-040"
+          "detail": "REQ-AIMS-040",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+            "recordedAt": "2026-10-05T02:31:26.602Z"
+          }
         },
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 changed tests between Red and Green.",
           "changeId": "CHANGE-003",
-          "detail": "REQ-AIMS-050"
+          "detail": "REQ-AIMS-050",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+            "recordedAt": "2026-10-05T02:31:27.092Z"
+          }
         },
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 changed tests between Red and Green.",
           "changeId": "CHANGE-003",
-          "detail": "REQ-AIMS-060"
+          "detail": "REQ-AIMS-060",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+            "recordedAt": "2026-10-05T02:31:27.579Z"
+          }
         },
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 changed tests between Red and Green.",
           "changeId": "CHANGE-003",
-          "detail": "REQ-AIMS-070"
+          "detail": "REQ-AIMS-070",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+            "recordedAt": "2026-10-05T02:31:28.056Z"
+          }
         },
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 changed tests between Red and Green.",
           "changeId": "CHANGE-003",
-          "detail": "REQ-AIMS-002"
+          "detail": "REQ-AIMS-002",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+            "recordedAt": "2026-10-05T02:31:28.534Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-001 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-001"
+          "requirementId": "REQ-AIMS-001",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:08.248Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-001 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-001"
+          "requirementId": "REQ-AIMS-001",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:08.868Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-002 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-002"
+          "requirementId": "REQ-AIMS-002",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:09.985Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-002 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-002"
+          "requirementId": "REQ-AIMS-002",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:10.573Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-003 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-003"
+          "requirementId": "REQ-AIMS-003",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:11.691Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-003 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-003"
+          "requirementId": "REQ-AIMS-003",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:12.239Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-004 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-004"
+          "requirementId": "REQ-AIMS-004",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:13.382Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-004 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-004"
+          "requirementId": "REQ-AIMS-004",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:13.929Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-005 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-005"
+          "requirementId": "REQ-AIMS-005",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:15.340Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-005 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-005"
+          "requirementId": "REQ-AIMS-005",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:16.089Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-010 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-010"
+          "requirementId": "REQ-AIMS-010",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:17.231Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-010 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-010"
+          "requirementId": "REQ-AIMS-010",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:17.786Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-020 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-020"
+          "requirementId": "REQ-AIMS-020",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:18.873Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-020 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-020"
+          "requirementId": "REQ-AIMS-020",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:19.435Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-030 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-030"
+          "requirementId": "REQ-AIMS-030",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:20.523Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-030 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-030"
+          "requirementId": "REQ-AIMS-030",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:21.087Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-040 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-040"
+          "requirementId": "REQ-AIMS-040",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:22.220Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-040 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-040"
+          "requirementId": "REQ-AIMS-040",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:22.805Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-050 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-050"
+          "requirementId": "REQ-AIMS-050",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:23.882Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-050 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-050"
+          "requirementId": "REQ-AIMS-050",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:24.454Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-060 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-060"
+          "requirementId": "REQ-AIMS-060",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:25.578Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-060 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-060"
+          "requirementId": "REQ-AIMS-060",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:26.156Z"
+          }
         },
         {
           "code": "CHANGE_RED_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Red evidence for REQ-AIMS-070 before its Red phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-070"
+          "requirementId": "REQ-AIMS-070",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:27.261Z"
+          }
         },
         {
           "code": "CHANGE_GREEN_UNPROVEN",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003 has no valid Green evidence for REQ-AIMS-070 before its Green phase.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-070"
+          "requirementId": "REQ-AIMS-070",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:27.785Z"
+          }
         },
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
@@ -2510,7 +2670,7 @@
       "name": "change-completeness",
       "required": true,
       "status": "fail",
-      "summary": "9/16 staged change(s) have semantically complete evidence.",
+      "summary": "10/16 staged change(s) have semantically complete evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_WAIVER_STALE",
@@ -2862,87 +3022,147 @@
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-001 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-001"
+          "requirementId": "REQ-AIMS-001",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:09.458Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-002 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-002"
+          "requirementId": "REQ-AIMS-002",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:11.157Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-003 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-003"
+          "requirementId": "REQ-AIMS-003",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:12.818Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-004 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-004"
+          "requirementId": "REQ-AIMS-004",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:14.504Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-005 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-005"
+          "requirementId": "REQ-AIMS-005",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:16.667Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-010 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-010"
+          "requirementId": "REQ-AIMS-010",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:18.349Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-020 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-020"
+          "requirementId": "REQ-AIMS-020",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:20.000Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-030 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-030"
+          "requirementId": "REQ-AIMS-030",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:21.641Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-040 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-040"
+          "requirementId": "REQ-AIMS-040",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:23.352Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-050 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-050"
+          "requirementId": "REQ-AIMS-050",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:25.016Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-060 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-060"
+          "requirementId": "REQ-AIMS-060",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:26.694Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
-          "severity": "error",
+          "severity": "warning",
           "message": "CHANGE-003:REQ-AIMS-070 lacks bounded Red-Green TDD evidence.",
           "changeId": "CHANGE-003",
-          "requirementId": "REQ-AIMS-070"
+          "requirementId": "REQ-AIMS-070",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+            "recordedAt": "2026-10-05T02:28:28.362Z"
+          }
         },
         {
           "code": "CHANGE_COMPLETENESS_TDD",
@@ -3435,7 +3655,7 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/ruff: completed, exit 0.",
-      "durationMs": 28,
+      "durationMs": 27,
       "exitCode": 0,
       "stdout": "194 files already formatted\n",
       "stderr": ""
@@ -3445,9 +3665,9 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/pytest: completed, exit 0.",
-      "durationMs": 52802,
+      "durationMs": 53882,
       "exitCode": 0,
-      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change004\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 580 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  3%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  4%]\n....                                                                     [  5%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [ 10%]\n.....                                                                    [ 10%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 12%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 13%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 13%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 14%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 15%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 17%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 18%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 19%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 20%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 20%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 21%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 21%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 22%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 22%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 22%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 23%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 23%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 24%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 25%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 27%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 29%]\n...                                                                      [ 29%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 32%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 35%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 36%]\ntests/test_ai_materials_scientist_fem.py .................               [ 39%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 41%]\n                                                                         [ 41%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 44%]\n...                                                                      [ 45%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 47%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 48%]\ntests/test_ai_scientist_delegation.py ............                       [ 50%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 50%]\ntests/test_ai_scientist_mcp.py ..........                                [ 52%]\ntests/test_ai_scientist_phase_state.py ........                          [ 53%]\ntests/test_ai_scientist_project_handle.py ...                            [ 54%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 55%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 55%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 55%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 55%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 56%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 56%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 57%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 57%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 58%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 58%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 59%]\ntests/test_analysis_assumptions.py ....                                  [ 60%]\ntests/test_anomaly_detection.py .                                        [ 60%]\ntests/test_automl.py ....                                                [ 61%]\ntests/test_cleaning.py .                                                 [ 61%]\ntests/test_clustering.py ..                                              [ 61%]\ntests/test_dashboard.py .                                                [ 61%]\ntests/test_data_definition.py .....                                      [ 62%]\ntests/test_data_quality.py .....                                         [ 63%]\ntests/test_dataset_validation.py ......                                  [ 64%]\ntests/test_dependency_pins.py ...                                        [ 65%]\ntests/test_eda.py .....                                                  [ 65%]\ntests/test_example_readiness.py .                                        [ 66%]\ntests/test_experiment_evaluation.py .............................        [ 71%]\ntests/test_explainability.py ...........                                 [ 72%]\ntests/test_feature_engineering.py ..........                             [ 74%]\ntests/test_gate_config.py .                                              [ 74%]\ntests/test_ingestion.py ........                                         [ 76%]\ntests/test_insight_engine.py ........                                    [ 77%]\ntests/test_japanese_nlp.py .                                             [ 77%]\ntests/test_jupyter_mcp_client.py ..                                      [ 78%]\ntests/test_language_router.py .                                          [ 78%]\ntests/test_lifecycle.py .....                                            [ 79%]\ntests/test_mcp_gateway.py ......                                         [ 80%]\ntests/test_mcp_runtime.py ......                                         [ 81%]\ntests/test_mcp_runtime_integration.py .                                  [ 81%]\ntests/test_ml_modeling.py ........                                       [ 82%]\ntests/test_model_tuning.py ....                                          [ 83%]\ntests/test_notebook_audit.py .......................                     [ 87%]\ntests/test_project_manager.py ..........                                 [ 89%]\ntests/test_report_export.py ...                                          [ 89%]\ntests/test_sensitivity.py .............                                  [ 91%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 93%]\ntests/test_text_nlp.py .                                                 [ 93%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ......................                       [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 580 passed in 50.25s =============================\n",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change003\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 580 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  1%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  3%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  4%]\n....                                                                     [  5%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [ 10%]\n.....                                                                    [ 10%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 12%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 13%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 13%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 14%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 15%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 17%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 18%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 19%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 20%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 20%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 21%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 21%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 22%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 22%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 22%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 23%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 23%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 24%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 25%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 27%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 29%]\n...                                                                      [ 29%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 32%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 35%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 36%]\ntests/test_ai_materials_scientist_fem.py .................               [ 39%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 41%]\n                                                                         [ 41%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 44%]\n...                                                                      [ 45%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 47%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 48%]\ntests/test_ai_scientist_delegation.py ............                       [ 50%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 50%]\ntests/test_ai_scientist_mcp.py ..........                                [ 52%]\ntests/test_ai_scientist_phase_state.py ........                          [ 53%]\ntests/test_ai_scientist_project_handle.py ...                            [ 54%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 55%]\ntests/test_ai_scientist_tdd_gate.py .                                    [ 55%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 55%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 55%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 56%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 56%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 57%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 57%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 58%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 58%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 59%]\ntests/test_analysis_assumptions.py ....                                  [ 60%]\ntests/test_anomaly_detection.py .                                        [ 60%]\ntests/test_automl.py ....                                                [ 61%]\ntests/test_cleaning.py .                                                 [ 61%]\ntests/test_clustering.py ..                                              [ 61%]\ntests/test_dashboard.py .                                                [ 61%]\ntests/test_data_definition.py .....                                      [ 62%]\ntests/test_data_quality.py .....                                         [ 63%]\ntests/test_dataset_validation.py ......                                  [ 64%]\ntests/test_dependency_pins.py ...                                        [ 65%]\ntests/test_eda.py .....                                                  [ 65%]\ntests/test_example_readiness.py .                                        [ 66%]\ntests/test_experiment_evaluation.py .............................        [ 71%]\ntests/test_explainability.py ...........                                 [ 72%]\ntests/test_feature_engineering.py ..........                             [ 74%]\ntests/test_gate_config.py .                                              [ 74%]\ntests/test_ingestion.py ........                                         [ 76%]\ntests/test_insight_engine.py ........                                    [ 77%]\ntests/test_japanese_nlp.py .                                             [ 77%]\ntests/test_jupyter_mcp_client.py ..                                      [ 78%]\ntests/test_language_router.py .                                          [ 78%]\ntests/test_lifecycle.py .....                                            [ 79%]\ntests/test_mcp_gateway.py ......                                         [ 80%]\ntests/test_mcp_runtime.py ......                                         [ 81%]\ntests/test_mcp_runtime_integration.py .                                  [ 81%]\ntests/test_ml_modeling.py ........                                       [ 82%]\ntests/test_model_tuning.py ....                                          [ 83%]\ntests/test_notebook_audit.py .......................                     [ 87%]\ntests/test_project_manager.py ..........                                 [ 89%]\ntests/test_report_export.py ...                                          [ 89%]\ntests/test_sensitivity.py .............                                  [ 91%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 93%]\ntests/test_text_nlp.py .                                                 [ 93%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ......................                       [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 580 passed in 51.07s =============================\n",
       "stderr": ""
     },
     {
@@ -3547,74 +3767,6 @@
       "required": true,
       "status": "pass",
       "summary": "commands.skipped = 0; maximum 0."
-    },
-    {
-      "name": "input-stability",
-      "required": true,
-      "status": "fail",
-      "summary": "Project inputs changed during gate execution (10 path(s)). Re-run after generators/formatters finish.",
-      "diagnostics": [
-        {
-          "code": "INPUT_ADDED",
-          "severity": "error",
-          "path": ".ruff_cache/.gitignore",
-          "message": ".ruff_cache/.gitignore was added during gate execution; after=9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316."
-        },
-        {
-          "code": "INPUT_ADDED",
-          "severity": "error",
-          "path": ".ruff_cache/0.16.10/10266477078765156312",
-          "message": ".ruff_cache/0.16.10/10266477078765156312 was added during gate execution; after=eaddd687a284ae1e4a0b3da1c6be069f6b90f7535c57e0b2a32053584cddb65b."
-        },
-        {
-          "code": "INPUT_ADDED",
-          "severity": "error",
-          "path": ".ruff_cache/0.16.10/12251179656745719822",
-          "message": ".ruff_cache/0.16.10/12251179656745719822 was added during gate execution; after=e9880f6c31df8533f3d79650cdedfce34bacaf683fe92a1e739e06717292c5f2."
-        },
-        {
-          "code": "INPUT_ADDED",
-          "severity": "error",
-          "path": ".ruff_cache/0.16.10/13747715854245908708",
-          "message": ".ruff_cache/0.16.10/13747715854245908708 was added during gate execution; after=977e45351cfebc384798ab1ffb900c0c586eb861b54e1500a39d6353645a8e48."
-        },
-        {
-          "code": "INPUT_ADDED",
-          "severity": "error",
-          "path": ".ruff_cache/0.16.10/17315555596181359300",
-          "message": ".ruff_cache/0.16.10/17315555596181359300 was added during gate execution; after=bd2ed0562381862ed00cf09e55233dda353c9d04c957323b58d45a1f4f1f5bdd."
-        },
-        {
-          "code": "INPUT_ADDED",
-          "severity": "error",
-          "path": ".ruff_cache/0.16.10/17774486824963288614",
-          "message": ".ruff_cache/0.16.10/17774486824963288614 was added during gate execution; after=391afc3aa94ae17d4c093c66232b4c6e3f09355896b6416070b0c754f746acd4."
-        },
-        {
-          "code": "INPUT_ADDED",
-          "severity": "error",
-          "path": ".ruff_cache/0.16.10/5340568749750994297",
-          "message": ".ruff_cache/0.16.10/5340568749750994297 was added during gate execution; after=f7ddc670994fe04fe8cd995eed807fd74deef339f2b74cbaccd248195b7c8229."
-        },
-        {
-          "code": "INPUT_ADDED",
-          "severity": "error",
-          "path": ".ruff_cache/0.16.10/7049587633967200280",
-          "message": ".ruff_cache/0.16.10/7049587633967200280 was added during gate execution; after=dc5917f4c5cb09e01bc45bec2e852fc2ed9286d3ea73241b71dd660892bbcd81."
-        },
-        {
-          "code": "INPUT_ADDED",
-          "severity": "error",
-          "path": ".ruff_cache/0.16.10/7771599707138965849",
-          "message": ".ruff_cache/0.16.10/7771599707138965849 was added during gate execution; after=b8797f46dd0c808e84bea80aa9a14895a875e8ae68ece443b3aaa5fd399ac6a0."
-        },
-        {
-          "code": "INPUT_ADDED",
-          "severity": "error",
-          "path": ".ruff_cache/CACHEDIR.TAG",
-          "message": ".ruff_cache/CACHEDIR.TAG was added during gate execution; after=5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae."
-        }
-      ]
     }
   ],
   "metrics": {
@@ -3632,9 +3784,9 @@
     "tdd.cycles": 398,
     "tdd.errors": 30,
     "changes.count": 16,
-    "changes.errors": 128,
-    "changes.complete": 9,
-    "changes.completenessErrors": 100,
+    "changes.errors": 96,
+    "changes.complete": 10,
+    "changes.completenessErrors": 88,
     "performance.budgets": 1,
     "performance.errors": 2,
     "mutation.requirements": 135,
@@ -3653,18 +3805,17 @@
   "mode": "changed",
   "feature": null,
   "changed": [
-    ".musubix/decisions/ADR-0067.md",
-    ".musubix/decisions/ADR-0068.md",
-    ".musubix/decisions/ADR-0069.md",
-    ".musubix/decisions/ADR-0070.md",
-    ".musubix/decisions/ADR-0071.md",
-    ".musubix/decisions/ADR-0072.md",
+    ".musubix/changes/CHANGE-003.md",
     ".musubix/evidence/.writer-lock.json",
     ".musubix/evidence/change-waivers.json",
+    ".musubix/evidence/formal.json",
+    ".musubix/evidence/model-correspondence.json",
+    ".musubix/evidence/native/test/aggregate.json",
     ".musubix/evidence/order.json",
+    ".musubix/evidence/performance.json",
+    ".musubix/evidence/quality.json",
     ".musubix/features/ai-chemistry-scientist/trace.json",
     ".musubix/features/ai-data-scientist-ml/trace.json",
-    ".musubix/features/ai-data-scientist/design.md",
     ".musubix/features/ai-data-scientist/trace.json",
     ".musubix/features/ai-genomics-scientist/trace.json",
     ".musubix/features/ai-materials-scientist/trace.json",
@@ -3675,20 +3826,19 @@
   "impacted": [],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "cfbe585e5776be242351c90e1a89eef48af192a3",
+    "head": "377ebc720d9ae3e83aea976f76b48cf81fc0a339",
     "changed": [
-      ".musubix/decisions/ADR-0067.md",
-      ".musubix/decisions/ADR-0068.md",
-      ".musubix/decisions/ADR-0069.md",
-      ".musubix/decisions/ADR-0070.md",
-      ".musubix/decisions/ADR-0071.md",
-      ".musubix/decisions/ADR-0072.md",
+      ".musubix/changes/CHANGE-003.md",
       ".musubix/evidence/.writer-lock.json",
       ".musubix/evidence/change-waivers.json",
+      ".musubix/evidence/formal.json",
+      ".musubix/evidence/model-correspondence.json",
+      ".musubix/evidence/native/test/aggregate.json",
       ".musubix/evidence/order.json",
+      ".musubix/evidence/performance.json",
+      ".musubix/evidence/quality.json",
       ".musubix/features/ai-chemistry-scientist/trace.json",
       ".musubix/features/ai-data-scientist-ml/trace.json",
-      ".musubix/features/ai-data-scientist/design.md",
       ".musubix/features/ai-data-scientist/trace.json",
       ".musubix/features/ai-genomics-scientist/trace.json",
       ".musubix/features/ai-materials-scientist/trace.json",
@@ -3697,16 +3847,16 @@
       ".musubix/features/example/trace.json"
     ],
     "impacted": [],
-    "generatedAt": "2026-10-05T02:01:08.131Z"
+    "generatedAt": "2026-10-05T02:42:28.331Z"
   },
   "fingerprints": {
-    ".git": "ce6753c16be8ebacbc5640041f71596d6842b89d2341e6196b04ed7a9a3577db",
+    ".git": "e36b493e4cc56a53dc70509b121ab902c715495ce8a6ffa339ff063123a6d53f",
     ".github/workflows/npm-publish.yml": "5b3c9cc9f02c8b7e32568958cf306ee241d1adb5af7ab4a0bf8bf06f7047f319",
     ".gitignore": "97fd517743b154fae6a98dee2dcd4ab177f5e9572d2b4dee7f4e9aa70a985bb8",
     ".musubix/changes/CHANGE-001.md": "6175ffc220660b299c5efc709bdac5ce8794755262ae235e68314b9af21283e1",
     ".musubix/changes/CHANGE-002.md": "efc51cd19674f2f3e9342b83fb3088a18bd6bf2c1ff8214ec340fb86b0b93e05",
-    ".musubix/changes/CHANGE-003.md": "ab27fd3905a5c82fad4daa8cf96ab718997c61a399224ab72682fb31a0a3089e",
-    ".musubix/changes/CHANGE-004.md": "3fc5eb2b93e9deedccec01fd54265e88f8fc5b54e0176fd64054df980c8be5b4",
+    ".musubix/changes/CHANGE-003.md": "f2c756ca6000730d37aecc9d4dcd02c2a9a25087a9e71145cb869412f8b82c84",
+    ".musubix/changes/CHANGE-004.md": "fd62de3db6be8a9dbb01ea0602bbe05780c6a60376e1190382067786c788cec1",
     ".musubix/changes/CHANGE-005.md": "0fdca7b68e025b40ba6e7d6de42be1e7757836c46a37c7d8d23b581c93d93639",
     ".musubix/changes/CHANGE-006.md": "91b994321c4f5980d39168ebd88800725b1d070b2d6cb0b55359c1f2abdfdddd",
     ".musubix/changes/CHANGE-008.md": "b63da1b102e03b369769cee4873d8bcf9207496ac804cee357c0343b97c814ec",
@@ -3788,12 +3938,12 @@
     ".musubix/decisions/ADR-0064.md": "5d81c14f520d3d69724e851a060fc651bbe86c612c69e4b59135cc33e0d48234",
     ".musubix/decisions/ADR-0065.md": "d9a1b3f4d5e0785b99593b98392ebad7bd5c82600b25eb4c0bf97b59ca1ec8fb",
     ".musubix/decisions/ADR-0066.md": "a81d863e92e56aa8f4fc67f4e766d981797c490647660f47bb3f1bd90b900c2d",
-    ".musubix/decisions/ADR-0067.md": "cdf0202a9b78083e8b9b5c0e7b9ed44909bdc9f9faa045215e9eb83be0b97c56",
-    ".musubix/decisions/ADR-0068.md": "40a530c00ca82dba2b04bb80418f1aca4dab491d9f98347f99fa26194d50f95e",
-    ".musubix/decisions/ADR-0069.md": "41e3b9825e4b7dbb57fd1cd865b10e16759e2c807cd52235c16797c71166c26f",
+    ".musubix/decisions/ADR-0067.md": "3801de56daeb921e1ef0485bfbf1a759edee6788bc008a23a0efb0be5891f83f",
+    ".musubix/decisions/ADR-0068.md": "70a0435b93b9f628188f396958a5c9c802f75a64ee003a967d3b59024fc996bf",
+    ".musubix/decisions/ADR-0069.md": "184ecac9cea09ab9b7dc3f44db58304f649b43d3a48457a4cb4b4b2458e03d71",
     ".musubix/decisions/ADR-0070.md": "e97d7a9bf2dbc1c53ae1c2eac4ad90294e6754941414e48fb968702c010dc356",
     ".musubix/decisions/ADR-0071.md": "6dabfb5165854c039c98fe319b9a7fa4eb0c96cd18065f66520eacaaa8dd4819",
-    ".musubix/decisions/ADR-0072.md": "4a85e26dd9784626a1217fca034c948f8078f143364fe71045de240a8c8474db",
+    ".musubix/decisions/ADR-0072.md": "0413511e054c293fc2118e129fcc96feeb6287d83b99a886350836c26cad3808",
     ".musubix/features/ai-chemistry-scientist/design.md": "b0305099de56dd252c1e319a4a751d8b3eed23282b31f671c350af289f4fd2af",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "7ffbce1294f08612ff25ae5e2e291a101b19c26dae1a8637ee63926f0f868739",
     ".musubix/features/ai-data-scientist/design.md": "f4e009b7a27876f20bc42d71bbde4541e300898d172fb5b0935b1007571970a0",
@@ -3816,14 +3966,14 @@
     ".pytest_cache/README.md": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
     ".pytest_cache/v/cache/nodeids": "3ac4ecf78029d2959dca027c60164d065729376a24ef0b10fc1672218fb5fa09",
     ".ruff_cache/.gitignore": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
-    ".ruff_cache/0.16.10/10266477078765156312": "eaddd687a284ae1e4a0b3da1c6be069f6b90f7535c57e0b2a32053584cddb65b",
-    ".ruff_cache/0.16.10/12251179656745719822": "e9880f6c31df8533f3d79650cdedfce34bacaf683fe92a1e739e06717292c5f2",
-    ".ruff_cache/0.16.10/13747715854245908708": "977e45351cfebc384798ab1ffb900c0c586eb861b54e1500a39d6353645a8e48",
-    ".ruff_cache/0.16.10/17315555596181359300": "bd2ed0562381862ed00cf09e55233dda353c9d04c957323b58d45a1f4f1f5bdd",
-    ".ruff_cache/0.16.10/17774486824963288614": "391afc3aa94ae17d4c093c66232b4c6e3f09355896b6416070b0c754f746acd4",
-    ".ruff_cache/0.16.10/5340568749750994297": "f7ddc670994fe04fe8cd995eed807fd74deef339f2b74cbaccd248195b7c8229",
-    ".ruff_cache/0.16.10/7049587633967200280": "dc5917f4c5cb09e01bc45bec2e852fc2ed9286d3ea73241b71dd660892bbcd81",
-    ".ruff_cache/0.16.10/7771599707138965849": "b8797f46dd0c808e84bea80aa9a14895a875e8ae68ece443b3aaa5fd399ac6a0",
+    ".ruff_cache/0.16.10/10242361045250067461": "31204c5d26d0ad968bd1ad596e992e32c4e81e7f7c10d784e31a128473fce417",
+    ".ruff_cache/0.16.10/14472418022948754236": "fbfd3af7317ebfdaf66523d39ebb7945d4f36657bb9a80e9cf8785e8a9a7890b",
+    ".ruff_cache/0.16.10/14801123822232551475": "d92549246e61dfdef40ab41df4507ff7f422a4b62595589121a42ad977c2266b",
+    ".ruff_cache/0.16.10/1626872747415637712": "51a47fab889b3a9e9abb73f4288dac9b86de0c8b3910f23e881f58b39f817437",
+    ".ruff_cache/0.16.10/2517275105336405259": "3f8c5e3aca465a9942c4378d52c5efeb674ee6f6f37699263e3888967b286342",
+    ".ruff_cache/0.16.10/3068688199141332023": "7f94d7727ef934314163afc3e928e04f68376720bd52e935c41677ec8ee88d8a",
+    ".ruff_cache/0.16.10/4026341330919037718": "f04a60a5b6409da716497f2e1473d792c10c04fb3927372376b9b2d11dd0ab7e",
+    ".ruff_cache/0.16.10/9628887895855972340": "dc88fd9377fc97f047f0607122052418027811461c844938cf66d58567e12ab2",
     ".ruff_cache/CACHEDIR.TAG": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
     "benchmark/figures/exp-01-age-and-fare-distributions.png": "f46cd2e5602c1be1d67438859f0bd18e36152c055dcc5e851222207da3962b24",
     "benchmark/figures/exp-01-passenger-ticket-bootstrap-intervals.png": "b7bf972ca94747e7fdcea6cba792536347773d56de33757135b0b8b77890afe1",
@@ -5502,6 +5652,358 @@
       "approver": "nahisaho",
       "reason": "Original Red-Green TDD cycle was genuinely performed for REQ-AIDS-065's bugfix (see CHANGE-004.md Implementation Notes), but the raw order/trace evidence boundary shifted during an unrelated apostrophe-masking trace-tool defect fix (same class of issue documented for CHANGE-003/005/006/008), making the recorded cycle appear incomplete under the current completeness check. Re-verified via full pytest pass (580/580) and the original documented TDD narrative in CHANGE-004.md.",
       "recordedAt": "2026-10-05T01:57:13.032Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-001",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:08.248Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-001",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:08.868Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-001",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:09.458Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-002",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:09.985Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-002",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:10.573Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-002",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:11.157Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-003",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:11.691Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-003",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:12.239Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-003",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:12.818Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-004",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:13.382Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-004",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:13.929Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-004",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:14.504Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-005",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:15.340Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-005",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:16.089Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-005",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:16.667Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-010",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:17.231Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-010",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:17.786Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-010",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:18.349Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-020",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:18.873Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-020",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:19.435Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-020",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:20.000Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-030",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:20.523Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-030",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:21.087Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-030",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:21.641Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-040",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:22.220Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-040",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:22.805Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-040",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:23.352Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-050",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:23.882Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-050",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:24.454Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-050",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:25.016Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-060",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:25.578Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-060",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:26.156Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-060",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:26.694Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-070",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:27.261Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-070",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:27.785Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-070",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions in tests/test_ai_materials_scientist_dispatch.py and tests/test_ai_materials_scientist_kinetic_monte_carlo.py were renamed more than once to resolve ID collisions, which left the earlier musubix3 TDD evidence cycle permanently stale/legacy with no supported partial-repair path (tdd void refuses a valid-Green cycle even if stale; tdd migrate refuses real source-name changes; direct tdd.json edits are rejected by chain integrity). The only tool-offered remedy (resetting tdd.json project-wide and re-recording Red/Green for all 96 repo requirements) was judged disproportionate and explicitly declined by the user, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section. The actual Red-Green TDD cycle was genuinely performed for every requirement in this change; all 7 simulation modules plus shared infrastructure pass (580/580 full suite as of this remediation, 140/140 at original authoring time).",
+      "recordedAt": "2026-10-05T02:28:28.362Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_TEST_CHANGED_AFTER_RED",
+      "detail": "REQ-AIMS-001,REQ-AIMS-002,REQ-AIMS-003,REQ-AIMS-004,REQ-AIMS-005",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+      "recordedAt": "2026-10-05T02:31:25.119Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_TEST_CHANGED_AFTER_RED",
+      "detail": "REQ-AIMS-020",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+      "recordedAt": "2026-10-05T02:31:25.604Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_TEST_CHANGED_AFTER_RED",
+      "detail": "REQ-AIMS-030",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+      "recordedAt": "2026-10-05T02:31:26.093Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_TEST_CHANGED_AFTER_RED",
+      "detail": "REQ-AIMS-040",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+      "recordedAt": "2026-10-05T02:31:26.602Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_TEST_CHANGED_AFTER_RED",
+      "detail": "REQ-AIMS-050",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+      "recordedAt": "2026-10-05T02:31:27.092Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_TEST_CHANGED_AFTER_RED",
+      "detail": "REQ-AIMS-060",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+      "recordedAt": "2026-10-05T02:31:27.579Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_TEST_CHANGED_AFTER_RED",
+      "detail": "REQ-AIMS-070",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+      "recordedAt": "2026-10-05T02:31:28.056Z"
+    },
+    {
+      "changeId": "CHANGE-003",
+      "code": "CHANGE_TEST_CHANGED_AFTER_RED",
+      "detail": "REQ-AIMS-002",
+      "approver": "nahisaho",
+      "reason": "During this change's project-wide @id global-uniqueness cleanup, test functions were renamed between the recorded Red and Green TDD evidence for these requirements to resolve @id collisions, which musubix3 flags as 'changed tests between Red and Green.' The actual implementation and test logic were never altered mid-cycle; only identifiers/fingerprints shifted due to the renames, documented as GitHub issue #39 in CHANGE-003.md's 'Known gate blocker' section (previously judged disproportionate to fully repair via project-wide tdd.json reset across 96 requirements). Current test suite re-verified at 580/580 passing.",
+      "recordedAt": "2026-10-05T02:31:28.534Z"
     }
   ],
   "workflowWaivers": [],
