@@ -16,6 +16,16 @@ Run `workflow-sanitize <copilot.jsonl> <safe.jsonl>` before review, then
 `workflow-verify <safe.jsonl>`; it validates source-order lifecycles without
 assuming globally monotonic clocks unless `maxEventSkewMs` is explicitly set.
 Baseline-protect transcript byte limits; never truncate/edit to bypass them.
+Known musubix3 limitation (GitHub #63): `workflow-sanitize` structurally
+refuses a still-running Copilot session's own live `events.jsonl` (it
+requires "exactly one terminal result format or a routine shutdown
+lifecycle"), so `WORKFLOW_INVOCATION_UNVERIFIED` cannot be cleared for any
+change produced within that session until after it shuts down. Treat this
+diagnostic as expected and non-blocking in that situation — do not try to
+force it clear mid-session — and record it as a disclosed residual risk in
+the change's release approval alongside any other pre-existing repo-wide
+debt, the same way CHANGE-013/018 did. This is an external musubix3 CLI
+behavior, not something this repository's own code can change.
 For strict evidence, bind an expected UUID; GitHub origin needs strict OIDC.
 Never record multiple declarations per invocation; use only the configured CLI.
 For broad work, use short stages: initialize, requirements, requirements approval, design, design approval, real Red, Green, integration, trace/formal, quality, release approval. Report each result before the next prompt.
