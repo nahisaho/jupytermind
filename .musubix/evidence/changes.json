@@ -11604,6 +11604,155 @@
           "order": 1054
         }
       }
+    },
+    {
+      "changeId": "CHANGE-020",
+      "requirementIds": [
+        "REQ-AISCI-023"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-05T10:23:52.136Z",
+          "fingerprints": {
+            "impact": "24fb4cf33027b84baec53962e8052d9be1b94c5950f0a36908d32c09bfe74605",
+            "requirements": "1133789ca0503484c7f072dd6b8582c9b24f381faef67ac15bd23ae468711b7c",
+            "design": "a355ce1af0d6e83090a530b1fcaf841019a303dc6bd1a3038d31b448396d665d",
+            "implementation": "5b7d2d9aeef1d56c71b7f060ed53055c55079bfba42009d70aca0f36bc782ef1",
+            "tests": "89dc85c731e102290ecd1c2e628719af70ff0a93aa2111bbdbc2752dab37550a",
+            "tdd": "5aa0bd6b0b360213a21f856df6cf4eb8a9b21bec04cc7dbd3f50546f508ff146",
+            "requirementImplementations": {
+              "REQ-AISCI-023": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/manifest.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_gateway.py",
+                  "src/ai_scientist/orchestrator.py",
+                  "src/ai_scientist/phase_gate.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
+                  "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
+                  "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                  "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              }
+            }
+          },
+          "order": 1249
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-05T10:24:05.778Z",
+          "fingerprints": {
+            "impact": "24fb4cf33027b84baec53962e8052d9be1b94c5950f0a36908d32c09bfe74605",
+            "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+            "design": "a355ce1af0d6e83090a530b1fcaf841019a303dc6bd1a3038d31b448396d665d",
+            "implementation": "5b7d2d9aeef1d56c71b7f060ed53055c55079bfba42009d70aca0f36bc782ef1",
+            "tests": "89dc85c731e102290ecd1c2e628719af70ff0a93aa2111bbdbc2752dab37550a",
+            "tdd": "5aa0bd6b0b360213a21f856df6cf4eb8a9b21bec04cc7dbd3f50546f508ff146",
+            "requirementImplementations": {
+              "REQ-AISCI-023": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/manifest.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_gateway.py",
+                  "src/ai_scientist/orchestrator.py",
+                  "src/ai_scientist/phase_gate.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
+                  "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
+                  "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                  "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              }
+            }
+          },
+          "order": 1250
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-05T10:24:23.386Z",
+          "fingerprints": {
+            "impact": "24fb4cf33027b84baec53962e8052d9be1b94c5950f0a36908d32c09bfe74605",
+            "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+            "design": "180869eac660cbb06c8335e7351578cbf7b4091f6a3ff3b7875a53cde5147a63",
+            "implementation": "5b7d2d9aeef1d56c71b7f060ed53055c55079bfba42009d70aca0f36bc782ef1",
+            "tests": "89dc85c731e102290ecd1c2e628719af70ff0a93aa2111bbdbc2752dab37550a",
+            "tdd": "5aa0bd6b0b360213a21f856df6cf4eb8a9b21bec04cc7dbd3f50546f508ff146",
+            "requirementImplementations": {
+              "REQ-AISCI-023": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/language.py",
+                  "src/ai_scientist/manifest.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_gateway.py",
+                  "src/ai_scientist/orchestrator.py",
+                  "src/ai_scientist/phase_gate.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py",
+                  "src/ai_scientist/skill_invocation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/language.py": "e0a95031f4e1b33cd6ea89fffaa865839eb7a6cb139d3078f7e22403ff45bc37",
+                  "src/ai_scientist/manifest.py": "82a4b70d64a4a6b701a1c5d1ba590cd012acbf8054feee820d05d18589b4243f",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
+                  "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
+                  "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
+                  "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
+                  "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f"
+                }
+              }
+            }
+          },
+          "order": 1251
+        }
+      }
     }
   ]
 }
