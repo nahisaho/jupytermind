@@ -1248,6 +1248,84 @@
       "order": 1070,
       "previousSha256": "11ee417d1b60045fd20d5d28722b31810793a1fa7cb298abfdd6f0651e0e5e97",
       "payloadSha256": "8c0b858f30a4161aaf3d4d4d7a8c629ff215790b2c20365c7311d6147eb1b411"
+    },
+    {
+      "changeId": "CHANGE-004",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-060",
+      "approver": "nahisaho",
+      "reason": "Original Red-Green TDD cycle was genuinely performed for REQ-AIDS-060's bugfix (see CHANGE-004.md Implementation Notes), but the raw order/trace evidence boundary shifted during an unrelated apostrophe-masking trace-tool defect fix (same class of issue documented for CHANGE-003/005/006/008), making the recorded cycle appear incomplete under the current completeness check. Re-verified via full pytest pass (580/580) and the original documented TDD narrative in CHANGE-004.md.",
+      "recordedAt": "2026-10-05T01:57:10.248Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "c93a1ddf0e89d7a2c24e998d9edfe7a08557442f77dbc69b6ccc1f7fd9953400",
+      "order": 1071,
+      "previousSha256": "8c0b858f30a4161aaf3d4d4d7a8c629ff215790b2c20365c7311d6147eb1b411",
+      "payloadSha256": "a63fe696f4f300cfe1a4781c88b9a0cd5ef69405665b44870b31811f20a4571a"
+    },
+    {
+      "changeId": "CHANGE-004",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-061",
+      "approver": "nahisaho",
+      "reason": "Original Red-Green TDD cycle was genuinely performed for REQ-AIDS-061's bugfix (see CHANGE-004.md Implementation Notes), but the raw order/trace evidence boundary shifted during an unrelated apostrophe-masking trace-tool defect fix (same class of issue documented for CHANGE-003/005/006/008), making the recorded cycle appear incomplete under the current completeness check. Re-verified via full pytest pass (580/580) and the original documented TDD narrative in CHANGE-004.md.",
+      "recordedAt": "2026-10-05T01:57:10.821Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "c31ddd00bfacd2e738fb6432a4dba80050e309468283d007415cd4936c13c086",
+      "order": 1072,
+      "previousSha256": "a63fe696f4f300cfe1a4781c88b9a0cd5ef69405665b44870b31811f20a4571a",
+      "payloadSha256": "72ac751388e51b015b8b9123bf29cc444e2d13d559070bf0cd60879ff1a1e239"
+    },
+    {
+      "changeId": "CHANGE-004",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-062",
+      "approver": "nahisaho",
+      "reason": "Original Red-Green TDD cycle was genuinely performed for REQ-AIDS-062's bugfix (see CHANGE-004.md Implementation Notes), but the raw order/trace evidence boundary shifted during an unrelated apostrophe-masking trace-tool defect fix (same class of issue documented for CHANGE-003/005/006/008), making the recorded cycle appear incomplete under the current completeness check. Re-verified via full pytest pass (580/580) and the original documented TDD narrative in CHANGE-004.md.",
+      "recordedAt": "2026-10-05T01:57:11.420Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "988b96bf2c73f245f4254578173301fe30bb41ca3a855d6e9b0f4597cfe62e63",
+      "order": 1073,
+      "previousSha256": "72ac751388e51b015b8b9123bf29cc444e2d13d559070bf0cd60879ff1a1e239",
+      "payloadSha256": "af46fb9d6ecdfea21c0490a4408a62ed3532183513309c3a29594d219cda7f06"
+    },
+    {
+      "changeId": "CHANGE-004",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-063",
+      "approver": "nahisaho",
+      "reason": "Original Red-Green TDD cycle was genuinely performed for REQ-AIDS-063's bugfix (see CHANGE-004.md Implementation Notes), but the raw order/trace evidence boundary shifted during an unrelated apostrophe-masking trace-tool defect fix (same class of issue documented for CHANGE-003/005/006/008), making the recorded cycle appear incomplete under the current completeness check. Re-verified via full pytest pass (580/580) and the original documented TDD narrative in CHANGE-004.md.",
+      "recordedAt": "2026-10-05T01:57:11.964Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "2e8bf0aec56077556303b61df39f9e7e14545126b556cfc4e3b2dd338eddf472",
+      "order": 1074,
+      "previousSha256": "af46fb9d6ecdfea21c0490a4408a62ed3532183513309c3a29594d219cda7f06",
+      "payloadSha256": "58c38e07323f6a5a20caf55cbcd6a89686c1f65455e60b897d42da8ec0562861"
+    },
+    {
+      "changeId": "CHANGE-004",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-064",
+      "approver": "nahisaho",
+      "reason": "Original Red-Green TDD cycle was genuinely performed for REQ-AIDS-064's bugfix (see CHANGE-004.md Implementation Notes), but the raw order/trace evidence boundary shifted during an unrelated apostrophe-masking trace-tool defect fix (same class of issue documented for CHANGE-003/005/006/008), making the recorded cycle appear incomplete under the current completeness check. Re-verified via full pytest pass (580/580) and the original documented TDD narrative in CHANGE-004.md.",
+      "recordedAt": "2026-10-05T01:57:12.502Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "5080510d8df09170452fbae1117796f0b1ae8ffb2cc8ecce0447716cc7731481",
+      "order": 1075,
+      "previousSha256": "58c38e07323f6a5a20caf55cbcd6a89686c1f65455e60b897d42da8ec0562861",
+      "payloadSha256": "a259dccf4b055b18509f7ed83a67724d1217bbe8625d6b5d34ba3cd7468d2b1c"
+    },
+    {
+      "changeId": "CHANGE-004",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-065",
+      "approver": "nahisaho",
+      "reason": "Original Red-Green TDD cycle was genuinely performed for REQ-AIDS-065's bugfix (see CHANGE-004.md Implementation Notes), but the raw order/trace evidence boundary shifted during an unrelated apostrophe-masking trace-tool defect fix (same class of issue documented for CHANGE-003/005/006/008), making the recorded cycle appear incomplete under the current completeness check. Re-verified via full pytest pass (580/580) and the original documented TDD narrative in CHANGE-004.md.",
+      "recordedAt": "2026-10-05T01:57:13.032Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "5b59baa2301eaff7e88cf02899d291a67480ebd66a2522b24e624d172e48453c",
+      "order": 1076,
+      "previousSha256": "a259dccf4b055b18509f7ed83a67724d1217bbe8625d6b5d34ba3cd7468d2b1c",
+      "payloadSha256": "b3404cae38a5f712913a4fddfc87208888264be3f23c189c506c1584619cbada"
     }
   ]
 }

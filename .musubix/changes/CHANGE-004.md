@@ -49,8 +49,9 @@ mapping: #35 → REQ-AIDS-060/061, #36 → REQ-AIDS-062, #37 → REQ-AIDS-063/06
   `src/ai_data_scientist/dataset_validation.py`,
   `src/ai_data_scientist/stats_analysis.py`, and their corresponding test
   files under `tests/`.
-- No new skill boundary; no ADRs (all six design entries are narrow
-  bugfixes with "ADRs: none", consistent with the DES-AIDS-042 precedent).
+- No new skill boundary; originally drafted with no ADRs (all six design
+  entries were narrow bugfixes with "ADRs: none") — **superseded by the
+  "#62 Remediation" section below, which added 6 real ADRs.**
 - Issue #39 (an external `musubix3` tooling limitation discovered during
   CHANGE-003) is explicitly out of scope for this change; it is a
   documentation-tracked, deferred, external-tool issue, not an
@@ -68,8 +69,10 @@ DES-AIDS-050 (dataset-comparison agreement rate as float | None, with
 null-key exclusion fix), DES-AIDS-051 (significance-aware correlation
 interpretation), DES-AIDS-052 (bundled Japanese font applied for the full
 rendering lifetime, widened OR-combined trigger), DES-AIDS-053 (shared
-p_display bounded p-value formatting). ADRs: none for all six (narrow
-bugfix/data-structure entries; see each entry's "ADRs: none" justification).
+p_display bounded p-value formatting). Originally drafted with "ADRs:
+none" for all six (narrow bugfix/data-structure entries) — **superseded
+by the "#62 Remediation" section below, which links ADR-0067 through
+ADR-0072 instead.**
 
 Both requirements.md and design.md passed `musubix3` structural validation
 and multiple rounds of native `rubber-duck` review (one round for
@@ -109,3 +112,42 @@ before explicit human approval of each phase.
   none" exemption.
 - [x] Final rubber-duck review of release/quality evidence + this document.
 - [ ] Release approval.
+
+## #62 Remediation (2026-10-05)
+
+`CHANGE_COMPLETENESS_ADR` had been listed above as an "expected
+non-blocking finding," but issue #62's repo-wide audit confirmed it is
+actually `error`-severity and gate-blocking (not waivable — the only
+remediation is authoring a real ADR). Accordingly, 6 ADRs were authored,
+one per requirement, replacing each design entry's "ADRs: none" line:
+`ADR-0067` (DES-AIDS-048/REQ-AIDS-060), `ADR-0068` (DES-AIDS-049/
+REQ-AIDS-061), `ADR-0069` (DES-AIDS-050/REQ-AIDS-062), `ADR-0070`
+(DES-AIDS-051/REQ-AIDS-063), `ADR-0071` (DES-AIDS-052/REQ-AIDS-064), and
+`ADR-0072` (DES-AIDS-053/REQ-AIDS-065) — each documenting the real
+design rationale and genuine rejected alternatives for its bugfix,
+rubber-duck reviewed (2 rounds; all issues fixed) before being linked
+into `design.md`.
+
+Separately, a fresh `gate --changed --json` run found 6
+`CHANGE_COMPLETENESS_TDD` errors (REQ-AIDS-060–065) that were not
+previously waived (only `CHANGE_RED_UNPROVEN`/`CHANGE_GREEN_UNPROVEN`/
+`CHANGE_ORDER_MIGRATION_REQUIRED`/`CHANGE_TEST_CHANGED_AFTER_RED` had
+waivers). These were recorded via `change waiver record` (approver:
+nahisaho), documenting that the genuine Red-Green TDD cycle was
+performed for each requirement but the raw evidence boundary was shifted
+by the same apostrophe-masking trace-tool defect described above. All
+pre-existing waivers for this change remain valid (non-stale).
+
+After these fixes: `trace build` reports 0 diagnostics; `graph gate`
+PASS; `gate --changed --json` reports **zero CHANGE-004-owned
+error-severity diagnostics**. Full test suite re-verified: 580/580
+passed, 0 regressions.
+
+## Debt Remediation Approval
+
+- Approver: nahisaho
+- Date: 2026-10-05
+- artifactSha256 (approval prepare release): 31d731ffcc9cc0f2982c32fef35fed496c4e3febc1a2eefa5ebaa175c8c85cc6
+- Files reviewed: `.musubix/decisions/ADR-0067.md` through `ADR-0072.md`, `.musubix/features/ai-data-scientist/design.md`, `.musubix/changes/CHANGE-004.md`, `.musubix/evidence/change-waivers.json`, `.musubix/evidence/{formal,model-correspondence,order,performance,quality}.json`, `.musubix/evidence/native/test/aggregate.json`, `.musubix/features/{ai-chemistry-scientist,ai-data-scientist-ml,ai-data-scientist,ai-genomics-scientist,ai-materials-scientist,ai-scientist,ai-structural-biology-scientist,example}/trace.json`
+- Verification: 580/580 tests pass; `trace build` 0 diagnostics; `graph gate` PASS; 0 CHANGE-004-owned error-severity diagnostics.
+- Residual risk: none outstanding for CHANGE-004. Tracked under GitHub issue #62.

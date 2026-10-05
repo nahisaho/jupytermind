@@ -672,9 +672,7 @@ font before this design's plotting/`savefig` step runs, so the warning
 capture reflects the final, correctly-configured font — DES-AIDS-052 does
 not depend back on this design, keeping the dependency direction one-way.
 Requirements: REQ-AIDS-060
-ADRs: none — a narrow, backward-compatible wrapper-type introduction with
-a single defensible resolution (bytes subclass), consistent with the
-precedent recorded for DES-AIDS-042.
+ADRs: ADR-0067
 Depends-On: DES-AIDS-009, DES-AIDS-034, DES-AIDS-052
 
 ## DES-AIDS-049: record_chart auto-persists chart metadata into cell output / record_chartによるチャートメタデータの自動永続化
@@ -701,9 +699,7 @@ pass chart metadata as a separate argument; must not write
 `notebook_audit.audit_visual_outputs` (DES-AIDS-041) relies on that
 absence to surface "unaudited" for non-conforming callers.
 Requirements: REQ-AIDS-061
-ADRs: none — a narrow module-internal serialization step with a single
-defensible resolution, consistent with the precedent recorded for
-DES-AIDS-042.
+ADRs: ADR-0068
 Depends-On: DES-AIDS-048, DES-AIDS-041
 
 ## DES-AIDS-050: Dataset-comparison agreement rate as float | None / 一致率のfloat | None型による明確化
@@ -750,8 +746,7 @@ least one null-key row, the corrected (filtered) `matched_keys` count is
 the intended fix, not a regression, per REQ-AIDS-062's explicit null-key
 exclusion acceptance.
 Requirements: REQ-AIDS-062
-ADRs: none — a narrow type-and-guard-clause fix with a single defensible
-resolution, consistent with the precedent recorded for DES-AIDS-042.
+ADRs: ADR-0069
 Depends-On: DES-AIDS-045
 
 ## DES-AIDS-051: Significance-gated correlation interpretation / 有意性に基づく相関解釈の分岐
@@ -786,8 +781,7 @@ low-but-significant correlation; both branches must share one `p_display`
 computation (DES-AIDS-053) so the displayed p-value is never inconsistent
 between them.
 Requirements: REQ-AIDS-063
-ADRs: none — a single added guard-clause branch with a single defensible
-resolution, consistent with the precedent recorded for DES-AIDS-042.
+ADRs: ADR-0070
 Depends-On: DES-AIDS-053
 
 ## DES-AIDS-052: Bundled Japanese font applied for the full rendering lifetime / レンダリング全体への日本語フォント適用
@@ -860,8 +854,7 @@ warning-capture step, so that step observes the final, correctly-
 configured font; must not inspect columns of `df` that are not selected
 for plotting by this call.
 Requirements: REQ-AIDS-064
-ADRs: none — a narrow trigger-condition widening with a single defensible
-resolution, consistent with the precedent recorded for DES-AIDS-042.
+ADRs: ADR-0071
 Depends-On: DES-AIDS-009, DES-AIDS-034
 
 ## DES-AIDS-053: Bounded display of a sub-threshold p-value / 閾値未満p値の上限表記
@@ -884,8 +877,7 @@ Constraints: Must not change formatting for any `p_value >= 1e-4`; must
 apply identically in both `ja` and `en` language branches and in both the
 significant and non-significant sentence templates.
 Requirements: REQ-AIDS-065
-ADRs: none — a narrow formatting guard-clause with a single defensible
-resolution, consistent with the precedent recorded for DES-AIDS-042.
+ADRs: ADR-0072
 Depends-On: none
 Change: CHANGE-004
 
