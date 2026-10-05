@@ -371,6 +371,14 @@
       "status": "failed",
       "reason": "CHANGE-015 code, approvals, TDD replay, and staged change evidence are complete, but release readiness remains blocked by pre-existing repo-wide gate failures plus non-waivable CHANGE_COMPLETENESS_ADR diagnostics for REQ-AIDS-021 and REQ-AIDS-082, so release approval cannot be prepared yet.",
       "recordedAt": "2026-10-04T21:11:13.372Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.8",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-10-05T12:24:54.871Z"
     }
   ]
 }
