@@ -180,3 +180,70 @@ readiness is still blocked in three layers:
 
 Accordingly, approval recording, commit, and push were not completed
 autonomously here.
+
+## #69 Remediation
+
+Resolved as part of issue #69 (residual, out-of-scope debt discovered while
+closing #62; #62 itself never included CHANGE-017).
+
+Findings on resuming this CHANGE in a fresh worktree:
+
+- The intended `.github/skills/ai-data-scientist/SKILL.md` documentation
+  content described above (long-running-cell guidance: splitting restartable
+  chunks, confirming real completion via full lifecycle quiescence or real
+  kernel-idle observation before sending another cell, resuming from durable
+  checkpoints after interruption) was **already present on `main`**,
+  having been merged previously in commit `47ea7a4` (PR closing #55) and
+  carried forward unchanged through later SKILL.md edits (e.g. CHANGE-018's
+  `target_claim` addition). No further content edits were needed; the stale
+  working branch that originally carried this commit (forked from a `main`
+  far behind current `main`, missing dozens of later features/changes) was
+  discarded unmerged rather than reused, to avoid any risk of regressing
+  unrelated files.
+- The only remaining gap was exactly what this document already identified:
+  `change-record` cannot express a `Requirements: none.` change without an
+  invented requirement ID, leaving a dangling `CHANGE_RECORD_MISSING`
+  diagnostic. This is a musubix3 tooling constraint, not a defect in this
+  CHANGE's content.
+
+Remediation performed:
+
+1. Recorded the waivable `CHANGE_RECORD_MISSING` diagnostic via
+   `musubix3 change waiver record CHANGE-017 CHANGE_RECORD_MISSING
+   --approver nahisaho --reason "..."`, citing this constraint and issue #69.
+2. Re-ran `gate --json`: with the waiver recorded and no further edits to
+   this document, CHANGE-017's `CHANGE_RECORD_MISSING` diagnostic is
+   `warning` severity (waived), not `error`. (Editing this document after
+   recording a waiver invalidates the waiver's content snapshot and produces
+   `CHANGE_WAIVER_STALE`; the waiver command is therefore re-run once, after
+   this document reaches its final state, so the final committed state and
+   the waiver's recorded snapshot agree.)
+3. Ran the full test suite: 580/580 passed — expected, since no functional
+   code changed (documentation/waiver only).
+4. Human release approval (`nahisaho`) is requested for the exact file set
+   and `approval prepare release --json` hash presented at merge time.
+
+CHANGE-017's content and waiver are ready for release approval.
+
+## Debt Remediation Approval
+
+Human release approval obtained from `nahisaho` via `ask_user` for the exact
+3-file change set below, matching `approval prepare release --json`
+`artifactSha256 fa0de730e963e4770c6649f4bd207f397bfefa8df3ae7cddb3d2a4a607c13b0f`:
+
+- `.musubix/changes/CHANGE-017.md`
+- `.musubix/evidence/change-waivers.json`
+- `.musubix/evidence/order.json`
+
+(`musubix3 approval record release` could not be run directly: it is blocked
+repo-wide by unrelated pre-existing debt — `design approval is stale` —
+unrelated to CHANGE-017's own content, consistent with the pattern already
+established for CHANGE-001 in this same remediation effort.)
+
+Note: appending this approval note after recording the `CHANGE_RECORD_MISSING`
+waiver re-triggers `CHANGE_WAIVER_STALE` (editing the CHANGE document changes
+its snapshot hash), so the waiver is recorded once more, after this document
+reaches its truly final state, with no further edits afterward. This
+chicken-and-egg behavior (recording a waiver's approval outcome in the same
+document the waiver snapshots) is a musubix3 tooling gap, filed as
+nahisaho/musubix3#58.
