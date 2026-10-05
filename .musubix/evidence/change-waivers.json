@@ -2860,6 +2860,42 @@
       "order": 1194,
       "previousSha256": "9d6011ad48a5fdfb677bb5be40e92bad06ebda2c84fe6fd3268f362bbac4dd64",
       "payloadSha256": "7276b49bfad6dd51fc97ce36f5a145e1b815058da33c955a443a5b879caca322"
+    },
+    {
+      "changeId": "CHANGE-017",
+      "code": "CHANGE_RECORD_MISSING",
+      "approver": "nahisaho",
+      "reason": "CHANGE-017 is a documentation-only change (Requirements: none) adding operator guidance to ai-data-scientist's SKILL.md for long-running-cell handling (closed issue #55). musubix3's change-record CLI requires at least one --requirement and refuses an empty requirement set, so there is no valid requirement ID to record staged change phases for a change that intentionally modifies no normative requirement text. The documented content itself was independently reviewed (iterative code-review, 3 issues found and fixed, final clean) and approved by nahisaho prior to merge. Tracked as part of jupytermind#69 (tooling gap: change-record cannot express a zero-requirement docs-only change).",
+      "recordedAt": "2026-10-05T03:39:21.061Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "b4119b00bb809b7234b33ada98a60dcc5f795cb4a70bd99b37b4c6a43f421cf9",
+      "order": 1195,
+      "previousSha256": "7276b49bfad6dd51fc97ce36f5a145e1b815058da33c955a443a5b879caca322",
+      "payloadSha256": "aa89eb77ddc1d3be49315ee0d3fe52b616ef9cd198fc9a5ad4410d5fd43b5478"
+    },
+    {
+      "changeId": "CHANGE-017",
+      "code": "CHANGE_RECORD_MISSING",
+      "approver": "nahisaho",
+      "reason": "CHANGE-017 is a documentation-only change (Requirements: none) adding operator guidance to ai-data-scientist's SKILL.md for long-running-cell handling (closed issue #55). musubix3's change-record CLI requires at least one --requirement and refuses an empty requirement set, so there is no valid requirement ID to record staged change phases for a change that intentionally modifies no normative requirement text. The documented content itself was independently reviewed (iterative code-review, 3 issues found and fixed, final clean) and approved by nahisaho prior to merge. Tracked as part of jupytermind#69 (tooling gap: change-record cannot express a zero-requirement docs-only change).",
+      "recordedAt": "2026-10-05T03:47:10.171Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "4032feda739d583bdc0ecc4568352922e6dbf7b43719f8cf775d9c5362860872",
+      "order": 1196,
+      "previousSha256": "aa89eb77ddc1d3be49315ee0d3fe52b616ef9cd198fc9a5ad4410d5fd43b5478",
+      "payloadSha256": "930a4a69405858bcff3b43bef402fe2d197fbfeafe6f9bdc572ed501de2a229f"
+    },
+    {
+      "changeId": "CHANGE-017",
+      "code": "CHANGE_RECORD_MISSING",
+      "approver": "nahisaho",
+      "reason": "CHANGE-017 is a documentation-only change (Requirements: none) adding operator guidance to ai-data-scientist's SKILL.md for long-running-cell handling (closed issue #55). musubix3's change-record CLI requires at least one --requirement and refuses an empty requirement set, so there is no valid requirement ID to record staged change phases for a change that intentionally modifies no normative requirement text. The documented content itself was independently reviewed (iterative code-review, 3 issues found and fixed, final clean) and approved by nahisaho prior to merge. Tracked as part of jupytermind#69 (tooling gap: change-record cannot express a zero-requirement docs-only change).",
+      "recordedAt": "2026-10-05T03:52:19.378Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "5b40623ca6617d56b5577d8220111fbf626c0933219afb332fa0f0fa59c5eab1",
+      "order": 1197,
+      "previousSha256": "930a4a69405858bcff3b43bef402fe2d197fbfeafe6f9bdc572ed501de2a229f",
+      "payloadSha256": "be2677ad0f4297529bf0f14b0c14a773016b020bc076046316b1a212939831ab"
     }
   ]
 }
