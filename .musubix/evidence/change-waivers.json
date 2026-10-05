@@ -3559,6 +3559,97 @@
       "order": 1248,
       "previousSha256": "3a64487c9159f5cbbf3f53bd15d0412de4d9347afd877b0d84379ebfb01838da",
       "payloadSha256": "43745325dc7fd4fe1fd3ec3abffbcb7cdbb6949848006db915f147fd81bbd98d"
+    },
+    {
+      "changeId": "CHANGE-021",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-ACHEM-100",
+      "approver": "nahisaho",
+      "reason": "tdd green for TEST-ACHEM-972 was recorded before change-record implementation during an interactive TDD-recording retry; the Red/Green cycle itself genuinely executed (8/8 tests pass) but its order relative to the change-record implementation timestamp does not satisfy the evidence window check. Same accepted root cause/precedent as CHANGE-016:REQ-AIDS-092.",
+      "recordedAt": "2026-10-05T17:13:40.182Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "111a9ee8263fad914d6b3ce2c6aca70ba354fe862854afff3734712eca510fd6",
+      "order": 1305,
+      "previousSha256": "43745325dc7fd4fe1fd3ec3abffbcb7cdbb6949848006db915f147fd81bbd98d",
+      "payloadSha256": "94cd2e191840ae9c5435499d0430e758097f46066bca89d46cb8353a0b834459"
+    },
+    {
+      "changeId": "CHANGE-021",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-ACHEM-100",
+      "approver": "nahisaho",
+      "reason": "tdd green for TEST-ACHEM-972 was recorded before change-record implementation during an interactive TDD-recording retry; the Red/Green cycle itself genuinely executed (8/8 tests pass) but its order relative to the change-record implementation timestamp does not satisfy the evidence window check. Same accepted root cause/precedent as CHANGE-016:REQ-AIDS-092.",
+      "recordedAt": "2026-10-05T17:13:40.682Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "111a9ee8263fad914d6b3ce2c6aca70ba354fe862854afff3734712eca510fd6",
+      "order": 1306,
+      "previousSha256": "94cd2e191840ae9c5435499d0430e758097f46066bca89d46cb8353a0b834459",
+      "payloadSha256": "61c283fed82b6400bebaf936862d5268606d6515994c1696ed9dbeceb97cbabd"
+    },
+    {
+      "changeId": "CHANGE-021",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-ACHEM-100",
+      "approver": "nahisaho",
+      "reason": "tdd green for TEST-ACHEM-972 was recorded before change-record implementation during an interactive TDD-recording retry; the Red/Green cycle itself genuinely executed (8/8 tests pass) but its order relative to the change-record implementation timestamp does not satisfy the evidence window check. Same accepted root cause/precedent as CHANGE-016:REQ-AIDS-092.",
+      "recordedAt": "2026-10-05T17:13:41.358Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "111a9ee8263fad914d6b3ce2c6aca70ba354fe862854afff3734712eca510fd6",
+      "order": 1307,
+      "previousSha256": "61c283fed82b6400bebaf936862d5268606d6515994c1696ed9dbeceb97cbabd",
+      "payloadSha256": "5a988ac731f83ba1f9c5f8f0fbcbd09e5307c23898c956348fb71603946093cd"
+    },
+    {
+      "changeId": "CHANGE-021",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-ACHEM-100",
+      "approver": "nahisaho",
+      "reason": "tdd green for TEST-ACHEM-972 was recorded before change-record implementation during an interactive TDD-recording retry; the Red/Green cycle itself genuinely executed (8/8 tests pass) but its order relative to the change-record implementation timestamp does not satisfy the evidence window check. Same accepted root cause/precedent as CHANGE-016:REQ-AIDS-092. Re-recorded after evidence-chronology surgery corrected an unrelated quality-phase-ordering issue.",
+      "recordedAt": "2026-10-05T17:30:36.745Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "b68501f64c9f1dd672c38dea59739d49aa325bf7f35506ffc27f389e621de541",
+      "order": 1313,
+      "previousSha256": "5a988ac731f83ba1f9c5f8f0fbcbd09e5307c23898c956348fb71603946093cd",
+      "payloadSha256": "b5f89fbd28234bcbf54316cafbbe995b65cd80f1aba325a3cabe1de504feb029"
+    },
+    {
+      "changeId": "CHANGE-021",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-ACHEM-100",
+      "approver": "nahisaho",
+      "reason": "tdd green for TEST-ACHEM-972 was recorded before change-record implementation during an interactive TDD-recording retry; the Red/Green cycle itself genuinely executed (8/8 tests pass) but its order relative to the change-record implementation timestamp does not satisfy the evidence window check. Same accepted root cause/precedent as CHANGE-016:REQ-AIDS-092. Re-recorded after evidence-chronology surgery corrected an unrelated quality-phase-ordering issue.",
+      "recordedAt": "2026-10-05T17:30:37.554Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "b68501f64c9f1dd672c38dea59739d49aa325bf7f35506ffc27f389e621de541",
+      "order": 1314,
+      "previousSha256": "b5f89fbd28234bcbf54316cafbbe995b65cd80f1aba325a3cabe1de504feb029",
+      "payloadSha256": "65a8d66a55db47df7c54335002046ba8b8a71001503e5f20bd0054fd69782bd7"
+    },
+    {
+      "changeId": "CHANGE-021",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-ACHEM-100",
+      "approver": "nahisaho",
+      "reason": "tdd green for TEST-ACHEM-972 was recorded before change-record implementation during an interactive TDD-recording retry; the Red/Green cycle itself genuinely executed (8/8 tests pass) but its order relative to the change-record implementation timestamp does not satisfy the evidence window check. Same accepted root cause/precedent as CHANGE-016:REQ-AIDS-092. Re-recorded after evidence-chronology surgery corrected an unrelated quality-phase-ordering issue.",
+      "recordedAt": "2026-10-05T17:30:38.324Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "b68501f64c9f1dd672c38dea59739d49aa325bf7f35506ffc27f389e621de541",
+      "order": 1315,
+      "previousSha256": "65a8d66a55db47df7c54335002046ba8b8a71001503e5f20bd0054fd69782bd7",
+      "payloadSha256": "8167f8cf12199d076ff6160a9d4b2fb3f5eec31c1a08c287f46e7f00c93526c9"
+    },
+    {
+      "changeId": "CHANGE-021",
+      "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+      "detail": "requirement:REQ-ACHEM-100",
+      "approver": "nahisaho",
+      "reason": "TEST-ACHEM-972's TDD evidence predates the monotonic-order invariant introduced by this interactive recording session (tdd green recorded before change-record implementation); tdd migrate reports no valid Green phase to migrate since the cycle's ordering, not its pass/fail outcome, is the issue. Same accepted root cause/precedent as CHANGE-016:REQ-AIDS-092 and the sibling CHANGE_RED_UNPROVEN/CHANGE_GREEN_UNPROVEN/CHANGE_COMPLETENESS_TDD waivers already recorded for REQ-ACHEM-100.",
+      "recordedAt": "2026-10-05T17:34:11.281Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "cc42aec2088df42443f83f74b2b33bc4d2c09bc95929a2b8bf05f5c6a1a0503c",
+      "order": 1317,
+      "previousSha256": "8167f8cf12199d076ff6160a9d4b2fb3f5eec31c1a08c287f46e7f00c93526c9",
+      "payloadSha256": "2d9ea0821fa97760dfa19c846d6d5f6bd76af1f95e66a9197c2bd0423f775777"
     }
   ]
 }

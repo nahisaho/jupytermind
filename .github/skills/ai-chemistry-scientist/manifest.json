@@ -124,5 +124,33 @@
         "生物活性分類"
       ]
     }
+  },
+  "salt-removal": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_salt_removal",
+    "names": {
+      "en": [
+        "salt removal",
+        "structure standardization"
+      ],
+      "ja": [
+        "塩除去",
+        "構造標準化"
+      ]
+    }
+  },
+  "structure-format-conversion": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_structure_format_conversion",
+    "names": {
+      "en": [
+        "structure format conversion",
+        "chemical format conversion"
+      ],
+      "ja": [
+        "構造フォーマット変換",
+        "化学構造フォーマット変換"
+      ]
+    }
   }
 }

@@ -21,6 +21,13 @@ alert screening, molecular formula and exact mass, and heuristic target-class
 activity classification — inspired by ToolUniverse's PubChem/ChEMBL/drug-
 safety tool taxonomy (again only as domain inspiration, not to reuse any of
 its code, data, or external API calls).
+This third increment extends the skill to 11 total modules by adding 2 more
+modules — SMILES salt removal/structure standardization and chemical
+structure format conversion (SMILES/InChI/InChIKey/Molblock) — identified by
+gap analysis against the `aipoch/openscience-skill-marketplace` catalog
+(used only to identify candidate domains; no code, data, or license-encumbered
+content from that catalog is reused, consistent with its own disclosed
+license-ambiguity caveats).
 
 All modules are implemented with RDKit (required dependency) plus
 numpy/scikit-learn already present in this repository; no other external
@@ -41,8 +48,8 @@ Acceptance: A fixed Japanese-language fixture request ("分子記述子を計算
 Priority: must
 Type: functional
 Pattern: event-driven
-Statement: When a user's request text contains one of the chemistry skill manifest's registered name/synonym strings for a supported method, the system shall dispatch the request to exactly that method's module handler and execute no other module, where the supported methods are the 9 manifest-registered chemistry modules defined by REQ-ACHEM-010/020/030/040/050/060/070/080/090, each with both an English and a Japanese registered name/synonym list in the manifest.
-Acceptance: For each of the 9 methods, a fixture request using one of its registered English names and a separate fixture request using one of its registered Japanese names each dispatch to exactly that method's handler and no other; a fixture request containing two different methods' registered names yields a clarification question listing both candidates with no module invoked; a fixture request containing none of the registered names yields a rejection message with no module invoked.
+Statement: When a user's request text contains one of the chemistry skill manifest's registered name/synonym strings for a supported method, the system shall dispatch the request to exactly that method's module handler and execute no other module, where the supported methods are the 11 manifest-registered chemistry modules defined by REQ-ACHEM-010/020/030/040/050/060/070/080/090/100/110, each with both an English and a Japanese registered name/synonym list in the manifest.
+Acceptance: For each of the 11 methods, a fixture request using one of its registered English names and a separate fixture request using one of its registered Japanese names each dispatch to exactly that method's handler and no other; a fixture request containing two different methods' registered names yields a clarification question listing both candidates with no module invoked; a fixture request containing none of the registered names yields a rejection message with no module invoked.
 
 ## REQ-ACHEM-003: Input and parameter validation / 入力・パラメータ検証
 Priority: must
@@ -50,15 +57,15 @@ Type: functional
 Pattern: unwanted-behavior
 Statement: If a requested module's input parameters fail that module's own documented chemical-validity or numerical-adequacy domain, then the system shall reject the run and report which parameter violated which named constraint, before performing any descriptor computation, model fit, or similarity/score calculation.
 Acceptance: A single-SMILES request whose `smiles` parameter fails RDKit's `Chem.MolFromSmiles` parse (returns `None`) — for example the malformed string `"C1CC"` (unclosed ring) — is rejected with a message naming the `smiles` parameter and the constraint "must parse to a valid RDKit molecule"; no descriptor, score, or model computation is performed for that run. For a batch-capable module (REQ-ACHEM-010), a multi-SMILES request validates and rejects each input item independently: an invalid item is reported as a per-item rejection naming the `smiles` parameter and the violated constraint, while every other item in the same batch is still computed. The same per-run-or-per-item pattern (reject before computation, name the parameter and constraint) applies to every module's documented domain, including each module-specific domain listed in its own requirement below.
-Constraints: This requirement's "chemical-validity or numerical-adequacy domain" is defined per module by REQ-ACHEM-010/020/030/040/050/060/070/080/090; it does not itself define a single universal validity test applicable across all modules in this skill. Validation granularity is per module: REQ-ACHEM-010 (batch descriptor calculation) validates and rejects each SMILES item independently without aborting the rest of the batch; REQ-ACHEM-020/030/040/050/060/070/080/090 (single-ligand/model/query modules) validate the whole run atomically and reject the entire run with no partial computation when any parameter is invalid.
+Constraints: This requirement's "chemical-validity or numerical-adequacy domain" is defined per module by REQ-ACHEM-010/020/030/040/050/060/070/080/090/100/110; it does not itself define a single universal validity test applicable across all modules in this skill. Validation granularity is per module: REQ-ACHEM-010 (batch descriptor calculation) validates and rejects each SMILES item independently without aborting the rest of the batch; REQ-ACHEM-020/030/040/050/060/070/080/090/100/110 (single-ligand/model/query modules) validate the whole run atomically and reject the entire run with no partial computation when any parameter is invalid.
 
 ## REQ-ACHEM-004: Reproducible run evidence / 再現可能な実行根拠
 Priority: must
 Type: functional
 Pattern: event-driven
 Statement: When a module run completes, the system shall record a deterministic result (produced without any random seed) with exactly three top-level keys: `metadata` (a JSON-safe dict containing at least `module`, `schema_version`, and `rdkit_version`), `parameters` (a JSON-safe dict of the resolved input parameters), and `result` (a JSON-safe dict or list of the module's output values).
-Acceptance: For each of the 9 modules, two runs with identical `parameters` against the same installed RDKit/scikit-learn versions produce `result` values that compare exactly equal (numeric fields equal via `==` for integers and within `1e-9` absolute tolerance for floats); `metadata.rdkit_version` matches the installed `rdkit.__version__` string, and for the QSAR module (REQ-ACHEM-030) `metadata.scikit_learn_version` matches the installed `sklearn.__version__` string.
-Constraints: "Deterministic" means every module's governing computation (RDKit descriptor calculation, rule screening, SMARTS substructure matching, molecular-formula/exact-mass calculation, heuristic target-class classification, scikit-learn `LinearRegression` least-squares fit, fingerprint similarity, or the fixed arithmetic docking-score formula) is a pure function of `parameters` and the installed RDKit/scikit-learn version, with no stochastic step and therefore no seed to record.
+Acceptance: For each of the 11 modules, two runs with identical `parameters` against the same installed RDKit/scikit-learn versions produce `result` values that compare exactly equal (numeric fields equal via `==` for integers and within `1e-9` absolute tolerance for floats); `metadata.rdkit_version` matches the installed `rdkit.__version__` string, and for the QSAR module (REQ-ACHEM-030) `metadata.scikit_learn_version` matches the installed `sklearn.__version__` string.
+Constraints: "Deterministic" means every module's governing computation (RDKit descriptor calculation, rule screening, SMARTS substructure matching, molecular-formula/exact-mass calculation, heuristic target-class classification, scikit-learn `LinearRegression` least-squares fit, fingerprint similarity, the fixed arithmetic docking-score formula, fixed-sort-key fragment selection, or RDKit format parsing/rendering) is a pure function of `parameters` and the installed RDKit/scikit-learn version, with no stochastic step and therefore no seed to record.
 
 ## REQ-ACHEM-010: Molecular descriptor calculation / 分子記述子計算
 Priority: must
@@ -131,6 +138,22 @@ Statement: When a user requests target-class activity classification for a SMILE
 Acceptance: For diazepam (`"CN1C(=O)CN=C(c2ccccc2)c2cc(Cl)ccc21"`), RDKit computes `tpsa = 32.67 ± 0.0001`, `mol_logp = 3.1538 ± 0.0001` (full-precision `3.1538000000000025`), `mol_wt = 284.746 ± 0.001`, and `aromatic_ring_count = 2`, so the label is exactly `"CNS_like"`. For nilotinib (`"CC1=C(C=C(C=C1)NC(=O)C2=CC(=CC(=C2)N3CCN(CC3)C)C(F)(F)F)NC4=NC=NC(=N4)C5=CN=CC=C5"`), RDKit computes `tpsa = 99.17 ± 0.0001`, `mol_logp = 5.00852 ± 0.0001`, `mol_wt = 548.573 ± 0.001`, and `aromatic_ring_count = 4`, so it fails the first (`"CNS_like"`) branch and is classified exactly as `"kinase_inhibitor_like"`. For aspirin (`"CC(=O)OC1=CC=CC=C1C(=O)O"`), RDKit computes `tpsa = 63.60 ± 0.0001`, `mol_logp = 1.3101 ± 0.0001`, `mol_wt = 180.159 ± 0.001`, and `aromatic_ring_count = 1`, so the label is exactly `"other"`. All floating-point fixture values in this Acceptance are compared within the stated decimal-place tolerance (presentation rounding only); the recorded `result` preserves full floating-point precision per REQ-ACHEM-004 (compared there within `1e-9` absolute tolerance), with no intentional output rounding.
 Constraints: Validation remains atomic per REQ-ACHEM-003: a request whose `smiles` parameter does not parse to a valid RDKit molecule is rejected before any descriptor or classification computation. This is an explicitly-labeled heuristic only: "Heuristic only: not a ChEMBL-trained or experimentally validated bioactivity classifier." / 「ヒューリスティックのみ: ChEMBLで学習済みでも実験的に検証済みでもない生物活性分類器ではない。」 The fixed decision order (`"CNS_like"` first, `"kinase_inhibitor_like"` second, `"other"` last) is part of the observable behavior and shall not be reordered.
 
+## REQ-ACHEM-100: SMILES salt removal / structure standardization / SMILES塩除去・構造標準化
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests salt removal/structure standardization for a SMILES string, the system shall report `{standardized_smiles, removed_fragments, fragments_removed}` for it, where RDKit splits the string into its disconnected fragments (`Chem.GetMolFrags(mol, asMols=True, sanitizeFrags=False)`), `standardized_smiles` is the canonical SMILES of the fragment ranked first by the sort key `(-heavy_atom_count, canonical_smiles)` (i.e. greatest heavy-atom count, ties broken by ascending canonical SMILES), `removed_fragments` is the canonical SMILES of every other fragment ordered by that same sort key ascending, and `fragments_removed` is `true` iff the input had more than 1 fragment.
+Acceptance: For `"CC(=O)O.CCN"` (acetic acid + ethylamine, heavy-atom counts 4 and 3): `standardized_smiles = "CC(=O)O"`, `removed_fragments = ["CCN"]`, `fragments_removed = true`. For `"[Na+].[Cl-]"` (both 1 heavy atom, tied): `standardized_smiles = "[Cl-]"` (ascending canonical-SMILES tie-break: `"[Cl-]" < "[Na+]"`), `removed_fragments = ["[Na+]"]`, `fragments_removed = true`. For `"CCO"` (single fragment, no salt): `standardized_smiles = "CCO"`, `removed_fragments = []`, `fragments_removed = false`. For `"O.CC(=O)O.O"` (acetic acid plus 2 water fragments, each 1 heavy atom): `standardized_smiles = "CC(=O)O"`, `removed_fragments = ["O", "O"]` (sort key ties on both count and canonical SMILES; either input occurrence order is acceptable among exact duplicates), `fragments_removed = true`. The empty string `""` and the dummy-atom SMILES `"*"` are each rejected under the Constraints below (not computed) with no `standardized_smiles` result.
+Constraints: `smiles` validation uses exactly the same chemical-validity domain as every other module in this skill (the shared `parse_smiles` domain already used by REQ-ACHEM-010/080/090 and others): the empty string, a string that fails `Chem.MolFromSmiles`, and a string that parses but contains any dummy/query atom (RDKit atomic number 0, e.g. `"*"`) are each rejected under REQ-ACHEM-003, naming `smiles` and the constraint "must parse to a valid RDKit molecule", before any fragment splitting or selection. This fragment-selection rule (sort key `(-heavy_atom_count, canonical_smiles)`) is a fixed, documented, deterministic rule — not RDKit's built-in `rdMolStandardize.LargestFragmentChooser` default heuristic, whose internal fragment-scoring/tie-break behavior this requirement does not rely on. No network call, no external salt/solvent lookup table; this module heuristically treats "every disconnected fragment except the one ranked first by the sort key" as removable salt/solvent, which is not always chemically correct (e.g. for a genuine covalent multi-component cocrystal) — this is an explicitly-labeled heuristic, and the limitation label is part of the module's output and of SKILL.md documentation.
+
+## REQ-ACHEM-110: Chemical structure format conversion / 化学構造フォーマット変換
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests structure format conversion, the system shall report `{output_format, output_value}` for it, where the request supplies `input_format` (one of `smiles`, `inchi`, `molblock`), `input_value`, and `output_format` (one of `smiles`, `inchi`, `inchikey`, `molblock`); RDKit parses `input_value` per `input_format` (`Chem.MolFromSmiles` for `smiles`, `Chem.inchi.MolFromInchi` for `inchi`, `Chem.MolFromMolBlock` for `molblock`) and renders `output_value` from the parsed molecule per `output_format` (`Chem.MolToSmiles` for `smiles`, `Chem.inchi.MolToInchi` for `inchi`, `Chem.inchi.MolToInchiKey` for `inchikey`, `Chem.MolToMolBlock` for `molblock`).
+Acceptance: For aspirin (`input_format="smiles"`, `input_value="CC(=O)OC1=CC=CC=C1C(=O)O"`): `output_format="smiles"` yields `output_value="CC(=O)Oc1ccccc1C(=O)O"`; `output_format="inchi"` yields `output_value="InChI=1S/C9H8O4/c1-6(10)13-8-5-3-2-4-7(8)9(11)12/h2-5H,1H3,(H,11,12)"`; `output_format="inchikey"` yields `output_value="BSYNRYMUTXBXSQ-UHFFFAOYSA-N"`. Converting that same InChI string back (`input_format="inchi"`, `output_format="smiles"`) yields `output_value="CC(=O)Oc1ccccc1C(=O)O"` (the same canonical SMILES, confirming canonical structural round-trip equivalence for this fixture — not a general guarantee that every format pair is lossless, since e.g. a Molblock's 2D/3D coordinates have no SMILES/InChI equivalent). For the fixed ethanol Molblock fixture (`input_format="molblock"`, `input_value` equal to the exact literal text `"\n     RDKit          2D\n\n  3  2  0  0  0  0  0  0  0  0999 V2000\n    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.2990    0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    2.5981   -0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n  1  2  1  0\n  2  3  1  0\nM  END\n"` using `\n` for line breaks), `output_format="smiles"` yields `output_value="CCO"`. The empty string `""`, a malformed value for the stated `input_format`, an `input_format`/`output_format` value outside the documented allowed sets (e.g. `input_format="inchikey"`), and a value that parses but contains any dummy/query atom (RDKit atomic number 0, e.g. `input_format="smiles"`, `input_value="*"`) are each rejected under the Constraints below (not converted).
+Constraints: Validation remains atomic per REQ-ACHEM-003: `input_format` and `output_format` must each be one of their respective documented allowed values (rejected naming `input_format`/`output_format` and the constraint "must be one of the supported formats" otherwise); `input_value` must parse successfully with the `input_format`-matching RDKit parser into a non-empty molecule containing no dummy/query atom (RDKit atomic number 0) — the same chemical-validity domain as REQ-ACHEM-100 and every other module in this skill — (rejected naming `input_value` and the constraint "must parse with the <input_format>-matching RDKit parser" otherwise); both checks run, in that order, before any format conversion. `"inchikey"` is accepted only as an `output_format` (it is a one-way hash with no RDKit parser back to a molecule), never as an `input_format`. This module performs deterministic representation conversion only; it does not promise bytewise, metadata, or coordinate preservation across formats that do not share that information (e.g. SMILES/InChI carry no 2D/3D coordinates). No network call; no PubChem/ChEMBL/DrugBank lookup of any kind — this module performs only local RDKit format parsing/rendering.
+
 ## Review record (second increment) / レビュー記録(第2増分)
 REQ-ACHEM-060/070/080/090 (this second increment) passed `musubix3
 requirements validate` and `musubix3 constitution validate`. An independent
@@ -146,3 +169,30 @@ REQ-ACHEM-004 の `RunRecord` エンベロープと矛盾、REQ-ACHEM-060/090
 フィクスチャの浮動小数点許容誤差欠落、REQ-ACHEM-060 の「重複なし」という
 不正確な記述）を検出し、すべて修正した上で、2 回目のレビューおよび最終
 クロスファイル整合性チェックで残存課題ゼロを確認した。
+
+## Review record (third increment) / レビュー記録(第3増分)
+REQ-ACHEM-100/110 (this third increment) passed `musubix3 requirements
+validate` and `musubix3 constitution validate`. An independent native
+`rubber-duck` review found 3 blocking issues on the first pass (missing
+empty-SMILES/dummy-atom rejection domain on both new requirements, an
+underspecified fragment-ordering tie-break rule, and an overclaimed
+"lossless round trip" statement in REQ-ACHEM-110) plus non-blocking issues
+(REQ-ACHEM-004's determinism list not yet covering the 2 new modules, and a
+tautologically-described rather than literally-embedded Molblock fixture);
+all were fixed (dummy-atom/empty-input rejection now reuses the shared
+`parse_smiles` domain already used by REQ-ACHEM-010/080/090; the fragment
+sort key is now the explicit `(-heavy_atom_count, canonical_smiles)` with a
+3-fragment tie fixture added; the round-trip claim was narrowed to
+"canonical structural round-trip equivalence for this fixture"; the
+ethanol Molblock fixture is now embedded literally; REQ-ACHEM-004's
+Constraints now explicitly list fragment selection and format
+conversion), and a second review round confirmed zero remaining issues.
+本増分（REQ-ACHEM-100/110）は `musubix3 requirements validate` と
+`musubix3 constitution validate` に合格した。独立した native `rubber-duck`
+レビューは初回パスで 3 件のブロッキング指摘（両新規要求の空SMILES・
+ダミー原子拒否ドメインの欠落、フラグメント順序付けのタイブレーク規則の
+未規定、REQ-ACHEM-110 の「ロスレスラウンドトリップ」の過大主張）および
+非ブロッキング指摘（REQ-ACHEM-004 の決定性一覧が新規2モジュールを
+網羅していない点、Molblock フィクスチャが生成方法の説明のみでリテラル
+埋め込みでなかった点）を検出し、すべて修正した上で、2回目のレビューで
+残存課題ゼロを確認した。

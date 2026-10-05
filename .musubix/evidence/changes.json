@@ -12228,6 +12228,401 @@
           }
         }
       ]
+    },
+    {
+      "changeId": "CHANGE-021",
+      "requirementIds": [
+        "REQ-ACHEM-100",
+        "REQ-ACHEM-110"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-05T13:13:51.316Z",
+          "fingerprints": {
+            "impact": "18541383e3b5cb8cb57750545728e8363edf19b7f325a545453fa4d3e1574999",
+            "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+            "design": "d043f028253d2349a32904c9d62f902a7b942872185ff8b4b5a157bfcd5a11fd",
+            "implementation": "9f11daebcf252d73f8cd905811a5b3c06f3f439b462cd74d4f8474975b70a680",
+            "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+            "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+            "requirementImplementations": {
+              "REQ-ACHEM-100": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-110": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 1291
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-05T13:18:21.351Z",
+          "fingerprints": {
+            "impact": "18541383e3b5cb8cb57750545728e8363edf19b7f325a545453fa4d3e1574999",
+            "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+            "design": "d043f028253d2349a32904c9d62f902a7b942872185ff8b4b5a157bfcd5a11fd",
+            "implementation": "9f11daebcf252d73f8cd905811a5b3c06f3f439b462cd74d4f8474975b70a680",
+            "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+            "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+            "requirementImplementations": {
+              "REQ-ACHEM-100": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-110": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 1292
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-05T13:20:08.182Z",
+          "fingerprints": {
+            "impact": "18541383e3b5cb8cb57750545728e8363edf19b7f325a545453fa4d3e1574999",
+            "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+            "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+            "implementation": "9f11daebcf252d73f8cd905811a5b3c06f3f439b462cd74d4f8474975b70a680",
+            "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+            "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+            "requirementImplementations": {
+              "REQ-ACHEM-100": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-110": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 1293
+        },
+        "red": {
+          "phase": "red",
+          "recordedAt": "2026-10-05T17:26:55.792Z",
+          "fingerprints": {
+            "impact": "9e340a87ab16568db88beb6dd6157dd95dc47fa1ffd36396c5416e4f8da3043d",
+            "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+            "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+            "implementation": "592b0d037f00a09a485b6d440200c4ba54e004b855d300503db057054d331e01",
+            "tests": "f33574b4af5444a47c1cda63d49665d6d995b26b6b8311dffae34f14f1bd8160",
+            "tdd": "6eb37636ba98bae8690738c0973732d2b7b8154234baa687fb8b8f65f4db4712",
+            "requirementImplementations": {
+              "REQ-ACHEM-100": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/salt_standardization.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                  "src/ai_chemistry_scientist/salt_standardization.py": "cfc2c3063d8d6413cee2986bc785eae78a280ec9427a9f767067f438d1190cde",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-110": {
+                "paths": [
+                  "src/ai_chemistry_scientist/structure_format_conversion.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/structure_format_conversion.py": "4bc60989dceb7f540a762434b74a2f398aa101cf7a4631d61425926c8fb5f3c8",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              }
+            }
+          },
+          "order": 1309
+        },
+        "implementation": {
+          "phase": "implementation",
+          "recordedAt": "2026-10-05T17:28:47.997Z",
+          "fingerprints": {
+            "impact": "9e340a87ab16568db88beb6dd6157dd95dc47fa1ffd36396c5416e4f8da3043d",
+            "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+            "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+            "implementation": "2866f9e4ad7f85d91eb985dc613689566546bd6808b3babef9ec17064abb2dd0",
+            "tests": "f33574b4af5444a47c1cda63d49665d6d995b26b6b8311dffae34f14f1bd8160",
+            "tdd": "6eb37636ba98bae8690738c0973732d2b7b8154234baa687fb8b8f65f4db4712",
+            "requirementImplementations": {
+              "REQ-ACHEM-100": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/salt_standardization.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                  "src/ai_chemistry_scientist/salt_standardization.py": "8e1a7249704611c2f5a2ea9844c6804d6c60bda636e53b1dc100f74d4ff68ebb",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-110": {
+                "paths": [
+                  "src/ai_chemistry_scientist/structure_format_conversion.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/structure_format_conversion.py": "9a15b310ce12458083a81a2070fad20929e246c8bb2d78c532ba80b86aa901dd",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              }
+            }
+          },
+          "order": 1310
+        },
+        "green": {
+          "phase": "green",
+          "recordedAt": "2026-10-05T17:29:00.115Z",
+          "fingerprints": {
+            "impact": "9e340a87ab16568db88beb6dd6157dd95dc47fa1ffd36396c5416e4f8da3043d",
+            "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+            "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+            "implementation": "2866f9e4ad7f85d91eb985dc613689566546bd6808b3babef9ec17064abb2dd0",
+            "tests": "f33574b4af5444a47c1cda63d49665d6d995b26b6b8311dffae34f14f1bd8160",
+            "tdd": "b92f94d90506511f9c31110e6e716185d0014b0a0c7876e5d365c4f173ff283f",
+            "requirementImplementations": {
+              "REQ-ACHEM-100": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/salt_standardization.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                  "src/ai_chemistry_scientist/salt_standardization.py": "8e1a7249704611c2f5a2ea9844c6804d6c60bda636e53b1dc100f74d4ff68ebb",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-110": {
+                "paths": [
+                  "src/ai_chemistry_scientist/structure_format_conversion.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/structure_format_conversion.py": "9a15b310ce12458083a81a2070fad20929e246c8bb2d78c532ba80b86aa901dd",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              }
+            }
+          },
+          "order": 1312
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-05T17:30:46.292Z",
+          "fingerprints": {
+            "impact": "9e340a87ab16568db88beb6dd6157dd95dc47fa1ffd36396c5416e4f8da3043d",
+            "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+            "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+            "implementation": "2866f9e4ad7f85d91eb985dc613689566546bd6808b3babef9ec17064abb2dd0",
+            "tests": "f33574b4af5444a47c1cda63d49665d6d995b26b6b8311dffae34f14f1bd8160",
+            "tdd": "b92f94d90506511f9c31110e6e716185d0014b0a0c7876e5d365c4f173ff283f",
+            "requirementImplementations": {
+              "REQ-ACHEM-100": {
+                "paths": [
+                  "src/ai_chemistry_scientist/molecular_descriptors.py",
+                  "src/ai_chemistry_scientist/salt_standardization.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                  "src/ai_chemistry_scientist/salt_standardization.py": "8e1a7249704611c2f5a2ea9844c6804d6c60bda636e53b1dc100f74d4ff68ebb",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              },
+              "REQ-ACHEM-110": {
+                "paths": [
+                  "src/ai_chemistry_scientist/structure_format_conversion.py",
+                  "src/ai_chemistry_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_chemistry_scientist/structure_format_conversion.py": "9a15b310ce12458083a81a2070fad20929e246c8bb2d78c532ba80b86aa901dd",
+                  "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                }
+              }
+            }
+          },
+          "order": 1316
+        }
+      },
+      "tddBatches": [
+        {
+          "requirementIds": [
+            "REQ-ACHEM-100"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-05T13:24:35.503Z",
+            "fingerprints": {
+              "impact": "18541383e3b5cb8cb57750545728e8363edf19b7f325a545453fa4d3e1574999",
+              "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+              "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+              "implementation": "abaf068b26a95e693abfd56fc18a7248b692a02341e282788d90360192b1de40",
+              "tests": "decc2851755f008461358777c713752d364be4d80b79162164c785f56c055193",
+              "tdd": "efbd1c159a81871c8155e3527de434937957f908a12c21723b9a09c8c6b07fd6",
+              "requirementImplementations": {
+                "REQ-ACHEM-100": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/salt_standardization.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                    "src/ai_chemistry_scientist/salt_standardization.py": "0ed7d9c8f74b821e20b0860b0b3aed781c39a0b9067d1e4eca461b737dbe1b47",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                }
+              }
+            },
+            "order": 1295
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-05T13:25:29.650Z",
+            "fingerprints": {
+              "impact": "18541383e3b5cb8cb57750545728e8363edf19b7f325a545453fa4d3e1574999",
+              "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+              "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+              "implementation": "58e36949b766d538b794c265ddf763a69ca25bcab500e59730bcc3a1e2e707c8",
+              "tests": "decc2851755f008461358777c713752d364be4d80b79162164c785f56c055193",
+              "tdd": "5673ef51f466ed8a057a5287e1f0df8e98e943d0f6c8664d3c4a3e106047af25",
+              "requirementImplementations": {
+                "REQ-ACHEM-100": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/salt_standardization.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                    "src/ai_chemistry_scientist/salt_standardization.py": "79edab5d28edc5dcab8050c923759bb2a96c7a52afd0a67911d67f3460d12a3a",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                }
+              }
+            },
+            "order": 1297
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-05T13:25:42.294Z",
+            "fingerprints": {
+              "impact": "18541383e3b5cb8cb57750545728e8363edf19b7f325a545453fa4d3e1574999",
+              "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+              "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+              "implementation": "58e36949b766d538b794c265ddf763a69ca25bcab500e59730bcc3a1e2e707c8",
+              "tests": "decc2851755f008461358777c713752d364be4d80b79162164c785f56c055193",
+              "tdd": "5673ef51f466ed8a057a5287e1f0df8e98e943d0f6c8664d3c4a3e106047af25",
+              "requirementImplementations": {
+                "REQ-ACHEM-100": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/molecular_descriptors.py",
+                    "src/ai_chemistry_scientist/salt_standardization.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/molecular_descriptors.py": "49571ad96e38601ed1ddc91b4ad606046d00214ae8c98ec06fc9af8a93433351",
+                    "src/ai_chemistry_scientist/salt_standardization.py": "79edab5d28edc5dcab8050c923759bb2a96c7a52afd0a67911d67f3460d12a3a",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                }
+              }
+            },
+            "order": 1298
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-ACHEM-110"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-05T13:25:57.408Z",
+            "fingerprints": {
+              "impact": "18541383e3b5cb8cb57750545728e8363edf19b7f325a545453fa4d3e1574999",
+              "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+              "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+              "implementation": "6232cc0eb2554051011c5fe68d1470b21f00adc229b132a85dfdaba6169a9eed",
+              "tests": "decc2851755f008461358777c713752d364be4d80b79162164c785f56c055193",
+              "tdd": "a12d19153b91129a3a3f0348640bc947387b3f597afbf8de3c8ca34db3b0af2a",
+              "requirementImplementations": {
+                "REQ-ACHEM-110": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/structure_format_conversion.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/structure_format_conversion.py": "99d74ec3191e7521c09c4fdbdb1d928d7c4624f58e390cf5d4f5ece6d4caa0f9",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                }
+              }
+            },
+            "order": 1300
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-05T13:26:10.402Z",
+            "fingerprints": {
+              "impact": "18541383e3b5cb8cb57750545728e8363edf19b7f325a545453fa4d3e1574999",
+              "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+              "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+              "implementation": "58e36949b766d538b794c265ddf763a69ca25bcab500e59730bcc3a1e2e707c8",
+              "tests": "decc2851755f008461358777c713752d364be4d80b79162164c785f56c055193",
+              "tdd": "a12d19153b91129a3a3f0348640bc947387b3f597afbf8de3c8ca34db3b0af2a",
+              "requirementImplementations": {
+                "REQ-ACHEM-110": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/structure_format_conversion.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/structure_format_conversion.py": "7869ca7d2fbb4d2c51a8c7ed99f59d98783619bac3ed279be51b61facf4b3e55",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                }
+              }
+            },
+            "order": 1301
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-05T13:26:14.354Z",
+            "fingerprints": {
+              "impact": "18541383e3b5cb8cb57750545728e8363edf19b7f325a545453fa4d3e1574999",
+              "requirements": "56a13d5fe09acefe136cfa821af73a86b9a949433aead7d1002a10bd331c687c",
+              "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+              "implementation": "58e36949b766d538b794c265ddf763a69ca25bcab500e59730bcc3a1e2e707c8",
+              "tests": "decc2851755f008461358777c713752d364be4d80b79162164c785f56c055193",
+              "tdd": "88e04610600d2a7a970558ee28a8e22579ad45ba13f665828a6b2503814a0095",
+              "requirementImplementations": {
+                "REQ-ACHEM-110": {
+                  "paths": [
+                    "src/ai_chemistry_scientist/structure_format_conversion.py",
+                    "src/ai_chemistry_scientist/validation.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_chemistry_scientist/structure_format_conversion.py": "7869ca7d2fbb4d2c51a8c7ed99f59d98783619bac3ed279be51b61facf4b3e55",
+                    "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01"
+                  }
+                }
+              }
+            },
+            "order": 1303
+          }
+        }
+      ]
     }
   ]
 }

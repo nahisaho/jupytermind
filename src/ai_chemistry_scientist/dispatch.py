@@ -19,7 +19,9 @@ import ai_chemistry_scientist.molecular_descriptors as _molecular_descriptors  #
 import ai_chemistry_scientist.molecular_formula_mass as _molecular_formula_mass  # noqa: F401
 import ai_chemistry_scientist.molecular_similarity as _molecular_similarity  # noqa: F401
 import ai_chemistry_scientist.qsar_modeling as _qsar_modeling  # noqa: F401
+import ai_chemistry_scientist.salt_standardization as _salt_standardization  # noqa: F401
 import ai_chemistry_scientist.structural_alerts as _structural_alerts  # noqa: F401
+import ai_chemistry_scientist.structure_format_conversion as _structure_format_conversion  # noqa: F401
 from ai_chemistry_scientist.evidence import record_run
 from ai_chemistry_scientist.validation import validate_parameters
 from ai_data_scientist.language_router import detect_language as _detect_language
@@ -42,6 +44,7 @@ _LIMITATION_LABEL_MODULES = frozenset(
         "docking-score",
         "structural-alerts",
         "bioactivity-classification",
+        "salt-removal",
     }
 )
 
@@ -55,6 +58,8 @@ _RUN_MODULE_PATHS = {
     "structural-alerts": "ai_chemistry_scientist.structural_alerts",
     "molecular-formula-mass": "ai_chemistry_scientist.molecular_formula_mass",
     "bioactivity-classification": "ai_chemistry_scientist.bioactivity_classification",
+    "salt-removal": "ai_chemistry_scientist.salt_standardization",
+    "structure-format-conversion": "ai_chemistry_scientist.structure_format_conversion",
 }
 _RUN_FUNCTION_NAMES = {
     "molecular-descriptors": "run_molecular_descriptors",
@@ -66,6 +71,8 @@ _RUN_FUNCTION_NAMES = {
     "structural-alerts": "run_structural_alerts",
     "molecular-formula-mass": "run_molecular_formula_mass",
     "bioactivity-classification": "run_bioactivity_classification",
+    "salt-removal": "run_salt_removal",
+    "structure-format-conversion": "run_structure_conversion",
 }
 
 
@@ -141,6 +148,7 @@ def _localize_limitation_label(method: str, result: dict, language: str) -> dict
         "docking-score": "ai_chemistry_scientist.docking_score",
         "structural-alerts": "ai_chemistry_scientist.structural_alerts",
         "bioactivity-classification": "ai_chemistry_scientist.bioactivity_classification",
+        "salt-removal": "ai_chemistry_scientist.salt_standardization",
     }[method]
     module = importlib.import_module(module_path)
     key = result["limitation_label_key"]
@@ -275,6 +283,22 @@ def handle_molecular_formula_mass(request_text: str, language: str, **params) ->
 def handle_bioactivity_classification(request_text: str, language: str, **params) -> dict:
     """Handler wrapper for the bioactivity-classification module (DES-ACHEM-090)."""
     return _handle_module("bioactivity-classification", request_text, language, params or None)
+
+
+# @id CODE-ACHEM-101
+# @implements REQ-ACHEM-002 REQ-ACHEM-003
+# @design DES-ACHEM-001
+def handle_salt_removal(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the salt-removal module (DES-ACHEM-100)."""
+    return _handle_module("salt-removal", request_text, language, params or None)
+
+
+# @id CODE-ACHEM-111
+# @implements REQ-ACHEM-002 REQ-ACHEM-003
+# @design DES-ACHEM-001
+def handle_structure_format_conversion(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the structure-format-conversion module (DES-ACHEM-110)."""
+    return _handle_module("structure-format-conversion", request_text, language, params or None)
 
 
 # @id CODE-ACHEM-001

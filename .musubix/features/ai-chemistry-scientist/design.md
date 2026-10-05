@@ -18,7 +18,7 @@ Responsibilities: Load the static method-name-to-module manifest
 (`.github/skills/ai-chemistry-scientist/manifest.json`; each entry has
 `modulePath`, `functionName`, and bilingual `names.en`/`names.ja` lists,
 identical in shape to `ai-materials-scientist`'s manifest), classify an
-incoming bilingual user request against the 9 supported method
+incoming bilingual user request against the 11 supported method
 names/synonyms, detect the request's language (Japanese or English), and
 on exactly one match resolve `modulePath`/`functionName` to that module's
 handler wrapper function and invoke it with `(request_text, language)`
@@ -36,28 +36,32 @@ module's structured `params` from `request_text` (parsing a SMILES string
 or numeric arguments out of free text, or accepting them as
 already-structured keyword arguments from a calling context — this
 extraction is each handler wrapper's own documented responsibility, not
-`dispatch`'s); (2) for the 8 atomic-validation modules
-(DES-ACHEM-020/030/040/050/060/070/080/090) only, calling DES-ACHEM-002's
-`validate_parameters` on the extracted `params` first, returning a
-localized rejection `ModuleOutcome` with no further call on failure; (3)
-calling its own `run_*` function (DES-ACHEM-010..090) with the extracted
-(and, for atomic modules, already-validated) `params`; (4) for
-DES-ACHEM-020's, DES-ACHEM-050's, DES-ACHEM-070's, and DES-ACHEM-090's
-results only, substituting the raw result's `limitation_label_key` (e.g.
-`"admet_heuristic_limitation"`) with the matching `language`-specific
-fixed text from that module's own Responsibilities section (e.g.
+`dispatch`'s); (2) for the 10 atomic-validation modules
+(DES-ACHEM-020/030/040/050/060/070/080/090/100/110) only, calling
+DES-ACHEM-002's `validate_parameters` on the extracted `params` first,
+returning a localized rejection `ModuleOutcome` with no further call on
+failure; (3) calling its own `run_*` function (DES-ACHEM-010..110) with
+the extracted (and, for atomic modules, already-validated) `params`; (4) for
+DES-ACHEM-020's, DES-ACHEM-050's, DES-ACHEM-070's, DES-ACHEM-090's, and
+DES-ACHEM-100's results only, substituting the raw result's
+`limitation_label_key` (e.g. `"admet_heuristic_limitation"`) with the
+matching `language`-specific fixed text from that module's own
+Responsibilities section (e.g.
 `admet_heuristic_limitation.en`/`.ja`), producing a final `result` whose
 `limitation_label` field is already localized prose; and (5) wrapping
 that (possibly label-substituted) raw `run_*` result via DES-ACHEM-003's
 `record_run` into a `RunRecord`. The manifest and dispatcher's internal
 method-routing tables (`_RUN_MODULE_PATHS`, `_RUN_FUNCTION_NAMES`) cover
-exactly these 9 method slugs: `molecular-descriptors`,
+exactly these 11 method slugs: `molecular-descriptors`,
 `admet-prediction`, `qsar-modeling`, `molecular-similarity`,
 `docking-score`, `drug-likeness-rules`, `structural-alerts`,
-`molecular-formula-mass`, and `bioactivity-classification`;
+`molecular-formula-mass`, `bioactivity-classification`,
+`salt-removal`, and `structure-format-conversion`;
 `_LIMITATION_LABEL_MODULES` includes exactly `admet-prediction`,
-`docking-score`, `structural-alerts`, and
-`bioactivity-classification`.
+`docking-score`, `structural-alerts`, `bioactivity-classification`, and
+`salt-removal`. `structure-format-conversion` (DES-ACHEM-110) is not in
+`_LIMITATION_LABEL_MODULES`: it is a deterministic local-format
+conversion, not a heuristic module.
 DES-ACHEM-010 (the one per-item-validated, batch-capable module per
 ADR-0026) is the sole exception to step (2): its handler wrapper calls
 `run_molecular_descriptors` directly with no separate upfront
@@ -100,8 +104,21 @@ before any module performs a descriptor computation, model fit, or
 similarity/score calculation, and report the violated parameter and
 constraint on failure. Supports two granularities selected by the calling
 module: atomic (reject the whole run on any invalid parameter) for
-REQ-ACHEM-020/030/040/050/060/070/080/090, and per-item (reject only the invalid item,
-continue computing the rest) for REQ-ACHEM-010's batch SMILES input.
+REQ-ACHEM-020/030/040/050/060/070/080/090/100/110, and per-item (reject
+only the invalid item, continue computing the rest) for REQ-ACHEM-010's
+batch SMILES input. For REQ-ACHEM-110 specifically, atomic validation
+checks, in this fixed order, (a) `input_format` is one of `smiles`,
+`inchi`, `molblock` (on failure: `parameter="input_format"`,
+`constraint="must be one of the supported formats"`); (b) `output_format`
+is one of `smiles`, `inchi`, `inchikey`, `molblock` (on failure:
+`parameter="output_format"`, `constraint="must be one of the supported
+formats"`); (c) `input_value` parses with the `input_format`-matching
+RDKit parser into a non-empty molecule with no dummy/query atom (the same
+`parse_smiles`-style chemical-validity domain reused by REQ-ACHEM-100 and
+every other module) (on failure: `parameter="input_value"`,
+`constraint="must parse with the <input_format>-matching RDKit parser"`);
+all three checks run before any format conversion, per REQ-ACHEM-110
+Constraints.
 Interfaces: `validate_parameters(module_name, params) -> ValidationResult`
 `{ok: true}` | `{ok: false, parameter, constraint}` for atomic validation;
 `validate_batch_item(module_name, item_params) -> ValidationResult` (same
@@ -137,7 +154,7 @@ Interfaces: `record_run(module_name, params, result, *, rdkit_version,
 scikit_learn_version=None) -> RunRecord` `{metadata: {module,
 schema_version, rdkit_version, [scikit_learn_version]}, parameters,
 result}`. `scikit_learn_version` is included in `metadata` only when
-supplied (REQ-ACHEM-030's QSAR module always supplies it; the other 8
+supplied (REQ-ACHEM-030's QSAR module always supplies it; the other 10
 modules omit it).
 Constraints: Re-running with identical `parameters` against the same
 installed RDKit/scikit-learn versions must reproduce a `result` that
@@ -149,12 +166,12 @@ Requirements: REQ-ACHEM-004
 ADRs: ADR-0027
 Depends-On: DES-ACHEM-001
 
-Note on DES-ACHEM-010 through DES-ACHEM-090 below: each module's
+Note on DES-ACHEM-010 through DES-ACHEM-110 below: each module's
 `run_*(...)` function is the raw, unwrapped computation entry point. For
-the 8 atomic-validation modules
-(DES-ACHEM-020/030/040/050/060/070/080/090), it is called internally by
-its DES-ACHEM-001 handler wrapper only after DES-ACHEM-002
-`validate_parameters` succeeds, so these 8 `run_*` functions receive only
+the 10 atomic-validation modules
+(DES-ACHEM-020/030/040/050/060/070/080/090/100/110), it is called
+internally by its DES-ACHEM-001 handler wrapper only after DES-ACHEM-002
+`validate_parameters` succeeds, so these 10 `run_*` functions receive only
 already-validated `params` and perform no parameter revalidation of their
 own; none of them is called on a validation-failure path. DES-ACHEM-010
 is the sole exception (per-item granularity, ADR-0026): its own
@@ -164,7 +181,8 @@ handler wrapper calls directly with no separate upfront
 `validate_parameters` step. Every `run_*` function's return shape
 (`DescriptorResult`, `AdmetResult`, `QsarResult`, `SimilarityResult`,
 `DockingResult`, `DrugLikenessRulesResult`, `StructuralAlertsResult`,
-`MolecularFormulaMassResult`, `BioactivityClassificationResult`) is
+`MolecularFormulaMassResult`, `BioactivityClassificationResult`,
+`SaltRemovalResult`, `StructureConversionResult`) is
 exactly the `result` value DES-ACHEM-003's `record_run` wraps into a
 `RunRecord`.
 
@@ -435,6 +453,84 @@ Requirements: REQ-ACHEM-090
 ADRs: ADR-0052
 Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
 
+## DES-ACHEM-100: SMILES salt removal / structure standardization module / SMILES塩除去・構造標準化モジュール
+Responsibilities: Receive the single input SMILES already validated
+atomically by its handler wrapper via `DES-ACHEM-002.validate_parameters`
+(REQ-ACHEM-003's atomic granularity, reusing the shared `parse_smiles`
+chemical-validity domain — rejects empty strings, unparseable SMILES, and
+dummy/query atoms; this function performs no revalidation), split the
+already-validated whole molecule into its disconnected fragments via
+`Chem.GetMolFrags(mol, asMols=True, sanitizeFrags=False)`, score every
+fragment by the fixed sort key `(-fragment.GetNumHeavyAtoms(),
+Chem.MolToSmiles(fragment))` (ADR-0105), and report the first-ranked
+fragment's canonical SMILES as `standardized_smiles`, every other
+fragment's canonical SMILES (in the same ascending sort-key order) as
+`removed_fragments`, and whether more than 1 fragment was present as
+`fragments_removed`.
+Interfaces: `run_salt_removal(smiles) -> SaltRemovalResult
+{standardized_smiles, removed_fragments: list[str], fragments_removed:
+bool, limitation_label_key}`.
+Constraints: Invalid input (empty, unparseable, or containing a dummy/query
+atom) is rejected by the handler wrapper under REQ-ACHEM-003 before this
+function is ever called, using the identical `parse_smiles` domain as
+DES-ACHEM-010/080/090; this function performs no parameter revalidation of
+its own. The sort key is exactly `(-heavy_atom_count, canonical_smiles)`
+(ADR-0105) — not RDKit's `rdMolStandardize.LargestFragmentChooser`
+default. `limitation_label_key` is the fixed string
+`"salt_removal_heuristic_limitation"` (not yet localized — see
+DES-ACHEM-001's handler wrapper, which substitutes the matching `language`
+text from the table below into the final `RunRecord.result
+.limitation_label` field before `record_run`, replacing
+`limitation_label_key`); the same two-language text must also appear
+verbatim in SKILL.md (REQ-ACHEM-100 Constraints):
+`salt_removal_heuristic_limitation.en` = "Heuristic only: treats every
+disconnected fragment except the one with the greatest heavy-atom count as
+removable salt/solvent; not always chemically correct (e.g. for a genuine
+covalent multi-component cocrystal)."; `salt_removal_heuristic_limitation
+.ja` = "ヒューリスティックのみ: 最大重原子数を持つフラグメント以外の
+すべての分離フラグメントを除去可能な塩・溶媒として扱うが、常に化学的に
+正しいとは限らない（例: 真の共有結合性多成分共結晶の場合）。"
+Requirements: REQ-ACHEM-100
+ADRs: ADR-0105
+Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
+
+## DES-ACHEM-110: Chemical structure format conversion module / 化学構造フォーマット変換モジュール
+Responsibilities: Receive `{input_format, input_value, output_format}`
+already validated atomically by its handler wrapper via
+`DES-ACHEM-002.validate_parameters` (REQ-ACHEM-003's atomic granularity:
+`input_format`/`output_format` each in their documented allowed sets, and
+`input_value` parses with the `input_format`-matching RDKit parser into a
+non-empty molecule with no dummy/query atom; this function performs no
+revalidation), parse `input_value` with the `input_format`-matching RDKit
+parser (`Chem.MolFromSmiles` for `smiles`, `Chem.inchi.MolFromInchi` for
+`inchi`, `Chem.MolFromMolBlock` for `molblock`), render it with the
+`output_format`-matching RDKit writer (`Chem.MolToSmiles` for `smiles`,
+`Chem.inchi.MolToInchi` for `inchi`, `Chem.inchi.MolToInchiKey` for
+`inchikey`, `Chem.MolToMolBlock` for `molblock`), and report
+`{output_format, output_value}`.
+Interfaces: `run_structure_conversion(input_format, input_value,
+output_format) -> StructureConversionResult {output_format,
+output_value}`.
+Constraints: Invalid input (`input_format`/`output_format` outside their
+documented allowed sets, or `input_value` failing to parse with the
+`input_format`-matching parser, including empty input and dummy/query
+atoms) is rejected by the handler wrapper under REQ-ACHEM-003 before this
+function is ever called; this function performs no parameter revalidation
+of its own (ADR-0106). `inchikey` is accepted only as `output_format`,
+never `input_format`, per ADR-0106's one-way-hash rationale. This module
+performs deterministic local RDKit format parsing/rendering only — no
+network call, no PubChem/ChEMBL/DrugBank lookup of any kind (ADR-0106) —
+and carries no heuristic-limitation label (it is a deterministic
+representation-conversion operation for successfully converted
+structures, not a predictive or approximate heuristic; it does not
+promise bytewise, metadata, or coordinate preservation across formats
+that do not share that information — e.g. a Molblock's 2D/3D coordinates
+have no SMILES/InChI equivalent — per REQ-ACHEM-110 Constraints; this is
+a documented scope boundary, not an approximation).
+Requirements: REQ-ACHEM-110
+ADRs: ADR-0106
+Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
+
 ## Traceability summary / 追跡可能性一覧
 
 | Design component | Requirement(s) | ADR |
@@ -451,8 +547,10 @@ Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
 | DES-ACHEM-070 | REQ-ACHEM-070 | ADR-0050 |
 | DES-ACHEM-080 | REQ-ACHEM-080 | ADR-0051 |
 | DES-ACHEM-090 | REQ-ACHEM-090 | ADR-0052 |
+| DES-ACHEM-100 | REQ-ACHEM-100 | ADR-0105 |
+| DES-ACHEM-110 | REQ-ACHEM-110 | ADR-0106 |
 
-Every DES-ACHEM-010 through DES-ACHEM-090 module depends on DES-ACHEM-001
+Every DES-ACHEM-010 through DES-ACHEM-110 module depends on DES-ACHEM-001
 (dispatch), DES-ACHEM-002 (validation), and DES-ACHEM-003 (evidence
 schema); this table records the full requirement/design/ADR coverage so a
 change to any one artifact's linked IDs is immediately visible as a
@@ -466,12 +564,46 @@ implementation deliverable (alongside `manifest.json` and the
 exact bilingual limitation-label texts defined above:
 `admet_heuristic_limitation.en`/`.ja` (DES-ACHEM-020),
 `docking_heuristic_limitation.en`/`.ja` (DES-ACHEM-050),
-`structural_alerts_heuristic_limitation.en`/`.ja` (DES-ACHEM-070), and
+`structural_alerts_heuristic_limitation.en`/`.ja` (DES-ACHEM-070),
 `bioactivity_classifier_heuristic_limitation.en`/`.ja`
-(DES-ACHEM-090) (REQ-ACHEM-020, REQ-ACHEM-050, REQ-ACHEM-070, and
-REQ-ACHEM-090 Constraints), in both English and Japanese since
-REQ-ACHEM-001 requires every module's user-facing text to render in the
-request's language. This is a documentation-content check performed
-during implementation review, not a separate design component (it has no
-own interface/behavior beyond the eight fixed strings already specified in
-DES-ACHEM-020/050/070/090).
+(DES-ACHEM-090), and `salt_removal_heuristic_limitation.en`/`.ja`
+(DES-ACHEM-100) (REQ-ACHEM-020, REQ-ACHEM-050, REQ-ACHEM-070,
+REQ-ACHEM-090, and REQ-ACHEM-100 Constraints), in both English and
+Japanese since REQ-ACHEM-001 requires every module's user-facing text to
+render in the request's language. The newly added
+`salt_removal_heuristic_limitation.en`/`.ja` text (DES-ACHEM-100,
+verbatim, reproduced here as the single normative source alongside
+DES-ACHEM-100's own Responsibilities section) is: `.en` = "Heuristic
+only: treats every disconnected fragment except the one with the
+greatest heavy-atom count as removable salt/solvent; not always
+chemically correct (e.g. for a genuine covalent multi-component
+cocrystal)."; `.ja` = "ヒューリスティックのみ: 最大重原子数を持つ
+フラグメント以外のすべての分離フラグメントを除去可能な塩・溶媒として
+扱うが、常に化学的に正しいとは限らない（例: 真の共有結合性多成分共
+結晶の場合）。" DES-ACHEM-110 carries no
+limitation-label text (it is not a heuristic module). This is a
+documentation-content check performed during implementation review, not a
+separate design component (it has no own interface/behavior beyond the
+fixed strings already specified in DES-ACHEM-020/050/070/090/100).
+
+## Review record (CHANGE-021) / レビュー記録(CHANGE-021)
+DES-ACHEM-100/110 and the DES-ACHEM-001/002/003 amendments for this third
+increment passed `musubix3 design validate`. An independent native
+`rubber-duck` review found 5 issues on the first pass (stale
+8-atomic-validation-module/9-method-slug counts in DES-ACHEM-001,
+REQ-ACHEM-110's validation order/rejected-parameter/constraint strings not
+specified in DES-ACHEM-002, an overclaimed "lossless-per-format-pair"
+statement in DES-ACHEM-110, the salt-removal limitation text referenced
+only by key rather than quoted verbatim in the Skill documentation
+deliverable section, and a stale "8 modules" count in DES-ACHEM-003); all
+5 were fixed, and a second review round confirmed zero remaining issues.
+本増分（DES-ACHEM-100/110、および第3増分向けの DES-ACHEM-001/002/003
+の改訂）は `musubix3 design validate` に合格した。独立した native
+`rubber-duck` レビューは初回パスで 5 件の指摘（DES-ACHEM-001 の
+「アトミック検証モジュール8件/手法スラッグ9件」という古い件数、
+DES-ACHEM-002 に REQ-ACHEM-110 の検証順序・拒否パラメータ名・制約文字列が
+未規定だった点、DES-ACHEM-110 の「フォーマット対ごとにロスレス」という
+過大な主張、Skill文書成果物節で塩除去の制限文言がキー名でのみ参照され
+リテラル引用されていなかった点、DES-ACHEM-003 の「8モジュール」という
+古い件数）を検出し、すべて修正した上で、2回目のレビューで残存課題ゼロを
+確認した。
