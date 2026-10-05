@@ -1285,7 +1285,7 @@ Responsibilities: Extend `visualization.render_chart`'s kind dispatcher and `_SU
 Interfaces: `render_chart(df, kind="scatter"|"line"|"bar"|"barh"|"box"|"hist"|"heatmap", ...) -> RenderedChart` (public signature extended only by later DES-AIDS-074/075 optional keyword arguments; existing positional and keyword call sites remain valid).
 Constraints: Existing calls for `scatter`/`line`/`bar`/`hist` without the new keyword arguments must preserve today's behavior and PNG-bytes compatibility; `heatmap` ignores legend/error-bar logic entirely and instead derives axis labels from the rendered matrix; numeric-column selection failures still raise a clear `ValueError` rather than emitting a misleading empty image.
 Requirements: REQ-AIDS-085
-ADRs: none — this is a localized extension of the existing visualization module with no new architectural boundary.
+ADRs: ADR-0095
 Depends-On: DES-AIDS-009, DES-AIDS-048
 Implementation: `CODE-AIDS-111`-`CODE-AIDS-118` in
 `src/ai_data_scientist/visualization.py` (CHANGE-012); test IDs
@@ -1298,7 +1298,7 @@ Responsibilities: Add optional `hue: str | None = None` and `legend_title: str |
 Interfaces: `render_chart(..., hue: str | None = None, legend_title: str | None = None) -> RenderedChart`; `ChartMetadata(..., legend_title: str | None = None, missing_glyphs=...)`; `RenderedChart.legend_title -> str | None`.
 Constraints: The no-`hue`, no-`legend_title` path for pre-existing chart kinds must stay byte-compatible with the prior implementation flow; legend labels are derived only from explicit dataframe columns already being plotted (no implicit aggregation names or guessed titles); grouped `bar`/`barh` input must be unique per `(x, hue)` pair (or pre-aggregated by the caller) and a duplicate pair raises `ValueError` instead of silently discarding later rows; kinds that do not create a legend keep `legend == False` and `legend_title is None`.
 Requirements: REQ-AIDS-086
-ADRs: none — this adds optional grouping/metadata capture within the existing chart renderer rather than a new visualization subsystem.
+ADRs: ADR-0096
 Depends-On: DES-AIDS-073
 
 ## DES-AIDS-075: Symmetric and asymmetric error-range normalization / 対称・非対称誤差範囲の正規化
@@ -1306,7 +1306,7 @@ Responsibilities: Add optional `xerr` and `yerr` parameters to `visualization.re
 Interfaces: `render_chart(..., xerr: str | tuple[str, str] | list[str] | None = None, yerr: str | tuple[str, str] | list[str] | None = None) -> RenderedChart`; module-private `_resolve_error_values(df, spec) -> list[float] | list[list[float]] | None`.
 Constraints: Omitting both arguments preserves the current rendering path unchanged; asymmetric errors must preserve caller order as `(lower, upper)` rather than being sorted or absolutized; grouped `bar`/`barh` error data shares DES-AIDS-074's uniqueness constraint on `(x, hue)` pairs and raises the same `ValueError` on duplicates rather than silently taking the first row; invalid column references fail fast with `ValueError` instead of silently dropping error bars.
 Requirements: REQ-AIDS-087
-ADRs: none — a small argument-normalization helper and per-kind plotting branch are sufficient.
+ADRs: ADR-0097
 Depends-On: DES-AIDS-073
 
 ## DES-AIDS-076: Figure-to-ChartMetadata introspection helper / FigureからのChartMetadata抽出補助
@@ -1314,5 +1314,5 @@ Responsibilities: Add `visualization.chart_metadata_from_figure(fig, *, missing_
 Interfaces: `chart_metadata_from_figure(fig: matplotlib.figure.Figure, *, missing_glyphs: tuple[str, ...] | list[str] = ()) -> ChartMetadata`.
 Constraints: Must not mutate the figure or require a canvas redraw beyond what the caller already performed to save it; defaults `missing_glyphs` to an empty tuple because glyph warnings cannot be recovered reliably from an already-rendered figure after the fact; uses the first axes only, so auxiliary colorbar axes added by `heatmap` do not displace the main plotting axes.
 Requirements: REQ-AIDS-088
-ADRs: none — a pure introspection helper reuses existing metadata classes and persistence flow.
+ADRs: ADR-0098
 Depends-On: DES-AIDS-048, DES-AIDS-049, DES-AIDS-059

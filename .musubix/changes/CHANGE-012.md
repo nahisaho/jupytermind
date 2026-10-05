@@ -96,3 +96,78 @@ Released. Human release approval recorded (approver: nahisaho, hash
 pre-existing, non-CHANGE-012 repo-wide diagnostics plus this change's own
 recording-order-debt (see above), consistent with
 CHANGE-006/CHANGE-008/CHANGE-009/CHANGE-010/CHANGE-011 precedent.
+
+## #69 Remediation
+
+Remediation work was performed as part of issue #69 (residual, out-of-scope
+debt discovered while closing #62; #62 itself never included CHANGE-012).
+The historical "Released"/approval-hash text above describes CHANGE-012's
+*original* release, which remains valid and is not reopened here; this
+section instead documents a *separate*, additional remediation pass whose
+own release approval is requested/pending until recorded in the "Debt
+Remediation Approval" section below.
+
+The original Implementation Plan's quality-gate note above states "no
+`CHANGE_COMPLETENESS_ADR` diagnostic applies (no ADRs declared)". Re-running
+`gate --json` in this remediation pass found `CHANGE_COMPLETENESS_ADR`
+errors (not waivable in musubix3) for all four requirements
+(REQ-AIDS-085–088). As with CHANGE-010, this is not a change in musubix3's
+rule between original merge and now: `CHANGE_COMPLETENESS_ADR` checks
+whether the design section(s) that directly `satisfies` a requirement are
+themselves the target of an ADR's `decides` edge. DES-AIDS-073/074/075/076
+(the design sections satisfying REQ-AIDS-085/086/087/088 respectively) each
+declared "ADRs: none" directly, so the diagnostic was already latent at
+original-merge time; the original author's note was simply incorrect/stale,
+not a later rule change. Resolved by authoring four new ADRs documenting
+the actual as-built decisions honestly:
+
+- **ADR-0095** — dedicated `_plot_box_chart`/`_plot_heatmap` dispatch
+  branches checked ahead of the existing hue/error-bar paths, with `barh`
+  requiring no new function (DES-AIDS-073).
+- **ADR-0096** — collision-free random sentinel for missing `hue` values
+  before pivoting grouped `bar`/`barh` data, plus explicit `(x, hue)`
+  duplicate detection (DES-AIDS-074).
+- **ADR-0097** — one shared `_resolve_error_values` helper normalizing
+  `xerr`/`yerr` as either a single column (symmetric) or a `(lower, upper)`
+  pair (asymmetric) (DES-AIDS-075).
+- **ADR-0098** — `chart_metadata_from_figure` reads only `fig.axes[0]` as
+  a pure, non-mutating introspection helper, also used internally by
+  `render_chart` itself (DES-AIDS-076).
+
+`design.md`'s four "ADRs: none" lines for DES-AIDS-073/074/075/076 were
+updated to cite these new ADRs. `trace build` after the update reports 0
+diagnostics, confirming the ADR linkage resolved the completeness gap.
+
+Remediation performed:
+
+1. Authored ADR-0095/0096/0097/0098 and linked them from
+   DES-AIDS-073/074/075/076.
+2. Rebuilt `trace`: 0 diagnostics. Re-ran `gate --json`: all 4
+   `CHANGE_COMPLETENESS_ADR` diagnostics are gone (resolved, not waived).
+3. Recorded 12 requirement-scoped waivers (3 codes ×
+   REQ-AIDS-085/086/087/088) for the remaining TDD-evidence-ordering
+   diagnostics, citing the retroactive-evidence-recording constraint and
+   issue #69 (same root cause/precedent as CHANGE-008/009/010/011).
+4. Re-ran `gate --json`: all 12 remaining diagnostics are now `warning`
+   severity (waived), not `error`.
+5. Ran the full test suite: all tests passed — expected, since no
+   functional code changed (ADR authoring and waiver-recording only).
+6. This remediation pass's own human release approval (`nahisaho`) is
+   requested for the exact file set and `approval prepare release --json`
+   hash presented at merge time (see "Debt Remediation Approval" section
+   below, added once approval is obtained).
+
+## Debt Remediation Approval
+
+Human release approval for this #69 remediation pass was obtained from
+`nahisaho` for `artifactSha256`
+`c2454ba1fcaca598451264f4628e80f49929d96855ea890ed777a06cc8f87b1c`
+(from `approval prepare release --json`), covering exactly: this file,
+`.musubix/features/ai-data-scientist/design.md`,
+`.musubix/features/ai-data-scientist/trace.json`,
+`.musubix/decisions/ADR-0095.md`, `.musubix/decisions/ADR-0096.md`,
+`.musubix/decisions/ADR-0097.md`, `.musubix/decisions/ADR-0098.md`,
+`.musubix/evidence/change-waivers.json`, and
+`.musubix/evidence/order.json`. `musubix3 approval record release` remains
+blocked by unrelated repo-wide debt (see "Status" above); approval is
+recorded here per the established workaround.
