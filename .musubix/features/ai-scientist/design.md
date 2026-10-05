@@ -302,9 +302,11 @@ manuscript-writing (tech-writer) and presentation (presentation-planner);
 and exactly two dependencies for peer-review only, keyed by manuscript
 language `ja` (japanese-prose) and `en` (tech-writer); at startup, verify
 every declared module function is importable and every declared
-sibling-skill dependency's identifier+version is discoverable in the host
-Copilot CLI's installed skill registry, failing startup with a named
-missing entry if not.
+sibling-skill dependency's identifier+version is discoverable in the
+repository-declared skill registry (this repository's own
+`.github/skills/*/SKILL.md` and `VENDORED.md` tree — not the host Copilot
+CLI's live installed-skill registry, which this component does not
+query), failing startup with a named missing entry if not.
 Interfaces: loadPhaseManifest(path) -> PhaseManifest{[phase: string]:
 HandlerEntry} where HandlerEntry = {modulePath: string, functionName:
 string, skillDependencies: SkillDependency[] | {ja: SkillDependency, en:
@@ -368,8 +370,12 @@ Interfaces: renderManuscript(manuscriptArtifact, configuredFormat) ->
 FinalManuscript{path, format}; renderLatex(markdownArtifact) ->
 LatexManuscript{path} used only when configuredFormat == "latex".
 Constraints: The LaTeX renderer must preserve tech-writer's section content
-(no section dropped or reordered); it must never be invoked with Markdown
-configured.
+(heading and paragraph text, and their relative order: no section or
+paragraph dropped or reordered); it must never be invoked with Markdown
+configured. This guarantee is scoped to section/paragraph-level content;
+it does not cover line-level whitespace (leading/trailing spaces,
+intentional indentation, or blank lines at the document boundary), which
+the renderer may normalize during LaTeX escaping/formatting.
 Requirements: REQ-AISCI-021, REQ-AISCI-022
 ADRs: ADR-0090
 Depends-On: DES-AISCI-006
