@@ -120,10 +120,7 @@ order, and must reject any NaN or infinite value before dispatch, because
 row/fold alignment and finite numeric pairs are part of the paired-
 comparison contract.
 Requirements: REQ-AIDS-079, REQ-AIDS-080
-ADRs: none — the change adds direct dispatch to SciPy's paired-test
-primitives while preserving the legacy independent-test primitive; no
-architectural alternative beyond that library-level extension was
-considered.
+ADRs: ADR-0092 (direct SciPy paired-test dispatch).
 Depends-On: DES-AIDS-020
 
 ## DES-AIDS-068: Paired bootstrap metric-comparison engine / 対応のあるブートストラップ比較エンジン
@@ -156,8 +153,7 @@ distribution. When used on fold-level CV scores, the interval summarizes
 paired resampling of the reported folds but does not remove any
 cross-fold/cross-model dependence already present in those scores.
 Requirements: REQ-AIDS-081
-ADRs: none — a direct paired-resampling implementation satisfies the
-requirement without introducing a separate experiment-analysis framework.
+ADRs: ADR-0093 (paired-resampling bootstrap engine, interval-only).
 Depends-On: DES-AIDS-020
 
 ## DES-AIDS-069: Experiment-result payload for paired comparisons / 対応比較向け実験結果ペイロード
@@ -181,9 +177,7 @@ formatter for significance messaging on the hypothesis-test paths, while
 the bootstrap path uses a separate bilingual interval-estimate formatter
 that explicitly avoids significance claims.
 Requirements: REQ-AIDS-079, REQ-AIDS-080, REQ-AIDS-081
-ADRs: none — extending the existing result dataclass with an optional
-field preserves backward compatibility more directly than introducing a
-separate bootstrap-only return type.
+ADRs: ADR-0094 (extend ExperimentResult with optional confidence interval).
 Depends-On: DES-AIDS-020, DES-AIDS-067, DES-AIDS-068
 Code: CODE-AIDS-101 through CODE-AIDS-105 in `experiment_evaluation.py`.
 

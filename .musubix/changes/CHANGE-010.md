@@ -110,3 +110,73 @@ Released. Human release approval recorded (approver: nahisaho, hash
 pre-existing, non-CHANGE-010 repo-wide diagnostics plus this change's own
 recording-order-debt (see above), consistent with
 CHANGE-006/CHANGE-008/CHANGE-009 precedent.
+
+## #69 Remediation
+
+Remediation work was performed as part of issue #69 (residual, out-of-scope
+debt discovered while closing #62; #62 itself never included CHANGE-010).
+The historical "Released"/approval-hash text above describes CHANGE-010's
+*original* release, which remains valid and is not reopened here; this
+section instead documents a *separate*, additional remediation pass whose
+own release approval is requested/pending until recorded in the "Debt
+Remediation Approval" section below.
+
+At the time CHANGE-010 originally merged, its quality-gate record above
+stated "no `CHANGE_COMPLETENESS_ADR` diagnostic applies (no ADRs
+declared)" — but re-running `gate --json` in this remediation pass found
+`CHANGE_COMPLETENESS_ADR` errors for all three requirements (an error, not
+waivable in musubix3). This discrepancy is not a contradiction in the
+underlying facts: `CHANGE_COMPLETENESS_ADR` evidently does apply whenever a
+requirement's full design-dependency closure contains no ADR reference at
+all, and the original CHANGE-010 author's note was simply incorrect/stale,
+not a change in musubix3's rule. Root cause: DES-AIDS-067/068/069 each
+declared "ADRs: none", and their sole dependency, DES-AIDS-020, also
+declares "ADRs: none" — so no ADR existed anywhere in these requirements'
+design-dependency closure. Resolved by authoring three new ADRs documenting
+the actual as-built decisions honestly (not retrofitting justification,
+since these were genuine, defensible design choices at the time, simply
+never captured as ADRs):
+
+- **ADR-0092** — direct SciPy `ttest_rel`/`wilcoxon` dispatch for
+  `test="paired_t"`/`test="wilcoxon"` (DES-AIDS-067).
+- **ADR-0093** — paired-resampling bootstrap engine, interval-only, with
+  per-label-stratum resampling for class-dependent metrics (DES-AIDS-068).
+- **ADR-0094** — extending `ExperimentResult` with an optional
+  `confidence_interval` field and a `NaN` placeholder `p_value` for the
+  bootstrap path, instead of a new result type (DES-AIDS-069).
+
+`design.md`'s three "ADRs: none" lines for DES-AIDS-067/068/069 were updated
+to cite these new ADRs. `trace build` after the update reports 0
+diagnostics, confirming the ADR linkage resolved the completeness gap.
+
+Remediation performed:
+
+1. Authored ADR-0092/0093/0094 and linked them from DES-AIDS-067/068/069.
+2. Rebuilt `trace`: 0 diagnostics. Re-ran `gate --json`: all 3
+   `CHANGE_COMPLETENESS_ADR` diagnostics are gone (resolved, not waived).
+3. Recorded 9 requirement-scoped waivers (3 codes ×
+   REQ-AIDS-079/080/081) for the remaining TDD-evidence-ordering
+   diagnostics, citing the retroactive-evidence-recording constraint and
+   issue #69.
+4. Re-ran `gate --json`: all 9 remaining diagnostics are now `warning`
+   severity (waived), not `error`.
+5. Ran the full test suite: all tests passed — expected, since no
+   functional code changed (ADR authoring and waiver-recording only).
+6. This remediation pass's own human release approval (`nahisaho`) is
+   requested for the exact file set and `approval prepare release --json`
+   hash presented at merge time (see "Debt Remediation Approval" section
+   below, added once approval is obtained).
+
+## Debt Remediation Approval
+
+Human release approval for this #69 remediation pass was obtained from
+`nahisaho` for `artifactSha256`
+`3b6c7cdf9096d1a85f02d988706599416d0b5619d81b4c7dfef76c32ee671233`
+(from `approval prepare release --json`), covering exactly: this file,
+`.musubix/features/ai-data-scientist-ml/design.md`,
+`.musubix/features/ai-data-scientist-ml/trace.json`,
+`.musubix/decisions/ADR-0092.md`, `.musubix/decisions/ADR-0093.md`,
+`.musubix/decisions/ADR-0094.md`, `.musubix/evidence/change-waivers.json`,
+and `.musubix/evidence/order.json`. `musubix3 approval record release`
+remains blocked by unrelated repo-wide debt (see "Status" above); approval
+is recorded here per the established workaround.
