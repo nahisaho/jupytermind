@@ -119,3 +119,82 @@ Released. Human release approval recorded (approver: nahisaho, hash
 non-CHANGE-009 repo-wide diagnostics plus this change's own
 recording-order-debt (see above), consistent with CHANGE-006/CHANGE-008
 precedent.
+
+## #69 Remediation
+
+Remediation work was performed as part of issue #69 (residual, out-of-scope
+debt discovered while closing #62; #62 itself never included CHANGE-009).
+The historical "Released"/approval-hash text above describes CHANGE-009's
+*original* release, which remains valid and is not reopened here; this
+section instead documents a *separate*, additional remediation pass whose
+own release approval is requested/pending until recorded in the "Debt
+Remediation Approval" section below.
+
+Unlike CHANGE-010/012 (whose original documents incorrectly claimed no
+`CHANGE_COMPLETENESS_ADR` diagnostic applied), this change's own
+Implementation Plan already disclosed `CHANGE_COMPLETENESS_ADR` for
+REQ-AIDS-074–078 honestly at original-merge time. `CHANGE_COMPLETENESS_ADR`
+checks whether the design section(s) that directly `satisfies` a
+requirement are themselves the target of an ADR's `decides` edge;
+DES-AIDS-062/063/064/065/066 each declared "ADRs: none" directly, matching
+the already-disclosed diagnostic. Resolved by authoring five new ADRs
+documenting the actual as-built decisions honestly:
+
+- **ADR-0099** — caller-supplied `cv_splits` validated through the same
+  label-based overlap/coverage checks as generated folds (DES-AIDS-062).
+- **ADR-0100** — OOF probabilities conditional on `predict_proba`
+  availability, enforced at the scoring boundary rather than estimator
+  resolution (DES-AIDS-063).
+- **ADR-0101** — shared fold plan built once per `tune_or_compare` call
+  and reused by `cv_splits=` for every candidate (DES-AIDS-064).
+- **ADR-0102** — AutoML candidate registry merges caller-supplied
+  estimators into the built-in registry by name, overriding on collision
+  (DES-AIDS-065).
+- **ADR-0103** — `resolve_estimator` clones instances / calls factories,
+  duck-typed on `fit`/`predict`, rather than a registered plugin interface
+  (DES-AIDS-066).
+
+`design.md`'s five "ADRs: none" lines for DES-AIDS-062/063/064/065/066 were
+updated to cite these new ADRs. `trace build` after the update reports 0
+diagnostics, confirming the ADR linkage resolved the completeness gap.
+
+Remediation performed:
+
+1. Authored ADR-0099/0100/0101/0102/0103 and linked them from
+   DES-AIDS-062/063/064/065/066.
+2. Rebuilt `trace`: 0 diagnostics. Re-ran `gate --json`: all 5
+   `CHANGE_COMPLETENESS_ADR` diagnostics are gone (resolved, not waived).
+3. Recorded 15 requirement-scoped waivers (3 codes ×
+   REQ-AIDS-074/075/076/077/078) for the remaining TDD-evidence-ordering
+   diagnostics, citing the retroactive-evidence-recording constraint and
+   issue #69 (same root cause/precedent as CHANGE-008/010/011/012).
+4. Re-ran `gate --json`: all 15 remaining diagnostics are now `warning`
+   severity (waived), not `error`.
+5. Ran the full test suite: all tests passed — expected, since no
+   functional code changed (ADR authoring and waiver-recording only).
+6. This remediation pass's own human release approval (`nahisaho`) is
+   requested for the exact file set and `approval prepare release --json`
+   hash presented at merge time (see "Debt Remediation Approval" section
+   below, added once approval is obtained).
+
+## Debt Remediation Approval
+
+Approved by `nahisaho` on the following file set and
+`approval prepare release --json` hash:
+
+- `.musubix/changes/CHANGE-009.md`
+- `.musubix/features/ai-data-scientist-ml/design.md`
+- `.musubix/features/ai-data-scientist-ml/trace.json`
+- `.musubix/evidence/change-waivers.json`
+- `.musubix/evidence/order.json`
+- `.musubix/decisions/ADR-0099.md`
+- `.musubix/decisions/ADR-0100.md`
+- `.musubix/decisions/ADR-0101.md`
+- `.musubix/decisions/ADR-0102.md`
+- `.musubix/decisions/ADR-0103.md`
+
+`artifactSha256`: `ce0f33be5cf571ca1f6a4abe09be6f67b77ca190ae7d9c8d77bc726fb76c3de1`
+
+This approval covers only the #69 remediation work described above (ADR
+authoring and waiver recording); it does not reopen or modify the original
+feature's "Released" approval described in the "## Status" section.

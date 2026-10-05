@@ -494,7 +494,7 @@ Responsibilities: Normalize the requested supervised-validation mode into a reus
 Interfaces: `build_cv_splits(df, target, model_type, cv_strategy, n_splits, random_state, groups=None, cv_splits=None) -> list[tuple[list, list]]`, where each tuple contains train-row indices and test-row indices expressed in the dataframe's original index labels.
 Constraints: Cross-validation is supported only when `df.index.is_unique` so every emitted row label maps to exactly one row. `StratifiedKFold` is valid only for classification and must stratify on `df[target]`; `GroupKFold` requires one group label per input row and must keep every group entirely on one side of a fold. Re-supplied `cv_splits` are validated before reuse: every train/test label must exist in the dataframe index, each fold's train/test sides must be disjoint, and every input row must appear in the test side of exactly one fold so OOF artifacts are well-defined.
 Requirements: REQ-AIDS-074
-ADRs: none — the design composes scikit-learn's standard splitters directly and stores only their emitted row-index partitions, with no competing architecture considered.
+ADRs: ADR-0099
 Depends-On: DES-AIDS-012
 
 ## DES-AIDS-063: Probability-aware supervised evaluation results / 確率対応の教師あり学習評価結果
@@ -502,7 +502,7 @@ Responsibilities: Extend the supervised modeling interface so a caller can reque
 Interfaces: `trainModel(df, target, modelType, testSize=0.2, randomState=42, scoring=None, cvStrategy=None, nSplits=5, groups=None, cvSplits=None, estimator=None, **modelParams) -> ModelResult`, where `ModelResult` keeps the legacy `{model, metrics, trainIndex, testIndex}` fields (using the first fold's indices when cross-validation is active for backward-compatible shape) and adds optional `{scoring, fold_scores, cv_splits, oof_predictions, oof_probabilities}` fields.
 Constraints: If `cvStrategy`/`cvSplits` are absent, the function stays on the existing single `train_test_split` path so prior callers observe the same split behavior and legacy metric keys. If cross-validation is active, `cv_splits` is the authoritative split artifact and `oof_predictions` are aligned to the input row order. `oof_probabilities` is populated only when the estimator implements `predict_proba`; probability-dependent scoring (`roc_auc`, `log_loss`) requires that capability and otherwise raises `ValueError` instead of silently substituting another score.
 Requirements: REQ-AIDS-074, REQ-AIDS-075
-ADRs: none — the extension augments the existing result contract around scikit-learn estimators rather than introducing a new modeling subsystem.
+ADRs: ADR-0100
 Depends-On: DES-AIDS-012, DES-AIDS-062
 
 ## DES-AIDS-064: Shared-fold tuning comparator / 共通foldを用いるチューニング比較器
@@ -510,7 +510,7 @@ Responsibilities: Evaluate every hyperparameter/model candidate by delegating to
 Interfaces: `tuneOrCompare(df, target, grid, modelType="classification", scoring=None, cvStrategy=None, nSplits=5, groups=None, cvSplits=None) -> TuningResult {best_params, best_metric, all_candidates, scoring?, cv_splits?, best_result?}` where each `all_candidates` entry contains the candidate descriptor, the selected metric value, its fold scores, and the underlying `ModelResult`.
 Constraints: Every candidate in one invocation must use the same fold plan, either caller-supplied or generated once then reused. Higher-is-better scoring (`accuracy`, `precision`, `recall`, `roc_auc`, `r2`) selects the maximum metric, while lower-is-better scoring (`log_loss`, `rmse`) selects the minimum. Candidate ordering must not depend on dictionary iteration side effects or per-candidate re-splitting.
 Requirements: REQ-AIDS-076
-ADRs: none — the comparator is a thin policy layer over DES-AIDS-063 with no alternative orchestration architecture evaluated.
+ADRs: ADR-0101
 Depends-On: DES-AIDS-017, DES-AIDS-063
 
 ## DES-AIDS-065: Shared-fold AutoML candidate ranking / 共通foldを用いるAutoML候補順位付け
@@ -518,7 +518,7 @@ Responsibilities: Build an AutoML candidate registry, evaluate each candidate th
 Interfaces: `runAutoML(df, target, modelType="classification", scoring=None, cvStrategy=None, nSplits=5, groups=None, cvSplits=None, candidateEstimators=None) -> AutoMLResult {ranked_candidates, scoring?, cv_splits?}` where each ranked candidate contains its `model_name`, selected metric value, fold scores, and underlying `ModelResult`.
 Constraints: If `candidateEstimators` is omitted, the module uses the existing built-in registry so legacy AutoML requests still evaluate the same default model set. If `candidateEstimators` is supplied, its named estimators are appended to that built-in registry and every candidate is evaluated on the exact same fold plan. Ranked output sorts descending for higher-is-better metrics and ascending for lower-is-better metrics.
 Requirements: REQ-AIDS-077, REQ-AIDS-078
-ADRs: none — AutoML continues to be a composition of existing modeling/tuning paths with an alternate candidate source, not a separate architecture.
+ADRs: ADR-0102
 Depends-On: DES-AIDS-018, DES-AIDS-064
 
 ## DES-AIDS-066: Pluggable estimator resolver / 差し替え可能な推定器解決器
@@ -526,6 +526,6 @@ Responsibilities: Resolve either a built-in `model_name`, a caller-supplied esti
 Interfaces: `resolve_estimator(model_type, model_name=None, estimator=None, model_params=None) -> estimator` for single-model training, and AutoML/tuning callers may pass `{name: estimator_or_factory}` or per-grid `{"estimator": estimator_or_factory}` descriptors that flow into the same resolver.
 Constraints: The resolved estimator must implement `fit` and `predict`; probability-dependent scoring also requires `predict_proba`. Built-in models preserve the current hard-coded defaults (including existing `random_state=42` injections where they already exist). External estimator instances are cloned or recreated per fit so cross-validation folds and candidate comparisons never share trained state.
 Requirements: REQ-AIDS-078
-ADRs: none — the resolver centralizes already-implicit estimator construction rules without introducing a new dependency boundary.
+ADRs: ADR-0103
 Depends-On: DES-AIDS-063, DES-AIDS-064, DES-AIDS-065
 Code: CODE-AIDS-119 through CODE-AIDS-124 (renumbered at merge to avoid colliding with CHANGE-008's CODE-AIDS-094/095 in `feature_engineering.py`; see CHANGE-009.md).
