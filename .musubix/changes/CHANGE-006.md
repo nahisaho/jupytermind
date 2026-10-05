@@ -54,9 +54,21 @@ additional valid audit-evidence source).
   `src/ai_data_scientist/ingestion.py`,
   `src/ai_data_scientist/visualization.py`, and their corresponding test
   files under `tests/`.
-- No new skill boundary; no ADRs (all seven new design entries are narrow
-  bugfixes/extensions with "ADRs: none", consistent with the DES-AIDS-042/
-  048-053 precedent).
+- No new skill boundary. Originally recorded "ADRs: none" for all seven
+  new design entries (narrow bugfixes/extensions, consistent with the
+  DES-AIDS-042/048-053 precedent). **Superseded 2026-10 (GitHub #62 debt
+  remediation)**: `CHANGE_COMPLETENESS_ADR` is a non-waivable gate
+  diagnostic regardless of an "ADRs: none" design declaration, so real
+  ADRs were authored and linked for all seven — ADR-0060 (DES-AIDS-054/
+  REQ-AIDS-066), ADR-0061 (DES-AIDS-055/REQ-AIDS-067), ADR-0062
+  (DES-AIDS-056/REQ-AIDS-068), ADR-0063 (DES-AIDS-057/REQ-AIDS-069),
+  ADR-0064 (DES-AIDS-058/REQ-AIDS-070), ADR-0065 (DES-AIDS-059/
+  REQ-AIDS-071), ADR-0066 (DES-AIDS-060/REQ-AIDS-072) — each documenting
+  the original narrow-fix rationale with explicit rejected alternatives.
+  The pre-existing CHANGE_RED_UNPROVEN/CHANGE_GREEN_UNPROVEN/
+  CHANGE_COMPLETENESS_TDD waivers for REQ-AIDS-066 (recorded 2026-10-04,
+  documenting an out-of-order TDD recording mistake already fixed and
+  re-verified) remain valid and unchanged.
 - The remaining 7 open issues (#41, #46, #48, #49, #50, #51, #52) are
   explicitly out of scope for this change; they are tracked separately per
   the user-approved priority ordering (2 documentation-caused bugs, then 5
@@ -134,3 +146,20 @@ each phase.
 - [x] Final rubber-duck review of release/quality evidence + this document.
 - [ ] Release approval (pending explicit human decision given the known
   `CHANGE_COMPLETENESS_ADR` gate blocker above).
+
+## Debt Remediation Approval (GitHub #62, 2026-10-05)
+
+Approver: nahisaho (human, via ask_user). Artifact SHA-256 (`approval
+prepare release --json`): `f03be066a2561cc38f0c53bf85f01eead6a61293bb50a2d627cc813f20b0622c`.
+
+Scope: 7 real ADRs authored (ADR-0060 through ADR-0066) closing all seven
+non-waivable CHANGE_COMPLETENESS_ADR gaps (REQ-AIDS-066 through
+REQ-AIDS-072), linked from design.md. Pre-existing REQ-AIDS-066 waivers
+(CHANGE_RED_UNPROVEN/CHANGE_GREEN_UNPROVEN/CHANGE_COMPLETENESS_TDD,
+recorded 2026-10-04) remain valid and unchanged.
+
+Verification: 580/580 tests pass; `trace build` 0 diagnostics;
+`graph gate` PASS; `gate --changed --json` shows 0 CHANGE-006-owned
+error-severity diagnostics. `npx musubix3 approval record release` is
+blocked repo-wide by remaining debt in other changes (tracked under #62);
+approval is recorded here directly per the established workaround.
