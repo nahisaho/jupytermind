@@ -485,3 +485,168 @@ def test_TEST_AISCI_032_attributes_managed_startup_failures_to_the_requesting_ph
         ensure_managed_server(entry, timeout_ms=300, phase="literature-review")
 
     assert excinfo.value.phase == "literature-review"
+
+
+# @id TEST-AISCI-042
+# @verifies REQ-AISCI-017
+def test_TEST_AISCI_042_rejects_a_non_loopback_endpoint_template(tmp_path):
+    """DES-AISCI-012: managed servers must bind only to 127.0.0.1.
+
+    Regression test for jupytermind#66; closed by CHANGE-019 (ADR-0084).
+    Exercises the literal-address branch of _is_loopback_host."""
+    from ai_scientist.mcp_config import load_mcp_config
+    from ai_scientist.mcp_failures import MCPUnavailableError
+    from ai_scientist.mcp_managed import ensure_managed_server
+
+    config_path = tmp_path / "managed-remote.json"
+    config_path.write_text(
+        json.dumps(
+            {
+                "servers": [
+                    {
+                        "name": "managed-remote",
+                        "mode": "managed",
+                        "launchCommand": f"{sys.executable} server.py --port {{port}}",
+                        "endpointTemplate": "http://0.0.0.0:{port}",
+                        "healthCheckPath": "/health",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    entry = load_mcp_config(config_path)["managed-remote"]
+    with pytest.raises(MCPUnavailableError, match="loopback"):
+        ensure_managed_server(entry, timeout_ms=300)
+
+
+# @id TEST-AISCI-043
+# @verifies REQ-AISCI-017
+def test_TEST_AISCI_043_concurrent_first_use_starts_only_one_process(tmp_path, monkeypatch):
+    """DES-AISCI-012: must not start a second process for a server name whose
+    process is already registered, even when two callers race on first use.
+
+    Regression test for jupytermind#66; closed by CHANGE-019 (ADR-0084).
+    Exercises the per-server-name lock acquired by _lock_for."""
+    script_path = tmp_path / "concurrent_managed_server.py"
+    script_path.write_text(
+        "\n".join(
+            [
+                "from http.server import BaseHTTPRequestHandler, HTTPServer",
+                "import argparse, time",
+                "parser = argparse.ArgumentParser()",
+                "parser.add_argument('--port', type=int, required=True)",
+                "args = parser.parse_args()",
+                "time.sleep(0.2)",
+                "class Handler(BaseHTTPRequestHandler):",
+                "    def do_GET(self):",
+                "        self.send_response(200); self.end_headers(); self.wfile.write(b'ok')",
+                "    def log_message(self, *_args):",
+                "        return",
+                "HTTPServer(('127.0.0.1', args.port), Handler).serve_forever()",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    from ai_scientist.mcp_config import load_mcp_config
+    import ai_scientist.mcp_managed as mcp_managed
+
+    spawned: list[subprocess.Popen] = []
+    spawn_lock = threading.Lock()
+    original_popen = subprocess.Popen
+
+    def spy_popen(*args, **kwargs):
+        process = original_popen(*args, **kwargs)
+        with spawn_lock:
+            spawned.append(process)
+        return process
+
+    monkeypatch.setattr(mcp_managed.subprocess, "Popen", spy_popen)
+
+    config_path = tmp_path / "managed-concurrent.json"
+    config_path.write_text(
+        json.dumps(
+            {
+                "servers": [
+                    {
+                        "name": "managed-concurrent",
+                        "mode": "managed",
+                        "launchCommand": f"{sys.executable} {script_path} --port {{port}}",
+                        "endpointTemplate": "http://127.0.0.1:{port}",
+                        "healthCheckPath": "/health",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    entry = load_mcp_config(config_path)["managed-concurrent"]
+
+    results: list = []
+
+    def start():
+        results.append(mcp_managed.ensure_managed_server(entry, timeout_ms=5000))
+
+    threads = [threading.Thread(target=start) for _ in range(5)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+
+    try:
+        assert len(spawned) == 1
+        assert len({info.pid for info in results}) == 1
+    finally:
+        mcp_managed.stop("managed-concurrent")
+
+
+# @id TEST-AISCI-046
+# @verifies REQ-AISCI-017
+def test_TEST_AISCI_046_rejects_a_hostname_that_resolves_only_to_non_loopback_addresses(
+    tmp_path, monkeypatch
+):
+    """DES-AISCI-012: a hostname must not bypass loopback validation merely
+    by not being a literal non-loopback IP -- a name whose DNS/hosts
+    resolution yields only non-loopback addresses (e.g. a spoofed
+    `localhost` override) must still be rejected.
+
+    Regression test for a rubber-duck finding during CHANGE-019 review:
+    the original fix string-matched the literal hostname `localhost`
+    without resolving it, so a hosts-file override pointing `localhost` at
+    a routable address would have bypassed the loopback check. Covered by
+    _is_loopback_host's socket.getaddrinfo resolution branch."""
+    import socket as socket_module
+
+    from ai_scientist.mcp_config import load_mcp_config
+    from ai_scientist.mcp_failures import MCPUnavailableError
+    from ai_scientist.mcp_managed import ensure_managed_server
+
+    def fake_getaddrinfo(host, *_args, **_kwargs):
+        assert host == "spoofed-localhost"
+        return [(socket_module.AF_INET, None, None, "", ("203.0.113.5", 0))]
+
+    monkeypatch.setattr(socket_module, "getaddrinfo", fake_getaddrinfo)
+
+    config_path = tmp_path / "managed-spoofed.json"
+    config_path.write_text(
+        json.dumps(
+            {
+                "servers": [
+                    {
+                        "name": "managed-spoofed",
+                        "mode": "managed",
+                        "launchCommand": f"{sys.executable} server.py --port {{port}}",
+                        "endpointTemplate": "http://spoofed-localhost:{port}",
+                        "healthCheckPath": "/health",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    entry = load_mcp_config(config_path)["managed-spoofed"]
+    with pytest.raises(MCPUnavailableError, match="loopback"):
+        ensure_managed_server(entry, timeout_ms=300)
