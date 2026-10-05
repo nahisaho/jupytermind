@@ -64,7 +64,7 @@ and source column(s). Existing `one_hot`/`scale` calls keep their current
 `FeatureResult.dataframe`/`added_columns`/`removed_columns` values
 unchanged.
 Requirements: REQ-AIDS-015
-ADRs: none — pandas/scikit-learn provide the transformation primitives directly; no rejected alternative was evaluated.
+ADRs: ADR-0058
 Depends-On: DES-AIDS-004
 
 ## DES-AIDS-061: Leakage-safe fit/transform feature engineering API / リーク防止fit/transform API
@@ -99,9 +99,7 @@ column (confirmed: `StandardScaler().fit([[1.0],[1.0],[1.0]]).scale_ ==
 division-by-zero error; this requires no special-case code beyond
 delegating to `StandardScaler`.
 Requirements: REQ-AIDS-073
-ADRs: none — this narrowly splits an existing scikit-learn-backed
-transformation into two calls using the same `StandardScaler` primitive;
-no competing architectural alternative was considered.
+ADRs: ADR-0059
 Depends-On: DES-AIDS-013
 
 ## DES-AIDS-067: Paired hypothesis-test dispatch for experiment evaluation / 実験評価の対応あり仮説検定ディスパッチ
