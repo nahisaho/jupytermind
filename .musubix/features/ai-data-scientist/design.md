@@ -1079,9 +1079,7 @@ only applies when `cited_value` is float-parseable, falling back to plain
 substring matching otherwise (covers non-numeric claim types such as
 "OK"/categorical labels).
 Requirements: REQ-AIDS-066
-ADRs: none — a narrow, additive warning-only check layered on the existing
-evidence-resolution step; no new external dependency or architectural
-tradeoff.
+ADRs: ADR-0060
 Depends-On: DES-AIDS-010, DES-AIDS-033, DES-AIDS-035
 
 ## DES-AIDS-055: Explicit non-computable correlation interpretation for NaN statistics / NaN統計量に対する算出不能の明示
@@ -1111,9 +1109,7 @@ preserved unchanged for all non-NaN inputs); must check NaN on both
 `coefficient` and `p_value` independently (either alone can be NaN
 depending on which scipy code path produced it).
 Requirements: REQ-AIDS-067
-ADRs: none — a single additional guard clause in an existing conditional
-chain; no new dependency (`math` is standard library) or structural
-tradeoff.
+ADRs: ADR-0061
 Depends-On: DES-AIDS-051, DES-AIDS-053
 
 ## DES-AIDS-056: Delimiter-sniffing CSV ingestion with mismatch warning / 区切り文字検出付きCSV取込と不一致警告
@@ -1151,8 +1147,7 @@ delimiter configuration is introduced by this design; the mismatch warning
 is gated strictly on sniff-fallback, never emitted after a successful
 sniff.
 Requirements: REQ-AIDS-068
-ADRs: none — `csv.Sniffer` is the standard-library mechanism for this
-exact problem; no architectural tradeoff beyond using it directly.
+ADRs: ADR-0062
 Depends-On: none (introduces a new, self-contained sampling/sniffing step)
 
 ## DES-AIDS-057: Exhaustive evidence-manifest validation within a single insight cell / 単一Insightセル内の全エビデンス網羅検証
@@ -1196,9 +1191,7 @@ not assume `supporting_evidence` entries appear in any file this
 repository does not already construct in its own test fixtures (no
 backward-compatibility burden for an undocumented field).
 Requirements: REQ-AIDS-069
-ADRs: none — a direct extension of the existing single-block parsing
-helper to multiple blocks plus one well-defined nested schema; no
-alternative design meaningfully reduces complexity further.
+ADRs: ADR-0063
 Depends-On: DES-AIDS-033, DES-AIDS-054
 
 ## DES-AIDS-058: Heading-prefixed result paragraphs recognized as insight candidates / 見出し付き結論段落のInsight候補認定
@@ -1223,8 +1216,7 @@ Constraints: Must not change the existing #30 behavior (a heading-prefixed
 cell that already carries an evidence fence remains a candidate); must not
 treat a heading-only cell (no body after the heading) as a candidate.
 Requirements: REQ-AIDS-070
-ADRs: none — narrows an existing exclusion rule to match the already-
-established non-heading heuristic; no new structural decision.
+ADRs: ADR-0064
 Depends-On: DES-AIDS-033, DES-AIDS-036
 
 ## DES-AIDS-059: Output-level chart metadata persisted by build_image_output / build_image_outputによる出力側チャートメタデータ永続化
@@ -1251,8 +1243,7 @@ Constraints: Must not change the PNG/base64 payload already written to
 `data["image/png"]`; must not require call-site changes at any existing
 `build_image_output` caller (additive metadata only).
 Requirements: REQ-AIDS-071
-ADRs: none — a narrow extension of an existing wrapper function reusing an
-already-established metadata dict shape.
+ADRs: ADR-0065
 Depends-On: DES-AIDS-048, DES-AIDS-049
 
 ## DES-AIDS-060: Per-image chart-metadata matching during visual audit / 視覚監査における画像単位でのチャートメタデータ照合
@@ -1287,9 +1278,7 @@ finding content and count unchanged (output_index populated but not
 previously asserted); must not apply one image's valid metadata to a
 sibling image in the same cell under any circumstance.
 Requirements: REQ-AIDS-072
-ADRs: none — a direct generalization of an existing per-cell loop to a
-per-output loop with an additive dataclass field; no alternative shape
-plausibly reduces risk further given the existing test surface.
+ADRs: ADR-0066
 Depends-On: DES-AIDS-041, DES-AIDS-059
 
 Note: this design, together with DES-AIDS-059, is exactly the mechanism

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T00:51:48.996Z",
+  "generatedAt": "2026-10-05T01:08:06.547Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -354,6 +354,48 @@
       "id": "ADR-0059",
       "kind": "adr",
       "path": ".musubix/decisions/ADR-0059.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0060",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0060.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0061",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0061.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0062",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0062.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0063",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0063.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0064",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0064.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0065",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0065.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0066",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0066.md",
       "line": 1
     },
     {
@@ -769,61 +811,61 @@
       "id": "DES-AIDS-055",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
-      "line": 1087
+      "line": 1085
     },
     {
       "id": "DES-AIDS-056",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
-      "line": 1119
+      "line": 1115
     },
     {
       "id": "DES-AIDS-057",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
-      "line": 1158
+      "line": 1153
     },
     {
       "id": "DES-AIDS-058",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
-      "line": 1204
+      "line": 1197
     },
     {
       "id": "DES-AIDS-059",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
-      "line": 1230
+      "line": 1222
     },
     {
       "id": "DES-AIDS-060",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
-      "line": 1258
+      "line": 1249
     },
     {
       "id": "DES-AIDS-073",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
-      "line": 1302
+      "line": 1291
     },
     {
       "id": "DES-AIDS-074",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
-      "line": 1315
+      "line": 1304
     },
     {
       "id": "DES-AIDS-075",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
-      "line": 1323
+      "line": 1312
     },
     {
       "id": "DES-AIDS-076",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
-      "line": 1331
+      "line": 1320
     },
     {
       "id": "REQ-AIDS-001",
@@ -7376,6 +7418,11 @@
       "relation": "satisfies"
     },
     {
+      "from": "ADR-0060",
+      "to": "DES-AIDS-054",
+      "relation": "decides"
+    },
+    {
       "from": "DES-AIDS-054",
       "to": "DES-AIDS-010",
       "relation": "depends-on"
@@ -7396,6 +7443,11 @@
       "relation": "satisfies"
     },
     {
+      "from": "ADR-0061",
+      "to": "DES-AIDS-055",
+      "relation": "decides"
+    },
+    {
       "from": "DES-AIDS-055",
       "to": "DES-AIDS-051",
       "relation": "depends-on"
@@ -7411,9 +7463,19 @@
       "relation": "satisfies"
     },
     {
+      "from": "ADR-0062",
+      "to": "DES-AIDS-056",
+      "relation": "decides"
+    },
+    {
       "from": "DES-AIDS-057",
       "to": "REQ-AIDS-069",
       "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0063",
+      "to": "DES-AIDS-057",
+      "relation": "decides"
     },
     {
       "from": "DES-AIDS-057",
@@ -7431,6 +7493,11 @@
       "relation": "satisfies"
     },
     {
+      "from": "ADR-0064",
+      "to": "DES-AIDS-058",
+      "relation": "decides"
+    },
+    {
       "from": "DES-AIDS-058",
       "to": "DES-AIDS-033",
       "relation": "depends-on"
@@ -7446,6 +7513,11 @@
       "relation": "satisfies"
     },
     {
+      "from": "ADR-0065",
+      "to": "DES-AIDS-059",
+      "relation": "decides"
+    },
+    {
       "from": "DES-AIDS-059",
       "to": "DES-AIDS-048",
       "relation": "depends-on"
@@ -7459,6 +7531,11 @@
       "from": "DES-AIDS-060",
       "to": "REQ-AIDS-072",
       "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0066",
+      "to": "DES-AIDS-060",
+      "relation": "decides"
     },
     {
       "from": "DES-AIDS-060",
@@ -14392,10 +14469,17 @@
     ".musubix/decisions/ADR-0056.md": "35a308a0e5dbc5990333b7490e134978e4b6554914b87ed5ab9a527db1eecf50",
     ".musubix/decisions/ADR-0057.md": "0418d1b077ad61a86a2b392bc9803b977081245c5a8a209f86af75ff0f44619e",
     ".musubix/decisions/ADR-0058.md": "07beddccd5dfb9bda3e9dea30efc0f52711a914780c9f16f21fd7159e8ca8be9",
-    ".musubix/decisions/ADR-0059.md": "a4fdf8c9cd88d65c7577bd9884d52546cbfc907758960894f2f99eed0ef5e6d3",
+    ".musubix/decisions/ADR-0059.md": "e7e5b99e72a478965cebbb4c2078d565e6e920eccafd7edc98f18b315a4a1de4",
+    ".musubix/decisions/ADR-0060.md": "b85287a06018db17b0a080b81c9d34cf63846507c8eb4949512be9e5e9c49db5",
+    ".musubix/decisions/ADR-0061.md": "8603a2ff2aa832c6697934f7ca41dfaccfba243dd25d194a9ea2f17a5a37d199",
+    ".musubix/decisions/ADR-0062.md": "3ccd914e1ab171225b5d28f2a2932797afce841a51bdf9ad319b3ffb99dbdfd2",
+    ".musubix/decisions/ADR-0063.md": "c80abbcf6bdd462438a31e1ac6ad65ec713b492476630a27490b4a5d5ae72f0e",
+    ".musubix/decisions/ADR-0064.md": "5d81c14f520d3d69724e851a060fc651bbe86c612c69e4b59135cc33e0d48234",
+    ".musubix/decisions/ADR-0065.md": "d9a1b3f4d5e0785b99593b98392ebad7bd5c82600b25eb4c0bf97b59ca1ec8fb",
+    ".musubix/decisions/ADR-0066.md": "a81d863e92e56aa8f4fc67f4e766d981797c490647660f47bb3f1bd90b900c2d",
     ".musubix/features/ai-chemistry-scientist/design.md": "b0305099de56dd252c1e319a4a751d8b3eed23282b31f671c350af289f4fd2af",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "7ffbce1294f08612ff25ae5e2e291a101b19c26dae1a8637ee63926f0f868739",
-    ".musubix/features/ai-data-scientist/design.md": "4e69f732cdcfdb4fc3bd3b04c7c1c6fe640caf220c45e852354f11b63f1afd29",
+    ".musubix/features/ai-data-scientist/design.md": "0c6b4d8c3c8cdf5e4c2e48f9fb706c9f778d0b9430e0311cca6680859f496cb6",
     ".musubix/features/ai-data-scientist/requirements.md": "3cc394cb861960154c378a9a92a94b4e842410e555319fe1dbffae81a0f3d8ae",
     ".musubix/features/ai-data-scientist-ml/design.md": "6d08515890339c653de76d342c86531ce4d8533733b9ac9c90f2c3b1d7187cf1",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
