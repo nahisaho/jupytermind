@@ -11434,6 +11434,176 @@
           }
         }
       ]
+    },
+    {
+      "changeId": "CHANGE-018",
+      "requirementIds": [
+        "REQ-AIDS-056"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-05T00:19:45.126Z",
+          "fingerprints": {
+            "impact": "aa550429447b1668e7f3dfdaa0a371ec348f2d2497a1c3f80ec4fc8c700ac0e6",
+            "requirements": "1133789ca0503484c7f072dd6b8582c9b24f381faef67ac15bd23ae468711b7c",
+            "design": "762bed2899aae70e27682e128b9ea52d0374d5bc97f81006403ef95c62287eb7",
+            "implementation": "5b7d2d9aeef1d56c71b7f060ed53055c55079bfba42009d70aca0f36bc782ef1",
+            "tests": "51240f589a308db797a0722f231b7af25730c65639a48e900c87c0bb4d8cca44",
+            "tdd": "c4c0c52a7f3ebf1d05825b0e697fb11fd4fea189a940f6848dd1c435eb2d2642",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+                }
+              }
+            }
+          },
+          "order": 1046
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-05T00:20:32.841Z",
+          "fingerprints": {
+            "impact": "aa550429447b1668e7f3dfdaa0a371ec348f2d2497a1c3f80ec4fc8c700ac0e6",
+            "requirements": "1133789ca0503484c7f072dd6b8582c9b24f381faef67ac15bd23ae468711b7c",
+            "design": "762bed2899aae70e27682e128b9ea52d0374d5bc97f81006403ef95c62287eb7",
+            "implementation": "5b7d2d9aeef1d56c71b7f060ed53055c55079bfba42009d70aca0f36bc782ef1",
+            "tests": "51240f589a308db797a0722f231b7af25730c65639a48e900c87c0bb4d8cca44",
+            "tdd": "c4c0c52a7f3ebf1d05825b0e697fb11fd4fea189a940f6848dd1c435eb2d2642",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+                }
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 1047
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-05T00:21:50.099Z",
+          "fingerprints": {
+            "impact": "aa550429447b1668e7f3dfdaa0a371ec348f2d2497a1c3f80ec4fc8c700ac0e6",
+            "requirements": "1133789ca0503484c7f072dd6b8582c9b24f381faef67ac15bd23ae468711b7c",
+            "design": "0bef1975d7179c7987b17f4a9ea55a442822c29c4d47c0904fd017317cc72971",
+            "implementation": "5b7d2d9aeef1d56c71b7f060ed53055c55079bfba42009d70aca0f36bc782ef1",
+            "tests": "51240f589a308db797a0722f231b7af25730c65639a48e900c87c0bb4d8cca44",
+            "tdd": "c4c0c52a7f3ebf1d05825b0e697fb11fd4fea189a940f6848dd1c435eb2d2642",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+                }
+              }
+            }
+          },
+          "order": 1048
+        },
+        "red": {
+          "phase": "red",
+          "recordedAt": "2026-10-05T00:24:17.237Z",
+          "fingerprints": {
+            "impact": "aa550429447b1668e7f3dfdaa0a371ec348f2d2497a1c3f80ec4fc8c700ac0e6",
+            "requirements": "1133789ca0503484c7f072dd6b8582c9b24f381faef67ac15bd23ae468711b7c",
+            "design": "0bef1975d7179c7987b17f4a9ea55a442822c29c4d47c0904fd017317cc72971",
+            "implementation": "dab4feb63a47fe606c7c44fe3846b56c269d9946acae2346402aa2940cfdb5dd",
+            "tests": "89dc85c731e102290ecd1c2e628719af70ff0a93aa2111bbdbc2752dab37550a",
+            "tdd": "54638b2ce74ada0973b8ad8688e7afcec244c803ad440146e02640eaa51d41e8",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "7314894d2ae207d5d2ec8c53b6ea688ec4148d793eeab403b5f14a11dac16377"
+                }
+              }
+            }
+          },
+          "order": 1050
+        },
+        "implementation": {
+          "phase": "implementation",
+          "recordedAt": "2026-10-05T00:24:26.498Z",
+          "fingerprints": {
+            "impact": "aa550429447b1668e7f3dfdaa0a371ec348f2d2497a1c3f80ec4fc8c700ac0e6",
+            "requirements": "1133789ca0503484c7f072dd6b8582c9b24f381faef67ac15bd23ae468711b7c",
+            "design": "0bef1975d7179c7987b17f4a9ea55a442822c29c4d47c0904fd017317cc72971",
+            "implementation": "5b7d2d9aeef1d56c71b7f060ed53055c55079bfba42009d70aca0f36bc782ef1",
+            "tests": "89dc85c731e102290ecd1c2e628719af70ff0a93aa2111bbdbc2752dab37550a",
+            "tdd": "54638b2ce74ada0973b8ad8688e7afcec244c803ad440146e02640eaa51d41e8",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+                }
+              }
+            }
+          },
+          "order": 1051
+        },
+        "green": {
+          "phase": "green",
+          "recordedAt": "2026-10-05T00:24:45.460Z",
+          "fingerprints": {
+            "impact": "aa550429447b1668e7f3dfdaa0a371ec348f2d2497a1c3f80ec4fc8c700ac0e6",
+            "requirements": "1133789ca0503484c7f072dd6b8582c9b24f381faef67ac15bd23ae468711b7c",
+            "design": "0bef1975d7179c7987b17f4a9ea55a442822c29c4d47c0904fd017317cc72971",
+            "implementation": "5b7d2d9aeef1d56c71b7f060ed53055c55079bfba42009d70aca0f36bc782ef1",
+            "tests": "89dc85c731e102290ecd1c2e628719af70ff0a93aa2111bbdbc2752dab37550a",
+            "tdd": "5aa0bd6b0b360213a21f856df6cf4eb8a9b21bec04cc7dbd3f50546f508ff146",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+                }
+              }
+            }
+          },
+          "order": 1053
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-05T00:27:00.163Z",
+          "fingerprints": {
+            "impact": "aa550429447b1668e7f3dfdaa0a371ec348f2d2497a1c3f80ec4fc8c700ac0e6",
+            "requirements": "1133789ca0503484c7f072dd6b8582c9b24f381faef67ac15bd23ae468711b7c",
+            "design": "0bef1975d7179c7987b17f4a9ea55a442822c29c4d47c0904fd017317cc72971",
+            "implementation": "5b7d2d9aeef1d56c71b7f060ed53055c55079bfba42009d70aca0f36bc782ef1",
+            "tests": "89dc85c731e102290ecd1c2e628719af70ff0a93aa2111bbdbc2752dab37550a",
+            "tdd": "5aa0bd6b0b360213a21f856df6cf4eb8a9b21bec04cc7dbd3f50546f508ff146",
+            "requirementImplementations": {
+              "REQ-AIDS-056": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+                }
+              }
+            }
+          },
+          "order": 1054
+        }
+      }
     }
   ]
 }

@@ -1,5 +1,7 @@
 """Tests for reusable sensitivity-analysis plans (REQ-AIDS-056)."""
 
+import dataclasses
+
 import pytest
 
 from ai_data_scientist.sensitivity import (
@@ -25,6 +27,14 @@ def test_TEST_AIDS_293_target_claim_is_preserved_and_blank_rejected():
 
     with pytest.raises(ValueError, match="target_claim"):
         SensitivityPlan(target_claim="", parameter_grid={"seed": [0]})
+
+    # dataclasses.asdict() is a shape-based consumer per DES-AIDS-044; it
+    # must surface target_claim on both the report and each result.
+    report_dict = dataclasses.asdict(report)
+    assert report_dict["target_claim"] == target_claim
+    for result_dict in report_dict["results"]:
+        assert result_dict["target_claim"] == target_claim
+    assert all(r["target_claim"] == target_claim for r in report_dict["results"])
 
 
 # @id TEST-AIDS-096

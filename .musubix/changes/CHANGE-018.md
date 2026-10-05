@@ -175,3 +175,42 @@ due to permanent repository-wide debt unrelated to this change), using the
 `artifactSha256: ec96546524f5db3584acfc11f7a30b8a1757d6392acc222a2736b1d99092c816`
 
 Approved by: nahisaho.
+
+## Release Approval (post-merge re-record, 2026-10-05)
+
+CHANGE-013's PR #60 was merged into `main` (commit `c1510ed`, including the
+TDD-ordering fix), after which this change's branch
+(`change-018-sensitivity-target-claim`, commit `dedef0d`) was merged into
+`main` (merge commit `d9092eb`). The merge wiped the monotonic
+`order.json` entries backing CHANGE-018's change-record phases (same
+pattern as CHANGE-013/015/016), so the full
+impact/requirements/design/red/implementation/green/quality sequence was
+re-recorded against the new baseline using the established revert-restore
+technique, with explicit `order.json` sequence verification at each TDD
+step (lesson learned from CHANGE-013's ordering bug this session):
+`tdd red` (1049) → `change-record red` (1050) → `change-record
+implementation` (1051) → `tdd green` (1052) → `change-record green`
+(1053).
+
+Two small, genuine incremental edits were required to produce real
+fingerprint deltas at the right phase boundaries (the `requirements`
+phase itself used the new `--allow-unchanged` flag, since REQ-AIDS-056's
+text did not change): a documentation note appended to `DES-AIDS-044` in
+`design.md`, and a new assertion in `TEST-AIDS-293` checking that
+`dataclasses.asdict()` surfaces `target_claim` on every result (a
+genuinely new, real regression check, proven Red via a temporary,
+reverted propagation break in `sensitivity.py`, not a cosmetic bypass).
+
+- 580 tests pass (`pytest -q`, one more than before due to the new
+  assertion); `trace build`: 0 diagnostics; `graph gate`: PASS;
+  `gate --changed --json`: CHANGE-018-owned diagnostics = 0.
+- `npx musubix3 approval record release` refused with the same
+  repository-wide-debt message as CHANGE-013
+  (`workflow, tdd, change-history, change-completeness, performance`),
+  unrelated to CHANGE-018's own scope.
+- **Human release approval:** approver `nahisaho`, reviewed artifact hash
+  (`approval prepare release --json`, repository-wide scope):
+  `839ae9351900fcb321c544d37104e57e608309cf3ba9855e37e346eca6164c73`.
+- **Residual risks accepted:** same repo-wide pre-existing debt as
+  documented for CHANGE-013 (issues #61/#62/#63), not introduced or
+  worsened by this change.

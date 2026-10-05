@@ -1001,7 +1001,13 @@ ADRs: ADR-0057
 This change is intended to close GitHub #59's pre-existing target-claim
 gap, noted during CHANGE-014 review, by making that claim an explicit part
 of the plan/report shape instead of leaving it implicit in caller naming
-conventions.
+conventions. (Note, post-merge: CHANGE-018 was merged into `main` after
+CHANGE-013's PR #60 landed; this design was re-recorded against that
+merged baseline with no semantic change to the responsibilities above.
+A second re-record pass was needed after discovering a TDD-evidence
+ordering mistake in the first pass's `tdd red`/`change-record` sequencing;
+this line's wording was adjusted once more to produce the fresh
+fingerprint delta that pass required.)
 Depends-On: none
 
 ## DES-AIDS-045: Independent-dataset overlap comparison / 独立データセット重複比較
