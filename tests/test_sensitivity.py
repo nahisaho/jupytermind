@@ -9,10 +9,31 @@ from ai_data_scientist.sensitivity import (
 )
 
 
+# @id TEST-AIDS-293
+# @verifies REQ-AIDS-056
+def test_TEST_AIDS_293_target_claim_is_preserved_and_blank_rejected():
+    target_claim = "quality uplift remains positive"
+    plan = SensitivityPlan(target_claim=target_claim, parameter_grid={"seed": [0, 1]})
+
+    report = run_sensitivity(plan, lambda seed: 1.0 + (0.01 * seed))
+
+    assert report.target_claim == target_claim
+    assert all(result.target_claim == target_claim for result in report.results)
+
+    with pytest.raises(ValueError, match="target_claim"):
+        SensitivityPlan(target_claim="   ", parameter_grid={"seed": [0]})
+
+    with pytest.raises(ValueError, match="target_claim"):
+        SensitivityPlan(target_claim="", parameter_grid={"seed": [0]})
+
+
 # @id TEST-AIDS-096
 # @verifies REQ-AIDS-056
 def test_TEST_AIDS_096_specifications_enumerates_full_grid():
-    plan = SensitivityPlan(parameter_grid={"model": ["ols", "ridge"], "subset": ["all", "recent"]})
+    plan = SensitivityPlan(
+        target_claim="model choice preserves direction",
+        parameter_grid={"model": ["ols", "ridge"], "subset": ["all", "recent"]},
+    )
     specs = plan.specifications()
     assert len(specs) == 4
     assert {"model": "ols", "subset": "all"} in specs
@@ -21,7 +42,11 @@ def test_TEST_AIDS_096_specifications_enumerates_full_grid():
 # @id TEST-AIDS-097
 # @verifies REQ-AIDS-056
 def test_TEST_AIDS_097_grid_exceeding_budget_raises():
-    plan = SensitivityPlan(parameter_grid={"x": list(range(10)), "y": list(range(10))}, max_runs=5)
+    plan = SensitivityPlan(
+        target_claim="budgeted grid remains bounded",
+        parameter_grid={"x": list(range(10)), "y": list(range(10))},
+        max_runs=5,
+    )
     with pytest.raises(SensitivityBudgetExceededError):
         plan.specifications()
 
@@ -29,7 +54,10 @@ def test_TEST_AIDS_097_grid_exceeding_budget_raises():
 # @id TEST-AIDS-098
 # @verifies REQ-AIDS-056
 def test_TEST_AIDS_098_stable_conclusion_across_specifications():
-    plan = SensitivityPlan(parameter_grid={"model": ["ols", "ridge", "lasso"]})
+    plan = SensitivityPlan(
+        target_claim="coefficient stays positive",
+        parameter_grid={"model": ["ols", "ridge", "lasso"]},
+    )
 
     def analysis_fn(model):
         return {"ols": 1.00, "ridge": 1.02, "lasso": 0.98}[model]
@@ -42,7 +70,10 @@ def test_TEST_AIDS_098_stable_conclusion_across_specifications():
 # @id TEST-AIDS-099
 # @verifies REQ-AIDS-056
 def test_TEST_AIDS_099_unstable_conclusion_flagged_with_deviation():
-    plan = SensitivityPlan(parameter_grid={"model": ["ols", "outlier_sensitive"]})
+    plan = SensitivityPlan(
+        target_claim="effect magnitude stays stable",
+        parameter_grid={"model": ["ols", "outlier_sensitive"]},
+    )
 
     def analysis_fn(model):
         return {"ols": 1.0, "outlier_sensitive": 5.0}[model]
@@ -59,7 +90,10 @@ def test_TEST_AIDS_205_sign_reversal_is_classified_reversed_not_stable():
     stays within the default tolerance must not be classified "reversed",
     and a sign flip must be classified "reversed" regardless of how small
     the relative deviation looks."""
-    plan = SensitivityPlan(parameter_grid={"seed": [0, 1]})
+    plan = SensitivityPlan(
+        target_claim="lift remains positive",
+        parameter_grid={"seed": [0, 1]},
+    )
 
     def analysis_fn(seed):
         return [0.0001, -0.00001][seed]
@@ -73,7 +107,10 @@ def test_TEST_AIDS_205_sign_reversal_is_classified_reversed_not_stable():
 # @id TEST-AIDS-206
 # @verifies REQ-AIDS-056
 def test_TEST_AIDS_206_same_signed_small_improvement_is_attenuated_not_reversed():
-    plan = SensitivityPlan(parameter_grid={"seed": [0, 1]})
+    plan = SensitivityPlan(
+        target_claim="lift remains positive",
+        parameter_grid={"seed": [0, 1]},
+    )
 
     def analysis_fn(seed):
         return [2e-05, 5e-05][seed]
@@ -86,7 +123,10 @@ def test_TEST_AIDS_206_same_signed_small_improvement_is_attenuated_not_reversed(
 # @id TEST-AIDS-207
 # @verifies REQ-AIDS-056
 def test_TEST_AIDS_207_zero_baseline_is_not_comparable_without_absolute_tolerance():
-    plan = SensitivityPlan(parameter_grid={"seed": [0, 1]})
+    plan = SensitivityPlan(
+        target_claim="effect differs from zero",
+        parameter_grid={"seed": [0, 1]},
+    )
 
     def analysis_fn(seed):
         return [0.0, 0.15][seed]
@@ -98,7 +138,10 @@ def test_TEST_AIDS_207_zero_baseline_is_not_comparable_without_absolute_toleranc
 # @id TEST-AIDS-208
 # @verifies REQ-AIDS-056
 def test_TEST_AIDS_208_absolute_tolerance_flags_large_same_signed_drop():
-    plan = SensitivityPlan(parameter_grid={"seed": [0, 1]})
+    plan = SensitivityPlan(
+        target_claim="effect magnitude stays near baseline",
+        parameter_grid={"seed": [0, 1]},
+    )
 
     def analysis_fn(seed):
         return [0.959027, 0.80][seed]
@@ -115,7 +158,10 @@ def test_TEST_AIDS_208_absolute_tolerance_flags_large_same_signed_drop():
 # @id TEST-AIDS-209
 # @verifies REQ-AIDS-056
 def test_TEST_AIDS_209_evaluator_failure_is_recorded_not_aborting():
-    plan = SensitivityPlan(parameter_grid={"seed": [0, 1, 2]})
+    plan = SensitivityPlan(
+        target_claim="effect remains positive under seeds",
+        parameter_grid={"seed": [0, 1, 2]},
+    )
 
     def analysis_fn(seed):
         if seed == 1:
@@ -134,7 +180,10 @@ def test_TEST_AIDS_209_evaluator_failure_is_recorded_not_aborting():
 # @id TEST-AIDS-213
 # @verifies REQ-AIDS-056
 def test_TEST_AIDS_213_empty_specification_grid_is_not_comparable_and_not_stable():
-    plan = SensitivityPlan(parameter_grid={"seed": []})
+    plan = SensitivityPlan(
+        target_claim="effect remains positive under seeds",
+        parameter_grid={"seed": []},
+    )
 
     report = run_sensitivity(plan, lambda seed: seed)
 
@@ -146,7 +195,10 @@ def test_TEST_AIDS_213_empty_specification_grid_is_not_comparable_and_not_stable
 # @id TEST-AIDS-214
 # @verifies REQ-AIDS-056
 def test_TEST_AIDS_214_all_specifications_failing_is_not_comparable_and_not_stable():
-    plan = SensitivityPlan(parameter_grid={"seed": [0, 1]})
+    plan = SensitivityPlan(
+        target_claim="effect remains positive under seeds",
+        parameter_grid={"seed": [0, 1]},
+    )
 
     def analysis_fn(seed):
         raise ValueError("boom")
@@ -162,7 +214,10 @@ def test_TEST_AIDS_214_all_specifications_failing_is_not_comparable_and_not_stab
 # @id TEST-AIDS-291
 # @verifies REQ-AIDS-056
 def test_TEST_AIDS_291_non_finite_values_are_recorded_as_failed_not_stable():
-    plan = SensitivityPlan(parameter_grid={"seed": [0, 1]})
+    plan = SensitivityPlan(
+        target_claim="effect remains finite and positive",
+        parameter_grid={"seed": [0, 1]},
+    )
 
     nan_report = run_sensitivity(plan, lambda seed: float("nan"))
     assert all(r.failed for r in nan_report.results)

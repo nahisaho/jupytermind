@@ -939,17 +939,18 @@ Depends-On: none
 
 ## DES-AIDS-044: Bounded sensitivity-analysis plan execution / 境界付き感度分析プラン実行
 Responsibilities: A `sensitivity` module providing `SensitivityPlan`
-(parameter_grid: dict[str, list[Any]], max_runs: int = 100) and
-`run_sensitivity(plan, analysis_fn, stability_tolerance=0.2,
-absolute_tolerance=None)`. `plan.specifications()` first computes the
-Cartesian product of `parameter_grid` and raises
-`SensitivityBudgetExceededError` before invoking `analysis_fn` at all if
-that count exceeds `plan.max_runs`. Otherwise `run_sensitivity` calls
-`analysis_fn(**specification)` for every combination, catching any
-exception per-specification (recorded on that `SensitivityResult` as
-`failed=True`/`error=str(exc)`, not aborting the rest), and classifies the
-run's overall conclusion by comparing every successful result's sign and
-magnitude against the first successful (baseline) specification:
+(`target_claim: str`, `parameter_grid: dict[str, list[Any]]`,
+`max_runs: int = 100`) and `run_sensitivity(plan, analysis_fn,
+stability_tolerance=0.2, absolute_tolerance=None)`.
+`plan.specifications()` first computes the Cartesian product of
+`parameter_grid` and raises `SensitivityBudgetExceededError` before
+invoking `analysis_fn` at all if that count exceeds `plan.max_runs`.
+Otherwise `run_sensitivity` calls `analysis_fn(**specification)` for every
+combination, catching any exception per-specification (recorded on that
+`SensitivityResult` as `failed=True`/`error=str(exc)`, not aborting the
+rest), and classifies the run's overall conclusion by comparing every
+successful result's sign and magnitude against the first successful
+(baseline) specification:
 "reversed" if any successful value's sign differs from another's,
 "not_comparable" if the baseline value is `0` and no `absolute_tolerance`
 was given (a relative deviation would be undefined), if every
@@ -962,18 +963,24 @@ criterion is `absolute_tolerance` (checked against
 `stability_tolerance` (checked against `max_relative_deviation`); which
 one was used is recorded on the report as `magnitude_criterion`, and
 whether all non-zero successful values shared a sign (a value of exactly
-`0` never breaks sign agreement) is recorded as `sign_consistent`
+`0` never breaks sign agreement) is recorded as `sign_consistent`.
+`plan.target_claim` is preserved verbatim on every `SensitivityResult` and
+on the aggregate `SensitivityReport`, so a detached result tuple or report
+still identifies which scientific/business claim its metric values were
+testing.
 (GitHub #53: this correction keeps the pre-existing `stable: bool` field,
 now `True` exactly when `classification == "stable"` — including the
 "not_comparable"/empty-grid and all-failed cases, where `stable` is
 `False` — for backward compatibility).
-Interfaces: sensitivity.SensitivityPlan(parameter_grid, max_runs=100);
+Interfaces: sensitivity.SensitivityPlan(target_claim, parameter_grid,
+max_runs=100);
 sensitivity.run_sensitivity(plan, analysis_fn: Callable[..., float],
 stability_tolerance=0.2, absolute_tolerance: float | None = None) ->
-SensitivityReport(results: tuple[SensitivityResult, ...], baseline_value,
-stable, max_relative_deviation, classification, max_absolute_deviation,
-sign_consistent, magnitude_criterion), where SensitivityResult carries
-specification, value, failed, error.
+SensitivityReport(target_claim, results: tuple[SensitivityResult, ...],
+baseline_value, stable, max_relative_deviation, classification,
+max_absolute_deviation, sign_consistent, magnitude_criterion), where
+SensitivityResult carries target_claim, specification, value, failed,
+error.
 Constraints: `analysis_fn` is entirely caller-supplied (no built-in
 statistical models); the module only orchestrates the bounded grid and
 classifies stability, keeping it generic across the issue's many example
@@ -981,17 +988,20 @@ domains (clustering, regression, preprocessing toggles). Classification
 must never report "stable" when successful values disagree in sign, and
 must never derive a relative deviation from a zero baseline without an
 explicit `absolute_tolerance`; `stable` must never be `True` when
-`classification != "stable"`.
+`classification != "stable"`. `target_claim` must be a non-empty string;
+blank/whitespace-only values are rejected before any specification
+enumeration or evaluation begins. Because `target_claim` becomes part of
+the public dataclass shape for `SensitivityPlan`, `SensitivityReport`, and
+`SensitivityResult`, direct constructor callers must be updated to supply
+that field explicitly during migration, and any shape-based consumer
+(`dataclasses.asdict`, tuple conversion, snapshot/schema assertions, or
+JSON derived from those representations) must account for the added field.
 Requirements: REQ-AIDS-056
-ADRs: none — a new, isolated module; no shared state or cross-cutting concern introduced.
-Known gap (tracked as GitHub #59): REQ-AIDS-056's statement also describes
-an explicit "target claim" carried by the plan; `SensitivityPlan` does not
-yet expose a `target_claim` field distinct from `parameter_grid`
-naming, so REQ-AIDS-056 is not yet fully satisfied by this design/code.
-This predates CHANGE-014 (GitHub #53 concerned only the stability
-classification, not plan shape) and is out of scope for this change; it
-is tracked as explicit follow-up work in GitHub #59 rather than silently
-resolved or silently accepted as conformant here.
+ADRs: ADR-0057
+This change is intended to close GitHub #59's pre-existing target-claim
+gap, noted during CHANGE-014 review, by making that claim an explicit part
+of the plan/report shape instead of leaving it implicit in caller naming
+conventions.
 Depends-On: none
 
 ## DES-AIDS-045: Independent-dataset overlap comparison / 独立データセット重複比較

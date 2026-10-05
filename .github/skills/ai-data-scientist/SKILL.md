@@ -234,11 +234,12 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
     confirm a detected anomaly isn't an artifact of the primary dataset
     alone (REQ-AIDS-055).
 15. **Test conclusion stability** — before stating a conclusion as robust,
-    define an `ai_data_scientist.sensitivity.SensitivityPlan(parameter_grid=
-    {...}, max_runs=...)` covering the alternative specifications that
-    matter (model choice, subset, parameters), and call
-    `run_sensitivity(plan, analysis_fn, stability_tolerance=...)`. Report
-    `report.stable` and `report.max_relative_deviation` to the user;
+    define an `ai_data_scientist.sensitivity.SensitivityPlan(target_claim=
+    "...", parameter_grid={...}, max_runs=...)` covering the alternative
+    specifications that matter (model choice, subset, parameters), and
+    call `run_sensitivity(plan, analysis_fn, stability_tolerance=...)`.
+    Report the target claim together with `report.stable` and
+    `report.max_relative_deviation` to the user;
     `SensitivityBudgetExceededError` means the grid must be narrowed rather
     than silently truncated (REQ-AIDS-056).
 16. **Compare against an independent dataset** — when the user supplies or
