@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T10:05:38.487Z",
+  "generatedAt": "2026-10-05T20:20:40.571Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -627,6 +627,18 @@
       "line": 1
     },
     {
+      "id": "ADR-0105",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0105.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0106",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0106.md",
+      "line": 1
+    },
+    {
       "id": "DES-ACHEM-001",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
@@ -636,157 +648,183 @@
       "id": "DES-ACHEM-002",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 96
+      "line": 100
     },
     {
       "id": "DES-ACHEM-003",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 122
+      "line": 139
     },
     {
       "id": "DES-ACHEM-010",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 171
+      "line": 189
     },
     {
       "id": "DES-ACHEM-020",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 191
+      "line": 209
     },
     {
       "id": "DES-ACHEM-030",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 223
+      "line": 241
     },
     {
       "id": "DES-ACHEM-040",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 265
+      "line": 283
     },
     {
       "id": "DES-ACHEM-050",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 289
+      "line": 307
     },
     {
       "id": "DES-ACHEM-060",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 321
+      "line": 339
     },
     {
       "id": "DES-ACHEM-070",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 358
+      "line": 376
     },
     {
       "id": "DES-ACHEM-080",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 388
+      "line": 406
     },
     {
       "id": "DES-ACHEM-090",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
-      "line": 406
+      "line": 424
+    },
+    {
+      "id": "DES-ACHEM-100",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 456
+    },
+    {
+      "id": "DES-ACHEM-110",
+      "kind": "design",
+      "path": ".musubix/features/ai-chemistry-scientist/design.md",
+      "line": 497
     },
     {
       "id": "REQ-ACHEM-001",
-      "kind": "requirement",
-      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 33,
-      "mandatory": true
-    },
-    {
-      "id": "REQ-ACHEM-002",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
       "line": 40,
       "mandatory": true
     },
     {
-      "id": "REQ-ACHEM-003",
+      "id": "REQ-ACHEM-002",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
       "line": 47,
       "mandatory": true
     },
     {
+      "id": "REQ-ACHEM-003",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 54,
+      "mandatory": true
+    },
+    {
       "id": "REQ-ACHEM-004",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 55,
+      "line": 62,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-010",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 63,
+      "line": 70,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-020",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 70,
+      "line": 77,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-030",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 78,
+      "line": 85,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-040",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 86,
+      "line": 93,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-050",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 94,
+      "line": 101,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-060",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 102,
+      "line": 109,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-070",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 110,
+      "line": 117,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-080",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 118,
+      "line": 125,
       "mandatory": true
     },
     {
       "id": "REQ-ACHEM-090",
       "kind": "requirement",
       "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
-      "line": 126,
+      "line": 133,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-100",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 141,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ACHEM-110",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-chemistry-scientist/requirements.md",
+      "line": 149,
       "mandatory": true
     },
     {
@@ -2249,25 +2287,25 @@
       "id": "DES-AISCI-016",
       "kind": "design",
       "path": ".musubix/features/ai-scientist/design.md",
-      "line": 325
+      "line": 327
     },
     {
       "id": "DES-AISCI-017",
       "kind": "design",
       "path": ".musubix/features/ai-scientist/design.md",
-      "line": 344
+      "line": 346
     },
     {
       "id": "DES-AISCI-018",
       "kind": "design",
       "path": ".musubix/features/ai-scientist/design.md",
-      "line": 359
+      "line": 361
     },
     {
       "id": "DES-AISCI-019",
       "kind": "design",
       "path": ".musubix/features/ai-scientist/design.md",
-      "line": 377
+      "line": 383
     },
     {
       "id": "REQ-AISCI-001",
@@ -2583,67 +2621,79 @@
       "id": "CODE-ACHEM-916",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 96
+      "line": 103
     },
     {
       "id": "CODE-ACHEM-011",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 208
+      "line": 216
     },
     {
       "id": "CODE-ACHEM-021",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 216
+      "line": 224
     },
     {
       "id": "CODE-ACHEM-031",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 224
+      "line": 232
     },
     {
       "id": "CODE-ACHEM-041",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 232
+      "line": 240
     },
     {
       "id": "CODE-ACHEM-051",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 240
+      "line": 248
     },
     {
       "id": "CODE-ACHEM-061",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 248
+      "line": 256
     },
     {
       "id": "CODE-ACHEM-071",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 256
+      "line": 264
     },
     {
       "id": "CODE-ACHEM-081",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 264
+      "line": 272
     },
     {
       "id": "CODE-ACHEM-091",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 272
+      "line": 280
+    },
+    {
+      "id": "CODE-ACHEM-101",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 288
+    },
+    {
+      "id": "CODE-ACHEM-111",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/dispatch.py",
+      "line": 296
     },
     {
       "id": "CODE-ACHEM-001",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/dispatch.py",
-      "line": 280
+      "line": 304
     },
     {
       "id": "CODE-ACHEM-050",
@@ -2700,6 +2750,18 @@
       "line": 65
     },
     {
+      "id": "CODE-ACHEM-921",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/salt_standardization.py",
+      "line": 28
+    },
+    {
+      "id": "CODE-ACHEM-100",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/salt_standardization.py",
+      "line": 58
+    },
+    {
       "id": "CODE-ACHEM-918",
       "kind": "code",
       "path": "src/ai_chemistry_scientist/structural_alerts.py",
@@ -2710,6 +2772,18 @@
       "kind": "code",
       "path": "src/ai_chemistry_scientist/structural_alerts.py",
       "line": 58
+    },
+    {
+      "id": "CODE-ACHEM-922",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/structure_format_conversion.py",
+      "line": 47
+    },
+    {
+      "id": "CODE-ACHEM-110",
+      "kind": "code",
+      "path": "src/ai_chemistry_scientist/structure_format_conversion.py",
+      "line": 71
     },
     {
       "id": "CODE-ACHEM-002",
@@ -3765,7 +3839,7 @@
       "id": "CODE-AISCI-017",
       "kind": "code",
       "path": "src/ai_scientist/mcp_managed.py",
-      "line": 52
+      "line": 109
     },
     {
       "id": "CODE-AISCI-025",
@@ -3801,19 +3875,19 @@
       "id": "CODE-AISCI-004",
       "kind": "code",
       "path": "src/ai_scientist/phase_state.py",
-      "line": 92
+      "line": 143
     },
     {
       "id": "CODE-AISCI-005",
       "kind": "code",
       "path": "src/ai_scientist/phase_state.py",
-      "line": 115
+      "line": 166
     },
     {
       "id": "CODE-AISCI-007",
       "kind": "code",
       "path": "src/ai_scientist/phase_state.py",
-      "line": 144
+      "line": 197
     },
     {
       "id": "CODE-AISCI-013",
@@ -3831,7 +3905,7 @@
       "id": "CODE-AISCI-024",
       "kind": "code",
       "path": "src/ai_scientist/tdd_gate.py",
-      "line": 16
+      "line": 49
     },
     {
       "id": "CODE-ASTRUCT-050",
@@ -4374,6 +4448,54 @@
       "line": 92
     },
     {
+      "id": "TEST-ACHEM-972",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_salt_standardization.py",
+      "line": 8
+    },
+    {
+      "id": "TEST-ACHEM-973",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_salt_standardization.py",
+      "line": 20
+    },
+    {
+      "id": "TEST-ACHEM-974",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_salt_standardization.py",
+      "line": 32
+    },
+    {
+      "id": "TEST-ACHEM-975",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_salt_standardization.py",
+      "line": 44
+    },
+    {
+      "id": "TEST-ACHEM-976",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_salt_standardization.py",
+      "line": 56
+    },
+    {
+      "id": "TEST-ACHEM-977",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_salt_standardization.py",
+      "line": 69
+    },
+    {
+      "id": "TEST-ACHEM-978",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_salt_standardization.py",
+      "line": 84
+    },
+    {
+      "id": "TEST-ACHEM-979",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_salt_standardization.py",
+      "line": 102
+    },
+    {
       "id": "TEST-ACHEM-959",
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_structural_alerts.py",
@@ -4420,6 +4542,48 @@
       "kind": "test",
       "path": "tests/test_ai_chemistry_scientist_structural_alerts.py",
       "line": 143
+    },
+    {
+      "id": "TEST-ACHEM-980",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structure_format_conversion.py",
+      "line": 23
+    },
+    {
+      "id": "TEST-ACHEM-981",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structure_format_conversion.py",
+      "line": 37
+    },
+    {
+      "id": "TEST-ACHEM-982",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structure_format_conversion.py",
+      "line": 47
+    },
+    {
+      "id": "TEST-ACHEM-983",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structure_format_conversion.py",
+      "line": 57
+    },
+    {
+      "id": "TEST-ACHEM-984",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structure_format_conversion.py",
+      "line": 84
+    },
+    {
+      "id": "TEST-ACHEM-985",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structure_format_conversion.py",
+      "line": 102
+    },
+    {
+      "id": "TEST-ACHEM-986",
+      "kind": "test",
+      "path": "tests/test_ai_chemistry_scientist_structure_format_conversion.py",
+      "line": 116
     },
     {
       "id": "TEST-ACHEM-003",
@@ -5220,52 +5384,76 @@
       "line": 453
     },
     {
+      "id": "TEST-AISCI-042",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 490
+    },
+    {
+      "id": "TEST-AISCI-043",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 524
+    },
+    {
+      "id": "TEST-AISCI-046",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 605
+    },
+    {
       "id": "TEST-AISCI-004",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 38
+      "line": 39
     },
     {
       "id": "TEST-AISCI-005",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 66
+      "line": 67
     },
     {
       "id": "TEST-AISCI-006",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 95
+      "line": 96
     },
     {
       "id": "TEST-AISCI-025",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 118
+      "line": 119
     },
     {
       "id": "TEST-AISCI-026",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 144
+      "line": 145
     },
     {
       "id": "TEST-AISCI-027",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 161
+      "line": 162
     },
     {
       "id": "TEST-AISCI-007",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 172
+      "line": 173
     },
     {
       "id": "TEST-AISCI-020",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 212
+      "line": 213
+    },
+    {
+      "id": "TEST-AISCI-041",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_phase_state.py",
+      "line": 238
     },
     {
       "id": "TEST-AISCI-002",
@@ -5320,6 +5508,24 @@
       "kind": "test",
       "path": "tests/test_ai_scientist_tdd_gate.py",
       "line": 11
+    },
+    {
+      "id": "TEST-AISCI-044",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_tdd_gate.py",
+      "line": 59
+    },
+    {
+      "id": "TEST-AISCI-045",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_tdd_gate.py",
+      "line": 83
+    },
+    {
+      "id": "TEST-AISCI-047",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_tdd_gate.py",
+      "line": 114
     },
     {
       "id": "TEST-ASTRUCT-005",
@@ -7072,6 +7278,56 @@
     },
     {
       "from": "DES-ACHEM-090",
+      "to": "DES-ACHEM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-100",
+      "to": "REQ-ACHEM-100",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0105",
+      "to": "DES-ACHEM-100",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-100",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-100",
+      "to": "DES-ACHEM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-100",
+      "to": "DES-ACHEM-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-110",
+      "to": "REQ-ACHEM-110",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0106",
+      "to": "DES-ACHEM-110",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ACHEM-110",
+      "to": "DES-ACHEM-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-110",
+      "to": "DES-ACHEM-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ACHEM-110",
       "to": "DES-ACHEM-003",
       "relation": "depends-on"
     },
@@ -9496,6 +9752,36 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-ACHEM-101",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-101",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-101",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-111",
+      "to": "REQ-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-111",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-111",
+      "to": "DES-ACHEM-001",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-ACHEM-001",
       "to": "REQ-ACHEM-001",
       "relation": "implements"
@@ -9616,6 +9902,31 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-ACHEM-921",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-921",
+      "to": "REQ-ACHEM-100",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-921",
+      "to": "DES-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-100",
+      "to": "REQ-ACHEM-100",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-100",
+      "to": "DES-ACHEM-100",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-ACHEM-918",
       "to": "REQ-ACHEM-003",
       "relation": "implements"
@@ -9638,6 +9949,31 @@
     {
       "from": "CODE-ACHEM-070",
       "to": "DES-ACHEM-070",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-922",
+      "to": "REQ-ACHEM-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-922",
+      "to": "REQ-ACHEM-110",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-922",
+      "to": "DES-ACHEM-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-110",
+      "to": "REQ-ACHEM-110",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-ACHEM-110",
+      "to": "DES-ACHEM-110",
       "relation": "implements"
     },
     {
@@ -12711,6 +13047,56 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-ACHEM-972",
+      "to": "REQ-ACHEM-100",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-973",
+      "to": "REQ-ACHEM-100",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-974",
+      "to": "REQ-ACHEM-100",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-975",
+      "to": "REQ-ACHEM-100",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-976",
+      "to": "REQ-ACHEM-100",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-977",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-977",
+      "to": "REQ-ACHEM-100",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-978",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-978",
+      "to": "REQ-ACHEM-100",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-979",
+      "to": "REQ-ACHEM-100",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-ACHEM-959",
       "to": "REQ-ACHEM-070",
       "relation": "verifies"
@@ -12753,6 +13139,56 @@
     {
       "from": "TEST-ACHEM-970",
       "to": "REQ-ACHEM-070",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-980",
+      "to": "REQ-ACHEM-110",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-981",
+      "to": "REQ-ACHEM-110",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-982",
+      "to": "REQ-ACHEM-110",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-983",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-983",
+      "to": "REQ-ACHEM-110",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-984",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-984",
+      "to": "REQ-ACHEM-110",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-985",
+      "to": "REQ-ACHEM-110",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-986",
+      "to": "REQ-ACHEM-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ACHEM-986",
+      "to": "REQ-ACHEM-110",
       "relation": "verifies"
     },
     {
@@ -13431,6 +13867,21 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AISCI-042",
+      "to": "REQ-AISCI-017",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-043",
+      "to": "REQ-AISCI-017",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-046",
+      "to": "REQ-AISCI-017",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AISCI-004",
       "to": "REQ-AISCI-004",
       "relation": "verifies"
@@ -13468,6 +13919,11 @@
     {
       "from": "TEST-AISCI-020",
       "to": "REQ-AISCI-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-041",
+      "to": "REQ-AISCI-004",
       "relation": "verifies"
     },
     {
@@ -13512,6 +13968,21 @@
     },
     {
       "from": "TEST-AISCI-035",
+      "to": "REQ-AISCI-024",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-044",
+      "to": "REQ-AISCI-024",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-045",
+      "to": "REQ-AISCI-024",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-047",
       "to": "REQ-AISCI-024",
       "relation": "verifies"
     },
@@ -14903,7 +15374,7 @@
     ".musubix/decisions/ADR-0072.md": "0413511e054c293fc2118e129fcc96feeb6287d83b99a886350836c26cad3808",
     ".musubix/decisions/ADR-0073.md": "02154721bd77eecb1ee132d19899d04649ea429d2ff11e330cbf3b96a9bad6d8",
     ".musubix/decisions/ADR-0074.md": "e6cb45a91f2239c063868901ce17e45a108c3bb4f7966ac5b3f1c9465c5ead8f",
-    ".musubix/decisions/ADR-0075.md": "ad250c4f61b4554af451937acd9393f3ead59f035361a7021163d2bbe5570919",
+    ".musubix/decisions/ADR-0075.md": "a1dc2e8defdb3021272269c472f59a5b7f18351f5d65564b1436e7ccf67296e9",
     ".musubix/decisions/ADR-0076.md": "5dcb8cc6f695e5984d63b8255cd9f0d3df2be54ccc3edbd173fdd54178cc2018",
     ".musubix/decisions/ADR-0077.md": "5998f43ac3a94eb0413ec0fa78af84cc90bf833d6865e0fff441b75088633f0b",
     ".musubix/decisions/ADR-0078.md": "fd713d0f0f18809343b4ae2dba33960818a796d0cb942ed38086992d1a8766b0",
@@ -14912,14 +15383,14 @@
     ".musubix/decisions/ADR-0081.md": "d2bd73611248cc0badcc42dfe9dcb4dec6b389ce4055638d4db490679f186a0c",
     ".musubix/decisions/ADR-0082.md": "254840998b8387b5de55d60c0f994708db3dadf4667043b377266a1ca227d403",
     ".musubix/decisions/ADR-0083.md": "676f4cbb1e250d6f59a571c7ca8a9f2a9073928f9932633f2e21c2036f2c96e6",
-    ".musubix/decisions/ADR-0084.md": "82bc0802fff9f826135064efeb1cdb29a16efc06d5512801beb7a70867735414",
+    ".musubix/decisions/ADR-0084.md": "31eb0ab2e594818199780d64019175d5538007759bac286f4a94e3906d680368",
     ".musubix/decisions/ADR-0085.md": "d0fbe2e7347e5457165352a1d86e0dd8a28ec50774bb3faa4f8ab663b66af1ca",
     ".musubix/decisions/ADR-0086.md": "4187a750db2a23e694a626654cf3929a65b6940f36c91bdc20ac0602b67d67c1",
-    ".musubix/decisions/ADR-0087.md": "193c88d66f28ac54894813b3ee21b996bdea32088f5e902ed5a45161b5ee1e6c",
+    ".musubix/decisions/ADR-0087.md": "725a54f680aa7bbddee5331ab1eb84175da79f72a94c476ce88120ba9a2386bd",
     ".musubix/decisions/ADR-0088.md": "cd3b07352e2714edc5f2af3fca61795c735f5720198610a8c847b53a87ace666",
     ".musubix/decisions/ADR-0089.md": "045112d4b884dec76185657516cb27974cbf8eaa8cda29181315c0c80c23b3a5",
-    ".musubix/decisions/ADR-0090.md": "ff689d9785028044d4cd1c0085b3bfa66a09fc8b1a5c29b239f466f9f63eafd4",
-    ".musubix/decisions/ADR-0091.md": "87109609b5d5ceb9798b0365f058c628350c0d931ad3690bfcc939cd46bcd0c4",
+    ".musubix/decisions/ADR-0090.md": "fb26a3940a60dd6839ff1d90502ec056800685f9d65a39814969b0a14c4b0f99",
+    ".musubix/decisions/ADR-0091.md": "183802b1dcc61ace457f04a9f2a40b085344e641b4e22d21546c1a3c6e709e90",
     ".musubix/decisions/ADR-0092.md": "79961a06f0f1c5d1db50a9e0c2d03ccba149a14690db39ac867fdff36fcfe711",
     ".musubix/decisions/ADR-0093.md": "0c0decd7ff6892c341f871b52a4a743487a8c9f117bc11daeb84ef05b42d276a",
     ".musubix/decisions/ADR-0094.md": "b847c47fefaad30f63b141ee853c16568b64976a727239f3a7ec2a4c8ebae61b",
@@ -14932,9 +15403,11 @@
     ".musubix/decisions/ADR-0101.md": "61bce6ada92714d545524724970c2de8e99b99956e7a921195a73ed4cc0f8f1c",
     ".musubix/decisions/ADR-0102.md": "6ec4e5df98c7bc76613fd46a64e309bbbd791895213a37fd766403a0890e2376",
     ".musubix/decisions/ADR-0103.md": "d6ff0af5d1c8286bd90273a63b6dfffc6c7c18506274f48f9e9ddad76ece7fc8",
-    ".musubix/decisions/ADR-0104.md": "e65f7f0b5b4fa27440c7efb3bb95148fda8b63c8af159376d4282ed89866c644",
-    ".musubix/features/ai-chemistry-scientist/design.md": "b0305099de56dd252c1e319a4a751d8b3eed23282b31f671c350af289f4fd2af",
-    ".musubix/features/ai-chemistry-scientist/requirements.md": "7ffbce1294f08612ff25ae5e2e291a101b19c26dae1a8637ee63926f0f868739",
+    ".musubix/decisions/ADR-0104.md": "10f375a9912d0fb0c44a51689a7d5b40d5c99f83f3edd2dd28772fbda41878bd",
+    ".musubix/decisions/ADR-0105.md": "f79a33e3453704fc03c6971f2ce5ffc1900cd8265224537c0f94c8d9420d09b5",
+    ".musubix/decisions/ADR-0106.md": "a6361d96016fee416a8a3c5d0baa1d3e300f52139b6a265e58f4f2aa38feefc5",
+    ".musubix/features/ai-chemistry-scientist/design.md": "8e481cbe118058045c6a14341e1c2ffebea76cf4041648e997575e611a6e190a",
+    ".musubix/features/ai-chemistry-scientist/requirements.md": "0b484f322aeffc84e7d54466dfb07547bd7e8cbe2f4f0500ef75f5c460e1b4a6",
     ".musubix/features/ai-data-scientist/design.md": "15946159a93d57534de447e8712504db7f4e71132d205b450786671ca2a64fd1",
     ".musubix/features/ai-data-scientist/requirements.md": "3cc394cb861960154c378a9a92a94b4e842410e555319fe1dbffae81a0f3d8ae",
     ".musubix/features/ai-data-scientist-ml/design.md": "19f497b16bb5c33be5dac4eef5310e5a1a3a1fe38d086ec8b017014034c16e15",
@@ -14943,8 +15416,8 @@
     ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
     ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
-    ".musubix/features/ai-scientist/design.md": "e13b0c0d6caba5a39d3d03448f16eaf93389d74215f17966f51ca2942618b2e8",
-    ".musubix/features/ai-scientist/requirements.md": "0813eae3d21203183b9b3804375b2c5b2b9813da2fbaffd264f134d10ca156a7",
+    ".musubix/features/ai-scientist/design.md": "d34a460815532a89120f4d97483cc9b0b43a8ea481ecb5bdceafcf500516375e",
+    ".musubix/features/ai-scientist/requirements.md": "148417851157f00bffb0841a60bb81466f308dcd4ae88968952d95c4ca69cacb",
     ".musubix/features/ai-structural-biology-scientist/design.md": "7b9e7f5b3eff9321cabf4813bdca7a4a11b80c54a93ad3db50c925eca4f81955",
     ".musubix/features/ai-structural-biology-scientist/requirements.md": "ade8184daef2095e8a9da33e99125fe63ed81485af7f09caa5c8f227d670506c",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
@@ -14953,7 +15426,7 @@
     "src/ai_chemistry_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
     "src/ai_chemistry_scientist/bioactivity_classification.py": "a9c53ff1c8d25fd9903ec005073de812b4d6ee1b33517efdb72b4ae2e67d340a",
-    "src/ai_chemistry_scientist/dispatch.py": "6c2e95fd19f62504c34415a33c931882212e4f40cd2db2e4ba579583cbfb6041",
+    "src/ai_chemistry_scientist/dispatch.py": "7587199df0a801d0a76ad6da7b4c466abfe840b9f64cee36964802026c4a8b4e",
     "src/ai_chemistry_scientist/docking_score.py": "bf152d0b84b80c56f50f92ad1ec6ef9820422e1b5008cdc5330fb2904d0f98da",
     "src/ai_chemistry_scientist/drug_likeness_rules.py": "e56fd16f9404e3e320956a6a1d38a333703d32d75196069c793eb80292ec3c64",
     "src/ai_chemistry_scientist/evidence.py": "b378ed30284320de3b69b2eceb251afa14bf2ed9a024020013eb5d4f711e14cd",
@@ -14961,7 +15434,9 @@
     "src/ai_chemistry_scientist/molecular_formula_mass.py": "117377872ff7ddd3de478f26cea45ad566e528cc2657047bad4f0f1d351f0305",
     "src/ai_chemistry_scientist/molecular_similarity.py": "772e82c109a70bbe374149dcde390d0b6d8181fca568aba802523af4ef6c1da6",
     "src/ai_chemistry_scientist/qsar_modeling.py": "cbc6aa5d167670a1e3eb928d2d19a0f8b6118869d318a38e663dcd67bf1fe5d7",
+    "src/ai_chemistry_scientist/salt_standardization.py": "8e1a7249704611c2f5a2ea9844c6804d6c60bda636e53b1dc100f74d4ff68ebb",
     "src/ai_chemistry_scientist/structural_alerts.py": "3caa4e1042163396752e5bc9ab5727465875a5d45697cef41e87c60a7f2f0343",
+    "src/ai_chemistry_scientist/structure_format_conversion.py": "9a15b310ce12458083a81a2070fad20929e246c8bb2d78c532ba80b86aa901dd",
     "src/ai_chemistry_scientist/validation.py": "18215378985ab9110f16f1b1062525b4ba3cf18110e2cb3b17615c68e5669e01",
     "src/ai_data_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
@@ -15035,18 +15510,18 @@
     "src/ai_scientist/mcp_external.py": "03fea05f6719311c9a953ab1aadb13fb22742f43918d6246ffb03a61dcbcf55d",
     "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
     "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
-    "src/ai_scientist/mcp_managed.py": "da4bb4aba41862dab674e6f2fed540a558bff87022feec68adf4c14955f3dda4",
+    "src/ai_scientist/mcp_managed.py": "7192af169723004bcc300cba34d337c3d821551cb0660c3cda45064740a83ffb",
     "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
     "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
     "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
-    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+    "src/ai_scientist/phase_state.py": "2bf96437134559bfba08ba52979f6c80527af2b1ad56df1a06272c11d426a543",
     "src/ai_scientist/presentation.py": "0afe126b78927d0d7f1e15c54a7729dda4a9924c7d2bf80e608f945bc75ffe7f",
     "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
     "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
     "src/ai_scientist/reproducibility.py": "8b60b10265121d83f891b95acaffacc2cf398274fd6c5a95104fb6e924eb6b8d",
     "src/ai_scientist/research_planning.py": "ee967fa8995cb70d1ecc22896eda3d586b2f06a61062fa689b69dbad1c4c3755",
     "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f",
-    "src/ai_scientist/tdd_gate.py": "d278321c459fc32cd235dc77e8a3bdc94049655bf7e4ef1e825f7b5bedc4ebf7",
+    "src/ai_scientist/tdd_gate.py": "06173ef4ffb1a96b8d6664da2d0fbc86ed8402c6d0b97fe2277f6a1e9e9b4ee4",
     "src/ai_structural_biology_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
     "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
@@ -15069,7 +15544,9 @@
     "tests/test_ai_chemistry_scientist_molecular_formula_mass.py": "7c032e740800477c4a86f652a257dde2023b3a365854cdbd5cf45178c9f8ddfa",
     "tests/test_ai_chemistry_scientist_molecular_similarity.py": "43f455627ba3b520d707f9878d40bd3f7aaf95a2616421b017b0f4635f891ee5",
     "tests/test_ai_chemistry_scientist_qsar_modeling.py": "b6e7f62ff7f2a1414299e854481d3188f847d51abf033da4cd47bcbcc662b945",
+    "tests/test_ai_chemistry_scientist_salt_standardization.py": "2d43572348096922d0da71cae39707dbb126ca7fc2cbbaa8a392e92d7cb3e70b",
     "tests/test_ai_chemistry_scientist_structural_alerts.py": "744a1715653d7e7f24ee1eea821a46f58fa208b2aceca138d77105990b32ac50",
+    "tests/test_ai_chemistry_scientist_structure_format_conversion.py": "be62ed9622561097a3f1e9814816dd21d259b56730d693ac9e7213bd65663540",
     "tests/test_ai_chemistry_scientist_validation.py": "9033f020ea4317aff7d2799d2a9af26b9920fcdb146805e5178646bdbaca81ad",
     "tests/test_ai_genomics_scientist_bilingual.py": "392a32f53c3e1d72a650d8ddedc48b499fe979c39fcb4bf09855e9c8ac6a5d23",
     "tests/test_ai_genomics_scientist_dispatch.py": "57f6e42788d7795ca81583677ed61bb43f78ae2c7a7ae9d438624e14a360fed3",
@@ -15093,11 +15570,11 @@
     "tests/test_ai_materials_scientist_validation.py": "e5856eceab201910ac5192aa414b2aa44ab274db360f9e1a6cd19eeb5a1201f0",
     "tests/test_ai_scientist_delegation.py": "b7e919785ed77b2eca3893f0c791ac283b9714c72d7abf76dcc5595268a31dbb",
     "tests/test_ai_scientist_evidence_registry.py": "e56432547cce3850a3837d9a2374f2a57be9f7fc03ec262fcb9f2bae7f319918",
-    "tests/test_ai_scientist_mcp.py": "394b710a759e18c7cbfe37315cda46798148ef2eaed02bc87a69dde7c2dfa756",
-    "tests/test_ai_scientist_phase_state.py": "0d26f43230f37d5968101e38efe2889fd2a8dc8c575dcc3d1e34fdc4e2e3cf12",
+    "tests/test_ai_scientist_mcp.py": "3ffba3528245a4fcde5470b3cb203c8c94873655e280eccb526fa58c0eb2fc06",
+    "tests/test_ai_scientist_phase_state.py": "8753eccaaa13ff761b6fcaf31254d3ac84064e81587ad44accbe465df6f8b3de",
     "tests/test_ai_scientist_project_handle.py": "02392815e0153fd76d547de9429a74c5f10c88089970ec9355d824307ebba3f4",
     "tests/test_ai_scientist_skill_packaging.py": "9acb3d8a5ad408018c8e9253fe9f4b0095ec41e528c451300f5b49e64704a75e",
-    "tests/test_ai_scientist_tdd_gate.py": "82f8294201e8067ea658b20b7ea043e9db7df3bacd89188bfb08751abf4248ab",
+    "tests/test_ai_scientist_tdd_gate.py": "6a902fbf67e554c42338c3b01726fafd990a7af696e870e5dd79d02f6279829e",
     "tests/test_ai_structural_biology_scientist_bilingual.py": "3d04795a577faa9e1afbd8263fea2a88ef1fd3502ea727d9839ec4d1964e3da1",
     "tests/test_ai_structural_biology_scientist_contact_map.py": "3a2983768e2f1f9b4923bbd7ad904b314538bb287347168e079e856e350cccda",
     "tests/test_ai_structural_biology_scientist_dispatch.py": "194ef0e4cb6810692bd933cd0a273e6e57e085e15cb6f70def0f2c20836e00ae",
