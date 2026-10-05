@@ -2,13 +2,20 @@
 
 from __future__ import annotations
 
+import contextlib
 import json
+import sys
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from uuid import uuid4
 
 from ai_scientist.completion_gate import validate_completion_evidence
 from ai_scientist.project_handle import ResearchProjectHandle
+
+if sys.platform == "win32":  # pragma: no cover - exercised only on Windows
+    import msvcrt
+else:
+    import fcntl
 
 PHASE_ORDER = (
     "research-planning",
@@ -46,6 +53,50 @@ class PhaseState:
 
 def _state_path(handle: ResearchProjectHandle) -> Path:
     return handle.root / DEFAULT_STATE_PATH
+
+
+def _lock_path(handle: ResearchProjectHandle) -> Path:
+    return _state_path(handle).with_suffix(".lock")
+
+
+# Test seam: called once per mutating read-modify-write cycle, after the
+# state has been read under the exclusive lock and before it is written
+# back. A no-op in production; tests may monkeypatch it to deterministically
+# exercise concurrent-writer scenarios (DES-AISCI-003 cross-process safety).
+def _after_locked_read_hook() -> None:
+    return None
+
+
+@contextlib.contextmanager
+def _locked(handle: ResearchProjectHandle):
+    """Serialize read-modify-write access to this project's phase state file.
+
+    An OS-level advisory exclusive lock on a sibling ``.lock`` file makes the
+    read-decide-write cycle in :func:`mark_phase_complete` and
+    :func:`record_override` safe across separate CLI invocations (DES-AISCI-003:
+    "Must be read-modify-write safe across separate CLI invocations"),
+    preventing one invocation's transition from silently clobbering another's.
+
+    Closes jupytermind#64 / CHANGE-019 (ADR-0075): see TEST-AISCI-041.
+    The lock is scoped per phase-state file, so unrelated projects never
+    contend with each other.
+    """
+    lock_path = _lock_path(handle)
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(lock_path, "a+b") as lock_file:
+        if sys.platform == "win32":  # pragma: no cover - exercised only on Windows
+            msvcrt.locking(lock_file.fileno(), msvcrt.LK_LOCK, 1)
+            try:
+                yield
+            finally:
+                lock_file.seek(0)
+                msvcrt.locking(lock_file.fileno(), msvcrt.LK_UNLCK, 1)
+        else:
+            fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
+            try:
+                yield
+            finally:
+                fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
 
 
 def _initial_state() -> PhaseState:
@@ -119,25 +170,27 @@ def mark_phase_complete(handle: ResearchProjectHandle, phase: str) -> PhaseState
     """Mark ``phase`` complete when it is the active phase and matching evidence exists."""
     if phase not in PHASE_ORDER:
         raise ValueError(f"Unknown phase: {phase!r}.")
-    state = load_phase_state(handle)
-    if phase != state.active_phase:
-        raise ValueError(
-            f"Cannot complete {phase}: it is not the active phase ({state.active_phase})."
+    with _locked(handle):
+        state = load_phase_state(handle)
+        _after_locked_read_hook()
+        if phase != state.active_phase:
+            raise ValueError(
+                f"Cannot complete {phase}: it is not the active phase ({state.active_phase})."
+            )
+        if not validate_completion_evidence(handle, phase):
+            raise ValueError(f"Cannot complete {phase} without matching evidence.")
+        completed = list(state.completed_phases)
+        if phase not in completed:
+            completed.append(phase)
+        next_active = _next_phase(phase)
+        incomplete = [item for item in PHASE_ORDER if item not in completed and item != next_active]
+        updated = PhaseState(
+            active_phase=next_active,
+            completed_phases=completed,
+            incomplete_phases=incomplete,
+            overrides=state.overrides,
         )
-    if not validate_completion_evidence(handle, phase):
-        raise ValueError(f"Cannot complete {phase} without matching evidence.")
-    completed = list(state.completed_phases)
-    if phase not in completed:
-        completed.append(phase)
-    next_active = _next_phase(phase)
-    incomplete = [item for item in PHASE_ORDER if item not in completed and item != next_active]
-    updated = PhaseState(
-        active_phase=next_active,
-        completed_phases=completed,
-        incomplete_phases=incomplete,
-        overrides=state.overrides,
-    )
-    _write_state(handle, updated)
+        _write_state(handle, updated)
     return updated
 
 
@@ -152,21 +205,23 @@ def record_override(
     timestamp: str,
 ) -> OverrideRecord:
     """Persist one override audit entry without mutating active phase."""
-    state = load_phase_state(handle)
-    record = OverrideRecord(
-        request_id=str(uuid4()),
-        timestamp=timestamp,
-        requested_phase=requested_phase,
-        reason=reason,
-        incomplete_predecessors=incomplete_predecessors,
-    )
-    updated = PhaseState(
-        active_phase=state.active_phase,
-        completed_phases=state.completed_phases,
-        incomplete_phases=state.incomplete_phases,
-        overrides=[*state.overrides, record],
-    )
-    _write_state(handle, updated)
+    with _locked(handle):
+        state = load_phase_state(handle)
+        _after_locked_read_hook()
+        record = OverrideRecord(
+            request_id=str(uuid4()),
+            timestamp=timestamp,
+            requested_phase=requested_phase,
+            reason=reason,
+            incomplete_predecessors=incomplete_predecessors,
+        )
+        updated = PhaseState(
+            active_phase=state.active_phase,
+            completed_phases=state.completed_phases,
+            incomplete_phases=state.incomplete_phases,
+            overrides=[*state.overrides, record],
+        )
+        _write_state(handle, updated)
     return record
 
 

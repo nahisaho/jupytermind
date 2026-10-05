@@ -11753,6 +11753,481 @@
           "order": 1251
         }
       }
+    },
+    {
+      "changeId": "CHANGE-019",
+      "requirementIds": [
+        "REQ-AISCI-004",
+        "REQ-AISCI-017",
+        "REQ-AISCI-024"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-05T11:35:32.302Z",
+          "fingerprints": {
+            "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+            "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+            "design": "4931424188357241848c99490c47ea53d7b40da80255f11a5a12a12d0f46f597",
+            "implementation": "975112a3e4606e0cdb46ebc621f67292d57c58767d0861adb79d7da93445e2db",
+            "tests": "222a89b56aa4691e2921b1b51cfb2594b0fcb40756bda56d70b1ba6aacdfc630",
+            "tdd": "ea424248f4f5dbcb19a33e1a089160e7b37f68bfbb11f963da531240c7cc4c2c",
+            "requirementImplementations": {
+              "REQ-AISCI-004": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/phase_state.py": "7b88f04b4d710dccbe6d2179f706a04646db792b3bb8cbc10f23ff9cb1113d1b",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-017": {
+                "paths": [
+                  "src/ai_scientist/mcp_config.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_managed.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_managed.py": "4ec2d9c44d385d63d58f6ea03c1f8b9ed23bfe1d43c71ed5bc750f88575bfeae"
+                }
+              },
+              "REQ-AISCI-024": {
+                "paths": [
+                  "src/ai_scientist/tdd_gate.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/tdd_gate.py": "ca36fb782b26df6e1fe5e09ea24729c009173de3a13cc210dd203f16b17e976a"
+                }
+              }
+            }
+          },
+          "order": 1266
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-05T11:35:39.219Z",
+          "fingerprints": {
+            "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+            "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+            "design": "4931424188357241848c99490c47ea53d7b40da80255f11a5a12a12d0f46f597",
+            "implementation": "975112a3e4606e0cdb46ebc621f67292d57c58767d0861adb79d7da93445e2db",
+            "tests": "222a89b56aa4691e2921b1b51cfb2594b0fcb40756bda56d70b1ba6aacdfc630",
+            "tdd": "ea424248f4f5dbcb19a33e1a089160e7b37f68bfbb11f963da531240c7cc4c2c",
+            "requirementImplementations": {
+              "REQ-AISCI-004": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/phase_state.py": "7b88f04b4d710dccbe6d2179f706a04646db792b3bb8cbc10f23ff9cb1113d1b",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-017": {
+                "paths": [
+                  "src/ai_scientist/mcp_config.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_managed.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_managed.py": "4ec2d9c44d385d63d58f6ea03c1f8b9ed23bfe1d43c71ed5bc750f88575bfeae"
+                }
+              },
+              "REQ-AISCI-024": {
+                "paths": [
+                  "src/ai_scientist/tdd_gate.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/tdd_gate.py": "ca36fb782b26df6e1fe5e09ea24729c009173de3a13cc210dd203f16b17e976a"
+                }
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 1267
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-05T11:36:05.894Z",
+          "fingerprints": {
+            "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+            "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+            "design": "dc10cce972ec001f579cc75fdfd1d0e24fe7a6330ca19369d23955d64a91b911",
+            "implementation": "975112a3e4606e0cdb46ebc621f67292d57c58767d0861adb79d7da93445e2db",
+            "tests": "222a89b56aa4691e2921b1b51cfb2594b0fcb40756bda56d70b1ba6aacdfc630",
+            "tdd": "ea424248f4f5dbcb19a33e1a089160e7b37f68bfbb11f963da531240c7cc4c2c",
+            "requirementImplementations": {
+              "REQ-AISCI-004": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/phase_state.py": "7b88f04b4d710dccbe6d2179f706a04646db792b3bb8cbc10f23ff9cb1113d1b",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-017": {
+                "paths": [
+                  "src/ai_scientist/mcp_config.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_managed.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_managed.py": "4ec2d9c44d385d63d58f6ea03c1f8b9ed23bfe1d43c71ed5bc750f88575bfeae"
+                }
+              },
+              "REQ-AISCI-024": {
+                "paths": [
+                  "src/ai_scientist/tdd_gate.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/tdd_gate.py": "ca36fb782b26df6e1fe5e09ea24729c009173de3a13cc210dd203f16b17e976a"
+                }
+              }
+            }
+          },
+          "order": 1268
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-05T11:42:42.634Z",
+          "fingerprints": {
+            "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+            "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+            "design": "dc10cce972ec001f579cc75fdfd1d0e24fe7a6330ca19369d23955d64a91b911",
+            "implementation": "9f11daebcf252d73f8cd905811a5b3c06f3f439b462cd74d4f8474975b70a680",
+            "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+            "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+            "requirementImplementations": {
+              "REQ-AISCI-004": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py",
+                  "src/ai_scientist/completion_gate.py",
+                  "src/ai_scientist/evidence_registry.py",
+                  "src/ai_scientist/phase_state.py",
+                  "src/ai_scientist/project_handle.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                  "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                  "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                  "src/ai_scientist/phase_state.py": "2bf96437134559bfba08ba52979f6c80527af2b1ad56df1a06272c11d426a543",
+                  "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                }
+              },
+              "REQ-AISCI-017": {
+                "paths": [
+                  "src/ai_scientist/mcp_config.py",
+                  "src/ai_scientist/mcp_failures.py",
+                  "src/ai_scientist/mcp_managed.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                  "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                  "src/ai_scientist/mcp_managed.py": "7192af169723004bcc300cba34d337c3d821551cb0660c3cda45064740a83ffb"
+                }
+              },
+              "REQ-AISCI-024": {
+                "paths": [
+                  "src/ai_scientist/tdd_gate.py"
+                ],
+                "fingerprints": {
+                  "src/ai_scientist/tdd_gate.py": "06173ef4ffb1a96b8d6664da2d0fbc86ed8402c6d0b97fe2277f6a1e9e9b4ee4"
+                }
+              }
+            }
+          },
+          "order": 1290
+        }
+      },
+      "tddBatches": [
+        {
+          "requirementIds": [
+            "REQ-AISCI-004"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-05T11:39:49.510Z",
+            "fingerprints": {
+              "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+              "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+              "design": "dc10cce972ec001f579cc75fdfd1d0e24fe7a6330ca19369d23955d64a91b911",
+              "implementation": "975112a3e4606e0cdb46ebc621f67292d57c58767d0861adb79d7da93445e2db",
+              "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+              "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+              "requirementImplementations": {
+                "REQ-AISCI-004": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/phase_state.py": "7b88f04b4d710dccbe6d2179f706a04646db792b3bb8cbc10f23ff9cb1113d1b",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                  }
+                }
+              }
+            },
+            "order": 1281
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-05T11:40:23.160Z",
+            "fingerprints": {
+              "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+              "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+              "design": "dc10cce972ec001f579cc75fdfd1d0e24fe7a6330ca19369d23955d64a91b911",
+              "implementation": "d99f6194c95db6b0039075bc50bf359a83c62c6ad2c0486e334f476917e1465c",
+              "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+              "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+              "requirementImplementations": {
+                "REQ-AISCI-004": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/phase_state.py": "2bf96437134559bfba08ba52979f6c80527af2b1ad56df1a06272c11d426a543",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                  }
+                }
+              }
+            },
+            "order": 1282
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-05T11:40:28.696Z",
+            "fingerprints": {
+              "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+              "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+              "design": "dc10cce972ec001f579cc75fdfd1d0e24fe7a6330ca19369d23955d64a91b911",
+              "implementation": "d99f6194c95db6b0039075bc50bf359a83c62c6ad2c0486e334f476917e1465c",
+              "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+              "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+              "requirementImplementations": {
+                "REQ-AISCI-004": {
+                  "paths": [
+                    "src/ai_data_scientist/project_manager.py",
+                    "src/ai_scientist/completion_gate.py",
+                    "src/ai_scientist/evidence_registry.py",
+                    "src/ai_scientist/phase_state.py",
+                    "src/ai_scientist/project_handle.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
+                    "src/ai_scientist/completion_gate.py": "8c34ef7b5e264029a7b8ad17f9dd301fb9e6f3783bdfda6de4dcc41e9afe91b8",
+                    "src/ai_scientist/evidence_registry.py": "892fb387b522faa71c91585a8ee52c9d999135e16404c960def130d878d688b0",
+                    "src/ai_scientist/phase_state.py": "2bf96437134559bfba08ba52979f6c80527af2b1ad56df1a06272c11d426a543",
+                    "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb"
+                  }
+                }
+              }
+            },
+            "order": 1283
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AISCI-017"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-05T11:40:33.972Z",
+            "fingerprints": {
+              "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+              "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+              "design": "dc10cce972ec001f579cc75fdfd1d0e24fe7a6330ca19369d23955d64a91b911",
+              "implementation": "d99f6194c95db6b0039075bc50bf359a83c62c6ad2c0486e334f476917e1465c",
+              "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+              "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+              "requirementImplementations": {
+                "REQ-AISCI-017": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_managed.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_managed.py": "4ec2d9c44d385d63d58f6ea03c1f8b9ed23bfe1d43c71ed5bc750f88575bfeae"
+                  }
+                }
+              }
+            },
+            "order": 1284
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-05T11:40:55.629Z",
+            "fingerprints": {
+              "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+              "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+              "design": "dc10cce972ec001f579cc75fdfd1d0e24fe7a6330ca19369d23955d64a91b911",
+              "implementation": "b7efb9cb27fa22f94ab457bcfbc7e57e599d35a4fdfeb4dfa7d07053fb2f4071",
+              "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+              "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+              "requirementImplementations": {
+                "REQ-AISCI-017": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_managed.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_managed.py": "7192af169723004bcc300cba34d337c3d821551cb0660c3cda45064740a83ffb"
+                  }
+                }
+              }
+            },
+            "order": 1285
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-05T11:41:01.477Z",
+            "fingerprints": {
+              "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+              "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+              "design": "dc10cce972ec001f579cc75fdfd1d0e24fe7a6330ca19369d23955d64a91b911",
+              "implementation": "b7efb9cb27fa22f94ab457bcfbc7e57e599d35a4fdfeb4dfa7d07053fb2f4071",
+              "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+              "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+              "requirementImplementations": {
+                "REQ-AISCI-017": {
+                  "paths": [
+                    "src/ai_scientist/mcp_config.py",
+                    "src/ai_scientist/mcp_failures.py",
+                    "src/ai_scientist/mcp_managed.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/mcp_config.py": "d37e8ba82a7124f289471259f6b19039b0b9e471410fb7053d004c6354305c5a",
+                    "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
+                    "src/ai_scientist/mcp_managed.py": "7192af169723004bcc300cba34d337c3d821551cb0660c3cda45064740a83ffb"
+                  }
+                }
+              }
+            },
+            "order": 1286
+          }
+        },
+        {
+          "requirementIds": [
+            "REQ-AISCI-024"
+          ],
+          "red": {
+            "phase": "red",
+            "recordedAt": "2026-10-05T11:41:06.800Z",
+            "fingerprints": {
+              "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+              "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+              "design": "dc10cce972ec001f579cc75fdfd1d0e24fe7a6330ca19369d23955d64a91b911",
+              "implementation": "b7efb9cb27fa22f94ab457bcfbc7e57e599d35a4fdfeb4dfa7d07053fb2f4071",
+              "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+              "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+              "requirementImplementations": {
+                "REQ-AISCI-024": {
+                  "paths": [
+                    "src/ai_scientist/tdd_gate.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/tdd_gate.py": "ca36fb782b26df6e1fe5e09ea24729c009173de3a13cc210dd203f16b17e976a"
+                  }
+                }
+              }
+            },
+            "order": 1287
+          },
+          "implementation": {
+            "phase": "implementation",
+            "recordedAt": "2026-10-05T11:41:28.740Z",
+            "fingerprints": {
+              "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+              "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+              "design": "dc10cce972ec001f579cc75fdfd1d0e24fe7a6330ca19369d23955d64a91b911",
+              "implementation": "9f11daebcf252d73f8cd905811a5b3c06f3f439b462cd74d4f8474975b70a680",
+              "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+              "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+              "requirementImplementations": {
+                "REQ-AISCI-024": {
+                  "paths": [
+                    "src/ai_scientist/tdd_gate.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/tdd_gate.py": "06173ef4ffb1a96b8d6664da2d0fbc86ed8402c6d0b97fe2277f6a1e9e9b4ee4"
+                  }
+                }
+              }
+            },
+            "order": 1288
+          },
+          "green": {
+            "phase": "green",
+            "recordedAt": "2026-10-05T11:41:34.683Z",
+            "fingerprints": {
+              "impact": "687adcd54d119936421d2ace1ef4ca92a67e0592daf23ad9f6e2ddeb8e6083e4",
+              "requirements": "c61db08bf2605884ebb6a7cba20e6fe5c00f0ef5f49c6383bc2d6817f7bd5900",
+              "design": "dc10cce972ec001f579cc75fdfd1d0e24fe7a6330ca19369d23955d64a91b911",
+              "implementation": "9f11daebcf252d73f8cd905811a5b3c06f3f439b462cd74d4f8474975b70a680",
+              "tests": "aa2ac5e2e8ebc63981342b756260677da243f7651cc57f9b072fff313adaa86d",
+              "tdd": "2a749930e8be8362be74b62593526c21bbad8d673c5764056d9b6f6d5346a11f",
+              "requirementImplementations": {
+                "REQ-AISCI-024": {
+                  "paths": [
+                    "src/ai_scientist/tdd_gate.py"
+                  ],
+                  "fingerprints": {
+                    "src/ai_scientist/tdd_gate.py": "06173ef4ffb1a96b8d6664da2d0fbc86ed8402c6d0b97fe2277f6a1e9e9b4ee4"
+                  }
+                }
+              }
+            },
+            "order": 1289
+          }
+        }
+      ]
     }
   ]
 }

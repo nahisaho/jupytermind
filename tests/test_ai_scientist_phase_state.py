@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib
+import threading
 from datetime import datetime, timezone
 
 import pytest
@@ -232,3 +233,80 @@ def test_TEST_AISCI_020_requires_phase_attributed_evidence_before_completion(tmp
 
     state = mark_phase_complete(handle, "research-planning")
     assert state.active_phase == "literature-review"
+
+
+# @id TEST-AISCI-041
+# @verifies REQ-AISCI-004
+def test_TEST_AISCI_041_concurrent_completion_and_override_do_not_clobber_each_other(
+    tmp_path, monkeypatch
+):
+    """DES-AISCI-003: the read-modify-write cycle must be safe across separate
+    invocations. A phase completion and an override request racing on the same
+    project's state file must both be preserved, not last-writer-wins.
+
+    Regression test for jupytermind#64; closed by CHANGE-019 (ADR-0075)."""
+    handle = _resolve_handle(tmp_path, monkeypatch, "study-concurrency")
+
+    from ai_scientist.evidence_registry import record_evidence
+    from ai_scientist import phase_state
+
+    first = _phase_artifact_path(handle, "research-planning")
+    first.parent.mkdir(parents=True, exist_ok=True)
+    first.write_text("plan", encoding="utf-8")
+    record_evidence(handle, "research-planning", first, "plan", _timestamp())
+    phase_state.mark_phase_complete(handle, "research-planning")
+
+    second = _phase_artifact_path(handle, "literature-review")
+    second.parent.mkdir(parents=True, exist_ok=True)
+    second.write_text("lit", encoding="utf-8")
+    record_evidence(handle, "literature-review", second, "note", _timestamp())
+
+    # Force both concurrent callers' reads to interleave: each rendezvous at
+    # this barrier right after reading state but before writing it back. If
+    # the read-modify-write cycle is properly serialized, only one caller can
+    # ever be between its read and write at a time, so the other never
+    # reaches the barrier in time and the wait simply times out alone for
+    # each of them in turn. If the cycle is NOT serialized, both callers
+    # reach the barrier together (a true rendezvous), proving they read the
+    # same stale state concurrently -- which reproduces last-writer-wins.
+    barrier = threading.Barrier(2)
+    rendezvoused = threading.Event()
+
+    def hook():
+        try:
+            barrier.wait(timeout=0.3)
+            rendezvoused.set()
+        except threading.BrokenBarrierError:
+            pass
+
+    monkeypatch.setattr(phase_state, "_after_locked_read_hook", hook)
+
+    def complete_phase():
+        phase_state.mark_phase_complete(handle, "literature-review")
+
+    def record_an_override():
+        phase_state.record_override(
+            handle,
+            "manuscript-writing",
+            "Need an early draft before reproducibility-check.",
+            ["experimental-design"],
+            _timestamp(),
+        )
+
+    t_complete = threading.Thread(target=complete_phase)
+    t_override = threading.Thread(target=record_an_override)
+    t_complete.start()
+    t_override.start()
+    t_complete.join()
+    t_override.join()
+
+    assert rendezvoused.is_set() is False, (
+        "both callers read state concurrently without serialization -- the "
+        "read-modify-write cycle is not safe across concurrent invocations"
+    )
+
+    final = phase_state.load_phase_state(handle)
+    assert final.active_phase == "experimental-design"
+    assert final.completed_phases == ["research-planning", "literature-review"]
+    assert len(final.overrides) == 1
+    assert final.overrides[0].requested_phase == "manuscript-writing"

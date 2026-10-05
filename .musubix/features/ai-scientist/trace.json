@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T10:32:25.466Z",
+  "generatedAt": "2026-10-05T12:20:38.550Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -3765,7 +3765,7 @@
       "id": "CODE-AISCI-017",
       "kind": "code",
       "path": "src/ai_scientist/mcp_managed.py",
-      "line": 52
+      "line": 109
     },
     {
       "id": "CODE-AISCI-025",
@@ -3801,19 +3801,19 @@
       "id": "CODE-AISCI-004",
       "kind": "code",
       "path": "src/ai_scientist/phase_state.py",
-      "line": 92
+      "line": 143
     },
     {
       "id": "CODE-AISCI-005",
       "kind": "code",
       "path": "src/ai_scientist/phase_state.py",
-      "line": 115
+      "line": 166
     },
     {
       "id": "CODE-AISCI-007",
       "kind": "code",
       "path": "src/ai_scientist/phase_state.py",
-      "line": 144
+      "line": 197
     },
     {
       "id": "CODE-AISCI-013",
@@ -3831,7 +3831,7 @@
       "id": "CODE-AISCI-024",
       "kind": "code",
       "path": "src/ai_scientist/tdd_gate.py",
-      "line": 16
+      "line": 49
     },
     {
       "id": "CODE-ASTRUCT-050",
@@ -5220,52 +5220,76 @@
       "line": 453
     },
     {
+      "id": "TEST-AISCI-042",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 490
+    },
+    {
+      "id": "TEST-AISCI-043",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 524
+    },
+    {
+      "id": "TEST-AISCI-046",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_mcp.py",
+      "line": 605
+    },
+    {
       "id": "TEST-AISCI-004",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 38
+      "line": 39
     },
     {
       "id": "TEST-AISCI-005",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 66
+      "line": 67
     },
     {
       "id": "TEST-AISCI-006",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 95
+      "line": 96
     },
     {
       "id": "TEST-AISCI-025",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 118
+      "line": 119
     },
     {
       "id": "TEST-AISCI-026",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 144
+      "line": 145
     },
     {
       "id": "TEST-AISCI-027",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 161
+      "line": 162
     },
     {
       "id": "TEST-AISCI-007",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 172
+      "line": 173
     },
     {
       "id": "TEST-AISCI-020",
       "kind": "test",
       "path": "tests/test_ai_scientist_phase_state.py",
-      "line": 212
+      "line": 213
+    },
+    {
+      "id": "TEST-AISCI-041",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_phase_state.py",
+      "line": 238
     },
     {
       "id": "TEST-AISCI-002",
@@ -5320,6 +5344,24 @@
       "kind": "test",
       "path": "tests/test_ai_scientist_tdd_gate.py",
       "line": 11
+    },
+    {
+      "id": "TEST-AISCI-044",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_tdd_gate.py",
+      "line": 59
+    },
+    {
+      "id": "TEST-AISCI-045",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_tdd_gate.py",
+      "line": 83
+    },
+    {
+      "id": "TEST-AISCI-047",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_tdd_gate.py",
+      "line": 114
     },
     {
       "id": "TEST-ASTRUCT-005",
@@ -13431,6 +13473,21 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AISCI-042",
+      "to": "REQ-AISCI-017",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-043",
+      "to": "REQ-AISCI-017",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-046",
+      "to": "REQ-AISCI-017",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AISCI-004",
       "to": "REQ-AISCI-004",
       "relation": "verifies"
@@ -13468,6 +13525,11 @@
     {
       "from": "TEST-AISCI-020",
       "to": "REQ-AISCI-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-041",
+      "to": "REQ-AISCI-004",
       "relation": "verifies"
     },
     {
@@ -13512,6 +13574,21 @@
     },
     {
       "from": "TEST-AISCI-035",
+      "to": "REQ-AISCI-024",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-044",
+      "to": "REQ-AISCI-024",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-045",
+      "to": "REQ-AISCI-024",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AISCI-047",
       "to": "REQ-AISCI-024",
       "relation": "verifies"
     },
@@ -14903,7 +14980,7 @@
     ".musubix/decisions/ADR-0072.md": "0413511e054c293fc2118e129fcc96feeb6287d83b99a886350836c26cad3808",
     ".musubix/decisions/ADR-0073.md": "02154721bd77eecb1ee132d19899d04649ea429d2ff11e330cbf3b96a9bad6d8",
     ".musubix/decisions/ADR-0074.md": "e6cb45a91f2239c063868901ce17e45a108c3bb4f7966ac5b3f1c9465c5ead8f",
-    ".musubix/decisions/ADR-0075.md": "ad250c4f61b4554af451937acd9393f3ead59f035361a7021163d2bbe5570919",
+    ".musubix/decisions/ADR-0075.md": "a1dc2e8defdb3021272269c472f59a5b7f18351f5d65564b1436e7ccf67296e9",
     ".musubix/decisions/ADR-0076.md": "5dcb8cc6f695e5984d63b8255cd9f0d3df2be54ccc3edbd173fdd54178cc2018",
     ".musubix/decisions/ADR-0077.md": "5998f43ac3a94eb0413ec0fa78af84cc90bf833d6865e0fff441b75088633f0b",
     ".musubix/decisions/ADR-0078.md": "fd713d0f0f18809343b4ae2dba33960818a796d0cb942ed38086992d1a8766b0",
@@ -14912,14 +14989,14 @@
     ".musubix/decisions/ADR-0081.md": "d2bd73611248cc0badcc42dfe9dcb4dec6b389ce4055638d4db490679f186a0c",
     ".musubix/decisions/ADR-0082.md": "254840998b8387b5de55d60c0f994708db3dadf4667043b377266a1ca227d403",
     ".musubix/decisions/ADR-0083.md": "676f4cbb1e250d6f59a571c7ca8a9f2a9073928f9932633f2e21c2036f2c96e6",
-    ".musubix/decisions/ADR-0084.md": "82bc0802fff9f826135064efeb1cdb29a16efc06d5512801beb7a70867735414",
+    ".musubix/decisions/ADR-0084.md": "31eb0ab2e594818199780d64019175d5538007759bac286f4a94e3906d680368",
     ".musubix/decisions/ADR-0085.md": "d0fbe2e7347e5457165352a1d86e0dd8a28ec50774bb3faa4f8ab663b66af1ca",
     ".musubix/decisions/ADR-0086.md": "4187a750db2a23e694a626654cf3929a65b6940f36c91bdc20ac0602b67d67c1",
     ".musubix/decisions/ADR-0087.md": "725a54f680aa7bbddee5331ab1eb84175da79f72a94c476ce88120ba9a2386bd",
     ".musubix/decisions/ADR-0088.md": "cd3b07352e2714edc5f2af3fca61795c735f5720198610a8c847b53a87ace666",
     ".musubix/decisions/ADR-0089.md": "045112d4b884dec76185657516cb27974cbf8eaa8cda29181315c0c80c23b3a5",
     ".musubix/decisions/ADR-0090.md": "fb26a3940a60dd6839ff1d90502ec056800685f9d65a39814969b0a14c4b0f99",
-    ".musubix/decisions/ADR-0091.md": "87109609b5d5ceb9798b0365f058c628350c0d931ad3690bfcc939cd46bcd0c4",
+    ".musubix/decisions/ADR-0091.md": "183802b1dcc61ace457f04a9f2a40b085344e641b4e22d21546c1a3c6e709e90",
     ".musubix/decisions/ADR-0092.md": "79961a06f0f1c5d1db50a9e0c2d03ccba149a14690db39ac867fdff36fcfe711",
     ".musubix/decisions/ADR-0093.md": "0c0decd7ff6892c341f871b52a4a743487a8c9f117bc11daeb84ef05b42d276a",
     ".musubix/decisions/ADR-0094.md": "b847c47fefaad30f63b141ee853c16568b64976a727239f3a7ec2a4c8ebae61b",
@@ -15035,18 +15112,18 @@
     "src/ai_scientist/mcp_external.py": "03fea05f6719311c9a953ab1aadb13fb22742f43918d6246ffb03a61dcbcf55d",
     "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
     "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
-    "src/ai_scientist/mcp_managed.py": "da4bb4aba41862dab674e6f2fed540a558bff87022feec68adf4c14955f3dda4",
+    "src/ai_scientist/mcp_managed.py": "7192af169723004bcc300cba34d337c3d821551cb0660c3cda45064740a83ffb",
     "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
     "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
     "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
-    "src/ai_scientist/phase_state.py": "48ad7689d7d31bc8d503d845870092a2f49049606c6dac309c44306fa2223496",
+    "src/ai_scientist/phase_state.py": "2bf96437134559bfba08ba52979f6c80527af2b1ad56df1a06272c11d426a543",
     "src/ai_scientist/presentation.py": "0afe126b78927d0d7f1e15c54a7729dda4a9924c7d2bf80e608f945bc75ffe7f",
     "src/ai_scientist/project_config.py": "a0bd7193091677bf94c18345e8ed409bd6762b9a841eb11c4a016d5b7559972f",
     "src/ai_scientist/project_handle.py": "baf0aa679e0237dda0c80e07d7c249dc613897915cc232c532bc03988b41ebdb",
     "src/ai_scientist/reproducibility.py": "8b60b10265121d83f891b95acaffacc2cf398274fd6c5a95104fb6e924eb6b8d",
     "src/ai_scientist/research_planning.py": "ee967fa8995cb70d1ecc22896eda3d586b2f06a61062fa689b69dbad1c4c3755",
     "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f",
-    "src/ai_scientist/tdd_gate.py": "d278321c459fc32cd235dc77e8a3bdc94049655bf7e4ef1e825f7b5bedc4ebf7",
+    "src/ai_scientist/tdd_gate.py": "06173ef4ffb1a96b8d6664da2d0fbc86ed8402c6d0b97fe2277f6a1e9e9b4ee4",
     "src/ai_structural_biology_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
     "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
@@ -15093,11 +15170,11 @@
     "tests/test_ai_materials_scientist_validation.py": "e5856eceab201910ac5192aa414b2aa44ab274db360f9e1a6cd19eeb5a1201f0",
     "tests/test_ai_scientist_delegation.py": "b7e919785ed77b2eca3893f0c791ac283b9714c72d7abf76dcc5595268a31dbb",
     "tests/test_ai_scientist_evidence_registry.py": "e56432547cce3850a3837d9a2374f2a57be9f7fc03ec262fcb9f2bae7f319918",
-    "tests/test_ai_scientist_mcp.py": "394b710a759e18c7cbfe37315cda46798148ef2eaed02bc87a69dde7c2dfa756",
-    "tests/test_ai_scientist_phase_state.py": "0d26f43230f37d5968101e38efe2889fd2a8dc8c575dcc3d1e34fdc4e2e3cf12",
+    "tests/test_ai_scientist_mcp.py": "3ffba3528245a4fcde5470b3cb203c8c94873655e280eccb526fa58c0eb2fc06",
+    "tests/test_ai_scientist_phase_state.py": "8753eccaaa13ff761b6fcaf31254d3ac84064e81587ad44accbe465df6f8b3de",
     "tests/test_ai_scientist_project_handle.py": "02392815e0153fd76d547de9429a74c5f10c88089970ec9355d824307ebba3f4",
     "tests/test_ai_scientist_skill_packaging.py": "9acb3d8a5ad408018c8e9253fe9f4b0095ec41e528c451300f5b49e64704a75e",
-    "tests/test_ai_scientist_tdd_gate.py": "82f8294201e8067ea658b20b7ea043e9db7df3bacd89188bfb08751abf4248ab",
+    "tests/test_ai_scientist_tdd_gate.py": "6a902fbf67e554c42338c3b01726fafd990a7af696e870e5dd79d02f6279829e",
     "tests/test_ai_structural_biology_scientist_bilingual.py": "3d04795a577faa9e1afbd8263fea2a88ef1fd3502ea727d9839ec4d1964e3da1",
     "tests/test_ai_structural_biology_scientist_contact_map.py": "3a2983768e2f1f9b4923bbd7ad904b314538bb287347168e079e856e350cccda",
     "tests/test_ai_structural_biology_scientist_dispatch.py": "194ef0e4cb6810692bd933cd0a273e6e57e085e15cb6f70def0f2c20836e00ae",
