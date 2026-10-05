@@ -72,7 +72,7 @@ not the remote transfer/fetch itself). A local ("csv"/"excel") source must
 never be truncated by the row limit (GitHub #57): it is a remote-source
 safety control (REQ-AIDS-032), not a general ingestion cap.
 Requirements: REQ-AIDS-014, REQ-AIDS-032
-ADRs: none — ingestion safety limits follow directly from REQ-AIDS-032 with no competing architectural option considered.
+ADRs: ADR-0104
 Depends-On: DES-AIDS-004
 
 ## DES-AIDS-006: Data cleaning module / データクリーニングモジュール
