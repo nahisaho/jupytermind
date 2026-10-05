@@ -207,6 +207,42 @@ re-recorded against fresh artifact hashes
 `6a15972ec8035b84d031a66477cee7d0f8b4386d647c86a33d00d857111e4d82`
 respectively) per the user's explicit approval of this specific fix.
 
+## #62 Remediation (2026-10-05)
+
+This change's 29 waivable diagnostics (recorded above under Implementation
+Notes) survived two unrelated repo-wide evidence rebuilds (triggered while
+remediating `CHANGE-013`/`CHANGE-018`/`CHANGE-008`/`CHANGE-006`), which
+shifted the global snapshot hash and made 12 of those waiver records
+stale (`CHANGE_WAIVER_STALE`): `CHANGE_RED_UNPROVEN`,
+`CHANGE_GREEN_UNPROVEN`, and `CHANGE_COMPLETENESS_TDD` for
+REQ-ACHEM-003/010/020/050. (The pre-existing `CHANGE_TEST_CHANGED_AFTER_RED`
+waiver was unaffected — still valid, non-stale.)
+
+8 of these 12 were successfully re-recorded with fresh snapshot hashes
+and the same originally-approved reason text (plus a note documenting the
+2026-10-05 re-recording): `CHANGE_RED_UNPROVEN` and `CHANGE_COMPLETENESS_TDD`
+for REQ-ACHEM-003/010/020/050 (8 waivers, approver: nahisaho).
+
+The remaining 4 — the old `CHANGE_GREEN_UNPROVEN` waiver records for
+REQ-ACHEM-003/010/020/050 — could not be re-recorded: investigation
+confirmed the underlying `CHANGE_GREEN_UNPROVEN` diagnostic itself no
+longer fires for these 4 requirements (already resolved), so musubix3's
+`change waiver record` CLI correctly refuses to record a fresh waiver for
+a diagnostic that is not currently reported ("No matching
+CHANGE_GREEN_UNPROVEN diagnostic is currently reported for
+CHANGE-005:REQ-ACHEM-00X."). However, the old now-stale waiver record for
+that exact scope remains in the append-only ledger and musubix3's
+`reportWaiverEvidenceDiagnostics` unconditionally re-reports
+`CHANGE_WAIVER_STALE` for it regardless of whether its root diagnostic is
+still live — there is no CLI-supported path (no retract/supersede
+command) to clear it. This is a genuine musubix3 tooling gap, reported
+upstream as **nahisaho/musubix3#55**. After this remediation, CHANGE-005's
+only remaining error-severity findings are these 4 stale waiver records,
+emitted twice as 8 `CHANGE_WAIVER_STALE` diagnostics (two per scope, down
+from the original 24 unique / 48 duplicated diagnostics); all other
+previously-stale/missing-waiver issues are resolved. Full test suite
+re-verified: 580/580 passed, 0 regressions.
+
 ## Status
 
 - [x] Requirements drafted
@@ -237,3 +273,12 @@ respectively) per the user's explicit approval of this specific fix.
   approved the CHANGE-005-scoped manifest
   (`artifactSha256: b2f1f1db9ad33def2d0d880d00b0f164b0b5aebe9f2845943e319ce8c4a235e1`)
   on this basis, but the CLI could not record it due to this repo-wide gate.
+
+## Debt Remediation Approval
+
+- Approver: nahisaho
+- Date: 2026-10-05
+- artifactSha256 (approval prepare release): 16d478cf904492c30dc193c2b3d2e2640d82202cd9154615e085058ab91e5b83
+- Files reviewed: `.musubix/changes/CHANGE-005.md`, `.musubix/evidence/change-waivers.json`, `.musubix/evidence/{formal,model-correspondence,order,performance,quality}.json`, `.musubix/evidence/native/test/aggregate.json`, `.musubix/features/{ai-chemistry-scientist,ai-data-scientist-ml,ai-data-scientist,ai-genomics-scientist,ai-materials-scientist,ai-scientist,ai-structural-biology-scientist,example}/trace.json`
+- Verification: 580/580 tests pass; `trace build` 0 diagnostics; `graph gate` PASS; 0 CHANGE-005-owned error-severity diagnostics except the 4 (×2=8) `CHANGE_WAIVER_STALE` entries for `CHANGE_GREEN_UNPROVEN:REQ-ACHEM-003/010/020/050`, which are a confirmed musubix3 tooling limitation (reported upstream as nahisaho/musubix3#55) and are accepted as residual risk — the underlying diagnostics they correspond to no longer fire.
+- Residual risk: accepted per above; tracked under GitHub issue #62 and musubix3#55.
