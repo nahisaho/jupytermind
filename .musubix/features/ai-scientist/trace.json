@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-06T06:01:08.532Z",
+  "generatedAt": "2026-10-06T08:45:06.082Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -663,6 +663,12 @@
       "line": 1
     },
     {
+      "id": "ADR-0111",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0111.md",
+      "line": 1
+    },
+    {
       "id": "DES-ACHEM-001",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
@@ -1156,6 +1162,12 @@
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
       "line": 1312
+    },
+    {
+      "id": "DES-AIDS-093",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist/design.md",
+      "line": 1320
     },
     {
       "id": "REQ-AIDS-001",
@@ -8485,6 +8497,21 @@
     {
       "from": "DES-AIDS-076",
       "to": "DES-AIDS-059",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-093",
+      "to": "REQ-AIDS-093",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0111",
+      "to": "DES-AIDS-093",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIDS-093",
+      "to": "DES-AIDS-032",
       "relation": "depends-on"
     },
     {
@@ -16166,10 +16193,11 @@
     ".musubix/decisions/ADR-0108.md": "a9c0eb2b75c0fbd26938a17b92fb2cc2287674456d1e61484d183be15713e424",
     ".musubix/decisions/ADR-0109.md": "cad99655b1bdbdfd763a08f6e6adabf980bbf1d45a122a20a766e72e7f550b8b",
     ".musubix/decisions/ADR-0110.md": "9f5d3e60fc9f1eafabb79e441dea28a01aa3cf7f01abe1d9005c70b4dff9e545",
+    ".musubix/decisions/ADR-0111.md": "404ccc6267e4e632d32c3646b67b70d33e82f7e590f1f26b6635516032b1d42f",
     ".musubix/features/ai-chemistry-scientist/design.md": "8e481cbe118058045c6a14341e1c2ffebea76cf4041648e997575e611a6e190a",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "0b484f322aeffc84e7d54466dfb07547bd7e8cbe2f4f0500ef75f5c460e1b4a6",
-    ".musubix/features/ai-data-scientist/design.md": "15946159a93d57534de447e8712504db7f4e71132d205b450786671ca2a64fd1",
-    ".musubix/features/ai-data-scientist/requirements.md": "8e9b430edfc3457021f6a5cc5c180c2c5b809487fe1d4a5f72f3bd8ec826fb0f",
+    ".musubix/features/ai-data-scientist/design.md": "8d12df702c06edfafde1868a1fc734c042c09a75384b32d1b02147ce7ea859c9",
+    ".musubix/features/ai-data-scientist/requirements.md": "c79ae86df3f92c8dd1c305902209156a6f12c001ce24c035a7f67aac72531fc8",
     ".musubix/features/ai-data-scientist-ml/design.md": "19f497b16bb5c33be5dac4eef5310e5a1a3a1fe38d086ec8b017014034c16e15",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
     ".musubix/features/ai-genomics-scientist/design.md": "b93e683c2e64daafe6495e5b257b4879866fc85b550cc491b012d1bbe9781a1a",
