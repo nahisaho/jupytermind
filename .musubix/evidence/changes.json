@@ -12789,6 +12789,51 @@
             }
           },
           "order": 1347
+        },
+        "red": {
+          "phase": "red",
+          "recordedAt": "2026-10-06T09:10:15.050Z",
+          "fingerprints": {
+            "impact": "ac1a67b87d7bef100ca7fb48a46226e484cf20ab29713a58c93ccfab2757b3f9",
+            "requirements": "e72840c5cefa2ba3f5ca2480ebef3c92d442c3716ab1aca99c433c99e6b11716",
+            "design": "d370cdee51bb59ee9295316aed60eb98b45533cf64c8dc08f4985b2126324611",
+            "implementation": "44b121d86ea3b838c1f0c36a3d77e73f5c28ecb5813b3a6928c090c636b41d48",
+            "tests": "bad9f1af0476f85ecb19355e2b82eb287d4efa6ee0a5a10cf89a96395a143ce2",
+            "tdd": "1ce5c14c8d3e4d959cc12df980c2cdd28828d493244783910a6b4c33ff5728c8",
+            "requirementImplementations": {
+              "REQ-AIDS-094": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py",
+                  "src/ai_data_scientist/signal_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6",
+                  "src/ai_data_scientist/signal_analysis.py": "1352d9bf9f17415ce18d82e864dcc6435236cb0e40f5e46e0743abdee169b6c4"
+                }
+              },
+              "REQ-AIDS-095": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py",
+                  "src/ai_data_scientist/signal_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6",
+                  "src/ai_data_scientist/signal_analysis.py": "1352d9bf9f17415ce18d82e864dcc6435236cb0e40f5e46e0743abdee169b6c4"
+                }
+              },
+              "REQ-AIDS-096": {
+                "paths": [
+                  "src/ai_data_scientist/sensitivity.py",
+                  "src/ai_data_scientist/signal_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6",
+                  "src/ai_data_scientist/signal_analysis.py": "1352d9bf9f17415ce18d82e864dcc6435236cb0e40f5e46e0743abdee169b6c4"
+                }
+              }
+            }
+          },
+          "order": 1348
         }
       }
     }
