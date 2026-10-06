@@ -378,6 +378,7 @@ layout under `src/ai_genomics_scientist/`:
 | DES-AGENOM-050 | REQ-AGENOM-050 | ADR-0040 |
 | DES-AGENOM-060 | REQ-AGENOM-060 | ADR-0107 |
 | DES-AGENOM-070 | REQ-AGENOM-070 | ADR-0108 |
+| DES-AGENOM-080 | REQ-AGENOM-080 | ADR-0113 |
 
 ## Skill documentation deliverables / スキル文書成果物
 
@@ -405,15 +406,32 @@ entries `.github/skills/ai-genomics-scientist` and
 `.github/skills/ai-genomics-scientist/SKILL.md`,
 `.github/skills/ai-genomics-scientist/manifest.json`, and every current
 repository file matching `src/ai_genomics_scientist/**/*.py`.
-Interfaces: loadPackageManifest(path="package.json") -> PackageManifest;
-listPackedFiles() -> set[str] from `npm pack --dry-run --json`;
-assertAiGenomicsScientistPackagingParity(packageManifest, packedFiles)
--> None.
+Interfaces: The test reuses `src/ai_scientist/npm_packaging.py`'s
+existing generic helpers — `load_package_files(package_json_path: str |
+Path = "package.json") -> list[str]`, `load_npm_pack_dry_run_paths(
+project_root: str | Path = ".") -> set[str]` (wraps `npm pack --dry-run
+--json`), and `iter_skill_python_globs(package_files: Sequence[str]) ->
+dict[str, str]` (maps each shipped `.github/skills/<slug>` entry to its
+expected `src/<package>/**/*.py` glob) — rather than defining new
+duplicate helper functions. The test-local assertion function composes
+these in three steps: (1) `load_package_files()` contains both the
+exact skill entry `.github/skills/ai-genomics-scientist` and the exact
+glob entry `src/ai_genomics_scientist/**/*.py`; (2)
+`iter_skill_python_globs(load_package_files())["\
+.github/skills/ai-genomics-scientist"] ==
+"src/ai_genomics_scientist/**/*.py"`; and (3) every current repository
+file matching `src/ai_genomics_scientist/**/*.py` (resolved via Python
+glob expansion, not the literal glob string) is a member of
+`load_npm_pack_dry_run_paths()`, together with
+`.github/skills/ai-genomics-scientist/SKILL.md` and
+`.github/skills/ai-genomics-scientist/manifest.json`.
 Constraints: The authoritative packaged-artifact proof is the dry-run
 pack listing, not only static inspection of `package.json`. This guard
 covers npm distribution completeness only; Python package discovery
 continues to rely on existing `src/` layout conventions, unchanged by
-this design.
+this design. New tests must import and reuse
+`src/ai_scientist/npm_packaging.py`'s helpers rather than redefining
+equivalent logic.
 Requirements: REQ-AGENOM-080
 ADRs: ADR-0113
 Depends-On: DES-AISCI-020

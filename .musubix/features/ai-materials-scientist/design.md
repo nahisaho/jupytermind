@@ -232,6 +232,7 @@ Depends-On: DES-AIMS-001, DES-AIMS-002, DES-AIMS-003
 | DES-AIMS-050 | REQ-AIMS-050 | ADR-0022 |
 | DES-AIMS-060 | REQ-AIMS-060 | ADR-0023 |
 | DES-AIMS-070 | REQ-AIMS-070 | ADR-0024 |
+| DES-AIMS-080 | REQ-AIMS-080 | ADR-0113 |
 
 Every DES-AIMS-010 through DES-AIMS-070 module depends on DES-AIMS-001
 (dispatch), DES-AIMS-002 (validation), and DES-AIMS-003 (evidence schema
@@ -249,15 +250,32 @@ entries `.github/skills/ai-materials-scientist` and
 `.github/skills/ai-materials-scientist/SKILL.md`,
 `.github/skills/ai-materials-scientist/manifest.json`, and every
 current repository file matching `src/ai_materials_scientist/**/*.py`.
-Interfaces: loadPackageManifest(path="package.json") -> PackageManifest;
-listPackedFiles() -> set[str] from `npm pack --dry-run --json`;
-assertAiMaterialsScientistPackagingParity(packageManifest, packedFiles)
--> None.
+Interfaces: The test reuses `src/ai_scientist/npm_packaging.py`'s
+existing generic helpers — `load_package_files(package_json_path: str |
+Path = "package.json") -> list[str]`, `load_npm_pack_dry_run_paths(
+project_root: str | Path = ".") -> set[str]` (wraps `npm pack --dry-run
+--json`), and `iter_skill_python_globs(package_files: Sequence[str]) ->
+dict[str, str]` (maps each shipped `.github/skills/<slug>` entry to its
+expected `src/<package>/**/*.py` glob) — rather than defining new
+duplicate helper functions. The test-local assertion function composes
+these in three steps: (1) `load_package_files()` contains both the
+exact skill entry `.github/skills/ai-materials-scientist` and the exact
+glob entry `src/ai_materials_scientist/**/*.py`; (2)
+`iter_skill_python_globs(load_package_files())["\
+.github/skills/ai-materials-scientist"] ==
+"src/ai_materials_scientist/**/*.py"`; and (3) every current repository
+file matching `src/ai_materials_scientist/**/*.py` (resolved via Python
+glob expansion, not the literal glob string) is a member of
+`load_npm_pack_dry_run_paths()`, together with
+`.github/skills/ai-materials-scientist/SKILL.md` and
+`.github/skills/ai-materials-scientist/manifest.json`.
 Constraints: The authoritative packaged-artifact proof is the dry-run
 pack listing, not only static inspection of `package.json`. This guard
 covers npm distribution completeness only; Python package discovery
 continues to rely on existing `src/` layout conventions, unchanged by
-this design.
+this design. New tests must import and reuse
+`src/ai_scientist/npm_packaging.py`'s helpers rather than redefining
+equivalent logic.
 Requirements: REQ-AIMS-080
 ADRs: ADR-0113
 Depends-On: DES-AISCI-020
