@@ -53,6 +53,7 @@ dependencies = [
 dev = [
     { name = "pytest" },
     { name = "pytest-json-report" },
+    { name = "pyyaml" },
     { name = "ruff" },
 ]
 
@@ -74,6 +75,7 @@ requires-dist = [
     { name = "plotly", specifier = ">=5.20" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
     { name = "pytest-json-report", marker = "extra == 'dev'", specifier = ">=1.5" },
+    { name = "pyyaml", marker = "extra == 'dev'", specifier = ">=6.0" },
     { name = "rdkit", specifier = ">=2024.3" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.6" },
     { name = "scikit-learn", specifier = ">=1.5" },
