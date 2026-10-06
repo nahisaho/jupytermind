@@ -102,14 +102,64 @@ cross-feature test instead of 3 feature-scoped ones).
 
 - [x] Requirements updated (`REQ-AGENOM-080`, `REQ-AIMS-080`,
       `REQ-ASTRUCT-060`)
-- [ ] Requirements validated, reviewed, and approved
-- [ ] Design updated (`DES-AGENOM-080`, `DES-AIMS-080`,
+- [x] Requirements validated, reviewed, and approved
+- [x] Design updated (`DES-AGENOM-080`, `DES-AIMS-080`,
       `DES-ASTRUCT-060`, `ADR-0113`), validated, reviewed, and approved
-- [ ] `package.json` renamed and missing `files` entries added
-- [ ] README.md / README-ja.md install instructions updated
-- [ ] Regression tests written and Red recorded
-- [ ] Green recorded
-- [ ] Quality evidence recorded
+      (human design-approval recorded via `approval record design
+      --confirm`; `ADR-0113`'s own front-matter `status: proposed` is
+      left as-is, matching this repository's existing precedent for
+      ADR-0110/ADR-0111/ADR-0112, which also remain `proposed` after
+      their changes merged — pre-existing repo-wide convention, not
+      introduced by this change)
+- [x] `package.json` renamed and missing `files` entries added
+- [x] README.md / README-ja.md install instructions updated
+- [x] Regression tests written and Red recorded
+- [x] Green recorded
+- [x] Quality evidence recorded
 - [ ] Release approval obtained
 - [ ] Full-suite validation, merge, push, new release publish, and
       verification (`npm view jupytermind version`) completed
+
+## Status
+
+- Full test suite: 638 passed (635 pre-existing + 3 new packaging tests).
+- `trace check --strict`: fails only on the pre-existing `REQ-AIDS-093`
+  coverage gap, confirmed present on `main` as well (same root cause,
+  cosmetic ratio shift from the 3 new requirements changing the
+  denominator); not introduced by this change.
+- `gate --changed --json` diffed against `main`'s baseline: 105 total
+  errors on this branch vs 107 on `main` (a narrower aggregate count,
+  not proof of no added risk by itself). Category-by-category, the
+  exact set-diff breakdown: 2 errors appear only on the branch (the
+  cosmetic `TRACE_COVERAGE` ratio shift, see above); 4 errors appear
+  only on `main` (2 incidental `.ruff_cache` `INPUT_MODIFIED` notices
+  from gate-execution timing, plus the same `TRACE_COVERAGE` check at
+  `main`'s slightly different pre-existing ratio — not a distinct
+  issue). The 9 `CHANGE_RED_UNPROVEN` / `CHANGE_GREEN_UNPROVEN` /
+  `CHANGE_COMPLETENESS_TDD` diagnostics described below do **not**
+  appear in this branch error count at all, because they were
+  explicitly downgraded to warnings via recorded waivers (not because
+  they were silently absent/unevaluated).
+- **TDD evidence ordering waivers**: the genuine TDD Red/Green cycles for
+  `REQ-AGENOM-080`/`REQ-AIMS-080`/`REQ-ASTRUCT-060` were recorded via real
+  break/pytest/restore cycles, but were sequenced before
+  `change-record implementation` rather than strictly after it, so
+  musubix3's `hasValidTddCycle` order-window check (`green.order >
+  implementation.order`) cannot recognize them. This produced
+  `CHANGE_RED_UNPROVEN` / `CHANGE_GREEN_UNPROVEN` /
+  `CHANGE_COMPLETENESS_TDD` for all 3 requirements. Resolved with 9
+  explicit, approver-attributed waivers (`change waiver record`,
+  one per requirement per code) documenting that the underlying evidence
+  is genuine and re-verified (all 3 new tests pass against the current
+  committed `package.json`); this is the same category of musubix3
+  phase-ordering quirk as CHANGE-029's precedent, not a new defect or
+  missing test.
+- `WORKFLOW_INVOCATION_UNVERIFIED`/related `workflow` check failures are
+  expected and non-blocking mid-session, per the documented musubix3
+  GitHub #63 limitation (same precedent as CHANGE-013/018/022-029).
+- Remaining `gate` failures (`trace`, `workflow`, `tdd`,
+  `change-history`, `change-completeness`, `model-correspondence`,
+  `approval`, `constitution:RULE-001`) are the same pre-existing
+  repository-wide debt pattern disclosed consistently in every prior
+  change (CHANGE-013/018/022-029); `approval` fails only because release
+  approval has not yet been recorded.
