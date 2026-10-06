@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
-  "runId": "d069b8e3-4cdc-4f89-87e4-6e193b55dedf",
-  "generatedAt": "2026-10-06T11:52:37.743Z",
+  "runId": "7cc7a6d0-5dc2-48d2-be69-b93cfacad352",
+  "generatedAt": "2026-10-06T13:39:20.888Z",
   "executions": [
     {
-      "runId": "d069b8e3-4cdc-4f89-87e4-6e193b55dedf",
-      "executionId": "e30ee91a997290d3f58268e5ca66a1c286443b071c23acfb91538d62a4e51c1e",
+      "runId": "7cc7a6d0-5dc2-48d2-be69-b93cfacad352",
+      "executionId": "364a7df0f974918a1ab5737bba54560eb338f8bf59bf8fa5ca90151f282570e1",
       "commandName": "test",
       "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
       "reportPath": ".musubix/evidence/native/test/aggregate.json",
       "sourceKind": "file",
-      "reportSha256": "5e5afc651ab9d05d1df91dccc9e6235c2477aeea7797763d22257ec53f8cff49",
+      "reportSha256": "99b30ec06f4f94a6b038867ebe785325d0920f8376c046547c3b3e00ec83371a",
       "processStatus": "completed",
       "exitCode": 0,
       "tests": [
@@ -1471,6 +1471,46 @@
           "status": "passed"
         },
         {
+          "id": "TEST-AIDS-307",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-308",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-309",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-310",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-311",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-312",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-313",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-314",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-315",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AIDS-316",
+          "status": "passed"
+        },
+        {
           "id": "TEST-AIDS-PYTEST-001",
           "status": "passed"
         },
@@ -2163,11 +2203,11 @@
           "status": "passed"
         }
       ],
-      "recordSha256": "b639c6a6e66d5ddd4147b085b949cc35244574889493ce2442011d704dcef2f4"
+      "recordSha256": "c96dabaede3559cbd436ddab9ce6a3d91ff54a13d9f5e9fe61909677a21b9446"
     },
     {
-      "runId": "d069b8e3-4cdc-4f89-87e4-6e193b55dedf",
-      "executionId": "43f9af9f18ab57f98fc29f5f08948d22ee323b408566ffa0cf7d27f953ad1f59",
+      "runId": "7cc7a6d0-5dc2-48d2-be69-b93cfacad352",
+      "executionId": "0f972781f6ba93a9742e510936e2a4fa2c4ad04e37c64ec25d74581a74405092",
       "commandName": "performance",
       "commandSha256": "4661a33354ac5aecc444fb4fb7c096c3f2add7009bbc4032ff36f9d526e30ca4",
       "reportPath": ".musubix/evidence/native/performance/TEST-AIDS-PYTEST-001.json",
@@ -2184,7 +2224,7 @@
           }
         }
       ],
-      "recordSha256": "52e0b68dde7b6bc5732ef03fa95e55f2e4b0a644a4b7254eb7a4722478039893"
+      "recordSha256": "31f3825c3280172fd07a4d8267d0a7b2eb51d384be4d0d7d34c24393456967bd"
     }
   ],
   "observations": [
@@ -2196,8 +2236,8 @@
       "maximum": 100,
       "status": "pass",
       "provenance": {
-        "runId": "d069b8e3-4cdc-4f89-87e4-6e193b55dedf",
-        "executionId": "43f9af9f18ab57f98fc29f5f08948d22ee323b408566ffa0cf7d27f953ad1f59",
+        "runId": "7cc7a6d0-5dc2-48d2-be69-b93cfacad352",
+        "executionId": "0f972781f6ba93a9742e510936e2a4fa2c4ad04e37c64ec25d74581a74405092",
         "commandName": "performance",
         "commandSha256": "4661a33354ac5aecc444fb4fb7c096c3f2add7009bbc4032ff36f9d526e30ca4",
         "reportPath": ".musubix/evidence/native/performance/TEST-AIDS-PYTEST-001.json",
@@ -2209,8 +2249,8 @@
         "value": 100,
         "processStatus": "completed",
         "exitCode": 0,
-        "executionRecordSha256": "52e0b68dde7b6bc5732ef03fa95e55f2e4b0a644a4b7254eb7a4722478039893",
-        "recordSha256": "6c7387af27bd7fe327e6d7074b0e2e6f340d73d2fc2a5f954a70759f7a55f867"
+        "executionRecordSha256": "31f3825c3280172fd07a4d8267d0a7b2eb51d384be4d0d7d34c24393456967bd",
+        "recordSha256": "3c330a879ec5c6398e918d16efb4f7f0ce971d8dbb59cc683d95284eb9ab4fa0"
       }
     }
   ]
