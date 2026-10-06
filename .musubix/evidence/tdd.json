@@ -18806,6 +18806,80 @@
         "diagnostics": [],
         "order": 1424
       }
+    },
+    {
+      "cycleId": "18339a62-8a79-4095-8c0a-efd4426c965b",
+      "requirementId": "REQ-AIDS-098",
+      "testId": "TEST-AIDS-317",
+      "testPath": "tests/test_convergence_guard.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": false,
+        "scoped": true,
+        "resultObserved": false,
+        "reportSha256": "4fb99d7dac8ec9dc54052f7f2233a147bdfad7ee95bcbb4aef354e29aeb2e2ba",
+        "commandSha256": "2e02297a10273eb4ff5cfdf67dade37d9b0e597da508aca327375bc0cfe1d591",
+        "outputSha256": "7c7b09a8f479cb60da2742796e73ebfed1878273ddd66204307bf9e46123cee4",
+        "exitCode": 2,
+        "durationMs": 339,
+        "testFingerprint": "c9574c8c3e7cc73473c630124e8b1557bf888020842a76cda8c297565b065a9a",
+        "sourceFingerprint": "445beda4bf32e41f4d5e9f761a4f7f12ea3fcbf34bb45e803c2b17565eba3009",
+        "executionId": "7de149e6-c237-4903-8eeb-581de1b2edf6",
+        "recordedAt": "2026-10-06T22:51:38.824Z",
+        "diagnostics": [
+          {
+            "code": "TDD_REPORT_INVALID",
+            "severity": "error",
+            "message": "No annotated TEST-* identities were found in the pytest report. Pytest node IDs must include the normalized TEST ID (for example test_TEST_APP_001), or configure a project-local musubix-json runner.",
+            "path": ".musubix/evidence/native/test/TEST-AIDS-317.json"
+          }
+        ],
+        "order": 1428
+      }
+    },
+    {
+      "cycleId": "67c3b942-7480-4642-ae53-ded2ad5d0402",
+      "requirementId": "REQ-AIDS-098",
+      "testId": "TEST-AIDS-317",
+      "testPath": "tests/test_convergence_guard.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "c2c4d75cb0ae1009c7d724732332846181008669c3aa875180d2427d952856bc",
+        "commandSha256": "2e02297a10273eb4ff5cfdf67dade37d9b0e597da508aca327375bc0cfe1d591",
+        "outputSha256": "42fdd5d76b4832e3f476fff8c17a3b0d6da2871126ef43146cebff642ba94f56",
+        "exitCode": 1,
+        "durationMs": 337,
+        "testFingerprint": "c9574c8c3e7cc73473c630124e8b1557bf888020842a76cda8c297565b065a9a",
+        "sourceFingerprint": "761e6331ab2ba5426dfcb9145d1dba7934e4e64485014ede32613916149a6b96",
+        "executionId": "7747a720-b957-45f0-b5a4-6a4e1dc425d5",
+        "recordedAt": "2026-10-06T22:54:03.855Z",
+        "diagnostics": [],
+        "order": 1429
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "edd113bc3e8e7b64996239e4823f54d41653617fd762d220025100650212a38f",
+        "commandSha256": "2e02297a10273eb4ff5cfdf67dade37d9b0e597da508aca327375bc0cfe1d591",
+        "outputSha256": "a5bc5ce8f48a7703d70e15acad2299d41e30fc2b4515d7c6e8de8f953cd62cdd",
+        "exitCode": 0,
+        "durationMs": 296,
+        "testFingerprint": "c9574c8c3e7cc73473c630124e8b1557bf888020842a76cda8c297565b065a9a",
+        "sourceFingerprint": "75a4bdecd55fed59212142f6edaf007cfbb01b2793bf028622c5e604a0ea6cd1",
+        "executionId": "03aa6a46-238b-4f37-951a-15405d456279",
+        "recordedAt": "2026-10-06T22:54:13.658Z",
+        "diagnostics": [],
+        "order": 1430
+      }
     }
   ],
   "chain": [
@@ -29104,6 +29178,42 @@
       "phaseEvidenceSha256": "273a4c9d484da365a59ea30f20cba5e438fc6a288d21f0d72bbce46bf88c05ff",
       "previousSha256": "33f99bc3037cf1525b91a7dd6a192a2906247e4540568957eaa90d647fc382c2",
       "recordSha256": "df6fc7fd5537812f462f64e44748942b0eba1c72c074b237510454d86439179f"
+    },
+    {
+      "sequence": 859,
+      "cycleId": "18339a62-8a79-4095-8c0a-efd4426c965b",
+      "requirementId": "REQ-AIDS-098",
+      "testId": "TEST-AIDS-317",
+      "testPath": "tests/test_convergence_guard.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "1a919c30fff2276d4966b70f269a894eb57f1bd08b49f48d1126b1277df95995",
+      "previousSha256": "df6fc7fd5537812f462f64e44748942b0eba1c72c074b237510454d86439179f",
+      "recordSha256": "9f3e5b52ca46b32c31342e2657a1787e0efda2b5b8bf65b85c4df3254f522838"
+    },
+    {
+      "sequence": 860,
+      "cycleId": "67c3b942-7480-4642-ae53-ded2ad5d0402",
+      "requirementId": "REQ-AIDS-098",
+      "testId": "TEST-AIDS-317",
+      "testPath": "tests/test_convergence_guard.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "128a97d359e62f7516f160d7905c67c3ff57b404b0b7d910ad61c95d7ec3ca19",
+      "previousSha256": "9f3e5b52ca46b32c31342e2657a1787e0efda2b5b8bf65b85c4df3254f522838",
+      "recordSha256": "5a27e3a8acceecc9bc28909f67e26091aef6ccfde13adc5b04cb4fab349bf424"
+    },
+    {
+      "sequence": 861,
+      "cycleId": "67c3b942-7480-4642-ae53-ded2ad5d0402",
+      "requirementId": "REQ-AIDS-098",
+      "testId": "TEST-AIDS-317",
+      "testPath": "tests/test_convergence_guard.py",
+      "commandName": "test",
+      "phase": "green",
+      "phaseEvidenceSha256": "a4dabd4484ae0e7418d0eb5e77889d961324ac14b1ee37c68ab1484e6c21103f",
+      "previousSha256": "5a27e3a8acceecc9bc28909f67e26091aef6ccfde13adc5b04cb4fab349bf424",
+      "recordSha256": "7a0ee11abe084551c2cec76736bac552b2efc4bd87a44245794cdbc709e5dd6f"
     }
   ]
 }
