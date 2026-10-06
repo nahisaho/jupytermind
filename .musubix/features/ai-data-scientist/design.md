@@ -1402,3 +1402,137 @@ and does not require inspecting the outer candidate.
 Requirements: REQ-AIDS-093
 ADRs: ADR-0111
 Depends-On: DES-AIDS-032
+
+## DES-AIDS-094: signal_analysis module — baseline correction, spectral peak detection, sensitivity-plan helper / 信号解析モジュール — ベースライン補正・スペクトルピーク検出・感度プラン補助
+Responsibilities: A new `signal_analysis` module providing three
+functions that operate on a generic 2-column `x, y` spectrum (no
+dataframe required), satisfying REQ-AIDS-094, REQ-AIDS-095, and
+REQ-AIDS-096 (GitHub #74):
+
+1. `baseline_correct(x, y, method="linear"|"asls")` first coerces both
+   inputs to `x_arr = numpy.array(x, dtype=float, copy=True)` and
+   `y_arr = numpy.array(y, dtype=float, copy=True)` **copies** (so the caller's
+   original `x`/`y` objects, whether `list`, `tuple`, or `numpy.ndarray`,
+   are never mutated); raises `ValueError` if `x_arr`/`y_arr` are not
+   both 1-D, do not have equal length, contain any non-finite
+   (`NaN`/`inf`) value, or have fewer than 2 elements (fewer than 3 for
+   `method="asls"`, since the second-order difference operator below is
+   undefined for `n < 3`); and raises `ValueError` if `x_arr[0] ==
+   x_arr[-1]` (an undefined line slope) when `method="linear"`. It then
+   computes an estimated baseline array of the same length and returns
+   `y_arr - baseline` (a new array; `x_arr`/`y_arr` are discarded, not
+   returned). For `method="linear"`, the baseline is the straight line
+   through `(x_arr[0], y_arr[0])` and `(x_arr[-1], y_arr[-1])`:
+   `baseline = y_arr[0] + (y_arr[-1] - y_arr[0]) * (x_arr - x_arr[0]) /
+   (x_arr[-1] - x_arr[0])`. For `method="asls"`, the baseline is
+   computed by Asymmetric Least Squares smoothing (Eilers & Boelens,
+   2005) with fixed internal parameters `lam=1e5`, `p=0.001`,
+   `n_iter=10`, using exactly this procedure for `n = len(y_arr)`:
+   - Build the `(n - 2) x n` second-order difference operator `D` as
+     `scipy.sparse.diags([1, -2, 1], offsets=[0, 1, 2], shape=(n - 2,
+     n))` and precompute `H = lam * (D.T @ D)` once (constant across
+     iterations).
+   - Initialize `weights = numpy.ones(n, dtype=float)`.
+   - Repeat exactly `n_iter=10` times: build `W =
+     scipy.sparse.diags(weights, 0, shape=(n, n))`; solve
+     `z = scipy.sparse.linalg.spsolve((W + H).tocsc(), weights *
+     y_arr)`; after solves 1 through 9 (not after solve 10), update
+     `weights = numpy.where(y_arr > z, p, 1 - p)` (with `p=0.001`) for
+     the next iteration — no reweighting is computed or used after
+     solve 10, since only the 10th solve's `z` is used as the
+     baseline.
+   - The baseline is the `z` produced by the 10th solve.
+   Any `method` value other than exactly `"linear"` or `"asls"` raises
+   `ValueError` before any array allocation or validation beyond
+   coercion.
+2. `find_spectral_peaks(x, y, prominence_frac=0.05, window=None)`
+   coerces `x_arr = numpy.array(x, dtype=float, copy=True)` and
+   `y_arr = numpy.array(y, dtype=float, copy=True)` copies (never mutating the
+   caller's inputs) and validates, raising `ValueError` on any
+   violation: both are 1-D with equal length `n >= 2`; both contain
+   only finite values; `x_arr` is strictly increasing
+   (`numpy.all(numpy.diff(x_arr) > 0)`); and `x_arr` is uniformly
+   spaced, checked as `numpy.allclose(numpy.diff(x_arr), dx, rtol=1e-6,
+   atol=0.0)` where `dx = x_arr[1] - x_arr[0]`. This uniform-spacing
+   check is a module precondition, not a caller-facing auto-repair;
+   non-conforming input is a programming error on the caller's part.
+   When `window` is not `None`, it must satisfy
+   `isinstance(window, numbers.Integral) and not isinstance(window,
+   bool)` (excluding `bool`, which is an `int` subtype in Python, from
+   counting as a valid window length) and, once converted to `int`, be
+   odd with `5 <= window <= n` (else `ValueError`); `y_arr` is then
+   replaced in-place in this function's local scope (the caller's array
+   is untouched because `y_arr` is already a private copy) by
+   `scipy.signal.savgol_filter(y_arr, window_length=window,
+   polyorder=3)` before detection. Peaks are located via
+   `scipy.signal.find_peaks(y_arr, prominence=prominence_frac *
+   (y_arr.max() - y_arr.min()))`; for each detected peak index, `fwhm`
+   is derived from `scipy.signal.peak_widths(y_arr, [index],
+   rel_height=0.5)`, whose first return value (width in samples) is
+   multiplied by `dx` to convert to `x`-units. `position` is
+   `x_arr[index]`; `height` is `y_arr[index]`; `prominence` is read from
+   `find_peaks`'s returned `prominences` array — all from the same
+   (possibly smoothed) `y_arr` used for detection, per REQ-AIDS-095.
+   Results are already produced in ascending-index (hence
+   ascending-position) order by `scipy.signal.find_peaks` since `x_arr`
+   is required to be strictly increasing, so no additional sort is
+   needed. A flat `y_arr` (zero range, `y_arr.max() == y_arr.min()`) is
+   handled by returning an empty list rather than dividing by zero:
+   `prominence_frac * 0 == 0`, and `scipy.signal.find_peaks` on a
+   constant array returns no peaks, which already yields `[]`; this is
+   called out explicitly here as a required behavior, not an incidental
+   one, so a future change to the zero-range guard cannot silently
+   start raising instead.
+3. `build_peak_sensitivity_plan(x, y, prominence_fracs, windows,
+   target_claim, max_runs=100)` returns
+   `(sensitivity.SensitivityPlan(target_claim=target_claim,
+   parameter_grid={"prominence_frac": prominence_fracs, "window":
+   windows}, max_runs=max_runs), analysis_fn)` where `analysis_fn` is a
+   closure over the given `x`/`y` defined as `def analysis_fn(*,
+   prominence_frac, window): return
+   float(len(find_spectral_peaks(x, y, prominence_frac=prominence_frac,
+   window=window)))`. Because `sensitivity.run_sensitivity` already
+   calls `analysis_fn(**specification)` for each grid point and
+   `specification` keys come directly from `parameter_grid`'s keys
+   (`"prominence_frac"`, `"window"`), no adapter/glue code is required
+   by the caller to plug `signal_analysis`'s peak counts into
+   `sensitivity.run_sensitivity`'s existing stability classification.
+
+Interfaces: `signal_analysis.baseline_correct(x: Sequence[float],
+y: Sequence[float], method: str = "linear") -> numpy.ndarray`;
+`signal_analysis.find_spectral_peaks(x: Sequence[float],
+y: Sequence[float], prominence_frac: float = 0.05,
+window: int | None = None) -> list[dict[str, float]]` (each dict has
+exactly the keys `"position"`, `"fwhm"`, `"prominence"`, `"height"`,
+all `float`); `signal_analysis.build_peak_sensitivity_plan(x:
+Sequence[float], y: Sequence[float], prominence_fracs: list[float],
+windows: list[int | None], target_claim: str, max_runs: int = 100) ->
+tuple[sensitivity.SensitivityPlan, Callable[..., float]]`.
+
+Constraints: `find_spectral_peaks` and `baseline_correct` never mutate
+the caller's `x`/`y` arguments (REQ-AIDS-094/095 both require this).
+`find_spectral_peaks`'s `window` validation must reject even integers,
+odd integers below `5`, odd integers above `len(y)`, and any non-`None`,
+non-odd-integer value, consistent with REQ-AIDS-095's acceptance cases.
+`baseline_correct`'s AsLS parameters (`lam`, `p`, `n_iter`) are fixed
+internal constants, not part of the public signature, so behavior is
+fully deterministic for a given `x`/`y`/`method` — this keeps the public
+API exactly matching the issue's requested
+`baseline_correct(x, y, method="linear"|"asls")` shape without exposing
+tuning knobs the issue did not ask for; a future change may promote them
+to optional keyword arguments if a concrete need arises, without
+breaking this signature (new keyword arguments with the same defaults
+are additive). `build_peak_sensitivity_plan` must not evaluate
+`analysis_fn` itself — it only constructs the plan/closure pair, exactly
+mirroring `sensitivity.SensitivityPlan`'s own construction-only
+contract (DES-AIDS-044); evaluation remains the caller's
+`sensitivity.run_sensitivity` call. This module depends on `numpy`,
+`scipy.signal`, `scipy.sparse`, and `scipy.sparse.linalg` — all already
+available transitively via `scipy>=1.11` (a direct `pyproject.toml`
+dependency used elsewhere in this package via `scipy.stats`, e.g.
+`stats_analysis.py`) and `numpy` (already a transitive dependency of
+`scipy`/`pandas`) — and must not introduce any new third-party
+dependency.
+Requirements: REQ-AIDS-094 REQ-AIDS-095 REQ-AIDS-096
+ADRs: ADR-0112
+Depends-On: DES-AIDS-044
