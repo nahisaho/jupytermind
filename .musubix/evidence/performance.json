@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
-  "runId": "6d6e3668-fdda-47fe-9c16-211201a3f8b2",
-  "generatedAt": "2026-10-05T20:21:40.154Z",
+  "runId": "327585ef-cb07-4fd4-a83e-aa1ed5180916",
+  "generatedAt": "2026-10-05T21:53:23.146Z",
   "executions": [
     {
-      "runId": "6d6e3668-fdda-47fe-9c16-211201a3f8b2",
-      "executionId": "f634c0b3ce1b13b10d88280883a64e7440d961ff83a62d1107d086c15f234cf2",
+      "runId": "327585ef-cb07-4fd4-a83e-aa1ed5180916",
+      "executionId": "0af895e936e5123d0dfe6970702ecbb8547fdaa13cef987a030bce1ee3944e66",
       "commandName": "test",
       "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
       "reportPath": ".musubix/evidence/native/test/aggregate.json",
       "sourceKind": "file",
-      "reportSha256": "dd50bba93ae3ac0b673ddcfbff539a441ba5a5625cd6eea6208361cab48eb225",
+      "reportSha256": "cd6ca4779703b6c43de026712be007558195e47469548d347903c318210b3307",
       "processStatus": "completed",
       "exitCode": 0,
       "tests": [
@@ -2017,9 +2017,33 @@
         {
           "id": "TEST-EXAMPLE-001",
           "status": "passed"
+        },
+        {
+          "id": "TEST-TECHWRITER-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TECHWRITER-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TECHWRITER-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TECHWRITER-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TECHWRITER-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TECHWRITER-006",
+          "status": "passed"
         }
       ],
-      "recordSha256": "4f1bfffabb80ecf55ceaccbaa91c5291b9998b77da41acc6c3574793208d8003"
+      "recordSha256": "f18a7664c84a83f4c78b52391720c262719a1ccd51c4a8ad61417f470f6e6575"
     }
   ],
   "observations": [

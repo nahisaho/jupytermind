@@ -1,37 +1,21 @@
 ---
 name: tech-writer
 description: >-
-  Helps structure and polish technical documents: README, design docs/ADRs,
-  API reference, PR descriptions/commit messages/issue reports, release
-  notes/CHANGELOG, user manuals/how-to guides, code comments/docstrings,
-  requirements definitions, system designs, test plans, operations runbooks,
-  migration plans, security designs/threat models, technical proposals,
-  Blueprints, White Papers, RFI/RFP procurement documents, and Qiita/Zenn
-  articles. Use for requests
-  like "write a README", "draft a design doc", "define system requirements",
-  "write a system design", "create a test plan", "write an operations
-  runbook", "plan a migration", "create a threat model", "write a technical
-  proposal", "create a Blueprint", "write a White Paper", "draft an RFI",
-  "create an RFP", "write this PR description", "clean up my commit
-  message", "make this how-to guide clearer", "write API docs", "summarize
-  the release notes", "write a Zenn article", "write this up for Qiita", as
-  well as
-  Japanese-language equivalents (「READMEを書いて」「設計ドキュメントを作って」
-  「要件定義書を作って」「システム設計書を書いて」「テスト計画書を作って」
-  「運用設計書を書いて」「移行計画を作って」「脅威モデルを作って」
-  「技術提案書を書いて」「Blueprintを作って」「ホワイトペーパーを書いて」
-  「RFIを作って」「RFPを作って」「PRの説明文を書いて」
-  「コミットメッセージを整えて」「手順書を分かりやすくして」
-  「APIドキュメントを整備して」「リリースノートをまとめて」
-  「Zennの記事を書いて」「Qiitaに投稿する記事を書いて」). Especially useful when
-  the request is a bare goal without enough context to start (e.g. "I want
-  to write a README" / "○○を書きたい"), since this skill drives a one
-  question-at-a-time intake before writing. Supports both Japanese and
-  English documents, with Japanese as the primary target. Owns document
-  structure, information completeness, and reader fit; for living Japanese
-  documents, it invokes kotonoha's original bundled `japanese-prose` skill,
-  which uses GiNZA for sentence-level naturalness, word choice, rhythm, and
-  repeated AI-like pattern analysis.
+  Helps structure and polish technical documents of many doctypes (README,
+  design docs/ADRs, API reference, PR/commit/issue text, release notes,
+  user manuals, docstrings, requirements, test plans, runbooks, threat
+  models, proposals, Blueprints, White Papers, RFI/RFP, Qiita/Zenn
+  articles — see the skill body for the full list). Use for requests like
+  "write a README", "draft a design doc", "write this PR description",
+  "write API docs", or Japanese equivalents such as
+  「READMEを書いて」「設計ドキュメントを作って」「PRの説明文を書いて」
+  （詳細なドキュメント種別とトリガー例はスキル本文を参照）. Especially useful
+  for a bare goal without enough context (e.g. "I want to write a README" /
+  "○○を書きたい"), since this skill drives a one question-at-a-time intake
+  before writing. Supports Japanese and English documents, Japanese as the
+  primary target. Owns document structure, completeness, and reader fit;
+  for living Japanese documents it invokes the bundled `japanese-prose`
+  skill for sentence-level naturalness.
 license: MIT
 argument-hint: "[write|review|score] [doctype] <target file or request>"
 ---
@@ -45,6 +29,25 @@ manuals/how-to guides, code comments/docstrings, requirements definitions,
 system designs, test plans, operations runbooks, migration plans, security
 designs/threat models, technical proposals, Blueprints, White Papers,
 RFI/RFP procurement documents, and Qiita/Zenn articles.
+
+## Trigger phrases / 起動フレーズ
+
+English: "write a README", "draft a design doc", "define system
+requirements", "write a system design", "create a test plan", "write an
+operations runbook", "plan a migration", "create a threat model", "write a
+technical proposal", "create a Blueprint", "write a White Paper", "draft an
+RFI", "create an RFP", "write this PR description", "clean up my commit
+message", "make this how-to guide clearer", "write API docs", "summarize
+the release notes", "write a Zenn article", "write this up for Qiita".
+
+Japanese: 「READMEを書いて」「設計ドキュメントを作って」
+「要件定義書を作って」「システム設計書を書いて」「テスト計画書を作って」
+「運用設計書を書いて」「移行計画を作って」「脅威モデルを作って」
+「技術提案書を書いて」「Blueprintを作って」「ホワイトペーパーを書いて」
+「RFIを作って」「RFPを作って」「PRの説明文を書いて」
+「コミットメッセージを整えて」「手順書を分かりやすくして」
+「APIドキュメントを整備して」「リリースノートをまとめて」
+「Zennの記事を書いて」「Qiitaに投稿する記事を書いて」。
 
 Default format: Markdown for every doctype in this skill, except a git
 commit message body (plain text by convention — light "-" bullets are
