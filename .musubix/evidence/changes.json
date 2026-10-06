@@ -12623,6 +12623,234 @@
           }
         }
       ]
+    },
+    {
+      "changeId": "CHANGE-025",
+      "requirementIds": [
+        "REQ-RELGATE-001",
+        "REQ-RELGATE-002",
+        "REQ-RELGATE-003",
+        "REQ-RELGATE-004",
+        "REQ-RELGATE-005"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-05T23:00:32.953Z",
+          "fingerprints": {
+            "impact": "3f0955612c47ae5ae05b8f07ded1adb96a0378a95b0bc1357fe922a392026af9",
+            "requirements": "fee1a4e2bb242366f81dadf6015194bbf4ff51b7ddc163b5d1c86c61b0bcd149",
+            "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+            "implementation": "2866f9e4ad7f85d91eb985dc613689566546bd6808b3babef9ec17064abb2dd0",
+            "tests": "f33574b4af5444a47c1cda63d49665d6d995b26b6b8311dffae34f14f1bd8160",
+            "tdd": "b92f94d90506511f9c31110e6e716185d0014b0a0c7876e5d365c4f173ff283f",
+            "requirementImplementations": {
+              "REQ-RELGATE-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-005": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 1318
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-05T23:00:55.208Z",
+          "fingerprints": {
+            "impact": "3f0955612c47ae5ae05b8f07ded1adb96a0378a95b0bc1357fe922a392026af9",
+            "requirements": "fee1a4e2bb242366f81dadf6015194bbf4ff51b7ddc163b5d1c86c61b0bcd149",
+            "design": "5a1d5736953e9a47f9ac20619ce77199f84997aa8a44f3ebc7b802c917bffb89",
+            "implementation": "2866f9e4ad7f85d91eb985dc613689566546bd6808b3babef9ec17064abb2dd0",
+            "tests": "f33574b4af5444a47c1cda63d49665d6d995b26b6b8311dffae34f14f1bd8160",
+            "tdd": "b92f94d90506511f9c31110e6e716185d0014b0a0c7876e5d365c4f173ff283f",
+            "requirementImplementations": {
+              "REQ-RELGATE-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-005": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 1319
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-06T00:12:55.793Z",
+          "fingerprints": {
+            "impact": "0594e93e61b247b87c4a217816cd5a8b722988bd9188bbe2c34b8d336cda6dbe",
+            "requirements": "ff963cc6e39780255fa7fa2336535aae6a91a70f5d85206170090c8d07ac8e7f",
+            "design": "ca11527cc0407dcadca0e9a22ca14f5e24b92e052de11684c59e44eeb29a8746",
+            "implementation": "2866f9e4ad7f85d91eb985dc613689566546bd6808b3babef9ec17064abb2dd0",
+            "tests": "f33574b4af5444a47c1cda63d49665d6d995b26b6b8311dffae34f14f1bd8160",
+            "tdd": "b92f94d90506511f9c31110e6e716185d0014b0a0c7876e5d365c4f173ff283f",
+            "requirementImplementations": {
+              "REQ-RELGATE-001": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-002": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-003": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-004": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-RELGATE-005": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 1320
+        },
+        "red": {
+          "phase": "red",
+          "recordedAt": "2026-10-06T01:06:18.518Z",
+          "fingerprints": {
+            "impact": "0594e93e61b247b87c4a217816cd5a8b722988bd9188bbe2c34b8d336cda6dbe",
+            "requirements": "ff963cc6e39780255fa7fa2336535aae6a91a70f5d85206170090c8d07ac8e7f",
+            "design": "ca11527cc0407dcadca0e9a22ca14f5e24b92e052de11684c59e44eeb29a8746",
+            "implementation": "3c1f502240f618778f60f23547db3db492e7a1f265321d944448e532bbea0f69",
+            "tests": "14bd8d975140d19e54e69d2565bc616dd0d47f175e1923530a95a6917e9462ea",
+            "tdd": "fbd827bf1e7195c755e35e9a07e8a9f8ee47fffef773b299a1dd639c8e9054e4",
+            "requirementImplementations": {
+              "REQ-RELGATE-001": {
+                "paths": [
+                  "scripts/measure_pytest_pass_rate.py"
+                ],
+                "fingerprints": {
+                  "scripts/measure_pytest_pass_rate.py": "8644bc46064dd81e4af257f4e0e24d835465f53a2fc5b48feac4488db38ae6c6"
+                }
+              },
+              "REQ-RELGATE-002": {
+                "paths": [
+                  "scripts/release_gate_governance.py"
+                ],
+                "fingerprints": {
+                  "scripts/release_gate_governance.py": "3a2df3b0c184044c9a91b6a9cbcdb5d1094972e95b07f54cc318b0a650061be3"
+                }
+              },
+              "REQ-RELGATE-003": {
+                "paths": [
+                  "scripts/release_gate_governance.py"
+                ],
+                "fingerprints": {
+                  "scripts/release_gate_governance.py": "3a2df3b0c184044c9a91b6a9cbcdb5d1094972e95b07f54cc318b0a650061be3"
+                }
+              },
+              "REQ-RELGATE-004": {
+                "paths": [
+                  "scripts/measure_pytest_pass_rate.py"
+                ],
+                "fingerprints": {
+                  "scripts/measure_pytest_pass_rate.py": "8644bc46064dd81e4af257f4e0e24d835465f53a2fc5b48feac4488db38ae6c6"
+                }
+              },
+              "REQ-RELGATE-005": {
+                "paths": [
+                  "scripts/release_gate_governance.py"
+                ],
+                "fingerprints": {
+                  "scripts/release_gate_governance.py": "3a2df3b0c184044c9a91b6a9cbcdb5d1094972e95b07f54cc318b0a650061be3"
+                }
+              }
+            }
+          },
+          "order": 1377
+        },
+        "implementation": {
+          "phase": "implementation",
+          "recordedAt": "2026-10-06T01:07:11.294Z",
+          "fingerprints": {
+            "impact": "0594e93e61b247b87c4a217816cd5a8b722988bd9188bbe2c34b8d336cda6dbe",
+            "requirements": "ff963cc6e39780255fa7fa2336535aae6a91a70f5d85206170090c8d07ac8e7f",
+            "design": "ca11527cc0407dcadca0e9a22ca14f5e24b92e052de11684c59e44eeb29a8746",
+            "implementation": "6aad51478dc4857d1d06403f8758489d3ce18bdf5f3e13d01334f750f3d25d39",
+            "tests": "14bd8d975140d19e54e69d2565bc616dd0d47f175e1923530a95a6917e9462ea",
+            "tdd": "fbd827bf1e7195c755e35e9a07e8a9f8ee47fffef773b299a1dd639c8e9054e4",
+            "requirementImplementations": {
+              "REQ-RELGATE-001": {
+                "paths": [
+                  "scripts/measure_pytest_pass_rate.py"
+                ],
+                "fingerprints": {
+                  "scripts/measure_pytest_pass_rate.py": "e56153c53c74104e1c416bf4ba4c4d52648584c59d1b9231744c09f4c3e08b68"
+                }
+              },
+              "REQ-RELGATE-002": {
+                "paths": [
+                  "scripts/release_gate_governance.py"
+                ],
+                "fingerprints": {
+                  "scripts/release_gate_governance.py": "8637bf152c308cdf7b2085c3c0a07f316300d3b8a4820b154a5e67538d008586"
+                }
+              },
+              "REQ-RELGATE-003": {
+                "paths": [
+                  "scripts/release_gate_governance.py"
+                ],
+                "fingerprints": {
+                  "scripts/release_gate_governance.py": "8637bf152c308cdf7b2085c3c0a07f316300d3b8a4820b154a5e67538d008586"
+                }
+              },
+              "REQ-RELGATE-004": {
+                "paths": [
+                  "scripts/measure_pytest_pass_rate.py"
+                ],
+                "fingerprints": {
+                  "scripts/measure_pytest_pass_rate.py": "e56153c53c74104e1c416bf4ba4c4d52648584c59d1b9231744c09f4c3e08b68"
+                }
+              },
+              "REQ-RELGATE-005": {
+                "paths": [
+                  "scripts/release_gate_governance.py"
+                ],
+                "fingerprints": {
+                  "scripts/release_gate_governance.py": "8637bf152c308cdf7b2085c3c0a07f316300d3b8a4820b154a5e67538d008586"
+                }
+              }
+            }
+          },
+          "order": 1378
+        }
+      }
     }
   ]
 }

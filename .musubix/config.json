@@ -17,6 +17,17 @@
       "adapter": "pytest",
       "required": true,
       "timeoutMs": 120000
+    },
+    {
+      "name": "performance",
+      "command": ".venv/bin/python",
+      "args": ["scripts/measure_pytest_pass_rate.py", "{reportPath}"],
+      "testReport": {
+        "format": "musubix-json",
+        "path": ".musubix/evidence/native/performance/TEST-AIDS-PYTEST-001.json"
+      },
+      "required": true,
+      "timeoutMs": 180000
     }
   ],
   "requiredChecks": [

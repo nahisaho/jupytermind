@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
-  "runId": "6d6e3668-fdda-47fe-9c16-211201a3f8b2",
-  "generatedAt": "2026-10-05T20:21:40.154Z",
+  "runId": "1a749410-6a32-43c2-aa83-21425718f3b2",
+  "generatedAt": "2026-10-06T02:48:08.149Z",
   "executions": [
     {
-      "runId": "6d6e3668-fdda-47fe-9c16-211201a3f8b2",
-      "executionId": "f634c0b3ce1b13b10d88280883a64e7440d961ff83a62d1107d086c15f234cf2",
+      "runId": "1a749410-6a32-43c2-aa83-21425718f3b2",
+      "executionId": "0af3a8ef6e2c6fd1dc17fcf410e7d9352bb8f06a087917b55098c3f23c93854b",
       "commandName": "test",
       "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
       "reportPath": ".musubix/evidence/native/test/aggregate.json",
       "sourceKind": "file",
-      "reportSha256": "dd50bba93ae3ac0b673ddcfbff539a441ba5a5625cd6eea6208361cab48eb225",
+      "reportSha256": "a365c45de95d8069f443f082272a36a9af3d2c36bf7f64c1a08f3a74d0ec341a",
       "processStatus": "completed",
       "exitCode": 0,
       "tests": [
@@ -1427,7 +1427,7 @@
           "status": "passed"
         },
         {
-          "id": "TEST-AIMS-040-DERIVES-200",
+          "id": "TEST-AIMS-040",
           "status": "passed"
         },
         {
@@ -2017,9 +2017,58 @@
         {
           "id": "TEST-EXAMPLE-001",
           "status": "passed"
+        },
+        {
+          "id": "TEST-RELGATE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELGATE-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELGATE-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELGATE-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELGATE-101",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELGATE-102",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELGATE-103",
+          "status": "passed"
         }
       ],
-      "recordSha256": "4f1bfffabb80ecf55ceaccbaa91c5291b9998b77da41acc6c3574793208d8003"
+      "recordSha256": "ed5321baaa686bd02081de6bfbde8c60c5549951e40e853420500b6a7e4186ce"
+    },
+    {
+      "runId": "1a749410-6a32-43c2-aa83-21425718f3b2",
+      "executionId": "a71bb28d93826d3f90462afa7b68517678c33e367a8bc2a0df2fc93177ad20cf",
+      "commandName": "performance",
+      "commandSha256": "4661a33354ac5aecc444fb4fb7c096c3f2add7009bbc4032ff36f9d526e30ca4",
+      "reportPath": ".musubix/evidence/native/performance/TEST-AIDS-PYTEST-001.json",
+      "sourceKind": "file",
+      "reportSha256": "7269a42416a3c5e216211e27f6c8e0d212e0ec1e3f41e0929645ec0cbd113501",
+      "processStatus": "completed",
+      "exitCode": 0,
+      "tests": [
+        {
+          "id": "TEST-AIDS-PYTEST-001",
+          "status": "passed",
+          "operations": {
+            "tests.pass_rate": 100
+          }
+        }
+      ],
+      "recordSha256": "89360601f0178e7c59e5a811207c59a9a4a90d8dfa998982480d3679ea56593b"
     }
   ],
   "observations": [
@@ -2027,9 +2076,26 @@
       "requirementId": "REQ-AIDS-013",
       "testId": "TEST-AIDS-PYTEST-001",
       "counter": "tests.pass_rate",
-      "observed": null,
+      "observed": 100,
       "maximum": 100,
-      "status": "missing"
+      "status": "pass",
+      "provenance": {
+        "runId": "1a749410-6a32-43c2-aa83-21425718f3b2",
+        "executionId": "a71bb28d93826d3f90462afa7b68517678c33e367a8bc2a0df2fc93177ad20cf",
+        "commandName": "performance",
+        "commandSha256": "4661a33354ac5aecc444fb4fb7c096c3f2add7009bbc4032ff36f9d526e30ca4",
+        "reportPath": ".musubix/evidence/native/performance/TEST-AIDS-PYTEST-001.json",
+        "sourceKind": "file",
+        "reportSha256": "7269a42416a3c5e216211e27f6c8e0d212e0ec1e3f41e0929645ec0cbd113501",
+        "testId": "TEST-AIDS-PYTEST-001",
+        "testStatus": "passed",
+        "counter": "tests.pass_rate",
+        "value": 100,
+        "processStatus": "completed",
+        "exitCode": 0,
+        "executionRecordSha256": "89360601f0178e7c59e5a811207c59a9a4a90d8dfa998982480d3679ea56593b",
+        "recordSha256": "8e2bc1bac79506cc5049fd75afad6885fb75cb979a59520b2a65ba8a98c31a90"
+      }
     }
   ]
 }

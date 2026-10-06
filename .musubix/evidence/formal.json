@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T20:20:44.711Z",
-  "totalRequirements": 161,
+  "generatedAt": "2026-10-06T02:45:52.218Z",
+  "totalRequirements": 166,
   "modeledRequirements": 12,
-  "modeledFraction": 0.07453416149068323,
+  "modeledFraction": 0.07228915662650602,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -255,7 +255,12 @@
       "REQ-ASTRUCT-020",
       "REQ-ASTRUCT-030",
       "REQ-ASTRUCT-040",
-      "REQ-ASTRUCT-050"
+      "REQ-ASTRUCT-050",
+      "REQ-RELGATE-001",
+      "REQ-RELGATE-002",
+      "REQ-RELGATE-003",
+      "REQ-RELGATE-004",
+      "REQ-RELGATE-005"
     ],
     "diagnostics": [
       {
@@ -1002,6 +1007,31 @@
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
         "message": "REQ-ASTRUCT-050 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-RELGATE-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-RELGATE-002 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-RELGATE-003 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-RELGATE-004 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-RELGATE-005 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       }
     ],
     "consistency": "consistent",
@@ -1023,6 +1053,7 @@
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
     ".musubix/features/ai-scientist/requirements.md": "148417851157f00bffb0841a60bb81466f308dcd4ae88968952d95c4ca69cacb",
     ".musubix/features/ai-structural-biology-scientist/requirements.md": "ade8184daef2095e8a9da33e99125fe63ed81485af7f09caa5c8f227d670506c",
-    ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed"
+    ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
+    ".musubix/features/release-gate-governance/requirements.md": "6e8f7367e19ccf8b16648be7adb392841b2d48c32e860e6eddfd4075db65e6d3"
   }
 }

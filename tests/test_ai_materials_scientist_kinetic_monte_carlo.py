@@ -18,7 +18,7 @@ def _reference_fixture() -> dict:
 
 # @id TEST-AIMS-040
 # @verifies REQ-AIMS-040
-def test_TEST_AIMS_040_derives_200_realization_seeds():
+def test_TEST_AIMS_040_derives_realization_seeds():
     from ai_materials_scientist.kinetic_monte_carlo import run_kinetic_monte_carlo
 
     result = run_kinetic_monte_carlo(**_reference_fixture())
