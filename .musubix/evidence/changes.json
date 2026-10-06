@@ -12623,6 +12623,60 @@
           }
         }
       ]
+    },
+    {
+      "changeId": "CHANGE-026",
+      "requirementIds": [
+        "REQ-AIDS-044"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-06T05:57:45.870Z",
+          "fingerprints": {
+            "impact": "6919d617d57969d93971e035f8d48292c46b3e9143fe87399c4d4556707e9706",
+            "requirements": "6304029a8b7cb3a98604ad3b0c7be01acd58aba1c908023bc1054dddf77805e8",
+            "design": "4aa573363566e8b9d6cd466b368ce51b0f964a45dcff70f7611b07f410f226dd",
+            "implementation": "252c2c8d1b9dee94bb51a670caa47be0978574bafa4a47d7de60a10f55177f52",
+            "tests": "dca20cd91197f4e0a7bf2eb3c6b0297f5d142bd9af0d007050affb426822d775",
+            "tdd": "1ce5c14c8d3e4d959cc12df980c2cdd28828d493244783910a6b4c33ff5728c8",
+            "requirementImplementations": {
+              "REQ-AIDS-044": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                }
+              }
+            }
+          },
+          "order": 1342
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-06T06:01:38.801Z",
+          "fingerprints": {
+            "impact": "6919d617d57969d93971e035f8d48292c46b3e9143fe87399c4d4556707e9706",
+            "requirements": "ab014170f9f0024b2e3b09ce654e1382c112f157eb70308547e4d67281609c16",
+            "design": "4aa573363566e8b9d6cd466b368ce51b0f964a45dcff70f7611b07f410f226dd",
+            "implementation": "252c2c8d1b9dee94bb51a670caa47be0978574bafa4a47d7de60a10f55177f52",
+            "tests": "dca20cd91197f4e0a7bf2eb3c6b0297f5d142bd9af0d007050affb426822d775",
+            "tdd": "1ce5c14c8d3e4d959cc12df980c2cdd28828d493244783910a6b4c33ff5728c8",
+            "requirementImplementations": {
+              "REQ-AIDS-044": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                }
+              }
+            }
+          },
+          "order": 1343
+        }
+      }
     }
   ]
 }
