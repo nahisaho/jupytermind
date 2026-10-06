@@ -124,3 +124,10 @@ rank-deficient 時の挙動未記載、未使用の `polar_count` フィール�
 ビット完全一致の浮動小数点フィクスチャ）を検出し、すべて修正した上で、
 2 回目のレビューおよび最終クロスファイル整合性チェックで残存課題ゼロを
 確認した。
+
+## REQ-ASTRUCT-060: npm package ships ai-structural-biology-scientist implementation sources / npmパッケージにai-structural-biology-scientist実装ソースを同梱
+Priority: must
+Type: non-functional
+Pattern: ubiquitous
+Statement: The repository's npm bootstrap package shall ship the ai-structural-biology-scientist skill payload (`.github/skills/ai-structural-biology-scientist/SKILL.md` and `.github/skills/ai-structural-biology-scientist/manifest.json`, where present) together with a `package.json` `files` entry `src/ai_structural_biology_scientist/**/*.py` whose effect is that every current repository file matching that glob is included in the packed artifact.
+Acceptance: An automated test loads `package.json`, asserts its `files` array contains both `.github/skills/ai-structural-biology-scientist` and `src/ai_structural_biology_scientist/**/*.py`, and asserts an `npm pack --dry-run --json` file listing includes `.github/skills/ai-structural-biology-scientist/SKILL.md` and every current repository file matching `src/ai_structural_biology_scientist/**/*.py`.
