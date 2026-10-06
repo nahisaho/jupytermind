@@ -75,6 +75,29 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
    outcome. Note the fallback explicitly in the notebook or hand-off notes
    (e.g. "executed via MCP tool, not run_and_record") so later audits are not
    misled into assuming a host-side client was used.
+
+   **Known ordering constraint (jupyter-mcp-server cache coherency,
+   Issue #75)**: `insert_execute_code_cell` keeps its own in-memory cached
+   notebook model, while `insight_engine.record_insight`/
+   `visualization.record_chart` (step 9/8) write directly to the notebook
+   file on disk, bypassing that cache. If a direct-write call is
+   immediately followed by another `insert_execute_code_cell` call in the
+   same session, jupyter-mcp-server's cache can be stale relative to the
+   file it just missed, so the next `insert_execute_code_cell` call may
+   report success without actually appending a cell (silently dropped), and
+   a caller that retries by polling cell count can end up inserting a
+   genuine duplicate once the cache catches up. Until this cache-coherency
+   issue is fixed upstream, there is **no supported safe way to interleave
+   them**: in a given MCP/Jupyter session, complete every
+   `insert_execute_code_cell` call you need before making any
+   `record_insight`/`record_chart` direct write, and once a direct write has
+   occurred, do not issue another `insert_execute_code_cell` call in that
+   same session. Retrying an `insert_execute_code_cell` call after a direct
+   write (e.g. by polling cell count) does not reliably avoid the duplicate
+   described above and must not be used as a workaround. If an insight
+   needs to be recorded between two dependent live-execution steps,
+   restructure the work into a new session/kernel handle for the
+   remaining `insert_execute_code_cell` calls instead.
 4. **Ingest data** with `ai_data_scientist.ingestion.ingest(source_spec,
    fetcher=..., allowlist=..., row_limit=...)` for CSV, Excel, database, or
    API sources; non-allowlisted hosts and over-limit responses are rejected
