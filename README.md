@@ -1,12 +1,30 @@
-# Jupytermind：AI Data Scientist — Jupyter MCP Copilot Agent Skill
+# Jupytermind：AI Scientist Skill Suite — Jupyter MCP Copilot Agent Skills
 
 [日本語 README](README-ja.md)
 
-A GitHub Copilot Agent Skill that performs natural-language (Japanese/
-English) data analysis over Jupyter via the Jupyter MCP (Datalayer
+A collection of GitHub Copilot Agent Skills for natural-language (Japanese/
+English) scientific computing over Jupyter via the Jupyter MCP (Datalayer
 `jupyter-mcp-server`). Every reasoning-based insight is recorded in the
 project notebook alongside the executed cell that provides its evidence.
 Built with SDD (`musubix3`) and TDD (pytest).
+
+## Skills included
+
+| Skill | Scope |
+| --- | --- |
+| `ai-data-scientist` | Load, clean, explore, analyze, visualize, and draw insights from datasets via Jupyter (MVP + ML extension). |
+| `ai-chemistry-scientist` | Cheminformatics: molecular descriptors, ADMET heuristic screening, QSAR modeling, similarity search, docking-score heuristics, drug-likeness/structural-alert screening, formula/mass calculation, SMILES standardization and format conversion. |
+| `ai-genomics-scientist` | Computational genomics: sequence feature analysis, variant-effect heuristic annotation, splice-site strength scoring, gene-set enrichment analysis, pairwise sequence alignment. |
+| `ai-materials-scientist` | Materials-science simulation: phase-field microstructure evolution, molecular dynamics, classical/kinetic Monte Carlo, crystal plasticity, a simplified FEM solver, and a simplified binary CALPHAD phase diagram. |
+| `ai-structural-biology-scientist` | Structural biology: secondary-structure and hydrophobicity/burial heuristics, protein-protein docking-score heuristics, RMSD-based structural similarity, residue contact-map heuristics. |
+| `ai-scientist` | End-to-end single-project research guidance: planning, literature review, experimental design, data analysis, manuscript writing, peer review, reproducibility checks, and presentation. |
+| `tech-writer` | Structures and polishes technical documents: READMEs, design docs/ADRs, API references, PR descriptions, release notes, user manuals, code comments. |
+| `japanese-prose` | Improves Japanese prose quality using GiNZA-based diagnostics (kotonoha). |
+| `presentation-planner` | Plans PPTX content structure and design handoff (does not generate the file itself). |
+| `sdd-*` (`sdd-change`, `sdd-requirements`, `sdd-design`, `sdd-implementation`, `sdd-quality`, `sdd-traceability`, `sdd-knowledge`, `sdd-formal-codegraph`, `sdd-issue-report`) | The Specification-Driven-Development workflow (`musubix3`) used to build and evolve every skill above. |
+
+See each skill's `.github/skills/<name>/SKILL.md` for its full invocation
+instructions and trigger phrases.
 
 ## Setup
 
@@ -59,11 +77,11 @@ If `xelatex` is not on `PATH`, PDF export raises a `RuntimeError` pointing
 back to this section; use `report_format="html"` if you do not need PDF
 output.
 
-## Skill
+## Skills
 
-See `.github/skills/ai-data-scientist/SKILL.md` for the skill's invocation
-instructions and `.musubix/features/ai-data-scientist*/requirements.md` for
-the authoritative requirement set (MVP + ML extension).
+See `.github/skills/<skill-name>/SKILL.md` for each skill's invocation
+instructions and `.musubix/features/<feature-slug>/requirements.md` for its
+authoritative requirement set.
 
 ## License
 
