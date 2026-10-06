@@ -31,7 +31,7 @@ instructions and trigger phrases.
 Install the skill from the npm registry (no need to clone this repo):
 
 ```sh
-npm install ai-data-scientist-skill
+npm install jupytermind
 npx ai-data-scientist doctor
 ```
 

@@ -31,7 +31,7 @@ npmレジストリから直接インストールできます(このリポジト�
 ありません):
 
 ```sh
-npm install ai-data-scientist-skill
+npm install jupytermind
 npx ai-data-scientist doctor
 ```
 
