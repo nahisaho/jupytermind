@@ -394,3 +394,26 @@ DESeq2/edgeR replacement and not a validated clinical pathogenicity
 predictor, respectively) — neither of those 2 newer modules has a
 single fixed verbatim label string defined in requirements.md the way
 REQ-AGENOM-030 does.
+
+## DES-AGENOM-080: npm skill-package completeness guard / npmスキル同梱完全性ガード
+Responsibilities: Preserve parity between the npm bootstrap package's
+shipped ai-genomics-scientist skill payload and its importable Python
+sources by asserting that `package.json` `files` contains both exact
+entries `.github/skills/ai-genomics-scientist` and
+`src/ai_genomics_scientist/**/*.py`, and by proving with an `npm pack
+--dry-run --json` listing that the packed artifact contains
+`.github/skills/ai-genomics-scientist/SKILL.md`,
+`.github/skills/ai-genomics-scientist/manifest.json`, and every current
+repository file matching `src/ai_genomics_scientist/**/*.py`.
+Interfaces: loadPackageManifest(path="package.json") -> PackageManifest;
+listPackedFiles() -> set[str] from `npm pack --dry-run --json`;
+assertAiGenomicsScientistPackagingParity(packageManifest, packedFiles)
+-> None.
+Constraints: The authoritative packaged-artifact proof is the dry-run
+pack listing, not only static inspection of `package.json`. This guard
+covers npm distribution completeness only; Python package discovery
+continues to rely on existing `src/` layout conventions, unchanged by
+this design.
+Requirements: REQ-AGENOM-080
+ADRs: ADR-0113
+Depends-On: DES-AISCI-020

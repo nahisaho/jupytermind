@@ -238,3 +238,26 @@ Every DES-AIMS-010 through DES-AIMS-070 module depends on DES-AIMS-001
 and unit convention); this table records the full requirement/design/ADR
 coverage so a change to any one artifact's linked IDs is immediately
 visible as a mismatch.
+
+## DES-AIMS-080: npm skill-package completeness guard / npmスキル同梱完全性ガード
+Responsibilities: Preserve parity between the npm bootstrap package's
+shipped ai-materials-scientist skill payload and its importable Python
+sources by asserting that `package.json` `files` contains both exact
+entries `.github/skills/ai-materials-scientist` and
+`src/ai_materials_scientist/**/*.py`, and by proving with an `npm pack
+--dry-run --json` listing that the packed artifact contains
+`.github/skills/ai-materials-scientist/SKILL.md`,
+`.github/skills/ai-materials-scientist/manifest.json`, and every
+current repository file matching `src/ai_materials_scientist/**/*.py`.
+Interfaces: loadPackageManifest(path="package.json") -> PackageManifest;
+listPackedFiles() -> set[str] from `npm pack --dry-run --json`;
+assertAiMaterialsScientistPackagingParity(packageManifest, packedFiles)
+-> None.
+Constraints: The authoritative packaged-artifact proof is the dry-run
+pack listing, not only static inspection of `package.json`. This guard
+covers npm distribution completeness only; Python package discovery
+continues to rely on existing `src/` layout conventions, unchanged by
+this design.
+Requirements: REQ-AIMS-080
+ADRs: ADR-0113
+Depends-On: DES-AISCI-020

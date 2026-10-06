@@ -335,3 +335,28 @@ include both exact bilingual limitation-label texts defined above:
 (DES-ASTRUCT-030), in both English and Japanese since REQ-ASTRUCT-001
 requires every module's user-facing text to render in the request's
 language.
+
+## DES-ASTRUCT-060: npm skill-package completeness guard / npmスキル同梱完全性ガード
+Responsibilities: Preserve parity between the npm bootstrap package's
+shipped ai-structural-biology-scientist skill payload and its
+importable Python sources by asserting that `package.json` `files`
+contains both exact entries
+`.github/skills/ai-structural-biology-scientist` and
+`src/ai_structural_biology_scientist/**/*.py`, and by proving with an
+`npm pack --dry-run --json` listing that the packed artifact contains
+`.github/skills/ai-structural-biology-scientist/SKILL.md`,
+`.github/skills/ai-structural-biology-scientist/manifest.json`, and
+every current repository file matching
+`src/ai_structural_biology_scientist/**/*.py`.
+Interfaces: loadPackageManifest(path="package.json") -> PackageManifest;
+listPackedFiles() -> set[str] from `npm pack --dry-run --json`;
+assertAiStructuralBiologyScientistPackagingParity(packageManifest,
+packedFiles) -> None.
+Constraints: The authoritative packaged-artifact proof is the dry-run
+pack listing, not only static inspection of `package.json`. This guard
+covers npm distribution completeness only; Python package discovery
+continues to rely on existing `src/` layout conventions, unchanged by
+this design.
+Requirements: REQ-ASTRUCT-060
+ADRs: ADR-0113
+Depends-On: DES-AISCI-020
