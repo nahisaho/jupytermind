@@ -316,6 +316,7 @@ This design also requires
 | DES-ASTRUCT-030 | REQ-ASTRUCT-030 | ADR-0046 |
 | DES-ASTRUCT-040 | REQ-ASTRUCT-040 | ADR-0047 |
 | DES-ASTRUCT-050 | REQ-ASTRUCT-050 | ADR-0048 |
+| DES-ASTRUCT-060 | REQ-ASTRUCT-060 | ADR-0113 |
 
 Every DES-ASTRUCT-010 through DES-ASTRUCT-050 module depends on
 DES-ASTRUCT-001 (dispatch), DES-ASTRUCT-002 (validation), and
@@ -335,3 +336,47 @@ include both exact bilingual limitation-label texts defined above:
 (DES-ASTRUCT-030), in both English and Japanese since REQ-ASTRUCT-001
 requires every module's user-facing text to render in the request's
 language.
+
+## DES-ASTRUCT-060: npm skill-package completeness guard / npmスキル同梱完全性ガード
+Responsibilities: Preserve parity between the npm bootstrap package's
+shipped ai-structural-biology-scientist skill payload and its
+importable Python sources by asserting that `package.json` `files`
+contains both exact entries
+`.github/skills/ai-structural-biology-scientist` and
+`src/ai_structural_biology_scientist/**/*.py`, and by proving with an
+`npm pack --dry-run --json` listing that the packed artifact contains
+`.github/skills/ai-structural-biology-scientist/SKILL.md`,
+`.github/skills/ai-structural-biology-scientist/manifest.json`, and
+every current repository file matching
+`src/ai_structural_biology_scientist/**/*.py`.
+Interfaces: The test reuses `src/ai_scientist/npm_packaging.py`'s
+existing generic helpers — `load_package_files(package_json_path: str |
+Path = "package.json") -> list[str]`, `load_npm_pack_dry_run_paths(
+project_root: str | Path = ".") -> set[str]` (wraps `npm pack --dry-run
+--json`), and `iter_skill_python_globs(package_files: Sequence[str]) ->
+dict[str, str]` (maps each shipped `.github/skills/<slug>` entry to its
+expected `src/<package>/**/*.py` glob) — rather than defining new
+duplicate helper functions. The test-local assertion function composes
+these in three steps: (1) `load_package_files()` contains both the
+exact skill entry `.github/skills/ai-structural-biology-scientist` and
+the exact glob entry `src/ai_structural_biology_scientist/**/*.py`; (2)
+`iter_skill_python_globs(load_package_files())["\
+.github/skills/ai-structural-biology-scientist"] ==
+"src/ai_structural_biology_scientist/**/*.py"`; and (3) every current
+repository file matching `src/ai_structural_biology_scientist/**/*.py`
+(resolved via Python glob expansion, not the literal glob string) is a
+member of `load_npm_pack_dry_run_paths()`, together with
+`.github/skills/ai-structural-biology-scientist/SKILL.md` and
+`.github/skills/ai-structural-biology-scientist/manifest.json`.
+Constraints: The authoritative packaged-artifact proof is the dry-run
+pack listing, not only static inspection of `package.json`. This guard
+covers npm distribution completeness only; Python package discovery
+continues to rely on setuptools auto-discovery from `pyproject.toml`
+`where = ["src"]` (unchanged by this design), so no explicit static
+Python package list is required unless that project configuration
+changes in the future. New tests must import and reuse
+`src/ai_scientist/npm_packaging.py`'s helpers rather than redefining
+equivalent logic.
+Requirements: REQ-ASTRUCT-060
+ADRs: ADR-0113
+Depends-On: DES-AISCI-020

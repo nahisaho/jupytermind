@@ -378,6 +378,7 @@ layout under `src/ai_genomics_scientist/`:
 | DES-AGENOM-050 | REQ-AGENOM-050 | ADR-0040 |
 | DES-AGENOM-060 | REQ-AGENOM-060 | ADR-0107 |
 | DES-AGENOM-070 | REQ-AGENOM-070 | ADR-0108 |
+| DES-AGENOM-080 | REQ-AGENOM-080 | ADR-0113 |
 
 ## Skill documentation deliverables / スキル文書成果物
 
@@ -394,3 +395,45 @@ DESeq2/edgeR replacement and not a validated clinical pathogenicity
 predictor, respectively) — neither of those 2 newer modules has a
 single fixed verbatim label string defined in requirements.md the way
 REQ-AGENOM-030 does.
+
+## DES-AGENOM-080: npm skill-package completeness guard / npmスキル同梱完全性ガード
+Responsibilities: Preserve parity between the npm bootstrap package's
+shipped ai-genomics-scientist skill payload and its importable Python
+sources by asserting that `package.json` `files` contains both exact
+entries `.github/skills/ai-genomics-scientist` and
+`src/ai_genomics_scientist/**/*.py`, and by proving with an `npm pack
+--dry-run --json` listing that the packed artifact contains
+`.github/skills/ai-genomics-scientist/SKILL.md`,
+`.github/skills/ai-genomics-scientist/manifest.json`, and every current
+repository file matching `src/ai_genomics_scientist/**/*.py`.
+Interfaces: The test reuses `src/ai_scientist/npm_packaging.py`'s
+existing generic helpers — `load_package_files(package_json_path: str |
+Path = "package.json") -> list[str]`, `load_npm_pack_dry_run_paths(
+project_root: str | Path = ".") -> set[str]` (wraps `npm pack --dry-run
+--json`), and `iter_skill_python_globs(package_files: Sequence[str]) ->
+dict[str, str]` (maps each shipped `.github/skills/<slug>` entry to its
+expected `src/<package>/**/*.py` glob) — rather than defining new
+duplicate helper functions. The test-local assertion function composes
+these in three steps: (1) `load_package_files()` contains both the
+exact skill entry `.github/skills/ai-genomics-scientist` and the exact
+glob entry `src/ai_genomics_scientist/**/*.py`; (2)
+`iter_skill_python_globs(load_package_files())["\
+.github/skills/ai-genomics-scientist"] ==
+"src/ai_genomics_scientist/**/*.py"`; and (3) every current repository
+file matching `src/ai_genomics_scientist/**/*.py` (resolved via Python
+glob expansion, not the literal glob string) is a member of
+`load_npm_pack_dry_run_paths()`, together with
+`.github/skills/ai-genomics-scientist/SKILL.md` and
+`.github/skills/ai-genomics-scientist/manifest.json`.
+Constraints: The authoritative packaged-artifact proof is the dry-run
+pack listing, not only static inspection of `package.json`. This guard
+covers npm distribution completeness only; Python package discovery
+continues to rely on setuptools auto-discovery from `pyproject.toml`
+`where = ["src"]` (unchanged by this design), so no explicit static
+Python package list is required unless that project configuration
+changes in the future. New tests must import and reuse
+`src/ai_scientist/npm_packaging.py`'s helpers rather than redefining
+equivalent logic.
+Requirements: REQ-AGENOM-080
+ADRs: ADR-0113
+Depends-On: DES-AISCI-020

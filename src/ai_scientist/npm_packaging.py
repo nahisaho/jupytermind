@@ -9,8 +9,8 @@ from pathlib import Path
 
 
 # @id CODE-AISCI-027
-# @implements REQ-AISCI-025
-# @design DES-AISCI-020
+# @implements REQ-AISCI-025 REQ-AGENOM-080 REQ-AIMS-080 REQ-ASTRUCT-060
+# @design DES-AISCI-020 DES-AGENOM-080 DES-AIMS-080 DES-ASTRUCT-060
 def load_package_files(package_json_path: str | Path = "package.json") -> list[str]:
     """Return the npm package whitelist entries from package.json."""
     package_json = Path(package_json_path)
@@ -18,8 +18,8 @@ def load_package_files(package_json_path: str | Path = "package.json") -> list[s
 
 
 # @id CODE-AISCI-028
-# @implements REQ-AISCI-025
-# @design DES-AISCI-020
+# @implements REQ-AISCI-025 REQ-AGENOM-080 REQ-AIMS-080 REQ-ASTRUCT-060
+# @design DES-AISCI-020 DES-AGENOM-080 DES-AIMS-080 DES-ASTRUCT-060
 def load_npm_pack_dry_run_paths(project_root: str | Path = ".") -> set[str]:
     """Return packed file paths reported by `npm pack --dry-run --json`."""
     result = subprocess.run(
@@ -34,8 +34,8 @@ def load_npm_pack_dry_run_paths(project_root: str | Path = ".") -> set[str]:
 
 
 # @id CODE-AISCI-029
-# @implements REQ-AISCI-025
-# @design DES-AISCI-020
+# @implements REQ-AISCI-025 REQ-AGENOM-080 REQ-AIMS-080 REQ-ASTRUCT-060
+# @design DES-AISCI-020 DES-AGENOM-080 DES-AIMS-080 DES-ASTRUCT-060
 def iter_skill_python_globs(package_files: Sequence[str]) -> dict[str, str]:
     """Map exact shipped skill entries to expected Python source globs."""
     mappings = {}

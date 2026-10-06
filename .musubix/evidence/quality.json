@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-06T10:30:14.983Z",
+  "generatedAt": "2026-10-06T11:52:41.538Z",
   "status": "fail",
   "checks": [
     {
@@ -54,12 +54,12 @@
         {
           "code": "TRACE_COVERAGE",
           "severity": "error",
-          "message": "implementation link coverage 0.9935897435897436 is below 1."
+          "message": "implementation link coverage 0.9937106918238994 is below 1."
         },
         {
           "code": "TRACE_COVERAGE",
           "severity": "error",
-          "message": "tests link coverage 0.9935897435897436 is below 1."
+          "message": "tests link coverage 0.9937106918238994 is below 1."
         }
       ]
     },
@@ -74,7 +74,7 @@
       "name": "formal",
       "required": false,
       "status": "pass",
-      "summary": "12/174 requirements modeled; consistency consistent; solver not-requested.",
+      "summary": "12/177 requirements modeled; consistency consistent; solver not-requested.",
       "diagnostics": [
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -639,6 +639,11 @@
         {
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
+          "message": "REQ-AGENOM-080 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
           "message": "REQ-AIMS-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
@@ -695,6 +700,11 @@
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
           "message": "REQ-AIMS-070 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIMS-080 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -859,6 +869,11 @@
         {
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
+          "message": "REQ-ASTRUCT-060 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
           "message": "REQ-RELGATE-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
@@ -906,7 +921,7 @@
       "name": "tdd",
       "required": true,
       "status": "fail",
-      "summary": "430 Red-Green TDD cycle(s) recorded.",
+      "summary": "433 Red-Green TDD cycle(s) recorded.",
       "diagnostics": [
         {
           "code": "TDD_REQUIREMENT_UNCOVERED",
@@ -1169,7 +1184,7 @@
       "name": "change-history",
       "required": true,
       "status": "fail",
-      "summary": "21 staged change(s) checked for ordered artifact and TDD evidence.",
+      "summary": "22 staged change(s) checked for ordered artifact and TDD evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_WAIVER_STALE",
@@ -1283,6 +1298,18 @@
           "severity": "error",
           "message": "CHANGE-025 has a change document but no chronology record.",
           "changeId": "CHANGE-025"
+        },
+        {
+          "code": "CHANGE_RECORD_MISSING",
+          "severity": "error",
+          "message": "CHANGE-027 has a change document but no chronology record.",
+          "changeId": "CHANGE-027"
+        },
+        {
+          "code": "CHANGE_RECORD_MISSING",
+          "severity": "error",
+          "message": "CHANGE-028 has a change document but no chronology record.",
+          "changeId": "CHANGE-028"
         },
         {
           "code": "CHANGE_TEST_CHANGED_AFTER_RED",
@@ -3480,6 +3507,78 @@
             "reason": "Background-agent handoff recorded change-record red/implementation/green/quality phases before the parent session could run real tdd red/green cycles (ask_user unavailable to the agent). Genuine passing Red-Green TDD evidence for REQ-AIDS-096 now exists in .musubix/evidence/tdd.json (TEST-AIDS-294/298/304), confirmed by direct test execution; only the change-record phase ordering is retroactively out of sequence.",
             "recordedAt": "2026-10-06T10:19:54.311Z"
           }
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-030 has no valid Red evidence for REQ-AGENOM-080 before its Red phase.",
+          "changeId": "CHANGE-030",
+          "requirementId": "REQ-AGENOM-080",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+            "recordedAt": "2026-10-06T11:37:27.312Z"
+          }
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-030 has no valid Green evidence for REQ-AGENOM-080 before its Green phase.",
+          "changeId": "CHANGE-030",
+          "requirementId": "REQ-AGENOM-080",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+            "recordedAt": "2026-10-06T11:37:27.846Z"
+          }
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-030 has no valid Red evidence for REQ-AIMS-080 before its Red phase.",
+          "changeId": "CHANGE-030",
+          "requirementId": "REQ-AIMS-080",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+            "recordedAt": "2026-10-06T11:37:28.975Z"
+          }
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-030 has no valid Green evidence for REQ-AIMS-080 before its Green phase.",
+          "changeId": "CHANGE-030",
+          "requirementId": "REQ-AIMS-080",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+            "recordedAt": "2026-10-06T11:37:29.577Z"
+          }
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-030 has no valid Red evidence for REQ-ASTRUCT-060 before its Red phase.",
+          "changeId": "CHANGE-030",
+          "requirementId": "REQ-ASTRUCT-060",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+            "recordedAt": "2026-10-06T11:37:30.731Z"
+          }
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-030 has no valid Green evidence for REQ-ASTRUCT-060 before its Green phase.",
+          "changeId": "CHANGE-030",
+          "requirementId": "REQ-ASTRUCT-060",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+            "recordedAt": "2026-10-06T11:37:31.278Z"
+          }
         }
       ]
     },
@@ -3487,7 +3586,7 @@
       "name": "change-completeness",
       "required": true,
       "status": "fail",
-      "summary": "17/21 staged change(s) have semantically complete evidence.",
+      "summary": "18/22 staged change(s) have semantically complete evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_WAIVER_STALE",
@@ -4581,6 +4680,42 @@
             "reason": "Background-agent handoff recorded change-record red/implementation/green/quality phases before the parent session could run real tdd red/green cycles (ask_user unavailable to the agent). Genuine passing Red-Green TDD evidence for REQ-AIDS-096 now exists in .musubix/evidence/tdd.json (TEST-AIDS-294/298/304), confirmed by direct test execution; only the change-record phase ordering is retroactively out of sequence.",
             "recordedAt": "2026-10-06T10:19:55.388Z"
           }
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "warning",
+          "message": "CHANGE-030:REQ-AGENOM-080 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-030",
+          "requirementId": "REQ-AGENOM-080",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+            "recordedAt": "2026-10-06T11:37:28.367Z"
+          }
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "warning",
+          "message": "CHANGE-030:REQ-AIMS-080 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-030",
+          "requirementId": "REQ-AIMS-080",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+            "recordedAt": "2026-10-06T11:37:30.168Z"
+          }
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "warning",
+          "message": "CHANGE-030:REQ-ASTRUCT-060 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-030",
+          "requirementId": "REQ-ASTRUCT-060",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+            "recordedAt": "2026-10-06T11:37:31.903Z"
+          }
         }
       ]
     },
@@ -4589,9 +4724,9 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/ruff: completed, exit 0.",
-      "durationMs": 27,
+      "durationMs": 24,
       "exitCode": 0,
-      "stdout": "209 files already formatted\n",
+      "stdout": "212 files already formatted\n",
       "stderr": ""
     },
     {
@@ -4599,9 +4734,9 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/pytest: completed, exit 0.",
-      "durationMs": 57575,
+      "durationMs": 55201,
       "exitCode": 0,
-      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.14.4, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change029\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, json-report-1.5.0, Faker-40.41.0, metadata-3.1.1, platformdirs-4.12.3\ncollected 635 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  0%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  3%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  4%]\n....                                                                     [  5%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [  9%]\n.....                                                                    [  9%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 11%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 12%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 12%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 13%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 14%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 15%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 16%]\ntests/test_ai_chemistry_scientist_salt_standardization.py ........       [ 17%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 19%]\ntests/test_ai_chemistry_scientist_structure_format_conversion.py ....... [ 20%]\n                                                                         [ 20%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 21%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 21%]\ntests/test_ai_genomics_scientist_differential_expression.py ...          [ 21%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 22%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 22%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 23%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 23%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 23%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 24%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 24%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 24%]\ntests/test_ai_genomics_scientist_variant_pathogenicity.py ...            [ 25%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 26%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 28%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 30%]\n...                                                                      [ 30%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 32%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 35%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 36%]\ntests/test_ai_materials_scientist_fem.py .................               [ 39%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 41%]\n                                                                         [ 41%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 43%]\n...                                                                      [ 44%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 46%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 47%]\ntests/test_ai_scientist_delegation.py ............                       [ 49%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 49%]\ntests/test_ai_scientist_mcp.py .............                             [ 51%]\ntests/test_ai_scientist_phase_state.py .........                         [ 52%]\ntests/test_ai_scientist_project_handle.py ...                            [ 53%]\ntests/test_ai_scientist_skill_packaging.py ......                        [ 54%]\ntests/test_ai_scientist_tdd_gate.py ....                                 [ 54%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 55%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 55%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 55%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 56%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 56%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 57%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 57%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 58%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 58%]\ntests/test_analysis_assumptions.py ....                                  [ 59%]\ntests/test_anomaly_detection.py .                                        [ 59%]\ntests/test_automl.py ....                                                [ 60%]\ntests/test_cleaning.py .                                                 [ 60%]\ntests/test_clustering.py ..                                              [ 60%]\ntests/test_dashboard.py .                                                [ 60%]\ntests/test_data_definition.py .....                                      [ 61%]\ntests/test_data_quality.py .....                                         [ 62%]\ntests/test_dataset_validation.py ......                                  [ 63%]\ntests/test_dependency_pins.py ...                                        [ 63%]\ntests/test_eda.py .....                                                  [ 64%]\ntests/test_example_readiness.py .                                        [ 64%]\ntests/test_experiment_evaluation.py .............................        [ 69%]\ntests/test_explainability.py ...........                                 [ 71%]\ntests/test_feature_engineering.py ..........                             [ 72%]\ntests/test_gate_config.py .                                              [ 72%]\ntests/test_ingestion.py ........                                         [ 74%]\ntests/test_insight_engine.py ........                                    [ 75%]\ntests/test_japanese_nlp.py .                                             [ 75%]\ntests/test_jupyter_mcp_client.py ..                                      [ 75%]\ntests/test_language_router.py .                                          [ 76%]\ntests/test_lifecycle.py .....                                            [ 76%]\ntests/test_mcp_gateway.py ......                                         [ 77%]\ntests/test_mcp_runtime.py ......                                         [ 78%]\ntests/test_mcp_runtime_integration.py .                                  [ 78%]\ntests/test_measure_pytest_pass_rate.py ...                               [ 79%]\ntests/test_ml_modeling.py ........                                       [ 80%]\ntests/test_model_tuning.py ....                                          [ 81%]\ntests/test_notebook_audit.py .......................                     [ 84%]\ntests/test_project_manager.py ..........                                 [ 86%]\ntests/test_release_gate_governance.py ....                               [ 87%]\ntests/test_report_export.py ...                                          [ 87%]\ntests/test_sensitivity.py .............                                  [ 89%]\ntests/test_signal_analysis.py .............                              [ 91%]\ntests/test_skill_packaging.py .                                          [ 91%]\ntests/test_stats_analysis.py ..........                                  [ 93%]\ntests/test_tech_writer_skill_packaging.py ......                         [ 94%]\ntests/test_text_nlp.py .                                                 [ 94%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ......................                       [100%]\n\n=============================== warnings summary ===============================\n.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:201\n  /home/nahisaho/GitHub/jupytermind-change029/.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:201: DeprecationWarning: codecs.open() is deprecated. Use open() instead.\n    with codecs.open(lexicon_full_filepath, encoding='utf-8') as f:\n\n.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:206\n  /home/nahisaho/GitHub/jupytermind-change029/.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:206: DeprecationWarning: codecs.open() is deprecated. Use open() instead.\n    with codecs.open(emoji_full_filepath, encoding='utf-8') as f:\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n======================= 635 passed, 2 warnings in 54.56s =======================\n",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.14.4, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change030\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, json-report-1.5.0, Faker-40.41.0, metadata-3.1.1, platformdirs-4.12.3\ncollected 638 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  0%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  3%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  4%]\n....                                                                     [  5%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [  9%]\n.....                                                                    [  9%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 11%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 12%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 12%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 13%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 14%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 15%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 16%]\ntests/test_ai_chemistry_scientist_salt_standardization.py ........       [ 17%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 18%]\ntests/test_ai_chemistry_scientist_structure_format_conversion.py ....... [ 20%]\n                                                                         [ 20%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 21%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 21%]\ntests/test_ai_genomics_scientist_differential_expression.py ...          [ 21%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 22%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 22%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 23%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 23%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 23%]\ntests/test_ai_genomics_scientist_skill_packaging.py .                    [ 23%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 24%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 24%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 24%]\ntests/test_ai_genomics_scientist_variant_pathogenicity.py ...            [ 25%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 26%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 28%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 30%]\n...                                                                      [ 30%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 32%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 35%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 36%]\ntests/test_ai_materials_scientist_fem.py .................               [ 39%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 41%]\n                                                                         [ 41%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 43%]\n...                                                                      [ 44%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 46%]\ntests/test_ai_materials_scientist_skill_packaging.py .                   [ 46%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 47%]\ntests/test_ai_scientist_delegation.py ............                       [ 49%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 49%]\ntests/test_ai_scientist_mcp.py .............                             [ 51%]\ntests/test_ai_scientist_phase_state.py .........                         [ 52%]\ntests/test_ai_scientist_project_handle.py ...                            [ 53%]\ntests/test_ai_scientist_skill_packaging.py ......                        [ 54%]\ntests/test_ai_scientist_tdd_gate.py ....                                 [ 55%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 55%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 55%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 55%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 56%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 56%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 57%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 57%]\ntests/test_ai_structural_biology_scientist_skill_packaging.py .          [ 57%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 58%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 59%]\ntests/test_analysis_assumptions.py ....                                  [ 59%]\ntests/test_anomaly_detection.py .                                        [ 59%]\ntests/test_automl.py ....                                                [ 60%]\ntests/test_cleaning.py .                                                 [ 60%]\ntests/test_clustering.py ..                                              [ 60%]\ntests/test_dashboard.py .                                                [ 61%]\ntests/test_data_definition.py .....                                      [ 61%]\ntests/test_data_quality.py .....                                         [ 62%]\ntests/test_dataset_validation.py ......                                  [ 63%]\ntests/test_dependency_pins.py ...                                        [ 64%]\ntests/test_eda.py .....                                                  [ 64%]\ntests/test_example_readiness.py .                                        [ 65%]\ntests/test_experiment_evaluation.py .............................        [ 69%]\ntests/test_explainability.py ...........                                 [ 71%]\ntests/test_feature_engineering.py ..........                             [ 72%]\ntests/test_gate_config.py .                                              [ 73%]\ntests/test_ingestion.py ........                                         [ 74%]\ntests/test_insight_engine.py ........                                    [ 75%]\ntests/test_japanese_nlp.py .                                             [ 75%]\ntests/test_jupyter_mcp_client.py ..                                      [ 76%]\ntests/test_language_router.py .                                          [ 76%]\ntests/test_lifecycle.py .....                                            [ 76%]\ntests/test_mcp_gateway.py ......                                         [ 77%]\ntests/test_mcp_runtime.py ......                                         [ 78%]\ntests/test_mcp_runtime_integration.py .                                  [ 78%]\ntests/test_measure_pytest_pass_rate.py ...                               [ 79%]\ntests/test_ml_modeling.py ........                                       [ 80%]\ntests/test_model_tuning.py ....                                          [ 81%]\ntests/test_notebook_audit.py .......................                     [ 84%]\ntests/test_project_manager.py ..........                                 [ 86%]\ntests/test_release_gate_governance.py ....                               [ 87%]\ntests/test_report_export.py ...                                          [ 87%]\ntests/test_sensitivity.py .............                                  [ 89%]\ntests/test_signal_analysis.py .............                              [ 91%]\ntests/test_skill_packaging.py .                                          [ 91%]\ntests/test_stats_analysis.py ..........                                  [ 93%]\ntests/test_tech_writer_skill_packaging.py ......                         [ 94%]\ntests/test_text_nlp.py .                                                 [ 94%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ......................                       [100%]\n\n=============================== warnings summary ===============================\n.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:201\n  /home/nahisaho/GitHub/jupytermind-change030/.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:201: DeprecationWarning: codecs.open() is deprecated. Use open() instead.\n    with codecs.open(lexicon_full_filepath, encoding='utf-8') as f:\n\n.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:206\n  /home/nahisaho/GitHub/jupytermind-change030/.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:206: DeprecationWarning: codecs.open() is deprecated. Use open() instead.\n    with codecs.open(emoji_full_filepath, encoding='utf-8') as f:\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n======================= 638 passed, 2 warnings in 52.10s =======================\n",
       "stderr": ""
     },
     {
@@ -4609,7 +4744,7 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/python: completed, exit 0.",
-      "durationMs": 55777,
+      "durationMs": 60901,
       "exitCode": 0,
       "stdout": "Measured pytest pass rate: 100% (status=passed); wrote .musubix/evidence/native/performance/TEST-AIDS-PYTEST-001.json\n",
       "stderr": ""
@@ -4618,7 +4753,7 @@
       "name": "test-identities",
       "required": false,
       "status": "pass",
-      "summary": "533/533 annotated test IDs passed in structured command reports.",
+      "summary": "536/536 annotated test IDs passed in structured command reports.",
       "diagnostics": []
     },
     {
@@ -4702,16 +4837,16 @@
     "trace.errors": 2,
     "graph.violations": 0,
     "formal.errors": 0,
-    "formal.modeledFraction": 0.06896551724137931,
+    "formal.modeledFraction": 0.06779661016949153,
     "commands.failures": 0,
     "commands.skipped": 0,
-    "tests.annotatedIds": 533,
-    "tests.executedIds": 533,
-    "tdd.cycles": 430,
+    "tests.annotatedIds": 536,
+    "tests.executedIds": 536,
+    "tdd.cycles": 433,
     "tdd.errors": 41,
-    "changes.count": 21,
-    "changes.errors": 38,
-    "changes.complete": 17,
+    "changes.count": 22,
+    "changes.errors": 40,
+    "changes.complete": 18,
     "changes.completenessErrors": 23,
     "performance.budgets": 1,
     "performance.errors": 0,
@@ -4725,26 +4860,62 @@
     "attestation.errors": 0,
     "approval.errors": 1,
     "coverage.design": 1,
-    "coverage.implementation": 0.9935897435897436,
-    "coverage.tests": 0.9935897435897436
+    "coverage.implementation": 0.9937106918238994,
+    "coverage.tests": 0.9937106918238994
   },
   "mode": "full",
   "feature": null,
   "changed": [
-    ".musubix/evidence/.writer-lock.json"
+    ".musubix/evidence/.writer-lock.json",
+    ".musubix/evidence/change-waivers.json",
+    ".musubix/evidence/changes.json",
+    ".musubix/evidence/formal.json",
+    ".musubix/evidence/model-correspondence.json",
+    ".musubix/evidence/native/test/aggregate.json",
+    ".musubix/evidence/order.json",
+    ".musubix/evidence/performance.json",
+    ".musubix/evidence/quality.json",
+    ".musubix/features/ai-chemistry-scientist/trace.json",
+    ".musubix/features/ai-data-scientist-ml/trace.json",
+    ".musubix/features/ai-data-scientist/trace.json",
+    ".musubix/features/ai-genomics-scientist/trace.json",
+    ".musubix/features/ai-materials-scientist/trace.json",
+    ".musubix/features/ai-scientist/trace.json",
+    ".musubix/features/ai-structural-biology-scientist/trace.json",
+    ".musubix/features/example/trace.json",
+    ".musubix/features/release-gate-governance/trace.json",
+    ".musubix/features/tech-writer/trace.json"
   ],
   "impacted": [],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "f14278d719a6bbaff3c8be8f12c2a8523c33c6ab",
+    "head": "65c8b66bc9625892e17103400958a2435aa4137c",
     "changed": [
-      ".musubix/evidence/.writer-lock.json"
+      ".musubix/evidence/.writer-lock.json",
+      ".musubix/evidence/change-waivers.json",
+      ".musubix/evidence/changes.json",
+      ".musubix/evidence/formal.json",
+      ".musubix/evidence/model-correspondence.json",
+      ".musubix/evidence/native/test/aggregate.json",
+      ".musubix/evidence/order.json",
+      ".musubix/evidence/performance.json",
+      ".musubix/evidence/quality.json",
+      ".musubix/features/ai-chemistry-scientist/trace.json",
+      ".musubix/features/ai-data-scientist-ml/trace.json",
+      ".musubix/features/ai-data-scientist/trace.json",
+      ".musubix/features/ai-genomics-scientist/trace.json",
+      ".musubix/features/ai-materials-scientist/trace.json",
+      ".musubix/features/ai-scientist/trace.json",
+      ".musubix/features/ai-structural-biology-scientist/trace.json",
+      ".musubix/features/example/trace.json",
+      ".musubix/features/release-gate-governance/trace.json",
+      ".musubix/features/tech-writer/trace.json"
     ],
     "impacted": [],
-    "generatedAt": "2026-10-06T10:23:27.577Z"
+    "generatedAt": "2026-10-06T11:42:17.884Z"
   },
   "fingerprints": {
-    ".git": "453df65b71c56454a4b999cfd5c3cfa3a46a86394eca54750242ff0857f0676c",
+    ".git": "9929d601d4afa1d3752ebe514d64b65467dc99f67a88bd6f3f3896e5fb56afc1",
     ".github/workflows/npm-publish.yml": "5b3c9cc9f02c8b7e32568958cf306ee241d1adb5af7ab4a0bf8bf06f7047f319",
     ".gitignore": "97fd517743b154fae6a98dee2dcd4ab177f5e9572d2b4dee7f4e9aa70a985bb8",
     ".musubix/changes/CHANGE-001.md": "cf237661c3c8d9734cdd0da6d1f1f6d56e3e68ccb89998020b79b46ca59536a7",
@@ -4772,7 +4943,10 @@
     ".musubix/changes/CHANGE-024.md": "c4908962af502e14b856a30529a6c90e4bf6894b71e8feb839cfb7a30260e2ee",
     ".musubix/changes/CHANGE-025.md": "d7a46edfa4abc045f1415b087f2d13a853739d7ca781d61c743fc23f95e6ef31",
     ".musubix/changes/CHANGE-026.md": "7f30b430a1d3e0e04f2fb628a1647c17feeb71c2d6a433eff6da2ee288768037",
-    ".musubix/changes/CHANGE-029.md": "cc6ea559558bfbffd508957fe5a4df7b4d10c44b5f2404de2ace2a1a8d67ff67",
+    ".musubix/changes/CHANGE-027.md": "db9f5098d55d03b55cc178fbd3b354d758186df877b5f96bb6ede906f7a30906",
+    ".musubix/changes/CHANGE-028.md": "93147b0ff5eb4671053d6547f9151afdee61449fab6ad3d13b825ed07c8b8d9d",
+    ".musubix/changes/CHANGE-029.md": "700bf66eb09c84a09f655a2dccc42c0c8b177e5f5e4f135dac8a9a085eda9b43",
+    ".musubix/changes/CHANGE-030.md": "ef22da59cf90f45bce145426dd6e1cd9de1212a61f837624b9d601cbc6db0106",
     ".musubix/config.json": "81578b411a6ebe138e002fe2f638376c873b59b8688c73a27fb3c0ad2855be78",
     ".musubix/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
     ".musubix/decisions/ADR-0001.md": "6e21f1b375cfa1aabdf058b1dc987f94974dc23571fe60e94ba340dc48295b0f",
@@ -4887,20 +5061,21 @@
     ".musubix/decisions/ADR-0110.md": "9f5d3e60fc9f1eafabb79e441dea28a01aa3cf7f01abe1d9005c70b4dff9e545",
     ".musubix/decisions/ADR-0111.md": "404ccc6267e4e632d32c3646b67b70d33e82f7e590f1f26b6635516032b1d42f",
     ".musubix/decisions/ADR-0112.md": "3d657bf3efb82689800aed1052a9ba8e11ad41b0d01591f0b838b57e208dcc45",
+    ".musubix/decisions/ADR-0113.md": "cf1f3e62579dd60a804fc56a3e56300f307d60529765a2837ed76cc910a52329",
     ".musubix/features/ai-chemistry-scientist/design.md": "8e481cbe118058045c6a14341e1c2ffebea76cf4041648e997575e611a6e190a",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "0b484f322aeffc84e7d54466dfb07547bd7e8cbe2f4f0500ef75f5c460e1b4a6",
     ".musubix/features/ai-data-scientist/design.md": "5226100ecf513a106b76149a7ca867b75f2935965015dc34c7cb601dfcf3508f",
     ".musubix/features/ai-data-scientist/requirements.md": "bc2916d5ce3f32a215dc26480d9023826d38abebb1b222ff826299ec43edc714",
     ".musubix/features/ai-data-scientist-ml/design.md": "19f497b16bb5c33be5dac4eef5310e5a1a3a1fe38d086ec8b017014034c16e15",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
-    ".musubix/features/ai-genomics-scientist/design.md": "b93e683c2e64daafe6495e5b257b4879866fc85b550cc491b012d1bbe9781a1a",
-    ".musubix/features/ai-genomics-scientist/requirements.md": "df8776347a19ff1d225d86400d1f0b60707dcb59437cd0a36f13ea605dab414a",
-    ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
-    ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
+    ".musubix/features/ai-genomics-scientist/design.md": "ac15e5c1802fe8f8cb4e704ce2ebcaceffd79ea821999f1283b3ae373748452e",
+    ".musubix/features/ai-genomics-scientist/requirements.md": "941566b3f492485597a68280e99c1cd605d603fc63d2511ce9363caccca65c05",
+    ".musubix/features/ai-materials-scientist/design.md": "91e38ea4d872bdf951e8b89b317ba384c721154d79baa6e23c34b52a8516c8dd",
+    ".musubix/features/ai-materials-scientist/requirements.md": "ec1042bb0d869dfe9048f68397d495fcda505c1e4b40349313dd2e1aedbf4ceb",
     ".musubix/features/ai-scientist/design.md": "5ea46f0a980670f973bad97b5875daeeb3febc2da11626f5a72b6138d303553c",
     ".musubix/features/ai-scientist/requirements.md": "62ad1db84c784be4a546db60ccf2011b3c6f489fb732319f14bf252134c4501c",
-    ".musubix/features/ai-structural-biology-scientist/design.md": "7b9e7f5b3eff9321cabf4813bdca7a4a11b80c54a93ad3db50c925eca4f81955",
-    ".musubix/features/ai-structural-biology-scientist/requirements.md": "ade8184daef2095e8a9da33e99125fe63ed81485af7f09caa5c8f227d670506c",
+    ".musubix/features/ai-structural-biology-scientist/design.md": "96c1d5c710135160dcf46ebe2275c99e4bbf0e2f45714e7ddd13159acc1d23f1",
+    ".musubix/features/ai-structural-biology-scientist/requirements.md": "0878083e60d4a5071147950030cbac059d19dac79d21d28a739859d951b91c3a",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
     ".musubix/features/release-gate-governance/design.md": "85a64aaf7f6e14b0e7e81a8a882ed07d19142de91e34b96b2067a49aad308e2b",
@@ -4912,17 +5087,17 @@
     ".pytest_cache/CACHEDIR.TAG": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
     ".pytest_cache/README.md": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
     ".pytest_cache/v/cache/lastfailed": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
-    ".pytest_cache/v/cache/nodeids": "f4ef5a616ad003fa9041564b099b5ed80335ef62298be0d2a0185591a688612b",
+    ".pytest_cache/v/cache/nodeids": "6564a98205aa4054aea96f5e79fd24e2f646b3609603615710dbd5a94e2ed215",
     ".ruff_cache/.gitignore": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
-    ".ruff_cache/0.16.10/16650562717278187172": "f1ebf086dc2804ecebc7f05b260d5301a1f0d79f8a1667e1ebacf6593558e226",
-    ".ruff_cache/0.16.10/17107637989731893915": "8f5b0f9622a47afdb1ef2048b57c84c3aba9bccc631357ba3cd0c26d170baf59",
-    ".ruff_cache/0.16.10/17846665151851919834": "9d636bb9555ece144b60bd088f1581f96ae8bf57a56226b2055a9060e8a34553",
-    ".ruff_cache/0.16.10/2912225286112712296": "baa1918fc735a334b3f424bef155c420f221bd282507916e8490668d719afc23",
-    ".ruff_cache/0.16.10/3682172360453206556": "bce019867af5110aad0c7db55b5d8d70c6da8355e8d46c853828085db83b1f88",
-    ".ruff_cache/0.16.10/5212385289420716050": "1a359cbb4b7d2900e4326770647f092a8d8dad604ff6444624d7b4f318ab1931",
-    ".ruff_cache/0.16.10/5950194697529101549": "407f87f14023bda75dce3f9cc0f9324a88607b491020b2d80d7c90cb8a79dd8f",
-    ".ruff_cache/0.16.10/6135104141654622358": "bb6c5b6e6d84aec8a1b2964ca5d6800d038fd342c6ee04d026a70180dddd05cb",
-    ".ruff_cache/0.16.10/6656520977265296913": "87cfc4aff43ed60a039c437d54387bccad2aa27315d4520ff2562a93fb011974",
+    ".ruff_cache/0.16.10/10285778244514504283": "78c48a3be1885bcdb4f6ed0f86bd07720fc693c5ead481f3dc5ca8bccdcd3617",
+    ".ruff_cache/0.16.10/15642985537988434502": "a41945f775b5b97bcad029153e83f731fb917a44b1471c2a62adc279dea74762",
+    ".ruff_cache/0.16.10/2486284024795572880": "6b6c1e7901012044e7dcf44e7fe92a6aa2cc497ff51f3df19d7bccc52e7d98a7",
+    ".ruff_cache/0.16.10/2582688194457596840": "397bb6ac7c721f5a74f27dc77fcc19be4bdf113f69b8cfab94302502c6f4dc5c",
+    ".ruff_cache/0.16.10/3171746865336717034": "89b181b1060345a02d01b9e55425955ec11b134393deabd6a591c0b74da0c34f",
+    ".ruff_cache/0.16.10/5719967036836190256": "dc60c98341fe9e1350c9cc2d8ae66165640fbf767e03caa69ee45c6811cf02e6",
+    ".ruff_cache/0.16.10/6702105787568017182": "e5907dc5c8e5ffbd165610609e55708f04f71ab8b7b4d9b574f3ecac549d73e7",
+    ".ruff_cache/0.16.10/810253778843154348": "33dfb71fce0fca656dc3dd1a43ab6202651e37d2f92cc0b01c169eea6559736f",
+    ".ruff_cache/0.16.10/8389704671843380998": "81332621bcad81b21ba38dbe39065e7921aaa2cd16951b50dbbcd92567c75822",
     ".ruff_cache/CACHEDIR.TAG": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
     "benchmark/figures/exp-01-age-and-fare-distributions.png": "f46cd2e5602c1be1d67438859f0bd18e36152c055dcc5e851222207da3962b24",
     "benchmark/figures/exp-01-passenger-ticket-bootstrap-intervals.png": "b7bf972ca94747e7fdcea6cba792536347773d56de33757135b0b8b77890afe1",
@@ -5745,11 +5920,11 @@
     "bin/ai-data-scientist.js": "f70c764374ee721ebe18b26ed2f3da6ddd896d3c7bc5520c10f8fc0e70fd85da",
     "CHANGELOG.md": "11e644e49b90da25160e139ed63980ba1cd1c9c643949b1e86680c95b7cef224",
     "LICENSE": "3363377bb6dce0fc69aff81727073c71f93a9dcfce3d42c7f64bcebef644b726",
-    "package-lock.json": "3a66e0dbd232dac6a4a7e399d2dd9e312db7a4e6e899a47cf01b32d80feff76e",
-    "package.json": "768a07c55d0cc032bd78b31146bac0fce268beb58ec723f7aa40c2ac29d5e2d8",
+    "package-lock.json": "035922783807dd36e22cac198c18833c0461626677407c74ce577f850c7cd12c",
+    "package.json": "289281be9b8b3b7d8e6fa08fdc490068102cb6f1f41319a9f22ad833ee2754f7",
     "pyproject.toml": "176e0f906fec955f6b72376f2322a8cb6af2f0ea3f2ce3f457d4d905e28a2f45",
-    "README-ja.md": "5b3ae9d1809163a0c7a30c3303ed974a4d298deb4f7d3cef6dc5f5a4e29d97ab",
-    "README.md": "edf94833a395f2de4e37925e9ab591ba902424f954d9265827e6f7f0f6ca9525",
+    "README-ja.md": "ebc166e8c515013d06a1d34fde1beebe641d1489624c8adc33896f09eb85dcb6",
+    "README.md": "40e521f3b0d640d03f00d323da4c2f0725eb633c032cd2850f4ebef57ea6ac8d",
     "scripts/measure_pytest_pass_rate.py": "517ef67da322f01b224fb164746cdcdd777bc7970a4cc0d7a3ea00222d4e674e",
     "scripts/release_gate_governance.py": "4b9c6e390e03cf7d88480745ff99e7bd12579570b862df66bfc0718e6313887a",
     "src/ai_chemistry_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -5810,7 +5985,7 @@
     "src/ai_data_scientist.egg-info/dependency_links.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
     "src/ai_data_scientist.egg-info/PKG-INFO": "01420039d8c0826eb547b448f1c0ffa7fff07032cedafdf4f3ee8286bfb4392f",
     "src/ai_data_scientist.egg-info/requires.txt": "39fcfae1777373f54993224602faf22b106e28ec6c519e47307985b53cf0ff33",
-    "src/ai_data_scientist.egg-info/SOURCES.txt": "531738a0d13a187289ce240b02f043c6833c533d001174f4ff829336c62c3276",
+    "src/ai_data_scientist.egg-info/SOURCES.txt": "35becbed272ec81b7dfa6b7b715da70b55f1be156478b14b473458585fede9bc",
     "src/ai_data_scientist.egg-info/top_level.txt": "62e376ff3cef479358fa1c3764f53787a9f93b190155c717acca941990f62049",
     "src/ai_genomics_scientist/__init__.py": "0c9f1f38b2e526b4169a2b06b4bb78548a18464925a029d6309597ee327fb048",
     "src/ai_genomics_scientist/data/sample_gene_sets.csv": "81dba276c7cc0a89d2ac835dfe2a7aa1a896f884a5100bb8d1ceaf3e6e6cf8ff",
@@ -5850,7 +6025,7 @@
     "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
     "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
     "src/ai_scientist/mcp_managed.py": "7192af169723004bcc300cba34d337c3d821551cb0660c3cda45064740a83ffb",
-    "src/ai_scientist/npm_packaging.py": "530156b7582d72630aa039c2a552c4a39f568bbe86d6c77aa8f88f7cdd5f6141",
+    "src/ai_scientist/npm_packaging.py": "be42fd82e686896974f7d15f4fb1f962c929cac5d55c4249f72178d01d6d2c6f",
     "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
     "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
     "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
@@ -5896,6 +6071,7 @@
     "tests/test_ai_genomics_scientist_gene_set_enrichment.py": "2e6f80d1e53028aaef1a5a5046bb2b6c3828e57caf1e54e4ab03157e18042650",
     "tests/test_ai_genomics_scientist_sequence_alignment.py": "0fec83a3357b5ed69543ccdc1e152fbc2c19bfac16f696d10d7c46751708bac7",
     "tests/test_ai_genomics_scientist_sequence_features.py": "09171af0300950d814a159aff53903c46cf2abb9ca8537cdc8d43d9034c08637",
+    "tests/test_ai_genomics_scientist_skill_packaging.py": "f2bdb991db2e10869a89d780f59c9e5421a27ba766b9686d4b6eb696f4e204bb",
     "tests/test_ai_genomics_scientist_splice_site_scoring.py": "3df20204097f1d75c108675e8911a2ae61e7dc62b004159d26fb6be4b4c411f6",
     "tests/test_ai_genomics_scientist_validation.py": "d6277f438960afbd72e5c43cf7c17830d4062e505852aeff15910e2cb8b8b193",
     "tests/test_ai_genomics_scientist_variant_effect.py": "a12c32b10de9130ce61a0e195d52ae61bfd0a3e7419567a72add0eb801323437",
@@ -5910,6 +6086,7 @@
     "tests/test_ai_materials_scientist_kinetic_monte_carlo.py": "112fec73a96c8ba05662a8af85d7ef3397c119ceecc8ca9fef3e17ebfe2e985e",
     "tests/test_ai_materials_scientist_molecular_dynamics.py": "3b289ed173478e64502bb822e32f022475de661e8c364b7c860eabbe5bb67ebd",
     "tests/test_ai_materials_scientist_phase_field.py": "003834f3ff975f434db91e0dc95b0a4e7f79c96823e32390908abf1987b71dca",
+    "tests/test_ai_materials_scientist_skill_packaging.py": "9856d7eec91d4d6d0040951794094d8deb817efb4f0b160ea8d6bff7931f28b9",
     "tests/test_ai_materials_scientist_validation.py": "e5856eceab201910ac5192aa414b2aa44ab274db360f9e1a6cd19eeb5a1201f0",
     "tests/test_ai_scientist_delegation.py": "b7e919785ed77b2eca3893f0c791ac283b9714c72d7abf76dcc5595268a31dbb",
     "tests/test_ai_scientist_evidence_registry.py": "e56432547cce3850a3837d9a2374f2a57be9f7fc03ec262fcb9f2bae7f319918",
@@ -5925,6 +6102,7 @@
     "tests/test_ai_structural_biology_scientist_hydrophobicity.py": "31df5a6be567df6652a731e7d3551e49395e597407d2c42c3ffb72861e5d4705",
     "tests/test_ai_structural_biology_scientist_protein_docking_score.py": "0f181c37eafb2a32a2f0594841f8e842c34ed7789b4fcb58753666ec861d8beb",
     "tests/test_ai_structural_biology_scientist_secondary_structure.py": "025fe0a963cb8eba56ac12d406fc6dd2792c10f74ef079701b2cefaf9cde714f",
+    "tests/test_ai_structural_biology_scientist_skill_packaging.py": "56ca979de45897fd7ba1adde4d6ae1cd345e15457ba7d014f72c2418830d77e2",
     "tests/test_ai_structural_biology_scientist_structural_similarity.py": "660725e1ac8fa3636fcd7b8ab419d2b0b6c9430034312ddeec7daa98e16fafdc",
     "tests/test_ai_structural_biology_scientist_validation.py": "ca34fe16e9c0651f2f884b4831330ca1d652032dd2b16b515d8511e2e791b917",
     "tests/test_analysis_assumptions.py": "665331b6baaeb624bd3562989a6925c4e80a269d2d0dfce93c3acbe7b21731d8",
@@ -8009,6 +8187,78 @@
       "approver": "nahisaho",
       "reason": "Background-agent handoff recorded change-record red/implementation/green/quality phases before the parent session could run real tdd red/green cycles (ask_user unavailable to the agent). Genuine passing Red-Green TDD evidence for REQ-AIDS-096 now exists in .musubix/evidence/tdd.json (TEST-AIDS-294/298/304), confirmed by direct test execution; only the change-record phase ordering is retroactively out of sequence.",
       "recordedAt": "2026-10-06T10:19:55.388Z"
+    },
+    {
+      "changeId": "CHANGE-030",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AGENOM-080",
+      "approver": "nahisaho",
+      "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+      "recordedAt": "2026-10-06T11:37:27.312Z"
+    },
+    {
+      "changeId": "CHANGE-030",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AGENOM-080",
+      "approver": "nahisaho",
+      "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+      "recordedAt": "2026-10-06T11:37:27.846Z"
+    },
+    {
+      "changeId": "CHANGE-030",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AGENOM-080",
+      "approver": "nahisaho",
+      "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+      "recordedAt": "2026-10-06T11:37:28.367Z"
+    },
+    {
+      "changeId": "CHANGE-030",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIMS-080",
+      "approver": "nahisaho",
+      "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+      "recordedAt": "2026-10-06T11:37:28.975Z"
+    },
+    {
+      "changeId": "CHANGE-030",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIMS-080",
+      "approver": "nahisaho",
+      "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+      "recordedAt": "2026-10-06T11:37:29.577Z"
+    },
+    {
+      "changeId": "CHANGE-030",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIMS-080",
+      "approver": "nahisaho",
+      "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+      "recordedAt": "2026-10-06T11:37:30.168Z"
+    },
+    {
+      "changeId": "CHANGE-030",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-ASTRUCT-060",
+      "approver": "nahisaho",
+      "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+      "recordedAt": "2026-10-06T11:37:30.731Z"
+    },
+    {
+      "changeId": "CHANGE-030",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-ASTRUCT-060",
+      "approver": "nahisaho",
+      "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+      "recordedAt": "2026-10-06T11:37:31.278Z"
+    },
+    {
+      "changeId": "CHANGE-030",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-ASTRUCT-060",
+      "approver": "nahisaho",
+      "reason": "Genuine TDD Red-Green evidence was captured correctly (test failed against a temporarily-broken package.json before the fix, then passed after restoring the fix) and chronologically precedes change-record red/implementation/green for this requirement. However, the TDD green cycle's recorded order precedes (not strictly follows) the change-record implementation phase's order, so the CLI's order-window validity check (cycle.green.order > implementation.order) cannot recognize it as satisfying the batch, even though the underlying evidence is valid and the fix is correct. This is the same CHANGE-029-precedent ordering quirk (musubix3 change-record phase ordering vs actual TDD evidence timing), not a new defect or missing test; verified by rerunning pytest: all 3 new tests pass against the current committed package.json.",
+      "recordedAt": "2026-10-06T11:37:31.903Z"
     }
   ],
   "workflowWaivers": [],
