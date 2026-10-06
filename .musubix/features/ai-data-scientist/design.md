@@ -1533,3 +1533,6 @@ dependency used elsewhere in this package via `scipy.stats`, e.g.
 `stats_analysis.py`) and `numpy` (already a transitive dependency of
 `scipy`/`pandas`) — and must not introduce any new third-party
 dependency.
+Requirements: REQ-AIDS-094 REQ-AIDS-095 REQ-AIDS-096
+ADRs: ADR-0112
+Depends-On: DES-AIDS-044
