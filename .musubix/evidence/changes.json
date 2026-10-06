@@ -12675,6 +12675,29 @@
             }
           },
           "order": 1343
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-06T06:45:06.476Z",
+          "fingerprints": {
+            "impact": "6919d617d57969d93971e035f8d48292c46b3e9143fe87399c4d4556707e9706",
+            "requirements": "060b99518f4ba476a6f7c471fa8cd4a2bc132451a6b3e210d7a63bf6084d583a",
+            "design": "0390dda3e3dca5f57d1c02166e532a86c1ad57d50dbf4b40e796094ba1c81768",
+            "implementation": "252c2c8d1b9dee94bb51a670caa47be0978574bafa4a47d7de60a10f55177f52",
+            "tests": "dca20cd91197f4e0a7bf2eb3c6b0297f5d142bd9af0d007050affb426822d775",
+            "tdd": "1ce5c14c8d3e4d959cc12df980c2cdd28828d493244783910a6b4c33ff5728c8",
+            "requirementImplementations": {
+              "REQ-AIDS-044": {
+                "paths": [
+                  "src/ai_data_scientist/project_manager.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05"
+                }
+              }
+            }
+          },
+          "order": 1344
         }
       }
     }

@@ -1316,3 +1316,89 @@ Constraints: Must not mutate the figure or require a canvas redraw beyond what t
 Requirements: REQ-AIDS-088
 ADRs: ADR-0098
 Depends-On: DES-AIDS-048, DES-AIDS-049, DES-AIDS-059
+
+## DES-AIDS-093: Slug-verified ancestor-directory discovery of an existing projects root / スラッグ検証付きprojects_root祖先ディレクトリ探索
+Responsibilities: Extend `_default_projects_root()` (DES-AIDS-032), now
+threading the requested project `name` through to it, with a
+second-priority discovery step that runs only when
+`AI_DATA_SCIENTIST_PROJECTS_ROOT` is unset: starting from the module-level
+`_IMPORT_TIME_CWD` constant (never a fresh `Path.cwd()` call — the whole
+point is to use the value already captured once at import time, per
+DES-AIDS-032; `_IMPORT_TIME_CWD` is already the OS-canonical path returned
+by `Path.cwd()`/`os.getcwd()`, so this discovery step operates on physical
+paths only and makes no separate promise about preserving a lexical
+symlink component) and walking it plus every ancestor (including
+`_IMPORT_TIME_CWD` itself as the first candidate), return the nearest
+candidate directory `A` such that `A.name == "projects"` **and**
+`(A / name).is_dir()` — i.e., the candidate is not just named `projects`,
+it must already contain a subdirectory matching the *specific project
+name being resolved*. Treat that `A` directly as the discovered
+projects_root (not `<A>/projects` — `A` *is* the root). If no ancestor
+satisfies both conditions, fall back unchanged to DES-AIDS-032's existing
+`<import-time cwd>/projects` default. Tying the match to the requested
+project's own slug (rather than basename alone) is what makes the rule
+unambiguous: it lets a freshly started process/kernel whose own
+import-time cwd has already drifted inside an existing
+`projects/<slug>/...` tree (for example `.../projects/<slug>/notebooks`)
+rediscover that same tree's root by walking upward to the nearest
+ancestor that is both named `projects` and already contains `<slug>`,
+while an unrelated ancestor that merely happens to be named `projects` —
+whether a personal development workspace convention like `~/projects`, or
+some other project's own nested directory that happens to be named
+`projects` but does not contain *this* slug — is skipped because it fails
+the `(A / name).is_dir()` test, so the walk continues outward (or falls
+back to the default) instead of misidentifying it as the root. This also
+resolves the one case a basename-only rule could not: a project whose own
+slug is literally `"projects"` still disambiguates correctly, because the
+inner `<root>/projects` slug-directory does not itself contain a further
+`projects/projects` subdirectory (so it fails the containment test) while
+the true outer root does contain `projects` (the slug) as a child.
+Interfaces: `_default_projects_root(name: str) -> Path` (module-private;
+gains the `name` parameter so it can check slug-containment — `name` is
+already validated against `_SLUG_PATTERN` by the time `resolve_project`
+calls this helper, so no additional validation is needed here). A new
+module-private `_discover_ancestor_projects_root(start: Path, name: str)
+-> Path | None` performs the ancestor walk in isolation so it can be
+unit-tested directly in addition to the required subprocess-based
+regression test.
+Constraints: `AI_DATA_SCIENTIST_PROJECTS_ROOT` must still take strict
+precedence over ancestor discovery, exactly as DES-AIDS-032 established;
+the ancestor walk must terminate at the filesystem root (no infinite loop
+on `Path.parent` of the root); basename matching is exact and
+case-sensitive (`"projects"`, no substring/prefix matching such as
+`my_projects` or `projects_old`); the discovered directory is returned
+as-is as the projects_root (callers already append `<slug>` beneath it),
+it must not be re-suffixed with another `/projects`; this is strictly
+additive to DES-AIDS-032 and must not change behavior for any process
+whose cwd is not already inside a `projects`-named ancestor that contains
+this project's slug; a project whose own slug happens to be `"projects"`
+remains a fully valid, unreserved slug — no new slug-validation
+restriction is introduced by this design. Required regression-test
+scenarios (all subprocess-based per the next paragraph): (1) drifted
+`notebooks` cwd, env var unset, discovers the correct pre-existing root;
+(2) same drifted cwd, env var set to a distinct root, env var wins; (3) no
+ancestor both named `projects` and containing this slug anywhere, falls
+back to `<import-time cwd>/projects`; (4) cwd sits beneath an unrelated
+ancestor literally named `projects` that does not yet contain this
+project's slug (e.g. a `~/projects/<repo>` personal workspace layout),
+confirming the walk does not misfire and still falls back to
+DES-AIDS-032's default; (5) cwd sits beneath another project's own nested
+directory that happens to be named `projects` but does not contain this
+slug, confirming the walk skips it and continues outward (or falls back)
+rather than selecting it; (6) cwd itself is exactly a directory named
+`projects` that already contains this slug, selected immediately as the
+zero-th candidate; (7) a project whose slug is literally `"projects"`
+round-trips correctly end-to-end (`ensure_notebook(resolve_project("projects"))`
+from a drifted-cwd new process resolves to the same pre-existing notebook,
+with no additional nesting); (8) an ancestor literally named `projects`
+whose would-be slug entry exists but is a regular file, not a directory,
+is treated as a non-match (`is_dir()` false) and the walk continues
+outward or falls back, rather than raising or misresolving; (9) two
+ancestors both satisfy `name == "projects"` and contain the requested
+slug (e.g. a leftover/duplicated tree further up the ancestry) — the
+nearer one (encountered first while walking from `_IMPORT_TIME_CWD`
+outward) is selected, confirming walk order is deterministic nearest-first
+and does not require inspecting the outer candidate.
+Requirements: REQ-AIDS-093
+ADRs: ADR-0111
+Depends-On: DES-AIDS-032
