@@ -272,8 +272,10 @@ glob expansion, not the literal glob string) is a member of
 Constraints: The authoritative packaged-artifact proof is the dry-run
 pack listing, not only static inspection of `package.json`. This guard
 covers npm distribution completeness only; Python package discovery
-continues to rely on existing `src/` layout conventions, unchanged by
-this design. New tests must import and reuse
+continues to rely on setuptools auto-discovery from `pyproject.toml`
+`where = ["src"]` (unchanged by this design), so no explicit static
+Python package list is required unless that project configuration
+changes in the future. New tests must import and reuse
 `src/ai_scientist/npm_packaging.py`'s helpers rather than redefining
 equivalent logic.
 Requirements: REQ-AIMS-080

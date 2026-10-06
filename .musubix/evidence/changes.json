@@ -12995,6 +12995,71 @@
           "order": 1351
         }
       }
+    },
+    {
+      "changeId": "CHANGE-030",
+      "requirementIds": [
+        "REQ-AGENOM-080",
+        "REQ-AIMS-080",
+        "REQ-ASTRUCT-060"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-06T11:12:26.308Z",
+          "fingerprints": {
+            "impact": "eb5b1ac6c4f4ebd485d6ebf0c0db9caef35cf457401abdd24f8b8513f4288b85",
+            "requirements": "bbf0fe98a553234c9ba8c770f1793b08e79ac324805d51c581427df66ca57ca8",
+            "design": "7490e57b85c9837d8a123f8920717f514a8ff09736ff259eced93222565ba88e",
+            "implementation": "9a46e1821c095d38ef6e8e48dd9c0486b657754668d5e235a85d45ba30f73413",
+            "tests": "bad9f1af0476f85ecb19355e2b82eb287d4efa6ee0a5a10cf89a96395a143ce2",
+            "tdd": "ce4ae1ce18c984dc0167009ed8b08d461e6b808c70e857ecc22b2cb207221125",
+            "requirementImplementations": {
+              "REQ-AGENOM-080": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-080": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ASTRUCT-060": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 1367
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-06T11:12:45.655Z",
+          "fingerprints": {
+            "impact": "eb5b1ac6c4f4ebd485d6ebf0c0db9caef35cf457401abdd24f8b8513f4288b85",
+            "requirements": "bbf0fe98a553234c9ba8c770f1793b08e79ac324805d51c581427df66ca57ca8",
+            "design": "7490e57b85c9837d8a123f8920717f514a8ff09736ff259eced93222565ba88e",
+            "implementation": "9a46e1821c095d38ef6e8e48dd9c0486b657754668d5e235a85d45ba30f73413",
+            "tests": "bad9f1af0476f85ecb19355e2b82eb287d4efa6ee0a5a10cf89a96395a143ce2",
+            "tdd": "ce4ae1ce18c984dc0167009ed8b08d461e6b808c70e857ecc22b2cb207221125",
+            "requirementImplementations": {
+              "REQ-AGENOM-080": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-080": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ASTRUCT-060": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 1368
+        }
+      }
     }
   ]
 }
