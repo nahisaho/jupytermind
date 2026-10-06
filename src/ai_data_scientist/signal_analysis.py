@@ -34,6 +34,9 @@ _ASLS_P = 0.001
 _ASLS_N_ITER = 10
 
 
+# @id CODE-AIDS-140
+# @implements REQ-AIDS-094 REQ-AIDS-095
+# @design DES-AIDS-094
 def _coerce_xy(
     x: Sequence[float], y: Sequence[float], *, min_len: int = 2
 ) -> tuple[np.ndarray, np.ndarray]:
@@ -101,6 +104,9 @@ def baseline_correct(x: Sequence[float], y: Sequence[float], method: str = "line
     return y_arr - baseline
 
 
+# @id CODE-AIDS-143b
+# @implements REQ-AIDS-095
+# @design DES-AIDS-094
 def _validate_window(window: Any, n: int) -> int:
     if not isinstance(window, numbers.Integral) or isinstance(window, bool):
         raise ValueError(  # noqa: TRY004 - ValueError required by REQ-AIDS-095
