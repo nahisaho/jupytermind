@@ -63,5 +63,31 @@
         "配列アラインメント"
       ]
     }
+  },
+  "differential-expression": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_differential_expression",
+    "names": {
+      "en": [
+        "differential-expression",
+        "differential expression analysis"
+      ],
+      "ja": [
+        "差次発現解析"
+      ]
+    }
+  },
+  "variant-pathogenicity": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_variant_pathogenicity",
+    "names": {
+      "en": [
+        "variant-pathogenicity",
+        "variant pathogenicity prediction"
+      ],
+      "ja": [
+        "バリアント病原性予測"
+      ]
+    }
   }
 }

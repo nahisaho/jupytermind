@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T20:21:42.940Z",
+  "generatedAt": "2026-10-06T04:48:21.267Z",
   "status": "fail",
   "checks": [
     {
@@ -49,7 +49,7 @@
       "name": "formal",
       "required": false,
       "status": "pass",
-      "summary": "12/161 requirements modeled; consistency consistent; solver not-requested.",
+      "summary": "12/163 requirements modeled; consistency consistent; solver not-requested.",
       "diagnostics": [
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -584,6 +584,16 @@
         {
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
+          "message": "REQ-AGENOM-060 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AGENOM-070 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
           "message": "REQ-AIMS-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
@@ -803,7 +813,7 @@
       "name": "workflow",
       "required": true,
       "status": "fail",
-      "summary": "47 workflow declaration(s) are not fully reconciled with Copilot invocation events.",
+      "summary": "48 workflow declaration(s) are not fully reconciled with Copilot invocation events.",
       "diagnostics": [
         {
           "code": "WORKFLOW_INVOCATION_UNVERIFIED",
@@ -816,7 +826,7 @@
       "name": "tdd",
       "required": true,
       "status": "fail",
-      "summary": "415 Red-Green TDD cycle(s) recorded.",
+      "summary": "421 Red-Green TDD cycle(s) recorded.",
       "diagnostics": [
         {
           "code": "TDD_REQUIREMENT_UNCOVERED",
@@ -4259,9 +4269,9 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/ruff: completed, exit 0.",
-      "durationMs": 38,
+      "durationMs": 32,
       "exitCode": 0,
-      "stdout": "198 files already formatted\n",
+      "stdout": "202 files already formatted\n",
       "stderr": ""
     },
     {
@@ -4269,16 +4279,16 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/pytest: completed, exit 0.",
-      "durationMs": 55349,
+      "durationMs": 67743,
       "exitCode": 0,
-      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change021\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 602 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  0%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  3%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  4%]\n....                                                                     [  5%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [  9%]\n.....                                                                    [ 10%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 11%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 12%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 13%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 14%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 15%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 16%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 17%]\ntests/test_ai_chemistry_scientist_salt_standardization.py ........       [ 18%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 20%]\ntests/test_ai_chemistry_scientist_structure_format_conversion.py ....... [ 21%]\n                                                                         [ 21%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 22%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 22%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 23%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 23%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 23%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 24%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 24%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 24%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 25%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 25%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 26%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 28%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 30%]\n...                                                                      [ 31%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 33%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 36%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 37%]\ntests/test_ai_materials_scientist_fem.py .................               [ 40%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 42%]\n                                                                         [ 42%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 45%]\n...                                                                      [ 45%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 48%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 49%]\ntests/test_ai_scientist_delegation.py ............                       [ 50%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 51%]\ntests/test_ai_scientist_mcp.py .............                             [ 53%]\ntests/test_ai_scientist_phase_state.py .........                         [ 54%]\ntests/test_ai_scientist_project_handle.py ...                            [ 55%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 56%]\ntests/test_ai_scientist_tdd_gate.py ....                                 [ 56%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 56%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 57%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 57%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 58%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 58%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 59%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 59%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 60%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 60%]\ntests/test_analysis_assumptions.py ....                                  [ 61%]\ntests/test_anomaly_detection.py .                                        [ 61%]\ntests/test_automl.py ....                                                [ 62%]\ntests/test_cleaning.py .                                                 [ 62%]\ntests/test_clustering.py ..                                              [ 62%]\ntests/test_dashboard.py .                                                [ 63%]\ntests/test_data_definition.py .....                                      [ 63%]\ntests/test_data_quality.py .....                                         [ 64%]\ntests/test_dataset_validation.py ......                                  [ 65%]\ntests/test_dependency_pins.py ...                                        [ 66%]\ntests/test_eda.py .....                                                  [ 67%]\ntests/test_example_readiness.py .                                        [ 67%]\ntests/test_experiment_evaluation.py .............................        [ 72%]\ntests/test_explainability.py ...........                                 [ 73%]\ntests/test_feature_engineering.py ..........                             [ 75%]\ntests/test_gate_config.py .                                              [ 75%]\ntests/test_ingestion.py ........                                         [ 77%]\ntests/test_insight_engine.py ........                                    [ 78%]\ntests/test_japanese_nlp.py .                                             [ 78%]\ntests/test_jupyter_mcp_client.py ..                                      [ 78%]\ntests/test_language_router.py .                                          [ 79%]\ntests/test_lifecycle.py .....                                            [ 79%]\ntests/test_mcp_gateway.py ......                                         [ 80%]\ntests/test_mcp_runtime.py ......                                         [ 81%]\ntests/test_mcp_runtime_integration.py .                                  [ 82%]\ntests/test_ml_modeling.py ........                                       [ 83%]\ntests/test_model_tuning.py ....                                          [ 84%]\ntests/test_notebook_audit.py .......................                     [ 87%]\ntests/test_project_manager.py ..........                                 [ 89%]\ntests/test_report_export.py ...                                          [ 90%]\ntests/test_sensitivity.py .............                                  [ 92%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 94%]\ntests/test_text_nlp.py .                                                 [ 94%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ......................                       [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n============================= 602 passed in 52.44s =============================\n",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change022\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 608 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  0%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  3%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  4%]\n....                                                                     [  5%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [  9%]\n.....                                                                    [ 10%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 11%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 12%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 13%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 14%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 14%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 16%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 17%]\ntests/test_ai_chemistry_scientist_salt_standardization.py ........       [ 18%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 19%]\ntests/test_ai_chemistry_scientist_structure_format_conversion.py ....... [ 21%]\n                                                                         [ 21%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 22%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 22%]\ntests/test_ai_genomics_scientist_differential_expression.py ...          [ 22%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 23%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 23%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 24%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 24%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 24%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 25%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 25%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 25%]\ntests/test_ai_genomics_scientist_variant_pathogenicity.py ...            [ 26%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 27%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 29%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 31%]\n...                                                                      [ 31%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 34%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 37%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 37%]\ntests/test_ai_materials_scientist_fem.py .................               [ 40%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 43%]\n                                                                         [ 43%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 45%]\n...                                                                      [ 46%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 48%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 49%]\ntests/test_ai_scientist_delegation.py ............                       [ 51%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 51%]\ntests/test_ai_scientist_mcp.py .............                             [ 53%]\ntests/test_ai_scientist_phase_state.py .........                         [ 55%]\ntests/test_ai_scientist_project_handle.py ...                            [ 55%]\ntests/test_ai_scientist_skill_packaging.py .....                         [ 56%]\ntests/test_ai_scientist_tdd_gate.py ....                                 [ 57%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 57%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 57%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 58%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 58%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 59%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 59%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 60%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 60%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 61%]\ntests/test_analysis_assumptions.py ....                                  [ 62%]\ntests/test_anomaly_detection.py .                                        [ 62%]\ntests/test_automl.py ....                                                [ 62%]\ntests/test_cleaning.py .                                                 [ 62%]\ntests/test_clustering.py ..                                              [ 63%]\ntests/test_dashboard.py .                                                [ 63%]\ntests/test_data_definition.py .....                                      [ 64%]\ntests/test_data_quality.py .....                                         [ 65%]\ntests/test_dataset_validation.py ......                                  [ 66%]\ntests/test_dependency_pins.py ...                                        [ 66%]\ntests/test_eda.py .....                                                  [ 67%]\ntests/test_example_readiness.py .                                        [ 67%]\ntests/test_experiment_evaluation.py .............................        [ 72%]\ntests/test_explainability.py ...........                                 [ 74%]\ntests/test_feature_engineering.py ..........                             [ 75%]\ntests/test_gate_config.py .                                              [ 75%]\ntests/test_ingestion.py ........                                         [ 77%]\ntests/test_insight_engine.py ........                                    [ 78%]\ntests/test_japanese_nlp.py .                                             [ 78%]\ntests/test_jupyter_mcp_client.py ..                                      [ 79%]\ntests/test_language_router.py .                                          [ 79%]\ntests/test_lifecycle.py .....                                            [ 80%]\ntests/test_mcp_gateway.py ......                                         [ 81%]\ntests/test_mcp_runtime.py ......                                         [ 82%]\ntests/test_mcp_runtime_integration.py .                                  [ 82%]\ntests/test_ml_modeling.py ........                                       [ 83%]\ntests/test_model_tuning.py ....                                          [ 84%]\ntests/test_notebook_audit.py .......................                     [ 87%]\ntests/test_project_manager.py ..........                                 [ 89%]\ntests/test_report_export.py ...                                          [ 90%]\ntests/test_sensitivity.py .............                                  [ 92%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 94%]\ntests/test_text_nlp.py .                                                 [ 94%]\ntests/test_timeseries.py ..                                              [ 94%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ......................                       [100%]\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n======================== 608 passed in 64.88s (0:01:04) ========================\n",
       "stderr": ""
     },
     {
       "name": "test-identities",
       "required": false,
       "status": "fail",
-      "summary": "500/501 annotated test IDs passed in structured command reports.",
+      "summary": "506/507 annotated test IDs passed in structured command reports.",
       "diagnostics": [
         {
           "code": "TEST_ID_NOT_PASSED",
@@ -4374,12 +4384,12 @@
     "trace.errors": 0,
     "graph.violations": 0,
     "formal.errors": 0,
-    "formal.modeledFraction": 0.07453416149068323,
+    "formal.modeledFraction": 0.0736196319018405,
     "commands.failures": 0,
     "commands.skipped": 0,
-    "tests.annotatedIds": 501,
-    "tests.executedIds": 500,
-    "tdd.cycles": 415,
+    "tests.annotatedIds": 507,
+    "tests.executedIds": 506,
+    "tdd.cycles": 421,
     "tdd.errors": 32,
     "changes.count": 19,
     "changes.errors": 30,
@@ -4387,7 +4397,7 @@
     "changes.completenessErrors": 20,
     "performance.budgets": 1,
     "performance.errors": 2,
-    "mutation.requirements": 137,
+    "mutation.requirements": 139,
     "mutation.coveredRequirements": 0,
     "mutation.mutants": 0,
     "mutation.errors": 0,
@@ -4500,7 +4510,7 @@
     "generatedAt": "2026-10-05T17:36:08.889Z"
   },
   "fingerprints": {
-    ".git": "6f0d9c494ed44aad9c51e11f3992060182f4ef409445c45ab0f621316b858992",
+    ".git": "40c82b33f356c7ab7125ea9c16c835ea04aaa2005f9d74232d2855319840bffc",
     ".github/workflows/npm-publish.yml": "5b3c9cc9f02c8b7e32568958cf306ee241d1adb5af7ab4a0bf8bf06f7047f319",
     ".gitignore": "97fd517743b154fae6a98dee2dcd4ab177f5e9572d2b4dee7f4e9aa70a985bb8",
     ".musubix/changes/CHANGE-001.md": "cf237661c3c8d9734cdd0da6d1f1f6d56e3e68ccb89998020b79b46ca59536a7",
@@ -4631,14 +4641,16 @@
     ".musubix/decisions/ADR-0104.md": "10f375a9912d0fb0c44a51689a7d5b40d5c99f83f3edd2dd28772fbda41878bd",
     ".musubix/decisions/ADR-0105.md": "f79a33e3453704fc03c6971f2ce5ffc1900cd8265224537c0f94c8d9420d09b5",
     ".musubix/decisions/ADR-0106.md": "a6361d96016fee416a8a3c5d0baa1d3e300f52139b6a265e58f4f2aa38feefc5",
+    ".musubix/decisions/ADR-0107.md": "d525fc25966c66b9418f1288dcaf3ee7d8cc7e2335c4cf72f10ae7ecb6cf84b1",
+    ".musubix/decisions/ADR-0108.md": "a9c0eb2b75c0fbd26938a17b92fb2cc2287674456d1e61484d183be15713e424",
     ".musubix/features/ai-chemistry-scientist/design.md": "8e481cbe118058045c6a14341e1c2ffebea76cf4041648e997575e611a6e190a",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "0b484f322aeffc84e7d54466dfb07547bd7e8cbe2f4f0500ef75f5c460e1b4a6",
     ".musubix/features/ai-data-scientist/design.md": "15946159a93d57534de447e8712504db7f4e71132d205b450786671ca2a64fd1",
     ".musubix/features/ai-data-scientist/requirements.md": "3cc394cb861960154c378a9a92a94b4e842410e555319fe1dbffae81a0f3d8ae",
     ".musubix/features/ai-data-scientist-ml/design.md": "19f497b16bb5c33be5dac4eef5310e5a1a3a1fe38d086ec8b017014034c16e15",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
-    ".musubix/features/ai-genomics-scientist/design.md": "effd788d7c6d1f32bb149e2f48b018b4e2883becd3c26c161520ea4a957e5450",
-    ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
+    ".musubix/features/ai-genomics-scientist/design.md": "b93e683c2e64daafe6495e5b257b4879866fc85b550cc491b012d1bbe9781a1a",
+    ".musubix/features/ai-genomics-scientist/requirements.md": "df8776347a19ff1d225d86400d1f0b60707dcb59437cd0a36f13ea605dab414a",
     ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
     ".musubix/features/ai-scientist/design.md": "d34a460815532a89120f4d97483cc9b0b43a8ea481ecb5bdceafcf500516375e",
@@ -4652,16 +4664,16 @@
     ".pytest_cache/CACHEDIR.TAG": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
     ".pytest_cache/README.md": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
     ".pytest_cache/v/cache/lastfailed": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
-    ".pytest_cache/v/cache/nodeids": "8356e61db4435c17b516477dda35e19642d0d5142da3af5a565b37cfd5c63603",
+    ".pytest_cache/v/cache/nodeids": "9365132f81ff0809a3b8c91e720ec9594882a95bf26152bb34fcc40bf1f23d8f",
     ".ruff_cache/.gitignore": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
-    ".ruff_cache/0.16.10/12666823258421849134": "20a704cfbcd302be72117216f8f96cfd78a6b81ef7eae26b979e0e353dede464",
-    ".ruff_cache/0.16.10/14411146374352714881": "a204f81dcd253f48bf803885d77a625b036cc44c78db262f60f3e7ed11ebc78a",
-    ".ruff_cache/0.16.10/16493166746996507034": "b2cae0ee8f0530a960356c26f878587836485b42fa6e168ab41dae02c5a6bcc8",
-    ".ruff_cache/0.16.10/18053822693846443258": "3586204b5f898f3d1b187202ae8aedcae473aa2ff662f84dbf7a956ff015a52a",
-    ".ruff_cache/0.16.10/5103244497369326064": "3b7f6552ceb22a797dc85f4383cd99a79e26b8b6200d9890cb6c6ad55ecc10a0",
-    ".ruff_cache/0.16.10/7969520345224295940": "5e99e5fab9c951476189cc66a87bb275f8cbf31a97ebf6fb7d15d52e3f28f022",
-    ".ruff_cache/0.16.10/8888938913184392651": "0c7d606dadf24f540f68b062c4ebfcc8a80d910a2b8384f7b2ed617d49351009",
-    ".ruff_cache/0.16.10/9133005278171302087": "0071d944e2c127bdd375e6510cba5419983689b9a6629d36e0838ca565e188e1",
+    ".ruff_cache/0.16.10/11960993628283707851": "cd4dc639a1cd9d04bb6193eca86fd1e609c9b9a3962a2b510976d33d5a44ae44",
+    ".ruff_cache/0.16.10/12090726442584783254": "7df829ef82c580099b33776d2fd52e08ce5d68b641e17dca5d2462a8c1938a87",
+    ".ruff_cache/0.16.10/13056819879123893904": "002abc052282fc417245f63f4cce64906e6af2c74c7c7faeee6bc33c75757430",
+    ".ruff_cache/0.16.10/13470278870103383290": "bf24274af4994b970b230ca92e3869be2e6fb241af2bc0aa1e399b5b279e22b7",
+    ".ruff_cache/0.16.10/13847826991016763173": "362a0f1055eb99b9e23781302b2ce6dc0a98ba3dfc18ca39074abc0e443b2282",
+    ".ruff_cache/0.16.10/3279857745616700368": "e2255ca804b10831fa7edb634d0456e17e0585e9555408537a2d33c18669b2e1",
+    ".ruff_cache/0.16.10/4520797858187014205": "57500468b4fb24b45626aa04852a9ab1b836fcfe1d363e26b2b5845f7efa43c5",
+    ".ruff_cache/0.16.10/9610730759797428804": "2007d831e7a9c8dd24cc215f878435116a60fb65e696cb5a33853085cda2a15a",
     ".ruff_cache/CACHEDIR.TAG": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
     "benchmark/figures/exp-01-age-and-fare-distributions.png": "f46cd2e5602c1be1d67438859f0bd18e36152c055dcc5e851222207da3962b24",
     "benchmark/figures/exp-01-passenger-ticket-bootstrap-intervals.png": "b7bf972ca94747e7fdcea6cba792536347773d56de33757135b0b8b77890afe1",
@@ -5550,14 +5562,16 @@
     "src/ai_data_scientist.egg-info/top_level.txt": "19013b91e34854a9789e277cbc567d872909bb36a954206d17729082e34631f2",
     "src/ai_genomics_scientist/__init__.py": "0c9f1f38b2e526b4169a2b06b4bb78548a18464925a029d6309597ee327fb048",
     "src/ai_genomics_scientist/data/sample_gene_sets.csv": "81dba276c7cc0a89d2ac835dfe2a7aa1a896f884a5100bb8d1ceaf3e6e6cf8ff",
-    "src/ai_genomics_scientist/dispatch.py": "ebaf896bb71e0f93ff861c452faebc0fefa606f1b6d5efc6cfe54cc8883690c2",
+    "src/ai_genomics_scientist/differential_expression.py": "eb558dd1f079fe48d2b5ceb88d5c2f7a3b95bc92b3d74f44d0db4c9648bd7752",
+    "src/ai_genomics_scientist/dispatch.py": "1f6f527a1119bb6a3ad0c358725605f7837e33c44f3944e207946f356b8569bb",
     "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
     "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
     "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
     "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
     "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
-    "src/ai_genomics_scientist/validation.py": "de5557563b64a34aac851d7ebf682b5b6a3280de491c8fa255b6d1c2e634ebe3",
+    "src/ai_genomics_scientist/validation.py": "a4e465c0c87994cb4bb78f05a647da2f0c70d62ce53f5934c7d9175c8def84b9",
     "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+    "src/ai_genomics_scientist/variant_pathogenicity.py": "07d0f5237227e059e06e01720b0fe196b725812d504e5ad0f29b6ddd3814a2e1",
     "src/ai_materials_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_materials_scientist/calphad.py": "8bd4839df1a7b3c677e9d6c2444d4837c464c5e84d53608edc596f83937b9aa3",
     "src/ai_materials_scientist/classical_monte_carlo.py": "1bbf4f334f42b4494a1b4b5328744c919a6ec1db08fb7712edac804214fbf7df",
@@ -5622,6 +5636,7 @@
     "tests/test_ai_chemistry_scientist_structure_format_conversion.py": "be62ed9622561097a3f1e9814816dd21d259b56730d693ac9e7213bd65663540",
     "tests/test_ai_chemistry_scientist_validation.py": "9033f020ea4317aff7d2799d2a9af26b9920fcdb146805e5178646bdbaca81ad",
     "tests/test_ai_genomics_scientist_bilingual.py": "392a32f53c3e1d72a650d8ddedc48b499fe979c39fcb4bf09855e9c8ac6a5d23",
+    "tests/test_ai_genomics_scientist_differential_expression.py": "c562cb786020d7d96eedd8210525ad5f8b3efa48ee052dc89b4d255ca33fe8da",
     "tests/test_ai_genomics_scientist_dispatch.py": "57f6e42788d7795ca81583677ed61bb43f78ae2c7a7ae9d438624e14a360fed3",
     "tests/test_ai_genomics_scientist_evidence.py": "f7800b985a56a5fd2e3f19b88800ec58dc2fdd287d15bace4db755b7f3085820",
     "tests/test_ai_genomics_scientist_gene_set_enrichment.py": "2e6f80d1e53028aaef1a5a5046bb2b6c3828e57caf1e54e4ab03157e18042650",
@@ -5630,6 +5645,7 @@
     "tests/test_ai_genomics_scientist_splice_site_scoring.py": "3df20204097f1d75c108675e8911a2ae61e7dc62b004159d26fb6be4b4c411f6",
     "tests/test_ai_genomics_scientist_validation.py": "d6277f438960afbd72e5c43cf7c17830d4062e505852aeff15910e2cb8b8b193",
     "tests/test_ai_genomics_scientist_variant_effect.py": "a12c32b10de9130ce61a0e195d52ae61bfd0a3e7419567a72add0eb801323437",
+    "tests/test_ai_genomics_scientist_variant_pathogenicity.py": "9b470ce163c32f58b7f7ec39d6fbb934c3cb7c0c7e2da2d1a6274bc2b0785ae5",
     "tests/test_ai_materials_scientist_bilingual.py": "6cab8fc1263ec40af5e197061bc0ae4685db6199a68ca745ee22558f4aabbf95",
     "tests/test_ai_materials_scientist_calphad.py": "f350b84d0f4c14b2234852c06ba534f7e81228e1a371e66d7c641ac9ae841fc9",
     "tests/test_ai_materials_scientist_classical_monte_carlo.py": "a6019feecdc12c0fb8ce47390549d824c15a16fc6b1aeb736154020925950db7",
