@@ -18,6 +18,8 @@ _VALIDATOR_MODULES = {
     "splice-site-strength": "ai_genomics_scientist.splice_site_scoring",
     "gene-set-enrichment": "ai_genomics_scientist.gene_set_enrichment",
     "pairwise-sequence-alignment": "ai_genomics_scientist.sequence_alignment",
+    "differential-expression": "ai_genomics_scientist.differential_expression",
+    "variant-pathogenicity": "ai_genomics_scientist.variant_pathogenicity",
 }
 
 

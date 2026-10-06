@@ -17,6 +17,8 @@ import ai_genomics_scientist.sequence_alignment as _sequence_alignment  # noqa: 
 import ai_genomics_scientist.sequence_features as _sequence_features  # noqa: F401
 import ai_genomics_scientist.splice_site_scoring as _splice_site_scoring  # noqa: F401
 import ai_genomics_scientist.variant_effect as _variant_effect  # noqa: F401
+import ai_genomics_scientist.differential_expression as _differential_expression  # noqa: F401
+import ai_genomics_scientist.variant_pathogenicity as _variant_pathogenicity  # noqa: F401
 from ai_data_scientist.language_router import detect_language as _detect_language
 from ai_genomics_scientist.evidence import record_run
 from ai_genomics_scientist.validation import validate_parameters
@@ -31,6 +33,8 @@ _RUN_MODULE_PATHS = {
     "splice-site-strength": "ai_genomics_scientist.splice_site_scoring",
     "gene-set-enrichment": "ai_genomics_scientist.gene_set_enrichment",
     "pairwise-sequence-alignment": "ai_genomics_scientist.sequence_alignment",
+    "differential-expression": "ai_genomics_scientist.differential_expression",
+    "variant-pathogenicity": "ai_genomics_scientist.variant_pathogenicity",
 }
 _RUN_FUNCTION_NAMES = {
     "sequence-features": "run_sequence_features",
@@ -38,6 +42,8 @@ _RUN_FUNCTION_NAMES = {
     "splice-site-strength": "run_splice_site_scoring",
     "gene-set-enrichment": "run_gene_set_enrichment",
     "pairwise-sequence-alignment": "run_sequence_alignment",
+    "differential-expression": "run_differential_expression",
+    "variant-pathogenicity": "run_variant_pathogenicity",
 }
 
 
@@ -187,6 +193,22 @@ def handle_gene_set_enrichment(request_text: str, language: str, **params) -> di
 def handle_pairwise_sequence_alignment(request_text: str, language: str, **params) -> dict:
     """Handler wrapper for the pairwise-sequence-alignment module."""
     return _handle_module("pairwise-sequence-alignment", request_text, language, params or None)
+
+
+# @id CODE-AGENOM-061
+# @implements REQ-AGENOM-002 REQ-AGENOM-004
+# @design DES-AGENOM-001
+def handle_differential_expression(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the differential-expression module."""
+    return _handle_module("differential-expression", request_text, language, params or None)
+
+
+# @id CODE-AGENOM-071
+# @implements REQ-AGENOM-002 REQ-AGENOM-004
+# @design DES-AGENOM-001
+def handle_variant_pathogenicity(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the variant-pathogenicity module."""
+    return _handle_module("variant-pathogenicity", request_text, language, params or None)
 
 
 def _render_clarification(candidates: list[str], language: str) -> str:
