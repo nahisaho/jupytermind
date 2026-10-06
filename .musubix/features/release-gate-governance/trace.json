@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-06T09:09:58.975Z",
+  "generatedAt": "2026-10-06T09:21:29.471Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -3621,34 +3621,46 @@
       "line": 326
     },
     {
+      "id": "CODE-AIDS-146",
+      "kind": "code",
+      "path": "src/ai_data_scientist/signal_analysis.py",
+      "line": 37
+    },
+    {
       "id": "CODE-AIDS-141",
       "kind": "code",
       "path": "src/ai_data_scientist/signal_analysis.py",
-      "line": 53
+      "line": 56
     },
     {
       "id": "CODE-AIDS-142",
       "kind": "code",
       "path": "src/ai_data_scientist/signal_analysis.py",
-      "line": 63
+      "line": 66
     },
     {
       "id": "CODE-AIDS-143",
       "kind": "code",
       "path": "src/ai_data_scientist/signal_analysis.py",
-      "line": 82
+      "line": 85
+    },
+    {
+      "id": "CODE-AIDS-147",
+      "kind": "code",
+      "path": "src/ai_data_scientist/signal_analysis.py",
+      "line": 107
     },
     {
       "id": "CODE-AIDS-144",
       "kind": "code",
       "path": "src/ai_data_scientist/signal_analysis.py",
-      "line": 115
+      "line": 121
     },
     {
       "id": "CODE-AIDS-145",
       "kind": "code",
       "path": "src/ai_data_scientist/signal_analysis.py",
-      "line": 166
+      "line": 172
     },
     {
       "id": "CODE-AIDS-012",
@@ -12006,6 +12018,21 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AIDS-146",
+      "to": "REQ-AIDS-094",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-146",
+      "to": "REQ-AIDS-095",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-146",
+      "to": "DES-AIDS-094",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AIDS-141",
       "to": "REQ-AIDS-094",
       "relation": "implements"
@@ -12032,6 +12059,16 @@
     },
     {
       "from": "CODE-AIDS-143",
+      "to": "DES-AIDS-094",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-147",
+      "to": "REQ-AIDS-095",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-147",
       "to": "DES-AIDS-094",
       "relation": "implements"
     },
@@ -16547,7 +16584,7 @@
     "src/ai_data_scientist/project_manager.py": "c0023bc2fa1bc3f2fdb007d3cf739334b43b6d11c630449275f2a9855dd2df05",
     "src/ai_data_scientist/report_export.py": "29f1d2ccc4d3cd8208d7a4ba043a976b60caec863f9a2ad701017e0bf8b82510",
     "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6",
-    "src/ai_data_scientist/signal_analysis.py": "1352d9bf9f17415ce18d82e864dcc6435236cb0e40f5e46e0743abdee169b6c4",
+    "src/ai_data_scientist/signal_analysis.py": "c5fecd937a6c13c19ad507ef20be5240239e765dff447fd74ead9cb92a7a9591",
     "src/ai_data_scientist/skill_packaging.py": "90597141eda3af0b96a0e667612cb1e2d0c3f7deb58d2dca923d716946966de1",
     "src/ai_data_scientist/stats_analysis.py": "7aa2beb6816c98f4c9a90cc480cf3cd3ea3c81e18ea4045e5c461cf76022fde9",
     "src/ai_data_scientist/text_nlp.py": "bb7ee36f88f69ba683b82dae4fee06b3a1ff004774d57973ee60c9b0f53f3985",

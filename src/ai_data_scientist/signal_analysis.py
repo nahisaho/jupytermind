@@ -34,7 +34,7 @@ _ASLS_P = 0.001
 _ASLS_N_ITER = 10
 
 
-# @id CODE-AIDS-140
+# @id CODE-AIDS-146
 # @implements REQ-AIDS-094 REQ-AIDS-095
 # @design DES-AIDS-094
 def _coerce_xy(
@@ -104,7 +104,7 @@ def baseline_correct(x: Sequence[float], y: Sequence[float], method: str = "line
     return y_arr - baseline
 
 
-# @id CODE-AIDS-143b
+# @id CODE-AIDS-147
 # @implements REQ-AIDS-095
 # @design DES-AIDS-094
 def _validate_window(window: Any, n: int) -> int:

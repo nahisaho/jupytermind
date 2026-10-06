@@ -12834,6 +12834,120 @@
             }
           },
           "order": 1348
+        },
+        "implementation": {
+          "phase": "implementation",
+          "recordedAt": "2026-10-06T09:20:49.929Z",
+          "fingerprints": {
+            "impact": "ac1a67b87d7bef100ca7fb48a46226e484cf20ab29713a58c93ccfab2757b3f9",
+            "requirements": "e72840c5cefa2ba3f5ca2480ebef3c92d442c3716ab1aca99c433c99e6b11716",
+            "design": "d370cdee51bb59ee9295316aed60eb98b45533cf64c8dc08f4985b2126324611",
+            "implementation": "2b15f2d09872d27fde85331672053a0584ab3d5bbe0edda11004cf05457f3861",
+            "tests": "bad9f1af0476f85ecb19355e2b82eb287d4efa6ee0a5a10cf89a96395a143ce2",
+            "tdd": "1ce5c14c8d3e4d959cc12df980c2cdd28828d493244783910a6b4c33ff5728c8",
+            "requirementImplementations": {
+              "REQ-AIDS-094": {
+                "paths": [
+                  "src/ai_data_scientist/analysis_assumptions.py",
+                  "src/ai_data_scientist/experiment_evaluation.py",
+                  "src/ai_data_scientist/sensitivity.py",
+                  "src/ai_data_scientist/signal_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
+                  "src/ai_data_scientist/experiment_evaluation.py": "e6ba71d476269b6068aff7b399f5a90aa7f707f332e1b5adbc5350a725c73296",
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6",
+                  "src/ai_data_scientist/signal_analysis.py": "b1ade85c3e4535f9dc2c1601d621dd600ecf1b8b8fef6969cf2d32d587556474"
+                }
+              },
+              "REQ-AIDS-095": {
+                "paths": [
+                  "src/ai_data_scientist/analysis_assumptions.py",
+                  "src/ai_data_scientist/experiment_evaluation.py",
+                  "src/ai_data_scientist/sensitivity.py",
+                  "src/ai_data_scientist/signal_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
+                  "src/ai_data_scientist/experiment_evaluation.py": "e6ba71d476269b6068aff7b399f5a90aa7f707f332e1b5adbc5350a725c73296",
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6",
+                  "src/ai_data_scientist/signal_analysis.py": "b1ade85c3e4535f9dc2c1601d621dd600ecf1b8b8fef6969cf2d32d587556474"
+                }
+              },
+              "REQ-AIDS-096": {
+                "paths": [
+                  "src/ai_data_scientist/analysis_assumptions.py",
+                  "src/ai_data_scientist/experiment_evaluation.py",
+                  "src/ai_data_scientist/sensitivity.py",
+                  "src/ai_data_scientist/signal_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
+                  "src/ai_data_scientist/experiment_evaluation.py": "e6ba71d476269b6068aff7b399f5a90aa7f707f332e1b5adbc5350a725c73296",
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6",
+                  "src/ai_data_scientist/signal_analysis.py": "b1ade85c3e4535f9dc2c1601d621dd600ecf1b8b8fef6969cf2d32d587556474"
+                }
+              }
+            }
+          },
+          "order": 1349
+        },
+        "green": {
+          "phase": "green",
+          "recordedAt": "2026-10-06T09:20:56.180Z",
+          "fingerprints": {
+            "impact": "ac1a67b87d7bef100ca7fb48a46226e484cf20ab29713a58c93ccfab2757b3f9",
+            "requirements": "e72840c5cefa2ba3f5ca2480ebef3c92d442c3716ab1aca99c433c99e6b11716",
+            "design": "d370cdee51bb59ee9295316aed60eb98b45533cf64c8dc08f4985b2126324611",
+            "implementation": "2b15f2d09872d27fde85331672053a0584ab3d5bbe0edda11004cf05457f3861",
+            "tests": "bad9f1af0476f85ecb19355e2b82eb287d4efa6ee0a5a10cf89a96395a143ce2",
+            "tdd": "1ce5c14c8d3e4d959cc12df980c2cdd28828d493244783910a6b4c33ff5728c8",
+            "requirementImplementations": {
+              "REQ-AIDS-094": {
+                "paths": [
+                  "src/ai_data_scientist/analysis_assumptions.py",
+                  "src/ai_data_scientist/experiment_evaluation.py",
+                  "src/ai_data_scientist/sensitivity.py",
+                  "src/ai_data_scientist/signal_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
+                  "src/ai_data_scientist/experiment_evaluation.py": "e6ba71d476269b6068aff7b399f5a90aa7f707f332e1b5adbc5350a725c73296",
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6",
+                  "src/ai_data_scientist/signal_analysis.py": "b1ade85c3e4535f9dc2c1601d621dd600ecf1b8b8fef6969cf2d32d587556474"
+                }
+              },
+              "REQ-AIDS-095": {
+                "paths": [
+                  "src/ai_data_scientist/analysis_assumptions.py",
+                  "src/ai_data_scientist/experiment_evaluation.py",
+                  "src/ai_data_scientist/sensitivity.py",
+                  "src/ai_data_scientist/signal_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
+                  "src/ai_data_scientist/experiment_evaluation.py": "e6ba71d476269b6068aff7b399f5a90aa7f707f332e1b5adbc5350a725c73296",
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6",
+                  "src/ai_data_scientist/signal_analysis.py": "b1ade85c3e4535f9dc2c1601d621dd600ecf1b8b8fef6969cf2d32d587556474"
+                }
+              },
+              "REQ-AIDS-096": {
+                "paths": [
+                  "src/ai_data_scientist/analysis_assumptions.py",
+                  "src/ai_data_scientist/experiment_evaluation.py",
+                  "src/ai_data_scientist/sensitivity.py",
+                  "src/ai_data_scientist/signal_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/analysis_assumptions.py": "2a3dd329c8826392180be3c4ddac321ccf26ac92e4a58611482110c3348824b3",
+                  "src/ai_data_scientist/experiment_evaluation.py": "e6ba71d476269b6068aff7b399f5a90aa7f707f332e1b5adbc5350a725c73296",
+                  "src/ai_data_scientist/sensitivity.py": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6",
+                  "src/ai_data_scientist/signal_analysis.py": "b1ade85c3e4535f9dc2c1601d621dd600ecf1b8b8fef6969cf2d32d587556474"
+                }
+              }
+            }
+          },
+          "order": 1350
         }
       }
     }
