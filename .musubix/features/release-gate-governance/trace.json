@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-06T10:28:13.576Z",
+  "generatedAt": "2026-10-06T11:25:27.434Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -672,6 +672,12 @@
       "id": "ADR-0112",
       "kind": "adr",
       "path": ".musubix/decisions/ADR-0112.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0113",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0113.md",
       "line": 1
     },
     {
@@ -2075,6 +2081,12 @@
       "line": 318
     },
     {
+      "id": "DES-AGENOM-080",
+      "kind": "design",
+      "path": ".musubix/features/ai-genomics-scientist/design.md",
+      "line": 399
+    },
+    {
       "id": "REQ-AGENOM-001",
       "kind": "requirement",
       "path": ".musubix/features/ai-genomics-scientist/requirements.md",
@@ -2152,6 +2164,13 @@
       "mandatory": true
     },
     {
+      "id": "REQ-AGENOM-080",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-genomics-scientist/requirements.md",
+      "line": 158,
+      "mandatory": true
+    },
+    {
       "id": "DES-AIMS-001",
       "kind": "design",
       "path": ".musubix/features/ai-materials-scientist/design.md",
@@ -2210,6 +2229,12 @@
       "kind": "design",
       "path": ".musubix/features/ai-materials-scientist/design.md",
       "line": 204
+    },
+    {
+      "id": "DES-AIMS-080",
+      "kind": "design",
+      "path": ".musubix/features/ai-materials-scientist/design.md",
+      "line": 243
     },
     {
       "id": "REQ-AIMS-001",
@@ -2293,6 +2318,13 @@
       "kind": "requirement",
       "path": ".musubix/features/ai-materials-scientist/requirements.md",
       "line": 112,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-080",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 120,
       "mandatory": true
     },
     {
@@ -2639,6 +2671,12 @@
       "line": 265
     },
     {
+      "id": "DES-ASTRUCT-060",
+      "kind": "design",
+      "path": ".musubix/features/ai-structural-biology-scientist/design.md",
+      "line": 340
+    },
+    {
       "id": "REQ-ASTRUCT-001",
       "kind": "requirement",
       "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
@@ -2699,6 +2737,13 @@
       "kind": "requirement",
       "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
       "line": 102,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-ASTRUCT-060",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-structural-biology-scientist/requirements.md",
+      "line": 128,
       "mandatory": true
     },
     {
@@ -5043,6 +5088,12 @@
       "line": 40
     },
     {
+      "id": "TEST-AGENOM-079",
+      "kind": "test",
+      "path": "tests/test_ai_genomics_scientist_skill_packaging.py",
+      "line": 17
+    },
+    {
       "id": "TEST-AGENOM-030",
       "kind": "test",
       "path": "tests/test_ai_genomics_scientist_splice_site_scoring.py",
@@ -5565,6 +5616,12 @@
       "line": 111
     },
     {
+      "id": "TEST-AIMS-992",
+      "kind": "test",
+      "path": "tests/test_ai_materials_scientist_skill_packaging.py",
+      "line": 17
+    },
+    {
       "id": "TEST-AIMS-003",
       "kind": "test",
       "path": "tests/test_ai_materials_scientist_validation.py",
@@ -5995,6 +6052,12 @@
       "kind": "test",
       "path": "tests/test_ai_structural_biology_scientist_secondary_structure.py",
       "line": 63
+    },
+    {
+      "id": "TEST-ASTRUCT-085",
+      "kind": "test",
+      "path": "tests/test_ai_structural_biology_scientist_skill_packaging.py",
+      "line": 17
     },
     {
       "id": "TEST-ASTRUCT-041",
@@ -9393,6 +9456,21 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-AGENOM-080",
+      "to": "REQ-AGENOM-080",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0113",
+      "to": "DES-AGENOM-080",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AGENOM-080",
+      "to": "DES-AISCI-020",
+      "relation": "depends-on"
+    },
+    {
       "from": "DES-AIMS-001",
       "to": "REQ-AIMS-001",
       "relation": "satisfies"
@@ -9615,6 +9693,21 @@
     {
       "from": "DES-AIMS-070",
       "to": "DES-AIMS-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIMS-080",
+      "to": "REQ-AIMS-080",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0113",
+      "to": "DES-AIMS-080",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AIMS-080",
+      "to": "DES-AISCI-020",
       "relation": "depends-on"
     },
     {
@@ -10195,6 +10288,21 @@
     {
       "from": "DES-ASTRUCT-050",
       "to": "DES-ASTRUCT-003",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-ASTRUCT-060",
+      "to": "REQ-ASTRUCT-060",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0113",
+      "to": "DES-ASTRUCT-060",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-ASTRUCT-060",
+      "to": "DES-AISCI-020",
       "relation": "depends-on"
     },
     {
@@ -13184,7 +13292,37 @@
     },
     {
       "from": "CODE-AISCI-027",
+      "to": "REQ-AGENOM-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-027",
+      "to": "REQ-AIMS-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-027",
+      "to": "REQ-ASTRUCT-060",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-027",
       "to": "DES-AISCI-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-027",
+      "to": "DES-AGENOM-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-027",
+      "to": "DES-AIMS-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-027",
+      "to": "DES-ASTRUCT-060",
       "relation": "implements"
     },
     {
@@ -13194,7 +13332,37 @@
     },
     {
       "from": "CODE-AISCI-028",
+      "to": "REQ-AGENOM-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-028",
+      "to": "REQ-AIMS-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-028",
+      "to": "REQ-ASTRUCT-060",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-028",
       "to": "DES-AISCI-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-028",
+      "to": "DES-AGENOM-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-028",
+      "to": "DES-AIMS-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-028",
+      "to": "DES-ASTRUCT-060",
       "relation": "implements"
     },
     {
@@ -13204,7 +13372,37 @@
     },
     {
       "from": "CODE-AISCI-029",
+      "to": "REQ-AGENOM-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-029",
+      "to": "REQ-AIMS-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-029",
+      "to": "REQ-ASTRUCT-060",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-029",
       "to": "DES-AISCI-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-029",
+      "to": "DES-AGENOM-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-029",
+      "to": "DES-AIMS-080",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-029",
+      "to": "DES-ASTRUCT-060",
       "relation": "implements"
     },
     {
@@ -14258,6 +14456,11 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AGENOM-079",
+      "to": "REQ-AGENOM-080",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AGENOM-030",
       "to": "REQ-AGENOM-030",
       "relation": "verifies"
@@ -14693,6 +14896,11 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AIMS-992",
+      "to": "REQ-AIMS-080",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AIMS-003",
       "to": "REQ-AIMS-003",
       "relation": "verifies"
@@ -15050,6 +15258,11 @@
     {
       "from": "TEST-ASTRUCT-082",
       "to": "REQ-ASTRUCT-010",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-ASTRUCT-085",
+      "to": "REQ-ASTRUCT-060",
       "relation": "verifies"
     },
     {
@@ -16513,20 +16726,21 @@
     ".musubix/decisions/ADR-0110.md": "9f5d3e60fc9f1eafabb79e441dea28a01aa3cf7f01abe1d9005c70b4dff9e545",
     ".musubix/decisions/ADR-0111.md": "404ccc6267e4e632d32c3646b67b70d33e82f7e590f1f26b6635516032b1d42f",
     ".musubix/decisions/ADR-0112.md": "3d657bf3efb82689800aed1052a9ba8e11ad41b0d01591f0b838b57e208dcc45",
+    ".musubix/decisions/ADR-0113.md": "cf1f3e62579dd60a804fc56a3e56300f307d60529765a2837ed76cc910a52329",
     ".musubix/features/ai-chemistry-scientist/design.md": "8e481cbe118058045c6a14341e1c2ffebea76cf4041648e997575e611a6e190a",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "0b484f322aeffc84e7d54466dfb07547bd7e8cbe2f4f0500ef75f5c460e1b4a6",
     ".musubix/features/ai-data-scientist/design.md": "5226100ecf513a106b76149a7ca867b75f2935965015dc34c7cb601dfcf3508f",
     ".musubix/features/ai-data-scientist/requirements.md": "bc2916d5ce3f32a215dc26480d9023826d38abebb1b222ff826299ec43edc714",
     ".musubix/features/ai-data-scientist-ml/design.md": "19f497b16bb5c33be5dac4eef5310e5a1a3a1fe38d086ec8b017014034c16e15",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
-    ".musubix/features/ai-genomics-scientist/design.md": "b93e683c2e64daafe6495e5b257b4879866fc85b550cc491b012d1bbe9781a1a",
-    ".musubix/features/ai-genomics-scientist/requirements.md": "df8776347a19ff1d225d86400d1f0b60707dcb59437cd0a36f13ea605dab414a",
-    ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
-    ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
+    ".musubix/features/ai-genomics-scientist/design.md": "ac15e5c1802fe8f8cb4e704ce2ebcaceffd79ea821999f1283b3ae373748452e",
+    ".musubix/features/ai-genomics-scientist/requirements.md": "941566b3f492485597a68280e99c1cd605d603fc63d2511ce9363caccca65c05",
+    ".musubix/features/ai-materials-scientist/design.md": "91e38ea4d872bdf951e8b89b317ba384c721154d79baa6e23c34b52a8516c8dd",
+    ".musubix/features/ai-materials-scientist/requirements.md": "ec1042bb0d869dfe9048f68397d495fcda505c1e4b40349313dd2e1aedbf4ceb",
     ".musubix/features/ai-scientist/design.md": "5ea46f0a980670f973bad97b5875daeeb3febc2da11626f5a72b6138d303553c",
     ".musubix/features/ai-scientist/requirements.md": "62ad1db84c784be4a546db60ccf2011b3c6f489fb732319f14bf252134c4501c",
-    ".musubix/features/ai-structural-biology-scientist/design.md": "7b9e7f5b3eff9321cabf4813bdca7a4a11b80c54a93ad3db50c925eca4f81955",
-    ".musubix/features/ai-structural-biology-scientist/requirements.md": "ade8184daef2095e8a9da33e99125fe63ed81485af7f09caa5c8f227d670506c",
+    ".musubix/features/ai-structural-biology-scientist/design.md": "96c1d5c710135160dcf46ebe2275c99e4bbf0e2f45714e7ddd13159acc1d23f1",
+    ".musubix/features/ai-structural-biology-scientist/requirements.md": "0878083e60d4a5071147950030cbac059d19dac79d21d28a739859d951b91c3a",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
     ".musubix/features/release-gate-governance/design.md": "85a64aaf7f6e14b0e7e81a8a882ed07d19142de91e34b96b2067a49aad308e2b",
@@ -16627,7 +16841,7 @@
     "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
     "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
     "src/ai_scientist/mcp_managed.py": "7192af169723004bcc300cba34d337c3d821551cb0660c3cda45064740a83ffb",
-    "src/ai_scientist/npm_packaging.py": "530156b7582d72630aa039c2a552c4a39f568bbe86d6c77aa8f88f7cdd5f6141",
+    "src/ai_scientist/npm_packaging.py": "be42fd82e686896974f7d15f4fb1f962c929cac5d55c4249f72178d01d6d2c6f",
     "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
     "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
     "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
@@ -16673,6 +16887,7 @@
     "tests/test_ai_genomics_scientist_gene_set_enrichment.py": "2e6f80d1e53028aaef1a5a5046bb2b6c3828e57caf1e54e4ab03157e18042650",
     "tests/test_ai_genomics_scientist_sequence_alignment.py": "0fec83a3357b5ed69543ccdc1e152fbc2c19bfac16f696d10d7c46751708bac7",
     "tests/test_ai_genomics_scientist_sequence_features.py": "09171af0300950d814a159aff53903c46cf2abb9ca8537cdc8d43d9034c08637",
+    "tests/test_ai_genomics_scientist_skill_packaging.py": "f2bdb991db2e10869a89d780f59c9e5421a27ba766b9686d4b6eb696f4e204bb",
     "tests/test_ai_genomics_scientist_splice_site_scoring.py": "3df20204097f1d75c108675e8911a2ae61e7dc62b004159d26fb6be4b4c411f6",
     "tests/test_ai_genomics_scientist_validation.py": "d6277f438960afbd72e5c43cf7c17830d4062e505852aeff15910e2cb8b8b193",
     "tests/test_ai_genomics_scientist_variant_effect.py": "a12c32b10de9130ce61a0e195d52ae61bfd0a3e7419567a72add0eb801323437",
@@ -16687,6 +16902,7 @@
     "tests/test_ai_materials_scientist_kinetic_monte_carlo.py": "112fec73a96c8ba05662a8af85d7ef3397c119ceecc8ca9fef3e17ebfe2e985e",
     "tests/test_ai_materials_scientist_molecular_dynamics.py": "3b289ed173478e64502bb822e32f022475de661e8c364b7c860eabbe5bb67ebd",
     "tests/test_ai_materials_scientist_phase_field.py": "003834f3ff975f434db91e0dc95b0a4e7f79c96823e32390908abf1987b71dca",
+    "tests/test_ai_materials_scientist_skill_packaging.py": "9856d7eec91d4d6d0040951794094d8deb817efb4f0b160ea8d6bff7931f28b9",
     "tests/test_ai_materials_scientist_validation.py": "e5856eceab201910ac5192aa414b2aa44ab274db360f9e1a6cd19eeb5a1201f0",
     "tests/test_ai_scientist_delegation.py": "b7e919785ed77b2eca3893f0c791ac283b9714c72d7abf76dcc5595268a31dbb",
     "tests/test_ai_scientist_evidence_registry.py": "e56432547cce3850a3837d9a2374f2a57be9f7fc03ec262fcb9f2bae7f319918",
@@ -16702,6 +16918,7 @@
     "tests/test_ai_structural_biology_scientist_hydrophobicity.py": "31df5a6be567df6652a731e7d3551e49395e597407d2c42c3ffb72861e5d4705",
     "tests/test_ai_structural_biology_scientist_protein_docking_score.py": "0f181c37eafb2a32a2f0594841f8e842c34ed7789b4fcb58753666ec861d8beb",
     "tests/test_ai_structural_biology_scientist_secondary_structure.py": "025fe0a963cb8eba56ac12d406fc6dd2792c10f74ef079701b2cefaf9cde714f",
+    "tests/test_ai_structural_biology_scientist_skill_packaging.py": "56ca979de45897fd7ba1adde4d6ae1cd345e15457ba7d014f72c2418830d77e2",
     "tests/test_ai_structural_biology_scientist_structural_similarity.py": "660725e1ac8fa3636fcd7b8ab419d2b0b6c9430034312ddeec7daa98e16fafdc",
     "tests/test_ai_structural_biology_scientist_validation.py": "ca34fe16e9c0651f2f884b4831330ca1d652032dd2b16b515d8511e2e791b917",
     "tests/test_analysis_assumptions.py": "665331b6baaeb624bd3562989a6925c4e80a269d2d0dfce93c3acbe7b21731d8",
