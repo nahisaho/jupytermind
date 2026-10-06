@@ -88,10 +88,13 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
    operation=...)` (`drop_duplicates` | `drop_na` | `fillna`); report the
    returned row/column impact to the user (REQ-AIDS-004).
 6. **Explore data** with `ai_data_scientist.eda.explore(df)` for dtypes,
-   non-null counts, and summary statistics (REQ-AIDS-005), plus per-column
-   `missing_summary` (count/ratio) and, for categorical columns,
-   `categorical_summary` (unique_count and top `top_n` values with
-   counts/ratios, `truncated` flag) (REQ-AIDS-043).
+   non-null counts, and summary statistics (REQ-AIDS-005). The returned
+   `EDAReport` object exposes two further attributes — `EDAReport.missing_summary`
+   (per-column count/ratio) and, for categorical columns,
+   `EDAReport.categorical_summary` (unique_count and top `top_n` values with
+   counts/ratios, `truncated` flag) (REQ-AIDS-043) — read them off the
+   object returned by `explore()`; there is no separate
+   `eda.missing_summary(...)` function to import.
 7. **Run statistics** with
    `ai_data_scientist.stats_analysis.correlation(df, col_a, col_b,
    language=...)`; write the resulting statistic in a code cell and its
