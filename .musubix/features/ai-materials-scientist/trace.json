@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-06T11:50:36.944Z",
+  "generatedAt": "2026-10-06T13:35:55.032Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -681,6 +681,12 @@
       "line": 1
     },
     {
+      "id": "ADR-0114",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0114.md",
+      "line": 1
+    },
+    {
       "id": "DES-ACHEM-001",
       "kind": "design",
       "path": ".musubix/features/ai-chemistry-scientist/design.md",
@@ -1188,6 +1194,12 @@
       "line": 1406
     },
     {
+      "id": "DES-AIDS-095",
+      "kind": "design",
+      "path": ".musubix/features/ai-data-scientist/design.md",
+      "line": 1540
+    },
+    {
       "id": "REQ-AIDS-001",
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist/requirements.md",
@@ -1647,6 +1659,13 @@
       "kind": "requirement",
       "path": ".musubix/features/ai-data-scientist/requirements.md",
       "line": 476,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIDS-097",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 483,
       "mandatory": true
     },
     {
@@ -2836,6 +2855,18 @@
       "path": ".musubix/features/tech-writer/requirements.md",
       "line": 12,
       "mandatory": true
+    },
+    {
+      "id": "CODE-AIDS-148",
+      "kind": "code",
+      "path": "bin/ai-data-scientist.js",
+      "line": 146
+    },
+    {
+      "id": "CODE-AIDS-149",
+      "kind": "code",
+      "path": "bin/ai-data-scientist.js",
+      "line": 191
     },
     {
       "id": "CODE-RELGATE-004",
@@ -7194,6 +7225,66 @@
       "line": 224
     },
     {
+      "id": "TEST-AIDS-307",
+      "kind": "test",
+      "path": "tests/test_setup_skill_deployment.py",
+      "line": 128
+    },
+    {
+      "id": "TEST-AIDS-308",
+      "kind": "test",
+      "path": "tests/test_setup_skill_deployment.py",
+      "line": 148
+    },
+    {
+      "id": "TEST-AIDS-309",
+      "kind": "test",
+      "path": "tests/test_setup_skill_deployment.py",
+      "line": 165
+    },
+    {
+      "id": "TEST-AIDS-310",
+      "kind": "test",
+      "path": "tests/test_setup_skill_deployment.py",
+      "line": 183
+    },
+    {
+      "id": "TEST-AIDS-311",
+      "kind": "test",
+      "path": "tests/test_setup_skill_deployment.py",
+      "line": 207
+    },
+    {
+      "id": "TEST-AIDS-312",
+      "kind": "test",
+      "path": "tests/test_setup_skill_deployment.py",
+      "line": 230
+    },
+    {
+      "id": "TEST-AIDS-313",
+      "kind": "test",
+      "path": "tests/test_setup_skill_deployment.py",
+      "line": 259
+    },
+    {
+      "id": "TEST-AIDS-314",
+      "kind": "test",
+      "path": "tests/test_setup_skill_deployment.py",
+      "line": 274
+    },
+    {
+      "id": "TEST-AIDS-315",
+      "kind": "test",
+      "path": "tests/test_setup_skill_deployment.py",
+      "line": 291
+    },
+    {
+      "id": "TEST-AIDS-316",
+      "kind": "test",
+      "path": "tests/test_setup_skill_deployment.py",
+      "line": 319
+    },
+    {
       "id": "TEST-AIDS-294",
       "kind": "test",
       "path": "tests/test_signal_analysis.py",
@@ -8754,6 +8845,16 @@
       "from": "DES-AIDS-094",
       "to": "DES-AIDS-044",
       "relation": "depends-on"
+    },
+    {
+      "from": "DES-AIDS-095",
+      "to": "REQ-AIDS-097",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0114",
+      "to": "DES-AIDS-095",
+      "relation": "decides"
     },
     {
       "from": "DES-AIDS-012",
@@ -10394,6 +10495,26 @@
       "from": "ADR-0109",
       "to": "DES-TECHWRITER-001",
       "relation": "decides"
+    },
+    {
+      "from": "CODE-AIDS-148",
+      "to": "REQ-AIDS-097",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-148",
+      "to": "DES-AIDS-095",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-149",
+      "to": "REQ-AIDS-097",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-149",
+      "to": "DES-AIDS-095",
+      "relation": "implements"
     },
     {
       "from": "CODE-RELGATE-004",
@@ -16261,6 +16382,56 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AIDS-307",
+      "to": "REQ-AIDS-097",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-308",
+      "to": "REQ-AIDS-097",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-309",
+      "to": "REQ-AIDS-097",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-310",
+      "to": "REQ-AIDS-097",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-311",
+      "to": "REQ-AIDS-097",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-312",
+      "to": "REQ-AIDS-097",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-313",
+      "to": "REQ-AIDS-097",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-314",
+      "to": "REQ-AIDS-097",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-315",
+      "to": "REQ-AIDS-097",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-316",
+      "to": "REQ-AIDS-097",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AIDS-294",
       "to": "REQ-AIDS-094",
       "relation": "verifies"
@@ -16727,10 +16898,11 @@
     ".musubix/decisions/ADR-0111.md": "404ccc6267e4e632d32c3646b67b70d33e82f7e590f1f26b6635516032b1d42f",
     ".musubix/decisions/ADR-0112.md": "3d657bf3efb82689800aed1052a9ba8e11ad41b0d01591f0b838b57e208dcc45",
     ".musubix/decisions/ADR-0113.md": "cf1f3e62579dd60a804fc56a3e56300f307d60529765a2837ed76cc910a52329",
+    ".musubix/decisions/ADR-0114.md": "7133912da0920ae9b58a2ef2202d72508508200838dbf2e30cadb719e9995d24",
     ".musubix/features/ai-chemistry-scientist/design.md": "8e481cbe118058045c6a14341e1c2ffebea76cf4041648e997575e611a6e190a",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "0b484f322aeffc84e7d54466dfb07547bd7e8cbe2f4f0500ef75f5c460e1b4a6",
-    ".musubix/features/ai-data-scientist/design.md": "5226100ecf513a106b76149a7ca867b75f2935965015dc34c7cb601dfcf3508f",
-    ".musubix/features/ai-data-scientist/requirements.md": "bc2916d5ce3f32a215dc26480d9023826d38abebb1b222ff826299ec43edc714",
+    ".musubix/features/ai-data-scientist/design.md": "eca5cc6639b932e7dacc4c6a3d33b9178ce3fc2d1aae32174c753792ac49f435",
+    ".musubix/features/ai-data-scientist/requirements.md": "44a8d500a2a7aba6ab500462a1969b0da31fbf0f3e0c138227e29dfc87e75875",
     ".musubix/features/ai-data-scientist-ml/design.md": "19f497b16bb5c33be5dac4eef5310e5a1a3a1fe38d086ec8b017014034c16e15",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
     ".musubix/features/ai-genomics-scientist/design.md": "ac15e5c1802fe8f8cb4e704ce2ebcaceffd79ea821999f1283b3ae373748452e",
@@ -16747,7 +16919,7 @@
     ".musubix/features/release-gate-governance/requirements.md": "6e8f7367e19ccf8b16648be7adb392841b2d48c32e860e6eddfd4075db65e6d3",
     ".musubix/features/tech-writer/design.md": "e39a7e99d6971de14a1ac6d508b6fb551873f89bbd524774117ba3cc53c91ab7",
     ".musubix/features/tech-writer/requirements.md": "50d9cff351d1424a0fcc33bcc38a548488310b63bafd9dc49eb0ba2642ef4fa5",
-    "bin/ai-data-scientist.js": "f70c764374ee721ebe18b26ed2f3da6ddd896d3c7bc5520c10f8fc0e70fd85da",
+    "bin/ai-data-scientist.js": "57ab9fc11aff0de1721220bf0846b4915d41111a2771423bb6e7e9ecbcf1fc07",
     "scripts/measure_pytest_pass_rate.py": "517ef67da322f01b224fb164746cdcdd777bc7970a4cc0d7a3ea00222d4e674e",
     "scripts/release_gate_governance.py": "4b9c6e390e03cf7d88480745ff99e7bd12579570b862df66bfc0718e6313887a",
     "src/ai_chemistry_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -16954,6 +17126,7 @@
     "tests/test_release_gate_governance.py": "c63d6ec5fc2e24e0fb6f1fd3b1cc9f74ab07ee0b28ee07f31bf287e1a72c70e9",
     "tests/test_report_export.py": "9640608629a523fc0b124d6fca0e7b5448869d672289b5bec3e9011e4e477fea",
     "tests/test_sensitivity.py": "90223b1e4e0c6d168ccc9195d94ba5d4f8f2758cb42b07d25a070cf3e75c0e31",
+    "tests/test_setup_skill_deployment.py": "46609144e19e5da3e7a9a87ea0517a0825ab068d59ee19036229e8fc7c23903f",
     "tests/test_signal_analysis.py": "ca79f04add72d49e33cb626adbcfec0c3559416b1ef22d4b1e54e77d9841af9b",
     "tests/test_skill_packaging.py": "73cfcef96b5e5364334a76cfb402f2b5b956ac830e9ce9f8f5d1c3ad543a1c5c",
     "tests/test_stats_analysis.py": "4defa94a791c68fe640cf6008d2a24030775bfc048f7276bc6f99ccea64f6124",

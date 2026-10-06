@@ -13231,6 +13231,160 @@
           "order": 1388
         }
       }
+    },
+    {
+      "changeId": "CHANGE-031",
+      "requirementIds": [
+        "REQ-AIDS-097"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-06T12:31:27.125Z",
+          "fingerprints": {
+            "impact": "e6cdc72319bbc34f7a655510970e9e7d22e6d8e11fe0cab71ae0a59d53394da3",
+            "requirements": "eed45c128e6daee36fea37cb2e1503b33f1ff95c225849d13f23c2f57d382670",
+            "design": "9d5eb3e461bd3909251b8cd7ef629267781cee4c5a19ab435a80a892d708a83e",
+            "implementation": "257bbf34255a002450e9aed25f33fbcb57bfab5f0cb9246378067c9cf9a8623a",
+            "tests": "ce11ea34f3729f6399981fe2b34e6720efe649f3f452f859a82359f7b26e5aa1",
+            "tdd": "f96bf338077f0d4a49362837791ac35bd4436e300ce9cfe02d510aaaed8bb0d8",
+            "requirementImplementations": {
+              "REQ-AIDS-097": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 1389
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-06T12:31:45.341Z",
+          "fingerprints": {
+            "impact": "e6cdc72319bbc34f7a655510970e9e7d22e6d8e11fe0cab71ae0a59d53394da3",
+            "requirements": "eed45c128e6daee36fea37cb2e1503b33f1ff95c225849d13f23c2f57d382670",
+            "design": "9d5eb3e461bd3909251b8cd7ef629267781cee4c5a19ab435a80a892d708a83e",
+            "implementation": "257bbf34255a002450e9aed25f33fbcb57bfab5f0cb9246378067c9cf9a8623a",
+            "tests": "ce11ea34f3729f6399981fe2b34e6720efe649f3f452f859a82359f7b26e5aa1",
+            "tdd": "f96bf338077f0d4a49362837791ac35bd4436e300ce9cfe02d510aaaed8bb0d8",
+            "requirementImplementations": {
+              "REQ-AIDS-097": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 1390
+        },
+        "design": {
+          "phase": "design",
+          "recordedAt": "2026-10-06T12:34:38.764Z",
+          "fingerprints": {
+            "impact": "e6cdc72319bbc34f7a655510970e9e7d22e6d8e11fe0cab71ae0a59d53394da3",
+            "requirements": "eed45c128e6daee36fea37cb2e1503b33f1ff95c225849d13f23c2f57d382670",
+            "design": "9d6f2e76e7b86fefe199e6dedb66d30268506cc1311a79fb64223a10d07056b1",
+            "implementation": "257bbf34255a002450e9aed25f33fbcb57bfab5f0cb9246378067c9cf9a8623a",
+            "tests": "ce11ea34f3729f6399981fe2b34e6720efe649f3f452f859a82359f7b26e5aa1",
+            "tdd": "f96bf338077f0d4a49362837791ac35bd4436e300ce9cfe02d510aaaed8bb0d8",
+            "requirementImplementations": {
+              "REQ-AIDS-097": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 1391
+        },
+        "red": {
+          "phase": "red",
+          "recordedAt": "2026-10-06T12:44:59.453Z",
+          "fingerprints": {
+            "impact": "e6cdc72319bbc34f7a655510970e9e7d22e6d8e11fe0cab71ae0a59d53394da3",
+            "requirements": "eed45c128e6daee36fea37cb2e1503b33f1ff95c225849d13f23c2f57d382670",
+            "design": "9d6f2e76e7b86fefe199e6dedb66d30268506cc1311a79fb64223a10d07056b1",
+            "implementation": "257bbf34255a002450e9aed25f33fbcb57bfab5f0cb9246378067c9cf9a8623a",
+            "tests": "e5653a9806ac96331d5719d3f3f6ed9735d071b18068ddc878f4a9d6e60b5505",
+            "tdd": "7fbceb931ca05ea0e735e5a5f81c3d125fc6f7654adc86817b29b474a10e07e6",
+            "requirementImplementations": {
+              "REQ-AIDS-097": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 1406
+        },
+        "implementation": {
+          "phase": "implementation",
+          "recordedAt": "2026-10-06T12:47:35.105Z",
+          "fingerprints": {
+            "impact": "e6cdc72319bbc34f7a655510970e9e7d22e6d8e11fe0cab71ae0a59d53394da3",
+            "requirements": "eed45c128e6daee36fea37cb2e1503b33f1ff95c225849d13f23c2f57d382670",
+            "design": "9d6f2e76e7b86fefe199e6dedb66d30268506cc1311a79fb64223a10d07056b1",
+            "implementation": "ce5c2808f11ce5d5c05ba0c4713b28e73f422e88983bc2a3fe5447e1b42247b1",
+            "tests": "e5653a9806ac96331d5719d3f3f6ed9735d071b18068ddc878f4a9d6e60b5505",
+            "tdd": "7fbceb931ca05ea0e735e5a5f81c3d125fc6f7654adc86817b29b474a10e07e6",
+            "requirementImplementations": {
+              "REQ-AIDS-097": {
+                "paths": [
+                  "bin/ai-data-scientist.js"
+                ],
+                "fingerprints": {
+                  "bin/ai-data-scientist.js": "57ab9fc11aff0de1721220bf0846b4915d41111a2771423bb6e7e9ecbcf1fc07"
+                }
+              }
+            }
+          },
+          "order": 1407
+        },
+        "green": {
+          "phase": "green",
+          "recordedAt": "2026-10-06T12:47:41.374Z",
+          "fingerprints": {
+            "impact": "e6cdc72319bbc34f7a655510970e9e7d22e6d8e11fe0cab71ae0a59d53394da3",
+            "requirements": "eed45c128e6daee36fea37cb2e1503b33f1ff95c225849d13f23c2f57d382670",
+            "design": "9d6f2e76e7b86fefe199e6dedb66d30268506cc1311a79fb64223a10d07056b1",
+            "implementation": "ce5c2808f11ce5d5c05ba0c4713b28e73f422e88983bc2a3fe5447e1b42247b1",
+            "tests": "e5653a9806ac96331d5719d3f3f6ed9735d071b18068ddc878f4a9d6e60b5505",
+            "tdd": "7fbceb931ca05ea0e735e5a5f81c3d125fc6f7654adc86817b29b474a10e07e6",
+            "requirementImplementations": {
+              "REQ-AIDS-097": {
+                "paths": [
+                  "bin/ai-data-scientist.js"
+                ],
+                "fingerprints": {
+                  "bin/ai-data-scientist.js": "57ab9fc11aff0de1721220bf0846b4915d41111a2771423bb6e7e9ecbcf1fc07"
+                }
+              }
+            }
+          },
+          "order": 1408
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-06T12:48:58.842Z",
+          "fingerprints": {
+            "impact": "e6cdc72319bbc34f7a655510970e9e7d22e6d8e11fe0cab71ae0a59d53394da3",
+            "requirements": "eed45c128e6daee36fea37cb2e1503b33f1ff95c225849d13f23c2f57d382670",
+            "design": "9d6f2e76e7b86fefe199e6dedb66d30268506cc1311a79fb64223a10d07056b1",
+            "implementation": "ce5c2808f11ce5d5c05ba0c4713b28e73f422e88983bc2a3fe5447e1b42247b1",
+            "tests": "e5653a9806ac96331d5719d3f3f6ed9735d071b18068ddc878f4a9d6e60b5505",
+            "tdd": "7fbceb931ca05ea0e735e5a5f81c3d125fc6f7654adc86817b29b474a10e07e6",
+            "requirementImplementations": {
+              "REQ-AIDS-097": {
+                "paths": [
+                  "bin/ai-data-scientist.js"
+                ],
+                "fingerprints": {
+                  "bin/ai-data-scientist.js": "57ab9fc11aff0de1721220bf0846b4915d41111a2771423bb6e7e9ecbcf1fc07"
+                }
+              }
+            }
+          },
+          "order": 1409
+        }
+      }
     }
   ]
 }

@@ -1536,3 +1536,178 @@ dependency.
 Requirements: REQ-AIDS-094 REQ-AIDS-095 REQ-AIDS-096
 ADRs: ADR-0112
 Depends-On: DES-AIDS-044
+
+## DES-AIDS-095: `setup` deploys allowlisted `.github/skills` into the consumer project with all-or-nothing preflight / `setup`が許可リストのスキルを全件事前検証後に利用者プロジェクトへ配置
+Responsibilities: Add a new module-private constant
+`SKILL_ALLOWLIST = Object.freeze(["ai-data-scientist",
+"ai-chemistry-scientist", "ai-genomics-scientist",
+"ai-materials-scientist", "ai-structural-biology-scientist",
+"ai-scientist", "tech-writer", "japanese-prose",
+"presentation-planner"])` in `bin/ai-data-scientist.js` (never derived by
+excluding an `sdd-*` prefix). Add `package.json`'s second `bin` entry
+`"jupytermind": "bin/ai-data-scientist.js"` (same script file as the
+existing `"ai-data-scientist"` entry — both names resolve to one
+executable, so there is exactly one implementation to maintain, matching
+REQ-AIDS-097's alias requirement). Extend `main()`'s existing `!command ||
+command === "setup"` branch so that, after the existing
+`ensureSetup()` venv/pip-install step already runs unconditionally at the
+top of `main()`, it additionally calls a new `deploySkills()` function
+before printing the "Environment ready" message, and then a new
+`verifySkillPythonModules()` call. Both run only for the `setup` dispatch
+path, not for other subcommands, so `npx jupytermind test` or any
+passthrough command does not re-run skill deployment on every invocation
+(`ensureSetup()`'s existing marker-file caching already keeps the
+venv/pip-install step itself fast on repeat calls; `deploySkills()` is
+comparatively cheap recursive file copying, but there is no requirement
+to skip it on a repeat `setup` call, and REQ-AIDS-097's "always_overwrite"
+policy — confirmed with the user during intake — means it intentionally
+reruns and re-overwrites on every `setup` invocation).
+
+`deploySkills()` implements REQ-AIDS-097's two-phase
+ancestor-containment-then-destination-preflight-then-copy sequence as
+three module-private helpers so each is independently unit-testable:
+
+1. `resolveContainedAncestor(targetDir, cwdReal)`: walks `targetDir`
+   upward (`path.dirname`, stopping when a parent equals its own
+   dirname, i.e. the filesystem root) to find the nearest ancestor that
+   already exists (`fs.existsSync`); resolves that ancestor's real path
+   via `fs.realpathSync.native`; throws a dedicated `SkillDeployError` if
+   that real path is not `cwdReal` itself and does not start with
+   `cwdReal + path.sep` (path-component-aware containment, never a bare
+   string-prefix check, so `cwdReal = /a/cwd` never matches
+   `/a/cwd-other`). Returns `{ existingAncestorReal, missingComponents }`
+   (the ordered list of path segments still to be created beneath
+   `existingAncestorReal`).
+2. `ensureContainedDir(targetDir, cwdReal)`: calls
+   `resolveContainedAncestor` first; then creates each of
+   `missingComponents` one path segment at a time with
+   `fs.mkdirSync(..., { recursive: false })`
+   (one `mkdirSync` call per segment, not a single recursive
+   `{ recursive: true }` call, specifically so each newly created
+   segment can be real-path-verified before the next segment is created
+   beneath it, per REQ-AIDS-097's ancestor-containment-before-descending
+   rule); after creating each segment, re-resolves its own real path and
+   re-applies the same containment check against `cwdReal`, throwing
+   `SkillDeployError` immediately if it ever fails (this additionally
+   catches the pathological case of a TOCTOU symlink substitution between
+   the ancestor check and the `mkdirSync` call, though that race is not a
+   scenario this requirement's acceptance criteria exercise). Returns the
+   final target directory's own verified real path.
+3. `deploySkills()` itself: computes `cwdReal =
+   fs.realpathSync.native(process.cwd())`; calls `ensureContainedDir(
+   path.join(process.cwd(), ".github", "skills"), cwdReal)` to obtain
+   `skillsRootReal` (the canonical skills-root fixed by REQ-AIDS-097);
+   then, for each of the 9 `SKILL_ALLOWLIST` names, computes
+   `destination = path.join(skillsRootReal, name)` and preflight-checks
+   it: if `destination` exists, first calls
+   `fs.lstatSync(destination).isSymbolicLink()` and throws
+   `SkillDeployError` naming that skill immediately if `destination`
+   itself is a symlink — regardless of where it resolves, even to a
+   location still contained within `skillsRootReal` — since
+   REQ-AIDS-097 requires rejecting any allowlisted destination that is
+   itself a symlink, not only one that escapes containment; only when
+   `destination` is not a symlink does the check proceed to resolve its
+   real path via `fs.realpathSync.native` and verify it equals or
+   path-component-descends from `skillsRootReal`, throwing
+   `SkillDeployError` naming that skill if not (this second check
+   guards a non-symlink destination whose containing path was otherwise
+   redirected, complementing the symlink-itself check rather than
+   duplicating it). This preflight loop runs to completion over all 9 names,
+   collecting each verified (or about-to-be-created, if not yet existing)
+   destination path into an array, **before** any removal or copy begins
+   — the loop itself contains no `fs.rmSync`/copy call, guaranteeing the
+   all-9-before-any-destructive-write ordering REQ-AIDS-097 requires.
+   Only after the full preflight array is built does a second loop run:
+   for each of the 9 `(name, destination)` pairs in allowlist order, if
+   `destination` exists remove it with `fs.rmSync(destination, {
+   recursive: true, force: true })`, then recursively copy
+   `path.join(PACKAGE_ROOT, ".github", "skills", name)` to `destination`
+   with `fs.cpSync(source, destination, { recursive: true })` (Node 18's
+   `fs.cpSync` already performs a full recursive byte-for-byte tree copy
+   including non-`SKILL.md` assets such as `scripts/`/`references/`/
+   `assets/` subdirectories, and removing the destination first before
+   copying is what guarantees no stale leftover file survives from a
+   prior run, satisfying REQ-AIDS-097's exact-tree-match acceptance
+   scenario), then `log(`Deployed skill "${name}" to
+   ${destination}`)`.
+
+`verifySkillPythonModules()`: runs `VENV_PYTHON` with `["-c", "import
+ai_data_scientist, ai_chemistry_scientist, ai_genomics_scientist,
+ai_materials_scientist, ai_structural_biology_scientist, ai_scientist"]`
+via the existing `run()` helper (already throws and causes `main()`'s
+existing top-level `catch` to print the error and `process.exit(1)` on a
+nonzero exit, satisfying REQ-AIDS-097's "ensure importable" clause without
+new error-handling code — `ensureSetup()`'s preceding `pip install -e
+PACKAGE_ROOT` step is what makes these 6 modules importable in the first
+place, since `pyproject.toml`'s `where=["src"]` auto-discovery already
+picks up all 6; this call is a verification-only step, it installs
+nothing new).
+
+`SkillDeployError` is a small `class SkillDeployError extends Error {}`
+defined alongside the existing top-level helpers; `main()`'s existing
+top-level `try`/`catch` already logs `err.message` and exits 1 for any
+thrown error, so no new catch block is needed — `SkillDeployError`
+instances propagate through `deploySkills()`'s caller exactly like the
+existing `run()` function's thrown `Error`s do, ensuring "no success
+message is printed" is automatically satisfied (the "Environment ready"
+log line in `main()` is reached only if `deploySkills()` and
+`verifySkillPythonModules()` both return without throwing).
+Interfaces: `deploySkills(): void` (module-private; throws
+`SkillDeployError` on any containment violation); `resolveContainedAncestor(
+targetDir: string, cwdReal: string): { existingAncestorReal: string,
+missingComponents: string[] }` (module-private); `ensureContainedDir(
+targetDir: string, cwdReal: string): string` (module-private);
+`verifySkillPythonModules(): void` (module-private, delegates to existing
+`run()`); `SKILL_ALLOWLIST: readonly string[]` (module-private frozen
+constant, 9 entries, order is the allowlist/log/preflight iteration order).
+Constraints: `SKILL_ALLOWLIST` must never be computed by filtering out an
+`sdd-*` prefix — it is a literal fixed array, so a future `sdd-*`-named
+skill added under `.github/skills` is never deployed unless explicitly
+added to this array (REQ-AIDS-097). Each of the 9 destination checks must
+reject a destination that is itself a symlink (`fs.lstatSync(...).
+isSymbolicLink()`) unconditionally — even when its resolved target is
+still contained within the canonical skills-root — in addition to, and
+performed before, the separate real-path containment check against a
+non-symlink destination's containing path. The preflight loop (all 9
+checks) must fully complete, with no `fs.rmSync`/`fs.cpSync` call
+anywhere inside it, before the destructive copy loop begins; an
+implementation that interleaves a per-skill check-then-copy inside a
+single loop violates this and must be rejected in review. Containment
+checks always use `fs.realpathSync.native` (OS-level real path
+resolution, following all symlinks) compared via exact string equality
+or a trailing `path.sep`-boundary prefix check — never a plain
+`.startsWith()` without the separator boundary, which would wrongly
+admit a sibling directory sharing a string prefix. `ensureContainedDir`
+creates missing path segments one at a time (not a single `{ recursive:
+true }` `mkdirSync` call) specifically so each new segment's real path
+is individually verified before the next is created beneath it. This
+design's `deploySkills()`/`verifySkillPythonModules()` calls are
+additive to the existing `ensureSetup()` call already present at the top
+of `main()`; no existing behavior for non-`setup` subcommands changes.
+Required regression-test scenarios mirror REQ-AIDS-097's acceptance
+criteria exactly: clean-install full-tree copy (including non-`SKILL.md`
+assets) excluding any `sdd-*` directory; allowlist (not prefix-exclusion)
+proven via an injected `sdd-test/` test double; stale-leftover-file
+removal plus locally-modified-file overwrite with a logged destination
+path; all-9-preflight-before-any-destructive-write proven via an earlier
+allowlisted skill's sentinel file surviving untouched when a later
+allowlisted skill is a symlink escaping the skills-root; an additional
+scenario where an allowlisted destination is itself a symlink whose
+target remains contained within the canonical skills-root, confirming
+rejection on symlink-identity alone (not merely on escape), with an
+earlier skill's sentinel file surviving untouched; both `npx
+jupytermind setup` and `npx ai-data-scientist setup` performing identical
+behavior (same script, two `bin` names); outward-symlinked `.github`
+ancestor with a missing `skills` child rejected before any write beneath
+it; in-cwd-redirected `.github` symlink (targeting another directory
+still under cwd) permitted, with the canonical skills-root correctly
+resolved to the redirected location; post-`setup` Python import check for
+all 6 application modules.
+Requirements: REQ-AIDS-097
+ADRs: ADR-0114
+Depends-On: (none — `bin/ai-data-scientist.js`'s existing
+`ensureSetup()`/`run()`/`log()`/`PACKAGE_ROOT`/`VENV_PYTHON` are
+referenced as already-established code, not as a formal `DES-*`
+dependency, since this is the first design entry describing
+`bin/ai-data-scientist.js`'s internal structure)
+Change: CHANGE-031
