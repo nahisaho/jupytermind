@@ -1711,3 +1711,187 @@ referenced as already-established code, not as a formal `DES-*`
 dependency, since this is the first design entry describing
 `bin/ai-data-scientist.js`'s internal structure)
 Change: CHANGE-031
+
+## DES-AIDS-098: `convergence_guard` module — repetition-aware convergence classification for iterative deep-dive loops / 収束ガードモジュール — 反復深掘りループ向け反復検知付き収束判定
+Responsibilities: A new `convergence_guard` module providing a single
+function, `evaluate_convergence(history, rel_tol=0.02,
+min_consecutive=2, actions_exhausted=False)`, satisfying REQ-AIDS-098.
+`history` is a `Sequence` of per-round records (each exposing `.metric:
+float` and `.action_signature: str`, e.g. via a small frozen dataclass
+`Round(metric: float, action_signature: str)` or any mapping with those
+two keys) in chronological order, 1-based position implied by list
+index + 1 (`history[0]` is round 1). Each field is resolved via a
+private helper `_resolve_field(entry, name)`, implemented as a single
+`try` block that attempts, in order, `return getattr(entry, name)` then
+(only on `AttributeError`) `return entry[name]` if `isinstance(entry,
+Mapping)`, with the **entire** two-step attempt wrapped by one
+outermost `except Exception: return _MISSING` — so any `Exception`
+subclass raised while resolving the field (not only the expected
+`AttributeError`/`KeyError`, but also e.g. a custom `__getattr__` or
+property raising `TypeError`, or a custom `Mapping` whose
+`__contains__`/`__getitem__` itself raises) is uniformly treated as
+"field absent" and converted to the private `_MISSING` sentinel rather
+than ever propagating out of `_resolve_field`. (`except Exception` is
+deliberately used rather than a bare `except:` — it does not, and must
+not, suppress `BaseException` subclasses such as `KeyboardInterrupt` or
+`SystemExit`; this module's guarantee is scoped to `Exception` and its
+subclasses only, which covers every realistic field-resolution failure
+mode.) There is no separate `hasattr`-then-`getattr` existence probe
+before the real access, so a stateful or side-effecting accessor is
+attempted at most once per `_resolve_field` call. `_resolve_field` never
+lets an `Exception` subclass (including `KeyError`, `TypeError`, or
+`AttributeError`) escape — a record that is neither attribute-bearing
+for `name` nor a `Mapping` containing `name` (or that raises while being
+probed for either) simply resolves to `_MISSING` rather than raising.
+**Step 1 below calls `_resolve_field` exactly once per field per
+history entry and caches every resolved `metric`/`action_signature`
+into two parallel local lists (`metrics: list[float]`,
+`signatures: list[str]`, both built only after every entry has passed
+validation); steps 2 through 5 read exclusively from these two cached
+lists (by 0-based index) and never call `_resolve_field` or otherwise
+re-read `history`/`entry` again, so no field — stateful or not — is
+ever resolved more than once across a single `evaluate_convergence`
+call.**
+
+1. **Validation (runs first, before any classification):** define
+   `valid_min_consecutive = isinstance(min_consecutive, int) and not
+   isinstance(min_consecutive, bool) and min_consecutive >= 1`; define
+   `valid_rel_tol = isinstance(rel_tol, (int, float)) and not
+   isinstance(rel_tol, bool) and math.isfinite(rel_tol) and rel_tol >=
+   0.0`; for each `history` entry, resolve `metric = _resolve_field(entry,
+   "metric")` and `action_signature = _resolve_field(entry,
+   "action_signature")` **exactly once each** and append them to the
+   `metrics`/`signatures` cache lists described above, then define
+   `valid_metric = metric is not
+   _MISSING and isinstance(metric, (int, float)) and not
+   isinstance(metric, bool) and math.isfinite(metric)` and
+   `valid_action_signature = action_signature is not _MISSING and
+   isinstance(action_signature, str) and len(action_signature) > 0` (the
+   leading `is not _MISSING` check short-circuits before any
+   `isinstance`/`math.isfinite` call, so a missing field is rejected the
+   same way as a present-but-wrong-typed one — never via a propagated
+   `KeyError`/`TypeError`/`AttributeError`). Raise `ValueError` if `not
+   valid_min_consecutive`, if `not valid_rel_tol`, or if any `history`
+   entry has `not valid_metric` or `not valid_action_signature` — each
+   `and`/`not` in these four definitions is evaluated with normal Python
+   short-circuit semantics (so no invalid operand can reach a later
+   operator and raise an exception of its own). No exception type other
+   than `ValueError` may ever be raised by `evaluate_convergence` for
+   invalid `min_consecutive`/`rel_tol`/`history` input. None of these
+   checks mutates `history`. Define `n = len(metrics)` (equivalently
+   `len(signatures)`, since both cache lists are built with exactly one
+   append per `history` entry) once validation completes; `history`
+   itself (including a further `len(history)` call) is never read again
+   after this point by any of steps 2–5.
+2. **Relative-change sequence:** using only
+   the cached `metrics` list from step 1 (`m = metrics`, never
+   `history`/`_resolve_field` again) and the `n` defined in step 1 (where
+   `n >= 2` is required for any transition to exist), compute
+   `rel_change[i]` for `i` in `1..n-1` (1-based index `i` denotes the
+   transition from round `i` to round `i+1`) as `abs(m[i] - m[i-1]) /
+   abs(m[i-1])` (0-based array access into `m`) when `m[i-1] !=
+   0.0`, else `0.0` if `m[i] == 0.0` else `math.inf`. A transition
+   `i` **qualifies** iff `rel_change[i] < rel_tol` (strict).
+3. **Trailing qualifying run:** `run_length` is the length of the
+   maximal suffix of qualifying transitions ending at transition `n-1`
+   (the last transition); `run_length = 0` if `n < 2` or the last
+   transition does not qualify. The history **length-qualifies** iff
+   `run_length >= min_consecutive`.
+4. **Contributing rounds:** when length-qualified, the contributing
+   destination rounds are the last `min_consecutive` destination rounds
+   of the trailing run, i.e. 1-based rounds `{n - min_consecutive + 1,
+   ..., n}` (destination round of transition `i` is round `i + 1`).
+5. **Duplicate scan:** using only the cached `signatures` list from step
+   1 (`action_signature(k)` below means `signatures[k - 1]`, the 1-based
+   round `k`'s cached signature — `history`/`_resolve_field` are never
+   consulted again), the **candidate (later) rounds** are limited to
+   exactly the contributing rounds from step 4 — this is the only part of
+   the scan that is restricted. For each candidate round `r` (iterated
+   from greatest to smallest 1-based position), the **search for a
+   matching earlier round is unrestricted**: check whether
+   `action_signature(r)` equals `action_signature(e)` for any strictly
+   earlier round `e` with `1 <= e < r`, spanning the *entire* history up
+   to `r` (not limited to the contributing rounds or the trailing run);
+   among `e` candidates for a given `r`, prefer the greatest `e`. A
+   duplicate whose only matching earlier occurrence lies outside the
+   candidate set is irrelevant (duplicates are only ever reported for a
+   candidate round `r`, never for a non-candidate round acting as `r`).
+   The first `r` (in greatest-to-smallest iteration order) with at least
+   one such `e` determines `repeated_rounds = (e, r)` and
+   `repeated_signature = action_signature(r)`; this is exactly the
+   "greatest contributing round first, then greatest earlier match" rule
+   from ADR-0115.
+6. **Status decision**, in this order: if length-qualified and a
+   duplicate was found in step 5, `status = "repetition_detected"`; elif
+   length-qualified, `status = "converged"`; elif `actions_exhausted`,
+   `status = "exhausted"`; else `status = "continue"`.
+7. **Return value:** a `ConvergenceVerdict` — a frozen dataclass (or
+   `NamedTuple`) with exactly the fields `status: str`,
+   `repeated_signature: str | None`, `repeated_rounds: tuple[int, int] |
+   None` — where the latter two fields are `None` unless `status ==
+   "repetition_detected"`.
+
+Interfaces: `convergence_guard.Round` (a frozen dataclass with `metric:
+float` and `action_signature: str`, exported for callers that want a
+concrete type rather than a bare `dict`);
+`convergence_guard.ConvergenceVerdict` (a frozen dataclass/`NamedTuple`
+with `status: Literal["converged", "repetition_detected", "exhausted",
+"continue"]`, `repeated_signature: str | None`, `repeated_rounds:
+tuple[int, int] | None`); `convergence_guard.RoundLike` (a
+`typing.Protocol` with read-only `metric: float` and `action_signature:
+str` properties, satisfied structurally by `Round`, any other dataclass
+exposing those two attributes, and — via `evaluate_convergence`'s own
+`getattr`-then-`__getitem__` resolution, not the `Protocol`'s static
+structural check — a plain `Mapping[str, Any]` with `"metric"`/
+`"action_signature"` keys); `convergence_guard.evaluate_convergence(
+history: Sequence[RoundLike | Mapping[str, Any]], rel_tol: float = 0.02,
+min_consecutive: int = 2, actions_exhausted: bool = False) ->
+ConvergenceVerdict`. The `RoundLike` protocol exists so the Responsibilities
+section's documented support for "any dataclass exposing `.metric`/
+`.action_signature`" (not just the exported `Round`) is reflected in the
+typed interface, not merely in prose.
+
+Constraints: `evaluate_convergence` performs no file, notebook, or
+network I/O and never imports or calls `ml_modeling.train_model` or any
+other analysis module (REQ-AIDS-098's purity requirement); it must not
+mutate the `history` argument (no in-place sort, append, or per-element
+mutation) regardless of whether `history` is a `list` of dataclasses or
+of plain `dict`s. All validation in step 1 runs to completion (or raises)
+before any part of steps 2–7 executes, so a caller never receives a
+partially-computed verdict alongside a `ValueError`. Field resolution via
+`_resolve_field` must never let a malformed or missing-field `history`
+entry raise anything other than `ValueError` from step 1 — any
+`Exception` subclass (not only `KeyError`/`TypeError`/`AttributeError`,
+and not restricted to any smaller enumerated set) escaping from field
+resolution is itself a defect in the implementation, not an acceptable
+alternative to `ValueError` (this guarantee is scoped to `Exception` and
+its subclasses, matching `_resolve_field`'s `except Exception` clause —
+it is not, and must not be, extended to `BaseException` subclasses such
+as `KeyboardInterrupt`/`SystemExit`, which must propagate normally); the
+implementation's test
+suite must include at minimum: an entry whose `metric` or
+`action_signature` property/`__getattr__` raises `TypeError`; an entry
+whose attribute is absent and whose fallback mapping lookup raises
+`KeyError`; a custom `Mapping` subclass whose `__contains__` or
+`__getitem__` itself raises an arbitrary `Exception` subclass; and a
+stateful property/accessor instrumented to assert it is read at most
+once across an entire `evaluate_convergence` call (not merely once per
+`_resolve_field` call), per step 1's cached `metrics`/`signatures` lists
+being the sole source read by steps 2–5 — each case must result in a
+`ValueError` from `evaluate_convergence` itself, never a propagated
+exception of another type. Per step 5, only
+the **candidate (later)** round set is limited to the contributing
+rounds identified in step 4 — that restriction must never be widened to
+include non-contributing rounds as candidates; the **earlier-match
+search** for a given candidate, by contrast, must never be narrowed to
+only the trailing run or only the contributing rounds — it must always
+scan every strictly earlier round in the full `history`, per ADR-0115.
+This module depends only on the Python standard library
+(`math`, `dataclasses`, `typing`) and must not introduce any new
+third-party dependency.
+Requirements: REQ-AIDS-098
+ADRs: ADR-0115
+Depends-On: (none — a new, self-contained, pure module with no
+dependency on any existing `ai_data_scientist` submodule)
+Change: CHANGE-032
+Issue: #77
