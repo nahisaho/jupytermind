@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import json
 import re
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -32,6 +34,21 @@ class _FakeSkillInvoker:
 
 def _contains_japanese(text: str) -> bool:
     return re.search(r"[\u3040-\u30ff\u3400-\u9fff\uff66-\uff9f]", text) is not None
+
+
+def _load_package_files() -> list[str]:
+    return json.loads(Path("package.json").read_text("utf-8"))["files"]
+
+
+def _load_npm_pack_dry_run_paths() -> set[str]:
+    result = subprocess.run(
+        ["npm", "pack", "--dry-run", "--json"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    payload = json.loads(result.stdout)
+    return {entry["path"] for pack in payload for entry in pack["files"]}
 
 
 # @id TEST-AISCI-001
@@ -169,7 +186,7 @@ def test_TEST_AISCI_024_has_linked_tests_for_every_requirement_without_skips():
         for match in re.finditer(r"# @verifies (REQ-AISCI-\d{3})", text):
             verifies.setdefault(match.group(1), set()).add(path.name)
 
-    assert requirement_ids == {f"REQ-AISCI-{index:03d}" for index in range(1, 25)}
+    assert requirement_ids == {f"REQ-AISCI-{index:03d}" for index in range(1, 26)}
     assert requirement_ids.issubset(set(verifies))
     assert "test_TEST_AISCI_008_integration_delegates_data_analysis_to_ai_data_scientist" in (
         Path("tests/test_ai_scientist_delegation.py").read_text(encoding="utf-8")
@@ -177,3 +194,28 @@ def test_TEST_AISCI_024_has_linked_tests_for_every_requirement_without_skips():
     assert all(
         re.search(r"^\s*@pytest\.mark\.skip", text, re.MULTILINE) is None for text in skipped_text
     )
+
+
+# @id TEST-AISCI-048
+# @verifies REQ-AISCI-025
+def test_TEST_AISCI_048_npm_package_ships_skill_payloads_with_matching_python_sources():
+    package_files = _load_package_files()
+
+    assert ".github/skills/ai-scientist" in package_files
+    assert "src/ai_scientist/**/*.py" in package_files
+
+    for entry in package_files:
+        match = re.fullmatch(r"\.github/skills/([^/]+)", entry)
+        if match is None:
+            continue
+        package_dir = Path("src") / match.group(1).replace("-", "_")
+        if not (package_dir / "__init__.py").exists():
+            continue
+        assert f"{package_dir.as_posix()}/**/*.py" in package_files
+
+    packed_paths = _load_npm_pack_dry_run_paths()
+    assert ".github/skills/ai-scientist/SKILL.md" in packed_paths
+    assert ".github/skills/ai-scientist/manifest.json" in packed_paths
+
+    source_paths = {path.as_posix() for path in Path("src/ai_scientist").rglob("*.py")}
+    assert source_paths.issubset(packed_paths)

@@ -1,4 +1,9 @@
-"""Local helper for REQ-AISCI-024's configured test-suite gate."""
+"""Local helper for REQ-AISCI-024's configured test-suite gate.
+
+The configured suite is the release proof that every REQ-AISCI requirement,
+including npm-packaging coverage added in CHANGE-023, has executable
+verification in the ai_scientist test corpus.
+"""
 
 from __future__ import annotations
 
@@ -60,7 +65,9 @@ def run_configured_test_suite(
     Skip detection is structural (via a ``pytest-json-report`` machine
     report) rather than console-text parsing whenever the command invokes
     pytest, so a differently worded summary line cannot hide a real skip and
-    an explicitly approved skip does not fail the gate.
+    an explicitly approved skip does not fail the gate. CHANGE-023 relies on
+    the same suite gate to certify the new REQ-AISCI-025 packaging
+    regression alongside the pre-existing REQ-AISCI coverage set.
     """
     is_pytest = _is_pytest_invocation(command)
     report_path: str | None = None
