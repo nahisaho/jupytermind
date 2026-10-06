@@ -276,6 +276,26 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
     *discovery* (e.g. searching an external catalog such as Kaggle) is out
     of scope for this module — the caller must load the candidate dataset
     first (REQ-AIDS-057).
+17. **Analyze spectral/signal peaks** — when the user has 1-D
+    spectrum-like data (x/y pairs such as wavelength/intensity or
+    time/amplitude), first remove the background with
+    `ai_data_scientist.signal_analysis.baseline_correct(x, y,
+    method="linear"|"asls")` (`"linear"` anchors the two endpoints;
+    `"asls"` runs a fixed-parameter Asymmetric Least Squares fit for
+    curved backgrounds), then call
+    `ai_data_scientist.signal_analysis.find_spectral_peaks(x, y,
+    prominence_frac=..., window=...)` to get a list of
+    `{"position", "fwhm", "prominence", "height"}` dicts, one per
+    detected peak, ordered by ascending `position` (set `window`, an odd
+    integer >= 5, to apply Savitzky-Golay smoothing before peak-finding
+    on noisy data) (REQ-AIDS-094, REQ-AIDS-095). To check whether a peak
+    count/position conclusion is robust to the detection parameters,
+    build a plan with
+    `ai_data_scientist.signal_analysis.build_peak_sensitivity_plan(x, y,
+    prominence_fracs=[...], windows=[...], target_claim="...")`, which
+    returns a ready-to-use `(SensitivityPlan, analysis_fn)` pair — pass
+    both straight into `sensitivity.run_sensitivity` exactly as in step 15
+    with no extra glue code required (REQ-AIDS-096).
 
 ## Constraints / 制約
 - Every notebook write goes through
@@ -307,3 +327,4 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
 - `src/ai_data_scientist/data_quality.py` — DES-AIDS-043
 - `src/ai_data_scientist/sensitivity.py` — DES-AIDS-044
 - `src/ai_data_scientist/dataset_validation.py` — DES-AIDS-045
+- `src/ai_data_scientist/signal_analysis.py` — DES-AIDS-094
