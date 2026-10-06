@@ -17522,6 +17522,92 @@
         "diagnostics": [],
         "order": 1311
       }
+    },
+    {
+      "cycleId": "ae381670-73d0-4f0b-b0e4-291ffb192760",
+      "requirementId": "REQ-AISCI-024",
+      "testId": "TEST-AISCI-024",
+      "testPath": "tests/test_ai_scientist_skill_packaging.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "dd08749da0100c5d451f6d618c40c3fbaf618a0ec530e164e050718a66e41bb7",
+        "commandSha256": "3f6cf5964f76f049c74ae04126cb465e94d9149262e6cc81e04e05c822393f5f",
+        "outputSha256": "84ecb74dbf0e342ed03d0a6bbf542d9373acdc99073bf284a84d5cdfd43c4ebf",
+        "exitCode": 1,
+        "durationMs": 534,
+        "testFingerprint": "9671d5dce52c71016252ca91a3a75e18901225eb87e6cad2a38fc82bd6d99176",
+        "sourceFingerprint": "693f9c683097a3c561daae24f64171d90ceb7c268c824092cde9fb5a690a427d",
+        "executionId": "ddb39003-e84d-4742-8654-f62661c63042",
+        "recordedAt": "2026-10-05T21:32:22.772Z",
+        "diagnostics": [],
+        "order": 1321
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "09044be20b2e79967ea6eb6a91f39c22d1ef0b946ab442ecaa4a6a896a295568",
+        "commandSha256": "3f6cf5964f76f049c74ae04126cb465e94d9149262e6cc81e04e05c822393f5f",
+        "outputSha256": "6c12f084be27b912fc4766b6940edd775a477f3e5f7a7cd3849db104124a72a6",
+        "exitCode": 0,
+        "durationMs": 699,
+        "testFingerprint": "9671d5dce52c71016252ca91a3a75e18901225eb87e6cad2a38fc82bd6d99176",
+        "sourceFingerprint": "5c8bab0a69f903041c750f02c30854fcee2c17fef170a470136529c3e4ab46f5",
+        "executionId": "42cb02c0-81ca-4cde-aad1-65400f29d5b7",
+        "recordedAt": "2026-10-05T21:33:22.006Z",
+        "diagnostics": [],
+        "order": 1326
+      }
+    },
+    {
+      "cycleId": "2f06ab50-2460-4d3a-90d2-44928463e197",
+      "requirementId": "REQ-AISCI-025",
+      "testId": "TEST-AISCI-048",
+      "testPath": "tests/test_ai_scientist_skill_packaging.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "6958cd4d702f6eb2e5740065ac8d00f674326e7741d31f9507d6eb9d6170267a",
+        "commandSha256": "1198955882c610d5b6e8a8051923328e01ab4e745c3054621e5f2bdd2f90bce3",
+        "outputSha256": "e2416a9f314074a8e8ee0b244af6d85cd3045a5a3a1c3e31a514602530e7bf3c",
+        "exitCode": 1,
+        "durationMs": 433,
+        "testFingerprint": "7bc66bb57052626d75111274a4e6161a5972a429d86d71ccf6a1a4585ea97005",
+        "sourceFingerprint": "c52d7f1c4df20320baffe6b63da94c22f6fbcee960621bf57db1840cb7d7f04c",
+        "executionId": "aea9d2c9-4453-4220-afaa-0426f0d01ed8",
+        "recordedAt": "2026-10-05T21:32:39.314Z",
+        "diagnostics": [],
+        "order": 1322
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "bff0eca1a203a4772e391a96af465682f9b616f2354ed3de0e2429db04315436",
+        "commandSha256": "1198955882c610d5b6e8a8051923328e01ab4e745c3054621e5f2bdd2f90bce3",
+        "outputSha256": "8b3e935bb41fcb0f346ac38a5205eb4d23d97030a0b64b49b20414f972e9144f",
+        "exitCode": 0,
+        "durationMs": 1256,
+        "testFingerprint": "7bc66bb57052626d75111274a4e6161a5972a429d86d71ccf6a1a4585ea97005",
+        "sourceFingerprint": "5c8bab0a69f903041c750f02c30854fcee2c17fef170a470136529c3e4ab46f5",
+        "executionId": "7425a155-c6aa-46f3-8bf9-13d0d9c0c2fe",
+        "recordedAt": "2026-10-05T21:33:18.787Z",
+        "diagnostics": [],
+        "order": 1325
+      }
     }
   ],
   "chain": [
@@ -27112,6 +27198,90 @@
       "phaseEvidenceSha256": "0a1369f0e16ffa3592df021d5ee4d5e9c4f5778f4767eab50cab7dd1d4bd211b",
       "previousSha256": "8bf09a840d7efa35fbe1a35376ff91bd571678205f681925aec3699e959b1beb",
       "recordSha256": "f993273a6f47050bc0916a703dfb619fee1c80dce7b4915a3293a3d82e154790"
+    },
+    {
+      "sequence": 800,
+      "cycleId": "0381f2d4-f459-4964-84f5-5bd7661805ee",
+      "requirementId": "REQ-AISCI-024",
+      "testId": "TEST-AISCI-024",
+      "testPath": "tests/test_ai_scientist_skill_packaging.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "17c7a92d4850763068b5daafcaf9edb619c9f89840a8395e33fcf0b4c9fd5580",
+      "previousSha256": "f993273a6f47050bc0916a703dfb619fee1c80dce7b4915a3293a3d82e154790",
+      "recordSha256": "9224adb4b20db0ac2a70d3334c111aafc9caf68bb7416782a54377b2cdbb10e6"
+    },
+    {
+      "sequence": 801,
+      "cycleId": "7e4aad16-ed49-45b2-940e-ac4359d75874",
+      "requirementId": "REQ-AISCI-024",
+      "testId": "TEST-AISCI-024",
+      "testPath": "tests/test_ai_scientist_skill_packaging.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "15a77585a6daa6b295eebc9bd098c13dd6f3574bfa6e325b8b753d66dada3a4b",
+      "previousSha256": "9224adb4b20db0ac2a70d3334c111aafc9caf68bb7416782a54377b2cdbb10e6",
+      "recordSha256": "056f58d03fa6f593dca4a1970820f85a25aab4230d398b0374f7db4736f3a91e"
+    },
+    {
+      "sequence": 802,
+      "cycleId": "c68cbca0-48bc-4f80-92f1-6e59bcf639a1",
+      "requirementId": "REQ-AISCI-025",
+      "testId": "TEST-AISCI-048",
+      "testPath": "tests/test_ai_scientist_skill_packaging.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "a1e7829abc542ddd561e2f0069310058333c0118367b0fecd47a1c0c2b8debaf",
+      "previousSha256": "056f58d03fa6f593dca4a1970820f85a25aab4230d398b0374f7db4736f3a91e",
+      "recordSha256": "7e6cb79dcf5f80ca5cd48fbaeee5b6244fa1ca56ce5e2eb1884544d39160c5b7"
+    },
+    {
+      "sequence": 803,
+      "cycleId": "ae381670-73d0-4f0b-b0e4-291ffb192760",
+      "requirementId": "REQ-AISCI-024",
+      "testId": "TEST-AISCI-024",
+      "testPath": "tests/test_ai_scientist_skill_packaging.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "caaa207edea42c98af7f7307b38da508a5ed176d429b54893e7cb57d19f840f5",
+      "previousSha256": "7e6cb79dcf5f80ca5cd48fbaeee5b6244fa1ca56ce5e2eb1884544d39160c5b7",
+      "recordSha256": "a4dc6c835be687689dbb007d4a59bd8109ea8b0d301234c433d948f51873c507"
+    },
+    {
+      "sequence": 804,
+      "cycleId": "2f06ab50-2460-4d3a-90d2-44928463e197",
+      "requirementId": "REQ-AISCI-025",
+      "testId": "TEST-AISCI-048",
+      "testPath": "tests/test_ai_scientist_skill_packaging.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "60890a37ffdd2946d1e64ec69bbf75a2ea9396fb7ddc57a810448d5104b1a94d",
+      "previousSha256": "a4dc6c835be687689dbb007d4a59bd8109ea8b0d301234c433d948f51873c507",
+      "recordSha256": "d5b7fc6c49472b39fb907dfec38d1e5d56df9db3d9409c41ff4f2d2e1c96cb1d"
+    },
+    {
+      "sequence": 805,
+      "cycleId": "2f06ab50-2460-4d3a-90d2-44928463e197",
+      "requirementId": "REQ-AISCI-025",
+      "testId": "TEST-AISCI-048",
+      "testPath": "tests/test_ai_scientist_skill_packaging.py",
+      "commandName": "test",
+      "phase": "green",
+      "phaseEvidenceSha256": "e920e5b3c0146a64b4554eb0cb0bc35132db6887efd0c4822ab94776460ceaa6",
+      "previousSha256": "d5b7fc6c49472b39fb907dfec38d1e5d56df9db3d9409c41ff4f2d2e1c96cb1d",
+      "recordSha256": "219a2571b7cf0f2e084f5008e8a5aa2896fd2d174e94f241f5c770bb29ebc805"
+    },
+    {
+      "sequence": 806,
+      "cycleId": "ae381670-73d0-4f0b-b0e4-291ffb192760",
+      "requirementId": "REQ-AISCI-024",
+      "testId": "TEST-AISCI-024",
+      "testPath": "tests/test_ai_scientist_skill_packaging.py",
+      "commandName": "test",
+      "phase": "green",
+      "phaseEvidenceSha256": "ed2f88b0c52e4d36f4359ada7146620a62657ae305926546c26cbd59f6197a1c",
+      "previousSha256": "219a2571b7cf0f2e084f5008e8a5aa2896fd2d174e94f241f5c770bb29ebc805",
+      "recordSha256": "fd6674f897d39fea25f9b491c1e36e29390f35963591410b103cbe4b54de8876"
     }
   ]
 }

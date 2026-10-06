@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
-  "runId": "6d6e3668-fdda-47fe-9c16-211201a3f8b2",
-  "generatedAt": "2026-10-05T20:21:40.154Z",
+  "runId": "9d06091f-dfde-48b8-9225-fb09368077c0",
+  "generatedAt": "2026-10-05T21:59:01.580Z",
   "executions": [
     {
-      "runId": "6d6e3668-fdda-47fe-9c16-211201a3f8b2",
-      "executionId": "f634c0b3ce1b13b10d88280883a64e7440d961ff83a62d1107d086c15f234cf2",
+      "runId": "9d06091f-dfde-48b8-9225-fb09368077c0",
+      "executionId": "13d18d7b96e12dd9112330acc7a18804983dc14e8ff11b160413b43575d1494b",
       "commandName": "test",
       "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
       "reportPath": ".musubix/evidence/native/test/aggregate.json",
       "sourceKind": "file",
-      "reportSha256": "dd50bba93ae3ac0b673ddcfbff539a441ba5a5625cd6eea6208361cab48eb225",
+      "reportSha256": "c3b61a30c5451f3e0c7ce9a87ca2acfaace38f959a201ed52b8e6f2583cffa75",
       "processStatus": "completed",
       "exitCode": 0,
       "tests": [
@@ -1915,6 +1915,10 @@
           "status": "passed"
         },
         {
+          "id": "TEST-AISCI-048",
+          "status": "passed"
+        },
+        {
           "id": "TEST-ASTRUCT-002",
           "status": "passed"
         },
@@ -2019,7 +2023,7 @@
           "status": "passed"
         }
       ],
-      "recordSha256": "4f1bfffabb80ecf55ceaccbaa91c5291b9998b77da41acc6c3574793208d8003"
+      "recordSha256": "9d17c7e28c6e488bb4e9ad1d2093038cdeb7c210ec403b2da87a4a6cce7010b8"
     }
   ],
   "observations": [

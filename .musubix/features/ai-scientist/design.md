@@ -384,13 +384,38 @@ Depends-On: DES-AISCI-006
 Responsibilities: Require the configured test suite covering every
 component above, including an integration test exercising the real
 ai-data-scientist delegation boundary (DES-AISCI-005) against that
-feature's own REQ-AIDS-002/003 behaviors, to pass with zero failures and
-zero unapproved skipped tests before any implementation change is
-considered complete.
+feature's own REQ-AIDS-002/003 behaviors, and at least one passing
+`@verifies`-linked test for every REQ-AISCI requirement ID including a
+REQ-AISCI-025 packaging test that asserts both the exact `package.json`
+entries and the `npm pack --dry-run --json` packed-artifact contents
+defined by DES-AISCI-020, to pass with zero failures and zero unapproved
+skipped tests before any implementation change is considered complete.
 Interfaces: runConfiguredTestSuite() -> TestRunResult consumed by CI/local
 workflow gating.
 Constraints: Zero failing and zero unapproved skipped tests; this gate does
 not itself certify correctness beyond what the executed tests check.
 Requirements: REQ-AISCI-024
 ADRs: ADR-0091
-Depends-On: DES-AISCI-005
+Depends-On: DES-AISCI-005, DES-AISCI-020
+
+## DES-AISCI-020: npm skill-package completeness guard / npmスキル同梱完全性ガード
+Responsibilities: Preserve parity between the npm bootstrap package's
+shipped ai-scientist skill payload and its importable Python sources by
+asserting that `package.json` `files` contains both exact entries
+`.github/skills/ai-scientist` and `src/ai_scientist/**/*.py`, and by
+proving with an `npm pack --dry-run --json` listing that the packed
+artifact contains `.github/skills/ai-scientist/SKILL.md`,
+`.github/skills/ai-scientist/manifest.json`, and every current repository
+file matching `src/ai_scientist/**/*.py`.
+Interfaces: loadPackageManifest(path="package.json") -> PackageManifest;
+listPackedFiles() -> set[str] from `npm pack --dry-run --json`;
+assertAiScientistPackagingParity(packageManifest, packedFiles) -> None.
+Constraints: The authoritative packaged-artifact proof is the dry-run pack
+listing, not only static inspection of `package.json`. This guard covers
+npm distribution completeness only; Python package discovery continues to
+rely on setuptools auto-discovery from `pyproject.toml` `where = ["src"]`,
+so no explicit static Python package list is required unless that project
+configuration changes in the future.
+Requirements: REQ-AISCI-025
+ADRs: ADR-0087, ADR-0091
+Depends-On: DES-AISCI-015

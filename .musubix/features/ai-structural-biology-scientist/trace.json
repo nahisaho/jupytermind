@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T20:20:40.571Z",
+  "generatedAt": "2026-10-05T21:57:11.336Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -2308,6 +2308,12 @@
       "line": 383
     },
     {
+      "id": "DES-AISCI-020",
+      "kind": "design",
+      "path": ".musubix/features/ai-scientist/design.md",
+      "line": 401
+    },
+    {
       "id": "REQ-AISCI-001",
       "kind": "requirement",
       "path": ".musubix/features/ai-scientist/requirements.md",
@@ -2473,6 +2479,13 @@
       "kind": "requirement",
       "path": ".musubix/features/ai-scientist/requirements.md",
       "line": 201,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AISCI-025",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-scientist/requirements.md",
+      "line": 208,
       "mandatory": true
     },
     {
@@ -3842,6 +3855,24 @@
       "line": 109
     },
     {
+      "id": "CODE-AISCI-027",
+      "kind": "code",
+      "path": "src/ai_scientist/npm_packaging.py",
+      "line": 11
+    },
+    {
+      "id": "CODE-AISCI-028",
+      "kind": "code",
+      "path": "src/ai_scientist/npm_packaging.py",
+      "line": 20
+    },
+    {
+      "id": "CODE-AISCI-029",
+      "kind": "code",
+      "path": "src/ai_scientist/npm_packaging.py",
+      "line": 36
+    },
+    {
       "id": "CODE-AISCI-025",
       "kind": "code",
       "path": "src/ai_scientist/orchestrator.py",
@@ -3905,7 +3936,7 @@
       "id": "CODE-AISCI-024",
       "kind": "code",
       "path": "src/ai_scientist/tdd_gate.py",
-      "line": 49
+      "line": 54
     },
     {
       "id": "CODE-ASTRUCT-050",
@@ -5477,31 +5508,37 @@
       "id": "TEST-AISCI-001",
       "kind": "test",
       "path": "tests/test_ai_scientist_skill_packaging.py",
-      "line": 37
+      "line": 54
     },
     {
       "id": "TEST-AISCI-028",
       "kind": "test",
       "path": "tests/test_ai_scientist_skill_packaging.py",
-      "line": 74
+      "line": 91
     },
     {
       "id": "TEST-AISCI-023",
       "kind": "test",
       "path": "tests/test_ai_scientist_skill_packaging.py",
-      "line": 96
+      "line": 113
     },
     {
       "id": "TEST-AISCI-036",
       "kind": "test",
       "path": "tests/test_ai_scientist_skill_packaging.py",
-      "line": 127
+      "line": 144
     },
     {
       "id": "TEST-AISCI-024",
       "kind": "test",
       "path": "tests/test_ai_scientist_skill_packaging.py",
-      "line": 154
+      "line": 171
+    },
+    {
+      "id": "TEST-AISCI-048",
+      "kind": "test",
+      "path": "tests/test_ai_scientist_skill_packaging.py",
+      "line": 199
     },
     {
       "id": "TEST-AISCI-035",
@@ -9392,6 +9429,31 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-AISCI-019",
+      "to": "DES-AISCI-020",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AISCI-020",
+      "to": "REQ-AISCI-025",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0087",
+      "to": "DES-AISCI-020",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0091",
+      "to": "DES-AISCI-020",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AISCI-020",
+      "to": "DES-AISCI-015",
+      "relation": "depends-on"
+    },
+    {
       "from": "DES-ASTRUCT-001",
       "to": "REQ-ASTRUCT-001",
       "relation": "satisfies"
@@ -12287,6 +12349,36 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AISCI-027",
+      "to": "REQ-AISCI-025",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-027",
+      "to": "DES-AISCI-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-028",
+      "to": "REQ-AISCI-025",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-028",
+      "to": "DES-AISCI-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-029",
+      "to": "REQ-AISCI-025",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AISCI-029",
+      "to": "DES-AISCI-020",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AISCI-025",
       "to": "REQ-AISCI-001",
       "relation": "implements"
@@ -13967,6 +14059,11 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AISCI-048",
+      "to": "REQ-AISCI-025",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AISCI-035",
       "to": "REQ-AISCI-024",
       "relation": "verifies"
@@ -15416,8 +15513,8 @@
     ".musubix/features/ai-genomics-scientist/requirements.md": "91f42c6b31f242d8b07fdddc70a9f2c33140d6d4679169068c09b593e35279d0",
     ".musubix/features/ai-materials-scientist/design.md": "82a71308110defe1ae6108c4803b468bf2c4ce007e8a039fffcf79b8db90b69d",
     ".musubix/features/ai-materials-scientist/requirements.md": "c5aa0996e4dfe2090db10a24673ef37d237a8fc87a1ce0c9dbd0485c090f929f",
-    ".musubix/features/ai-scientist/design.md": "d34a460815532a89120f4d97483cc9b0b43a8ea481ecb5bdceafcf500516375e",
-    ".musubix/features/ai-scientist/requirements.md": "148417851157f00bffb0841a60bb81466f308dcd4ae88968952d95c4ca69cacb",
+    ".musubix/features/ai-scientist/design.md": "5ea46f0a980670f973bad97b5875daeeb3febc2da11626f5a72b6138d303553c",
+    ".musubix/features/ai-scientist/requirements.md": "62ad1db84c784be4a546db60ccf2011b3c6f489fb732319f14bf252134c4501c",
     ".musubix/features/ai-structural-biology-scientist/design.md": "7b9e7f5b3eff9321cabf4813bdca7a4a11b80c54a93ad3db50c925eca4f81955",
     ".musubix/features/ai-structural-biology-scientist/requirements.md": "ade8184daef2095e8a9da33e99125fe63ed81485af7f09caa5c8f227d670506c",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
@@ -15511,6 +15608,7 @@
     "src/ai_scientist/mcp_failures.py": "ee5ec49be99ffd64c8fbd372ccc7b12aed8d46c40e4d42936c231ae1df8f1fdd",
     "src/ai_scientist/mcp_gateway.py": "e59390c4cd639d88a9e586b7993a7a902c30e6c2a9e0af5b64007abd685d4047",
     "src/ai_scientist/mcp_managed.py": "7192af169723004bcc300cba34d337c3d821551cb0660c3cda45064740a83ffb",
+    "src/ai_scientist/npm_packaging.py": "530156b7582d72630aa039c2a552c4a39f568bbe86d6c77aa8f88f7cdd5f6141",
     "src/ai_scientist/orchestrator.py": "57006c0fddce67aafd9467415d8df87bace49378a9c591df5720a8f868f02231",
     "src/ai_scientist/peer_review.py": "1dbbfd3b0cd12f88f5a4c1ca53b93ae6c97b74af599bb600a1092aa8e888eea4",
     "src/ai_scientist/phase_gate.py": "393c4f4563c38703f1cc95be67065e45876de414c90c406ebb781c5875a488f8",
@@ -15521,7 +15619,7 @@
     "src/ai_scientist/reproducibility.py": "8b60b10265121d83f891b95acaffacc2cf398274fd6c5a95104fb6e924eb6b8d",
     "src/ai_scientist/research_planning.py": "ee967fa8995cb70d1ecc22896eda3d586b2f06a61062fa689b69dbad1c4c3755",
     "src/ai_scientist/skill_invocation.py": "23cf133b3a85a5398b5331bb833eae6702435f69fb0dbe14414819901247323f",
-    "src/ai_scientist/tdd_gate.py": "06173ef4ffb1a96b8d6664da2d0fbc86ed8402c6d0b97fe2277f6a1e9e9b4ee4",
+    "src/ai_scientist/tdd_gate.py": "82e96eafcbcfa6b851a32eeed8dce721d1b5a0ab6d83a6fb6bfa78ee0d27b6c8",
     "src/ai_structural_biology_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_structural_biology_scientist/contact_map.py": "b12965938fb2d793e5c7fbeee160214413f5761fce16095a5273a11c98ca70da",
     "src/ai_structural_biology_scientist/dispatch.py": "8b97ee92116d49c234068d90e2c9df79332ecf6431f1d4b37ddfc48dbfd29e09",
@@ -15573,7 +15671,7 @@
     "tests/test_ai_scientist_mcp.py": "3ffba3528245a4fcde5470b3cb203c8c94873655e280eccb526fa58c0eb2fc06",
     "tests/test_ai_scientist_phase_state.py": "8753eccaaa13ff761b6fcaf31254d3ac84064e81587ad44accbe465df6f8b3de",
     "tests/test_ai_scientist_project_handle.py": "02392815e0153fd76d547de9429a74c5f10c88089970ec9355d824307ebba3f4",
-    "tests/test_ai_scientist_skill_packaging.py": "9acb3d8a5ad408018c8e9253fe9f4b0095ec41e528c451300f5b49e64704a75e",
+    "tests/test_ai_scientist_skill_packaging.py": "aee1a058d22b72b9c723649085bad580ba7f61c7d6104fa5fa1f803b5702f80d",
     "tests/test_ai_scientist_tdd_gate.py": "6a902fbf67e554c42338c3b01726fafd990a7af696e870e5dd79d02f6279829e",
     "tests/test_ai_structural_biology_scientist_bilingual.py": "3d04795a577faa9e1afbd8263fea2a88ef1fd3502ea727d9839ec4d1964e3da1",
     "tests/test_ai_structural_biology_scientist_contact_map.py": "3a2983768e2f1f9b4923bbd7ad904b314538bb287347168e079e856e350cccda",

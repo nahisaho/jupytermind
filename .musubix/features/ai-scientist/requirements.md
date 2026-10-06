@@ -203,4 +203,11 @@ Priority: must
 Type: non-functional
 Pattern: ubiquitous
 Statement: The system shall provide an automated test for every REQ-AISCI requirement's acceptance criteria, including an integration test that exercises the real ai-data-scientist delegation boundary (REQ-AISCI-008) against that feature's own notebook-creation and execution-routing requirements (REQ-AIDS-002/003), runnable via the project's configured test command.
-Acceptance: Running the configured test command executes at least one passing test linked (via @verifies) to each REQ-AISCI requirement ID, including a passing integration test that asserts REQ-AIDS-002 and REQ-AIDS-003 behaviors hold when invoked through the ai-scientist data-analysis phase, with no skipped tests.
+Acceptance: Running the configured test command executes at least one passing test linked (via @verifies) to each REQ-AISCI requirement ID, including a passing integration test that asserts REQ-AIDS-002 and REQ-AIDS-003 behaviors hold when invoked through the ai-scientist data-analysis phase, and including packaging coverage for REQ-AISCI-025, with zero unapproved skipped tests.
+
+## REQ-AISCI-025: npm package ships ai-scientist implementation sources / npmパッケージにai-scientist実装ソースを同梱
+Priority: must
+Type: non-functional
+Pattern: ubiquitous
+Statement: The repository's npm bootstrap package shall ship the ai-scientist skill payload (`.github/skills/ai-scientist/SKILL.md` and `.github/skills/ai-scientist/manifest.json`) together with a `package.json` `files` entry `src/ai_scientist/**/*.py` whose effect is that every current repository file matching that glob is included in the packed artifact.
+Acceptance: An automated test loads `package.json`, asserts its `files` array contains both `.github/skills/ai-scientist` and `src/ai_scientist/**/*.py`, and asserts an `npm pack --dry-run --json` file listing includes `.github/skills/ai-scientist/SKILL.md`, `.github/skills/ai-scientist/manifest.json`, and every current repository file matching `src/ai_scientist/**/*.py`.
