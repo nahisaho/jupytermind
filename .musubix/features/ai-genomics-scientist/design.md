@@ -43,10 +43,11 @@ DispatchResult` where `DispatchResult` is one of
 or `{outcome: "rejected", language, rejected_method}`. `handler_result`
 is always a `ModuleOutcome`: either `{ok: true, run_record}` on
 success, or `{ok: false, parameter, constraint, language}` on a module
-validation failure. The manifest owns these 5 exact method keys:
+validation failure. The manifest owns these 7 exact method keys:
 `sequence-features`, `variant-effect-annotation`,
-`splice-site-strength`, `gene-set-enrichment`, and
-`pairwise-sequence-alignment`.
+`splice-site-strength`, `gene-set-enrichment`,
+`pairwise-sequence-alignment`, `differential-expression`, and
+`variant-pathogenicity`.
 Constraints: Must invoke at most one module per request; must apply
 Unicode NFKC normalization before substring matching; must collapse
 multiple matched strings that map to the same method before counting
@@ -63,7 +64,7 @@ against that module's documented biological-validity,
 alphabet-validity, or numerical-adequacy domain before any invalid
 scope produces a result. Supports both validation granularities that
 REQ-AGENOM-003 defines: atomic whole-run validation for
-REQ-AGENOM-020/030/040/050, and per-item validation for
+REQ-AGENOM-020/030/040/050/060/070, and per-item validation for
 REQ-AGENOM-010's batch sequence input. Expose a shared validator
 registry so each module registers its own documented validator at import
 time.
@@ -76,14 +77,14 @@ constraint}`. Whole-run validators reject the entire request before any
 module result is produced; per-item validators reject only the invalid
 batch element while leaving other items computable.
 Constraints: The validator registry is keyed by manifest method name.
-Atomic validators cover REQ-AGENOM-020/030/040/050 and must reject the
+Atomic validators cover REQ-AGENOM-020/030/040/050/060/070 and must reject the
 entire run before any variant annotation, splice scoring,
 hypergeometric p-value calculation, or dynamic-programming alignment is
 performed. The per-item validator path is reserved for
 `sequence-features`, which rejects an invalid `sequence` item with the
 exact named constraint "must be a non-empty uppercase DNA string over
 {A,C,G,T} with length >= 3" without aborting the rest of the batch.
-Requirements: REQ-AGENOM-003, REQ-AGENOM-010, REQ-AGENOM-020, REQ-AGENOM-030, REQ-AGENOM-040, REQ-AGENOM-050
+Requirements: REQ-AGENOM-003, REQ-AGENOM-010, REQ-AGENOM-020, REQ-AGENOM-030, REQ-AGENOM-040, REQ-AGENOM-050, REQ-AGENOM-060, REQ-AGENOM-070
 ADRs: ADR-0034
 Depends-On: DES-AGENOM-001
 
@@ -92,19 +93,20 @@ Responsibilities: Capture every successful module run as a JSON-safe
 `RunRecord` with exactly three top-level keys: `metadata`,
 `parameters`, and `result`. Called exactly once by each handler wrapper
 after module validation succeeds and the raw `run_*` function returns.
-The raw results of all 5 genomics modules are already JSON-safe
+The raw results of all 7 genomics modules are already JSON-safe
 (scalars, strings, booleans, lists, and nested dicts of these), so no
 array codec is needed.
 Interfaces: `record_run(module_name, params, result, *, numpy_version,
 scipy_version) -> RunRecord` where `RunRecord = {metadata,
 parameters, result}` and `metadata` always contains at least `module`,
 `schema_version`, `numpy_version`, and `scipy_version`, matching
-REQ-AGENOM-004's acceptance that all 5 modules' run records carry
-`scipy_version`. Every handler wrapper, including the 4 modules whose
+REQ-AGENOM-004's acceptance that all 7 modules' run records carry
+`scipy_version`. Every handler wrapper, including the 5 modules whose
 own governing computation does not call any `scipy` function, supplies
 the installed `scipy.__version__` string alongside `numpy_version`;
-only `gene-set-enrichment`'s computation itself directly calls
-`scipy.stats.hypergeom.sf`.
+only `gene-set-enrichment`'s computation directly calls
+`scipy.stats.hypergeom.sf` and `differential-expression`'s computation
+directly calls `scipy.stats.ttest_ind`.
 Constraints: Re-running with identical `parameters` against the same
 installed numpy/scipy versions must reproduce equal results under
 REQ-AGENOM-004's comparison rules; no random seed is recorded because
@@ -114,9 +116,9 @@ Requirements: REQ-AGENOM-004
 ADRs: ADR-0035
 Depends-On: DES-AGENOM-001
 
-Note on DES-AGENOM-010 through DES-AGENOM-050 below: each module's
-`run_*(...)` function is the raw, unwrapped compute entry point. The 4
-atomic-validation modules (DES-AGENOM-020/030/040/050) are invoked by
+Note on DES-AGENOM-010 through DES-AGENOM-070 below: each module's
+`run_*(...)` function is the raw, unwrapped compute entry point. The 6
+atomic-validation modules (DES-AGENOM-020/030/040/050/060/070) are invoked by
 their handler wrappers only after DES-AGENOM-002
 `validate_parameters(...)` succeeds, so those `run_*` functions receive
 only already-validated parameters and perform no revalidation of their
@@ -268,6 +270,82 @@ Requirements: REQ-AGENOM-050
 ADRs: ADR-0040
 Depends-On: DES-AGENOM-001, DES-AGENOM-002, DES-AGENOM-003
 
+## DES-AGENOM-060: Differential expression heuristic module / 差次発現解析ヒューリスティックモジュール
+Responsibilities: Receive already-validated `counts` and
+`sample_groups`, compute per-sample DESeq2-style median-of-ratios size
+factors (geometric mean per gene across all samples as reference,
+excluding any gene with a zero count in any sample from that
+geometric-mean reference set, per-sample median of the
+raw-count-to-gene-geometric-mean ratio over genes with a defined
+nonzero reference), normalize every gene's counts by its sample's size
+factor, compute
+`base_mean` (mean normalized count across all samples), compute
+`log2_fold_change = log2((mean_normalized_group2 + 1) /
+(mean_normalized_group1 + 1))` with group order fixed as
+`sorted(set(sample_groups))`, compute `p_value` via Welch's two-sample
+t-test (`scipy.stats.ttest_ind(..., equal_var=False)`) on
+`log2(normalized_count + 1)` values between the two groups (defining
+`p_value = 1.0` instead of `NaN`, as a deliberate deterministic
+heuristic convention rather than a claim of provably equal means, only
+for the specific degenerate case where **both** groups have zero
+variance in `log2(normalized_count + 1)` for that gene; a one-sided
+zero-variance gene still runs the ordinary Welch's t-test per
+ADR-0107), and Benjamini-Hochberg `padj` across all genes in the run,
+then return exactly one result object per gene sorted by ascending
+`padj` then ascending `gene_id`.
+Interfaces: `run_differential_expression(counts, sample_groups) ->
+list[DifferentialExpressionResult]` where
+`DifferentialExpressionResult = {gene_id, base_mean, log2_fold_change,
+p_value, padj}` and the returned list has exactly one entry per gene in
+`counts`, in no case omitting or duplicating a gene.
+Constraints: Validation is whole-run and atomic, per REQ-AGENOM-003's
+module-specific granularity rule. `counts` must be a non-empty dict
+whose keys are gene-ID strings and whose values are equal-length lists
+of non-negative integers, each list's length must equal exactly
+`len(sample_groups)`; `sample_groups` must contain exactly 2 distinct
+string labels, each appearing at least twice (at least 2 replicate
+samples per group); and at least one gene must have strictly positive
+counts in every sample (the median-of-ratios reference-gene
+precondition) before any size factor is computed. The
+Benjamini-Hochberg correction is implemented in pure numpy (rank-based
+step-up procedure, monotone non-decreasing from the largest p-value
+down), matching ADR-0107's decision not to add a `statsmodels`
+dependency.
+Requirements: REQ-AGENOM-060
+ADRs: ADR-0107
+Depends-On: DES-AGENOM-001, DES-AGENOM-002, DES-AGENOM-003
+
+## DES-AGENOM-070: Variant pathogenicity heuristic module / バリアント病原性予測ヒューリスティックモジュール
+Responsibilities: Receive already-validated `ref_aa`, `alt_aa`,
+`conservation_score`, and `in_functional_domain`, look up `blosum_score`
+from a single embedded, hardcoded BLOSUM62 substitution matrix, compute
+`dissimilarity = clip((3 - blosum_score) / 7, 0, 1)`, compute
+`pathogenicity_score = clip(0.5 * dissimilarity + 0.35 *
+conservation_score + (0.15 if in_functional_domain else 0.0), 0, 1)`,
+classify the result into exactly one of the 5 fixed tiers (`benign` for
+`score < 0.3`, `likely_benign` for `0.3 <= score < 0.5`,
+`uncertain_significance` for `0.5 <= score < 0.7`, `likely_pathogenic`
+for `0.7 <= score < 0.85`, `pathogenic` for `score >= 0.85`; every
+tier boundary is lower-inclusive per ADR-0108), and report exactly the
+keys `{ref_aa, alt_aa, blosum_score, pathogenicity_score,
+classification}` with no `dissimilarity` key or any other key present.
+Interfaces: `run_variant_pathogenicity(ref_aa, alt_aa,
+conservation_score, in_functional_domain) ->
+VariantPathogenicityResult` where `VariantPathogenicityResult =
+{ref_aa, alt_aa, blosum_score, pathogenicity_score, classification}`.
+Constraints: Validation is whole-run and atomic. `ref_aa` and `alt_aa`
+must each be one of the 20 standard single-letter amino acid codes,
+`alt_aa` must differ from `ref_aa`, `conservation_score` must be a
+float in the closed interval `[0, 1]`, and `in_functional_domain` must
+be a boolean; a non-boolean `in_functional_domain` is rejected naming
+`in_functional_domain` and the exact constraint "must be a boolean".
+The embedded BLOSUM62 matrix and the 3 fixed weights (`0.5`, `0.35`,
+`0.15`) are frozen constants per ADR-0108; this module never calls a
+network service or loads an external scoring model.
+Requirements: REQ-AGENOM-070
+ADRs: ADR-0108
+Depends-On: DES-AGENOM-001, DES-AGENOM-002, DES-AGENOM-003
+
 ## Implementation file layout / 実装ファイル配置
 
 The first implementation increment will create exactly this package
@@ -282,6 +360,8 @@ layout under `src/ai_genomics_scientist/`:
 - `src/ai_genomics_scientist/splice_site_scoring.py`
 - `src/ai_genomics_scientist/gene_set_enrichment.py`
 - `src/ai_genomics_scientist/sequence_alignment.py`
+- `src/ai_genomics_scientist/differential_expression.py`
+- `src/ai_genomics_scientist/variant_pathogenicity.py`
 - `src/ai_genomics_scientist/data/sample_gene_sets.csv`
 
 ## Traceability summary / 追跡可能性一覧
@@ -289,13 +369,15 @@ layout under `src/ai_genomics_scientist/`:
 | Design component | Requirement(s) | ADR |
 | --- | --- | --- |
 | DES-AGENOM-001 | REQ-AGENOM-001, REQ-AGENOM-002 | ADR-0033 |
-| DES-AGENOM-002 | REQ-AGENOM-003, REQ-AGENOM-010, REQ-AGENOM-020, REQ-AGENOM-030, REQ-AGENOM-040, REQ-AGENOM-050 | ADR-0034 |
+| DES-AGENOM-002 | REQ-AGENOM-003, REQ-AGENOM-010, REQ-AGENOM-020, REQ-AGENOM-030, REQ-AGENOM-040, REQ-AGENOM-050, REQ-AGENOM-060, REQ-AGENOM-070 | ADR-0034 |
 | DES-AGENOM-003 | REQ-AGENOM-004 | ADR-0035 |
 | DES-AGENOM-010 | REQ-AGENOM-010 | ADR-0036 |
 | DES-AGENOM-020 | REQ-AGENOM-020 | ADR-0037 |
 | DES-AGENOM-030 | REQ-AGENOM-030 | ADR-0038 |
 | DES-AGENOM-040 | REQ-AGENOM-040 | ADR-0039 |
 | DES-AGENOM-050 | REQ-AGENOM-050 | ADR-0040 |
+| DES-AGENOM-060 | REQ-AGENOM-060 | ADR-0107 |
+| DES-AGENOM-070 | REQ-AGENOM-070 | ADR-0108 |
 
 ## Skill documentation deliverables / スキル文書成果物
 
@@ -303,6 +385,12 @@ layout under `src/ai_genomics_scientist/`:
 `.github/skills/ai-genomics-scientist/SKILL.md` are required
 implementation deliverables alongside the `src/ai_genomics_scientist/`
 package. `SKILL.md` must mirror the workflow structure already used by
-`ai-chemistry-scientist`, list the five supported methods, and repeat
-the REQ-AGENOM-030 heuristic limitation label verbatim in both English
-and Japanese.
+`ai-chemistry-scientist`, list the seven supported methods, repeat the
+REQ-AGENOM-030 heuristic limitation label verbatim in both English and
+Japanese, and document REQ-AGENOM-060's and REQ-AGENOM-070's heuristic
+nature as the selected way to satisfy those 2 requirements' own
+non-misrepresentation constraints (per ADR-0107 and ADR-0108: not a
+DESeq2/edgeR replacement and not a validated clinical pathogenicity
+predictor, respectively) — neither of those 2 newer modules has a
+single fixed verbatim label string defined in requirements.md the way
+REQ-AGENOM-030 does.
