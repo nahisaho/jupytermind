@@ -3,6 +3,8 @@
 Implements DES-AIDS-003: project identifier validation (ADR-0005),
 notebook creation/reuse, and a single-writer queue that serializes
 concurrent notebook writes (ADR-0004).
+
+Change: CHANGE-033
 """
 
 from __future__ import annotations
@@ -30,17 +32,46 @@ _IMPORT_TIME_CWD = Path.cwd()
 _PROJECTS_ROOT_ENV_VAR = "AI_DATA_SCIENTIST_PROJECTS_ROOT"
 
 
-def _default_projects_root() -> Path:
+# @id CODE-AIDS-152
+# @implements REQ-AIDS-093
+# @design DES-AIDS-093
+def _discover_ancestor_projects_root(start: Path, name: str) -> Path | None:
+    """Walk ``start`` and its ancestors for an existing ``name`` project root.
+
+    Returns the nearest ancestor directory (including ``start`` itself) whose
+    basename is exactly ``"projects"`` and which already contains a direct
+    subdirectory named exactly ``name``, or ``None`` if no such ancestor
+    exists. This lets a freshly started process/kernel whose own import-time
+    cwd has already drifted inside an existing ``projects/<name>/...`` tree
+    (GitHub #72) rediscover that same tree's root instead of recomputing
+    ``<drifted cwd>/projects`` and silently recreating a nested
+    ``projects/<name>/notebooks/projects/<name>`` path.
+    """
+    for candidate in (start, *start.parents):
+        if candidate.name == "projects" and (candidate / name).is_dir():
+            return candidate
+    return None
+
+
+def _default_projects_root(name: str | None = None) -> Path:
     """Resolve the stable default projects root.
 
     Prefers the ``AI_DATA_SCIENTIST_PROJECTS_ROOT`` environment variable when
-    set (for callers that want to pin an explicit workspace root); otherwise
-    falls back to ``<import-time cwd>/projects``, which stays constant for
-    the lifetime of the process regardless of later ``os.chdir`` calls.
+    set (for callers that want to pin an explicit workspace root). Otherwise,
+    when ``name`` is given, attempts to discover an existing ancestor
+    ``projects`` directory that already contains ``name`` (REQ-AIDS-093),
+    so a different process/kernel whose cwd has already drifted inside that
+    tree resolves the same root. Falls back to ``<import-time cwd>/projects``,
+    which stays constant for the lifetime of the process regardless of later
+    ``os.chdir`` calls, when neither of the above applies.
     """
     env_root = os.environ.get(_PROJECTS_ROOT_ENV_VAR)
     if env_root:
         return Path(env_root).resolve()
+    if name is not None:
+        discovered = _discover_ancestor_projects_root(_IMPORT_TIME_CWD, name)
+        if discovered is not None:
+            return discovered.resolve()
     return (_IMPORT_TIME_CWD / "projects").resolve()
 
 
@@ -116,7 +147,9 @@ def resolve_project(name: str, projects_root: Path | str | None = None) -> Proje
             f"lowercase ASCII letters, digits and single hyphens, e.g. 'sales-2024' "
             f"(プロジェクト名は小文字英数字とハイフンのみ使用できます: 例 'sales-2024')."
         )
-    root = Path(projects_root).resolve() if projects_root is not None else _default_projects_root()
+    root = (
+        Path(projects_root).resolve() if projects_root is not None else _default_projects_root(name)
+    )
     project_dir = (root / name).resolve()
     if project_dir.parent != root:
         # Defense in depth: even a slug-valid name must stay inside projects_root.

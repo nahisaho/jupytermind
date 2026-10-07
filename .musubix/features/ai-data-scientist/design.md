@@ -1402,6 +1402,7 @@ and does not require inspecting the outer candidate.
 Requirements: REQ-AIDS-093
 ADRs: ADR-0111
 Depends-On: DES-AIDS-032
+Change: CHANGE-033
 
 ## DES-AIDS-094: signal_analysis module — baseline correction, spectral peak detection, sensitivity-plan helper / 信号解析モジュール — ベースライン補正・スペクトルピーク検出・感度プラン補助
 Responsibilities: A new `signal_analysis` module providing three
