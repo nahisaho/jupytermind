@@ -1,5 +1,8 @@
 """Tests for supervised ML modeling (REQ-AIDS-008, REQ-AIDS-074, REQ-AIDS-075, REQ-AIDS-078)."""
 
+import re
+import warnings
+
 import numpy as np
 import pandas as pd
 import pytest
@@ -266,3 +269,164 @@ def test_TEST_AIDS_354():
     result = train_model(df, target="label", model_type="classification", test_size=0.25)
 
     assert set(result.metrics) >= {"accuracy", "precision", "recall"}
+
+
+# @id TEST-AIDS-355
+# @verifies REQ-AIDS-101
+def test_TEST_AIDS_355():
+    """A feature column that deterministically encodes the target emits a
+    UserWarning and is recorded in ModelResult.leakage_warnings (Chinese-MNIST
+    repro shape: code/value -> character)."""
+    n = 30
+    codes = [i % 5 for i in range(n)]
+    characters = [f"char_{c}" for c in codes]
+    df = pd.DataFrame(
+        {
+            "sample_id": list(range(n)),  # row-unique, must NOT be flagged
+            "code": codes,  # deterministically encodes character
+            "noise": [i * 1.5 for i in range(n)],  # not pure, must NOT be flagged
+            "character": characters,
+        }
+    )
+
+    expected_message = (
+        "train_model: feature column 'code' appears to be a near-perfect "
+        "predictor of target 'character' (possible target leakage); "
+        "metrics may be artificially inflated."
+    )
+
+    with pytest.warns(UserWarning, match=re.escape(expected_message)):
+        result = train_model(df, target="character", model_type="classification")
+
+    assert result.leakage_warnings == (expected_message,)
+
+
+# @id TEST-AIDS-356
+# @verifies REQ-AIDS-101
+def test_TEST_AIDS_356():
+    """The common case (no feature column is a near-perfect predictor) emits
+    no warning and leaves leakage_warnings empty."""
+    df = pd.DataFrame(
+        {
+            "x1": list(range(40)),
+            "x2": [i % 7 for i in range(40)],
+            "label": [1 if i % 2 == 0 else 0 for i in range(40)],
+        }
+    )
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("error", UserWarning)
+        result = train_model(df, target="label", model_type="classification")
+
+    assert result.leakage_warnings == ()
+
+
+# @id TEST-AIDS-357
+# @verifies REQ-AIDS-101
+def test_TEST_AIDS_357():
+    """A row-unique identifier column is never flagged, even though it is
+    trivially pure with respect to the target."""
+    n = 20
+    df = pd.DataFrame(
+        {
+            "row_id": list(range(n)),  # row-unique: nunique == len(df)
+            "x1": [i // 2 for i in range(n)],  # impure w.r.t. label, must NOT be flagged
+            "label": [i % 2 for i in range(n)],
+        }
+    )
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("error", UserWarning)
+        result = train_model(df, target="label", model_type="classification")
+
+    assert result.leakage_warnings == ()
+
+
+# @id TEST-AIDS-358
+# @verifies REQ-AIDS-101
+def test_TEST_AIDS_358():
+    """An unhashable-valued feature column (e.g. list cells) never raises the
+    leakage-detection helper; it is silently skipped."""
+    from ai_data_scientist.ml_modeling import _detect_possible_target_leakage
+
+    n = 20
+    df = pd.DataFrame(
+        {
+            "bad_col": [[i] for i in range(n)],  # unhashable cells
+            "x1": [i % 4 for i in range(n)],
+            "label": [i % 2 for i in range(n)],
+        }
+    )
+
+    warnings_found = _detect_possible_target_leakage(
+        df, feature_columns=["bad_col", "x1"], target="label"
+    )
+
+    assert "bad_col" not in " ".join(warnings_found)
+
+
+# @id TEST-AIDS-359
+# @verifies REQ-AIDS-101
+def test_TEST_AIDS_359():
+    """NaN feature values are grouped together (dropna=False): consistent NaN
+    group target values still qualify as a near-perfect predictor, while
+    inconsistent NaN group target values correctly exclude the column."""
+    df_consistent = pd.DataFrame(
+        {
+            "code": [0, 0, 1, 1, None, None, 2, 2],
+            "label": ["a", "a", "b", "b", "c", "c", "d", "d"],
+        }
+    )
+    expected_message = (
+        "train_model: feature column 'code' appears to be a near-perfect "
+        "predictor of target 'label' (possible target leakage); "
+        "metrics may be artificially inflated."
+    )
+    with pytest.warns(UserWarning, match=re.escape(expected_message)):
+        result = train_model(df_consistent, target="label", model_type="classification")
+    assert result.leakage_warnings == (expected_message,)
+
+    df_inconsistent = pd.DataFrame(
+        {
+            "code": [0, 0, 1, 1, None, None, 2, 2],
+            "label": ["a", "a", "b", "b", "c", "d", "e", "e"],
+        }
+    )
+    with warnings.catch_warnings():
+        warnings.simplefilter("error", UserWarning)
+        result = train_model(df_inconsistent, target="label", model_type="classification")
+    assert result.leakage_warnings == ()
+
+
+# @id TEST-AIDS-360
+# @verifies REQ-AIDS-101
+def test_TEST_AIDS_360():
+    """The same leakage detection applies identically in the cross-validation
+    code path."""
+    n = 30
+    codes = [i % 5 for i in range(n)]
+    characters = [f"char_{c}" for c in codes]
+    df = pd.DataFrame(
+        {
+            "code": codes,
+            "noise": [i * 1.5 for i in range(n)],
+            "character": characters,
+        }
+    )
+
+    expected_message = (
+        "train_model: feature column 'code' appears to be a near-perfect "
+        "predictor of target 'character' (possible target leakage); "
+        "metrics may be artificially inflated."
+    )
+
+    with pytest.warns(UserWarning, match=re.escape(expected_message)):
+        result = train_model(
+            df,
+            target="character",
+            model_type="classification",
+            cv_strategy="StratifiedKFold",
+            n_splits=5,
+        )
+
+    assert result.leakage_warnings == (expected_message,)

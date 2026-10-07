@@ -4248,6 +4248,45 @@
       "order": 1498,
       "previousSha256": "fe108653906f2c46d0075456a403139514014a0e2e716b795bee30919044c760",
       "payloadSha256": "db2afe013fd84d8bdc511406ada96182af0accfba756ec3309dae3069a4b5e39"
+    },
+    {
+      "changeId": "CHANGE-036",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-101",
+      "approver": "nahisaho",
+      "reason": "Known musubix3 phase-ordering quirk: Red/Green evidence for REQ-AIDS-101 is recorded after the change-history Red/Green phase timestamps because the feature code must exist to prove genuine test failures/passes. Same pattern accepted in CHANGE-029 through CHANGE-035.",
+      "recordedAt": "2026-10-07T07:50:28.122Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "a60f5d9ffd1794d9fee7663616937f4c05d20591286a0a8486632c4e97933875",
+      "order": 1519,
+      "previousSha256": "db2afe013fd84d8bdc511406ada96182af0accfba756ec3309dae3069a4b5e39",
+      "payloadSha256": "18e15729428a49f44c4dc9e066e69d5ec039a274a14d7a5cd6a8375c2341e938"
+    },
+    {
+      "changeId": "CHANGE-036",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-101",
+      "approver": "nahisaho",
+      "reason": "Known musubix3 phase-ordering quirk: Red/Green evidence for REQ-AIDS-101 is recorded after the change-history Red/Green phase timestamps because the feature code must exist to prove genuine test failures/passes. Same pattern accepted in CHANGE-029 through CHANGE-035.",
+      "recordedAt": "2026-10-07T07:50:28.671Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "a60f5d9ffd1794d9fee7663616937f4c05d20591286a0a8486632c4e97933875",
+      "order": 1520,
+      "previousSha256": "18e15729428a49f44c4dc9e066e69d5ec039a274a14d7a5cd6a8375c2341e938",
+      "payloadSha256": "4bf631e01b0eed51df40527d6f22cc52a03c0536028d61f4175f6b1ca75b0e27"
+    },
+    {
+      "changeId": "CHANGE-036",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-101",
+      "approver": "nahisaho",
+      "reason": "Known musubix3 phase-ordering quirk: Red/Green evidence for REQ-AIDS-101 is recorded after the change-history Red/Green phase timestamps because the feature code must exist to prove genuine test failures/passes. Same pattern accepted in CHANGE-029 through CHANGE-035.",
+      "recordedAt": "2026-10-07T07:50:29.231Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "a60f5d9ffd1794d9fee7663616937f4c05d20591286a0a8486632c4e97933875",
+      "order": 1521,
+      "previousSha256": "4bf631e01b0eed51df40527d6f22cc52a03c0536028d61f4175f6b1ca75b0e27",
+      "payloadSha256": "f51108ef854d497b62977ee3436bb6d5cc4224f26607ece32f8aa1cc30f34c53"
     }
   ]
 }

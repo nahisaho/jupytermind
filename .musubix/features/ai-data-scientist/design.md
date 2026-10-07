@@ -1975,3 +1975,55 @@ pure early-exit with no side effects on the non-empty path.
 Requirements: REQ-AIDS-100
 ADRs: none — straightforward input-validation guard, no architectural
 tradeoff.
+
+## DES-AIDS-101: `train_model` possible-target-leakage detection helper / `train_model`の疑わしいtarget leakage検出ヘルパー
+Responsibilities: `train_model()` satisfies REQ-AIDS-101 by adding a new
+module-private helper, `_detect_possible_target_leakage(df: pd.DataFrame,
+feature_columns: list[str], target: str) -> tuple[str, ...]`, called once
+immediately after the existing REQ-AIDS-100 zero-feature-column guard
+(right after `x`/`y` are constructed) and before `build_cv_splits` is
+called, using the full (pre-split) `df` and the already-computed
+`feature_columns` list. For each column `c` in `feature_columns`, in
+order, the helper wraps the three REQ-AIDS-101 classification checks
+(non-constant via `df[c].nunique(dropna=False) > 1`; not row-unique via
+`df[c].nunique(dropna=False) < len(df)`; perfectly pure via
+`df.groupby(c, dropna=False, observed=True)[target].nunique(dropna=False)
+== 1` for every group) in a `try`/`except Exception` block; any column
+whose evaluation raises (e.g. `TypeError` from unhashable cell values, or
+a duplicate column label resolving `df[c]` to a `DataFrame`) is treated as
+not-flagged and skipped silently, with no warning and no exception
+propagated. For every column that satisfies all three checks, the helper
+builds the message string using REQ-AIDS-101's exact template and appends
+it, in `feature_columns` order, to a list that becomes the returned tuple.
+`train_model()` calls this helper once, and for each returned message
+calls `warnings.warn(message, UserWarning, stacklevel=2)` (requiring a new
+`import warnings` at module scope, if not already present), then passes
+the full returned tuple as the new `leakage_warnings` field when
+constructing `ModelResult` in both the holdout-path return statement and
+the cross-validation-path return statement (the two existing
+`ModelResult(...)` construction sites), so this single call's result is
+reused for both of `train_model`'s two existing return statements without
+re-running the helper per branch.
+Interfaces: `_detect_possible_target_leakage(df: pd.DataFrame,
+feature_columns: list[str], target: str) -> tuple[str, ...]`
+(module-private, new, no side effects — it does not itself call
+`warnings.warn`, keeping the pure-detection logic separately testable from
+the warning-emission side effect). `ModelResult` gains one new field:
+`leakage_warnings: tuple[str, ...] = ()`, appended after the existing
+`oof_probabilities` field so existing positional-argument callers (if any)
+remain unaffected; all `ModelResult` construction in `train_model()` uses
+keyword arguments already, so no call site needs positional-arg
+adjustment beyond adding the new keyword.
+Constraints: the helper must never raise, regardless of `df`'s column
+contents (enforced by the per-column `try`/`except`); it must run exactly
+once per `train_model()` call, before `build_cv_splits`, so holdout and
+cross-validation paths observe identical `leakage_warnings` content and
+the detection cost is paid only once; it must not read or depend on
+`x`/`y` (the already-sliced feature matrix/target series) but on `df`
+directly, since `groupby`/`nunique` need the original dtypes and
+`observed=True` categorical semantics, which the already-sliced `x`/`y`
+preserve as well but using `df` directly matches REQ-AIDS-101's prose
+exactly and avoids any ambiguity about whether slicing changes dtype
+observed-categories state.
+Requirements: REQ-AIDS-101
+ADRs: none — a bounded heuristic helper with a single documented algorithm, no architectural tradeoff.
