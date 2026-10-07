@@ -336,6 +336,19 @@ def train_model(
     feature_columns = [c for c in df.columns if c != target]
     x = df[feature_columns]
     y = df[target]
+
+    # @id CODE-AIDS-154
+    # @implements REQ-AIDS-100
+    # @design DES-AIDS-100
+    # Fail fast with a clear message rather than letting sklearn raise an
+    # opaque ValueError deep inside fit()/check_array() on an empty matrix.
+    if x.shape[1] == 0:
+        raise ValueError(
+            f"train_model: no usable feature columns remain for target {target!r}; "
+            f"df has {x.shape[1]} feature column(s) after excluding the target — "
+            f"check upstream feature preparation/cleaning."
+        )
+
     selected_scoring = scoring or _DEFAULT_SCORING[model_type]
 
     # @id CODE-AIDS-122

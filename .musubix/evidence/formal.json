@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-07T06:00:33.988Z",
-  "totalRequirements": 180,
+  "generatedAt": "2026-10-07T06:52:10.063Z",
+  "totalRequirements": 181,
   "modeledRequirements": 12,
-  "modeledFraction": 0.06666666666666667,
+  "modeledFraction": 0.06629834254143646,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -182,6 +182,7 @@
       "REQ-AIDS-097",
       "REQ-AIDS-098",
       "REQ-AIDS-099",
+      "REQ-AIDS-100",
       "REQ-AIDS-008",
       "REQ-AIDS-015",
       "REQ-AIDS-073",
@@ -651,6 +652,11 @@
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
         "message": "REQ-AIDS-099 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-100 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
         "code": "FORMAL_UNSUPPORTED",
@@ -1131,7 +1137,7 @@
   },
   "fingerprints": {
     ".musubix/features/ai-chemistry-scientist/requirements.md": "0b484f322aeffc84e7d54466dfb07547bd7e8cbe2f4f0500ef75f5c460e1b4a6",
-    ".musubix/features/ai-data-scientist/requirements.md": "6e25adbb3b43b4d1a55886ae460cbc4c6f6da71d350cdd38d1a4391596007da4",
+    ".musubix/features/ai-data-scientist/requirements.md": "e1a20afe546e6c485f00c5e1bec073fe91fe8a450d65b76a0dd7dba8b9b30b24",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
     ".musubix/features/ai-genomics-scientist/requirements.md": "941566b3f492485597a68280e99c1cd605d603fc63d2511ce9363caccca65c05",
     ".musubix/features/ai-materials-scientist/requirements.md": "ec1042bb0d869dfe9048f68397d495fcda505c1e4b40349313dd2e1aedbf4ceb",

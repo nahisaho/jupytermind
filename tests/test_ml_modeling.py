@@ -209,3 +209,60 @@ def test_TEST_AIDS_194(cv_splits, message):
             n_splits=4,
             scoring="accuracy",
         )
+
+
+# @id TEST-AIDS-352
+# @verifies REQ-AIDS-100
+def test_TEST_AIDS_352():
+    """Zero usable feature columns in the holdout path raises a clear ValueError."""
+    df = pd.DataFrame({"y": [0, 1, 0, 1, 0, 1, 0, 1]})
+    target = "y"
+
+    with pytest.raises(ValueError) as excinfo:
+        train_model(df, target=target, model_type="classification")
+
+    assert str(excinfo.value) == (
+        f"train_model: no usable feature columns remain for target {target!r}; "
+        f"df has 0 feature column(s) after excluding the target — "
+        f"check upstream feature preparation/cleaning."
+    )
+
+
+# @id TEST-AIDS-353
+# @verifies REQ-AIDS-100
+def test_TEST_AIDS_353():
+    """Zero usable feature columns in the cross-validation path raises the same
+    clear ValueError, before any fold is iterated."""
+    df = pd.DataFrame({"label": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]})
+    target = "label"
+
+    with pytest.raises(ValueError) as excinfo:
+        train_model(
+            df,
+            target=target,
+            model_type="classification",
+            cv_strategy="StratifiedKFold",
+            n_splits=5,
+        )
+
+    assert str(excinfo.value) == (
+        f"train_model: no usable feature columns remain for target {target!r}; "
+        f"df has 0 feature column(s) after excluding the target — "
+        f"check upstream feature preparation/cleaning."
+    )
+
+
+# @id TEST-AIDS-354
+# @verifies REQ-AIDS-100
+def test_TEST_AIDS_354():
+    """A non-empty feature matrix is unaffected by the new guard (no regression)."""
+    df = pd.DataFrame(
+        {
+            "x1": list(range(40)),
+            "label": [1 if i % 2 == 0 else 0 for i in range(40)],
+        }
+    )
+
+    result = train_model(df, target="label", model_type="classification", test_size=0.25)
+
+    assert set(result.metrics) >= {"accuracy", "precision", "recall"}

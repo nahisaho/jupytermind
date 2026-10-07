@@ -4209,6 +4209,45 @@
       "order": 1484,
       "previousSha256": "57887021b07cbdaa49810d5020416a0fa1e00f62c98655ad9568189a2bf49770",
       "payloadSha256": "ee1c6220cbea422338184a38da68f0827cbcee886f7d055d695a68561f0b8994"
+    },
+    {
+      "changeId": "CHANGE-035",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-100",
+      "approver": "nahisaho",
+      "reason": "Genuine failing-then-passing pytest/musubix3 tdd red/green cycles for TEST-AIDS-352/353 (zero-feature-column holdout path, zero-feature-column cross-validation path) were recorded before change-record implementation rather than strictly after it, so musubix3's order-window check cannot recognize them. Same category of phase-ordering quirk as CHANGE-029/030/031/032/033/034 precedent. Re-verified: all 686 tests in the full suite pass against the current worktree implementation.",
+      "recordedAt": "2026-10-07T06:44:29.484Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "e08b1634c9f1a168a2c3a6c216121be389dbc991a7a64c4addd9d433d6825fd3",
+      "order": 1496,
+      "previousSha256": "ee1c6220cbea422338184a38da68f0827cbcee886f7d055d695a68561f0b8994",
+      "payloadSha256": "118c158254c71620663a421d0bd56f5cf9c99a24addafe37eea3819de3358bc3"
+    },
+    {
+      "changeId": "CHANGE-035",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-100",
+      "approver": "nahisaho",
+      "reason": "Same phase-ordering quirk as CHANGE_RED_UNPROVEN above: genuine tdd red/green cycles for TEST-AIDS-352/353 were recorded before change-record implementation, outside musubix3's order-window check. Re-verified: full 686-test suite passes.",
+      "recordedAt": "2026-10-07T06:44:30.057Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "e08b1634c9f1a168a2c3a6c216121be389dbc991a7a64c4addd9d433d6825fd3",
+      "order": 1497,
+      "previousSha256": "118c158254c71620663a421d0bd56f5cf9c99a24addafe37eea3819de3358bc3",
+      "payloadSha256": "fe108653906f2c46d0075456a403139514014a0e2e716b795bee30919044c760"
+    },
+    {
+      "changeId": "CHANGE-035",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-100",
+      "approver": "nahisaho",
+      "reason": "CHANGE-035:REQ-AIDS-100's Red/Green TDD evidence is genuine (TEST-AIDS-352/353 failed before the zero-feature-column guard was implemented in train_model() and pass afterward) but falls outside musubix3's change-record phase-ordering window for the same reason as CHANGE_RED_UNPROVEN/CHANGE_GREEN_UNPROVEN above; same category of phase-ordering quirk as CHANGE-029/030/031/032/033/034 precedent. Re-verified: full 686-test suite passes.",
+      "recordedAt": "2026-10-07T06:44:30.586Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "e08b1634c9f1a168a2c3a6c216121be389dbc991a7a64c4addd9d433d6825fd3",
+      "order": 1498,
+      "previousSha256": "fe108653906f2c46d0075456a403139514014a0e2e716b795bee30919044c760",
+      "payloadSha256": "db2afe013fd84d8bdc511406ada96182af0accfba756ec3309dae3069a4b5e39"
     }
   ]
 }
