@@ -1,11 +1,11 @@
 ---
 name: ai-chemistry-scientist
-description: "Use when a user asks, in Japanese or English, to run a cheminformatics module: molecular descriptor calculation, ADMET heuristic screening, QSAR linear-regression modeling, molecular similarity search, a simplified docking-score heuristic, drug-likeness rule screening, structural-alert screening, molecular formula/exact-mass calculation, heuristic bioactivity classification, SMILES salt removal/structure standardization, or chemical structure format conversion (SMILES/InChI/InChIKey/Molblock). 化学情報学固有の処理（分子記述子計算、ADMETヒューリスティックスクリーニング、QSARモデリング、分子類似性検索、ドッキングスコアヒューリスティック、薬物らしさルールスクリーニング、構造アラートスクリーニング、分子式・正確質量計算、生物活性ヒューリスティック分類、SMILES塩除去・構造標準化、化学構造フォーマット変換）を実行する際に使用。"
+description: "Use when a user asks, in Japanese or English, to run a cheminformatics module: molecular descriptor calculation, ADMET heuristic screening, QSAR linear-regression modeling, molecular similarity search, a simplified docking-score heuristic, drug-likeness rule screening, structural-alert screening, molecular formula/exact-mass calculation, heuristic bioactivity classification, SMILES salt removal/structure standardization, chemical structure format conversion (SMILES/InChI/InChIKey/Molblock), dose-response curve fitting, pharmacokinetic non-compartmental analysis, or enzyme kinetics (Michaelis-Menten) fitting. 化学情報学固有の処理（分子記述子計算、ADMETヒューリスティックスクリーニング、QSARモデリング、分子類似性検索、ドッキングスコアヒューリスティック、薬物らしさルールスクリーニング、構造アラートスクリーニング、分子式・正確質量計算、生物活性ヒューリスティック分類、SMILES塩除去・構造標準化、化学構造フォーマット変換、用量反応曲線フィッティング、薬物動態ノンコンパートメント解析、ミカエリス・メンテン酵素反応速度論フィッティング）を実行する際に使用。"
 ---
 # AI Chemistry Scientist / AI化学科学者
 
 Respond in the user's input language (日本語 / English) for every user-facing
-message (REQ-ACHEM-001). Dispatch to exactly one of the 11 supported
+message (REQ-ACHEM-001). Dispatch to exactly one of the 14 supported
 cheminformatics modules per request; never mix modules in a single run
 (REQ-ACHEM-002).
 
@@ -46,6 +46,9 @@ cheminformatics modules per request; never mix modules in a single run
 | Bioactivity classification | target-class activity classification / bioactivity classification | 標的クラス活性分類 / 生物活性分類 |
 | Salt removal / standardization | salt removal / structure standardization | 塩除去 / 構造標準化 |
 | Structure format conversion | structure format conversion / chemical format conversion | 構造フォーマット変換 / 化学構造フォーマット変換 |
+| Dose-response fitting | dose-response fitting / dose response curve fitting | 用量反応曲線フィッティング / 用量反応フィッティング |
+| Pharmacokinetic analysis | pharmacokinetic analysis / pk non-compartmental analysis | 薬物動態解析 / 薬物動態ノンコンパートメント解析 |
+| Enzyme kinetics | enzyme kinetics / michaelis-menten enzyme kinetics | 酵素反応速度論 / ミカエリス・メンテン酵素反応速度論 |
 
 ## Important limitations / 重要な制限
 ADMET prediction, docking-score, structural-alert, bioactivity
@@ -93,5 +96,5 @@ simulation stays in `ai-materials-scientist`. This skill owns
 cheminformatics only, implemented with RDKit/numpy/scikit-learn (no
 external docking engines, no 3D conformer generation, no network calls).
 
-Traceability: REQ-ACHEM-001 through REQ-ACHEM-110, DES-ACHEM-001 through
-DES-ACHEM-110 (`.musubix/features/ai-chemistry-scientist/`).
+Traceability: REQ-ACHEM-001 through REQ-ACHEM-140, DES-ACHEM-001 through
+DES-ACHEM-140 (`.musubix/features/ai-chemistry-scientist/`).

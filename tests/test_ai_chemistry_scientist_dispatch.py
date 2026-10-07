@@ -22,6 +22,15 @@ _ASPIRIN = "CC(=O)OC1=CC=CC=C1C(=O)O"
         ("分子類似性を検索して", "molecular-similarity"),
         ("Compute the docking score for this ligand", "docking-score"),
         ("ドッキングスコアを計算して", "docking-score"),
+        ("Fit the dose-response fitting curve for this compound", "dose-response-fitting"),
+        ("用量反応曲線フィッティングをして", "dose-response-fitting"),
+        (
+            "Run a pharmacokinetic analysis on this concentration-time data",
+            "pharmacokinetic-analysis",
+        ),
+        ("薬物動態解析を実行して", "pharmacokinetic-analysis"),
+        ("Fit the enzyme kinetics for this substrate data", "enzyme-kinetics"),
+        ("酵素反応速度論を解析して", "enzyme-kinetics"),
     ],
 )
 def test_TEST_ACHEM_002_dispatches_to_exactly_one_matched_module(request_text, expected_module):

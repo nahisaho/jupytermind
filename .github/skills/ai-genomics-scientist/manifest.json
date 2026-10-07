@@ -89,5 +89,19 @@
         "バリアント病原性予測"
       ]
     }
+  },
+  "acmg-amp-classification": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_acmg_amp_classification",
+    "names": {
+      "en": [
+        "acmg-amp classification",
+        "acmg amp variant classification"
+      ],
+      "ja": [
+        "ACMG/AMPバリアント分類",
+        "ACMG・AMP分類"
+      ]
+    }
   }
 }

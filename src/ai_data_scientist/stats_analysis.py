@@ -2,16 +2,22 @@
 
 Implements DES-AIDS-008 (REQ-AIDS-006): correlation/statistical tests
 reported alongside a natural-language interpretation in the requested
-response language.
+response language. DES-AIDS-106 (REQ-AIDS-106) extends this module with
+a single-covariate Cox proportional-hazards regression wrapping
+`statsmodels.duration.hazard_regression.PHReg`.
 """
 
 from __future__ import annotations
 
 import math
+import warnings
 from dataclasses import dataclass
 
+import numpy as np
 import pandas as pd
+import statsmodels.tools.sm_exceptions
 from scipy import stats as scipy_stats
+from statsmodels.duration.hazard_regression import PHReg
 
 
 @dataclass(frozen=True)
@@ -65,6 +71,93 @@ def _interpret(
         f"The correlation coefficient is {r:.4f} ({p_text}), indicating a "
         f"{strength} {direction} correlation."
     )
+
+
+def _is_finite_number(value) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
+
+
+def _is_event_flag(value) -> bool:
+    if isinstance(value, bool):
+        return True
+    return isinstance(value, int) and value in (0, 1)
+
+
+def _event_value(value) -> int:
+    return int(value)
+
+
+# @id CODE-AIDS-160
+# @implements REQ-AIDS-106
+# @design DES-AIDS-106
+def cox_ph_regression(
+    durations: list[float], events: list[int], covariate: list[float]
+) -> dict[str, float]:
+    """Fit a single-covariate Cox proportional-hazards model via `statsmodels.PHReg`.
+
+    Pure function: no network, database, or ML-model call (DES-AIDS-106).
+    """
+    if not isinstance(durations, list) or not all(_is_finite_number(v) for v in durations):
+        raise ValueError("durations: must be a list of finite numbers")
+    if not isinstance(covariate, list) or not all(_is_finite_number(v) for v in covariate):
+        raise ValueError("covariate: must be a list of finite numbers")
+    if len(durations) != len(covariate):
+        raise ValueError("durations, covariate: must be the same length")
+    if len(durations) < 2:
+        raise ValueError("durations, covariate: must contain at least 2 entries")
+    if any(d <= 0 for d in durations):
+        raise ValueError("durations: must be strictly positive")
+    if len(set(covariate)) < 2:
+        raise ValueError("covariate: must not be all-identical")
+
+    if not isinstance(events, list) or not all(_is_event_flag(v) for v in events):
+        raise ValueError("events: must be a list of 0/1 or boolean values")
+    if len(events) != len(durations):
+        raise ValueError("durations, events: must be the same length")
+    events_int = [_event_value(v) for v in events]
+    if sum(events_int) < 2:
+        raise ValueError("events: must contain at least 2 events")
+
+    durations_array = np.asarray(durations, dtype=np.float64)
+    events_array = np.asarray(events_int, dtype=np.int64)
+    covariate_column = np.asarray(covariate, dtype=np.float64).reshape(-1, 1)
+
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always", statsmodels.tools.sm_exceptions.ConvergenceWarning)
+        try:
+            result = PHReg(durations_array, covariate_column, status=events_array).fit()
+        except Exception as exc:
+            raise ValueError("durations, covariate: fit did not converge") from exc
+
+        converged = not any(
+            issubclass(w.category, statsmodels.tools.sm_exceptions.ConvergenceWarning)
+            for w in caught
+        )
+
+    coefficient = float(result.params[0])
+    standard_error = float(result.bse[0])
+    p_value = float(result.pvalues[0])
+
+    if (
+        not converged
+        or not math.isfinite(coefficient)
+        or not math.isfinite(standard_error)
+        or not math.isfinite(p_value)
+    ):
+        raise ValueError("durations, covariate: fit did not converge")
+
+    hazard_ratio = math.exp(coefficient)
+    ci_lower = math.exp(coefficient - 1.96 * standard_error)
+    ci_upper = math.exp(coefficient + 1.96 * standard_error)
+
+    return {
+        "coefficient": coefficient,
+        "standard_error": standard_error,
+        "p_value": p_value,
+        "hazard_ratio": hazard_ratio,
+        "ci_lower": ci_lower,
+        "ci_upper": ci_upper,
+    }
 
 
 # @id CODE-AIDS-006

@@ -1,11 +1,11 @@
 ---
 name: ai-genomics-scientist
-description: "Use when a user asks, in Japanese or English, to run a computational-genomics module: sequence feature analysis, variant effect heuristic annotation, splice-site strength heuristic scoring, gene-set enrichment analysis, pairwise sequence alignment, differential expression heuristic analysis, or variant pathogenicity prediction heuristic scoring. ゲノミクス固有の処理（配列特徴量解析、バリアント効果ヒューリスティック注釈、スプライス部位強度ヒューリスティック、遺伝子セットエンリッチメント解析、配列アラインメント、差次発現解析ヒューリスティック、バリアント病原性予測ヒューリスティック）を実行する際に使用。"
+description: "Use when a user asks, in Japanese or English, to run a computational-genomics module: sequence feature analysis, variant effect heuristic annotation, splice-site strength heuristic scoring, gene-set enrichment analysis, pairwise sequence alignment, differential expression heuristic analysis, variant pathogenicity prediction heuristic scoring, or ACMG/AMP germline variant classification. ゲノミクス固有の処理（配列特徴量解析、バリアント効果ヒューリスティック注釈、スプライス部位強度ヒューリスティック、遺伝子セットエンリッチメント解析、配列アラインメント、差次発現解析ヒューリスティック、バリアント病原性予測ヒューリスティック、ACMG/AMP生殖細胞系列バリアント分類）を実行する際に使用。"
 ---
 # AI Genomics Scientist / AIゲノミクス科学者
 
 Respond in the user's input language (日本語 / English) for every
-user-facing message (REQ-AGENOM-001). Dispatch to exactly one of the 7
+user-facing message (REQ-AGENOM-001). Dispatch to exactly one of the 8
 supported genomics modules per request; never mix modules in a single
 run (REQ-AGENOM-002).
 
@@ -26,9 +26,9 @@ run (REQ-AGENOM-002).
    per-item, continuing past individual rejected sequences rather than
    failing the whole batch. `variant-effect-annotation`,
    `splice-site-strength`, `gene-set-enrichment`,
-   `pairwise-sequence-alignment`, `differential-expression`, and
-   `variant-pathogenicity` validate atomically and reject the whole
-   run on any invalid parameter.
+   `pairwise-sequence-alignment`, `differential-expression`,
+   `variant-pathogenicity`, and `acmg-amp-classification` validate
+   atomically and reject the whole run on any invalid parameter.
 3. **Record reproducible run evidence** — every completed run returns a
    `RunRecord` with exactly `metadata`, `parameters`, and `result`
    (REQ-AGENOM-004), including the numpy version used and the scipy
@@ -45,6 +45,7 @@ run (REQ-AGENOM-002).
 | Pairwise sequence alignment | `pairwise-sequence-alignment` / pairwise sequence alignment | `配列アラインメント` |
 | Differential expression | `differential-expression` / differential expression analysis | `差次発現解析` |
 | Variant pathogenicity | `variant-pathogenicity` / variant pathogenicity prediction | `バリアント病原性予測` |
+| ACMG/AMP variant classification | `acmg-amp-classification` / acmg amp variant classification | `ACMG/AMPバリアント分類` |
 
 ## Important limitations / 重要な制限
 Splice-site strength results are governed by a fixed, illustrative
@@ -82,6 +83,25 @@ limitation label:
   病原性分類器ではない（PolyPhen-2 でも SIFT でも AlphaMissense でも
   ない）。"
 
+ACMG/AMP variant classification deterministically implements the
+published Richards et al. (2015) Table 5 combining-rule table over
+caller-supplied, already-adjudicated criterion codes; it performs no
+criterion-level evidence gathering (no ClinVar/gnomAD/PolyPhen/REVEL
+lookup) and makes no network call. It is a computational aid applying a
+fixed rule table, not a clinical diagnosis, clinical recommendation, or
+substitute for qualified variant-review/expert judgment, and must not be
+presented as an authoritative final classification:
+- ACMG/AMP classification disclaimer (en): "This output is a
+  computational aid applying a fixed rule table to caller-supplied,
+  already-adjudicated criteria; it is not a clinical diagnosis, clinical
+  recommendation, or substitute for qualified variant-review/expert
+  judgment, and it must not be presented as an authoritative final
+  classification."
+- ACMG/AMP classification disclaimer (ja): "本出力は、呼び出し側が判定済
+  みの基準に対して固定の規則表を適用する計算補助であり、臨床診断・臨床上
+  の推奨・専門家によるバリアントレビュー判断の代替ではなく、権威ある最終
+  分類として提示してはならない。"
+
 ## Scope boundary / 対象外
 Genomics stays separate from `ai-chemistry-scientist`,
 `ai-structural-biology-scientist`, `ai-data-scientist`, and
@@ -92,7 +112,7 @@ data analysis, or multi-phase research orchestration, and it does not
 call the network or external bioinformatics libraries such as
 Biopython.
 
-Traceability: REQ-AGENOM-001 through REQ-AGENOM-070, DES-AGENOM-001
-through DES-AGENOM-070
+Traceability: REQ-AGENOM-001 through REQ-AGENOM-090, DES-AGENOM-001
+through DES-AGENOM-090
 (`.musubix/features/ai-genomics-scientist/`).
 

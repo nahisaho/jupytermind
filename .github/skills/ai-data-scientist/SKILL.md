@@ -328,3 +328,7 @@ the separate `ai-data-scientist-ml` feature and are out of scope here.
 - `src/ai_data_scientist/sensitivity.py` — DES-AIDS-044
 - `src/ai_data_scientist/dataset_validation.py` — DES-AIDS-045
 - `src/ai_data_scientist/signal_analysis.py` — DES-AIDS-094
+- `src/ai_data_scientist/stats_analysis.py` (`cox_ph_regression`) — DES-AIDS-106
+- `src/ai_data_scientist/meta_analysis.py` — DES-AIDS-103
+- `src/ai_data_scientist/clinical_risk_scoring.py` — DES-AIDS-104
+- `src/ai_data_scientist/diagnostic_test_evaluation.py` — DES-AIDS-105

@@ -19,6 +19,8 @@ def test_TEST_AGENOM_002_dispatches_registered_english_and_japanese_names_only()
         ("遺伝子セットエンリッチメントを実行したい", "gene-set-enrichment"),
         ("I want to run pairwise-sequence-alignment", "pairwise-sequence-alignment"),
         ("配列アラインメントを実行したい", "pairwise-sequence-alignment"),
+        ("I want to run acmg-amp classification", "acmg-amp-classification"),
+        ("ACMG/AMPバリアント分類を実行したい", "acmg-amp-classification"),
         ("I want to run sequence-features / 配列特徴量解析", "sequence-features"),
     ]
 
@@ -52,6 +54,8 @@ def test_TEST_AGENOM_022_dispatches_registered_english_and_japanese_names_only()
         ("遺伝子セットエンリッチメントを実行したい", "gene-set-enrichment"),
         ("I want to run pairwise-sequence-alignment", "pairwise-sequence-alignment"),
         ("配列アラインメントを実行したい", "pairwise-sequence-alignment"),
+        ("I want to run acmg-amp classification", "acmg-amp-classification"),
+        ("ACMG/AMPバリアント分類を実行したい", "acmg-amp-classification"),
         ("I want to run sequence-features / 配列特徴量解析", "sequence-features"),
     ]
 
