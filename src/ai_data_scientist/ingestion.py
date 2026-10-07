@@ -6,6 +6,8 @@ call; a row-count limit is applied to the resulting dataframe after a
 remote (database/API) fetch completes, bounding downstream processing —
 not the fetch itself — and never applies to local CSV/Excel sources
 (REQ-AIDS-014, REQ-AIDS-032; GitHub #57).
+
+Change: CHANGE-034
 """
 
 from __future__ import annotations
@@ -61,6 +63,30 @@ def _sniff_csv_delimiter(path: str) -> tuple[str | None, bool]:
     return dialect.delimiter, True
 
 
+# @id CODE-AIDS-153
+# @implements REQ-AIDS-099
+# @design DES-AIDS-099
+def _read_csv_with_encoding_fallback(location: str, sep: str) -> tuple[pd.DataFrame, str | None]:
+    """Read the CSV at ``location`` with ``sep``, retrying on a decode error.
+
+    Attempts ``utf-8`` first, then ``cp1252``, then ``latin-1`` as a last
+    resort (DES-AIDS-099); only a ``UnicodeDecodeError`` triggers the next
+    tier, any other exception (e.g. ``pandas.errors.ParserError``) propagates
+    immediately. Returns ``(dataframe, fallback_used)`` where
+    ``fallback_used`` is ``None`` when ``utf-8`` succeeded, otherwise the
+    name of the fallback encoding that succeeded.
+    """
+    try:
+        return pd.read_csv(location, sep=sep, encoding="utf-8"), None
+    except UnicodeDecodeError:
+        pass
+    try:
+        return pd.read_csv(location, sep=sep, encoding="cp1252"), "cp1252"
+    except UnicodeDecodeError:
+        pass
+    return pd.read_csv(location, sep=sep, encoding="latin-1"), "latin-1"
+
+
 # @id CODE-AIDS-014
 # @implements REQ-AIDS-014
 # @design DES-AIDS-005
@@ -86,7 +112,9 @@ def ingest(
     warnings: tuple[str, ...] = ()
     if source_spec.kind == "csv":
         delimiter, sniffed = _sniff_csv_delimiter(source_spec.location)
-        dataframe = pd.read_csv(source_spec.location, sep=delimiter if sniffed else ",")
+        dataframe, fallback_used = _read_csv_with_encoding_fallback(
+            source_spec.location, delimiter if sniffed else ","
+        )
         if (
             not sniffed
             and len(dataframe.columns) == 1
@@ -96,6 +124,17 @@ def ingest(
                 f"CSV was parsed with the comma fallback as a single column named "
                 f"{dataframe.columns[0]!r}; the file may actually use a tab or "
                 "semicolon delimiter instead.",
+            )
+        if fallback_used == "cp1252":
+            warnings = warnings + (
+                f"CSV at {source_spec.location!r} is not valid UTF-8; decoded "
+                "using the 'cp1252' fallback encoding instead.",
+            )
+        elif fallback_used == "latin-1":
+            warnings = warnings + (
+                f"CSV at {source_spec.location!r} is not valid UTF-8 or "
+                "cp1252; decoded using the 'latin-1' last-resort fallback "
+                "encoding instead.",
             )
     elif source_spec.kind == "excel":
         dataframe = pd.read_excel(source_spec.location)
