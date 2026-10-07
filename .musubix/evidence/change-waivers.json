@@ -4287,6 +4287,45 @@
       "order": 1521,
       "previousSha256": "4bf631e01b0eed51df40527d6f22cc52a03c0536028d61f4175f6b1ca75b0e27",
       "payloadSha256": "f51108ef854d497b62977ee3436bb6d5cc4224f26607ece32f8aa1cc30f34c53"
+    },
+    {
+      "changeId": "CHANGE-037",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-102",
+      "approver": "nahisaho",
+      "reason": "Red was proven via the native tdd red phase using isolated per-test pytest runs; the change-history ordered-evidence check requires a specific JSON evidence shape it does not detect, matching the identical precedent at CHANGE-033/034/035/036.",
+      "recordedAt": "2026-10-07T10:30:09.558Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "148d9840b1017632e1630d3560f9810c294e5630ad1dad424435463f95de9bd7",
+      "order": 1542,
+      "previousSha256": "f51108ef854d497b62977ee3436bb6d5cc4224f26607ece32f8aa1cc30f34c53",
+      "payloadSha256": "b028deb4be0b40fb7c3603f480551ed46b5a9c5c9098762b1f97430bb1b1792c"
+    },
+    {
+      "changeId": "CHANGE-037",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-102",
+      "approver": "nahisaho",
+      "reason": "Green was proven via the native tdd green phase using isolated per-test pytest runs plus the full 697-test suite; same detection-format limitation as CHANGE_RED_UNPROVEN, matching CHANGE-033/034/035/036 precedent.",
+      "recordedAt": "2026-10-07T10:30:10.093Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "148d9840b1017632e1630d3560f9810c294e5630ad1dad424435463f95de9bd7",
+      "order": 1543,
+      "previousSha256": "b028deb4be0b40fb7c3603f480551ed46b5a9c5c9098762b1f97430bb1b1792c",
+      "payloadSha256": "fc50a00c0275165df11bd0dac20499d8b151058b4443234cd342044cc85283c7"
+    },
+    {
+      "changeId": "CHANGE-037",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-102",
+      "approver": "nahisaho",
+      "reason": "Bounded Red-Green TDD evidence exists for all 5 new tests (TEST-AIDS-361 to 365) via native tdd red/green recordings; the completeness scanner uses the same detection format as CHANGE_RED_UNPROVEN/CHANGE_GREEN_UNPROVEN, matching CHANGE-033/034/035/036 precedent.",
+      "recordedAt": "2026-10-07T10:30:10.627Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "148d9840b1017632e1630d3560f9810c294e5630ad1dad424435463f95de9bd7",
+      "order": 1544,
+      "previousSha256": "fc50a00c0275165df11bd0dac20499d8b151058b4443234cd342044cc85283c7",
+      "payloadSha256": "5b7b5c4040a25346c8fb52e3b10dca8369723be1098462807fa2aa28d1b720e5"
     }
   ]
 }
