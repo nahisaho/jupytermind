@@ -1942,3 +1942,36 @@ and `latin-1` are codecs already built into Python's standard library
 and already supported by `pandas.read_csv`'s `encoding` argument.
 Requirements: REQ-AIDS-099
 ADRs: ADR-0116
+
+## DES-AIDS-100: `train_model` zero-feature-column guard / `train_model`のゼロ特徴量列ガード
+Responsibilities: `train_model()` satisfies REQ-AIDS-100 by inserting a
+single guard clause immediately after `feature_columns`/`x`/`y` are
+constructed (`feature_columns = [c for c in df.columns if c != target]; x =
+df[feature_columns]; y = df[target]`) and before the existing call to
+`build_cv_splits(...)`. The guard checks `x.shape[1] == 0` and, when true,
+raises `ValueError(f"train_model: no usable feature columns remain for
+target {target!r}; df has {x.shape[1]} feature column(s) after excluding
+the target — check upstream feature preparation/cleaning.")` immediately,
+before `build_cv_splits`, `train_test_split`, `resolve_estimator`, or any
+`model.fit` call executes in either the holdout branch
+(`normalized_cv_splits is None`) or the cross-validation branch (the
+per-fold loop and the final full-data fit). Because the guard sits upstream
+of the branch point on `normalized_cv_splits`, a single check covers both
+code paths with no duplication. The pre-existing `y = df[target]` line is
+unchanged and continues to raise `KeyError` first if `target` is not a
+column of `df`, so the new guard is only ever reached once `target` has
+already resolved successfully — satisfying REQ-AIDS-100's explicit
+out-of-scope note for a missing `target` column.
+Interfaces: `train_model()`'s public signature and `ModelResult` schema are
+unchanged; no new function or parameter is introduced — this is a single
+added `if`/`raise` statement inside the existing function body.
+Constraints: the guard must execute before any of `build_cv_splits`,
+`train_test_split`, `resolve_estimator`, or `.fit` are called, since all of
+those are documented trigger points for sklearn's opaque low-level
+`ValueError: at least one array or dtype is required` (or equivalent
+`check_array` failures) on an empty feature matrix. No change to behavior
+when `x.shape[1] > 0` (the overwhelming majority case): the guard is a
+pure early-exit with no side effects on the non-empty path.
+Requirements: REQ-AIDS-100
+ADRs: none — straightforward input-validation guard, no architectural
+tradeoff.
