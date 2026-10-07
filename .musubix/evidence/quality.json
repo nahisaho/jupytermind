@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-07T06:54:37.317Z",
+  "generatedAt": "2026-10-07T09:20:51.109Z",
   "status": "fail",
   "checks": [
     {
@@ -49,7 +49,7 @@
       "name": "formal",
       "required": false,
       "status": "pass",
-      "summary": "12/181 requirements modeled; consistency consistent; solver not-requested.",
+      "summary": "12/182 requirements modeled; consistency consistent; solver not-requested.",
       "diagnostics": [
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -430,6 +430,11 @@
           "code": "FORMAL_UNSUPPORTED",
           "severity": "warning",
           "message": "REQ-AIDS-100 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+        },
+        {
+          "code": "FORMAL_UNSUPPORTED",
+          "severity": "warning",
+          "message": "REQ-AIDS-101 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
         },
         {
           "code": "FORMAL_UNSUPPORTED",
@@ -916,7 +921,7 @@
       "name": "tdd",
       "required": true,
       "status": "fail",
-      "summary": "459 Red-Green TDD cycle(s) recorded.",
+      "summary": "466 Red-Green TDD cycle(s) recorded.",
       "diagnostics": [
         {
           "code": "TDD_REQUIREMENT_UNCOVERED",
@@ -1202,7 +1207,7 @@
       "name": "change-history",
       "required": true,
       "status": "fail",
-      "summary": "27 staged change(s) checked for ordered artifact and TDD evidence.",
+      "summary": "28 staged change(s) checked for ordered artifact and TDD evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_WAIVER_STALE",
@@ -3729,6 +3734,30 @@
             "reason": "Same phase-ordering quirk as CHANGE_RED_UNPROVEN above: genuine tdd red/green cycles for TEST-AIDS-352/353 were recorded before change-record implementation, outside musubix3's order-window check. Re-verified: full 686-test suite passes.",
             "recordedAt": "2026-10-07T06:44:30.057Z"
           }
+        },
+        {
+          "code": "CHANGE_RED_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-036 has no valid Red evidence for REQ-AIDS-101 before its Red phase.",
+          "changeId": "CHANGE-036",
+          "requirementId": "REQ-AIDS-101",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Known musubix3 phase-ordering quirk: Red/Green evidence for REQ-AIDS-101 is recorded after the change-history Red/Green phase timestamps because the feature code must exist to prove genuine test failures/passes. Same pattern accepted in CHANGE-029 through CHANGE-035.",
+            "recordedAt": "2026-10-07T07:50:28.122Z"
+          }
+        },
+        {
+          "code": "CHANGE_GREEN_UNPROVEN",
+          "severity": "warning",
+          "message": "CHANGE-036 has no valid Green evidence for REQ-AIDS-101 before its Green phase.",
+          "changeId": "CHANGE-036",
+          "requirementId": "REQ-AIDS-101",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Known musubix3 phase-ordering quirk: Red/Green evidence for REQ-AIDS-101 is recorded after the change-history Red/Green phase timestamps because the feature code must exist to prove genuine test failures/passes. Same pattern accepted in CHANGE-029 through CHANGE-035.",
+            "recordedAt": "2026-10-07T07:50:28.671Z"
+          }
         }
       ]
     },
@@ -3736,7 +3765,7 @@
       "name": "change-completeness",
       "required": true,
       "status": "fail",
-      "summary": "22/27 staged change(s) have semantically complete evidence.",
+      "summary": "22/28 staged change(s) have semantically complete evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_WAIVER_STALE",
@@ -4931,6 +4960,23 @@
           "code": "CHANGE_COMPLETENESS_ADR",
           "severity": "error",
           "message": "CHANGE-035:REQ-AIDS-100 lacks ADR evidence."
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_TDD",
+          "severity": "warning",
+          "message": "CHANGE-036:REQ-AIDS-101 lacks bounded Red-Green TDD evidence.",
+          "changeId": "CHANGE-036",
+          "requirementId": "REQ-AIDS-101",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Known musubix3 phase-ordering quirk: Red/Green evidence for REQ-AIDS-101 is recorded after the change-history Red/Green phase timestamps because the feature code must exist to prove genuine test failures/passes. Same pattern accepted in CHANGE-029 through CHANGE-035.",
+            "recordedAt": "2026-10-07T07:50:29.231Z"
+          }
+        },
+        {
+          "code": "CHANGE_COMPLETENESS_ADR",
+          "severity": "error",
+          "message": "CHANGE-036:REQ-AIDS-101 lacks ADR evidence."
         }
       ]
     },
@@ -4939,7 +4985,7 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/ruff: completed, exit 0.",
-      "durationMs": 25,
+      "durationMs": 43,
       "exitCode": 0,
       "stdout": "215 files already formatted\n",
       "stderr": ""
@@ -4949,9 +4995,9 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/pytest: completed, exit 0.",
-      "durationMs": 71973,
+      "durationMs": 77964,
       "exitCode": 0,
-      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.14.4, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change035\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, platformdirs-4.12.2, Faker-40.40.0, json-report-1.5.0, metadata-3.1.1\ncollected 686 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  0%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  2%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  4%]\n....                                                                     [  4%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [  8%]\n.....                                                                    [  9%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 10%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 11%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 11%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 12%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 13%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 14%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 15%]\ntests/test_ai_chemistry_scientist_salt_standardization.py ........       [ 16%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 17%]\ntests/test_ai_chemistry_scientist_structure_format_conversion.py ....... [ 18%]\n                                                                         [ 18%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 19%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 19%]\ntests/test_ai_genomics_scientist_differential_expression.py ...          [ 20%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 20%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 21%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 21%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 21%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 22%]\ntests/test_ai_genomics_scientist_skill_packaging.py .                    [ 22%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 22%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 22%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 23%]\ntests/test_ai_genomics_scientist_variant_pathogenicity.py ...            [ 23%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 24%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 26%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 27%]\n...                                                                      [ 28%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 30%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 33%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 33%]\ntests/test_ai_materials_scientist_fem.py .................               [ 36%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 38%]\n                                                                         [ 38%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 40%]\n...                                                                      [ 41%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 43%]\ntests/test_ai_materials_scientist_skill_packaging.py .                   [ 43%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 44%]\ntests/test_ai_scientist_delegation.py ............                       [ 45%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 46%]\ntests/test_ai_scientist_mcp.py .............                             [ 47%]\ntests/test_ai_scientist_phase_state.py .........                         [ 49%]\ntests/test_ai_scientist_project_handle.py ...                            [ 49%]\ntests/test_ai_scientist_skill_packaging.py ......                        [ 50%]\ntests/test_ai_scientist_tdd_gate.py ....                                 [ 51%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 51%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 51%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 52%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 52%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 52%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 53%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 53%]\ntests/test_ai_structural_biology_scientist_skill_packaging.py .          [ 53%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 54%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 54%]\ntests/test_analysis_assumptions.py ....                                  [ 55%]\ntests/test_anomaly_detection.py .                                        [ 55%]\ntests/test_automl.py ....                                                [ 56%]\ntests/test_cleaning.py .                                                 [ 56%]\ntests/test_clustering.py ..                                              [ 56%]\ntests/test_convergence_guard.py ..............                           [ 58%]\ntests/test_dashboard.py .                                                [ 58%]\ntests/test_data_definition.py .....                                      [ 59%]\ntests/test_data_quality.py .....                                         [ 60%]\ntests/test_dataset_validation.py ......                                  [ 61%]\ntests/test_dependency_pins.py ...                                        [ 61%]\ntests/test_eda.py .....                                                  [ 62%]\ntests/test_example_readiness.py .                                        [ 62%]\ntests/test_experiment_evaluation.py .............................        [ 66%]\ntests/test_explainability.py ...........                                 [ 68%]\ntests/test_feature_engineering.py ..........                             [ 69%]\ntests/test_gate_config.py .                                              [ 69%]\ntests/test_ingestion.py ..............                                   [ 72%]\ntests/test_insight_engine.py ........                                    [ 73%]\ntests/test_japanese_nlp.py .                                             [ 73%]\ntests/test_jupyter_mcp_client.py ..                                      [ 73%]\ntests/test_language_router.py .                                          [ 73%]\ntests/test_lifecycle.py .....                                            [ 74%]\ntests/test_mcp_gateway.py ......                                         [ 75%]\ntests/test_mcp_runtime.py ......                                         [ 76%]\ntests/test_mcp_runtime_integration.py .                                  [ 76%]\ntests/test_measure_pytest_pass_rate.py ...                               [ 76%]\ntests/test_ml_modeling.py ...........                                    [ 78%]\ntests/test_model_tuning.py ....                                          [ 79%]\ntests/test_notebook_audit.py .......................                     [ 82%]\ntests/test_project_manager.py .........................                  [ 86%]\ntests/test_release_gate_governance.py ....                               [ 86%]\ntests/test_report_export.py ...                                          [ 87%]\ntests/test_sensitivity.py .............                                  [ 88%]\ntests/test_setup_skill_deployment.py ..........                          [ 90%]\ntests/test_signal_analysis.py .............                              [ 92%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 93%]\ntests/test_tech_writer_skill_packaging.py ......                         [ 94%]\ntests/test_text_nlp.py .                                                 [ 94%]\ntests/test_timeseries.py ..                                              [ 95%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ......................                       [100%]\n\n=============================== warnings summary ===============================\n.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:201\n  /home/nahisaho/GitHub/jupytermind-change035/.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:201: DeprecationWarning: codecs.open() is deprecated. Use open() instead.\n    with codecs.open(lexicon_full_filepath, encoding='utf-8') as f:\n\n.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:206\n  /home/nahisaho/GitHub/jupytermind-change035/.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:206: DeprecationWarning: codecs.open() is deprecated. Use open() instead.\n    with codecs.open(emoji_full_filepath, encoding='utf-8') as f:\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n================== 686 passed, 2 warnings in 68.90s (0:01:08) ==================\n",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.14.4, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/nahisaho/GitHub/jupytermind-change036\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: anyio-4.15.1, json-report-1.5.0, Faker-40.41.0, metadata-3.1.1, platformdirs-4.12.3\ncollected 692 items\n\ntests/test_ai_chemistry_scientist_admet_prediction.py ......             [  0%]\ntests/test_ai_chemistry_scientist_bilingual.py ..............            [  2%]\ntests/test_ai_chemistry_scientist_bioactivity_classification.py ........ [  4%]\n....                                                                     [  4%]\ntests/test_ai_chemistry_scientist_dispatch.py .......................... [  8%]\n.....                                                                    [  9%]\ntests/test_ai_chemistry_scientist_docking_score.py ........              [ 10%]\ntests/test_ai_chemistry_scientist_drug_likeness_rules.py ......          [ 11%]\ntests/test_ai_chemistry_scientist_evidence.py ...                        [ 11%]\ntests/test_ai_chemistry_scientist_molecular_descriptors.py ......        [ 12%]\ntests/test_ai_chemistry_scientist_molecular_formula_mass.py .....        [ 13%]\ntests/test_ai_chemistry_scientist_molecular_similarity.py .........      [ 14%]\ntests/test_ai_chemistry_scientist_qsar_modeling.py .....                 [ 15%]\ntests/test_ai_chemistry_scientist_salt_standardization.py ........       [ 16%]\ntests/test_ai_chemistry_scientist_structural_alerts.py ........          [ 17%]\ntests/test_ai_chemistry_scientist_structure_format_conversion.py ....... [ 18%]\n                                                                         [ 18%]\ntests/test_ai_chemistry_scientist_validation.py ......                   [ 19%]\ntests/test_ai_genomics_scientist_bilingual.py ..                         [ 19%]\ntests/test_ai_genomics_scientist_differential_expression.py ...          [ 20%]\ntests/test_ai_genomics_scientist_dispatch.py ....                        [ 20%]\ntests/test_ai_genomics_scientist_evidence.py ..                          [ 20%]\ntests/test_ai_genomics_scientist_gene_set_enrichment.py ..               [ 21%]\ntests/test_ai_genomics_scientist_sequence_alignment.py ..                [ 21%]\ntests/test_ai_genomics_scientist_sequence_features.py ..                 [ 21%]\ntests/test_ai_genomics_scientist_skill_packaging.py .                    [ 21%]\ntests/test_ai_genomics_scientist_splice_site_scoring.py ..               [ 22%]\ntests/test_ai_genomics_scientist_validation.py ...                       [ 22%]\ntests/test_ai_genomics_scientist_variant_effect.py ..                    [ 22%]\ntests/test_ai_genomics_scientist_variant_pathogenicity.py ...            [ 23%]\ntests/test_ai_materials_scientist_bilingual.py ......                    [ 24%]\ntests/test_ai_materials_scientist_calphad.py ...........                 [ 25%]\ntests/test_ai_materials_scientist_classical_monte_carlo.py ............. [ 27%]\n...                                                                      [ 28%]\ntests/test_ai_materials_scientist_crystal_plasticity.py ..............   [ 30%]\ntests/test_ai_materials_scientist_dispatch.py ..................         [ 32%]\ntests/test_ai_materials_scientist_evidence.py .....                      [ 33%]\ntests/test_ai_materials_scientist_fem.py .................               [ 35%]\ntests/test_ai_materials_scientist_kinetic_monte_carlo.py ............... [ 38%]\n                                                                         [ 38%]\ntests/test_ai_materials_scientist_molecular_dynamics.py ................ [ 40%]\n...                                                                      [ 40%]\ntests/test_ai_materials_scientist_phase_field.py .............           [ 42%]\ntests/test_ai_materials_scientist_skill_packaging.py .                   [ 42%]\ntests/test_ai_materials_scientist_validation.py ......                   [ 43%]\ntests/test_ai_scientist_delegation.py ............                       [ 45%]\ntests/test_ai_scientist_evidence_registry.py .                           [ 45%]\ntests/test_ai_scientist_mcp.py .............                             [ 47%]\ntests/test_ai_scientist_phase_state.py .........                         [ 48%]\ntests/test_ai_scientist_project_handle.py ...                            [ 49%]\ntests/test_ai_scientist_skill_packaging.py ......                        [ 50%]\ntests/test_ai_scientist_tdd_gate.py ....                                 [ 50%]\ntests/test_ai_structural_biology_scientist_bilingual.py .                [ 50%]\ntests/test_ai_structural_biology_scientist_contact_map.py ..             [ 51%]\ntests/test_ai_structural_biology_scientist_dispatch.py ...               [ 51%]\ntests/test_ai_structural_biology_scientist_evidence.py ...               [ 52%]\ntests/test_ai_structural_biology_scientist_hydrophobicity.py ...         [ 52%]\ntests/test_ai_structural_biology_scientist_protein_docking_score.py ...  [ 52%]\ntests/test_ai_structural_biology_scientist_secondary_structure.py ...    [ 53%]\ntests/test_ai_structural_biology_scientist_skill_packaging.py .          [ 53%]\ntests/test_ai_structural_biology_scientist_structural_similarity.py ...  [ 53%]\ntests/test_ai_structural_biology_scientist_validation.py ....            [ 54%]\ntests/test_analysis_assumptions.py ....                                  [ 55%]\ntests/test_anomaly_detection.py .                                        [ 55%]\ntests/test_automl.py ....                                                [ 55%]\ntests/test_cleaning.py .                                                 [ 55%]\ntests/test_clustering.py ..                                              [ 56%]\ntests/test_convergence_guard.py ..............                           [ 58%]\ntests/test_dashboard.py .                                                [ 58%]\ntests/test_data_definition.py .....                                      [ 59%]\ntests/test_data_quality.py .....                                         [ 59%]\ntests/test_dataset_validation.py ......                                  [ 60%]\ntests/test_dependency_pins.py ...                                        [ 61%]\ntests/test_eda.py .....                                                  [ 61%]\ntests/test_example_readiness.py .                                        [ 61%]\ntests/test_experiment_evaluation.py .............................        [ 66%]\ntests/test_explainability.py ...........                                 [ 67%]\ntests/test_feature_engineering.py ..........                             [ 69%]\ntests/test_gate_config.py .                                              [ 69%]\ntests/test_ingestion.py ..............                                   [ 71%]\ntests/test_insight_engine.py ........                                    [ 72%]\ntests/test_japanese_nlp.py .                                             [ 72%]\ntests/test_jupyter_mcp_client.py ..                                      [ 72%]\ntests/test_language_router.py .                                          [ 73%]\ntests/test_lifecycle.py .....                                            [ 73%]\ntests/test_mcp_gateway.py ......                                         [ 74%]\ntests/test_mcp_runtime.py ......                                         [ 75%]\ntests/test_mcp_runtime_integration.py .                                  [ 75%]\ntests/test_measure_pytest_pass_rate.py ...                               [ 76%]\ntests/test_ml_modeling.py .................                              [ 78%]\ntests/test_model_tuning.py ....                                          [ 79%]\ntests/test_notebook_audit.py .......................                     [ 82%]\ntests/test_project_manager.py .........................                  [ 86%]\ntests/test_release_gate_governance.py ....                               [ 86%]\ntests/test_report_export.py ...                                          [ 87%]\ntests/test_sensitivity.py .............                                  [ 89%]\ntests/test_setup_skill_deployment.py ..........                          [ 90%]\ntests/test_signal_analysis.py .............                              [ 92%]\ntests/test_skill_packaging.py .                                          [ 92%]\ntests/test_stats_analysis.py ..........                                  [ 93%]\ntests/test_tech_writer_skill_packaging.py ......                         [ 94%]\ntests/test_text_nlp.py .                                                 [ 94%]\ntests/test_timeseries.py ..                                              [ 95%]\ntests/test_visual_audit.py ...........                                   [ 96%]\ntests/test_visualization.py ......................                       [100%]\n\n=============================== warnings summary ===============================\n.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:201\n  /home/nahisaho/GitHub/jupytermind-change036/.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:201: DeprecationWarning: codecs.open() is deprecated. Use open() instead.\n    with codecs.open(lexicon_full_filepath, encoding='utf-8') as f:\n\n.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:206\n  /home/nahisaho/GitHub/jupytermind-change036/.venv/lib/python3.14/site-packages/vaderSentiment/vaderSentiment.py:206: DeprecationWarning: codecs.open() is deprecated. Use open() instead.\n    with codecs.open(emoji_full_filepath, encoding='utf-8') as f:\n\ntests/test_explainability.py::test_TEST_AIDS_021\n  /home/nahisaho/GitHub/jupytermind-change036/tests/test_explainability.py:27: UserWarning: train_model: feature column 'important' appears to be a near-perfect predictor of target 'label' (possible target leakage); metrics may be artificially inflated.\n    result = train_model(df, target=\"label\", model_type=\"classification\", test_size=0.2)\n\ntests/test_explainability.py::test_TEST_AIDS_169\n  /home/nahisaho/GitHub/jupytermind-change036/tests/test_explainability.py:50: UserWarning: train_model: feature column 'important' appears to be a near-perfect predictor of target 'label' (possible target leakage); metrics may be artificially inflated.\n    result = train_model(\n\ntests/test_explainability.py::test_TEST_AIDS_170\n  /home/nahisaho/GitHub/jupytermind-change036/tests/test_explainability.py:105: UserWarning: train_model: feature column 'important' appears to be a near-perfect predictor of target 'label' (possible target leakage); metrics may be artificially inflated.\n    result = train_model(\n\ntests/test_explainability.py::test_TEST_AIDS_171\n  /home/nahisaho/GitHub/jupytermind-change036/tests/test_explainability.py:141: UserWarning: train_model: feature column 'important' appears to be a near-perfect predictor of target 'label' (possible target leakage); metrics may be artificially inflated.\n    result = train_model(\n\ntests/test_explainability.py::test_TEST_AIDS_173\n  /home/nahisaho/GitHub/jupytermind-change036/tests/test_explainability.py:211: UserWarning: train_model: feature column 'important' appears to be a near-perfect predictor of target 'label' (possible target leakage); metrics may be artificially inflated.\n    result = train_model(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n--------------------------------- JSON report ----------------------------------\nreport saved to: .musubix/evidence/native/test/aggregate.json\n================== 692 passed, 7 warnings in 74.11s (0:01:14) ==================\n",
       "stderr": ""
     },
     {
@@ -4959,7 +5005,7 @@
       "required": true,
       "status": "pass",
       "summary": ".venv/bin/python: completed, exit 0.",
-      "durationMs": 71745,
+      "durationMs": 73013,
       "exitCode": 0,
       "stdout": "Measured pytest pass rate: 100% (status=passed); wrote .musubix/evidence/native/performance/TEST-AIDS-PYTEST-001.json\n",
       "stderr": ""
@@ -4968,7 +5014,7 @@
       "name": "test-identities",
       "required": false,
       "status": "pass",
-      "summary": "575/575 annotated test IDs passed in structured command reports.",
+      "summary": "581/581 annotated test IDs passed in structured command reports.",
       "diagnostics": []
     },
     {
@@ -5036,6 +5082,20 @@
       "required": true,
       "status": "pass",
       "summary": "commands.skipped = 0; maximum 0."
+    },
+    {
+      "name": "input-stability",
+      "required": true,
+      "status": "fail",
+      "summary": "Project inputs changed during gate execution (1 path(s)). Re-run after generators/formatters finish.",
+      "diagnostics": [
+        {
+          "code": "INPUT_MODIFIED",
+          "severity": "error",
+          "path": ".pytest_cache/v/cache/lastfailed",
+          "message": ".pytest_cache/v/cache/lastfailed was modified during gate execution; before=3f938e8548f94333fca8e1821b40875af3a937501154e4c78191c397fb57ae25; after=44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a."
+        }
+      ]
     }
   ],
   "metrics": {
@@ -5045,20 +5105,20 @@
     "trace.errors": 0,
     "graph.violations": 0,
     "formal.errors": 0,
-    "formal.modeledFraction": 0.06629834254143646,
+    "formal.modeledFraction": 0.06593406593406594,
     "commands.failures": 0,
     "commands.skipped": 0,
-    "tests.annotatedIds": 575,
-    "tests.executedIds": 575,
-    "tdd.cycles": 459,
+    "tests.annotatedIds": 581,
+    "tests.executedIds": 581,
+    "tdd.cycles": 466,
     "tdd.errors": 45,
-    "changes.count": 27,
+    "changes.count": 28,
     "changes.errors": 40,
     "changes.complete": 22,
-    "changes.completenessErrors": 24,
+    "changes.completenessErrors": 25,
     "performance.budgets": 1,
     "performance.errors": 0,
-    "mutation.requirements": 147,
+    "mutation.requirements": 148,
     "mutation.coveredRequirements": 0,
     "mutation.mutants": 0,
     "mutation.errors": 0,
@@ -5074,7 +5134,7 @@
   "mode": "full",
   "feature": null,
   "changed": [
-    ".musubix/changes/CHANGE-035.md",
+    ".musubix/changes/CHANGE-036.md",
     ".musubix/evidence/.writer-lock.json",
     ".musubix/evidence/approvals/design.json",
     ".musubix/evidence/approvals/requirements.json",
@@ -5082,8 +5142,12 @@
     ".musubix/evidence/changes.json",
     ".musubix/evidence/formal.json",
     ".musubix/evidence/model-correspondence.json",
-    ".musubix/evidence/native/test/TEST-AIDS-352.json",
-    ".musubix/evidence/native/test/TEST-AIDS-353.json",
+    ".musubix/evidence/native/test/TEST-AIDS-355.json",
+    ".musubix/evidence/native/test/TEST-AIDS-356.json",
+    ".musubix/evidence/native/test/TEST-AIDS-357.json",
+    ".musubix/evidence/native/test/TEST-AIDS-358.json",
+    ".musubix/evidence/native/test/TEST-AIDS-359.json",
+    ".musubix/evidence/native/test/TEST-AIDS-360.json",
     ".musubix/evidence/native/test/aggregate.json",
     ".musubix/evidence/order.json",
     ".musubix/evidence/performance.json",
@@ -5115,9 +5179,9 @@
   ],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "ead0e263659ae4154c769da7a21abe4e86b5194b",
+    "head": "8ccd34f8caf36dbdd350839bb08b4f3774811bf2",
     "changed": [
-      ".musubix/changes/CHANGE-035.md",
+      ".musubix/changes/CHANGE-036.md",
       ".musubix/evidence/.writer-lock.json",
       ".musubix/evidence/approvals/design.json",
       ".musubix/evidence/approvals/requirements.json",
@@ -5125,8 +5189,12 @@
       ".musubix/evidence/changes.json",
       ".musubix/evidence/formal.json",
       ".musubix/evidence/model-correspondence.json",
-      ".musubix/evidence/native/test/TEST-AIDS-352.json",
-      ".musubix/evidence/native/test/TEST-AIDS-353.json",
+      ".musubix/evidence/native/test/TEST-AIDS-355.json",
+      ".musubix/evidence/native/test/TEST-AIDS-356.json",
+      ".musubix/evidence/native/test/TEST-AIDS-357.json",
+      ".musubix/evidence/native/test/TEST-AIDS-358.json",
+      ".musubix/evidence/native/test/TEST-AIDS-359.json",
+      ".musubix/evidence/native/test/TEST-AIDS-360.json",
       ".musubix/evidence/native/test/aggregate.json",
       ".musubix/evidence/order.json",
       ".musubix/evidence/performance.json",
@@ -5156,10 +5224,10 @@
       "tests/test_ml_modeling.py",
       "tests/test_model_tuning.py"
     ],
-    "generatedAt": "2026-10-07T06:47:19.216Z"
+    "generatedAt": "2026-10-07T07:53:07.116Z"
   },
   "fingerprints": {
-    ".git": "14564d06ea43aed05d71a4cdb02398269ba51bfbe14e23f0ba01692d859dc46c",
+    ".git": "24448f82e2e5c46f5a1fdbaadc6cfe15809266a3815e8cf857df42babbdce1a2",
     ".github/workflows/npm-publish.yml": "5b3c9cc9f02c8b7e32568958cf306ee241d1adb5af7ab4a0bf8bf06f7047f319",
     ".gitignore": "97fd517743b154fae6a98dee2dcd4ab177f5e9572d2b4dee7f4e9aa70a985bb8",
     ".musubix/changes/CHANGE-001.md": "cf237661c3c8d9734cdd0da6d1f1f6d56e3e68ccb89998020b79b46ca59536a7",
@@ -5196,6 +5264,7 @@
     ".musubix/changes/CHANGE-033.md": "0b48b8292e9d06d74a96a7a0973896ed2293b9cfbe0846ea4c14a1d05fff5879",
     ".musubix/changes/CHANGE-034.md": "0a7af8a59e5237bd3c8d893e83c1d0d689e68efc0aa90c669126c108defb14c6",
     ".musubix/changes/CHANGE-035.md": "860bc5623a0c2e48e5f92335f0220c4f4246c01c72538ff5f10dbba4ac8154ee",
+    ".musubix/changes/CHANGE-036.md": "1c91ac784501a9f145515741ad14a2912fbacc643019cc985c31b2925db20645",
     ".musubix/config.json": "81578b411a6ebe138e002fe2f638376c873b59b8688c73a27fb3c0ad2855be78",
     ".musubix/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
     ".musubix/decisions/ADR-0001.md": "6e21f1b375cfa1aabdf058b1dc987f94974dc23571fe60e94ba340dc48295b0f",
@@ -5316,8 +5385,8 @@
     ".musubix/decisions/ADR-0116.md": "16c8e6b1143b91da8facf48d63708aec632b4a3363123504283f06a4793f0bdf",
     ".musubix/features/ai-chemistry-scientist/design.md": "8e481cbe118058045c6a14341e1c2ffebea76cf4041648e997575e611a6e190a",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "0b484f322aeffc84e7d54466dfb07547bd7e8cbe2f4f0500ef75f5c460e1b4a6",
-    ".musubix/features/ai-data-scientist/design.md": "bc8586db248b6268eb1a89ec39f10ba0d3e96ad6a77c8b8b713e6f5dadb89426",
-    ".musubix/features/ai-data-scientist/requirements.md": "e1a20afe546e6c485f00c5e1bec073fe91fe8a450d65b76a0dd7dba8b9b30b24",
+    ".musubix/features/ai-data-scientist/design.md": "0de67890bcacdd7bee42f7217805b97dbf8a4366bdc4f87dc3e7a7bf2d78ea2f",
+    ".musubix/features/ai-data-scientist/requirements.md": "35ef3e8fbf7173e6cb589576820a2fbdfdef37fc72ec7a16725eceeedc5a458b",
     ".musubix/features/ai-data-scientist-ml/design.md": "19f497b16bb5c33be5dac4eef5310e5a1a3a1fe38d086ec8b017014034c16e15",
     ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
     ".musubix/features/ai-genomics-scientist/design.md": "ac15e5c1802fe8f8cb4e704ce2ebcaceffd79ea821999f1283b3ae373748452e",
@@ -5339,17 +5408,26 @@
     ".pytest_cache/CACHEDIR.TAG": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
     ".pytest_cache/README.md": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
     ".pytest_cache/v/cache/lastfailed": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
-    ".pytest_cache/v/cache/nodeids": "923294e1bc651f6b11364cf6a75decfd0ad9a9addd1ab9a0905bb34010f8d965",
+    ".pytest_cache/v/cache/nodeids": "ebb306cb77a35c95c098d8b307393a522b257b975841d6bca35e1018090a3809",
     ".ruff_cache/.gitignore": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
-    ".ruff_cache/0.16.10/10863967834629289083": "ef6339058c9398eca46b407d486b47e0493591ac13174dadc7c5322f9e241645",
-    ".ruff_cache/0.16.10/13548694483646678068": "7db1c35f0719e2c9b7502ef658ee4c69851e48650616be3bcc9aaea5361260d2",
-    ".ruff_cache/0.16.10/14489782865570019900": "6d3eea11ea5105b32934cb08a36d58ee86557793af743e311042619a17e95175",
-    ".ruff_cache/0.16.10/15024959245284656569": "65b939033ad4f7556d22d5f0d717d9ce8925803c2a439300ad9bc9f29cfd5909",
-    ".ruff_cache/0.16.10/16678255055525599916": "bd522a238ff47d3e6e6ef92207c297c1cc2be6e2b4fedda4123020eb405e760c",
-    ".ruff_cache/0.16.10/301118716852163763": "dac5ab7d851929e2e05a60f847fd126be1d1d95bc1432fe2f664fcf599467050",
-    ".ruff_cache/0.16.10/6521756638437279264": "11c8ad4fdd446a15bdb38e82f17140b0037c3c9b4652bec1d4585c84038c028f",
-    ".ruff_cache/0.16.10/875287443307904675": "c799e2e413a5294db008a3c8a9e29e82de4fba51b2caa0e5e9d9220b8613b1fe",
-    ".ruff_cache/0.16.10/9145565984261332081": "5c2f4f9f2038eb2006f36c1a178bd58df68720d9c3384f88a13c5e99b60ed45c",
+    ".ruff_cache/0.15.9/10092464778990122317": "279b13191dc5db7ec25b87e36933b7a89fd4536336e2b5948535e8fcb6382fc0",
+    ".ruff_cache/0.15.9/10780559309638624170": "88c489d155287406d08659e0089d26519829305ae7680ead5b2824cec4549dc2",
+    ".ruff_cache/0.15.9/13844701667779881367": "6f4b344bf074b568cc9f287b1f1339756352fc40a78100227294278273ce2361",
+    ".ruff_cache/0.15.9/14702970673070828140": "f7097206b57b6d1c87be34c434f5446a06d5f115fa871add118abc1a792e1330",
+    ".ruff_cache/0.15.9/15087783907995364213": "65cadc4bde2abcf043c3e42c6f28b2fe8383dffb494324fac499a91dd394e8fb",
+    ".ruff_cache/0.15.9/18229913849044984664": "257a517f5a8cb599d8bfb41e842de1961d9a059be33e8e07bb3023eb85633675",
+    ".ruff_cache/0.15.9/2108342061622935116": "ddc3b8d183e894ce92cf26535782a616e1da40dbb5e25199de325b6214ef7d7b",
+    ".ruff_cache/0.15.9/4109381382658922469": "729e6c1a32df06c7cd21d07ab4956f5dc5e7cd38158f6a649c046e8e6765ad04",
+    ".ruff_cache/0.15.9/5195296505333172921": "0097ccbb42b648886684ffff559767eb10bad21e46ff59786c982d9ed2418bc9",
+    ".ruff_cache/0.16.10/10198784760266473816": "add97aacb509dea475121117a0772af2e71671b9deea3498a30dd6f6dafb6e64",
+    ".ruff_cache/0.16.10/13981355965175542498": "2154d8aa73547e0de26fda5ba66e3160eadaaddc611331f90c2ccfd9ab6bcf08",
+    ".ruff_cache/0.16.10/17683950000741236521": "ed17f51032a822bd099bae638b5410e69094badb2ee7cff77516734407462060",
+    ".ruff_cache/0.16.10/2777274697036309003": "c70c9912c7f9770a43f27abcf145eba35effcba6e104c74f6e466ed6c8c43d3e",
+    ".ruff_cache/0.16.10/6253830768238813608": "b790852865da73de2d368fa4cfb5a339ce0b05c964ebcdd314b44d312315972d",
+    ".ruff_cache/0.16.10/6467253549046139566": "7b3b70a4a91089a267c5821d8a5622ec8136304ff5188039fb0a70a85de2bd16",
+    ".ruff_cache/0.16.10/8361107234888815689": "d64ab20f0a6f87f066c8904c5789e891e039dda9f05a9e5b8e2d5c5d607ac41d",
+    ".ruff_cache/0.16.10/9049774796822311247": "ae9eb47b6a0445833a326d9c2b94b052c66739e351bdeb050be21ba3fee2bfa4",
+    ".ruff_cache/0.16.10/9651057057704073677": "984c4330cd96f4e2e4842bd70789c3ecd6c29cf76b832752db2a69a552d2a591",
     ".ruff_cache/CACHEDIR.TAG": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
     "benchmark/figures/exp-01-age-and-fare-distributions.png": "f46cd2e5602c1be1d67438859f0bd18e36152c055dcc5e851222207da3962b24",
     "benchmark/figures/exp-01-passenger-ticket-bootstrap-intervals.png": "b7bf972ca94747e7fdcea6cba792536347773d56de33757135b0b8b77890afe1",
@@ -6223,7 +6301,7 @@
     "src/ai_data_scientist/mcp_gateway.py": "ac01ea9c030e759ea6c97f809de9b44ed09f83e8321fd0b9d3e0fee818abca55",
     "src/ai_data_scientist/mcp_runtime.py": "581a55e71bd8812e1e6758ff7ed35ce3356daa1988549911fe39f70b6bf2dc1a",
     "src/ai_data_scientist/mcp_transport.py": "b4bc766c3eabcc452976e34c330e1e40b78605565063f31627013582778a52e6",
-    "src/ai_data_scientist/ml_modeling.py": "7ffdec194c7e539022f65e84b8f74a6b3cb7543220a7affbc1d1c1f63bdbd122",
+    "src/ai_data_scientist/ml_modeling.py": "8020883cea0645f86feca9cbfe09f4a4d26503e9de39bc0674f7b5922c8e477a",
     "src/ai_data_scientist/model_tuning.py": "adb3b7bac8a50608224de1b07ae7b870e384d37032a2e051a7f51eab6fafe8eb",
     "src/ai_data_scientist/notebook_audit.py": "ad8c0342b2ee2c384d9cb90d21388ab872a1ccfdc0fd0acefbd662b37a308e9f",
     "src/ai_data_scientist/project_manager.py": "3be0c384ba096a5255215df0f8963f40517b3b45ec844ef9c7570f2d358aaefb",
@@ -6385,7 +6463,7 @@
     "tests/test_mcp_runtime_integration.py": "ac3e3e10c590fd0d5af7d69ae48558316fc01206f2d10d8702b6598a31c3c9bb",
     "tests/test_mcp_runtime.py": "ddc6a67c2565f205986a34f94cedf39c5a7fa7f8f5089d89f84ca881be6242c0",
     "tests/test_measure_pytest_pass_rate.py": "a45e55b30ce02ca8a6d0227ac1e37f239e59791cf4de487154f1ba9e77743d6e",
-    "tests/test_ml_modeling.py": "7dd387e27160cc5d4f26eda4f7e0da3432013c4b7fa018ad8dd438128782246f",
+    "tests/test_ml_modeling.py": "cabceb75fd78d7f2f0790d596007cd8e7ac1eb9647a40ee6e7619a00734e7124",
     "tests/test_model_tuning.py": "85166cebf88b3d97eb17e617e139d8de6613453c9e2ebfab96f096f71f099a7a",
     "tests/test_notebook_audit.py": "e77255d3c73f14d0f208808385c22aea17b6ba5c48ad727eaf59f7459fb6ea44",
     "tests/test_project_manager.py": "b4953284dea18ab8b5c718f85c3e308717a2c08998d5402380ac2f7409bc351f",
@@ -8642,6 +8720,30 @@
       "approver": "nahisaho",
       "reason": "CHANGE-035:REQ-AIDS-100's Red/Green TDD evidence is genuine (TEST-AIDS-352/353 failed before the zero-feature-column guard was implemented in train_model() and pass afterward) but falls outside musubix3's change-record phase-ordering window for the same reason as CHANGE_RED_UNPROVEN/CHANGE_GREEN_UNPROVEN above; same category of phase-ordering quirk as CHANGE-029/030/031/032/033/034 precedent. Re-verified: full 686-test suite passes.",
       "recordedAt": "2026-10-07T06:44:30.586Z"
+    },
+    {
+      "changeId": "CHANGE-036",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-101",
+      "approver": "nahisaho",
+      "reason": "Known musubix3 phase-ordering quirk: Red/Green evidence for REQ-AIDS-101 is recorded after the change-history Red/Green phase timestamps because the feature code must exist to prove genuine test failures/passes. Same pattern accepted in CHANGE-029 through CHANGE-035.",
+      "recordedAt": "2026-10-07T07:50:28.122Z"
+    },
+    {
+      "changeId": "CHANGE-036",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-101",
+      "approver": "nahisaho",
+      "reason": "Known musubix3 phase-ordering quirk: Red/Green evidence for REQ-AIDS-101 is recorded after the change-history Red/Green phase timestamps because the feature code must exist to prove genuine test failures/passes. Same pattern accepted in CHANGE-029 through CHANGE-035.",
+      "recordedAt": "2026-10-07T07:50:28.671Z"
+    },
+    {
+      "changeId": "CHANGE-036",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-101",
+      "approver": "nahisaho",
+      "reason": "Known musubix3 phase-ordering quirk: Red/Green evidence for REQ-AIDS-101 is recorded after the change-history Red/Green phase timestamps because the feature code must exist to prove genuine test failures/passes. Same pattern accepted in CHANGE-029 through CHANGE-035.",
+      "recordedAt": "2026-10-07T07:50:29.231Z"
     }
   ],
   "workflowWaivers": [],

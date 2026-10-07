@@ -11,6 +11,7 @@ CODE-AIDS-119..122 for the annotated extension points.
 
 from __future__ import annotations
 
+import warnings
 from collections import Counter
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
@@ -64,6 +65,48 @@ class ModelResult:
     cv_splits: list[tuple[list, list]] | None = None
     oof_predictions: pd.Series | None = None
     oof_probabilities: pd.DataFrame | None = None
+    leakage_warnings: tuple[str, ...] = ()
+
+
+# @id CODE-AIDS-155
+# @implements REQ-AIDS-101
+# @design DES-AIDS-101
+# Per-column heuristic; see REQ-AIDS-101 for the 3-condition detection rule.
+def _detect_possible_target_leakage(
+    df: pd.DataFrame, feature_columns: list[str], target: str
+) -> tuple[str, ...]:
+    """Flag feature columns that look like a near-perfect predictor of ``target``.
+
+    A column is flagged when it is non-constant, not a row-unique identifier,
+    and every distinct value (NaN included, as its own group) maps to exactly
+    one distinct target value. Never raises: any column whose evaluation
+    raises an exception (e.g. unhashable cell values, duplicate labels) is
+    silently skipped.
+    """
+    row_count = len(df)
+    messages: list[str] = []
+    for column in feature_columns:
+        try:
+            series = df[column]
+            if not isinstance(series, pd.Series):
+                continue
+            unique_count = series.nunique(dropna=False)
+            if unique_count <= 1 or unique_count >= row_count:
+                continue
+            group_purity = df.groupby(column, dropna=False, observed=True)[target].nunique(
+                dropna=False
+            )
+            if (group_purity == 1).all():
+                messages.append(
+                    f"train_model: feature column {column!r} appears to be a "
+                    f"near-perfect predictor of target {target!r} (possible "
+                    f"target leakage); metrics may be artificially inflated."
+                )
+        except Exception:  # noqa: BLE001, S112 - any per-column evaluation failure
+            # (e.g. unhashable cell values, duplicate labels) must never propagate;
+            # skip that column and continue with the rest (REQ-AIDS-101).
+            continue
+    return tuple(messages)
 
 
 # @id CODE-AIDS-119
@@ -351,6 +394,10 @@ def train_model(
 
     selected_scoring = scoring or _DEFAULT_SCORING[model_type]
 
+    leakage_warnings = _detect_possible_target_leakage(df, feature_columns, target)
+    for message in leakage_warnings:
+        warnings.warn(message, UserWarning, stacklevel=2)
+
     # @id CODE-AIDS-122
     # @implements REQ-AIDS-074 REQ-AIDS-075 REQ-AIDS-078
     # @design DES-AIDS-063
@@ -392,6 +439,7 @@ def train_model(
             train_index=list(train_idx),
             test_index=list(test_idx),
             scoring=scoring,
+            leakage_warnings=leakage_warnings,
         )
 
     oof_predictions = pd.Series(index=df.index, dtype=object)
@@ -461,4 +509,5 @@ def train_model(
         cv_splits=normalized_cv_splits,
         oof_predictions=cast_predictions,
         oof_probabilities=oof_probabilities,
+        leakage_warnings=leakage_warnings,
     )
