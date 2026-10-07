@@ -14345,6 +14345,116 @@
           "order": 1541
         }
       }
+    },
+    {
+      "changeId": "CHANGE-038",
+      "requirementIds": [
+        "REQ-ACHEM-120",
+        "REQ-ACHEM-130",
+        "REQ-ACHEM-140",
+        "REQ-AGENOM-090",
+        "REQ-AIDS-103",
+        "REQ-AIDS-104",
+        "REQ-AIDS-105",
+        "REQ-AIDS-106"
+      ],
+      "phases": {
+        "impact": {
+          "phase": "impact",
+          "recordedAt": "2026-10-07T11:34:38.629Z",
+          "fingerprints": {
+            "impact": "55cd67589017eabd0621637cde32c5c99e12720783113e2383f1802c6b509b15",
+            "requirements": "8e7d742dfe6777157ed0a4536af0f8006cb39e1fd41f5073898619ad89db78a8",
+            "design": "25de52cc382c8e570177ec4d7cf46393a360b9cedbade6678fa8cd090cf87eed",
+            "implementation": "54f57f1040c253d9595f88ed628b76def9262a80a2a29c47e634e1d58e4a83dc",
+            "tests": "7cace560d76111d59c5c5278c909ab5e01dc5ea6d4f78f231ec0a526f6edc0ea",
+            "tdd": "a8494794b2c7757db5425ea993729d806617cb9d88dc5a536e1c5096ba690807",
+            "requirementImplementations": {
+              "REQ-ACHEM-120": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-130": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-140": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AGENOM-090": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-103": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-104": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-105": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-106": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 1545
+        },
+        "requirements": {
+          "phase": "requirements",
+          "recordedAt": "2026-10-07T11:34:58.952Z",
+          "fingerprints": {
+            "impact": "55cd67589017eabd0621637cde32c5c99e12720783113e2383f1802c6b509b15",
+            "requirements": "8e7d742dfe6777157ed0a4536af0f8006cb39e1fd41f5073898619ad89db78a8",
+            "design": "25de52cc382c8e570177ec4d7cf46393a360b9cedbade6678fa8cd090cf87eed",
+            "implementation": "54f57f1040c253d9595f88ed628b76def9262a80a2a29c47e634e1d58e4a83dc",
+            "tests": "7cace560d76111d59c5c5278c909ab5e01dc5ea6d4f78f231ec0a526f6edc0ea",
+            "tdd": "a8494794b2c7757db5425ea993729d806617cb9d88dc5a536e1c5096ba690807",
+            "requirementImplementations": {
+              "REQ-ACHEM-120": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-130": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-ACHEM-140": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AGENOM-090": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-103": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-104": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-105": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-106": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "allowUnchanged": true,
+          "order": 1546
+        }
+      }
     }
   ]
 }

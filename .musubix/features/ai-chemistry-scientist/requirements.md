@@ -29,8 +29,20 @@ gap analysis against the `aipoch/openscience-skill-marketplace` catalog
 content from that catalog is reused, consistent with its own disclosed
 license-ambiguity caveats).
 
+This fourth increment extends the skill to 14 total modules by adding 3 more
+modules — dose-response curve fitting, pharmacokinetic non-compartmental
+analysis, and Michaelis-Menten enzyme kinetics — identified by MECE survey
+of the external `mims-harvard/ToolUniverse` project's skill taxonomy,
+restricted to the subset that is pure computation over user-supplied
+numeric data with no external API/database dependency (used only to
+identify candidate domains, not to reuse any of its code, data, or external
+API calls).
+
 All modules are implemented with RDKit (required dependency) plus
-numpy/scikit-learn already present in this repository; no other external
+numpy/scikit-learn already present in this repository, and this fourth
+increment's 3 modules additionally use `scipy.optimize.curve_fit` (`scipy`
+is already a root `pyproject.toml` dependency, newly imported by
+`ai_chemistry_scientist` here for the first time); no other external
 solver binaries and no network calls. Each module validates its own input
 parameters, per its own stated domain, and rejects a request that would be
 chemically undefined (e.g. an unparseable SMILES string) or numerically
@@ -154,6 +166,30 @@ Statement: When a user requests structure format conversion, the system shall re
 Acceptance: For aspirin (`input_format="smiles"`, `input_value="CC(=O)OC1=CC=CC=C1C(=O)O"`): `output_format="smiles"` yields `output_value="CC(=O)Oc1ccccc1C(=O)O"`; `output_format="inchi"` yields `output_value="InChI=1S/C9H8O4/c1-6(10)13-8-5-3-2-4-7(8)9(11)12/h2-5H,1H3,(H,11,12)"`; `output_format="inchikey"` yields `output_value="BSYNRYMUTXBXSQ-UHFFFAOYSA-N"`. Converting that same InChI string back (`input_format="inchi"`, `output_format="smiles"`) yields `output_value="CC(=O)Oc1ccccc1C(=O)O"` (the same canonical SMILES, confirming canonical structural round-trip equivalence for this fixture — not a general guarantee that every format pair is lossless, since e.g. a Molblock's 2D/3D coordinates have no SMILES/InChI equivalent). For the fixed ethanol Molblock fixture (`input_format="molblock"`, `input_value` equal to the exact literal text `"\n     RDKit          2D\n\n  3  2  0  0  0  0  0  0  0  0999 V2000\n    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.2990    0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    2.5981   -0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n  1  2  1  0\n  2  3  1  0\nM  END\n"` using `\n` for line breaks), `output_format="smiles"` yields `output_value="CCO"`. The empty string `""`, a malformed value for the stated `input_format`, an `input_format`/`output_format` value outside the documented allowed sets (e.g. `input_format="inchikey"`), and a value that parses but contains any dummy/query atom (RDKit atomic number 0, e.g. `input_format="smiles"`, `input_value="*"`) are each rejected under the Constraints below (not converted).
 Constraints: Validation remains atomic per REQ-ACHEM-003: `input_format` and `output_format` must each be one of their respective documented allowed values (rejected naming `input_format`/`output_format` and the constraint "must be one of the supported formats" otherwise); `input_value` must parse successfully with the `input_format`-matching RDKit parser into a non-empty molecule containing no dummy/query atom (RDKit atomic number 0) — the same chemical-validity domain as REQ-ACHEM-100 and every other module in this skill — (rejected naming `input_value` and the constraint "must parse with the <input_format>-matching RDKit parser" otherwise); both checks run, in that order, before any format conversion. `"inchikey"` is accepted only as an `output_format` (it is a one-way hash with no RDKit parser back to a molecule), never as an `input_format`. This module performs deterministic representation conversion only; it does not promise bytewise, metadata, or coordinate preservation across formats that do not share that information (e.g. SMILES/InChI carry no 2D/3D coordinates). No network call; no PubChem/ChEMBL/DrugBank lookup of any kind — this module performs only local RDKit format parsing/rendering.
 
+## REQ-ACHEM-120: Dose-response curve fitting / 用量反応曲線フィッティング
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests dose-response (concentration-response) curve fitting for paired `concentrations` and `responses` arrays, the system shall fit the four-parameter logistic (Hill) model `response = bottom + (top - bottom) / (1 + (concentration / ic50) ** hill_slope)` to the data via nonlinear least squares (`scipy.optimize.curve_fit`, initial guess `p0 = [max(responses), min(responses), median(concentrations), 1.0]`, `maxfev=10000`) and report `{top, bottom, ic50, hill_slope, r_squared}`, where `r_squared = 1 - sum((responses - predicted) ** 2) / sum((responses - mean(responses)) ** 2)`.
+Acceptance: For `concentrations = [0.001, 0.01, 0.1, 1.0, 10.0, 100.0]` and `responses` generated exactly from `top=100.0`, `bottom=0.0`, `ic50=1.0`, `hill_slope=1.0` (`responses = [99.90009990009992, 99.00990099009901, 90.9090909090909, 50.0, 9.090909090909092, 0.9900990099009901]`), the fitted result has `top`, `bottom`, `ic50`, and `hill_slope` each within absolute tolerance `1e-3` of `100.0`, `0.0`, `1.0`, and `1.0` respectively, and `r_squared >= 0.999999`. A request with fewer than 4 points, any non-finite value, any `concentrations` entry `<= 0`, or `len(concentrations) != len(responses)` is rejected before any fit is attempted, naming the offending parameter and its constraint. A request where every `responses` value is identical, or where every `concentrations` value is identical, is additionally rejected before any fit is attempted, naming `responses`/`concentrations` and the constraint "must contain at least 2 distinct values". A request for which `scipy.optimize.curve_fit` raises (fails to converge within `maxfev`) is rejected with `ValueError` naming `concentrations`/`responses` and the constraint "fit did not converge", without returning a result object; a fit that does converge but yields a non-finite `top`/`bottom`/`ic50`/`hill_slope`, or a finite `ic50 <= 0`, is rejected identically, naming the constraint "fitted parameters must be finite with ic50 > 0".
+Constraints: `concentrations` must be a list of finite floats, all `> 0`, length `>= 4`, containing at least 2 distinct values; `responses` must be a list of finite floats of the same length as `concentrations`, containing at least 2 distinct values (rejected naming `concentrations`/`responses` and the constraint "must be a list of finite floats", "length must match concentrations and be >= 4", or "must contain at least 2 distinct values" as applicable). A `curve_fit` convergence failure, or a converged-but-nonphysical result (non-finite fitted parameter, or `ic50 <= 0`), is rejected per Acceptance rather than returned as a partial or nonphysical result. This is a standard 4-parameter logistic regression over user-supplied numeric data only — no external database lookup, no network call, and no assay-specific correction (e.g. no background subtraction); the module reports the fitted curve parameters only.
+
+## REQ-ACHEM-130: Pharmacokinetic non-compartmental analysis / 薬物動態ノンコンパートメント解析
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests pharmacokinetic (PK) non-compartmental analysis for paired `times` and `concentrations` arrays plus a `dose`, the system shall compute `cmax = max(concentrations)`, `tmax = times[argmax(concentrations)]` (the first/lowest index attaining the maximum when tied), `auc_last` via the linear trapezoidal rule over all `(times, concentrations)` pairs, the terminal elimination rate constant `k_el = -slope` of an ordinary-least-squares fit of `ln(concentrations)` against `times` over the last `n_terminal` points (default `3`), `half_life = ln(2) / k_el`, `auc_inf = auc_last + concentrations[-1] / k_el`, `clearance = dose / auc_inf`, and `volume_of_distribution = clearance / k_el`, reporting `{cmax, tmax, auc_last, auc_inf, k_el, half_life, clearance, volume_of_distribution}`.
+Acceptance: For `times = [0.5, 1.0, 2.0, 4.0, 8.0, 12.0]`, `concentrations = [45.241870901797974, 40.936537653899094, 33.51600230178197, 22.466448205861077, 10.094825899732768, 4.535897664470624]` (an exact `C0=50.0, k=0.2` exponential decay), `dose = 500.0`, and `n_terminal = 3` (default), the reported result is `cmax = 45.241870901797974`, `tmax = 0.5`, `auc_last = 209.13731796400234`, `k_el = 0.2` (within `1e-6`), `half_life = 3.465735902799724`, `auc_inf = 231.81680628635544`, `clearance = 2.156875543278631`, and `volume_of_distribution = 10.784377716393147`, each float field within absolute tolerance `1e-6`. A request with fewer than 4 points, non-strictly-increasing `times`, any non-finite or non-positive `concentrations` value, `dose <= 0`, or `n_terminal` outside `[2, len(times)]` is rejected before any computation, naming the offending parameter and its constraint. A request whose terminal-slope fit yields a non-finite `k_el` or `k_el <= 0` (e.g. the last `n_terminal` `concentrations` are flat or increasing) is rejected with `ValueError` naming `concentrations`/`n_terminal` and the constraint "terminal concentrations must yield a positive elimination rate constant", without returning a result object.
+Constraints: `times` must be a list of strictly increasing finite floats, length `>= 4`; `concentrations` must be a list of finite floats `> 0` of the same length as `times`; `dose` must be a finite float `> 0`; `n_terminal` must be an integer in the closed interval `[2, len(times)]` (default `3`). A terminal-slope fit that does not yield a finite `k_el > 0` is rejected per Acceptance rather than propagated into `half_life`/`auc_inf`/`clearance`/`volume_of_distribution` as a non-finite or negative value. This is a standard non-compartmental PK calculation over user-supplied concentration-time data only — no external database lookup, no network call, and no compartmental model fitting (that is a documented limitation, not a design gap).
+
+## REQ-ACHEM-140: Michaelis-Menten enzyme kinetics / Michaelis-Menten酵素反応速度論
+Priority: must
+Type: functional
+Pattern: event-driven
+Statement: When a user requests enzyme kinetics analysis for paired `substrate_concentrations` and `velocities` arrays, the system shall fit the Michaelis-Menten model `velocity = vmax * substrate_concentration / (km + substrate_concentration)` via nonlinear least squares (`scipy.optimize.curve_fit`, initial guess `p0 = [max(velocities), median(substrate_concentrations)]`) and report `{vmax, km, r_squared}`, where `r_squared` is computed identically to REQ-ACHEM-120.
+Acceptance: For `substrate_concentrations = [0.5, 1.0, 2.0, 5.0, 10.0, 20.0]` and `velocities` generated exactly from `vmax=10.0`, `km=2.0` (`velocities = [2.0, 3.3333333333333335, 5.0, 7.142857142857143, 8.333333333333334, 9.090909090909092]`), the fitted result has `vmax` and `km` each within absolute tolerance `1e-3` of `10.0` and `2.0` respectively, and `r_squared >= 0.999999`. A request with fewer than 3 points, any non-finite value, any `substrate_concentrations` entry `<= 0`, or `len(substrate_concentrations) != len(velocities)` is rejected before any fit is attempted, naming the offending parameter and its constraint. A request where every `velocities` value is identical, or where every `substrate_concentrations` value is identical, is additionally rejected before any fit is attempted, naming `velocities`/`substrate_concentrations` and the constraint "must contain at least 2 distinct values". A request for which `scipy.optimize.curve_fit` raises (fails to converge) is rejected with `ValueError` naming `substrate_concentrations`/`velocities` and the constraint "fit did not converge", without returning a result object; a fit that does converge but yields a non-finite `vmax`/`km`, or a finite `vmax <= 0` or `km <= 0`, is rejected identically, naming the constraint "fitted parameters must be finite with vmax > 0 and km > 0".
+Constraints: `substrate_concentrations` must be a list of finite floats, all `> 0`, length `>= 3`, containing at least 2 distinct values; `velocities` must be a list of finite floats of the same length as `substrate_concentrations`, containing at least 2 distinct values (rejected naming `substrate_concentrations`/`velocities` and the constraint "must be a list of finite floats", "length must match substrate_concentrations and be >= 3", or "must contain at least 2 distinct values" as applicable). A `curve_fit` convergence failure, or a converged-but-nonphysical result (non-finite fitted parameter, `vmax <= 0`, or `km <= 0`), is rejected per Acceptance rather than returned as a partial or nonphysical result. This is a standard 2-parameter Michaelis-Menten regression over user-supplied numeric data only — no external database lookup, no network call, and no substrate-inhibition or cooperativity (Hill) extension; the module reports the fitted `vmax`/`km` only.
+
 ## Review record (second increment) / レビュー記録(第2増分)
 REQ-ACHEM-060/070/080/090 (this second increment) passed `musubix3
 requirements validate` and `musubix3 constitution validate`. An independent
@@ -196,3 +232,21 @@ conversion), and a second review round confirmed zero remaining issues.
 網羅していない点、Molblock フィクスチャが生成方法の説明のみでリテラル
 埋め込みでなかった点）を検出し、すべて修正した上で、2回目のレビューで
 残存課題ゼロを確認した。
+
+## Review record (fourth increment) / レビュー記録(第4増分)
+REQ-ACHEM-120/130/140 (this fourth increment) passed `musubix3 requirements
+validate` and `musubix3 constitution validate`. An independent native
+`rubber-duck` review found 2 blocking issues on the first pass (REQ-ACHEM-130
+allowed a non-positive terminal elimination rate constant `k_el`, making
+`half_life`/`auc_inf`/`clearance`/`volume_of_distribution` undefined for
+otherwise-valid input; REQ-ACHEM-120/140 permitted degenerate constant-input
+data and unhandled `scipy.optimize.curve_fit` convergence failure to produce
+undefined or nonphysical fitted-parameter results) plus non-blocking issues
+(no explicit domain for a converged-but-nonphysical `ic50<=0` or
+`vmax<=0`/`km<=0` fit); all were fixed (REQ-ACHEM-130 now requires a finite
+`k_el > 0`, rejecting otherwise with an explicit `ValueError`, and clarifies
+`tmax` tie-breaking as first/lowest index; REQ-ACHEM-120/140 now reject
+constant-only `responses`/`concentrations` or `velocities`/
+`substrate_concentrations` before fitting, and reject both convergence
+failure and a converged-but-nonphysical fit with explicit `ValueError`
+constraints). A second review pass confirmed zero remaining issues.
