@@ -1896,3 +1896,49 @@ Depends-On: (none — a new, self-contained, pure module with no
 dependency on any existing `ai_data_scientist` submodule)
 Change: CHANGE-032
 Issue: #77
+
+## DES-AIDS-099: `ingestion.ingest` CSV encoding fallback chain / CSV取り込みのエンコーディング・フォールバックチェーン
+Responsibilities: `ingest()`'s `kind="csv"` branch satisfies REQ-AIDS-099
+by replacing the single, encoding-less `pd.read_csv(source_spec.location,
+sep=delimiter if sniffed else ",")` call with a small private helper,
+`_read_csv_with_encoding_fallback(location: str, sep: str) ->
+tuple[pd.DataFrame, str | None]`, which attempts, in order,
+`pd.read_csv(location, sep=sep, encoding="utf-8")`, then (only on
+`UnicodeDecodeError`) `pd.read_csv(location, sep=sep, encoding="cp1252")`,
+then (only on a second `UnicodeDecodeError`) `pd.read_csv(location,
+sep=sep, encoding="latin-1")`, and returns `(dataframe, fallback_used)`
+where `fallback_used` is `None` when `utf-8` succeeded, `"cp1252"`, or
+`"latin-1"` identifying whichever fallback tier actually succeeded. Any
+non-`UnicodeDecodeError` exception raised by `pd.read_csv` at any tier
+(e.g. `pandas.errors.ParserError`) propagates immediately, unchanged,
+without being caught or retried at a different encoding. `ingest()` calls
+this helper in place of the old direct `pd.read_csv` call, passing the
+same `delimiter`/`sniffed`-derived `sep` value already computed once by
+`_sniff_csv_delimiter`, and then, when `fallback_used is not None`,
+appends exactly one additional warning to the function's existing
+`warnings` tuple using the exact templates REQ-AIDS-099's Acceptance
+specifies: `f"CSV at {source_spec.location!r} is not valid UTF-8; decoded
+using the 'cp1252' fallback encoding instead."` for `fallback_used ==
+"cp1252"`, or `f"CSV at {source_spec.location!r} is not valid UTF-8 or
+cp1252; decoded using the 'latin-1' last-resort fallback encoding
+instead."` for `fallback_used == "latin-1"`. This append happens *after*
+the existing delimiter-sniff-failure warning is already computed into
+`warnings` (unchanged ordering: delimiter warning first if present, then
+the encoding warning), satisfying REQ-AIDS-099's fixed-ordering
+acceptance criterion with no reordering of the existing code.
+Interfaces: `_read_csv_with_encoding_fallback(location: str, sep: str) ->
+tuple[pd.DataFrame, str | None]` (module-private, new). `ingest()`'s
+public signature and `IngestionResult`/`SourceSpec` schemas are
+unchanged.
+Constraints: only `kind="csv"` is affected; `"excel"`/`"api"`/`"database"`
+branches are untouched. The three encoding attempts always use the same
+`sep` (no re-sniffing per attempt). Exactly one encoding-fallback warning
+is ever appended per call (never both templates for the same call, since
+the helper returns only the single `fallback_used` tier that actually
+succeeded). A non-existent file path raises `FileNotFoundError` from the
+first (`utf-8`) attempt, unchanged from current behavior (that attempt is
+never skipped). No new third-party dependency is introduced: `cp1252`
+and `latin-1` are codecs already built into Python's standard library
+and already supported by `pandas.read_csv`'s `encoding` argument.
+Requirements: REQ-AIDS-099
+ADRs: ADR-0116

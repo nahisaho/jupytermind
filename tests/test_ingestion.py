@@ -158,3 +158,124 @@ def test_TEST_AIDS_204_local_excel_is_never_row_limit_truncated(tmp_path):
 
     assert result.row_count == 150
     assert result.truncated is False
+
+
+# ---------------------------------------------------------------------------
+# REQ-AIDS-099 / DES-AIDS-099 (GitHub #76): CSV ingestion falls back through
+# utf-8 -> cp1252 -> latin-1 instead of raising UnicodeDecodeError.
+# ---------------------------------------------------------------------------
+
+
+# @id TEST-AIDS-346
+# @verifies REQ-AIDS-099
+def test_TEST_AIDS_346_utf8_csv_has_no_encoding_warning(tmp_path):
+    """Scenario: a valid UTF-8 CSV with non-ASCII text loads via the first
+    (utf-8) attempt; no encoding-fallback warning is added and behavior is
+    unchanged from before REQ-AIDS-099 (no regression for the common case)."""
+    path = tmp_path / "data.csv"
+    path.write_text("name,note\nalice,caf\u00e9\n", encoding="utf-8")
+
+    result = ingest(SourceSpec(kind="csv", location=str(path)))
+
+    assert result.row_count == 1
+    assert result.dataframe["note"].iloc[0] == "caf\u00e9"
+    assert result.warnings == ()
+
+
+# @id TEST-AIDS-347
+# @verifies REQ-AIDS-099
+def test_TEST_AIDS_347_windows_codepage_csv_falls_back_and_warns(tmp_path):
+    """Scenario: a cp1252-encoded CSV containing byte 0x80 (Euro sign, not
+    valid UTF-8) fails the utf-8 attempt and succeeds on the cp1252 retry;
+    exactly one warning matching the cp1252 template is added, and the
+    decoded cell contains the correct cp1252 character."""
+    path = tmp_path / "data.csv"
+    path.write_bytes(b"name,note\nalice,\x80\n")
+
+    result = ingest(SourceSpec(kind="csv", location=str(path)))
+
+    assert result.row_count == 1
+    assert result.dataframe["note"].iloc[0] == "\u20ac"  # Euro sign
+    assert result.warnings == (
+        f"CSV at {str(path)!r} is not valid UTF-8; decoded using the "
+        "'cp1252' fallback encoding instead.",
+    )
+
+
+# @id TEST-AIDS-348
+# @verifies REQ-AIDS-099
+def test_TEST_AIDS_348_latin1_csv_falls_back_and_warns(tmp_path):
+    """Scenario: a file containing byte 0x81, which is undefined in cp1252
+    (raises UnicodeDecodeError under it) but is a valid Latin-1 code point,
+    fails both utf-8 and cp1252 and succeeds on the latin-1 last resort;
+    exactly one warning matching the latin-1 template is added."""
+    path = tmp_path / "data.csv"
+    path.write_bytes(b"name,note\nalice,\x81\n")
+
+    result = ingest(SourceSpec(kind="csv", location=str(path)))
+
+    assert result.row_count == 1
+    assert result.dataframe["note"].iloc[0] == "\x81"
+    assert result.warnings == (
+        f"CSV at {str(path)!r} is not valid UTF-8 or cp1252; decoded using "
+        "the 'latin-1' last-resort fallback encoding instead.",
+    )
+
+
+# @id TEST-AIDS-349
+# @verifies REQ-AIDS-099
+def test_TEST_AIDS_349_delimiter_and_encoding_warnings_both_present_in_order(tmp_path):
+    """Scenario: a file that both fails confident delimiter sniffing (a
+    single ambiguous tab-containing header) and requires the cp1252
+    encoding fallback must carry both warnings, with the pre-existing
+    delimiter-sniff warning appearing first."""
+    path = tmp_path / "data.csv"
+    path.write_bytes(b"a\tb\n\x80\n")
+
+    result = ingest(SourceSpec(kind="csv", location=str(path)))
+
+    assert result.warnings == (
+        "CSV was parsed with the comma fallback as a single column named "
+        "'a\\tb'; the file may actually use a tab or semicolon delimiter "
+        "instead.",
+        f"CSV at {str(path)!r} is not valid UTF-8; decoded using the "
+        "'cp1252' fallback encoding instead.",
+    )
+
+
+# @id TEST-AIDS-350
+# @verifies REQ-AIDS-099
+def test_TEST_AIDS_350_non_csv_kinds_unaffected(tmp_path):
+    """Scenario: encoding-fallback handling is scoped to kind="csv"; excel
+    and api sources are loaded exactly as before (sanity check that the fix
+    did not touch the excel/api/database branches)."""
+    path = _write_excel(tmp_path)
+
+    excel_result = ingest(SourceSpec(kind="excel", location=str(path)))
+
+    assert excel_result.warnings == ()
+    assert excel_result.row_count == 3
+
+    def fake_fetcher(location):
+        return pd.DataFrame({"id": [1, 2], "value": ["a", "b"]})
+
+    api_result = ingest(
+        SourceSpec(kind="api", location="https://api.example.com/data"),
+        fetcher=fake_fetcher,
+        allowlist=("api.example.com",),
+    )
+
+    assert api_result.warnings == ()
+    assert api_result.row_count == 2
+
+
+# @id TEST-AIDS-351
+# @verifies REQ-AIDS-099
+def test_TEST_AIDS_351_missing_file_still_raises_file_not_found(tmp_path):
+    """Scenario: a non-existent path still raises FileNotFoundError from the
+    first (utf-8) attempt; the fallback chain does not mask or retry a
+    non-UnicodeDecodeError failure."""
+    missing = tmp_path / "does-not-exist.csv"
+
+    with pytest.raises(FileNotFoundError):
+        ingest(SourceSpec(kind="csv", location=str(missing)))
