@@ -102,7 +102,7 @@ def test_TEST_AIDS_320_multi_duplicate_tie_break_prefers_latest_contributing_rou
 def test_TEST_AIDS_321_earlier_non_contributing_duplicate_does_not_block_convergence():
     # Round 2 ("baseline") repeats round-0-like naming only incidentally; what
     # matters is that only the last 2 destination rounds (4, 5) are checked,
-    # and round 2's duplicate-looking name is irrelevant to that pair.
+    # and round 2 duplicate-looking name is irrelevant to that pair.
     history = _rounds(
         [0.60, 0.70, 0.76, 0.761, 0.762],
         [
@@ -280,3 +280,221 @@ def test_TEST_AIDS_330_stateful_accessor_is_read_at_most_once_per_field():
     for entry in history:
         assert entry.metric_reads == 1
         assert entry.signature_reads == 1
+
+
+# ---------------------------------------------------------------------------
+# REQ-AIDS-102: secondary-metric regression detection
+# ---------------------------------------------------------------------------
+
+
+def _rounds_with_secondary(
+    metrics: list[float],
+    signatures: list[str],
+    secondary: list[dict[str, float] | None],
+) -> list[Round]:
+    assert len(metrics) == len(signatures) == len(secondary)
+    return [
+        Round(metric=m, action_signature=s, secondary_metrics=sec)
+        for m, s, sec in zip(metrics, signatures, secondary)
+    ]
+
+
+# @id TEST-AIDS-361
+# @verifies REQ-AIDS-102
+def test_TEST_AIDS_361_issue_80_recall_regression_upgrades_status():
+    # GitHub #80 reproduction: accuracy converges over the last two rounds,
+    # but recall peaked at round 2 (0.7844) and regressed to 0.6232 by the
+    # final round 5 -- a ~20.5% relative drop, exceeding rel_tol=0.02.
+    history = _rounds_with_secondary(
+        metrics=[0.8328, 0.8190, 0.8420, 0.8367, 0.8380],
+        signatures=[
+            "baseline_random_forest",
+            "class_weight_balanced",
+            "model_gradient_boosting",
+            "cv_5fold",
+            "feature_importance_trim",
+        ],
+        secondary=[
+            {"recall": 0.6578},
+            {"recall": 0.7844},
+            {"recall": 0.6304},
+            {"recall": 0.6173},
+            {"recall": 0.6232},
+        ],
+    )
+
+    verdict = evaluate_convergence(
+        history,
+        rel_tol=0.02,
+        min_consecutive=2,
+        secondary_metrics=["recall"],
+    )
+
+    assert verdict.status == "converged_with_secondary_regression"
+    assert verdict.secondary_regressions == ("recall",)
+
+
+# @id TEST-AIDS-362
+# @verifies REQ-AIDS-102
+def test_TEST_AIDS_362_omitting_secondary_metrics_is_unchanged():
+    # Same history as TEST-AIDS-361, but secondary_metrics is not passed:
+    # behavior must be identical to REQ-AIDS-098 alone.
+    history = _rounds_with_secondary(
+        metrics=[0.8328, 0.8190, 0.8420, 0.8367, 0.8380],
+        signatures=[
+            "baseline_random_forest",
+            "class_weight_balanced",
+            "model_gradient_boosting",
+            "cv_5fold",
+            "feature_importance_trim",
+        ],
+        secondary=[
+            {"recall": 0.6578},
+            {"recall": 0.7844},
+            {"recall": 0.6304},
+            {"recall": 0.6173},
+            {"recall": 0.6232},
+        ],
+    )
+
+    verdict = evaluate_convergence(history, rel_tol=0.02, min_consecutive=2)
+
+    assert verdict.status == "converged"
+    assert verdict.secondary_regressions == ()
+
+
+# @id TEST-AIDS-363
+# @verifies REQ-AIDS-102
+def test_TEST_AIDS_363_no_regression_stays_converged():
+    history = _rounds_with_secondary(
+        metrics=[0.70, 0.76, 0.761, 0.762],
+        signatures=["baseline", "gradient_boosting", "feature_select", "n_estimators_tune"],
+        secondary=[
+            {"recall": 0.60},
+            {"recall": 0.65},
+            {"recall": 0.66},
+            {"recall": 0.67},
+        ],
+    )
+
+    verdict = evaluate_convergence(
+        history,
+        rel_tol=0.02,
+        min_consecutive=2,
+        secondary_metrics=["recall"],
+    )
+
+    assert verdict.status == "converged"
+    assert verdict.secondary_regressions == ()
+
+
+# @id TEST-AIDS-364
+# @verifies REQ-AIDS-102
+def test_TEST_AIDS_364_secondary_regression_never_upgrades_non_converged_status():
+    # repetition_detected: round 4 repeats round 3 signature verbatim.
+    history_repetition = _rounds_with_secondary(
+        metrics=[0.70, 0.76, 0.761, 0.762],
+        signatures=["baseline", "gradient_boosting", "n_estimators_tune", "n_estimators_tune"],
+        secondary=[
+            {"recall": 0.80},
+            {"recall": 0.75},
+            {"recall": 0.70},
+            {"recall": 0.40},
+        ],
+    )
+    verdict_repetition = evaluate_convergence(
+        history_repetition,
+        rel_tol=0.02,
+        min_consecutive=2,
+        secondary_metrics=["recall"],
+    )
+    assert verdict_repetition.status == "repetition_detected"
+    assert verdict_repetition.secondary_regressions == ()
+
+    # exhausted: no length-qualifying trailing run, actions_exhausted=True.
+    history_exhausted = _rounds_with_secondary(
+        metrics=[0.70, 0.90, 0.50],
+        signatures=["a", "b", "c"],
+        secondary=[{"recall": 0.80}, {"recall": 0.75}, {"recall": 0.10}],
+    )
+    verdict_exhausted = evaluate_convergence(
+        history_exhausted,
+        rel_tol=0.02,
+        min_consecutive=2,
+        actions_exhausted=True,
+        secondary_metrics=["recall"],
+    )
+    assert verdict_exhausted.status == "exhausted"
+    assert verdict_exhausted.secondary_regressions == ()
+
+    # continue: same as above but actions_exhausted=False.
+    verdict_continue = evaluate_convergence(
+        history_exhausted,
+        rel_tol=0.02,
+        min_consecutive=2,
+        actions_exhausted=False,
+        secondary_metrics=["recall"],
+    )
+    assert verdict_continue.status == "continue"
+    assert verdict_continue.secondary_regressions == ()
+
+
+# @id TEST-AIDS-365
+# @verifies REQ-AIDS-102
+def test_TEST_AIDS_365_key_only_lookup_and_nonfinite_values_excluded():
+    # Round 1 uses a metric name that collides with a dict method ("items");
+    # a key-only lookup must still resolve it correctly (not dict.items).
+    # Round 2 "items" value is NaN and must be excluded from peak/final
+    # consideration rather than corrupting the max()/comparison.
+    # Round 3 (the final round) has a present, non-regressed "items" value.
+    history = _rounds_with_secondary(
+        metrics=[0.750, 0.76, 0.761],
+        signatures=["baseline", "gradient_boosting", "feature_select"],
+        secondary=[
+            {"items": 0.50},
+            {"items": math.nan},
+            {"items": 0.52},
+        ],
+    )
+
+    verdict = evaluate_convergence(
+        history,
+        rel_tol=0.02,
+        min_consecutive=2,
+        secondary_metrics=["items"],
+    )
+
+    # peak across present values (round1=0.50, round3=0.52; round2 NaN is
+    # excluded) is 0.52, equal to the final round own value -> no regression.
+    assert verdict.status == "converged"
+    assert verdict.secondary_regressions == ()
+
+    # A custom Mapping whose __getitem__ raises must be treated as absent,
+    # never propagating, for the round where it appears.
+    class RaisingMapping(Mapping):
+        def __getitem__(self, key):
+            raise RuntimeError("boom")
+
+        def __iter__(self):
+            return iter(())
+
+        def __len__(self):
+            return 0
+
+    history_raising = [
+        Round(metric=0.750, action_signature="baseline", secondary_metrics={"recall": 0.9}),
+        Round(metric=0.76, action_signature="gradient_boosting", secondary_metrics={"recall": 0.5}),
+        Round(metric=0.761, action_signature="feature_select", secondary_metrics=RaisingMapping()),
+    ]
+
+    verdict_raising = evaluate_convergence(
+        history_raising,
+        rel_tol=0.02,
+        min_consecutive=2,
+        secondary_metrics=["recall"],
+    )
+
+    # The final round recall value is unresolvable (raises) -> treated as
+    # absent at the final round -> "recall" contributes no regression.
+    assert verdict_raising.status == "converged"
+    assert verdict_raising.secondary_regressions == ()

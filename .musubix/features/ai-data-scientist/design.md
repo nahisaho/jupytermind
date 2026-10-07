@@ -2027,3 +2027,85 @@ exactly and avoids any ambiguity about whether slicing changes dtype
 observed-categories state.
 Requirements: REQ-AIDS-101
 ADRs: none — a bounded heuristic helper with a single documented algorithm, no architectural tradeoff.
+
+## DES-AIDS-102: `evaluate_convergence` secondary-metric regression check / 収束判定の副指標劣化チェック
+Responsibilities: `Round` gains a new optional field `secondary_metrics:
+Mapping[str, float] | None = None`, appended after the existing
+`action_signature` field (last positional slot, preserving positional
+construction compatibility with any existing two-argument `Round(metric,
+action_signature)` call site). `ConvergenceVerdict` gains a new field
+`secondary_regressions: tuple[str, ...] = ()`, appended after the existing
+`repeated_rounds` field for the same reason. `evaluate_convergence` gains
+two new keyword-only-by-convention parameters (plain optional parameters,
+matching the existing `actions_exhausted` style): `secondary_metrics:
+Sequence[str] | None = None` and `secondary_rel_tol: float | None = None`.
+When `secondary_rel_tol` is given, it is validated with the exact same
+"finite number >= 0.0" check already applied to `rel_tol` (reusing the
+existing `valid_rel_tol`-style boolean expression against the new
+parameter), raising `ValueError` on failure before any other processing;
+when `None`, it is defaulted to the already-validated `rel_tol` value
+for that call. After the existing status/`repeated_signature`/
+`repeated_rounds` computation (REQ-AIDS-098, unchanged), a new step runs
+only when `status == "converged"` and `secondary_metrics` is a non-empty
+sequence: for each requested name, in order, resolve its per-round value
+across every round via a dedicated resolution helper — first
+`_resolve_field(entry, "secondary_metrics")` (reusing the existing
+attribute-then-mapping helper to get the per-round `secondary_metrics`
+value, consistent with how `metric`/`action_signature` are already
+resolved), then, only if that result is a `Mapping`, a plain key-only
+lookup performed by a small dedicated resolver that wraps the lookup in
+its own `try`/`except Exception: return _MISSING` (mirroring
+`_resolve_field`'s own outermost exception-containment pattern, so a
+custom `Mapping` whose `get`/`__getitem__`/`__contains__` itself raises
+is treated as absent rather than propagating) — the resolver performs
+key-only lookup only (`mapping_value.get(name, _MISSING)`-equivalent,
+never attribute access, so a name such as `"items"` or `"keys"` resolves
+correctly) to get the named value; a value counts as "present" for a round only when it is resolvable
+via this two-step process and is a finite `int`/`float` excluding `bool`
+(checked with the same `isinstance(..., (int, float)) and not
+isinstance(..., bool) and math.isfinite(...)` pattern already used for the
+primary `metric` field) — any other outcome (missing round-level
+`secondary_metrics`, missing key, non-numeric value, `NaN`, or infinite
+value) is treated as "absent for this round/name" and silently excluded,
+never raising. For each requested name with at least one present round
+value overall and a present value at the final round, compute `peak =
+max(present values across rounds 1..n)` and `final = <value at round n>`,
+compute `regression = _relative_change(peak, final)`, calling the
+existing `_relative_change` helper directly and unmodified. This is
+exactly equivalent to REQ-AIDS-102's `(peak_k - final_k) / abs(peak_k)`
+formula, because `peak` is defined as the maximum over a set of values
+that includes `final` itself, so `peak >= final` always holds and
+`_relative_change`'s `abs(curr - prev)` numerator equals `peak - final`
+without any sign ambiguity; `_relative_change` also already supplies the
+required zero-denominator handling (`0.0` when both are `0.0`,
+`math.inf` when only `peak` is `0.0`). Name `k` is appended
+to `secondary_regressions`, in `secondary_metrics` order, when this
+computed value is strictly greater than `secondary_rel_tol`. If the
+resulting `secondary_regressions` tuple is non-empty, `status` is
+reassigned from `"converged"` to `"converged_with_secondary_regression"`;
+otherwise `status` remains `"converged"` and `secondary_regressions`
+remains `()`. This step runs nowhere else (never for
+`"repetition_detected"`, `"exhausted"`, or `"continue"`), matching
+REQ-AIDS-102's explicit scoping.
+Interfaces: `Round(metric: float, action_signature: str,
+secondary_metrics: Mapping[str, float] | None = None)`.
+`evaluate_convergence(history, rel_tol=0.02, min_consecutive=2,
+actions_exhausted=False, secondary_metrics: Sequence[str] | None = None,
+secondary_rel_tol: float | None = None) -> ConvergenceVerdict`.
+`ConvergenceVerdict` gains `secondary_regressions: tuple[str, ...] = ()`.
+`_Status` (the private `Literal` alias) gains
+`"converged_with_secondary_regression"` as a fifth member.
+Constraints: this step must add zero observable behavior change when
+`secondary_metrics` is `None` or empty (the existing REQ-AIDS-098 code
+path and its tests are untouched structurally; the new step is a single
+additional conditional block after the existing status decision, not a
+rewrite of it); it must never raise due to missing/absent/non-finite
+secondary values, only due to an invalid `secondary_rel_tol` (mirroring
+`rel_tol`'s existing validation contract); it must not mutate `history`
+or any `Round`/mapping passed in; the peak/final computation must be
+`O(n)` per requested name, consistent with the existing function's
+overall linear-in-`n` complexity.
+Requirements: REQ-AIDS-102
+ADRs: none — this is a bounded, additive extension of an existing single
+documented algorithm (peak-vs-final comparison reusing the existing
+relative-change helper), not an architectural tradeoff.
