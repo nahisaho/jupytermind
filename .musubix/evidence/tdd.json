@@ -18880,6 +18880,86 @@
         "diagnostics": [],
         "order": 1430
       }
+    },
+    {
+      "cycleId": "33a2818f-da5d-4bbb-b714-08f6bc146cf8",
+      "requirementId": "REQ-AIDS-093",
+      "testId": "TEST-AIDS-331",
+      "testPath": "tests/test_project_manager.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "bfaf224bdca2b9b794fec8d83565563713cee625cdf8211b872d1e720c9851c5",
+        "commandSha256": "1526f9851a58678f22c2c5519f97801d77f355093474bf36c068f6b86be3a563",
+        "outputSha256": "27f867e213a273164cd3b08d9a839994037f65a20ae9f9eb9c2beab42b0056e0",
+        "exitCode": 1,
+        "durationMs": 4255,
+        "testFingerprint": "b916dc98267088a166e7b404a9821131dca8883071f3fe30d294d7a920ed62d2",
+        "sourceFingerprint": "084d708bd898944e582fb32f81ec5b6fd441f37f757b5f95ce1c929626e62df4",
+        "executionId": "7ba97445-c076-403d-a1b5-f34d6debf2b7",
+        "recordedAt": "2026-10-07T03:56:27.462Z",
+        "diagnostics": [],
+        "order": 1444
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "b731539627e0e1471aecdfbbcd56f5fcbaf58feb417562d6e80a5c3587485fbd",
+        "commandSha256": "1526f9851a58678f22c2c5519f97801d77f355093474bf36c068f6b86be3a563",
+        "outputSha256": "e53130f190505777aca3d8deab7120a4201d6337b8800518ddf3618c076f6af7",
+        "exitCode": 0,
+        "durationMs": 6803,
+        "testFingerprint": "b916dc98267088a166e7b404a9821131dca8883071f3fe30d294d7a920ed62d2",
+        "sourceFingerprint": "cbdbe3d850c11702bd678945495be2299f165b43ccadf0801c36435d9d05ad25",
+        "executionId": "b00bd16d-5f8f-4214-8b44-f1ef005c62c9",
+        "recordedAt": "2026-10-07T03:59:55.643Z",
+        "diagnostics": [],
+        "order": 1445
+      }
+    },
+    {
+      "cycleId": "d338d2a4-d6db-45e0-b711-2266228eb5bb",
+      "requirementId": "REQ-AIDS-093",
+      "testId": "TEST-AIDS-340",
+      "testPath": "tests/test_project_manager.py",
+      "commandName": "test",
+      "red": {
+        "phase": "red",
+        "valid": false,
+        "scoped": true,
+        "resultObserved": false,
+        "testStatus": "passed",
+        "reportSha256": "e286a3bf6878daeee627317fb8b0768657994c36788323ee1505f052476452e3",
+        "commandSha256": "51975b92a18ba515b804c278ea13ef2aaf6d6f974344e3a3fb917caabf9f6927",
+        "outputSha256": "afcad5151ac8d3dd82adb3aea45b4ba08e7d6a315f6d9794b8c652784f087956",
+        "exitCode": 0,
+        "durationMs": 2264,
+        "testFingerprint": "ddf1fd9163687ca1567626c68ab790e0cf927b5d90fcef2e0d8b7ef56169a329",
+        "sourceFingerprint": "c0c1909222e465ebf64e86aab73fcb2a5f702e9d54ab3408552c6ec435e2ca1d",
+        "executionId": "ed916d3b-58bd-4279-9339-2296e186c2aa",
+        "recordedAt": "2026-10-07T04:17:29.026Z",
+        "diagnostics": [
+          {
+            "code": "TDD_TARGET_RESULT",
+            "severity": "error",
+            "message": "red requires TEST-AIDS-340 to report failed, observed passed.",
+            "path": ".musubix/evidence/native/test/TEST-AIDS-340.json"
+          },
+          {
+            "code": "TDD_PHASE_RESULT",
+            "severity": "error",
+            "message": "red requires a completed command with nonzero exit status."
+          }
+        ],
+        "order": 1454
+      }
     }
   ],
   "chain": [
@@ -29214,6 +29294,42 @@
       "phaseEvidenceSha256": "a4dabd4484ae0e7418d0eb5e77889d961324ac14b1ee37c68ab1484e6c21103f",
       "previousSha256": "5a27e3a8acceecc9bc28909f67e26091aef6ccfde13adc5b04cb4fab349bf424",
       "recordSha256": "7a0ee11abe084551c2cec76736bac552b2efc4bd87a44245794cdbc709e5dd6f"
+    },
+    {
+      "sequence": 862,
+      "cycleId": "33a2818f-da5d-4bbb-b714-08f6bc146cf8",
+      "requirementId": "REQ-AIDS-093",
+      "testId": "TEST-AIDS-331",
+      "testPath": "tests/test_project_manager.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "dabdd4b16e12779f40c047f2bc3d4aa5d430b78b2ec43f3f0665b421c2d2bada",
+      "previousSha256": "7a0ee11abe084551c2cec76736bac552b2efc4bd87a44245794cdbc709e5dd6f",
+      "recordSha256": "72c7a412fac78e950f9f175a2c3aaf86a49f27579bf7a63736b42817d15d00d9"
+    },
+    {
+      "sequence": 863,
+      "cycleId": "33a2818f-da5d-4bbb-b714-08f6bc146cf8",
+      "requirementId": "REQ-AIDS-093",
+      "testId": "TEST-AIDS-331",
+      "testPath": "tests/test_project_manager.py",
+      "commandName": "test",
+      "phase": "green",
+      "phaseEvidenceSha256": "99787b68cd061b6bcac257685c82f94c20a18265fbcdcf2b6462eecd519e8fc3",
+      "previousSha256": "72c7a412fac78e950f9f175a2c3aaf86a49f27579bf7a63736b42817d15d00d9",
+      "recordSha256": "a7ac37b3cc907ce0495b892d41f51e15f50a190a12131262b31310f67a278e7a"
+    },
+    {
+      "sequence": 864,
+      "cycleId": "d338d2a4-d6db-45e0-b711-2266228eb5bb",
+      "requirementId": "REQ-AIDS-093",
+      "testId": "TEST-AIDS-340",
+      "testPath": "tests/test_project_manager.py",
+      "commandName": "test",
+      "phase": "red",
+      "phaseEvidenceSha256": "83dab0ba60e12a8121a8ecf516861e178a4476b38a56eda95a073c96855e41e5",
+      "previousSha256": "a7ac37b3cc907ce0495b892d41f51e15f50a190a12131262b31310f67a278e7a",
+      "recordSha256": "3b9df3071b3cca1dd2cc6b138036aae38dcd0dab2b6178e4d9eeb6d9e19c48cf"
     }
   ]
 }

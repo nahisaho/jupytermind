@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "a5b2a60e-b171-413e-bc9c-3659824a6675",
-  "generatedAt": "2026-10-06T23:20:27.906Z",
+  "runId": "1a5c089d-a376-4b68-9d8e-2768fa339799",
+  "generatedAt": "2026-10-07T04:42:11.933Z",
   "formalEvidenceSha256": "87652f3b9172478f2b608163b616c4444decfc72bee3ca37ca8ccef3c4b634f3",
-  "traceEvidenceSha256": "008bbb5f1344a0584185c51af814eac9238667b5a48fa430b7650250c92cb1db",
+  "traceEvidenceSha256": "2f3dd940a784df8d36ab8ee792865183c327dce66e5d2f62326d487316011620",
   "entries": [
     {
       "requirementId": "REQ-AIDS-002",
       "requirementPath": ".musubix/features/ai-data-scientist/requirements.md",
       "formalSha256": "14f874c67a550b22c99fd992f67ead1b37613743ba6b40336a4f08818d3d4457",
       "modelSha256": "5806dff5812b265b27dd6d50026ca9a70ea6afd320da3f55c65ab7879654e94c",
-      "traceSha256": "008bbb5f1344a0584185c51af814eac9238667b5a48fa430b7650250c92cb1db",
+      "traceSha256": "2f3dd940a784df8d36ab8ee792865183c327dce66e5d2f62326d487316011620",
       "tests": [
         {
           "testId": "TEST-AIDS-002",
           "testPath": "tests/test_project_manager.py",
-          "testSha256": "cc10feed6a73359a6480e71a07571d2d6ee799ad906dd450dba2d4a343689309",
+          "testSha256": "b4953284dea18ab8b5c718f85c3e308717a2c08998d5402380ac2f7409bc351f",
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "775cbe5ae4bbf85d7758b40df1b5266e8f8bd0f763a77fa390136e52fb97e1e0",
-          "provenanceSha256": "50395fe69ebfbd1ad15724eb1875c9cdf7cb246e7c89d0aeb24d79e51ba7fb52"
+          "reportSha256": "c34717650913663a4f7ddb7b2b3dc38598692c7312937c4250ec484799d70aac",
+          "provenanceSha256": "ddc050296b9459a6d01995d28c9223c4b3006e2cb6995eea923477a67bc9f1b9"
         }
       ]
     },
@@ -29,7 +29,7 @@
       "requirementPath": ".musubix/features/ai-data-scientist/requirements.md",
       "formalSha256": "bf73d273da2008bd78dad508b71fa14011503cb297314af2e57c9540f5648f01",
       "modelSha256": "a7fb108e2492743364024c853185b984dd691fa211a3bbd1c9ce43b4edb65bd7",
-      "traceSha256": "008bbb5f1344a0584185c51af814eac9238667b5a48fa430b7650250c92cb1db",
+      "traceSha256": "2f3dd940a784df8d36ab8ee792865183c327dce66e5d2f62326d487316011620",
       "tests": [
         {
           "testId": "TEST-AIDS-009",
@@ -38,8 +38,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "775cbe5ae4bbf85d7758b40df1b5266e8f8bd0f763a77fa390136e52fb97e1e0",
-          "provenanceSha256": "da268c7e59bcc631a185637021e1c7d119a87443ba86e70ac556b1756697b00e"
+          "reportSha256": "c34717650913663a4f7ddb7b2b3dc38598692c7312937c4250ec484799d70aac",
+          "provenanceSha256": "d784e3b4c75488945f5ec2566542742fc3bbc32888bcf9ad5f661d923e7f2cbf"
         },
         {
           "testId": "TEST-AIDS-038",
@@ -48,8 +48,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "775cbe5ae4bbf85d7758b40df1b5266e8f8bd0f763a77fa390136e52fb97e1e0",
-          "provenanceSha256": "d95fb279da337e60f9122a37fd82b7cb69d24bf14cf599b117cbce046e4a2a37"
+          "reportSha256": "c34717650913663a4f7ddb7b2b3dc38598692c7312937c4250ec484799d70aac",
+          "provenanceSha256": "951e026bd54a8e156a22f89f418fe59ff930fddc7dfec711926fa062a2110b74"
         },
         {
           "testId": "TEST-AIDS-105",
@@ -58,8 +58,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "775cbe5ae4bbf85d7758b40df1b5266e8f8bd0f763a77fa390136e52fb97e1e0",
-          "provenanceSha256": "86cb6b18adb9f38dd85158b5da5426dd989e7807bd7750f6f55dc8ac0b747c03"
+          "reportSha256": "c34717650913663a4f7ddb7b2b3dc38598692c7312937c4250ec484799d70aac",
+          "provenanceSha256": "2680354d055d7328627a92cdcd2cf58bad87075ef12a19a7f1dc7cb45d7a808c"
         }
       ]
     },
@@ -68,7 +68,7 @@
       "requirementPath": ".musubix/features/ai-data-scientist/requirements.md",
       "formalSha256": "151d17f3d2697ce402640363dce0246f804c20abbb59c29b94f227a511b13e91",
       "modelSha256": "b2dc840a9685389232a904679cca568a213edcf0cb6c2460aa2442910d4bb175",
-      "traceSha256": "008bbb5f1344a0584185c51af814eac9238667b5a48fa430b7650250c92cb1db",
+      "traceSha256": "2f3dd940a784df8d36ab8ee792865183c327dce66e5d2f62326d487316011620",
       "tests": [
         {
           "testId": "TEST-AIDS-031",
@@ -77,8 +77,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "775cbe5ae4bbf85d7758b40df1b5266e8f8bd0f763a77fa390136e52fb97e1e0",
-          "provenanceSha256": "4034e8e18ac9f4819b28e4dea7bb58381a05b112355a2486aa071c3cfd046fca"
+          "reportSha256": "c34717650913663a4f7ddb7b2b3dc38598692c7312937c4250ec484799d70aac",
+          "provenanceSha256": "08fed5caf95af29b23b7d7e0c9e069a1b569deae8672225f2ccef46ebb8faa7e"
         }
       ]
     },
@@ -87,7 +87,7 @@
       "requirementPath": ".musubix/features/ai-data-scientist/requirements.md",
       "formalSha256": "2cb17e3f6c05c6361c69bd03b91e974faf17fd0606a7fe3ecf6fb38553f3893c",
       "modelSha256": "f7e15c1b66a9c7ad3a138d167ed7a268b0caf2f69dc257d638b1af94a1097d88",
-      "traceSha256": "008bbb5f1344a0584185c51af814eac9238667b5a48fa430b7650250c92cb1db",
+      "traceSha256": "2f3dd940a784df8d36ab8ee792865183c327dce66e5d2f62326d487316011620",
       "tests": [
         {
           "testId": "TEST-AIDS-042",
@@ -96,8 +96,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "775cbe5ae4bbf85d7758b40df1b5266e8f8bd0f763a77fa390136e52fb97e1e0",
-          "provenanceSha256": "f55d79a5688b31f152fb75e1596ffb28c04b8dd374184687bd47649e0c850fc1"
+          "reportSha256": "c34717650913663a4f7ddb7b2b3dc38598692c7312937c4250ec484799d70aac",
+          "provenanceSha256": "6eb602a4879817df563600da43135cd02e2ccaca085903ba371e18d92c7d9ef7"
         }
       ]
     },
@@ -106,7 +106,7 @@
       "requirementPath": ".musubix/features/ai-scientist/requirements.md",
       "formalSha256": "da04f5400f56733ab267f755f44225151da4ce29f84eeb8fe53b1aacb58f3f53",
       "modelSha256": "0134177a9c38e6246cbf3a2097e952285c16eb9b040be33b2a8d7f18d5e82815",
-      "traceSha256": "008bbb5f1344a0584185c51af814eac9238667b5a48fa430b7650250c92cb1db",
+      "traceSha256": "2f3dd940a784df8d36ab8ee792865183c327dce66e5d2f62326d487316011620",
       "tests": [
         {
           "testId": "TEST-AISCI-003",
@@ -115,8 +115,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "775cbe5ae4bbf85d7758b40df1b5266e8f8bd0f763a77fa390136e52fb97e1e0",
-          "provenanceSha256": "801d704cd4ff0dbceec57215627ea7407359262d92d959ae10689bc72597ac2c"
+          "reportSha256": "c34717650913663a4f7ddb7b2b3dc38598692c7312937c4250ec484799d70aac",
+          "provenanceSha256": "b8dedd7526ec7891fb431187509b3eab8e27bda70df8fe0987f8d215f6cac7ca"
         }
       ]
     },
@@ -125,7 +125,7 @@
       "requirementPath": ".musubix/features/ai-scientist/requirements.md",
       "formalSha256": "8f541c5007de7f10037859ae318dcae57c8536c33fa710ac24415a35683a664a",
       "modelSha256": "9d2f2f9854c755589f293cfe9c3429cc5d467c003896011dc460c4520bfb497a",
-      "traceSha256": "008bbb5f1344a0584185c51af814eac9238667b5a48fa430b7650250c92cb1db",
+      "traceSha256": "2f3dd940a784df8d36ab8ee792865183c327dce66e5d2f62326d487316011620",
       "tests": [
         {
           "testId": "TEST-AISCI-006",
@@ -134,8 +134,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "775cbe5ae4bbf85d7758b40df1b5266e8f8bd0f763a77fa390136e52fb97e1e0",
-          "provenanceSha256": "e61b8eb6f5ee5066e9b6edd1e17669138b87e5db161e4ae56e4b29460cd18dae"
+          "reportSha256": "c34717650913663a4f7ddb7b2b3dc38598692c7312937c4250ec484799d70aac",
+          "provenanceSha256": "3167f8115ca83dc8cfd3a5bf4db12015700d8047f07d01088006c5eb7f63f535"
         },
         {
           "testId": "TEST-AISCI-025",
@@ -144,8 +144,8 @@
           "commandName": "test",
           "commandSha256": "d4bd4fe94158e5d98b83147dc287520a6d8e855a43a43ceec23ded7fed127daf",
           "reportPath": ".musubix/evidence/native/test/aggregate.json",
-          "reportSha256": "775cbe5ae4bbf85d7758b40df1b5266e8f8bd0f763a77fa390136e52fb97e1e0",
-          "provenanceSha256": "f17b00c44c93d396cea736306ed3c5734d1470dd21cb4cfbef3dcef0a0f052f2"
+          "reportSha256": "c34717650913663a4f7ddb7b2b3dc38598692c7312937c4250ec484799d70aac",
+          "provenanceSha256": "21f174b27a5683b29eb9ff0aa206d1b7a8f455b22c56c2b6fbedfbc5d0079399"
         }
       ]
     }
