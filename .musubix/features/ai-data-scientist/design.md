@@ -2109,3 +2109,170 @@ Requirements: REQ-AIDS-102
 ADRs: none — this is a bounded, additive extension of an existing single
 documented algorithm (peak-vs-final comparison reusing the existing
 relative-change helper), not an architectural tradeoff.
+
+## DES-AIDS-103: `meta_analysis.pool_effect_sizes` fixed-effect and DerSimonian-Laird random-effects pooling / 固定効果・DerSimonian-Laird変量効果プーリング
+Responsibilities: A new `meta_analysis` module providing
+`pool_effect_sizes(effects, standard_errors)`. Validates both arguments
+are lists of equal length `>= 2` before any computation; raises
+`ValueError` naming `effects` when any `effects` entry is not a finite
+`int`/`float` (excluding `bool`) or when lengths mismatch/are too short;
+raises `ValueError` naming `standard_errors` when any entry is not a
+finite `float` `> 0` (REQ-AIDS-103 Constraints restricts
+`standard_errors` to `float` specifically, unlike `effects`'s broader
+`int`-or-`float` allowance; an `int` `standard_errors` entry such as
+`1` is rejected even though it is numerically a valid positive
+magnitude). Computes fixed-effect inverse-variance weights
+`w_i = 1 / se_i**2`, the fixed-effect pooled estimate `pooled_fe =
+sum(w_i * effect_i) / sum(w_i)` and `se_fe = sqrt(1 / sum(w_i))`,
+Cochran's `q_statistic = sum(w_i * (effect_i - pooled_fe)**2)` with `df
+= k - 1`, `i_squared = max(0.0, (q_statistic - df) / q_statistic * 100)`
+(`0.0` when `q_statistic == 0`, avoiding a zero-division), the
+DerSimonian-Laird (1986) `tau_squared = max(0.0, (q_statistic - df) /
+(sum(w_i) - sum(w_i**2) / sum(w_i)))`, and the random-effects pooled
+estimate `pooled_re`/`se_re` using re-weighted `w_i* = 1 / (se_i**2 +
+tau_squared)`, returning exactly the 7 keys REQ-AIDS-103 names.
+Interfaces: `meta_analysis.pool_effect_sizes(effects: list[float],
+standard_errors: list[float]) -> dict[str, float]` with exactly the keys
+`pooled_fe`, `se_fe`, `q_statistic`, `i_squared`, `tau_squared`,
+`pooled_re`, `se_re`.
+Constraints: All validation runs to completion before any pooling
+computation begins; a rejected call raises before computing any partial
+statistic. This module depends only on Python's standard `math` module
+(no new third-party dependency); it performs no literature search, no
+effect-size-type conversion, and no forest-plot rendering, per
+REQ-AIDS-103 Constraints.
+Requirements: REQ-AIDS-103
+ADRs: none — this is a direct, single-documented-algorithm implementation
+of the standard published inverse-variance/DerSimonian-Laird pooling
+formulas, with no rejected architectural alternative.
+Depends-On: none
+
+## DES-AIDS-104: `clinical_risk_scoring.cha2ds2_vasc_score` fixed-weight risk score with documented 3-tier category / CHA2DS2-VAScリスクスコア固定重み付けと3段階カテゴリ区分
+Responsibilities: A new `clinical_risk_scoring` module providing
+`cha2ds2_vasc_score(congestive_heart_failure, hypertension, age,
+diabetes, stroke_tia_thromboembolism_history, vascular_disease, sex)`.
+Validates `age` is a non-negative Python `int`, explicitly excluding
+`bool` (checked via `isinstance(age, int) and not isinstance(age, bool)
+and age >= 0`) and excluding any non-`int` numeric type (e.g. `float`);
+validates every flag argument (`congestive_heart_failure`,
+`hypertension`, `diabetes`, `stroke_tia_thromboembolism_history`,
+`vascular_disease`) is exactly `True` or `False` (`isinstance(flag,
+bool)`); validates `sex` is exactly `"male"` or `"female"`; raises
+`ValueError` naming the offending parameter and its exact documented
+constraint string on any violation, before any score computation.
+Computes `score` as the fixed weighted sum REQ-AIDS-104's Statement
+defines (age-banded: `+2` for `age >= 75`, `+1` for `65 <= age < 75`,
+`+0` otherwise; `+2` for `stroke_tia_thromboembolism_history`; `+1` each
+for `congestive_heart_failure`, `hypertension`, `diabetes`,
+`vascular_disease`, and `sex == "female"`), maps `score` to
+`risk_category` via ADR-0120's fixed 3-tier table (`0 -> "low"`, `1 ->
+"moderate"`, `score >= 2 -> "high"`), and returns `{score,
+risk_category}`.
+Interfaces: `clinical_risk_scoring.cha2ds2_vasc_score(
+congestive_heart_failure: bool, hypertension: bool, age: int,
+diabetes: bool, stroke_tia_thromboembolism_history: bool,
+vascular_disease: bool, sex: str) -> dict[str, int | str]` with exactly
+the keys `score` (`int`) and `risk_category` (`str`).
+Constraints: `age`'s type check must reject `bool` and `float` even when
+numerically valid (e.g. `age=True` or `age=65.5`), per REQ-AIDS-104
+Acceptance. The `risk_category` 3-tier mapping is ADR-0120's documented
+simplification, not a verbatim guideline table — `SKILL.md` must state
+this explicitly alongside the non-clinical-recommendation disclaimer
+REQ-AIDS-104 Constraints already requires. This module performs no
+EHR/FHIR lookup and makes no network call; it depends only on Python's
+standard library.
+Requirements: REQ-AIDS-104
+ADRs: ADR-0120
+Depends-On: none
+
+## DES-AIDS-105: `diagnostic_test_evaluation.evaluate_diagnostic_test` 2x2-confusion-matrix diagnostic accuracy metrics / 2x2混同行列による診断検査性能指標
+Responsibilities: A new `diagnostic_test_evaluation` module providing
+`evaluate_diagnostic_test(true_positive, false_negative, false_positive,
+true_negative)`. Validates all 4 arguments are non-negative integers
+(excluding `bool`), raising `ValueError` naming the offending parameter
+on a negative or non-integer count; then validates, in the fixed order
+REQ-AIDS-105's Statement lists, that none of the 4 pairwise sums
+`(tp + fn)`, `(fp + tn)`, `(tp + fp)`, `(tn + fn)` is zero, raising
+`ValueError` naming the exact comma-joined parameter pair string (e.g.
+`"true_positive, false_negative"`) and the constraint "must not both be
+zero" for whichever pairwise sum is zero, checked in that fixed order so
+exactly one violation is reported even when multiple pairwise sums are
+simultaneously zero. Only once all 4 pairwise-sum checks pass computes
+`sensitivity = tp / (tp + fn)`, `specificity = tn / (tn + fp)`, `ppv =
+tp / (tp + fp)`, `npv = tn / (tn + fn)`,
+`positive_likelihood_ratio = sensitivity / (1 - specificity)`
+(`math.inf` when `specificity == 1`, avoiding a zero-division),
+`negative_likelihood_ratio = (1 - sensitivity) / specificity`
+(`math.inf` when `specificity == 0`), and `youden_j = sensitivity +
+specificity - 1`, returning exactly the 7 keys REQ-AIDS-105 names.
+Interfaces: `diagnostic_test_evaluation.evaluate_diagnostic_test(
+true_positive: int, false_negative: int, false_positive: int,
+true_negative: int) -> dict[str, float]` with exactly the keys
+`sensitivity`, `specificity`, `ppv`, `npv`,
+`positive_likelihood_ratio`, `negative_likelihood_ratio`, `youden_j`.
+Constraints: The 4 pairwise-zero checks must all run (in the fixed
+order given above) before any division, so a degenerate matrix never
+produces an undefined `0/0` float (e.g. `nan`) or a Python
+`ZeroDivisionError`; each of the 4 checks guards exactly the division
+that would otherwise be undefined (`(tp+fn)` guards `sensitivity`,
+`(fp+tn)` guards `specificity`, `(tp+fp)` guards `ppv`, `(tn+fn)` guards
+`npv`). This module performs no ROC-curve/threshold sweep, no dataset
+ingestion, and no model training, per REQ-AIDS-105 Constraints; it
+depends only on Python's standard `math` module.
+Requirements: REQ-AIDS-105
+ADRs: none — this is a direct, single-documented-algorithm implementation
+of the standard 2x2 confusion-matrix diagnostic-accuracy formulas, with
+no rejected architectural alternative; the only genuine design choice
+(rejecting all 4 degenerate pairwise-zero cases up front, rather than
+returning `nan`/`inf` for an undefined ratio) is a direct, uncontested
+consequence of REQ-AIDS-105's own Acceptance criteria.
+Depends-On: none
+
+## DES-AIDS-106: `stats_analysis.cox_ph_regression` single-covariate Cox proportional-hazards fit via `statsmodels.PHReg` / 単一共変量Cox比例ハザード回帰（`statsmodels.PHReg`使用）
+Responsibilities: Extend the existing `stats_analysis` module with
+`cox_ph_regression(durations, events, covariate)`. Validates `durations`
+and `covariate` are each lists of finite numbers (`int`/`float`,
+excluding `bool`) of equal length `>= 2`, that every `durations` entry is
+strictly positive, that `covariate` is not all-identical, and that
+`events` is a list of `0`/`1`/`bool` of the same length containing at
+least 2 positive (`event == 1`) entries — raising `ValueError` naming
+the offending parameter and its exact constraint string on any
+violation, before any model fit is attempted. Fits
+`statsmodels.duration.hazard_regression.PHReg(durations,
+numpy.asarray(covariate).reshape(-1, 1), status=events).fit()` (Breslow
+tie handling, the library default) inside
+`warnings.catch_warnings(record=True) as caught:` with
+`warnings.simplefilter("always",
+statsmodels.tools.sm_exceptions.ConvergenceWarning)` set as the first
+statement in that scope (ADR-0121's capture mechanism), treating a
+raised exception, a captured `ConvergenceWarning` in `caught`, or a
+non-finite fitted `coefficient`/`standard_error`/`p_value` as
+non-convergence — any one of these 3 conditions raises `ValueError`
+naming `durations`/`covariate` and the constraint "fit did not
+converge", with no result returned. On successful convergence, reads the
+single covariate's `params[0]`/`bse[0]`/`pvalues[0]` as `coefficient`/
+`standard_error`/`p_value`, computes `hazard_ratio = exp(coefficient)`
+and `ci_lower/ci_upper = exp(coefficient \u2213 1.96 *
+standard_error)`, and returns exactly the 6 keys REQ-AIDS-106 names.
+Interfaces: `stats_analysis.cox_ph_regression(durations: list[float],
+events: list[int], covariate: list[float]) -> dict[str, float]` with
+exactly the keys `coefficient`, `standard_error`, `p_value`,
+`hazard_ratio`, `ci_lower`, `ci_upper`.
+Constraints: All 5 pre-fit validation checks (lengths/minimum count,
+positivity of `durations`, non-identical `covariate`, `events` value
+domain, minimum 2 events) must run to completion before `PHReg(...)
+.fit()` is ever called. ADR-0121's 3-condition non-convergence detection
+runs immediately around that single `.fit()` call; no partial or
+nonphysical result (e.g. a finite but implausible coefficient under
+complete separation, verified empirically for the fixture
+`durations=[1,2,3,4], events=[1,1,1,1], covariate=[0,0,1,1]`) is ever
+returned. This method is single-covariate only (`covariate` is reshaped
+to one column) — no multivariate covariate matrix, no stratification,
+and no time-varying covariates in this increment, per REQ-AIDS-106
+Constraints. `statsmodels` is already a root `pyproject.toml`
+dependency; this is its first use from `ai_data_scientist.stats_analysis`
+(previously used elsewhere in the package), introducing no new
+third-party dependency.
+Requirements: REQ-AIDS-106
+ADRs: ADR-0121
+Depends-On: none

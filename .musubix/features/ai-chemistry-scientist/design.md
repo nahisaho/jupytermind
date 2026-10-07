@@ -18,7 +18,7 @@ Responsibilities: Load the static method-name-to-module manifest
 (`.github/skills/ai-chemistry-scientist/manifest.json`; each entry has
 `modulePath`, `functionName`, and bilingual `names.en`/`names.ja` lists,
 identical in shape to `ai-materials-scientist`'s manifest), classify an
-incoming bilingual user request against the 11 supported method
+incoming bilingual user request against the 14 supported method
 names/synonyms, detect the request's language (Japanese or English), and
 on exactly one match resolve `modulePath`/`functionName` to that module's
 handler wrapper function and invoke it with `(request_text, language)`
@@ -36,11 +36,11 @@ module's structured `params` from `request_text` (parsing a SMILES string
 or numeric arguments out of free text, or accepting them as
 already-structured keyword arguments from a calling context — this
 extraction is each handler wrapper's own documented responsibility, not
-`dispatch`'s); (2) for the 10 atomic-validation modules
-(DES-ACHEM-020/030/040/050/060/070/080/090/100/110) only, calling
+`dispatch`'s); (2) for the 13 atomic-validation modules
+(DES-ACHEM-020/030/040/050/060/070/080/090/100/110/120/130/140) only, calling
 DES-ACHEM-002's `validate_parameters` on the extracted `params` first,
 returning a localized rejection `ModuleOutcome` with no further call on
-failure; (3) calling its own `run_*` function (DES-ACHEM-010..110) with
+failure; (3) calling its own `run_*` function (DES-ACHEM-010..140) with
 the extracted (and, for atomic modules, already-validated) `params`; (4) for
 DES-ACHEM-020's, DES-ACHEM-050's, DES-ACHEM-070's, DES-ACHEM-090's, and
 DES-ACHEM-100's results only, substituting the raw result's
@@ -52,11 +52,12 @@ Responsibilities section (e.g.
 that (possibly label-substituted) raw `run_*` result via DES-ACHEM-003's
 `record_run` into a `RunRecord`. The manifest and dispatcher's internal
 method-routing tables (`_RUN_MODULE_PATHS`, `_RUN_FUNCTION_NAMES`) cover
-exactly these 11 method slugs: `molecular-descriptors`,
+exactly these 14 method slugs: `molecular-descriptors`,
 `admet-prediction`, `qsar-modeling`, `molecular-similarity`,
 `docking-score`, `drug-likeness-rules`, `structural-alerts`,
 `molecular-formula-mass`, `bioactivity-classification`,
-`salt-removal`, and `structure-format-conversion`;
+`salt-removal`, `structure-format-conversion`, `dose-response-fitting`,
+`pharmacokinetic-analysis`, and `enzyme-kinetics`;
 `_LIMITATION_LABEL_MODULES` includes exactly `admet-prediction`,
 `docking-score`, `structural-alerts`, `bioactivity-classification`, and
 `salt-removal`. `structure-format-conversion` (DES-ACHEM-110) is not in
@@ -104,9 +105,18 @@ before any module performs a descriptor computation, model fit, or
 similarity/score calculation, and report the violated parameter and
 constraint on failure. Supports two granularities selected by the calling
 module: atomic (reject the whole run on any invalid parameter) for
-REQ-ACHEM-020/030/040/050/060/070/080/090/100/110, and per-item (reject
-only the invalid item, continue computing the rest) for REQ-ACHEM-010's
-batch SMILES input. For REQ-ACHEM-110 specifically, atomic validation
+REQ-ACHEM-020/030/040/050/060/070/080/090/100/110/120/130/140, and
+per-item (reject only the invalid item, continue computing the rest)
+for REQ-ACHEM-010's batch SMILES input. For REQ-ACHEM-120/130/140's
+nonlinear curve-fit modules specifically, atomic validation checks the
+numeric-adequacy domain (minimum point count, positivity, finiteness,
+distinct-value count) each requirement's Constraints section already
+states in full; ADR-0117/ADR-0118's additional post-fit rejection
+checks (convergence failure, non-physical fitted-parameter sign) run
+inside each module's own `run_*` function after this validator's
+pre-fit checks pass, not inside `validate_parameters` itself, since they
+depend on the `curve_fit`/OLS result this validator has no access to.
+For REQ-ACHEM-110 specifically, atomic validation
 checks, in this fixed order, (a) `input_format` is one of `smiles`,
 `inchi`, `molblock` (on failure: `parameter="input_format"`,
 `constraint="must be one of the supported formats"`); (b) `output_format`
@@ -132,7 +142,7 @@ Constraints: Must run to completion (no partial computation) before any
 module-specific state is produced for the unit it validates — a whole run
 for atomic modules, or a single batch item for REQ-ACHEM-010 (REQ-ACHEM-003
 acceptance).
-Requirements: REQ-ACHEM-003
+Requirements: REQ-ACHEM-003, REQ-ACHEM-120, REQ-ACHEM-130, REQ-ACHEM-140
 ADRs: ADR-0026
 Depends-On: DES-ACHEM-001
 
@@ -154,8 +164,15 @@ Interfaces: `record_run(module_name, params, result, *, rdkit_version,
 scikit_learn_version=None) -> RunRecord` `{metadata: {module,
 schema_version, rdkit_version, [scikit_learn_version]}, parameters,
 result}`. `scikit_learn_version` is included in `metadata` only when
-supplied (REQ-ACHEM-030's QSAR module always supplies it; the other 10
-modules omit it).
+supplied (REQ-ACHEM-030's QSAR module always supplies it; the other 13
+modules omit it). The 3 new curve-fitting modules (REQ-ACHEM-120/130/140)
+perform no RDKit molecule parsing at all (they operate on caller-supplied
+numeric arrays only), but their handler wrappers still supply the
+installed `rdkit_version` string alongside every other module's, for
+`RunRecord.metadata` schema uniformity across the whole feature —
+matching `ai-genomics-scientist`'s identical precedent
+(DES-AGENOM-003) of recording a dependency version even for modules
+whose own computation does not call that dependency.
 Constraints: Re-running with identical `parameters` against the same
 installed RDKit/scikit-learn versions must reproduce a `result` that
 compares exactly equal per REQ-ACHEM-004's tolerance rules (`==` for
@@ -166,25 +183,28 @@ Requirements: REQ-ACHEM-004
 ADRs: ADR-0027
 Depends-On: DES-ACHEM-001
 
-Note on DES-ACHEM-010 through DES-ACHEM-110 below: each module's
+Note on DES-ACHEM-010 through DES-ACHEM-140 below: each module's
 `run_*(...)` function is the raw, unwrapped computation entry point. For
-the 10 atomic-validation modules
-(DES-ACHEM-020/030/040/050/060/070/080/090/100/110), it is called
-internally by its DES-ACHEM-001 handler wrapper only after DES-ACHEM-002
-`validate_parameters` succeeds, so these 10 `run_*` functions receive only
-already-validated `params` and perform no parameter revalidation of their
-own; none of them is called on a validation-failure path. DES-ACHEM-010
-is the sole exception (per-item granularity, ADR-0026): its own
-Responsibilities below describe `validate_batch_item` running interleaved
-with computation inside `run_molecular_descriptors` itself, which its
-handler wrapper calls directly with no separate upfront
-`validate_parameters` step. Every `run_*` function's return shape
-(`DescriptorResult`, `AdmetResult`, `QsarResult`, `SimilarityResult`,
-`DockingResult`, `DrugLikenessRulesResult`, `StructuralAlertsResult`,
+the 13 atomic-validation modules
+(DES-ACHEM-020/030/040/050/060/070/080/090/100/110/120/130/140), it is
+called internally by its DES-ACHEM-001 handler wrapper only after
+DES-ACHEM-002 `validate_parameters` succeeds, so these 13 `run_*`
+functions receive only already-validated `params` and perform no
+parameter revalidation of their own; none of them is called on a
+validation-failure path (the 3 newest modules additionally perform their
+own ADR-0117/ADR-0118 post-fit rejection checks inside `run_*` itself,
+per their own Responsibilities below). DES-ACHEM-010 is the sole
+exception (per-item granularity, ADR-0026): its own Responsibilities
+below describe `validate_batch_item` running interleaved with
+computation inside `run_molecular_descriptors` itself, which its handler
+wrapper calls directly with no separate upfront `validate_parameters`
+step. Every `run_*` function's return shape (`DescriptorResult`,
+`AdmetResult`, `QsarResult`, `SimilarityResult`, `DockingResult`,
+`DrugLikenessRulesResult`, `StructuralAlertsResult`,
 `MolecularFormulaMassResult`, `BioactivityClassificationResult`,
-`SaltRemovalResult`, `StructureConversionResult`) is
-exactly the `result` value DES-ACHEM-003's `record_run` wraps into a
-`RunRecord`.
+`SaltRemovalResult`, `StructureConversionResult`, `DoseResponseResult`,
+`PharmacokineticsResult`, `EnzymeKineticsResult`) is exactly the
+`result` value DES-ACHEM-003's `record_run` wraps into a `RunRecord`.
 
 ## DES-ACHEM-010: Molecular descriptor module / 分子記述子モジュール
 Responsibilities: Parse each input SMILES with `Chem.MolFromSmiles`,
@@ -531,6 +551,131 @@ Requirements: REQ-ACHEM-110
 ADRs: ADR-0106
 Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
 
+## DES-ACHEM-120: Dose-response curve fitting module / 用量反応曲線フィッティングモジュール
+Responsibilities: Receive already-validated `concentrations` and
+`responses` lists (REQ-ACHEM-120's atomic validation, performed by
+DES-ACHEM-002 before this function is ever called), compute the initial
+guess `p0 = [max(responses), min(responses), median(concentrations),
+1.0]`, call `scipy.optimize.curve_fit(_four_param_logistic,
+concentrations, responses, p0=p0, maxfev=10000)` where
+`_four_param_logistic(c, top, bottom, ic50, hill_slope) = bottom + (top
+- bottom) / (1 + (c / ic50) ** hill_slope)`, apply ADR-0117's shared
+2-condition post-fit policy (catching `curve_fit`'s `RuntimeError` and
+checking the fitted parameters for finiteness and `ic50 > 0`, each
+raising `ValueError`, not returning a dict), compute `r_squared = 1 -
+sum((responses - predicted) ** 2) / sum((responses - mean(responses))
+** 2)` from the fitted curve evaluated at each `concentrations` point,
+coerce every fitted parameter and `r_squared` to a native Python
+`float` (`curve_fit`/numpy otherwise return `numpy.float64` scalars,
+which are not JSON-safe per REQ-ACHEM-004 — DES-ACHEM-003 assumes every
+`run_*` result is already JSON-safe with no array codec, so this
+coercion is this module's own responsibility, not DES-ACHEM-003's), and
+report `{top, bottom, ic50, hill_slope, r_squared}`.
+Interfaces: `run_dose_response_fit(concentrations, responses) ->
+DoseResponseResult {top, bottom, ic50, hill_slope, r_squared}`.
+Constraints: Invalid input (fewer than 4 points, non-finite values, a
+non-positive `concentrations` entry, mismatched lengths, or fewer than 2
+distinct values in either array) is rejected by the handler wrapper
+under REQ-ACHEM-003 before this function is ever called (DES-ACHEM-002's
+standard `{ok: false, parameter, constraint}` dict shape); this function
+performs no parameter revalidation of its own. A `curve_fit`
+`RuntimeError`, or a converged-but-nonphysical fit (non-finite
+parameter, or `ic50 <= 0`), raises `ValueError` per ADR-0117's shared
+policy — a deliberate exception to the dict-shape convention, matching
+REQ-ACHEM-120's own Acceptance text — naming the exact parameter/
+constraint strings it defines ("fit did not converge" / "fitted
+parameters must be finite with ic50 > 0"); this module's own handler
+wrapper (DES-ACHEM-001) catches that `ValueError` and converts it into
+the standard dispatch-level rejection outcome. This module carries
+no `limitation_label_key` (it is a deterministic nonlinear-regression
+computation over caller-supplied numeric data, not a predictive
+heuristic).
+Requirements: REQ-ACHEM-120
+ADRs: ADR-0117
+Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
+
+## DES-ACHEM-130: Pharmacokinetic non-compartmental analysis module / 薬物動態ノンコンパートメント解析モジュール
+Responsibilities: Receive already-validated `times`, `concentrations`,
+`dose`, and `n_terminal` (default `3`), compute `cmax =
+max(concentrations)` and `tmax = times[numpy.argmax(concentrations)]`
+(ADR-0118's first-occurrence tie-break, `numpy.argmax`'s own default
+behavior), compute `auc_last` via `numpy.trapezoid(concentrations,
+times)` (the linear trapezoidal rule; `numpy.trapz` is not used — it is
+removed in numpy 2.3+), fit `ln(concentrations[-n_terminal:])` against
+`times[-n_terminal:]` by ordinary least squares
+(`numpy.polyfit(..., deg=1)`) to obtain the terminal slope, set `k_el =
+-slope`, apply ADR-0118's `k_el > 0` rejection policy (raising
+`ValueError`, not returning a dict), and only once accepted compute
+`half_life = math.log(2) / k_el`, `auc_inf = auc_last +
+concentrations[-1] / k_el`, `clearance = dose / auc_inf`, and
+`volume_of_distribution = clearance / k_el`, coerce every one of the 8
+result fields to a native Python `float` (numpy/`polyfit` otherwise
+return `numpy.float64` scalars, which are not JSON-safe per
+REQ-ACHEM-004, matching DES-ACHEM-120's identical coercion
+responsibility), and report `{cmax, tmax, auc_last, auc_inf, k_el,
+half_life, clearance, volume_of_distribution}`.
+Interfaces: `run_pharmacokinetics(times, concentrations, dose,
+n_terminal=3) -> PharmacokineticsResult {cmax, tmax, auc_last, auc_inf,
+k_el, half_life, clearance, volume_of_distribution}`.
+Constraints: Invalid input (fewer than 4 points, non-strictly-increasing
+`times`, a non-finite or non-positive `concentrations` value, `dose <=
+0`, or `n_terminal` outside `[2, len(times)]`) is rejected by the
+handler wrapper under REQ-ACHEM-003 before this function is ever
+called (DES-ACHEM-002's standard dict shape); this function performs no
+parameter revalidation of its own. A non-finite or non-positive
+terminal-slope `k_el` raises `ValueError` per ADR-0118 — a deliberate
+exception to the dict-shape convention, matching REQ-ACHEM-130's own
+Acceptance text — naming `concentrations`/`n_terminal` and the exact
+constraint "terminal concentrations must yield a positive elimination
+rate constant", before `half_life`/`auc_inf`/`clearance`/
+`volume_of_distribution` are ever computed — none of those 4 derived
+fields is ever present in a rejected outcome; this module's own handler
+wrapper (DES-ACHEM-001) catches that `ValueError` and converts it into
+the standard dispatch-level rejection outcome. This module carries no
+`limitation_label_key` (deterministic non-compartmental calculation,
+not a predictive heuristic); its documented scope boundary (no
+compartmental model fitting) is stated in REQ-ACHEM-130 Constraints, not
+a heuristic-label concern.
+Requirements: REQ-ACHEM-130
+ADRs: ADR-0118
+Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
+
+## DES-ACHEM-140: Michaelis-Menten enzyme kinetics module / Michaelis-Menten酵素反応速度論モジュール
+Responsibilities: Receive already-validated `substrate_concentrations`
+and `velocities` lists, compute the initial guess `p0 =
+[max(velocities), median(substrate_concentrations)]`, call
+`scipy.optimize.curve_fit(_michaelis_menten, substrate_concentrations,
+velocities, p0=p0)` where `_michaelis_menten(s, vmax, km) = vmax * s /
+(km + s)`, apply ADR-0117's shared 2-condition post-fit policy
+(catching `RuntimeError` and checking the fitted parameters for
+finiteness and `vmax > 0`/`km > 0`, each raising `ValueError`, not
+returning a dict), compute `r_squared` identically to DES-ACHEM-120
+(including its native-`float` coercion of every result field, for the
+same JSON-safety reason), and report `{vmax, km, r_squared}`.
+Interfaces: `run_enzyme_kinetics(substrate_concentrations, velocities)
+-> EnzymeKineticsResult {vmax, km, r_squared}`.
+Constraints: Invalid input (fewer than 3 points, non-finite values, a
+non-positive `substrate_concentrations` entry, mismatched lengths, or
+fewer than 2 distinct values in either array) is rejected by the
+handler wrapper under REQ-ACHEM-003 before this function is ever
+called (DES-ACHEM-002's standard dict shape); this function performs no
+parameter revalidation of its own. A `curve_fit` `RuntimeError`, or a
+converged-but-nonphysical fit (non-finite parameter, `vmax <= 0`, or
+`km <= 0`), raises `ValueError` per ADR-0117's shared policy — a
+deliberate exception to the dict-shape convention, matching
+REQ-ACHEM-140's own Acceptance text — naming the exact parameter/
+constraint strings it defines ("fit did not converge" / "fitted
+parameters must be finite with vmax > 0 and km > 0"); this module's own
+handler wrapper (DES-ACHEM-001) catches that `ValueError` and converts
+it into the standard dispatch-level rejection outcome. This module
+carries no `limitation_label_key`
+(deterministic nonlinear-regression computation, not a predictive
+heuristic); its documented scope boundary (no substrate-inhibition or
+Hill-cooperativity extension) is stated in REQ-ACHEM-140 Constraints.
+Requirements: REQ-ACHEM-140
+ADRs: ADR-0117
+Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
+
 ## Traceability summary / 追跡可能性一覧
 
 | Design component | Requirement(s) | ADR |
@@ -549,6 +694,9 @@ Depends-On: DES-ACHEM-001, DES-ACHEM-002, DES-ACHEM-003
 | DES-ACHEM-090 | REQ-ACHEM-090 | ADR-0052 |
 | DES-ACHEM-100 | REQ-ACHEM-100 | ADR-0105 |
 | DES-ACHEM-110 | REQ-ACHEM-110 | ADR-0106 |
+| DES-ACHEM-120 | REQ-ACHEM-120 | ADR-0117 |
+| DES-ACHEM-130 | REQ-ACHEM-130 | ADR-0118 |
+| DES-ACHEM-140 | REQ-ACHEM-140 | ADR-0117 |
 
 Every DES-ACHEM-010 through DES-ACHEM-110 module depends on DES-ACHEM-001
 (dispatch), DES-ACHEM-002 (validation), and DES-ACHEM-003 (evidence
@@ -580,11 +728,25 @@ chemically correct (e.g. for a genuine covalent multi-component
 cocrystal)."; `.ja` = "ヒューリスティックのみ: 最大重原子数を持つ
 フラグメント以外のすべての分離フラグメントを除去可能な塩・溶媒として
 扱うが、常に化学的に正しいとは限らない（例: 真の共有結合性多成分共
-結晶の場合）。" DES-ACHEM-110 carries no
-limitation-label text (it is not a heuristic module). This is a
-documentation-content check performed during implementation review, not a
+結晶の場合）。" DES-ACHEM-110, DES-ACHEM-120, DES-ACHEM-130, and
+DES-ACHEM-140 carry no limitation-label text (none of the 4 is a
+heuristic module: DES-ACHEM-110 is deterministic format conversion, and
+DES-ACHEM-120/130/140 are deterministic nonlinear-regression/
+non-compartmental calculations over caller-supplied numeric data). This
+is a documentation-content check performed during implementation review, not a
 separate design component (it has no own interface/behavior beyond the
 fixed strings already specified in DES-ACHEM-020/050/070/090/100).
+
+## Review record (CHANGE-038, fourth increment) / レビュー記録(CHANGE-038、第4増分)
+DES-ACHEM-120/130/140 and the DES-ACHEM-001/002/003 amendments for this
+fourth increment (3 new nonlinear curve-fit/NCA modules, 11->14 method
+slugs, 10->13 atomic-validation modules) passed `musubix3 design
+validate`. [Placeholder updated after this increment's rubber-duck review
+completes.]
+本増分（DES-ACHEM-120/130/140、および第4増分向けの DES-ACHEM-001/002/003
+の改訂：11->14 手法スラッグ、アトミック検証モジュール10->13件）は
+`musubix3 design validate` に合格した。[本増分の rubber-duck レビュー完了後に
+更新予定のプレースホルダー。]
 
 ## Review record (CHANGE-021) / レビュー記録(CHANGE-021)
 DES-ACHEM-100/110 and the DES-ACHEM-001/002/003 amendments for this third

@@ -14,10 +14,13 @@ import rdkit
 import ai_chemistry_scientist.admet_prediction as _admet_prediction  # noqa: F401
 import ai_chemistry_scientist.bioactivity_classification as _bioactivity_classification  # noqa: F401
 import ai_chemistry_scientist.docking_score as _docking_score  # noqa: F401
+import ai_chemistry_scientist.dose_response as _dose_response  # noqa: F401
 import ai_chemistry_scientist.drug_likeness_rules as _drug_likeness_rules  # noqa: F401
+import ai_chemistry_scientist.enzyme_kinetics as _enzyme_kinetics  # noqa: F401
 import ai_chemistry_scientist.molecular_descriptors as _molecular_descriptors  # noqa: F401
 import ai_chemistry_scientist.molecular_formula_mass as _molecular_formula_mass  # noqa: F401
 import ai_chemistry_scientist.molecular_similarity as _molecular_similarity  # noqa: F401
+import ai_chemistry_scientist.pharmacokinetics as _pharmacokinetics  # noqa: F401
 import ai_chemistry_scientist.qsar_modeling as _qsar_modeling  # noqa: F401
 import ai_chemistry_scientist.salt_standardization as _salt_standardization  # noqa: F401
 import ai_chemistry_scientist.structural_alerts as _structural_alerts  # noqa: F401
@@ -35,6 +38,13 @@ DEFAULT_MANIFEST_PATH = (
 #: `validate_parameters` call, because its own `run_*` function interleaves
 #: per-item validation with per-item computation (ADR-0026, DES-ACHEM-001).
 _PER_ITEM_VALIDATED_MODULES = frozenset({"molecular-descriptors"})
+
+#: the 3 curve-fitting modules whose `run_*` function raises `ValueError`
+#: on a post-fit convergence/physicality failure (ADR-0117/ADR-0118),
+#: distinct from the pre-fit `validate_parameters` dict-shape rejection.
+_POST_FIT_VALUEERROR_MODULES = frozenset(
+    {"dose-response-fitting", "pharmacokinetic-analysis", "enzyme-kinetics"}
+)
 
 #: modules whose raw result's `limitation_label_key` is substituted with the
 #: matching `language`-specific text before `record_run` (DES-ACHEM-001).
@@ -60,6 +70,9 @@ _RUN_MODULE_PATHS = {
     "bioactivity-classification": "ai_chemistry_scientist.bioactivity_classification",
     "salt-removal": "ai_chemistry_scientist.salt_standardization",
     "structure-format-conversion": "ai_chemistry_scientist.structure_format_conversion",
+    "dose-response-fitting": "ai_chemistry_scientist.dose_response",
+    "pharmacokinetic-analysis": "ai_chemistry_scientist.pharmacokinetics",
+    "enzyme-kinetics": "ai_chemistry_scientist.enzyme_kinetics",
 }
 _RUN_FUNCTION_NAMES = {
     "molecular-descriptors": "run_molecular_descriptors",
@@ -73,6 +86,9 @@ _RUN_FUNCTION_NAMES = {
     "bioactivity-classification": "run_bioactivity_classification",
     "salt-removal": "run_salt_removal",
     "structure-format-conversion": "run_structure_conversion",
+    "dose-response-fitting": "run_dose_response_fit",
+    "pharmacokinetic-analysis": "run_pharmacokinetics",
+    "enzyme-kinetics": "run_enzyme_kinetics",
 }
 
 
@@ -194,7 +210,19 @@ def _handle_module(
             }
 
     run_function = _resolve_run_function(method)
-    result = run_function(**resolved_params)
+    if method in _POST_FIT_VALUEERROR_MODULES:
+        try:
+            result = run_function(**resolved_params)
+        except ValueError as exc:
+            parameter, _, constraint = str(exc).partition(": ")
+            return {
+                "ok": False,
+                "parameter": parameter,
+                "constraint": constraint,
+                "language": language,
+            }
+    else:
+        result = run_function(**resolved_params)
     result = _localize_limitation_label(method, result, language)
 
     extra_kwargs = {}
@@ -299,6 +327,30 @@ def handle_salt_removal(request_text: str, language: str, **params) -> dict:
 def handle_structure_format_conversion(request_text: str, language: str, **params) -> dict:
     """Handler wrapper for the structure-format-conversion module (DES-ACHEM-110)."""
     return _handle_module("structure-format-conversion", request_text, language, params or None)
+
+
+# @id CODE-ACHEM-121
+# @implements REQ-ACHEM-002 REQ-ACHEM-003
+# @design DES-ACHEM-001
+def handle_dose_response_fitting(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the dose-response-fitting module (DES-ACHEM-120)."""
+    return _handle_module("dose-response-fitting", request_text, language, params or None)
+
+
+# @id CODE-ACHEM-131
+# @implements REQ-ACHEM-002 REQ-ACHEM-003
+# @design DES-ACHEM-001
+def handle_pharmacokinetic_analysis(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the pharmacokinetic-analysis module (DES-ACHEM-130)."""
+    return _handle_module("pharmacokinetic-analysis", request_text, language, params or None)
+
+
+# @id CODE-ACHEM-141
+# @implements REQ-ACHEM-002 REQ-ACHEM-003
+# @design DES-ACHEM-001
+def handle_enzyme_kinetics(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the enzyme-kinetics module (DES-ACHEM-140)."""
+    return _handle_module("enzyme-kinetics", request_text, language, params or None)
 
 
 # @id CODE-ACHEM-001

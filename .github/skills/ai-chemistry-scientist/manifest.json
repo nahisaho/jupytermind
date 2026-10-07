@@ -152,5 +152,47 @@
         "化学構造フォーマット変換"
       ]
     }
+  },
+  "dose-response-fitting": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_dose_response_fitting",
+    "names": {
+      "en": [
+        "dose-response fitting",
+        "dose response curve fitting"
+      ],
+      "ja": [
+        "用量反応曲線フィッティング",
+        "用量反応フィッティング"
+      ]
+    }
+  },
+  "pharmacokinetic-analysis": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_pharmacokinetic_analysis",
+    "names": {
+      "en": [
+        "pharmacokinetic analysis",
+        "pk non-compartmental analysis"
+      ],
+      "ja": [
+        "薬物動態解析",
+        "薬物動態ノンコンパートメント解析"
+      ]
+    }
+  },
+  "enzyme-kinetics": {
+    "modulePath": "ai_chemistry_scientist.dispatch",
+    "functionName": "handle_enzyme_kinetics",
+    "names": {
+      "en": [
+        "enzyme kinetics",
+        "michaelis-menten enzyme kinetics"
+      ],
+      "ja": [
+        "酵素反応速度論",
+        "ミカエリス・メンテン酵素反応速度論"
+      ]
+    }
   }
 }

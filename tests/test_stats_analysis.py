@@ -1,6 +1,7 @@
 """Tests for statistical analysis (REQ-AIDS-006)."""
 
 import pandas as pd
+import pytest
 from scipy import stats as scipy_stats
 
 from ai_data_scientist.stats_analysis import correlation
@@ -169,3 +170,72 @@ def test_TEST_AIDS_132_nan_coefficient_only_also_states_could_not_be_computed(mo
 
     result = correlation(df, "a", "b", language="en")
     assert "could not be computed" in result.interpretation
+
+
+# @id TEST-AIDS-386
+# @verifies REQ-AIDS-106
+def test_TEST_AIDS_386_fits_fixture_cox_model_exactly():
+    from ai_data_scientist.stats_analysis import cox_ph_regression
+
+    durations = [5, 6, 6, 2, 4, 4, 10, 3, 1, 9]
+    events = [1, 0, 1, 1, 1, 0, 0, 1, 1, 1]
+    covariate = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+
+    result = cox_ph_regression(durations, events, covariate)
+
+    expected = {
+        "coefficient": 0.22349901045801113,
+        "standard_error": 0.7672385365123494,
+        "p_value": 0.7708194705704785,
+        "hazard_ratio": 1.2504444029086113,
+        "ci_lower": 0.27795709239511945,
+        "ci_upper": 5.625368977967218,
+    }
+    assert result.keys() == expected.keys()
+    for key, expected_value in expected.items():
+        assert abs(result[key] - expected_value) < 1e-6, (key, result[key])
+
+
+# @id TEST-AIDS-387
+# @verifies REQ-AIDS-106
+def test_TEST_AIDS_387_all_identical_covariate_is_rejected():
+    from ai_data_scientist.stats_analysis import cox_ph_regression
+
+    with pytest.raises(ValueError, match="must not be all-identical"):
+        cox_ph_regression([1, 2, 3, 4], [1, 0, 1, 0], [1, 1, 1, 1])
+
+
+# @id TEST-AIDS-388
+# @verifies REQ-AIDS-106
+def test_TEST_AIDS_388_fewer_than_two_events_is_rejected():
+    from ai_data_scientist.stats_analysis import cox_ph_regression
+
+    with pytest.raises(ValueError, match="must contain at least 2 events"):
+        cox_ph_regression([1, 2, 3, 4], [1, 0, 0, 0], [0, 1, 0, 1])
+
+
+# @id TEST-AIDS-389
+# @verifies REQ-AIDS-106
+def test_TEST_AIDS_389_perfectly_separable_data_raises_fit_did_not_converge():
+    from ai_data_scientist.stats_analysis import cox_ph_regression
+
+    with pytest.raises(ValueError, match="fit did not converge"):
+        cox_ph_regression([1, 2, 3, 4], [1, 1, 1, 1], [0, 0, 1, 1])
+
+
+# @id TEST-AIDS-390
+# @verifies REQ-AIDS-106
+def test_TEST_AIDS_390_non_positive_duration_is_rejected():
+    from ai_data_scientist.stats_analysis import cox_ph_regression
+
+    with pytest.raises(ValueError, match="durations"):
+        cox_ph_regression([0, 2, 3, 4], [1, 0, 1, 0], [0, 1, 0, 1])
+
+
+# @id TEST-AIDS-391
+# @verifies REQ-AIDS-106
+def test_TEST_AIDS_391_mismatched_lengths_is_rejected():
+    from ai_data_scientist.stats_analysis import cox_ph_regression
+
+    with pytest.raises(ValueError):
+        cox_ph_regression([1, 2, 3], [1, 0, 1, 0], [0, 1, 0, 1])

@@ -43,11 +43,11 @@ DispatchResult` where `DispatchResult` is one of
 or `{outcome: "rejected", language, rejected_method}`. `handler_result`
 is always a `ModuleOutcome`: either `{ok: true, run_record}` on
 success, or `{ok: false, parameter, constraint, language}` on a module
-validation failure. The manifest owns these 7 exact method keys:
+validation failure. The manifest owns these 8 exact method keys:
 `sequence-features`, `variant-effect-annotation`,
 `splice-site-strength`, `gene-set-enrichment`,
-`pairwise-sequence-alignment`, `differential-expression`, and
-`variant-pathogenicity`.
+`pairwise-sequence-alignment`, `differential-expression`,
+`variant-pathogenicity`, and `acmg-amp-classification`.
 Constraints: Must invoke at most one module per request; must apply
 Unicode NFKC normalization before substring matching; must collapse
 multiple matched strings that map to the same method before counting
@@ -64,7 +64,7 @@ against that module's documented biological-validity,
 alphabet-validity, or numerical-adequacy domain before any invalid
 scope produces a result. Supports both validation granularities that
 REQ-AGENOM-003 defines: atomic whole-run validation for
-REQ-AGENOM-020/030/040/050/060/070, and per-item validation for
+REQ-AGENOM-020/030/040/050/060/070/090, and per-item validation for
 REQ-AGENOM-010's batch sequence input. Expose a shared validator
 registry so each module registers its own documented validator at import
 time.
@@ -77,14 +77,19 @@ constraint}`. Whole-run validators reject the entire request before any
 module result is produced; per-item validators reject only the invalid
 batch element while leaving other items computable.
 Constraints: The validator registry is keyed by manifest method name.
-Atomic validators cover REQ-AGENOM-020/030/040/050/060/070 and must reject the
-entire run before any variant annotation, splice scoring,
-hypergeometric p-value calculation, or dynamic-programming alignment is
-performed. The per-item validator path is reserved for
+Atomic validators cover REQ-AGENOM-020/030/040/050/060/070/090 and must
+reject the entire run before any variant annotation, splice scoring,
+hypergeometric p-value calculation, dynamic-programming alignment, or
+ACMG/AMP rule evaluation is performed. REQ-AGENOM-090's validator
+checks, in order: `criteria` is a non-empty list (constraint "must be a
+non-empty list"); contains no duplicate entries (constraint "must not
+contain duplicate codes"); and every entry is one of the 28 standard
+ACMG/AMP codes (constraint "each must be one of the 28 standard
+ACMG/AMP criterion codes"). The per-item validator path is reserved for
 `sequence-features`, which rejects an invalid `sequence` item with the
 exact named constraint "must be a non-empty uppercase DNA string over
 {A,C,G,T} with length >= 3" without aborting the rest of the batch.
-Requirements: REQ-AGENOM-003, REQ-AGENOM-010, REQ-AGENOM-020, REQ-AGENOM-030, REQ-AGENOM-040, REQ-AGENOM-050, REQ-AGENOM-060, REQ-AGENOM-070
+Requirements: REQ-AGENOM-003, REQ-AGENOM-010, REQ-AGENOM-020, REQ-AGENOM-030, REQ-AGENOM-040, REQ-AGENOM-050, REQ-AGENOM-060, REQ-AGENOM-070, REQ-AGENOM-090
 ADRs: ADR-0034
 Depends-On: DES-AGENOM-001
 
@@ -93,20 +98,24 @@ Responsibilities: Capture every successful module run as a JSON-safe
 `RunRecord` with exactly three top-level keys: `metadata`,
 `parameters`, and `result`. Called exactly once by each handler wrapper
 after module validation succeeds and the raw `run_*` function returns.
-The raw results of all 7 genomics modules are already JSON-safe
+The raw results of all 8 genomics modules are already JSON-safe
 (scalars, strings, booleans, lists, and nested dicts of these), so no
 array codec is needed.
 Interfaces: `record_run(module_name, params, result, *, numpy_version,
 scipy_version) -> RunRecord` where `RunRecord = {metadata,
 parameters, result}` and `metadata` always contains at least `module`,
 `schema_version`, `numpy_version`, and `scipy_version`, matching
-REQ-AGENOM-004's acceptance that all 7 modules' run records carry
-`scipy_version`. Every handler wrapper, including the 5 modules whose
+REQ-AGENOM-004's acceptance that all 8 modules' run records carry
+`scipy_version`. Every handler wrapper, including the 6 modules whose
 own governing computation does not call any `scipy` function, supplies
 the installed `scipy.__version__` string alongside `numpy_version`;
 only `gene-set-enrichment`'s computation directly calls
 `scipy.stats.hypergeom.sf` and `differential-expression`'s computation
-directly calls `scipy.stats.ttest_ind`.
+directly calls `scipy.stats.ttest_ind`. `acmg-amp-classification`
+(REQ-AGENOM-090) is pure Python set/counting logic with no numpy/scipy
+call of its own, but its handler wrapper still supplies both version
+strings for `RunRecord.metadata` schema uniformity, per this same
+module's existing precedent.
 Constraints: Re-running with identical `parameters` against the same
 installed numpy/scipy versions must reproduce equal results under
 REQ-AGENOM-004's comparison rules; no random seed is recorded because
@@ -116,9 +125,9 @@ Requirements: REQ-AGENOM-004
 ADRs: ADR-0035
 Depends-On: DES-AGENOM-001
 
-Note on DES-AGENOM-010 through DES-AGENOM-070 below: each module's
-`run_*(...)` function is the raw, unwrapped compute entry point. The 6
-atomic-validation modules (DES-AGENOM-020/030/040/050/060/070) are invoked by
+Note on DES-AGENOM-010 through DES-AGENOM-090 below: each module's
+`run_*(...)` function is the raw, unwrapped compute entry point. The 7
+atomic-validation modules (DES-AGENOM-020/030/040/050/060/070/090) are invoked by
 their handler wrappers only after DES-AGENOM-002
 `validate_parameters(...)` succeeds, so those `run_*` functions receive
 only already-validated parameters and perform no revalidation of their
@@ -362,6 +371,7 @@ layout under `src/ai_genomics_scientist/`:
 - `src/ai_genomics_scientist/sequence_alignment.py`
 - `src/ai_genomics_scientist/differential_expression.py`
 - `src/ai_genomics_scientist/variant_pathogenicity.py`
+- `src/ai_genomics_scientist/acmg_classification.py`
 - `src/ai_genomics_scientist/data/sample_gene_sets.csv`
 
 ## Traceability summary / 追跡可能性一覧
@@ -369,7 +379,7 @@ layout under `src/ai_genomics_scientist/`:
 | Design component | Requirement(s) | ADR |
 | --- | --- | --- |
 | DES-AGENOM-001 | REQ-AGENOM-001, REQ-AGENOM-002 | ADR-0033 |
-| DES-AGENOM-002 | REQ-AGENOM-003, REQ-AGENOM-010, REQ-AGENOM-020, REQ-AGENOM-030, REQ-AGENOM-040, REQ-AGENOM-050, REQ-AGENOM-060, REQ-AGENOM-070 | ADR-0034 |
+| DES-AGENOM-002 | REQ-AGENOM-003, REQ-AGENOM-010, REQ-AGENOM-020, REQ-AGENOM-030, REQ-AGENOM-040, REQ-AGENOM-050, REQ-AGENOM-060, REQ-AGENOM-070, REQ-AGENOM-090 | ADR-0034 |
 | DES-AGENOM-003 | REQ-AGENOM-004 | ADR-0035 |
 | DES-AGENOM-010 | REQ-AGENOM-010 | ADR-0036 |
 | DES-AGENOM-020 | REQ-AGENOM-020 | ADR-0037 |
@@ -379,6 +389,7 @@ layout under `src/ai_genomics_scientist/`:
 | DES-AGENOM-060 | REQ-AGENOM-060 | ADR-0107 |
 | DES-AGENOM-070 | REQ-AGENOM-070 | ADR-0108 |
 | DES-AGENOM-080 | REQ-AGENOM-080 | ADR-0113 |
+| DES-AGENOM-090 | REQ-AGENOM-090 | ADR-0119 |
 
 ## Skill documentation deliverables / スキル文書成果物
 
@@ -386,15 +397,22 @@ layout under `src/ai_genomics_scientist/`:
 `.github/skills/ai-genomics-scientist/SKILL.md` are required
 implementation deliverables alongside the `src/ai_genomics_scientist/`
 package. `SKILL.md` must mirror the workflow structure already used by
-`ai-chemistry-scientist`, list the seven supported methods, repeat the
+`ai-chemistry-scientist`, list the eight supported methods, repeat the
 REQ-AGENOM-030 heuristic limitation label verbatim in both English and
-Japanese, and document REQ-AGENOM-060's and REQ-AGENOM-070's heuristic
+Japanese, document REQ-AGENOM-060's and REQ-AGENOM-070's heuristic
 nature as the selected way to satisfy those 2 requirements' own
 non-misrepresentation constraints (per ADR-0107 and ADR-0108: not a
 DESeq2/edgeR replacement and not a validated clinical pathogenicity
 predictor, respectively) — neither of those 2 newer modules has a
 single fixed verbatim label string defined in requirements.md the way
-REQ-AGENOM-030 does.
+REQ-AGENOM-030 does — and additionally must state, in both languages,
+REQ-AGENOM-090's explicit non-clinical disclaimer that its ACMG/AMP
+classification output "is not a clinical diagnosis, clinical
+recommendation, or substitute for qualified variant-review/expert
+judgment" and "must not be presented as an authoritative final
+classification" (REQ-AGENOM-090 Constraints, quoted verbatim), together
+with ADR-0119's documented `conflicting_criteria` disambiguation being
+this implementation's own addition beyond the published guideline.
 
 ## DES-AGENOM-080: npm skill-package completeness guard / npmスキル同梱完全性ガード
 Responsibilities: Preserve parity between the npm bootstrap package's
@@ -437,3 +455,54 @@ equivalent logic.
 Requirements: REQ-AGENOM-080
 ADRs: ADR-0113
 Depends-On: DES-AISCI-020
+
+## DES-AGENOM-090: ACMG/AMP germline variant classification rule engine / ACMG/AMP生殖細胞系列バリアント分類ルールエンジン
+Responsibilities: Receive an already-validated non-empty, duplicate-free
+`criteria` list (REQ-AGENOM-090's atomic validation, performed by
+DES-AGENOM-002 before this function is ever called), count `criteria`
+members into the 7 fixed-set counts `n_pvs, n_ps, n_pm, n_pp, n_ba,
+n_bs, n_bp` exactly as REQ-AGENOM-090's Constraints define, evaluate the
+Pathogenic rules `P1`-`P8` in order recording the first match, then the
+Likely Pathogenic rules `LP1`-`LP6` in order recording the first match
+only if no `P`-rule matched, then the Benign rules `B1`-`B2` in order
+recording the first match, then the Likely Benign rules `LB1`-`LB2` in
+order recording the first match only if no `B`-rule matched (the same
+conditional-recording symmetry as the `P`/`LP` pair, so a `criteria`
+list matching both `B1` and `LB2` retains the `B1` benign-side match
+rather than overwriting it with `LB2`), apply ADR-0119's
+`conflicting_criteria`
+disambiguation when both a pathogenic-side and benign-side rule
+matched, and report `{criteria, classification, matched_rule}`.
+Interfaces: `run_acmg_classification(criteria) -> AcmgClassificationResult
+{criteria: list[str], classification: Literal["pathogenic",
+"likely_pathogenic", "benign", "likely_benign",
+"uncertain_significance"], matched_rule: str | None}`.
+Constraints: Invalid input (empty list, duplicate codes, or any code not
+one of the 28 standard ACMG/AMP criterion codes) is rejected by the
+handler wrapper under REQ-AGENOM-003 before this function is ever
+called; this function performs no parameter revalidation of its own.
+The 7 fixed-set memberships (`PVS={PVS1}`, `PS={PS1..PS4}`,
+`PM={PM1..PM6}`, `PP={PP1..PP5}`, `BA={BA1}`, `BS={BS1..BS4}`,
+`BP={BP1..BP7}`), the 18 rule definitions (`P1`-`P8`, `LP1`-`LP6`,
+`B1`-`B2`, `LB1`-`LB2`), their fixed evaluation priority order
+(Pathogenic > Likely Pathogenic > Benign > Likely Benign, first match
+within each tier wins), and ADR-0119's `conflicting_criteria`
+disambiguation are frozen constants reproducing Richards et al. (2015)
+Table 5 plus the one documented non-guideline extension; this module
+performs no criterion-level evidence gathering (no ClinVar/gnomAD/
+PolyPhen/REVEL lookup) and makes no network call — the caller supplies
+already-determined criterion codes as input. Its output "is not a
+clinical diagnosis, clinical recommendation, or substitute for
+qualified variant-review/expert judgment" and "must not be presented as
+an authoritative final classification" (REQ-AGENOM-090 Constraints,
+quoted verbatim) — this non-clinical-authority disclaimer, together
+with ADR-0119's `conflicting_criteria` documentation, is this module's
+required `SKILL.md` deliverable content per the Skill documentation
+deliverables section above; this module carries no single fixed
+`limitation_label_key` string the way REQ-AGENOM-030's splice-site
+heuristic does, since the disclaimer text is reproduced directly from
+REQ-AGENOM-090's own Constraints rather than substituted via a label-key
+indirection.
+Requirements: REQ-AGENOM-090
+ADRs: ADR-0119
+Depends-On: DES-AGENOM-001, DES-AGENOM-002, DES-AGENOM-003
