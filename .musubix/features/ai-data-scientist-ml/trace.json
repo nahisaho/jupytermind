@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-07T18:34:41.986Z",
+  "generatedAt": "2026-10-07T19:43:49.502Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -1867,6 +1867,62 @@
       "mandatory": true
     },
     {
+      "id": "REQ-AIDS-107",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 557,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIDS-108",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 565,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AIDS-109",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 573,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AIDS-110",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 581,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AIDS-113",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 589,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AIDS-114",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 597,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AIDS-115",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 605,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AIDS-116",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist/requirements.md",
+      "line": 613,
+      "mandatory": false
+    },
+    {
       "id": "DES-AIDS-012",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
@@ -2238,6 +2294,20 @@
       "mandatory": true
     },
     {
+      "id": "REQ-AIDS-111",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+      "line": 223,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AIDS-112",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-data-scientist-ml/requirements.md",
+      "line": 231,
+      "mandatory": false
+    },
+    {
       "id": "DES-AGENOM-001",
       "kind": "design",
       "path": ".musubix/features/ai-genomics-scientist/design.md",
@@ -2401,6 +2471,34 @@
       "mandatory": true
     },
     {
+      "id": "REQ-AGENOM-100",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-genomics-scientist/requirements.md",
+      "line": 190,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AGENOM-101",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-genomics-scientist/requirements.md",
+      "line": 198,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AGENOM-110",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-genomics-scientist/requirements.md",
+      "line": 206,
+      "mandatory": false
+    },
+    {
+      "id": "REQ-AGENOM-120",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-genomics-scientist/requirements.md",
+      "line": 214,
+      "mandatory": false
+    },
+    {
       "id": "DES-AIMS-001",
       "kind": "design",
       "path": ".musubix/features/ai-materials-scientist/design.md",
@@ -2556,6 +2654,13 @@
       "path": ".musubix/features/ai-materials-scientist/requirements.md",
       "line": 120,
       "mandatory": true
+    },
+    {
+      "id": "REQ-AIMS-090",
+      "kind": "requirement",
+      "path": ".musubix/features/ai-materials-scientist/requirements.md",
+      "line": 127,
+      "mandatory": false
     },
     {
       "id": "DES-AISCI-001",
@@ -18924,13 +19029,13 @@
     ".musubix/features/ai-chemistry-scientist/design.md": "a6027d71023ebc5b35d509bf2fd9e05a6d121c83bf822259055f3d3a546457c3",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "6380be8c8beecffd00ad8d3e5cddce21ef464dcb06a97a029f983fe24c1d53f9",
     ".musubix/features/ai-data-scientist/design.md": "d13613c0cb1efddd6cab449374b8895ffe9df959e92a5d7e87fa1f188e97b4b0",
-    ".musubix/features/ai-data-scientist/requirements.md": "db0833fc4541ad19a621c44508851029ba45dec41d0f0ce4566f5872bf34142b",
+    ".musubix/features/ai-data-scientist/requirements.md": "a8bb9b7114daee31906077d437b09d4c8c6a57934c742d686a999e5436fd4b1d",
     ".musubix/features/ai-data-scientist-ml/design.md": "19f497b16bb5c33be5dac4eef5310e5a1a3a1fe38d086ec8b017014034c16e15",
-    ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
+    ".musubix/features/ai-data-scientist-ml/requirements.md": "7494236fbb71a8e33a7bc8864e462d479b6fd39de90c397cecbec73ab8d332c9",
     ".musubix/features/ai-genomics-scientist/design.md": "66a38a573525af6343f4a7ea2b9d99c77aef2e2686c8602ac1cba064dc124b35",
-    ".musubix/features/ai-genomics-scientist/requirements.md": "7b0986ccb9e5d2f2997e7999bf73a528f59468e9ee1bb7dcb21946f00a0ef513",
+    ".musubix/features/ai-genomics-scientist/requirements.md": "ca604fdfdbf6256e3365d101f1f6c5caa045e4d002c6d10d54109c89bb50400b",
     ".musubix/features/ai-materials-scientist/design.md": "91e38ea4d872bdf951e8b89b317ba384c721154d79baa6e23c34b52a8516c8dd",
-    ".musubix/features/ai-materials-scientist/requirements.md": "ec1042bb0d869dfe9048f68397d495fcda505c1e4b40349313dd2e1aedbf4ceb",
+    ".musubix/features/ai-materials-scientist/requirements.md": "1b4b3a928a410ba97835fb8a3d48a1f78bf84df4cab1d63e1b4dccd8461645c7",
     ".musubix/features/ai-scientist/design.md": "5ea46f0a980670f973bad97b5875daeeb3febc2da11626f5a72b6138d303553c",
     ".musubix/features/ai-scientist/requirements.md": "62ad1db84c784be4a546db60ccf2011b3c6f489fb732319f14bf252134c4501c",
     ".musubix/features/ai-structural-biology-scientist/design.md": "96c1d5c710135160dcf46ebe2275c99e4bbf0e2f45714e7ddd13159acc1d23f1",
