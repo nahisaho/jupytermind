@@ -5301,6 +5301,45 @@
       "order": 1863,
       "previousSha256": "8f719306f849a0e5aab30cd7356ad13aba4b571a92e39c02f9df336f0d5fc55d",
       "payloadSha256": "ce07380c558be49c80382b7add24e736c1908254a1720e96c470e9f48a014bc6"
+    },
+    {
+      "changeId": "CHANGE-040",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AIDS-110",
+      "approver": "nahisaho",
+      "reason": "Documentation-only defect correction (GitHub #84): REQ-AIDS-110's Acceptance fixtures were wrong at the time the requirement was approved; the implementation and tests were already correct. musubix3's fingerprint-based Red/Green recording model does not have a representation for 'tests already passed before this change's Red/Green phases were recorded' (identical recording-order quirk as CHANGE-029 through CHANGE-039); 859/859 tests pass with 0 regressions.",
+      "recordedAt": "2026-10-09T10:31:06.701Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "0a5ee297153fce91d86c311a0c6c8b0294d05355b933352098a266c0b8d2aa36",
+      "order": 1871,
+      "previousSha256": "ce07380c558be49c80382b7add24e736c1908254a1720e96c470e9f48a014bc6",
+      "payloadSha256": "47deb9fea05c59004f4785c582fb6ed35e87856e5eb57ff416ae82d458606a09"
+    },
+    {
+      "changeId": "CHANGE-040",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AIDS-110",
+      "approver": "nahisaho",
+      "reason": "Documentation-only defect correction (GitHub #84): REQ-AIDS-110's Acceptance fixtures were wrong at the time the requirement was approved; the implementation and tests were already correct. musubix3's fingerprint-based Red/Green recording model does not have a representation for 'tests already passed before this change's Red/Green phases were recorded' (identical recording-order quirk as CHANGE-029 through CHANGE-039); 859/859 tests pass with 0 regressions.",
+      "recordedAt": "2026-10-09T10:31:07.308Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "0a5ee297153fce91d86c311a0c6c8b0294d05355b933352098a266c0b8d2aa36",
+      "order": 1872,
+      "previousSha256": "47deb9fea05c59004f4785c582fb6ed35e87856e5eb57ff416ae82d458606a09",
+      "payloadSha256": "2986ba30541a37fd439abe42c5f14ff58ec91b7304916a0def7d5e710b4ceae8"
+    },
+    {
+      "changeId": "CHANGE-040",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AIDS-110",
+      "approver": "nahisaho",
+      "reason": "Documentation-only defect correction (GitHub #84): REQ-AIDS-110's Acceptance fixtures were wrong at the time the requirement was approved; the implementation and tests were already correct. musubix3's fingerprint-based Red/Green recording model does not have a representation for 'tests already passed before this change's Red/Green phases were recorded' (identical recording-order quirk as CHANGE-029 through CHANGE-039); 859/859 tests pass with 0 regressions.",
+      "recordedAt": "2026-10-09T10:31:07.932Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "0a5ee297153fce91d86c311a0c6c8b0294d05355b933352098a266c0b8d2aa36",
+      "order": 1873,
+      "previousSha256": "2986ba30541a37fd439abe42c5f14ff58ec91b7304916a0def7d5e710b4ceae8",
+      "payloadSha256": "3f159086d6a7da062bf137c386c987bdbf5e74e0bd91cf9e2d1bf68aeab4c164"
     }
   ]
 }

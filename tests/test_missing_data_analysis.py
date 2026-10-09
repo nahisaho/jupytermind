@@ -1,4 +1,9 @@
-"""Tests for ai_data_scientist.missing_data_analysis (DES-AIDS-110, REQ-AIDS-110)."""
+"""Tests for ai_data_scientist.missing_data_analysis (DES-AIDS-110, REQ-AIDS-110).
+
+GitHub #84 / CHANGE-040: REQ-AIDS-110's Acceptance fixtures were corrected
+to the empirically-verified values this file already asserted; TEST-AIDS-415
+and TEST-AIDS-416 now match the Acceptance text exactly.
+"""
 
 import pytest
 
@@ -6,11 +11,8 @@ import pytest
 # @id TEST-AIDS-415
 # @verifies REQ-AIDS-110
 def test_TEST_AIDS_415_mcar_inconsistent_fixture_matches_expected():
-    # Note: constructed and empirically verified in this change (the literal
-    # REQ-AIDS-110 Acceptance fixture numbers for this scenario do not
-    # reproduce from scipy.stats.ttest_ind on the stated inputs; this
-    # fixture exercises the same documented inconsistent-diagnosis path
-    # with a clearly separated probe_column).
+    # Note: matches REQ-AIDS-110's Acceptance fixture (corrected in
+    # CHANGE-040 / GitHub #84 to empirically-verified values).
     from ai_data_scientist.missing_data_analysis import diagnose_missingness
 
     target_column = [1.0, None, 2.0, None, 3.0, None, 4.0, None, 5.0, None]
@@ -39,6 +41,7 @@ def test_TEST_AIDS_416_mcar_consistent_for_unrelated_probe_column():
     result = diagnose_missingness(target_column, probe_column)
 
     assert result["diagnosis"] == "MCAR_consistent"
+    assert result["p_value"] == pytest.approx(1.0, abs=1e-6)
     assert result["p_value"] >= 0.05
 
 
