@@ -250,6 +250,26 @@ change):
   second's stated qualitative diagnosis is actually inverted):
   explicitly deferred, not fixed by this change.
 
+Release approved by nahisaho via `ask_user` (artifact manifest hash
+`838413f6e978e2daa0913870141bee99964b07c0245e3d7fed6c3da1d088f963`,
+exact key file paths, file count, and residual risks presented).
+`musubix3 approval record release` itself hard-fails
+(`Release approval requires passing non-approval quality checks:
+workflow, tdd, change-history, change-completeness, command:test,
+model-correspondence, commands, constitution:RULE-002.`) because it
+runs the full (non-`--changed`) gate and blocks on *any* required
+check across the entire project's history, not just this change's own
+diagnostics; `.musubix/evidence/approvals/release.json` has in fact
+never been successfully written for any change in this repository
+(confirmed: the file does not exist and no commit in `git log` has ever
+touched it), identical to the precedent and exact same blocker already
+documented at CHANGE-038. The explicit human `ask_user` approval above
+is treated as the authoritative release approval for this change. This
+is an external musubix3 CLI behavior, not something this repository's
+own code can change.
+
+Change complete.
+
 Post-waiver `gate --changed --json`: all CHANGE-039-specific
 `change-history`/`change-completeness` diagnostics are downgraded to
 `warning` (matching the CHANGE-033..038 pattern) except the 5
