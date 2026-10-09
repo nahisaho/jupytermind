@@ -123,4 +123,21 @@ still reflects the pre-edit fingerprint recorded before this defect was
 found. This is an external musubix3 CLI behavior, not something this
 repository's own code can change.
 
-Design stage: in progress.
+Design stage: approved by nahisaho (artifact sha256
+`852e18104ff4d0d6397a7559272a9f1d92b0e4cd2cf3068dbca156caa1c59fdc`).
+Two `rubber-duck` review rounds found and fixed 3 blocking issues
+(missing non-empty/alphabet validation for REQ-AGENOM-101's
+`guide`/`candidate`, missing `utr` validation for REQ-AGENOM-120,
+missing `two_theta` `(0, 180)` domain constraint for REQ-AIMS-090) and
+3 non-blocking issues (missing `variable` Python-identifier-and-not-
+keyword validation for REQ-AIDS-115, an inaccurate networkx dependency
+claim in ADR-0126, and a keyword-exclusion refinement found on
+re-verification); all fixed, re-validated (`npx musubix3 design
+validate` PASS on all 4 files), and recorded via `change-record
+CHANGE-039 design`.
+Added: DES-AIDS-107..116 (`ai-data-scientist`/`ai-data-scientist-ml`),
+DES-AGENOM-100/101/110/120 (plus updated DES-AGENOM-001/002/003),
+DES-AIMS-090; 5 new ADRs (ADR-0122..0126); `sympy>=1.12` added to
+`pyproject.toml`; 4 new `ai-genomics-scientist` manifest.json entries
+wired to the existing dispatcher pattern.
+Implementation stage: not started.

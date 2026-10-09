@@ -233,6 +233,7 @@ Depends-On: DES-AIMS-001, DES-AIMS-002, DES-AIMS-003
 | DES-AIMS-060 | REQ-AIMS-060 | ADR-0023 |
 | DES-AIMS-070 | REQ-AIMS-070 | ADR-0024 |
 | DES-AIMS-080 | REQ-AIMS-080 | ADR-0113 |
+| DES-AIMS-090 | REQ-AIMS-090 | none |
 
 Every DES-AIMS-010 through DES-AIMS-070 module depends on DES-AIMS-001
 (dispatch), DES-AIMS-002 (validation), and DES-AIMS-003 (evidence schema
@@ -281,3 +282,41 @@ equivalent logic.
 Requirements: REQ-AIMS-080
 ADRs: ADR-0113
 Depends-On: DES-AISCI-020
+
+## DES-AIMS-090: XRD peak detection and Bragg's-law d-spacing module / X線回折ピーク検出とBragg則面間隔計算モジュール
+Responsibilities: A new `xrd_analysis` module providing
+`index_xrd_peaks(two_theta, intensity, wavelength=1.5406, height=None,
+distance=1)`. Validates `two_theta`/`intensity` are equal-length lists
+(`>= 3` entries), `two_theta` is strictly ascending finite degrees each
+within the physical domain `(0, 180)`, `intensity` entries are
+non-negative finite numbers, and `wavelength` is a positive number,
+raising `ValueError` naming the offending parameter and exact
+constraint on any violation before any peak detection is attempted.
+Detects peaks via `scipy.signal.find_peaks(
+intensity, height=height, distance=distance)`, then computes each
+detected peak's d-spacing via Bragg's law `d = wavelength / (2 *
+sin(radians(two_theta_peak / 2)))`, and reports `{peak_angles,
+d_spacings}` as parallel ascending-`two_theta`-order lists.
+Interfaces: `xrd_analysis.index_xrd_peaks(two_theta: list[float],
+intensity: list[float], wavelength: float = 1.5406, height: float |
+None = None, distance: int = 1) -> dict[str, list[float]]` with
+exactly the keys `peak_angles`, `d_spacings`.
+Constraints: All 5 validation checks (length/count, strictly-ascending
+`two_theta`, each `two_theta` entry within the open interval `(0,
+180)`, non-negative `intensity`, positive `wavelength`) must run to
+completion before
+`scipy.signal.find_peaks` is ever called. This is a peak-detection and
+geometric d-spacing calculation only — no crystal-structure/
+lattice-parameter refinement, no Miller-index assignment, and no
+phase-identification database lookup in this increment, per
+REQ-AIMS-090 Constraints. The default `wavelength=1.5406` Å is the
+standard Cu-Kα1 X-ray wavelength, overridable for other radiation
+sources. `scipy.signal.find_peaks` is already available via the root
+`pyproject.toml` `scipy` dependency.
+Requirements: REQ-AIMS-090
+ADRs: none — this wraps `scipy.signal.find_peaks` directly with the
+standard, single documented Bragg's-law d-spacing formula, with no
+rejected architectural alternative; this follows the same direct-wrap
+pattern already established by DES-AIMS-010 through DES-AIMS-070 for
+this feature's other `scipy`-backed simulation modules.
+Depends-On: DES-AIMS-001, DES-AIMS-002, DES-AIMS-003
