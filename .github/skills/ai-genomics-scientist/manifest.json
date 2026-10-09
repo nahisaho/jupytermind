@@ -103,5 +103,57 @@
         "ACMG・AMP分類"
       ]
     }
+  },
+  "crispr-pam-scan": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_crispr_pam_scan",
+    "names": {
+      "en": [
+        "crispr-pam-scan",
+        "CRISPR PAM site scan"
+      ],
+      "ja": [
+        "CRISPR PAM部位スキャン"
+      ]
+    }
+  },
+  "crispr-off-target-score": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_crispr_off_target_score",
+    "names": {
+      "en": [
+        "crispr-off-target-score",
+        "CRISPR off-target mismatch score"
+      ],
+      "ja": [
+        "CRISPRオフターゲットミスマッチスコア"
+      ]
+    }
+  },
+  "phylogenetic-clustering": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_phylogenetic_clustering",
+    "names": {
+      "en": [
+        "phylogenetic-clustering",
+        "UPGMA phylogenetic tree construction"
+      ],
+      "ja": [
+        "UPGMA系統樹構築"
+      ]
+    }
+  },
+  "mirna-target-prediction": {
+    "modulePath": "ai_genomics_scientist.dispatch",
+    "functionName": "handle_mirna_target_prediction",
+    "names": {
+      "en": [
+        "mirna-target-prediction",
+        "miRNA seed-match target-site prediction"
+      ],
+      "ja": [
+        "miRNAシード一致ターゲット部位予測"
+      ]
+    }
   }
 }

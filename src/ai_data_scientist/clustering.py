@@ -9,11 +9,14 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
 
 _SUPPORTED_METHODS = ("kmeans", "pca")
+_UNSUPERVISED_MODEL_METHODS = ("tsne",)
 
 
 @dataclass(frozen=True)
@@ -52,3 +55,36 @@ def cluster_or_reduce(
     return UnsupervisedResult(
         labels_or_components=labels_or_components, method=method, params=params
     )
+
+
+# @id CODE-AIDS-171
+# @implements REQ-AIDS-111
+# @design DES-AIDS-115
+def fit_unsupervised_model(
+    method: str,
+    x: list[list[float]],
+    n_components: int = 2,
+    random_state: int = 42,
+    perplexity: float = 30.0,
+) -> dict[str, list[list[float]]]:
+    """Fit a non-linear unsupervised embedding model (``t-SNE``) on ``x``.
+
+    Independent of, and never reads or writes, ``cluster_or_reduce``'s own
+    ``_SUPPORTED_METHODS`` value domain.
+    """
+    if method not in _UNSUPERVISED_MODEL_METHODS:
+        raise ValueError(f"Unsupported method: {method!r}")
+    if perplexity >= len(x):
+        raise ValueError(
+            f"perplexity ({perplexity}) must be less than the number of samples ({len(x)})"
+        )
+
+    model = TSNE(
+        n_components=n_components,
+        random_state=random_state,
+        perplexity=perplexity,
+        init="pca",
+    )
+    embedding = model.fit_transform(np.asarray(x, dtype=float)).tolist()
+
+    return {"embedding": embedding}

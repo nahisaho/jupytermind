@@ -43,11 +43,17 @@ DispatchResult` where `DispatchResult` is one of
 or `{outcome: "rejected", language, rejected_method}`. `handler_result`
 is always a `ModuleOutcome`: either `{ok: true, run_record}` on
 success, or `{ok: false, parameter, constraint, language}` on a module
-validation failure. The manifest owns these 8 exact method keys:
+validation failure. The manifest owns these 12 exact method keys:
 `sequence-features`, `variant-effect-annotation`,
 `splice-site-strength`, `gene-set-enrichment`,
 `pairwise-sequence-alignment`, `differential-expression`,
-`variant-pathogenicity`, and `acmg-amp-classification`.
+`variant-pathogenicity`, `acmg-amp-classification`,
+`crispr-pam-scan`, `crispr-off-target-score`,
+`phylogenetic-clustering`, and `mirna-target-prediction` — the last 4
+added by this change (REQ-AGENOM-100/101/110/120), each wired through
+this same manifest-driven dispatcher with its own `handle_*` wrapper
+following the identical pattern as the 8 pre-existing methods, with no
+change to the dispatcher's own matching/clarification/rejection logic.
 Constraints: Must invoke at most one module per request; must apply
 Unicode NFKC normalization before substring matching; must collapse
 multiple matched strings that map to the same method before counting
@@ -64,10 +70,27 @@ against that module's documented biological-validity,
 alphabet-validity, or numerical-adequacy domain before any invalid
 scope produces a result. Supports both validation granularities that
 REQ-AGENOM-003 defines: atomic whole-run validation for
-REQ-AGENOM-020/030/040/050/060/070/090, and per-item validation for
-REQ-AGENOM-010's batch sequence input. Expose a shared validator
-registry so each module registers its own documented validator at import
-time.
+REQ-AGENOM-020/030/040/050/060/070/090/100/101/110/120, and per-item
+validation for REQ-AGENOM-010's batch sequence input. Expose a shared
+validator registry so each module registers its own documented
+validator at import time. The 4 new atomic validators this change adds
+follow the same registry pattern: `crispr-pam-scan` rejects a
+non-uppercase-ACGT or empty `sequence` (constraints "must be non-empty"
+/ "must be uppercase over {A,C,G,T}"); `crispr-off-target-score` rejects
+an empty, unequal-length, or invalid-alphabet `guide`/`candidate`
+(constraints "must be non-empty" and "must be equal length" plus the
+offending parameter's own alphabet constraint, each naming `guide`
+and/or `candidate` per REQ-AGENOM-101 Statement/Acceptance);
+`phylogenetic-clustering` rejects a non-square, non-symmetric,
+non-zero-diagonal, non-finite/negative-valued, or sub-2-taxon
+`distance_matrix` (the 4 named constraints REQ-AGENOM-110 specifies);
+and `mirna-target-prediction` rejects a too-short or invalid-alphabet
+`mirna` (constraints "must be at least 8 nucleotides" / "must be
+uppercase over {A,C,G,U}") and, independently, an empty or
+invalid-alphabet `utr` (constraints "must be non-empty" / "must be
+uppercase over {A,C,G,T}", naming `utr` per REQ-AGENOM-120
+Statement/Acceptance) — both `mirna` and `utr` are validated atomically
+before seed derivation or scanning.
 Interfaces: `register_validator(module_name, validator) -> None`,
 `validate_parameters(module_name, params) -> ValidationResult`,
 `register_batch_item_validator(module_name, validator) -> None`, and
@@ -77,11 +100,13 @@ constraint}`. Whole-run validators reject the entire request before any
 module result is produced; per-item validators reject only the invalid
 batch element while leaving other items computable.
 Constraints: The validator registry is keyed by manifest method name.
-Atomic validators cover REQ-AGENOM-020/030/040/050/060/070/090 and must
-reject the entire run before any variant annotation, splice scoring,
-hypergeometric p-value calculation, dynamic-programming alignment, or
-ACMG/AMP rule evaluation is performed. REQ-AGENOM-090's validator
-checks, in order: `criteria` is a non-empty list (constraint "must be a
+Atomic validators cover REQ-AGENOM-020/030/040/050/060/070/090/100/101/110/120
+and must reject the entire run before any variant annotation, splice
+scoring, hypergeometric p-value calculation, dynamic-programming
+alignment, ACMG/AMP rule evaluation, PAM/protospacer scan, Hamming-
+distance score, UPGMA linkage, or seed-match scan is performed.
+REQ-AGENOM-090's validator checks, in order: `criteria` is a non-empty
+list (constraint "must be a
 non-empty list"); contains no duplicate entries (constraint "must not
 contain duplicate codes"); and every entry is one of the 28 standard
 ACMG/AMP codes (constraint "each must be one of the 28 standard
@@ -89,7 +114,7 @@ ACMG/AMP criterion codes"). The per-item validator path is reserved for
 `sequence-features`, which rejects an invalid `sequence` item with the
 exact named constraint "must be a non-empty uppercase DNA string over
 {A,C,G,T} with length >= 3" without aborting the rest of the batch.
-Requirements: REQ-AGENOM-003, REQ-AGENOM-010, REQ-AGENOM-020, REQ-AGENOM-030, REQ-AGENOM-040, REQ-AGENOM-050, REQ-AGENOM-060, REQ-AGENOM-070, REQ-AGENOM-090
+Requirements: REQ-AGENOM-003, REQ-AGENOM-010, REQ-AGENOM-020, REQ-AGENOM-030, REQ-AGENOM-040, REQ-AGENOM-050, REQ-AGENOM-060, REQ-AGENOM-070, REQ-AGENOM-090, REQ-AGENOM-100, REQ-AGENOM-101, REQ-AGENOM-110, REQ-AGENOM-120
 ADRs: ADR-0034
 Depends-On: DES-AGENOM-001
 
@@ -98,24 +123,30 @@ Responsibilities: Capture every successful module run as a JSON-safe
 `RunRecord` with exactly three top-level keys: `metadata`,
 `parameters`, and `result`. Called exactly once by each handler wrapper
 after module validation succeeds and the raw `run_*` function returns.
-The raw results of all 8 genomics modules are already JSON-safe
+The raw results of all 12 genomics modules are already JSON-safe
 (scalars, strings, booleans, lists, and nested dicts of these), so no
 array codec is needed.
 Interfaces: `record_run(module_name, params, result, *, numpy_version,
 scipy_version) -> RunRecord` where `RunRecord = {metadata,
 parameters, result}` and `metadata` always contains at least `module`,
 `schema_version`, `numpy_version`, and `scipy_version`, matching
-REQ-AGENOM-004's acceptance that all 8 modules' run records carry
-`scipy_version`. Every handler wrapper, including the 6 modules whose
-own governing computation does not call any `scipy` function, supplies
-the installed `scipy.__version__` string alongside `numpy_version`;
-only `gene-set-enrichment`'s computation directly calls
-`scipy.stats.hypergeom.sf` and `differential-expression`'s computation
-directly calls `scipy.stats.ttest_ind`. `acmg-amp-classification`
-(REQ-AGENOM-090) is pure Python set/counting logic with no numpy/scipy
-call of its own, but its handler wrapper still supplies both version
-strings for `RunRecord.metadata` schema uniformity, per this same
-module's existing precedent.
+REQ-AGENOM-004's acceptance that all 12 modules' run records carry
+`scipy_version`. Every handler wrapper, including the modules whose own
+governing computation does not call any `scipy` function, supplies the
+installed `scipy.__version__` string alongside `numpy_version`;
+`gene-set-enrichment`'s computation directly calls
+`scipy.stats.hypergeom.sf`, `differential-expression`'s computation
+directly calls `scipy.stats.ttest_ind`, and `phylogenetic-clustering`
+(REQ-AGENOM-110, this change) directly calls
+`scipy.cluster.hierarchy.linkage` and
+`scipy.spatial.distance.squareform`. `acmg-amp-classification`
+(REQ-AGENOM-090), `crispr-pam-scan` (REQ-AGENOM-100),
+`crispr-off-target-score` (REQ-AGENOM-101), and
+`mirna-target-prediction` (REQ-AGENOM-120, all this change except
+`acmg-amp-classification`) are pure Python string/set logic with no
+numpy/scipy call of their own, but each handler wrapper still supplies
+both version strings for `RunRecord.metadata` schema uniformity, per
+this same module's existing precedent.
 Constraints: Re-running with identical `parameters` against the same
 installed numpy/scipy versions must reproduce equal results under
 REQ-AGENOM-004's comparison rules; no random seed is recorded because
@@ -390,6 +421,10 @@ layout under `src/ai_genomics_scientist/`:
 | DES-AGENOM-070 | REQ-AGENOM-070 | ADR-0108 |
 | DES-AGENOM-080 | REQ-AGENOM-080 | ADR-0113 |
 | DES-AGENOM-090 | REQ-AGENOM-090 | ADR-0119 |
+| DES-AGENOM-100 | REQ-AGENOM-100 | none |
+| DES-AGENOM-101 | REQ-AGENOM-101 | none |
+| DES-AGENOM-110 | REQ-AGENOM-110 | none |
+| DES-AGENOM-120 | REQ-AGENOM-120 | none |
 
 ## Skill documentation deliverables / スキル文書成果物
 
@@ -397,22 +432,35 @@ layout under `src/ai_genomics_scientist/`:
 `.github/skills/ai-genomics-scientist/SKILL.md` are required
 implementation deliverables alongside the `src/ai_genomics_scientist/`
 package. `SKILL.md` must mirror the workflow structure already used by
-`ai-chemistry-scientist`, list the eight supported methods, repeat the
-REQ-AGENOM-030 heuristic limitation label verbatim in both English and
-Japanese, document REQ-AGENOM-060's and REQ-AGENOM-070's heuristic
-nature as the selected way to satisfy those 2 requirements' own
-non-misrepresentation constraints (per ADR-0107 and ADR-0108: not a
-DESeq2/edgeR replacement and not a validated clinical pathogenicity
-predictor, respectively) — neither of those 2 newer modules has a
-single fixed verbatim label string defined in requirements.md the way
-REQ-AGENOM-030 does — and additionally must state, in both languages,
-REQ-AGENOM-090's explicit non-clinical disclaimer that its ACMG/AMP
-classification output "is not a clinical diagnosis, clinical
-recommendation, or substitute for qualified variant-review/expert
-judgment" and "must not be presented as an authoritative final
-classification" (REQ-AGENOM-090 Constraints, quoted verbatim), together
-with ADR-0119's documented `conflicting_criteria` disambiguation being
-this implementation's own addition beyond the published guideline.
+`ai-chemistry-scientist`, list the twelve supported methods (the
+original eight plus this change's `crispr-pam-scan`,
+`crispr-off-target-score`, `phylogenetic-clustering`, and
+`mirna-target-prediction`), repeat the REQ-AGENOM-030 heuristic
+limitation label verbatim in both English and Japanese, document
+REQ-AGENOM-060's and REQ-AGENOM-070's heuristic nature as the selected
+way to satisfy those 2 requirements' own non-misrepresentation
+constraints (per ADR-0107 and ADR-0108: not a DESeq2/edgeR replacement
+and not a validated clinical pathogenicity predictor, respectively) —
+neither of those 2 newer modules has a single fixed verbatim label
+string defined in requirements.md the way REQ-AGENOM-030 does — and
+additionally must state, in both languages, REQ-AGENOM-090's explicit
+non-clinical disclaimer that its ACMG/AMP classification output "is not
+a clinical diagnosis, clinical recommendation, or substitute for
+qualified variant-review/expert judgment" and "must not be presented as
+an authoritative final classification" (REQ-AGENOM-090 Constraints,
+quoted verbatim), together with ADR-0119's documented
+`conflicting_criteria` disambiguation being this implementation's own
+addition beyond the published guideline. This change's own 4 new
+modules likewise require their own verbatim non-misrepresentation
+statements in both languages: REQ-AGENOM-100's "not a validated guide-
+design, cleavage-efficiency, specificity, or off-target-safety
+assessment"; REQ-AGENOM-101's "must not be presented as a validated
+off-target-risk prediction, only as a coarse illustrative heuristic";
+and REQ-AGENOM-120's "must not be presented as a validated
+target-prediction tool equivalent to those published algorithms"
+(TargetScan/miRanda/PicTar); REQ-AGENOM-110 carries no equivalent
+disclaimer since UPGMA linkage via `scipy.cluster.hierarchy.linkage` is
+a direct, non-heuristic statistical computation.
 
 ## DES-AGENOM-080: npm skill-package completeness guard / npmスキル同梱完全性ガード
 Responsibilities: Preserve parity between the npm bootstrap package's
@@ -505,4 +553,125 @@ REQ-AGENOM-090's own Constraints rather than substituted via a label-key
 indirection.
 Requirements: REQ-AGENOM-090
 ADRs: ADR-0119
+Depends-On: DES-AGENOM-001, DES-AGENOM-002, DES-AGENOM-003
+
+## DES-AGENOM-100: CRISPR guide-RNA PAM-site scan module / CRISPRガイドRNA PAM部位スキャンモジュール
+Responsibilities: Receive an already-validated non-empty uppercase
+A/C/G/T `sequence`, scan every position `i` for a 3′ `NGG` PAM
+(`sequence[i+1:i+3] == "GG"`) with a fully in-bounds preceding 20bp
+protospacer `sequence[i-20:i]` (forward strand, canonical `NGG` only, no
+reverse-complement scan, no alternative PAM motifs), and report
+`{sites}` as the ascending-`pam_index`-ordered list of every
+`{pam_index, pam, protospacer}` match.
+Interfaces: `run_crispr_pam_scan(sequence) -> CrisprPamScanResult
+{sites: list[{pam_index: int, pam: str, protospacer: str}]}`.
+Constraints: Validation is whole-run and atomic (empty `sequence`
+rejected with constraint "must be non-empty"; non-uppercase-ACGT
+`sequence` rejected with constraint "must be uppercase over
+{A,C,G,T}"), performed by DES-AGENOM-002 before this function is ever
+called. Sequences shorter than 23 characters always yield `sites = []`
+(empty, not an error, since no 23-character PAM+protospacer window can
+fit). Enumerated sites are motif matches only, not a validated
+guide-design, cleavage-efficiency, specificity, or off-target-safety
+assessment, per REQ-AGENOM-100 Constraints; this must be reflected in
+the module's required `SKILL.md` documentation.
+Requirements: REQ-AGENOM-100
+ADRs: none — this is a direct, single-documented-algorithm forward
+substring scan with no rejected architectural alternative; restricting
+the scan to the forward strand and canonical `NGG` only is a direct,
+uncontested consequence of REQ-AGENOM-100's own Constraints ("no
+reverse-complement scan, no alternative PAM motifs... in this
+increment"), mirroring DES-AGENOM-010's precedent of a plain forward
+sequence scan with no competing design considered.
+Depends-On: DES-AGENOM-001, DES-AGENOM-002, DES-AGENOM-003
+
+## DES-AGENOM-101: CRISPR guide off-target Hamming-distance heuristic module / CRISPRガイドオフターゲットハミング距離ヒューリスティックモジュール
+Responsibilities: Receive already-validated equal-length uppercase
+A/C/G/T `guide`/`candidate` strings, compute `mismatches` as their
+Hamming distance (count of differing positions), compute `score = 1 /
+(1 + mismatches)`, and report `{mismatches, score}`.
+Interfaces: `run_crispr_off_target_score(guide, candidate) ->
+CrisprOffTargetResult {mismatches: int, score: float}`.
+Constraints: Validation is whole-run and atomic (empty or unequal-length
+`guide`/`candidate` rejected naming both with constraints "must be
+non-empty" and "must be equal length"; invalid-alphabet entries
+rejected naming the offending parameter), performed by DES-AGENOM-002
+before this function is ever called. This is a simplified Hamming-distance-based heuristic, not the
+published MIT/CFD/Doench on-/off-target scoring algorithms (which
+additionally weight mismatch position and type), per REQ-AGENOM-101
+Constraints; this must be reflected in the module's required
+`SKILL.md` documentation as a coarse illustrative heuristic, not a
+validated off-target-risk prediction.
+Requirements: REQ-AGENOM-101
+ADRs: none — this is a direct, single-documented-formula
+(Hamming-distance-based) heuristic with no rejected architectural
+alternative; the explicit non-equivalence to the published MIT/CFD/
+Doench scoring algorithms is REQ-AGENOM-101's own stated scope
+limitation (Constraints), not a competing design this module weighed
+and rejected.
+Depends-On: DES-AGENOM-001, DES-AGENOM-002, DES-AGENOM-003
+
+## DES-AGENOM-110: UPGMA phylogenetic clustering module via `scipy.cluster.hierarchy.linkage` / `scipy.cluster.hierarchy.linkage`によるUPGMA系統クラスタリングモジュール
+Responsibilities: Receive an already-validated symmetric, zero-diagonal,
+non-negative finite `distance_matrix` (`n >= 2` taxa), compute
+`scipy.cluster.hierarchy.linkage(scipy.spatial.distance.squareform(
+distance_matrix), method="average")` (UPGMA), and report
+`{linkage_matrix}` as the `(n-1) x 4` list of `[cluster_a, cluster_b,
+distance, count]` merge rows.
+Interfaces: `run_phylogenetic_clustering(distance_matrix) ->
+PhylogeneticClusteringResult {linkage_matrix: list[list[float]]}`.
+Constraints: Validation is whole-run and atomic (non-square, ragged,
+non-symmetric, non-zero-diagonal, negative-valued, non-finite, or
+sub-2-taxon `distance_matrix` each rejected with their own named
+constraint from REQ-AGENOM-110's Statement/Acceptance), performed by
+DES-AGENOM-002 before this function is ever called. Tied merge
+distances are resolved exactly as the project's currently pinned
+`scipy` version's `scipy.cluster.hierarchy.linkage` resolves them
+(lowest cluster-index pair first); this module delegates to, rather
+than independently re-specifies, that installed version's observed
+deterministic tie-break behavior, per REQ-AGENOM-110 Acceptance.
+`scipy.cluster.hierarchy` and `scipy.spatial.distance` are already
+available via the root `pyproject.toml` `scipy` dependency.
+Requirements: REQ-AGENOM-110
+ADRs: none — this is a direct, single-documented-algorithm wrap of
+`scipy.cluster.hierarchy.linkage(method="average")` with no rejected
+architectural alternative; delegating tied-distance tie-breaking to the
+installed `scipy` version's own observed behavior (rather than this
+module independently re-specifying a tie-break rule) is a direct,
+uncontested consequence of REQ-AGENOM-110's own Acceptance text.
+Depends-On: DES-AGENOM-001, DES-AGENOM-002, DES-AGENOM-003
+
+## DES-AGENOM-120: miRNA canonical-7mer-seed target-site prediction module / miRNA正準7merシードターゲット部位予測モジュール
+Responsibilities: Receive an already-validated mature miRNA `mirna`
+(uppercase A/C/G/U, length `>= 8`) and a 3′UTR `utr` (uppercase
+A/C/G/T), derive the canonical 7mer seed region (miRNA positions 2-8,
+1-indexed), convert it to its DNA form and compute its reverse
+complement as `seed`, then scan `utr` forward over every start position
+including overlapping occurrences for every 0-based index at which
+`seed` occurs, and report `{seed, match_positions}` as the ascending
+list of matches.
+Interfaces: `run_mirna_target_prediction(mirna, utr) ->
+MirnaTargetPredictionResult {seed: str, match_positions: list[int]}`.
+Constraints: Validation is whole-run and atomic (`mirna` shorter than 8
+nucleotides rejected with constraint "must be at least 8 nucleotides";
+lowercase or non-U/T-consistent `mirna` rejected with constraint "must
+be uppercase over {A,C,G,U}"; empty or invalid-alphabet `utr` rejected
+naming `utr` with constraints "must be non-empty" / "must be uppercase
+over {A,C,G,T}"), performed by DES-AGENOM-002 before this
+function is ever called. The forward scan must include overlapping
+occurrences (advancing one position at a time, never skipping past a
+found match), since REQ-AGENOM-120's own synthetic fixture
+(`seed="AAAAAAA"` against `utr="AAAAAAAAG"`) specifically exercises and
+requires overlap detection (`match_positions = [0, 1]`). This is a
+canonical-7mer-seed-only heuristic (no 6mer/8mer variants, no mismatch
+tolerance, no thermodynamic/accessibility scoring as used by
+TargetScan/miRanda/PicTar), per REQ-AGENOM-120 Constraints; this must be
+reflected in the module's required `SKILL.md` documentation.
+Requirements: REQ-AGENOM-120
+ADRs: none — this is a direct, single-documented-heuristic (canonical
+7mer seed, plain overlapping substring search) with no rejected
+architectural alternative; the explicit non-equivalence to
+TargetScan/miRanda/PicTar's thermodynamic/accessibility scoring is
+REQ-AGENOM-120's own stated scope limitation (Constraints), not a
+competing design this module weighed and rejected.
 Depends-On: DES-AGENOM-001, DES-AGENOM-002, DES-AGENOM-003

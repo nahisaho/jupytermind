@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
-  "runId": "93e8adf2-66e7-471b-b526-be7ac5b6f988",
-  "generatedAt": "2026-10-07T18:38:58.372Z",
+  "runId": "c32b5a75-6684-47f8-a931-925fe43d7d34",
+  "generatedAt": "2026-10-09T08:35:06.098Z",
   "executions": [
     {
-      "runId": "93e8adf2-66e7-471b-b526-be7ac5b6f988",
-      "executionId": "9640155d5a8af77c2f3b7cba06018e444124ed01bcf40e07962aeae9fc0633bf",
+      "runId": "c32b5a75-6684-47f8-a931-925fe43d7d34",
+      "executionId": "2ed9d9b11275b9c5662fe5f5a39c55cb126045740b15eafe04dc3465b58d1d8a",
       "commandName": "performance",
       "commandSha256": "4661a33354ac5aecc444fb4fb7c096c3f2add7009bbc4032ff36f9d526e30ca4",
       "reportPath": ".musubix/evidence/native/performance/TEST-AIDS-PYTEST-001.json",
@@ -22,7 +22,7 @@
           }
         }
       ],
-      "recordSha256": "67bb5e973c355cee47b201e33a1d4ec680290dcdd1090b6666fd9119d02335cf"
+      "recordSha256": "2a64e6d898ea6f5d8c72bb8a08ea6f03591d0ebf3275f14fcdcee558b2036399"
     }
   ],
   "observations": [
@@ -34,8 +34,8 @@
       "maximum": 100,
       "status": "pass",
       "provenance": {
-        "runId": "93e8adf2-66e7-471b-b526-be7ac5b6f988",
-        "executionId": "9640155d5a8af77c2f3b7cba06018e444124ed01bcf40e07962aeae9fc0633bf",
+        "runId": "c32b5a75-6684-47f8-a931-925fe43d7d34",
+        "executionId": "2ed9d9b11275b9c5662fe5f5a39c55cb126045740b15eafe04dc3465b58d1d8a",
         "commandName": "performance",
         "commandSha256": "4661a33354ac5aecc444fb4fb7c096c3f2add7009bbc4032ff36f9d526e30ca4",
         "reportPath": ".musubix/evidence/native/performance/TEST-AIDS-PYTEST-001.json",
@@ -47,8 +47,8 @@
         "value": 100,
         "processStatus": "completed",
         "exitCode": 0,
-        "executionRecordSha256": "67bb5e973c355cee47b201e33a1d4ec680290dcdd1090b6666fd9119d02335cf",
-        "recordSha256": "78f8e8424addddc7c2cf5cfa6066da69dfe785fe7a6822a81ccfc0a32235366e"
+        "executionRecordSha256": "2a64e6d898ea6f5d8c72bb8a08ea6f03591d0ebf3275f14fcdcee558b2036399",
+        "recordSha256": "03cb5108fc8909701730543880fdfe0fe0f8de273c1c412f48495ef8e3980668"
       }
     }
   ]

@@ -529,3 +529,88 @@ Requirements: REQ-AIDS-078
 ADRs: ADR-0103
 Depends-On: DES-AIDS-063, DES-AIDS-064, DES-AIDS-065
 Code: CODE-AIDS-119 through CODE-AIDS-124 (renumbered at merge to avoid colliding with CHANGE-008's CODE-AIDS-094/095 in `feature_engineering.py`; see CHANGE-009.md).
+
+## DES-AIDS-115: `clustering.fit_unsupervised_model` t-SNE embedding via `sklearn.manifold.TSNE` / `sklearn.manifold.TSNE`によるt-SNE埋め込み
+Responsibilities: A new function `fit_unsupervised_model(method, x,
+n_components=2, random_state=42, perplexity=30.0)`, added alongside
+(not replacing) the module's existing `cluster_or_reduce(df,
+method="kmeans", params=None)` function and its own
+`_SUPPORTED_METHODS = ("kmeans", "pca")` constant, which this change
+must not rename, remove, or alter. Validates `method` is in this new
+function's own, independent value domain `{"tsne"}`, raising
+`ValueError` naming `method` for any other value; validates `x` is a 2D
+numeric array with `len(x) >= 4`; and validates `perplexity < len(x)`,
+raising `ValueError` naming `perplexity` with the constraint "must be
+less than the number of samples" otherwise (the underlying `TSNE`
+constraint). When `method="tsne"`, computes
+`sklearn.manifold.TSNE(n_components=n_components,
+random_state=random_state, perplexity=perplexity,
+init="pca").fit_transform(x)` and reports `{embedding}` (an
+`n_samples x n_components` list of lists).
+Interfaces: `clustering.fit_unsupervised_model(method: str, x:
+list[list[float]], n_components: int = 2, random_state: int = 42,
+perplexity: float = 30.0) -> dict[str, list[list[float]]]` with exactly
+the key `embedding`; this is a distinct function and value-domain
+constant from `cluster_or_reduce`'s own `_SUPPORTED_METHODS`, never
+read or written by `cluster_or_reduce`.
+Constraints: `cluster_or_reduce`'s behavior, signature, and supported-
+method set must remain unchanged. Both validation checks (`method`
+domain, `perplexity < len(x)`) must run to completion before `TSNE` is
+ever constructed. Acceptance is verified by the version-robust
+structural invariant (within-cluster vs. between-cluster mean embedding
+distance) ADR-0123 documents, not literal embedding coordinates, because
+`TSNE`'s internal optimizer is not guaranteed bit-identical across
+`scikit-learn` minor/major releases even with a fixed `random_state`.
+Only 2D/3D Euclidean embeddings are supported in this increment
+(parameters beyond `n_components`/`random_state`/`perplexity` use the
+library defaults). `sklearn.manifold.TSNE` is already available via the
+root `pyproject.toml` `scikit-learn>=1.5` dependency; no new dependency
+is introduced.
+Requirements: REQ-AIDS-111
+ADRs: ADR-0123
+Depends-On: DES-AIDS-014
+
+## DES-AIDS-116: `anomaly_detection.detect_multivariate_anomalies` IsolationForest/LOF multivariate anomaly detection / `IsolationForest`・`LocalOutlierFactor`による多変量異常検知
+Responsibilities: A new function `detect_multivariate_anomalies(method,
+x, n_neighbors=20)`, added alongside (not replacing) the module's
+existing single-column `detect_anomalies(df, column, method="zscore",
+params=None)` function and its own `_SUPPORTED_METHODS = ("zscore",)`
+constant, which this change must not rename, remove, or alter. Validates
+`method` is in this new function's own, independent value domain
+`{"isolation_forest", "lof"}`, raising `ValueError` naming `method` for
+any other value; validates `x` is a 2D numeric array with
+`len(x) >= 2`; and, for `"lof"`, validates `n_neighbors >= 1`, raising
+`ValueError` naming `n_neighbors` with the constraint "must be >= 1"
+otherwise. When `method="isolation_forest"`, computes
+`sklearn.ensemble.IsolationForest(n_estimators=50,
+random_state=42).fit_predict(x)`; when `method="lof"`, computes
+`sklearn.neighbors.LocalOutlierFactor(n_neighbors=min(n_neighbors,
+len(x) - 1)).fit_predict(x)` (the effective neighbor count always
+auto-capped, never requiring `len(x) > n_neighbors`). Reports `{labels,
+is_outlier}` where `labels` is the raw per-sample `1`/`-1` prediction
+array and `is_outlier` is the equivalent boolean list (`True` where
+`labels == -1`).
+Interfaces: `anomaly_detection.detect_multivariate_anomalies(method:
+str, x: list[list[float]], n_neighbors: int = 20) -> dict[str,
+list[int] | list[bool]]` with exactly the keys `labels`, `is_outlier`;
+this is a distinct function and value-domain constant from
+`detect_anomalies`'s own `_SUPPORTED_METHODS`, never read or written by
+`detect_anomalies`.
+Constraints: `detect_anomalies`'s behavior and signature must remain
+unchanged. Both validation checks (`method` domain, `n_neighbors >= 1`
+for `"lof"`) must run to completion before `IsolationForest`/
+`LocalOutlierFactor` is ever constructed. Acceptance is verified by the
+version-robust shape/value-domain/boolean-equivalence invariant plus the
+2 known-outlier-index invariant ADR-0123 documents (shared with
+REQ-AIDS-111), not literal per-index label equality across arbitrary
+future `scikit-learn` versions. `IsolationForest` results are
+reproducible only for the fixed `random_state=42` (not
+caller-configurable in this increment); `LocalOutlierFactor` results are
+deterministic given fixed data and `n_neighbors`. Both
+`sklearn.ensemble.IsolationForest` and
+`sklearn.neighbors.LocalOutlierFactor` are already available via the
+root `pyproject.toml` `scikit-learn>=1.5` dependency; no new dependency
+is introduced.
+Requirements: REQ-AIDS-112
+ADRs: ADR-0123
+Depends-On: DES-AIDS-015

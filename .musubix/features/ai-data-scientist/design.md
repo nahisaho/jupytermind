@@ -2276,3 +2276,324 @@ third-party dependency.
 Requirements: REQ-AIDS-106
 ADRs: ADR-0121
 Depends-On: none
+
+## DES-AIDS-107: `stats_analysis.kaplan_meier_estimate` non-parametric survival-function estimate via `statsmodels.SurvfuncRight` / 非パラメトリック生存関数推定（`statsmodels.SurvfuncRight`使用）
+Responsibilities: Extend the existing `stats_analysis` module with
+`kaplan_meier_estimate(durations, events)`. Validates `durations` is a
+list of finite positive numbers (`int`/`float`, excluding `bool`) and
+`events` is a list of `0`/`1`/`bool` of the same length `>= 1`
+containing at least 1 positive (`event == 1`) entry, raising
+`ValueError` naming the offending parameter and its exact constraint
+string on any violation before any model fit is attempted. Fits
+`statsmodels.duration.survfunc.SurvfuncRight(durations, events)` and
+reads its `surv_times`, `surv_prob`, and `surv_prob_se` arrays, returning
+exactly the 3 equal-length, time-ascending lists REQ-AIDS-107 names.
+Interfaces: `stats_analysis.kaplan_meier_estimate(durations: list[float],
+events: list[int]) -> dict[str, list[float]]` with exactly the keys
+`times`, `survival_prob`, `survival_se`.
+Constraints: Both validation checks (lengths/minimum count/positivity of
+`durations`, `events` value domain and minimum 1 event) must run to
+completion before `SurvfuncRight(...)` is ever called. This is
+single-sample, non-stratified estimation only — no log-rank test between
+groups and no confidence-interval transform beyond the raw Greenwood
+standard error, per REQ-AIDS-107 Constraints. `statsmodels.duration` is
+already imported by `cox_ph_regression` (REQ-AIDS-106) in this same
+module, so `SurvfuncRight` introduces no new third-party dependency.
+Requirements: REQ-AIDS-107
+ADRs: none — this is a direct, single-documented-algorithm wrap of
+`statsmodels.duration.survfunc.SurvfuncRight` with no rejected
+architectural alternative; the only genuine design choice (reusing the
+already-imported `statsmodels.duration` module rather than a new
+dependency) is a direct, uncontested consequence of REQ-AIDS-106 already
+having introduced that import in this same module.
+Depends-On: none
+
+## DES-AIDS-108: `statistical_testing.run_statistical_test` dispatcher over 5 fixed scipy/statsmodels hypothesis tests with FDR correction / 5種固定仮説検定とFDR補正のディスパッチャ
+Responsibilities: A new `statistical_testing` module providing
+`run_statistical_test(test, **params)` dispatching on `test` in
+`{"anova", "chi_square", "mann_whitney_u", "kruskal_wallis", "fdr_bh"}`.
+Validates `test` against this fixed 5-value domain first, raising
+`ValueError` naming `test` for any other value. Then validates each
+dispatched branch's own parameters (minimum group/row/column counts,
+finite numeric entries, non-zero-variance groups for `"anova"`/
+`"kruskal_wallis"`, non-zero row/column totals for `"chi_square"`,
+`p_values` entries in `[0, 1]` for `"fdr_bh"`) before calling the
+underlying library function, so a degenerate input that would otherwise
+make `scipy.stats.f_oneway`/`scipy.stats.kruskal` return `NaN` or make
+`scipy.stats.chi2_contingency` itself raise is rejected up front with
+this module's own named `ValueError` instead. Dispatches to
+`scipy.stats.f_oneway(*groups)` (`"anova"`),
+`scipy.stats.chi2_contingency(table, correction=False)`
+(`"chi_square"`), `scipy.stats.mannwhitneyu(a, b,
+alternative="two-sided")` (`"mann_whitney_u"`), `scipy.stats.kruskal(
+*groups)` (`"kruskal_wallis"`), and
+`statsmodels.stats.multitest.multipletests(p_values, method="fdr_bh")`
+(`"fdr_bh"`), returning exactly the keys each branch's Statement names.
+Interfaces: `statistical_testing.run_statistical_test(test: str,
+**params) -> dict` where the returned dict's keys depend on `test`:
+`{statistic, p_value}` for `"anova"`/`"mann_whitney_u"`/
+`"kruskal_wallis"`, `{statistic, p_value, dof}` for `"chi_square"`, and
+`{rejected, corrected_p_values}` for `"fdr_bh"`.
+Constraints: Per-branch validation must run to completion before that
+branch's library function is ever called, so no raw `NaN` result or
+unwrapped library exception is ever surfaced to the caller.
+`"chi_square"` uses Pearson's chi-square without Yates' continuity
+correction (`correction=False`); `"fdr_bh"` applies the
+Benjamini-Hochberg procedure at the library's default `alpha=0.05`. This
+is a single dispatcher function over 5 fixed, well-established
+statistical procedures with no custom test derivation, per REQ-AIDS-108
+Constraints. `scipy.stats` and `statsmodels.stats.multitest` are already
+root `pyproject.toml` dependencies.
+Requirements: REQ-AIDS-108
+ADRs: none — each of the 5 dispatched branches is a direct,
+single-documented-algorithm call to an existing `scipy.stats`/
+`statsmodels.stats.multitest` function with no rejected architectural
+alternative; the only genuine design choices (rejecting all-constant
+`groups` and zero-total `table` rows/columns up front, rather than
+surfacing `scipy`'s own `NaN` result or raised exception) are direct,
+uncontested consequences of REQ-AIDS-108's own Acceptance criteria,
+mirroring DES-AIDS-105's precedent for this same kind of degenerate-input
+rejection.
+Depends-On: none
+
+## DES-AIDS-109: `statistical_simulation.bootstrap_confidence_interval` and `.power_analysis` via `scipy.stats.bootstrap` and `statsmodels.TTestIndPower` / ブートストラップ信頼区間と検定力分析
+Responsibilities: A new `statistical_simulation` module providing
+`bootstrap_confidence_interval(data, statistic="mean",
+confidence_level=0.95, n_resamples=2000, random_state=42)` and
+`power_analysis(effect_size, alpha=0.05, nobs1=None, power=None,
+ratio=1.0)`. `bootstrap_confidence_interval` validates `data` is a list
+of finite numbers (length `>= 2`), `statistic == "mean"` (the only
+supported value in this increment, raising `ValueError` naming
+`statistic` otherwise), `confidence_level` is a finite number in
+`(0, 1)`, `n_resamples` is a positive integer, and `random_state` is
+`None` or a non-negative integer; then computes
+`scipy.stats.bootstrap((data,), numpy.mean,
+confidence_level=confidence_level, n_resamples=n_resamples,
+random_state=random_state, method="percentile")` and returns `{low,
+high}`. `power_analysis` validates exactly one of `nobs1`/`power` is
+`None` (raising `ValueError` naming both when this fails), that
+`effect_size`/`alpha`/`ratio` are finite positive numbers (`alpha`
+additionally constrained to `(0, 1)`), that a supplied `power` is a
+finite number in `(0, 1)`, and that a supplied `nobs1` is a finite
+number `> 0`; then computes the missing value via
+`statsmodels.stats.power.TTestIndPower()` (`.power(...)` when `power` is
+`None`, `.solve_power(...)` when `nobs1` is `None`) and returns `{nobs1,
+power}`.
+Interfaces: `statistical_simulation.bootstrap_confidence_interval(data:
+list[float], statistic: str = "mean", confidence_level: float = 0.95,
+n_resamples: int = 2000, random_state: int | None = 42) -> dict[str,
+float]` with exactly the keys `low`, `high`; `statistical_simulation.
+power_analysis(effect_size: float, alpha: float = 0.05, nobs1: float |
+None = None, power: float | None = None, ratio: float = 1.0) ->
+dict[str, float]` with exactly the keys `nobs1`, `power`.
+Constraints: All validation for each function must run to completion
+before its underlying `scipy.stats.bootstrap`/
+`statsmodels.stats.power.TTestIndPower` call is ever made.
+`bootstrap_confidence_interval` supports only the sample mean in this
+increment (no user-supplied arbitrary statistic callable, to keep the
+API JSON-serializable and deterministic); `power_analysis` supports only
+the two-sample independent t-test design. `scipy.stats.bootstrap` and
+`statsmodels.stats.power.TTestIndPower` are already available via the
+root `pyproject.toml` `scipy`/`statsmodels` dependencies.
+Requirements: REQ-AIDS-109
+ADRs: none — both functions are direct, single-documented-algorithm
+wraps of `scipy.stats.bootstrap` and `statsmodels.stats.power.
+TTestIndPower` respectively, with no rejected architectural alternative;
+restricting `statistic` to `"mean"` only and the design to the two-sample
+t-test only are direct, uncontested consequences of REQ-AIDS-109's own
+Statement scoping ("only in this increment").
+Depends-On: none
+
+## DES-AIDS-110: `missing_data_analysis.diagnose_missingness` single-probe MCAR-inconsistency heuristic via `scipy.stats.ttest_ind` / 単一プローブ変数によるMCAR非整合性ヒューリスティック
+Responsibilities: A new `missing_data_analysis` module providing
+`diagnose_missingness(target_column, probe_column)`. Validates both
+lists are equal-length (`>= 2`), that `target_column` entries are each a
+finite number or `None` containing at least 1 `None` and at least 1
+non-`None`, that `probe_column` entries are all finite numbers with no
+`None`, and that each missingness-partitioned group has at least 2
+observations (the two-sample t-test's own minimum), raising
+`ValueError` naming the offending parameter and exact constraint on any
+violation. Partitions `probe_column` into a "missing" group (rows where
+`target_column` is `None`) and an "observed" group (rows where it is
+not), runs `scipy.stats.ttest_ind` between the two groups per
+ADR-0124's documented test-choice rationale, and reports `{n_missing,
+t_statistic, p_value, diagnosis, note}` where `diagnosis =
+"MCAR_inconsistent"` (naming `probe_column`) when `p_value < 0.05` and
+`"MCAR_consistent"` otherwise, and `note` is always the fixed
+limitation-disclaimer string REQ-AIDS-110 names verbatim.
+Interfaces: `missing_data_analysis.diagnose_missingness(target_column:
+list[float | None], probe_column: list[float]) -> dict` with exactly
+the keys `n_missing`, `t_statistic`, `p_value`, `diagnosis`, `note`.
+Constraints: All validation must run to completion before
+`scipy.stats.ttest_ind` is ever called. The `note` field is the fixed
+string "This is an MCAR-inconsistency heuristic over one probe column
+only; it cannot confirm MAR and cannot detect or rule out MNAR." on
+every call, regardless of `diagnosis`, so the limitation is never
+silently elided when results are presented to a user. This is a
+heuristic proxy for, not a reimplementation of, Little's (1988) formal
+MCAR chi-square test, per REQ-AIDS-110 Constraints and ADR-0124.
+`scipy.stats.ttest_ind` is already available via the root
+`pyproject.toml` `scipy` dependency.
+Requirements: REQ-AIDS-110
+ADRs: ADR-0124
+Depends-On: none
+
+## DES-AIDS-111: `causal_inference.propensity_score_match` single-covariate greedy nearest-propensity matching via `statsmodels.Logit` / 単一共変量貪欲最近傍傾向スコアマッチング
+Responsibilities: A new `causal_inference` module providing
+`propensity_score_match(covariate, treatment)`. Validates `covariate` is
+a list of finite numbers (length `>= 2`) and `treatment` is a list of
+`0`/`1`/`bool` of the same length containing at least 1 treated and 1
+control unit, raising `ValueError` naming the offending parameter and
+exact constraint on any violation before any model fit is attempted.
+Fits `statsmodels.api.Logit(treatment, statsmodels.api.add_constant(
+covariate)).fit(disp=0)` inside a `try`/`except
+statsmodels.tools.sm_exceptions.PerfectSeparationError` block per
+ADR-0125's 2-path non-convergence design: a raised
+`PerfectSeparationError`, or a returned result whose `mle_retvals.get(
+"converged")` is not `True`, each raise this module's own `ValueError`
+naming `covariate`/`treatment` with the constraint "logistic fit did
+not converge (data may be perfectly or quasi-separated)" before any
+propensity score or match is computed. On successful convergence,
+computes each unit's propensity score via `.predict(...)`, then greedily
+matches each treated unit (in input order, without replacement) to its
+nearest-by-propensity-score unmatched control unit, omitting a treated
+unit from `matches` once all control units are exhausted, and reports
+`{propensity_scores, matches, note}` where `note` is the fixed
+causal-identification-disclaimer string REQ-AIDS-113 names verbatim.
+Interfaces: `causal_inference.propensity_score_match(covariate:
+list[float], treatment: list[int]) -> dict` where `propensity_scores`
+is a `list[float]` matching `covariate`'s order/length, `matches` is a
+`list[dict]` of `{treated_index, control_index, score_distance}` in
+treated-unit input order, and `note` is a fixed string.
+Constraints: Both pre-fit validation checks and ADR-0125's 2-path
+convergence check must run to completion before any propensity score or
+match pair is ever returned. Matching is greedy nearest-neighbor-by-
+propensity-score, 1:1, without replacement, processed in the treated
+units' input order (not optimal bipartite matching), for a single
+covariate only — no caliper/trimming, and no average-treatment-effect
+estimate beyond the matched pairs themselves, per REQ-AIDS-113
+Constraints. The required `note` field carries the identifying-
+assumptions disclaimer on every call so it is never silently elided.
+`statsmodels.api.Logit` is already available via the root
+`pyproject.toml` `statsmodels` dependency.
+Requirements: REQ-AIDS-113
+ADRs: ADR-0125
+Depends-On: none
+
+## DES-AIDS-112: `model_monitoring.population_stability_index` and `.ks_drift_test` univariate drift checks / 単変量モデルドリフト監視（PSI・KS検定）
+Responsibilities: A new `model_monitoring` module providing
+`population_stability_index(expected, actual, n_bins=10)` and
+`ks_drift_test(expected, actual)`. `population_stability_index`
+validates `expected`/`actual` are lists of finite numbers
+(`expected` length `>= n_bins`, `actual` length `>= 1`, `expected`
+spanning a non-zero range), `n_bins` is a plain `int` (excluding `bool`)
+`>= 1`, raising `ValueError` naming the offending parameter and exact
+constraint on any violation; then bins both into `n_bins` equal-width
+bins spanning `expected`'s observed `[min, max]` range (`actual` values
+below/above that range clipped into the first/last bin), computes
+per-bin proportions `e_i`/`a_i` as each bin's count divided by its own
+list's total length (each zero-count proportion floored to `0.0001`),
+computes `psi = sum((a_i - e_i) * ln(a_i / e_i))`, and reports `{psi,
+drift_detected}` where `drift_detected = psi >= 0.2`. `ks_drift_test`
+validates both lists are non-empty with finite entries, computes
+`scipy.stats.ks_2samp(expected, actual)`, and reports `{statistic,
+p_value, drift_detected}` where `drift_detected = p_value < 0.05`.
+Interfaces: `model_monitoring.population_stability_index(expected:
+list[float], actual: list[float], n_bins: int = 10) -> dict[str,
+float | bool]` with exactly the keys `psi`, `drift_detected`;
+`model_monitoring.ks_drift_test(expected: list[float], actual:
+list[float]) -> dict` with exactly the keys `statistic`, `p_value`,
+`drift_detected`.
+Constraints: All validation for each function must run to completion
+before any binning or `scipy.stats.ks_2samp` call. `population_stability_
+index`'s per-bin zero-proportion floor of `0.0001` is this module's own
+documented convention (a common industry practice, not a universal
+standard) to keep `ln(a_i / e_i)` finite; `actual` proportions always
+sum to `1.0` regardless of `expected`'s length, and out-of-range
+`actual` values are clipped into the nearest edge bin rather than
+dropped or erroring. Both functions are univariate, single-feature
+drift checks with no multivariate drift detection in this increment.
+`scipy.stats.ks_2samp` is already available via the root
+`pyproject.toml` `scipy` dependency.
+Requirements: REQ-AIDS-114
+ADRs: none — this wraps `scipy.stats.ks_2samp` directly and a
+documented, direct NumPy-free PSI formula with no rejected architectural
+alternative; the `0.0001` zero-proportion floor and the equal-width,
+clip-to-edge binning convention are this module's own stated industry
+convention (per REQ-AIDS-114's own Constraints text), not a competing
+design choice weighed against an alternative.
+Depends-On: none
+
+## DES-AIDS-113: `symbolic_math.symbolic_compute` AST-whitelisted single-variable symbolic algebra via `sympy` / ASTホワイトリスト検証付き単一変数記号代数（`sympy`使用）
+Responsibilities: A new `symbolic_math` module providing
+`symbolic_compute(operation, expression, variable="x")` dispatching on
+`operation` in `{"solve", "differentiate", "integrate", "simplify"}`,
+raising `ValueError` naming `operation` for any other value. Before any
+`sympy` object is constructed, parses `expression` with
+`ast.parse(expression, mode="eval")` and walks every node per ADR-0122's
+fixed whitelist of node types, `Constant` value types, and the
+elementary-function `Call.func` allowlist, raising `ValueError` naming
+`expression` when `ast.parse` raises `SyntaxError`, when any node fails
+the whitelist walk, or when the parsed expression contains any free
+symbol other than `variable`. Only after this whitelist validation
+passes does it build the `sympy` expression (via `sympy.sympify` or
+`sympy.parsing.sympy_parser.parse_expr` over the already-validated text)
+with a single free symbol named `variable`, apply
+`sympy.solve`/`sympy.diff`/`sympy.integrate`/`sympy.simplify`
+respectively, and report `{result}` as the string form (`str(...)`) of
+the computed symbolic result (a list of strings for `"solve"`).
+Interfaces: `symbolic_math.symbolic_compute(operation: str, expression:
+str, variable: str = "x") -> dict[str, str | list[str]]` with exactly
+the key `result`.
+Constraints: `variable` must be a valid Python identifier that is not a
+reserved keyword (checked via `variable.isidentifier() and not
+keyword.iskeyword(variable)`) naming the expression's sole free symbol,
+raising `ValueError` naming `variable` and the constraint "must be a
+valid Python identifier" before any AST walk or `sympy` call, per
+REQ-AIDS-115 Constraints. `expression` is never passed to any `sympy`/Python parser
+or evaluator before passing ADR-0122's AST whitelist walk in its
+entirety; `__builtins__`-suppression alone (without this AST whitelist)
+is insufficient and must not be relied upon as the sole safeguard, per
+ADR-0122's documented rejected alternative (confirmed exploitable via
+`().__class__.__base__.__subclasses__()` and `__import__` chains during
+this change's rubber-duck review). `symbolic_compute` is single-variable
+only in this increment (no multivariate systems, no symbolic matrices,
+no differential-equation solving), and `"integrate"` returns the
+indefinite integral only, per REQ-AIDS-115 Constraints. This introduces
+`sympy` as a new `pyproject.toml` dependency (`sympy>=1.12`) since no
+existing dependency (`numpy`/`scipy`/`statsmodels`/`scikit-learn`)
+performs general symbolic algebra.
+Requirements: REQ-AIDS-115
+ADRs: ADR-0122
+Depends-On: none
+
+## DES-AIDS-114: `network_analysis.analyze_network` connectivity/centrality over an unweighted undirected graph via `scipy.sparse.csgraph` / 無向非重み付きグラフの連結性・中心性解析
+Responsibilities: A new `network_analysis` module providing
+`analyze_network(adjacency_matrix)`. Validates `adjacency_matrix` is a
+square, symmetric, zero-diagonal 2D list of `0`/`1` entries (not
+`bool`/`float`) with `n >= 2` nodes, raising `ValueError` naming
+`adjacency_matrix` for a non-square matrix, a non-symmetric matrix, a
+non-zero diagonal entry, or an entry not in `{0, 1}`. Computes, via
+`scipy.sparse.csgraph` per ADR-0126, the number of connected components
+and per-node component label (`scipy.sparse.csgraph.
+connected_components`), per-node degree (row sums), the all-pairs
+shortest-path matrix (`scipy.sparse.csgraph.shortest_path(method="D",
+unweighted=True, directed=False)`, `inf` between disconnected nodes),
+and per-node closeness centrality `(reachable_count - 1) / sum(finite
+shortest paths from that node)` (`null` for an isolated node with no
+reachable neighbors), and reports `{n_components, component_labels,
+degree, closeness_centrality}`.
+Interfaces: `network_analysis.analyze_network(adjacency_matrix:
+list[list[int]]) -> dict` with exactly the keys `n_components`,
+`component_labels`, `degree`, `closeness_centrality`.
+Constraints: All 4 structural validation checks must run to completion
+before any `scipy.sparse.csgraph` call. Supports only unweighted,
+undirected, simple graphs in this increment — no directed edges, no
+edge weights, and no betweenness/eigenvector-centrality variants beyond
+degree and closeness, per REQ-AIDS-116 Constraints and ADR-0126.
+`scipy.sparse.csgraph` is already available via the root
+`pyproject.toml` `scipy` dependency; no new dependency (e.g. `networkx`)
+is introduced, per ADR-0126's dependency-minimization decision.
+Requirements: REQ-AIDS-116
+ADRs: ADR-0126
+Depends-On: none

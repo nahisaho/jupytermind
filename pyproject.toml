@@ -25,6 +25,7 @@ dependencies = [
   "japanize-matplotlib>=1.1",
   "packaging>=23",
   "rdkit>=2024.3",
+  "sympy>=1.12",
 ]
 
 [project.optional-dependencies]

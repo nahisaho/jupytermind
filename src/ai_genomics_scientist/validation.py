@@ -20,6 +20,10 @@ _VALIDATOR_MODULES = {
     "pairwise-sequence-alignment": "ai_genomics_scientist.sequence_alignment",
     "differential-expression": "ai_genomics_scientist.differential_expression",
     "variant-pathogenicity": "ai_genomics_scientist.variant_pathogenicity",
+    "crispr-pam-scan": "ai_genomics_scientist.crispr_pam_scan",
+    "crispr-off-target-score": "ai_genomics_scientist.crispr_off_target_score",
+    "phylogenetic-clustering": "ai_genomics_scientist.phylogenetic_clustering",
+    "mirna-target-prediction": "ai_genomics_scientist.mirna_target_prediction",
 }
 
 
