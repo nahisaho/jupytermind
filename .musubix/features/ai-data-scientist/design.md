@@ -2415,8 +2415,9 @@ observations (the two-sample t-test's own minimum), raising
 `ValueError` naming the offending parameter and exact constraint on any
 violation. Partitions `probe_column` into a "missing" group (rows where
 `target_column` is `None`) and an "observed" group (rows where it is
-not), runs `scipy.stats.ttest_ind` between the two groups per
-ADR-0124's documented test-choice rationale, and reports `{n_missing,
+not), runs `scipy.stats.ttest_ind(missing_group, observed_group)`
+(missing group first, per REQ-AIDS-110's Statement) between the two
+groups per ADR-0124's documented test-choice rationale, and reports `{n_missing,
 t_statistic, p_value, diagnosis, note}` where `diagnosis =
 "MCAR_inconsistent"` (naming `probe_column`) when `p_value < 0.05` and
 `"MCAR_consistent"` otherwise, and `note` is always the fixed

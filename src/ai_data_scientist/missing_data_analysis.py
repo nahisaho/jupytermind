@@ -2,18 +2,12 @@
 
 Implements DES-AIDS-110 (REQ-AIDS-110): `diagnose_missingness` partitions
 a probe column by a target column's missingness indicator and runs
-`scipy.stats.ttest_ind` between the two groups (ADR-0124).
+`scipy.stats.ttest_ind(missing_group, observed_group)` between the two
+groups (ADR-0124).
 
-Known issue: the REQ-AIDS-110 Acceptance fixture's literal
-`t_statistic=15.0`/`p_value=3.854627696895008e-07` values do not
-reproduce against this implementation's `scipy.stats.ttest_ind` call
-(empirically verified actual result for that fixture is
-`t_statistic~=-0.408`, `p_value~=0.694`); tracked as GitHub #84 and
-intentionally not altered by this change, which implements against the
-algorithm described in Statement/Constraints rather than the
-Acceptance section's un-reproducible literals.
-
-Change: CHANGE-039
+Change: CHANGE-039, CHANGE-040 (GitHub #84: REQ-AIDS-110's Acceptance
+fixtures were corrected to empirically-verified values matching this
+implementation; no implementation change was required).
 """
 
 from __future__ import annotations
@@ -63,6 +57,9 @@ def diagnose_missingness(target_column: list, probe_column: list) -> dict:
             "observations"
         )
 
+    # Argument order is fixed (missing group first): REQ-AIDS-110's Statement
+    # and the Acceptance fixtures' signed t_statistic both depend on it
+    # (CHANGE-040 / GitHub #84).
     t_statistic, p_value = scipy_stats.ttest_ind(missing_group, observed_group)
     diagnosis = "MCAR_inconsistent" if p_value < 0.05 else "MCAR_consistent"
 
