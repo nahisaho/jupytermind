@@ -239,3 +239,64 @@ def test_TEST_AIDS_391_mismatched_lengths_is_rejected():
 
     with pytest.raises(ValueError):
         cox_ph_regression([1, 2, 3], [1, 0, 1, 0], [0, 1, 0, 1])
+
+
+# @id TEST-AIDS-393
+# @verifies REQ-AIDS-107
+def test_TEST_AIDS_393_kaplan_meier_fixture_matches_expected_curve():
+    from ai_data_scientist.stats_analysis import kaplan_meier_estimate
+
+    durations = [5, 6, 6, 2, 4, 4, 10, 3, 1, 9]
+    events = [1, 0, 1, 1, 1, 0, 0, 1, 1, 1]
+    result = kaplan_meier_estimate(durations, events)
+
+    assert result["times"] == [1, 2, 3, 4, 5, 6, 9]
+    expected_prob = [
+        0.9,
+        0.7999999999999999,
+        0.7,
+        0.6,
+        0.48,
+        0.36,
+        0.17999999999999997,
+    ]
+    expected_se = [
+        0.09486832980505137,
+        0.12649110640673517,
+        0.14491376746189435,
+        0.15491933384829665,
+        0.16395121225535356,
+        0.16099689437998485,
+        0.15059880477613358,
+    ]
+    for actual, want in zip(result["survival_prob"], expected_prob):
+        assert actual == pytest.approx(want, abs=1e-9)
+    for actual, want in zip(result["survival_se"], expected_se):
+        assert actual == pytest.approx(want, abs=1e-9)
+
+
+# @id TEST-AIDS-394
+# @verifies REQ-AIDS-107
+def test_TEST_AIDS_394_zero_events_is_rejected():
+    from ai_data_scientist.stats_analysis import kaplan_meier_estimate
+
+    with pytest.raises(ValueError, match="events"):
+        kaplan_meier_estimate([1, 2, 3], [0, 0, 0])
+
+
+# @id TEST-AIDS-395
+# @verifies REQ-AIDS-107
+def test_TEST_AIDS_395_mismatched_lengths_is_rejected():
+    from ai_data_scientist.stats_analysis import kaplan_meier_estimate
+
+    with pytest.raises(ValueError, match="durations|events"):
+        kaplan_meier_estimate([1, 2, 3], [1, 0])
+
+
+# @id TEST-AIDS-396
+# @verifies REQ-AIDS-107
+def test_TEST_AIDS_396_non_positive_duration_is_rejected():
+    from ai_data_scientist.stats_analysis import kaplan_meier_estimate
+
+    with pytest.raises(ValueError, match="durations"):
+        kaplan_meier_estimate([0, 2, 3], [1, 1, 1])

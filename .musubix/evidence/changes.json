@@ -15338,6 +15338,980 @@
             }
           },
           "order": 1609
+        },
+        "red": {
+          "phase": "red",
+          "recordedAt": "2026-10-09T07:45:50.303Z",
+          "fingerprints": {
+            "impact": "c89b14e7a01e700c6fc7f09b9ee711015db25bad4b2c09422bab47ca43e3e099",
+            "requirements": "399d65acbfba7c5bdc9a4b2befb1765ed496acdb02b93f803e351c3f81af464f",
+            "design": "73cc9c4419f86d7f60c58f11e8de6bea5eb3ee42562bcf82f41381b921f4d819",
+            "implementation": "f2a7da2ee936911ef162fbf2375a1d6215add80f29b59c9e11efa373c3153c3c",
+            "tests": "165f8ee4faae85b7f506570a903fa4cef254e8fc514406a31764263d3a98463b",
+            "tdd": "69366bc2ce7694f2ed4e9ddffe8bea330afc96166474936d337cb591e8fff363",
+            "requirementImplementations": {
+              "REQ-AGENOM-100": {
+                "paths": [
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/validation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd"
+                }
+              },
+              "REQ-AGENOM-101": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "d3743695f7ad8b891998d138472cedeaa1306ada6c1cf55b0f6bf95e2e082bb3",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AGENOM-110": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "d3743695f7ad8b891998d138472cedeaa1306ada6c1cf55b0f6bf95e2e082bb3",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AGENOM-120": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "d3743695f7ad8b891998d138472cedeaa1306ada6c1cf55b0f6bf95e2e082bb3",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AIDS-107": {
+                "paths": [
+                  "src/ai_data_scientist/stats_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/stats_analysis.py": "e35386f57a9c8a2966ea6e89954cd070a6d42f92f1814103da29a78eafc3d309"
+                }
+              },
+              "REQ-AIDS-108": {
+                "paths": [
+                  "src/ai_data_scientist/statistical_testing.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/statistical_testing.py": "d2f3f696f69c9b4e37953697f8c68de7b5495cf60a2d4e41201939bc3ea8c4f8"
+                }
+              },
+              "REQ-AIDS-109": {
+                "paths": [
+                  "src/ai_data_scientist/statistical_simulation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/statistical_simulation.py": "f68ef0910a02c74e4484a71b9c83a884d9285d33b337801def693e9c8a01a862"
+                }
+              },
+              "REQ-AIDS-110": {
+                "paths": [
+                  "src/ai_data_scientist/missing_data_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/missing_data_analysis.py": "b0ecd9c1aaa419debe0ecb701adb0a9d32e1c565df331fb1ab1c9942a0ad0dce"
+                }
+              },
+              "REQ-AIDS-111": {
+                "paths": [
+                  "src/ai_data_scientist/clustering.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/clustering.py": "dd343552f9ef66c6eea83f19f2f89e2ff55c36fd06d99ddd34bfceef6afe92b1"
+                }
+              },
+              "REQ-AIDS-112": {
+                "paths": [
+                  "src/ai_data_scientist/anomaly_detection.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/anomaly_detection.py": "1732037cf1dab603dcedde50c1eff4e26f62820ab7ed7ae0b21c28cb2e359b21"
+                }
+              },
+              "REQ-AIDS-113": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-114": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-115": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIDS-116": {
+                "paths": [],
+                "fingerprints": {}
+              },
+              "REQ-AIMS-090": {
+                "paths": [],
+                "fingerprints": {}
+              }
+            }
+          },
+          "order": 1815
+        },
+        "implementation": {
+          "phase": "implementation",
+          "recordedAt": "2026-10-09T08:15:33.794Z",
+          "fingerprints": {
+            "impact": "c89b14e7a01e700c6fc7f09b9ee711015db25bad4b2c09422bab47ca43e3e099",
+            "requirements": "399d65acbfba7c5bdc9a4b2befb1765ed496acdb02b93f803e351c3f81af464f",
+            "design": "73cc9c4419f86d7f60c58f11e8de6bea5eb3ee42562bcf82f41381b921f4d819",
+            "implementation": "d9ec082bb59b214400e96686965c828b8a29a70a9f672531a115e5fcbbf2ed30",
+            "tests": "165f8ee4faae85b7f506570a903fa4cef254e8fc514406a31764263d3a98463b",
+            "tdd": "69366bc2ce7694f2ed4e9ddffe8bea330afc96166474936d337cb591e8fff363",
+            "requirementImplementations": {
+              "REQ-AGENOM-100": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AGENOM-101": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AGENOM-110": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AGENOM-120": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AIDS-107": {
+                "paths": [
+                  "src/ai_data_scientist/stats_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/stats_analysis.py": "04aff1e2ea4dfa1babdf37d3bae21ae951a71c1053f886a05f2fc710e5d7338a"
+                }
+              },
+              "REQ-AIDS-108": {
+                "paths": [
+                  "src/ai_data_scientist/statistical_testing.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/statistical_testing.py": "e52e4cb3406166227bacf21a09e43375218e24e40affe71d18e8f96f38cbc0b0"
+                }
+              },
+              "REQ-AIDS-109": {
+                "paths": [
+                  "src/ai_data_scientist/statistical_simulation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/statistical_simulation.py": "e1d5f73feccf28279910ae0dfa966ed6a61feab83faafeee81fad4f525563690"
+                }
+              },
+              "REQ-AIDS-110": {
+                "paths": [
+                  "src/ai_data_scientist/missing_data_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/missing_data_analysis.py": "ed19a7d9abe9178faa72031bda6be80f2d7886d2662323714ddf291850c4c8e0"
+                }
+              },
+              "REQ-AIDS-111": {
+                "paths": [
+                  "src/ai_data_scientist/clustering.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/clustering.py": "c2deef0419f2aeb8735765a1fff498aad5109714895e00061f021e483b47ae92"
+                }
+              },
+              "REQ-AIDS-112": {
+                "paths": [
+                  "src/ai_data_scientist/anomaly_detection.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/anomaly_detection.py": "fec66e0a484383682f2cfeacd125685cf4f7987f0a9c596a31b771d8be9f2bdb"
+                }
+              },
+              "REQ-AIDS-113": {
+                "paths": [
+                  "src/ai_data_scientist/causal_inference.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/causal_inference.py": "646a2876f25821aa757a3ba6adfe1e3e1490c40811158bd749c9baf27ad91f70"
+                }
+              },
+              "REQ-AIDS-114": {
+                "paths": [
+                  "src/ai_data_scientist/model_monitoring.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/model_monitoring.py": "3c8c78ee4daeedc2a67afeac6cb6037955fc78b20b2d17f2ff5109a6a49e2f75"
+                }
+              },
+              "REQ-AIDS-115": {
+                "paths": [
+                  "src/ai_data_scientist/symbolic_math.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/symbolic_math.py": "1887e031835cbef2420426d223cac7c24738a7620e587b4ec5fb680580026801"
+                }
+              },
+              "REQ-AIDS-116": {
+                "paths": [
+                  "src/ai_data_scientist/network_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/network_analysis.py": "0d8d5abfcbdb9250a02fb950cb29084761b5964a061cc9968d3db14438e83290"
+                }
+              },
+              "REQ-AIMS-090": {
+                "paths": [
+                  "src/ai_materials_scientist/xrd_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/xrd_analysis.py": "5b77db1d4158e52ba94c11e3339964a1bd1d36b73397e3326ad0ffdeb96371e8"
+                }
+              }
+            }
+          },
+          "order": 1816
+        },
+        "green": {
+          "phase": "green",
+          "recordedAt": "2026-10-09T08:15:40.161Z",
+          "fingerprints": {
+            "impact": "c89b14e7a01e700c6fc7f09b9ee711015db25bad4b2c09422bab47ca43e3e099",
+            "requirements": "399d65acbfba7c5bdc9a4b2befb1765ed496acdb02b93f803e351c3f81af464f",
+            "design": "73cc9c4419f86d7f60c58f11e8de6bea5eb3ee42562bcf82f41381b921f4d819",
+            "implementation": "d9ec082bb59b214400e96686965c828b8a29a70a9f672531a115e5fcbbf2ed30",
+            "tests": "165f8ee4faae85b7f506570a903fa4cef254e8fc514406a31764263d3a98463b",
+            "tdd": "69366bc2ce7694f2ed4e9ddffe8bea330afc96166474936d337cb591e8fff363",
+            "requirementImplementations": {
+              "REQ-AGENOM-100": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AGENOM-101": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AGENOM-110": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AGENOM-120": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AIDS-107": {
+                "paths": [
+                  "src/ai_data_scientist/stats_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/stats_analysis.py": "04aff1e2ea4dfa1babdf37d3bae21ae951a71c1053f886a05f2fc710e5d7338a"
+                }
+              },
+              "REQ-AIDS-108": {
+                "paths": [
+                  "src/ai_data_scientist/statistical_testing.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/statistical_testing.py": "e52e4cb3406166227bacf21a09e43375218e24e40affe71d18e8f96f38cbc0b0"
+                }
+              },
+              "REQ-AIDS-109": {
+                "paths": [
+                  "src/ai_data_scientist/statistical_simulation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/statistical_simulation.py": "e1d5f73feccf28279910ae0dfa966ed6a61feab83faafeee81fad4f525563690"
+                }
+              },
+              "REQ-AIDS-110": {
+                "paths": [
+                  "src/ai_data_scientist/missing_data_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/missing_data_analysis.py": "ed19a7d9abe9178faa72031bda6be80f2d7886d2662323714ddf291850c4c8e0"
+                }
+              },
+              "REQ-AIDS-111": {
+                "paths": [
+                  "src/ai_data_scientist/clustering.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/clustering.py": "c2deef0419f2aeb8735765a1fff498aad5109714895e00061f021e483b47ae92"
+                }
+              },
+              "REQ-AIDS-112": {
+                "paths": [
+                  "src/ai_data_scientist/anomaly_detection.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/anomaly_detection.py": "fec66e0a484383682f2cfeacd125685cf4f7987f0a9c596a31b771d8be9f2bdb"
+                }
+              },
+              "REQ-AIDS-113": {
+                "paths": [
+                  "src/ai_data_scientist/causal_inference.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/causal_inference.py": "646a2876f25821aa757a3ba6adfe1e3e1490c40811158bd749c9baf27ad91f70"
+                }
+              },
+              "REQ-AIDS-114": {
+                "paths": [
+                  "src/ai_data_scientist/model_monitoring.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/model_monitoring.py": "3c8c78ee4daeedc2a67afeac6cb6037955fc78b20b2d17f2ff5109a6a49e2f75"
+                }
+              },
+              "REQ-AIDS-115": {
+                "paths": [
+                  "src/ai_data_scientist/symbolic_math.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/symbolic_math.py": "1887e031835cbef2420426d223cac7c24738a7620e587b4ec5fb680580026801"
+                }
+              },
+              "REQ-AIDS-116": {
+                "paths": [
+                  "src/ai_data_scientist/network_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/network_analysis.py": "0d8d5abfcbdb9250a02fb950cb29084761b5964a061cc9968d3db14438e83290"
+                }
+              },
+              "REQ-AIMS-090": {
+                "paths": [
+                  "src/ai_materials_scientist/xrd_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/xrd_analysis.py": "5b77db1d4158e52ba94c11e3339964a1bd1d36b73397e3326ad0ffdeb96371e8"
+                }
+              }
+            }
+          },
+          "order": 1817
+        },
+        "quality": {
+          "phase": "quality",
+          "recordedAt": "2026-10-09T08:15:46.456Z",
+          "fingerprints": {
+            "impact": "c89b14e7a01e700c6fc7f09b9ee711015db25bad4b2c09422bab47ca43e3e099",
+            "requirements": "399d65acbfba7c5bdc9a4b2befb1765ed496acdb02b93f803e351c3f81af464f",
+            "design": "73cc9c4419f86d7f60c58f11e8de6bea5eb3ee42562bcf82f41381b921f4d819",
+            "implementation": "d9ec082bb59b214400e96686965c828b8a29a70a9f672531a115e5fcbbf2ed30",
+            "tests": "165f8ee4faae85b7f506570a903fa4cef254e8fc514406a31764263d3a98463b",
+            "tdd": "69366bc2ce7694f2ed4e9ddffe8bea330afc96166474936d337cb591e8fff363",
+            "requirementImplementations": {
+              "REQ-AGENOM-100": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AGENOM-101": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AGENOM-110": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AGENOM-120": {
+                "paths": [
+                  "src/ai_data_scientist/language_router.py",
+                  "src/ai_genomics_scientist/acmg_classification.py",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py",
+                  "src/ai_genomics_scientist/differential_expression.py",
+                  "src/ai_genomics_scientist/dispatch.py",
+                  "src/ai_genomics_scientist/evidence.py",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py",
+                  "src/ai_genomics_scientist/sequence_alignment.py",
+                  "src/ai_genomics_scientist/sequence_features.py",
+                  "src/ai_genomics_scientist/splice_site_scoring.py",
+                  "src/ai_genomics_scientist/validation.py",
+                  "src/ai_genomics_scientist/variant_effect.py",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
+                  "src/ai_genomics_scientist/acmg_classification.py": "aaf92aa8ea0ab295fadf9c49378dfb1c797a1911d7958ec0df0a05d52b42825b",
+                  "src/ai_genomics_scientist/crispr_off_target_score.py": "910ff9dcf1a32b8c32735e4ddf5879398f20f299ff00d73777698af6f964177f",
+                  "src/ai_genomics_scientist/crispr_pam_scan.py": "2da358256df763ae6f869325d6e2917e4a4402bc0f6077605ee2b0af8b5f9782",
+                  "src/ai_genomics_scientist/differential_expression.py": "06727352ba8ff45dcdada6e4a8195a579f8ab0ed624eda287959acbb8017e862",
+                  "src/ai_genomics_scientist/dispatch.py": "9ffd40fe660db7ebb086cbed01c25c078d262f3feec75a220b94715e6ca52a35",
+                  "src/ai_genomics_scientist/evidence.py": "d5c358798b032488927d11f2a3c0a07cbdae9a447ecd62b3bdadf5a6d6f23a62",
+                  "src/ai_genomics_scientist/gene_set_enrichment.py": "f027eeb9c7d1e8f481e010ba1a5cd8c51d50c5e6b8f65f70259ef7ee28aa5b98",
+                  "src/ai_genomics_scientist/mirna_target_prediction.py": "4c41d615993395961e968a0d904d0cf7c40fbfd2c8ba8289a8e9fbc7cd4aaf20",
+                  "src/ai_genomics_scientist/phylogenetic_clustering.py": "af4ed74514e4e43193b4bfed1d394845523a7bc02b13e675951552cd40e0c6dc",
+                  "src/ai_genomics_scientist/sequence_alignment.py": "1e0bc12b45caf2f8f0ada9a999db3d067c8aa20eb48f0075118fb37b07b73759",
+                  "src/ai_genomics_scientist/sequence_features.py": "94dd3676004a174ab6c93ff90a908bca2302a0cc3534c9e149f484ec2b3aa9d6",
+                  "src/ai_genomics_scientist/splice_site_scoring.py": "5f401ae1b57aad2c6bd0327b4fd1e89fd3db8b44e20fc5c5589594dd0836b49d",
+                  "src/ai_genomics_scientist/validation.py": "3208aacee35ccad4d716a17a3ae184ab89b5255b223509eb54fd06fa221e8dcd",
+                  "src/ai_genomics_scientist/variant_effect.py": "3570c5c928b4a91f4af32f41a665e2efeef36d966aed34d37f1ac1f9139f3f9a",
+                  "src/ai_genomics_scientist/variant_pathogenicity.py": "eb190879b90939ded7fa6388c4d91b805bee96c0efc03f5d6336d34965f07749"
+                }
+              },
+              "REQ-AIDS-107": {
+                "paths": [
+                  "src/ai_data_scientist/stats_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/stats_analysis.py": "04aff1e2ea4dfa1babdf37d3bae21ae951a71c1053f886a05f2fc710e5d7338a"
+                }
+              },
+              "REQ-AIDS-108": {
+                "paths": [
+                  "src/ai_data_scientist/statistical_testing.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/statistical_testing.py": "e52e4cb3406166227bacf21a09e43375218e24e40affe71d18e8f96f38cbc0b0"
+                }
+              },
+              "REQ-AIDS-109": {
+                "paths": [
+                  "src/ai_data_scientist/statistical_simulation.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/statistical_simulation.py": "e1d5f73feccf28279910ae0dfa966ed6a61feab83faafeee81fad4f525563690"
+                }
+              },
+              "REQ-AIDS-110": {
+                "paths": [
+                  "src/ai_data_scientist/missing_data_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/missing_data_analysis.py": "ed19a7d9abe9178faa72031bda6be80f2d7886d2662323714ddf291850c4c8e0"
+                }
+              },
+              "REQ-AIDS-111": {
+                "paths": [
+                  "src/ai_data_scientist/clustering.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/clustering.py": "c2deef0419f2aeb8735765a1fff498aad5109714895e00061f021e483b47ae92"
+                }
+              },
+              "REQ-AIDS-112": {
+                "paths": [
+                  "src/ai_data_scientist/anomaly_detection.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/anomaly_detection.py": "fec66e0a484383682f2cfeacd125685cf4f7987f0a9c596a31b771d8be9f2bdb"
+                }
+              },
+              "REQ-AIDS-113": {
+                "paths": [
+                  "src/ai_data_scientist/causal_inference.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/causal_inference.py": "646a2876f25821aa757a3ba6adfe1e3e1490c40811158bd749c9baf27ad91f70"
+                }
+              },
+              "REQ-AIDS-114": {
+                "paths": [
+                  "src/ai_data_scientist/model_monitoring.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/model_monitoring.py": "3c8c78ee4daeedc2a67afeac6cb6037955fc78b20b2d17f2ff5109a6a49e2f75"
+                }
+              },
+              "REQ-AIDS-115": {
+                "paths": [
+                  "src/ai_data_scientist/symbolic_math.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/symbolic_math.py": "1887e031835cbef2420426d223cac7c24738a7620e587b4ec5fb680580026801"
+                }
+              },
+              "REQ-AIDS-116": {
+                "paths": [
+                  "src/ai_data_scientist/network_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_data_scientist/network_analysis.py": "0d8d5abfcbdb9250a02fb950cb29084761b5964a061cc9968d3db14438e83290"
+                }
+              },
+              "REQ-AIMS-090": {
+                "paths": [
+                  "src/ai_materials_scientist/xrd_analysis.py"
+                ],
+                "fingerprints": {
+                  "src/ai_materials_scientist/xrd_analysis.py": "5b77db1d4158e52ba94c11e3339964a1bd1d36b73397e3326ad0ffdeb96371e8"
+                }
+              }
+            }
+          },
+          "order": 1818
         }
       }
     }

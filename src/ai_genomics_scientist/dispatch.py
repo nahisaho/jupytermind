@@ -20,6 +20,10 @@ import ai_genomics_scientist.variant_effect as _variant_effect  # noqa: F401
 import ai_genomics_scientist.differential_expression as _differential_expression  # noqa: F401
 import ai_genomics_scientist.variant_pathogenicity as _variant_pathogenicity  # noqa: F401
 import ai_genomics_scientist.acmg_classification as _acmg_classification  # noqa: F401
+import ai_genomics_scientist.crispr_pam_scan as _crispr_pam_scan  # noqa: F401
+import ai_genomics_scientist.crispr_off_target_score as _crispr_off_target_score  # noqa: F401
+import ai_genomics_scientist.phylogenetic_clustering as _phylogenetic_clustering  # noqa: F401
+import ai_genomics_scientist.mirna_target_prediction as _mirna_target_prediction  # noqa: F401
 from ai_data_scientist.language_router import detect_language as _detect_language
 from ai_genomics_scientist.evidence import record_run
 from ai_genomics_scientist.validation import validate_parameters
@@ -37,6 +41,10 @@ _RUN_MODULE_PATHS = {
     "differential-expression": "ai_genomics_scientist.differential_expression",
     "variant-pathogenicity": "ai_genomics_scientist.variant_pathogenicity",
     "acmg-amp-classification": "ai_genomics_scientist.acmg_classification",
+    "crispr-pam-scan": "ai_genomics_scientist.crispr_pam_scan",
+    "crispr-off-target-score": "ai_genomics_scientist.crispr_off_target_score",
+    "phylogenetic-clustering": "ai_genomics_scientist.phylogenetic_clustering",
+    "mirna-target-prediction": "ai_genomics_scientist.mirna_target_prediction",
 }
 _RUN_FUNCTION_NAMES = {
     "sequence-features": "run_sequence_features",
@@ -47,6 +55,10 @@ _RUN_FUNCTION_NAMES = {
     "differential-expression": "run_differential_expression",
     "variant-pathogenicity": "run_variant_pathogenicity",
     "acmg-amp-classification": "run_acmg_classification",
+    "crispr-pam-scan": "run_crispr_pam_scan",
+    "crispr-off-target-score": "run_crispr_off_target_score",
+    "phylogenetic-clustering": "run_phylogenetic_clustering",
+    "mirna-target-prediction": "run_mirna_target_prediction",
 }
 
 
@@ -220,6 +232,38 @@ def handle_variant_pathogenicity(request_text: str, language: str, **params) -> 
 def handle_acmg_amp_classification(request_text: str, language: str, **params) -> dict:
     """Handler wrapper for the acmg-amp-classification module."""
     return _handle_module("acmg-amp-classification", request_text, language, params or None)
+
+
+# @id CODE-AGENOM-102
+# @implements REQ-AGENOM-100 REQ-AGENOM-002 REQ-AGENOM-004
+# @design DES-AGENOM-100
+def handle_crispr_pam_scan(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the crispr-pam-scan module."""
+    return _handle_module("crispr-pam-scan", request_text, language, params or None)
+
+
+# @id CODE-AGENOM-111
+# @implements REQ-AGENOM-101 REQ-AGENOM-002 REQ-AGENOM-004
+# @design DES-AGENOM-101
+def handle_crispr_off_target_score(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the crispr-off-target-score module."""
+    return _handle_module("crispr-off-target-score", request_text, language, params or None)
+
+
+# @id CODE-AGENOM-121
+# @implements REQ-AGENOM-110 REQ-AGENOM-002 REQ-AGENOM-004
+# @design DES-AGENOM-110
+def handle_phylogenetic_clustering(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the phylogenetic-clustering module."""
+    return _handle_module("phylogenetic-clustering", request_text, language, params or None)
+
+
+# @id CODE-AGENOM-131
+# @implements REQ-AGENOM-120 REQ-AGENOM-002 REQ-AGENOM-004
+# @design DES-AGENOM-120
+def handle_mirna_target_prediction(request_text: str, language: str, **params) -> dict:
+    """Handler wrapper for the mirna-target-prediction module."""
+    return _handle_module("mirna-target-prediction", request_text, language, params or None)
 
 
 def _render_clarification(candidates: list[str], language: str) -> str:

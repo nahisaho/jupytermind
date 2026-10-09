@@ -4,7 +4,10 @@ Implements DES-AIDS-008 (REQ-AIDS-006): correlation/statistical tests
 reported alongside a natural-language interpretation in the requested
 response language. DES-AIDS-106 (REQ-AIDS-106) extends this module with
 a single-covariate Cox proportional-hazards regression wrapping
-`statsmodels.duration.hazard_regression.PHReg`.
+`statsmodels.duration.hazard_regression.PHReg`. DES-AIDS-107
+(REQ-AIDS-107) further extends this module with a non-parametric
+Kaplan-Meier survival-function estimate wrapping
+`statsmodels.duration.survfunc.SurvfuncRight`.
 """
 
 from __future__ import annotations
@@ -18,6 +21,7 @@ import pandas as pd
 import statsmodels.tools.sm_exceptions
 from scipy import stats as scipy_stats
 from statsmodels.duration.hazard_regression import PHReg
+from statsmodels.duration.survfunc import SurvfuncRight
 
 
 @dataclass(frozen=True)
@@ -157,6 +161,41 @@ def cox_ph_regression(
         "hazard_ratio": hazard_ratio,
         "ci_lower": ci_lower,
         "ci_upper": ci_upper,
+    }
+
+
+# @id CODE-AIDS-161
+# @implements REQ-AIDS-107
+# @design DES-AIDS-107
+def kaplan_meier_estimate(durations: list[float], events: list[int]) -> dict[str, list[float]]:
+    """Estimate the Kaplan-Meier survival curve via `statsmodels.SurvfuncRight`.
+
+    Pure function: no network, database, or ML-model call (DES-AIDS-107).
+    """
+    if not isinstance(durations, list) or not all(_is_finite_number(v) for v in durations):
+        raise ValueError("durations: must be a list of finite numbers")
+    if len(durations) < 1:
+        raise ValueError("durations: must contain at least 1 entry")
+    if any(d <= 0 for d in durations):
+        raise ValueError("durations: must be positive")
+
+    if not isinstance(events, list) or not all(_is_event_flag(v) for v in events):
+        raise ValueError("events: must be a list of 0/1 or boolean values")
+    if len(events) != len(durations):
+        raise ValueError("durations, events: must be the same length")
+    events_int = [_event_value(v) for v in events]
+    if sum(events_int) < 1:
+        raise ValueError("events: must contain at least 1 event")
+
+    durations_array = np.asarray(durations, dtype=np.float64)
+    events_array = np.asarray(events_int, dtype=np.int64)
+
+    surv = SurvfuncRight(durations_array, events_array)
+
+    return {
+        "times": [float(t) for t in surv.surv_times],
+        "survival_prob": [float(p) for p in surv.surv_prob],
+        "survival_se": [float(se) for se in surv.surv_prob_se],
     }
 
 

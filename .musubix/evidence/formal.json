@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-07T18:34:52.969Z",
-  "totalRequirements": 191,
+  "generatedAt": "2026-10-09T08:19:52.818Z",
+  "totalRequirements": 206,
   "modeledRequirements": 12,
-  "modeledFraction": 0.06282722513089005,
+  "modeledFraction": 0.05825242718446602,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -192,6 +192,14 @@
       "REQ-AIDS-104",
       "REQ-AIDS-105",
       "REQ-AIDS-106",
+      "REQ-AIDS-107",
+      "REQ-AIDS-108",
+      "REQ-AIDS-109",
+      "REQ-AIDS-110",
+      "REQ-AIDS-113",
+      "REQ-AIDS-114",
+      "REQ-AIDS-115",
+      "REQ-AIDS-116",
       "REQ-AIDS-008",
       "REQ-AIDS-015",
       "REQ-AIDS-073",
@@ -221,6 +229,8 @@
       "REQ-AIDS-076",
       "REQ-AIDS-077",
       "REQ-AIDS-078",
+      "REQ-AIDS-111",
+      "REQ-AIDS-112",
       "REQ-AGENOM-001",
       "REQ-AGENOM-002",
       "REQ-AGENOM-003",
@@ -234,6 +244,10 @@
       "REQ-AGENOM-070",
       "REQ-AGENOM-080",
       "REQ-AGENOM-090",
+      "REQ-AGENOM-100",
+      "REQ-AGENOM-101",
+      "REQ-AGENOM-110",
+      "REQ-AGENOM-120",
       "REQ-AIMS-001",
       "REQ-AIMS-002",
       "REQ-AIMS-003",
@@ -247,6 +261,7 @@
       "REQ-AIMS-060",
       "REQ-AIMS-070",
       "REQ-AIMS-080",
+      "REQ-AIMS-090",
       "REQ-AISCI-001",
       "REQ-AISCI-002",
       "REQ-AISCI-004",
@@ -716,6 +731,46 @@
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
+        "message": "REQ-AIDS-107 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-108 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-109 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-110 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-113 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-114 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-115 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-116 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
         "message": "REQ-AIDS-008 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
@@ -861,6 +916,16 @@
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
+        "message": "REQ-AIDS-111 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIDS-112 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
         "message": "REQ-AGENOM-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
@@ -926,6 +991,26 @@
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
+        "message": "REQ-AGENOM-100 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AGENOM-101 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AGENOM-110 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AGENOM-120 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
         "message": "REQ-AIMS-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
@@ -987,6 +1072,11 @@
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
         "message": "REQ-AIMS-080 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AIMS-090 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
         "code": "FORMAL_UNSUPPORTED",
@@ -1197,10 +1287,10 @@
   },
   "fingerprints": {
     ".musubix/features/ai-chemistry-scientist/requirements.md": "6380be8c8beecffd00ad8d3e5cddce21ef464dcb06a97a029f983fe24c1d53f9",
-    ".musubix/features/ai-data-scientist/requirements.md": "db0833fc4541ad19a621c44508851029ba45dec41d0f0ce4566f5872bf34142b",
-    ".musubix/features/ai-data-scientist-ml/requirements.md": "9583e5c77de26b8b66935f7b633fe357ec2db1fd2bdf03248b5dea9de11e02dc",
-    ".musubix/features/ai-genomics-scientist/requirements.md": "7b0986ccb9e5d2f2997e7999bf73a528f59468e9ee1bb7dcb21946f00a0ef513",
-    ".musubix/features/ai-materials-scientist/requirements.md": "ec1042bb0d869dfe9048f68397d495fcda505c1e4b40349313dd2e1aedbf4ceb",
+    ".musubix/features/ai-data-scientist/requirements.md": "a8bb9b7114daee31906077d437b09d4c8c6a57934c742d686a999e5436fd4b1d",
+    ".musubix/features/ai-data-scientist-ml/requirements.md": "c61e112c9de914da21c79f9198658ca308ef0887ef3e9ba0f170e07a66d5e64c",
+    ".musubix/features/ai-genomics-scientist/requirements.md": "ca604fdfdbf6256e3365d101f1f6c5caa045e4d002c6d10d54109c89bb50400b",
+    ".musubix/features/ai-materials-scientist/requirements.md": "1b4b3a928a410ba97835fb8a3d48a1f78bf84df4cab1d63e1b4dccd8461645c7",
     ".musubix/features/ai-scientist/requirements.md": "62ad1db84c784be4a546db60ccf2011b3c6f489fb732319f14bf252134c4501c",
     ".musubix/features/ai-structural-biology-scientist/requirements.md": "0878083e60d4a5071147950030cbac059d19dac79d21d28a739859d951b91c3a",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",

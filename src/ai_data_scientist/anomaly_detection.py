@@ -9,9 +9,13 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+import numpy as np
 import pandas as pd
+from sklearn.ensemble import IsolationForest
+from sklearn.neighbors import LocalOutlierFactor
 
 _SUPPORTED_METHODS = ("zscore",)
+_MULTIVARIATE_ANOMALY_METHODS = ("isolation_forest", "lof")
 
 
 @dataclass(frozen=True)
@@ -37,3 +41,33 @@ def detect_anomalies(
     flagged = series.index[z_scores.abs() > threshold].tolist()
 
     return AnomalyResult(flagged_indices=flagged, method=method)
+
+
+# @id CODE-AIDS-172
+# @implements REQ-AIDS-112
+# @design DES-AIDS-116
+def detect_multivariate_anomalies(
+    method: str, x: list[list[float]], n_neighbors: int = 20
+) -> dict[str, list]:
+    """Flag multivariate outliers in ``x`` using ``isolation_forest`` or ``lof``.
+
+    Independent of, and never reads or writes, ``detect_anomalies``'s own
+    ``_SUPPORTED_METHODS`` value domain.
+    """
+    if method not in _MULTIVARIATE_ANOMALY_METHODS:
+        raise ValueError(f"Unsupported method: {method!r}")
+    if method == "lof" and n_neighbors < 1:
+        raise ValueError(f"n_neighbors ({n_neighbors}) must be >= 1")
+
+    x_arr = np.asarray(x, dtype=float)
+
+    if method == "isolation_forest":
+        model = IsolationForest(n_estimators=50, random_state=42)
+        labels = model.fit_predict(x_arr).tolist()
+    else:  # lof
+        effective_n_neighbors = min(n_neighbors, len(x_arr) - 1)
+        model = LocalOutlierFactor(n_neighbors=effective_n_neighbors)
+        labels = model.fit_predict(x_arr).tolist()
+
+    is_outlier = [label == -1 for label in labels]
+    return {"labels": labels, "is_outlier": is_outlier}
