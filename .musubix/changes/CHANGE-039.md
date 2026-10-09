@@ -49,13 +49,12 @@ causal/clinical tools.
 Touched artifacts (requirements stage, complete):
 
 - `.musubix/features/ai-data-scientist/requirements.md` — new
-  `REQ-AIDS-107` (ANOVA/t-test power groundwork shared with 108/109),
-  `REQ-AIDS-108` (hypothesis-testing dispatcher + FDR), `REQ-AIDS-109`
-  (bootstrap CI + power analysis), `REQ-AIDS-110` (missing-data mechanism
-  heuristic), `REQ-AIDS-113` (propensity-score matching), `REQ-AIDS-114`
-  (PSI/KS drift detection), `REQ-AIDS-115` (AST-whitelist-sandboxed
-  symbolic math), `REQ-AIDS-116` (supporting/closing requirement for this
-  batch)
+  `REQ-AIDS-107` (Kaplan-Meier survival-curve estimation), `REQ-AIDS-108`
+  (hypothesis-testing dispatcher + FDR), `REQ-AIDS-109` (bootstrap CI +
+  power analysis), `REQ-AIDS-110` (missing-data mechanism heuristic),
+  `REQ-AIDS-113` (propensity-score matching), `REQ-AIDS-114` (PSI/KS drift
+  detection), `REQ-AIDS-115` (AST-whitelist-sandboxed symbolic math),
+  `REQ-AIDS-116` (network analysis via `scipy.sparse.csgraph`)
 - `.musubix/features/ai-data-scientist-ml/requirements.md` — new
   `REQ-AIDS-111` (t-SNE), `REQ-AIDS-112` (Isolation Forest / LOF anomaly
   detection)
@@ -85,4 +84,43 @@ Requirements: REQ-AIDS-107, REQ-AIDS-108, REQ-AIDS-109, REQ-AIDS-110, REQ-AIDS-1
 
 Requirements stage: approved by nahisaho (artifact sha256
 `0ecadec69921b9dfc41e755f665aa8573a424b15aa28c30a5f5455e5dfee5a02`).
-Design stage: not started.
+
+During the design-phase review, a genuine pre-implementation defect was
+found in the already-approved requirements: `REQ-AIDS-112` specified a new
+function `anomaly_detection.detect_anomalies(method, x, n_neighbors=...)`
+that collided by name with an existing, differently-shaped function of the
+same name already implementing `REQ-AIDS-017`; and `REQ-AIDS-111`'s
+wording implied sharing/mutating the existing `clustering.cluster_or_reduce`
+function's `_SUPPORTED_METHODS` constant, risking an ungraceful crash for
+an unimplemented method value. Both were fixed by amending
+`ai-data-scientist-ml/requirements.md`: the new REQ-AIDS-112 function was
+renamed to `detect_multivariate_anomalies` (additive, not replacing;
+independent value-domain constant), and REQ-AIDS-111's `fit_unsupervised_model`
+was reworded to make explicit it is an independent new function with its
+own `{"tsne"}` value domain, not touching `cluster_or_reduce`. A further,
+unrelated pre-existing contradiction in REQ-AIDS-112's Constraints (a
+`len(x) >= n_neighbors + 1` requirement that conflicted with the adjacent
+auto-capping rule) was also found and fixed during the same review pass.
+All edits were re-reviewed via a scoped `rubber-duck` pass (zero remaining
+issues), re-validated (`npx musubix3 requirements validate` PASS on all 4
+files), and formally re-approved by nahisaho (new artifact sha256
+`1d5b3cb9e5bda06c1800da375c7e7b168e9b0b16273e1c184bacf01674d6bfbf`) via
+`npx musubix3 approval record requirements`.
+
+Known musubix3 limitation (disclosed residual risk, same category as the
+`workflow-sanitize` limitation tracked under GitHub #63 for prior changes):
+`change-record CHANGE-039 requirements` cannot be re-run after this
+post-impact requirements edit — the CLI rejects a repeat recording of a
+phase already present in the change's chronology
+(`musubix3: CHANGE-039:requirements is already recorded.`), with no
+documented CLI path to update a phase checkpoint's stored fingerprint
+in place. The authoritative, current evidence of human sign-off on the
+edited requirements text is therefore the `approval record requirements`
+entry (hash `1d5b3cb9e5bda06c1800da375c7e7b168e9b0b16273e1c184bacf01674d6bfbf`)
+rather than the (now stale) `requirements` entry in
+`.musubix/evidence/changes.json`'s phase chronology for CHANGE-039, which
+still reflects the pre-edit fingerprint recorded before this defect was
+found. This is an external musubix3 CLI behavior, not something this
+repository's own code can change.
+
+Design stage: in progress.
