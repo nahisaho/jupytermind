@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
+# @id CODE-GINZA53-004
+# @implements REQ-GINZA53-002
+# @design DES-GINZA53-002
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
-#   "ginza>=5.2.0,<5.3",
-#   "ja-ginza>=5.2.0,<5.3",
-#   "spacy>=3.8.0,<4",
+#   "ginza>=5.3.0,<5.4",
+#   "ja-ginza>=5.3.0,<5.4",
+#   "spacy>=3.8.16,<4",
 # ]
 # ///
 """Behavioral tests for kotonoha's original GiNZA diagnostics."""

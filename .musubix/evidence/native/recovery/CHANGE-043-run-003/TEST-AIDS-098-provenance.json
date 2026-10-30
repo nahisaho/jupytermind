@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+  "commandSha256": "4249314d410a7cecb918c44dfe196066ab14bc0aea9c4c82895fed7cf070c533",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_data_scientist/sensitivity.py": {
+          "past": {
+            "exists": true,
+            "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIDS-098",
+    "testSha256": "90223b1e4e0c6d168ccc9195d94ba5d4f8f2758cb42b07d25a070cf3e75c0e31",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_sensitivity.py\",\"-k\",\"test_aids_098\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIDS-098.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_data_scientist/sensitivity.py": {
+        "exists": true,
+        "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-098-red.cli.json",
+      "sha256": "d5fcdfc9cf988e8d9b5e4cc0f1ed06dafa45ebe9f660b26a2c61bc623a617965"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-098-red.report.json",
+      "sha256": "70725fc44d0cfaad4a8448eabfd1a6a8d2084af7d603c91514a88d23d8ddc6f8"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_data_scientist/sensitivity.py": {
+          "past": {
+            "exists": true,
+            "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIDS-098",
+    "testSha256": "90223b1e4e0c6d168ccc9195d94ba5d4f8f2758cb42b07d25a070cf3e75c0e31",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_sensitivity.py\",\"-k\",\"test_aids_098\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIDS-098.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_data_scientist/sensitivity.py": {
+        "exists": true,
+        "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-098-green.cli.json",
+      "sha256": "17023a8d6a6b5b5abacf73eb6dac5e6166d1b2d0105e1b3906a2192ae9b4d78d"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-098-green.report.json",
+      "sha256": "92a52fe3f0f94ab35c3f53d724d3a91f292267266fb44c5b3a331aeab35515bc"
+    }
+  }
+}

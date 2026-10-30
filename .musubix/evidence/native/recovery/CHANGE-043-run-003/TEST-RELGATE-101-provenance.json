@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+  "commandSha256": "2356f7ea0ddd605859e45706a2b675629999e60eb9bfc04ffab38389e9801924",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "scripts/measure_pytest_pass_rate.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "517ef67da322f01b224fb164746cdcdd777bc7970a4cc0d7a3ea00222d4e674e"
+          }
+        }
+      }
+    },
+    "testId": "TEST-RELGATE-101",
+    "testSha256": "5d4807d0aa87f8cde0a82a05d4cb58a11cd86ad40f82b6d157695b1c1979ba32",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_measure_pytest_pass_rate.py\",\"-k\",\"test_relgate_101\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-RELGATE-101.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "scripts/measure_pytest_pass_rate.py": {
+        "exists": false,
+        "sha256": null
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/pass-rate-TEST-RELGATE-101-red.cli.json",
+      "sha256": "845f277a283522fbcf61d0a0197d842cdd1854513d4130c88489352a3dc21c6c"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/pass-rate-TEST-RELGATE-101-red.report.json",
+      "sha256": "d14ba6a69e7da72ae039ced6f8366512fa5deebab3d02eeca97e4cf530629988"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "scripts/measure_pytest_pass_rate.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "517ef67da322f01b224fb164746cdcdd777bc7970a4cc0d7a3ea00222d4e674e"
+          }
+        }
+      }
+    },
+    "testId": "TEST-RELGATE-101",
+    "testSha256": "5d4807d0aa87f8cde0a82a05d4cb58a11cd86ad40f82b6d157695b1c1979ba32",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_measure_pytest_pass_rate.py\",\"-k\",\"test_relgate_101\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-RELGATE-101.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "scripts/measure_pytest_pass_rate.py": {
+        "exists": true,
+        "sha256": "517ef67da322f01b224fb164746cdcdd777bc7970a4cc0d7a3ea00222d4e674e"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/pass-rate-TEST-RELGATE-101-green.cli.json",
+      "sha256": "2a5239d3c955d60312ca35125cbcd6ff336b0fbef83f26c4471bda317c2459e4"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/pass-rate-TEST-RELGATE-101-green.report.json",
+      "sha256": "a91b0a62f50d27878b4b0e8b9b2a9e371e41399c9718890ba0ea144f7065be80"
+    }
+  }
+}

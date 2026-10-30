@@ -45,3 +45,19 @@ def test_TEST_AIDS_072_mcp_stack_pins_are_bounded_and_satisfied(package_name, di
 def test_TEST_AIDS_073_unknown_dependency_raises_key_error():
     with pytest.raises(KeyError):
         get_dependency_specifier("not-a-real-declared-dependency")
+
+
+# @id TEST-GINZA53-001
+# @verifies REQ-GINZA53-001
+def test_TEST_GINZA53_001_project_requires_ginza_53():
+    for package, supported, obsolete in (
+        ("ginza", "5.3.0", "5.2.0"),
+        ("ja-ginza", "5.3.0", "5.2.0"),
+        ("spacy", "3.8.16", "3.8.15"),
+    ):
+        requirement = Requirement(get_dependency_specifier(package))
+        assert supported in requirement.specifier
+        assert obsolete not in requirement.specifier
+        assert version(package) in requirement.specifier
+        if package == "spacy":
+            assert "4.0.0" not in requirement.specifier

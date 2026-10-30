@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "revision": "a45a09e09fb5c24f0bba8481e040efcde1b678ad",
+  "commandSha256": "3c28538efeaeb888f3959d2fc430e766ce85d18c830f1e9d462fbd6c9fea4a03",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "a45a09e09fb5c24f0bba8481e040efcde1b678ad",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_materials_scientist/kinetic_monte_carlo.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "96eeb67756fec4201f1153727ad5e9025838c4c276c249b67dfd3d13b28f7716"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIMS-040",
+    "testSha256": "112fec73a96c8ba05662a8af85d7ef3397c119ceecc8ca9fef3e17ebfe2e985e",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_ai_materials_scientist_kinetic_monte_carlo.py\",\"-k\",\"test_aims_040\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIMS-040.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_materials_scientist/kinetic_monte_carlo.py": {
+        "exists": false,
+        "sha256": null
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/kinetic-monte-carlo-TEST-AIMS-040-red.cli.json",
+      "sha256": "85581b745d03d54ee60fbcd3472bc851d5d196414440145bdba49d9c1764ad6b"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/kinetic-monte-carlo-TEST-AIMS-040-red.report.json",
+      "sha256": "c4b501f45b5d8d835e92bd198714711242d02fe3ab2dbb6ca3d852833c032d20"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "a45a09e09fb5c24f0bba8481e040efcde1b678ad",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_materials_scientist/kinetic_monte_carlo.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "96eeb67756fec4201f1153727ad5e9025838c4c276c249b67dfd3d13b28f7716"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIMS-040",
+    "testSha256": "112fec73a96c8ba05662a8af85d7ef3397c119ceecc8ca9fef3e17ebfe2e985e",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_ai_materials_scientist_kinetic_monte_carlo.py\",\"-k\",\"test_aims_040\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIMS-040.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_materials_scientist/kinetic_monte_carlo.py": {
+        "exists": true,
+        "sha256": "96eeb67756fec4201f1153727ad5e9025838c4c276c249b67dfd3d13b28f7716"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/kinetic-monte-carlo-TEST-AIMS-040-green.cli.json",
+      "sha256": "5de462b77daab3d2e30565f36b568867604b361198abc5b46c14cf2ae82a3fab"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/kinetic-monte-carlo-TEST-AIMS-040-green.report.json",
+      "sha256": "9a8b1868cbc354ba14813af03c1d5c2d50c8d77cf5de689917a39db0fc8115a8"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+  "commandSha256": "954b2750711be96a2f03c73fd9d73d365d07d4499c51f537a9702318aec1fcce",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "scripts/release_gate_governance.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "18fe93692da77bdd615f59c19abb25f96225f5cd2bbf3a301acad58d6a71311a"
+          }
+        }
+      }
+    },
+    "testId": "TEST-RELGATE-005",
+    "testSha256": "385fc41b51de57e8e13542b3daa001041162c93f78ed4e103565963dcf21f18d",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_release_gate_governance.py\",\"-k\",\"test_relgate_005\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-RELGATE-005.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "scripts/release_gate_governance.py": {
+        "exists": false,
+        "sha256": null
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/governance-TEST-RELGATE-005-red.cli.json",
+      "sha256": "94195fb48e6e8a1d9e4da00e5d2fad6f4f2fc5aac23945144afef76f3c21e7b8"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/governance-TEST-RELGATE-005-red.report.json",
+      "sha256": "1aff90b0749e9aa655551a2584f8527c0eb152d9b021b52bb8c9ee6d7dd8975c"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "scripts/release_gate_governance.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "18fe93692da77bdd615f59c19abb25f96225f5cd2bbf3a301acad58d6a71311a"
+          }
+        }
+      }
+    },
+    "testId": "TEST-RELGATE-005",
+    "testSha256": "385fc41b51de57e8e13542b3daa001041162c93f78ed4e103565963dcf21f18d",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_release_gate_governance.py\",\"-k\",\"test_relgate_005\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-RELGATE-005.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "scripts/release_gate_governance.py": {
+        "exists": true,
+        "sha256": "18fe93692da77bdd615f59c19abb25f96225f5cd2bbf3a301acad58d6a71311a"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/governance-TEST-RELGATE-005-green.cli.json",
+      "sha256": "3e02634fee768aaf3224e103322d5431a378039183d7b42e637644fce1b17285"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/governance-TEST-RELGATE-005-green.report.json",
+      "sha256": "2c5c7cece16202247a99de0e6bb586583004a66b19c7b3aec89a58d562857e2a"
+    }
+  }
+}

@@ -11,7 +11,7 @@ import pytest
 # @id TEST-AIDS-415
 # @verifies REQ-AIDS-110
 def test_TEST_AIDS_415_mcar_inconsistent_fixture_matches_expected():
-    # Note: matches REQ-AIDS-110's Acceptance fixture (corrected in
+    # Note: matches the REQ-AIDS-110 Acceptance fixture (corrected in
     # CHANGE-040 / GitHub #84 to empirically-verified values).
     from ai_data_scientist.missing_data_analysis import diagnose_missingness
 

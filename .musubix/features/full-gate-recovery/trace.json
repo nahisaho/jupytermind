@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-29T23:57:16.981Z",
+  "nodes": [
+    {
+      "id": "ADR-0127",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0127.md",
+      "line": 1
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-001",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 59
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-002",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 405
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-003",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 966
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-004",
+      "kind": "code",
+      "path": "scripts/gate_recovery_transport.mjs",
+      "line": 174
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-005",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 140
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-006",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 174
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-007",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 712
+    },
+    {
+      "id": "DES-GATE-RECOVERY-001",
+      "kind": "design",
+      "path": ".musubix/features/full-gate-recovery/design.md",
+      "line": 15
+    },
+    {
+      "id": "DES-GATE-RECOVERY-002",
+      "kind": "design",
+      "path": ".musubix/features/full-gate-recovery/design.md",
+      "line": 24
+    },
+    {
+      "id": "DES-GATE-RECOVERY-003",
+      "kind": "design",
+      "path": ".musubix/features/full-gate-recovery/design.md",
+      "line": 33
+    },
+    {
+      "id": "REQ-GATE-RECOVERY-001",
+      "kind": "requirement",
+      "path": ".musubix/features/full-gate-recovery/requirements.md",
+      "line": 19,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-GATE-RECOVERY-002",
+      "kind": "requirement",
+      "path": ".musubix/features/full-gate-recovery/requirements.md",
+      "line": 111,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-GATE-RECOVERY-003",
+      "kind": "requirement",
+      "path": ".musubix/features/full-gate-recovery/requirements.md",
+      "line": 194,
+      "mandatory": true
+    },
+    {
+      "id": "TEST-GATE-RECOVERY-001",
+      "kind": "test",
+      "path": "tests/test_gate_recovery.py",
+      "line": 645
+    },
+    {
+      "id": "TEST-GATE-RECOVERY-002",
+      "kind": "test",
+      "path": "tests/test_gate_recovery.py",
+      "line": 743
+    },
+    {
+      "id": "TEST-GATE-RECOVERY-003",
+      "kind": "test",
+      "path": "tests/test_gate_recovery.py",
+      "line": 866
+    }
+  ],
+  "edges": [
+    {
+      "from": "ADR-0127",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0127",
+      "to": "DES-GATE-RECOVERY-002",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0127",
+      "to": "DES-GATE-RECOVERY-003",
+      "relation": "decides"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-001",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-001",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-002",
+      "to": "DES-GATE-RECOVERY-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-002",
+      "to": "REQ-GATE-RECOVERY-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-003",
+      "to": "DES-GATE-RECOVERY-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-003",
+      "to": "REQ-GATE-RECOVERY-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-004",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-004",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-005",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-005",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-006",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-006",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-007",
+      "to": "DES-GATE-RECOVERY-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-007",
+      "to": "REQ-GATE-RECOVERY-003",
+      "relation": "implements"
+    },
+    {
+      "from": "DES-GATE-RECOVERY-001",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-GATE-RECOVERY-002",
+      "to": "REQ-GATE-RECOVERY-002",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-GATE-RECOVERY-003",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-GATE-RECOVERY-003",
+      "to": "DES-GATE-RECOVERY-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-GATE-RECOVERY-003",
+      "to": "REQ-GATE-RECOVERY-003",
+      "relation": "satisfies"
+    },
+    {
+      "from": "TEST-GATE-RECOVERY-001",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-GATE-RECOVERY-002",
+      "to": "REQ-GATE-RECOVERY-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-GATE-RECOVERY-003",
+      "to": "REQ-GATE-RECOVERY-003",
+      "relation": "verifies"
+    }
+  ],
+  "diagnostics": [],
+  "fingerprints": {
+    ".musubix/decisions/ADR-0127.md": "af3bde933d05f6eb16f0fa2b27a84cb90ad4b558cd492e245802aaae9631e262",
+    ".musubix/features/full-gate-recovery/design.md": "94638d8d5c5a6a77c4f94da649e66b4522bc5b911ec89ad75487e9f9cfeaee7a",
+    ".musubix/features/full-gate-recovery/requirements.md": "13dd1d9d454817af40c1168cba9226cc509b678f95b2e78ebec2cd293596493c",
+    "scripts/gate_recovery.py": "397c490fd9c9852ae72d98a4fe86e094a7470c611882dbbc8902a68229a66807",
+    "scripts/gate_recovery_transport.mjs": "205d6902375a2d8448c27131106e43579d75a45b15ced12e74a425dcc9830f7e",
+    "tests/test_gate_recovery.py": "18d941b10c830dbde111ecf9884cb14a98bd9378a79d89602c843df0a9b75f48"
+  }
+}

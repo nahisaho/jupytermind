@@ -1,4 +1,15 @@
-# CHANGE-026: Cross-process stable project root for multi-kernel MCP sessions (fixes #72)
+# CHANGE-026: Cross-process stable project root for multi-kernel MCP sessions (historical proposal for #72)
+
+## Historical allocation correction (CHANGE-042)
+
+The Summary and Scope below preserve the original proposal, not proof that this
+change completed that implementation. The recorded chronology scope is
+REQ-AIDS-044. Its single-process contract was not changed by this proposal.
+The originally proposed REQ-AIDS-053 is now allocated to chart visual
+readability; the implemented cross-process discovery contract is REQ-AIDS-093.
+The implemented design is DES-AIDS-093. The identifiers in the original Scope
+remain below as historical context, not as current specification allocations.
+No protected chronology or TDD records are rewritten by this correction.
 
 ## Summary
 
@@ -42,7 +53,7 @@ of truth when a caller wants to pin it explicitly.
 
 ## Affected Requirements
 
-Requirements: REQ-AIDS-053
+Requirements: REQ-AIDS-044
 
 ## Out of scope
 

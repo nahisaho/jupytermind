@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "revision": "a45a09e09fb5c24f0bba8481e040efcde1b678ad",
+  "commandSha256": "684fe5f08fe3c8e82efbbc2094b595f7801d27d933050a131acfc630821927d3",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "a45a09e09fb5c24f0bba8481e040efcde1b678ad",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_materials_scientist/evidence.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "bcd6fccd767509bc807ce94431fee629472d07e474c36ba9ad2a71d5012f1196"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIMS-949",
+    "testSha256": "85fb8f17af7ca69308a70808200562365acf51c949ded746df34417b05cf6e89",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_ai_materials_scientist_evidence.py\",\"-k\",\"test_aims_949\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIMS-949.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_materials_scientist/evidence.py": {
+        "exists": false,
+        "sha256": null
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/materials-evidence-TEST-AIMS-949-red.cli.json",
+      "sha256": "6938631ce5447ebba9ec96fc66ee63644b13bf757c2e184226787a6475d5ffc5"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/materials-evidence-TEST-AIMS-949-red.report.json",
+      "sha256": "068e16bbea08542a8d92daaa6410ca215600bb099aa0cd6f452cde81d99966cf"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "a45a09e09fb5c24f0bba8481e040efcde1b678ad",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_materials_scientist/evidence.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "bcd6fccd767509bc807ce94431fee629472d07e474c36ba9ad2a71d5012f1196"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIMS-949",
+    "testSha256": "85fb8f17af7ca69308a70808200562365acf51c949ded746df34417b05cf6e89",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_ai_materials_scientist_evidence.py\",\"-k\",\"test_aims_949\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIMS-949.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_materials_scientist/evidence.py": {
+        "exists": true,
+        "sha256": "bcd6fccd767509bc807ce94431fee629472d07e474c36ba9ad2a71d5012f1196"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/materials-evidence-TEST-AIMS-949-green.cli.json",
+      "sha256": "fac6181a671a246ad63b5aa070c3f6c69f8278a9e550bd497d21e0e3f4d65033"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/materials-evidence-TEST-AIMS-949-green.report.json",
+      "sha256": "9f42663061553e3f8b347c9cefc76f50ea6d3557f386dd3477e315bb54d37838"
+    }
+  }
+}

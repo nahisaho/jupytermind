@@ -29,8 +29,8 @@ class JapaneseNLPResult:
 
 
 # @id CODE-AIDS-023
-# @implements REQ-AIDS-023
-# @design DES-AIDS-021
+# @implements REQ-AIDS-023 REQ-GINZA53-003
+# @design DES-AIDS-021 DES-GINZA53-003
 def analyze_japanese_text(text: str, operation: str = "tokenize") -> JapaneseNLPResult:
     """Tokenize and POS-tag ``text`` using the pinned ja_ginza pipeline."""
     if operation not in _SUPPORTED_OPERATIONS:

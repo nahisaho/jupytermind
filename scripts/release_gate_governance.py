@@ -25,7 +25,7 @@ IN_SESSION_REQUIRED_CHECKS = (
     "commands",
 )
 
-#: Required checks that can only be resolved after the session's transcript
+#: Required checks that can only be resolved after the session transcript
 #: closes (musubix3 issue #63 blocks `workflow-sanitize` on a live session).
 POST_SESSION_REQUIRED_CHECKS = ("workflow",)
 
@@ -74,7 +74,7 @@ def summarize_status(baseline: dict[str, Any]) -> str:
 # --- REQ-RELGATE-002 --------------------------------------------------------
 
 #: Scopes explicitly excluded from any waiver refresh attempt per
-#: ADR-0110's accepted residual risk (CHANGE-005/upstream musubix3 #55).
+#: Accepted residual risk in ADR-0110 (CHANGE-005/upstream musubix3 #55).
 PERMANENTLY_EXCLUDED_WAIVER_SCOPES = frozenset(
     {
         ("CHANGE-005", "CHANGE_GREEN_UNPROVEN", "REQ-ACHEM-003"),

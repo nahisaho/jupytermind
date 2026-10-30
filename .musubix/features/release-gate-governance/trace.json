@@ -1,12 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-09T09:58:09.331Z",
+  "generatedAt": "2026-10-29T12:19:53.848Z",
   "nodes": [
     {
       "id": "ADR-0110",
       "kind": "adr",
       "path": ".musubix/decisions/ADR-0110.md",
       "line": 1
+    },
+    {
+      "id": "CODE-RELGATE-001",
+      "kind": "code",
+      "path": "scripts/release_gate_governance.py",
+      "line": 33
     },
     {
       "id": "CODE-RELGATE-002",
@@ -31,6 +37,12 @@
       "kind": "code",
       "path": "scripts/release_gate_governance.py",
       "line": 164
+    },
+    {
+      "id": "CODE-RELGATE-101",
+      "kind": "code",
+      "path": "scripts/release_gate_governance.py",
+      "line": 58
     },
     {
       "id": "CODE-RELGATE-105",
@@ -107,31 +119,31 @@
       "id": "TEST-RELGATE-001",
       "kind": "test",
       "path": "tests/test_release_gate_governance.py",
-      "line": 23
+      "line": 13
     },
     {
       "id": "TEST-RELGATE-002",
       "kind": "test",
       "path": "tests/test_release_gate_governance.py",
-      "line": 52
+      "line": 44
     },
     {
       "id": "TEST-RELGATE-003",
       "kind": "test",
       "path": "tests/test_release_gate_governance.py",
-      "line": 76
+      "line": 73
     },
     {
       "id": "TEST-RELGATE-005",
       "kind": "test",
       "path": "tests/test_release_gate_governance.py",
-      "line": 90
+      "line": 89
     },
     {
       "id": "TEST-RELGATE-101",
       "kind": "test",
       "path": "tests/test_measure_pytest_pass_rate.py",
-      "line": 15
+      "line": 13
     },
     {
       "id": "TEST-RELGATE-102",
@@ -143,7 +155,7 @@
       "id": "TEST-RELGATE-103",
       "kind": "test",
       "path": "tests/test_measure_pytest_pass_rate.py",
-      "line": 41
+      "line": 43
     }
   ],
   "edges": [
@@ -171,6 +183,16 @@
       "from": "ADR-0110",
       "to": "DES-RELGATE-005",
       "relation": "decides"
+    },
+    {
+      "from": "CODE-RELGATE-001",
+      "to": "DES-RELGATE-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-RELGATE-001",
+      "to": "REQ-RELGATE-001",
+      "relation": "implements"
     },
     {
       "from": "CODE-RELGATE-002",
@@ -210,6 +232,16 @@
     {
       "from": "CODE-RELGATE-005",
       "to": "REQ-RELGATE-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-RELGATE-101",
+      "to": "DES-RELGATE-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-RELGATE-101",
+      "to": "REQ-RELGATE-001",
       "relation": "implements"
     },
     {
@@ -309,8 +341,8 @@
     ".musubix/features/release-gate-governance/design.md": "85a64aaf7f6e14b0e7e81a8a882ed07d19142de91e34b96b2067a49aad308e2b",
     ".musubix/features/release-gate-governance/requirements.md": "6e8f7367e19ccf8b16648be7adb392841b2d48c32e860e6eddfd4075db65e6d3",
     "scripts/measure_pytest_pass_rate.py": "517ef67da322f01b224fb164746cdcdd777bc7970a4cc0d7a3ea00222d4e674e",
-    "scripts/release_gate_governance.py": "4b9c6e390e03cf7d88480745ff99e7bd12579570b862df66bfc0718e6313887a",
-    "tests/test_measure_pytest_pass_rate.py": "a45e55b30ce02ca8a6d0227ac1e37f239e59791cf4de487154f1ba9e77743d6e",
-    "tests/test_release_gate_governance.py": "c63d6ec5fc2e24e0fb6f1fd3b1cc9f74ab07ee0b28ee07f31bf287e1a72c70e9"
+    "scripts/release_gate_governance.py": "18fe93692da77bdd615f59c19abb25f96225f5cd2bbf3a301acad58d6a71311a",
+    "tests/test_measure_pytest_pass_rate.py": "5d4807d0aa87f8cde0a82a05d4cb58a11cd86ad40f82b6d157695b1c1979ba32",
+    "tests/test_release_gate_governance.py": "385fc41b51de57e8e13542b3daa001041162c93f78ed4e103565963dcf21f18d"
   }
 }

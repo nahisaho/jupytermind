@@ -9,6 +9,23 @@ import pytest
 from ai_data_scientist.clustering import cluster_or_reduce, fit_unsupervised_model
 
 
+def _two_gaussian_clusters():
+    rng = np.random.default_rng(0)
+    cluster_a = rng.normal(loc=(0, 0), scale=0.3, size=(15, 2))
+    cluster_b = rng.normal(loc=(20, 20), scale=0.3, size=(15, 2))
+    return np.vstack([cluster_a, cluster_b]).tolist()
+
+
+def _mean_pairwise_distance(points):
+    total = 0.0
+    count = 0
+    for i in range(len(points)):
+        for j in range(i + 1, len(points)):
+            total += math.dist(points[i], points[j])
+            count += 1
+    return total / count if count else 0.0
+
+
 # @id TEST-AIDS-016
 # @verifies REQ-AIDS-016
 def test_TEST_AIDS_016():
@@ -33,23 +50,6 @@ def test_TEST_AIDS_034_n_clusters_exceeding_rows_raises_clear_error():
 
     with pytest.raises(ValueError, match="n_clusters.*10.*rows.*3|rows.*3.*n_clusters.*10"):
         cluster_or_reduce(df, method="kmeans", params={"n_clusters": 10})
-
-
-def _two_gaussian_clusters():
-    rng = np.random.default_rng(0)
-    cluster_a = rng.normal(loc=(0, 0), scale=0.3, size=(15, 2))
-    cluster_b = rng.normal(loc=(20, 20), scale=0.3, size=(15, 2))
-    return np.vstack([cluster_a, cluster_b]).tolist()
-
-
-def _mean_pairwise_distance(points):
-    total = 0.0
-    count = 0
-    for i in range(len(points)):
-        for j in range(i + 1, len(points)):
-            total += math.dist(points[i], points[j])
-            count += 1
-    return total / count if count else 0.0
 
 
 # @id TEST-AIDS-481

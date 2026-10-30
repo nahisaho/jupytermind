@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-09T09:58:09.331Z",
+  "generatedAt": "2026-10-29T08:24:40.829Z",
   "nodes": [
     {
       "id": "ADR-0073",
@@ -832,7 +832,7 @@
       "id": "TEST-AISCI-035",
       "kind": "test",
       "path": "tests/test_ai_scientist_tdd_gate.py",
-      "line": 11
+      "line": 33
     },
     {
       "id": "TEST-AISCI-036",
@@ -2114,7 +2114,7 @@
     "tests/test_ai_scientist_phase_state.py": "8753eccaaa13ff761b6fcaf31254d3ac84064e81587ad44accbe465df6f8b3de",
     "tests/test_ai_scientist_project_handle.py": "02392815e0153fd76d547de9429a74c5f10c88089970ec9355d824307ebba3f4",
     "tests/test_ai_scientist_skill_packaging.py": "aee1a058d22b72b9c723649085bad580ba7f61c7d6104fa5fa1f803b5702f80d",
-    "tests/test_ai_scientist_tdd_gate.py": "6a902fbf67e554c42338c3b01726fafd990a7af696e870e5dd79d02f6279829e",
+    "tests/test_ai_scientist_tdd_gate.py": "872397ad1f1ad176199fe194e0bd6d5b91ff9c050cc3304d823ff07d25738e63",
     "tests/test_ai_structural_biology_scientist_skill_packaging.py": "56ca979de45897fd7ba1adde4d6ae1cd345e15457ba7d014f72c2418830d77e2"
   }
 }

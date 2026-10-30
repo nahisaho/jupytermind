@@ -8,6 +8,28 @@ from pathlib import Path
 import pytest
 
 
+def _write_mixed_skip_suite(path: Path) -> None:
+    path.write_text(
+        "\n".join(
+            [
+                "import pytest",
+                "",
+                "@pytest.mark.skip(reason='approved: covered by TEST-AISCI-000')",
+                "def test_approved_skip():",
+                "    pass",
+                "",
+                "@pytest.mark.skip(reason='unapproved')",
+                "def test_unapproved_skip():",
+                "    pass",
+                "",
+                "def test_passes():",
+                "    assert True",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+
 # @id TEST-AISCI-035
 # @verifies REQ-AISCI-024
 def test_TEST_AISCI_035_rejects_failing_or_skipped_test_suites(tmp_path):
@@ -32,28 +54,6 @@ def test_TEST_AISCI_035_rejects_failing_or_skipped_test_suites(tmp_path):
 
     with pytest.raises(RuntimeError, match="skip"):
         run_configured_test_suite([sys.executable, "-m", "pytest", "-q", str(skipped_test)])
-
-
-def _write_mixed_skip_suite(path: Path) -> None:
-    path.write_text(
-        "\n".join(
-            [
-                "import pytest",
-                "",
-                "@pytest.mark.skip(reason='approved: covered by TEST-AISCI-000')",
-                "def test_approved_skip():",
-                "    pass",
-                "",
-                "@pytest.mark.skip(reason='unapproved')",
-                "def test_unapproved_skip():",
-                "    pass",
-                "",
-                "def test_passes():",
-                "    assert True",
-            ]
-        ),
-        encoding="utf-8",
-    )
 
 
 # @id TEST-AISCI-044

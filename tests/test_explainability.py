@@ -16,7 +16,7 @@ from ai_data_scientist.ml_modeling import train_model
 
 
 # @id TEST-AIDS-021
-# @verifies REQ-AIDS-021
+# @verifies REQ-AIDS-021 REQ-AIDS-082
 def test_TEST_AIDS_021():
     rng = np.random.default_rng(0)
     n = 80

@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+  "commandSha256": "a912d6f6fadcc466c015959c1a944c2406a2c4db27500d80f3d2211d2081c3d0",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_data_scientist/sensitivity.py": {
+          "past": {
+            "exists": true,
+            "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIDS-096",
+    "testSha256": "90223b1e4e0c6d168ccc9195d94ba5d4f8f2758cb42b07d25a070cf3e75c0e31",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_sensitivity.py\",\"-k\",\"test_aids_096\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIDS-096.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_data_scientist/sensitivity.py": {
+        "exists": true,
+        "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-096-red.cli.json",
+      "sha256": "ccb4910a41f180ec897d4d1b193403f5b085d45083344d2efe42e87214915d2b"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-096-red.report.json",
+      "sha256": "86987b6036f1fe80f9774773f8ee1af600ba318d74730b5384f1b4687668f44c"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_data_scientist/sensitivity.py": {
+          "past": {
+            "exists": true,
+            "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIDS-096",
+    "testSha256": "90223b1e4e0c6d168ccc9195d94ba5d4f8f2758cb42b07d25a070cf3e75c0e31",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_sensitivity.py\",\"-k\",\"test_aids_096\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIDS-096.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_data_scientist/sensitivity.py": {
+        "exists": true,
+        "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-096-green.cli.json",
+      "sha256": "4e48d224606f297b187a6dc2f65016014f912e21cc483b9830d0adaf0dad37db"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-096-green.report.json",
+      "sha256": "4456e5ca79a5fced835f7c8350e16154ed4f325e7d812b0668788d7cfed65aaa"
+    }
+  }
+}

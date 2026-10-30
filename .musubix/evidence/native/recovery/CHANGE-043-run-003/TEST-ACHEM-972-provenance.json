@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "revision": "d8ccd36fc1fc594b0a7b82c90982e3da5f1e444a",
+  "commandSha256": "74942a8ea73d68eb611412ed3fafc6be4924e142c06226a89ea0ab6ca91f120a",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "d8ccd36fc1fc594b0a7b82c90982e3da5f1e444a",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_chemistry_scientist/salt_standardization.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "8e1a7249704611c2f5a2ea9844c6804d6c60bda636e53b1dc100f74d4ff68ebb"
+          }
+        }
+      }
+    },
+    "testId": "TEST-ACHEM-972",
+    "testSha256": "2d43572348096922d0da71cae39707dbb126ca7fc2cbbaa8a392e92d7cb3e70b",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_ai_chemistry_scientist_salt_standardization.py\",\"-k\",\"test_achem_972\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-ACHEM-972.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_chemistry_scientist/salt_standardization.py": {
+        "exists": false,
+        "sha256": null
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/salt-standardization-TEST-ACHEM-972-red.cli.json",
+      "sha256": "10f7e70ed87d7fcd016b5a2406c5de0bc92a72c3cfbf28c2a1b9ccd31a8c187e"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/salt-standardization-TEST-ACHEM-972-red.report.json",
+      "sha256": "792d28595f390038fab1deef9311c5fe9728edfdc8ed614bb68283d1594d2f25"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "d8ccd36fc1fc594b0a7b82c90982e3da5f1e444a",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_chemistry_scientist/salt_standardization.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "8e1a7249704611c2f5a2ea9844c6804d6c60bda636e53b1dc100f74d4ff68ebb"
+          }
+        }
+      }
+    },
+    "testId": "TEST-ACHEM-972",
+    "testSha256": "2d43572348096922d0da71cae39707dbb126ca7fc2cbbaa8a392e92d7cb3e70b",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_ai_chemistry_scientist_salt_standardization.py\",\"-k\",\"test_achem_972\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-ACHEM-972.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_chemistry_scientist/salt_standardization.py": {
+        "exists": true,
+        "sha256": "8e1a7249704611c2f5a2ea9844c6804d6c60bda636e53b1dc100f74d4ff68ebb"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/salt-standardization-TEST-ACHEM-972-green.cli.json",
+      "sha256": "84e5a6b316102cf75ff4c55807220c2295a3655a4b01dd70fb7a04f047b96c82"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/salt-standardization-TEST-ACHEM-972-green.report.json",
+      "sha256": "eff21b542298b2e65313bd0c388691b40af9783961629973e419b815c14c4bf6"
+    }
+  }
+}

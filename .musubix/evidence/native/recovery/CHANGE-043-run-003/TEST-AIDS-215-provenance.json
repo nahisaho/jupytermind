@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "revision": "fad1e16b42c2e1999a3bca67162f8034ce8a2ef2",
+  "commandSha256": "dcdd51fa1b419ff5fbe3ba4b569ee3b9d9cd5d693493a7a731d9755ae07e035d",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "fad1e16b42c2e1999a3bca67162f8034ce8a2ef2",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_data_scientist/explainability.py": {
+          "past": {
+            "exists": true,
+            "sha256": "7ec63a3108773741ee4161516329f858931db70a803def21c66957fa369a1b45"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "0a007c89f07554e33eae638d6b0e2d7002bf83e14b91c97a67a0011cbaf39d0e"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIDS-215",
+    "testSha256": "e23aa11d8b8d9c905588fd35db41b092ca4fd8999dc0ad129b34abf9db6a8b28",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_explainability.py\",\"-k\",\"test_aids_215\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIDS-215.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_data_scientist/explainability.py": {
+        "exists": true,
+        "sha256": "7ec63a3108773741ee4161516329f858931db70a803def21c66957fa369a1b45"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/explainability-TEST-AIDS-215-red.cli.json",
+      "sha256": "2dc09fd7ce9735e56906ecb7d9bd804b3d39da832bd0321b39f740d56da7ab0a"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/explainability-TEST-AIDS-215-red.report.json",
+      "sha256": "443c9cf4138ec80f046e9b2ad4660c576502bea5af61a225bc390f16a603260a"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "fad1e16b42c2e1999a3bca67162f8034ce8a2ef2",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_data_scientist/explainability.py": {
+          "past": {
+            "exists": true,
+            "sha256": "7ec63a3108773741ee4161516329f858931db70a803def21c66957fa369a1b45"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "0a007c89f07554e33eae638d6b0e2d7002bf83e14b91c97a67a0011cbaf39d0e"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIDS-215",
+    "testSha256": "e23aa11d8b8d9c905588fd35db41b092ca4fd8999dc0ad129b34abf9db6a8b28",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_explainability.py\",\"-k\",\"test_aids_215\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIDS-215.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_data_scientist/explainability.py": {
+        "exists": true,
+        "sha256": "0a007c89f07554e33eae638d6b0e2d7002bf83e14b91c97a67a0011cbaf39d0e"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/explainability-TEST-AIDS-215-green.cli.json",
+      "sha256": "249fbfd5da970fdf196a2b6cd9e0265f13ca3ea0b41faa68701772d0b53a08da"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/explainability-TEST-AIDS-215-green.report.json",
+      "sha256": "399ca782a603e12a9ad01217f5cfca15d43e182a7ac16fa19a17a2ceae38f82f"
+    }
+  }
+}

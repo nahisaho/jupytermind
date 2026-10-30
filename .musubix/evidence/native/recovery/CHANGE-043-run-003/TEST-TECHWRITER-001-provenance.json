@@ -1,0 +1,115 @@
+{
+  "valid": true,
+  "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+  "commandSha256": "8bb778fc80edf9e646d018e324448d49def10e9a5f1688905bda635545d1ee05",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/skill_packaging_guard/__init__.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "d738bb98cbbe2a2e6dd318c9f3ebd6f7cf841525a950d9f55da303d9fbe29e9b"
+          }
+        },
+        ".github/skills/tech-writer/SKILL.md": {
+          "past": {
+            "exists": true,
+            "sha256": "cb4c9e369f25ab135c3d3a7d1f70698a29712f08e0b02a5821846c8ce5c632e1"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "19af72ecca094d450cdf329c3e47682b15b92119914913598926898fa3d51178"
+          }
+        }
+      }
+    },
+    "testId": "TEST-TECHWRITER-001",
+    "testSha256": "26eda61368155bc04ef2a3a86508b03aa096c6ae9c49f404fc64036af9ccd24c",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_tech_writer_skill_packaging.py\",\"-k\",\"test_techwriter_001\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-TECHWRITER-001.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/skill_packaging_guard/__init__.py": {
+        "exists": false,
+        "sha256": null
+      },
+      ".github/skills/tech-writer/SKILL.md": {
+        "exists": true,
+        "sha256": "cb4c9e369f25ab135c3d3a7d1f70698a29712f08e0b02a5821846c8ce5c632e1"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/tech-writer-TEST-TECHWRITER-001-red.cli.json",
+      "sha256": "63ba18a448af793353b797520728268eec80069a4bb78ffe8db4dd6199e79dc9"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/tech-writer-TEST-TECHWRITER-001-red.report.json",
+      "sha256": "1c99d3cccf11aef99dad5d23d51cf6f167c2c33f8d7cf669337d319c66c3d261"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/skill_packaging_guard/__init__.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "d738bb98cbbe2a2e6dd318c9f3ebd6f7cf841525a950d9f55da303d9fbe29e9b"
+          }
+        },
+        ".github/skills/tech-writer/SKILL.md": {
+          "past": {
+            "exists": true,
+            "sha256": "cb4c9e369f25ab135c3d3a7d1f70698a29712f08e0b02a5821846c8ce5c632e1"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "19af72ecca094d450cdf329c3e47682b15b92119914913598926898fa3d51178"
+          }
+        }
+      }
+    },
+    "testId": "TEST-TECHWRITER-001",
+    "testSha256": "26eda61368155bc04ef2a3a86508b03aa096c6ae9c49f404fc64036af9ccd24c",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_tech_writer_skill_packaging.py\",\"-k\",\"test_techwriter_001\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-TECHWRITER-001.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/skill_packaging_guard/__init__.py": {
+        "exists": true,
+        "sha256": "d738bb98cbbe2a2e6dd318c9f3ebd6f7cf841525a950d9f55da303d9fbe29e9b"
+      },
+      ".github/skills/tech-writer/SKILL.md": {
+        "exists": true,
+        "sha256": "19af72ecca094d450cdf329c3e47682b15b92119914913598926898fa3d51178"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/tech-writer-TEST-TECHWRITER-001-green.cli.json",
+      "sha256": "1b06b0fb817bb35f50ba0a4fc2fdb57b2ec4f46aedbca2a453ffa6e4d3f053db"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/tech-writer-TEST-TECHWRITER-001-green.report.json",
+      "sha256": "6a00daf8c97996538c91991cbc7a0ad344b9d937a2e21e98c5f891024ec6733f"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-09T09:58:09.331Z",
+  "generatedAt": "2026-10-29T08:31:05.815Z",
   "nodes": [
     {
       "id": "ADR-0109",
@@ -37,7 +37,7 @@
       "id": "TEST-TECHWRITER-001",
       "kind": "test",
       "path": "tests/test_tech_writer_skill_packaging.py",
-      "line": 16
+      "line": 14
     },
     {
       "id": "TEST-TECHWRITER-002",
@@ -49,19 +49,19 @@
       "id": "TEST-TECHWRITER-003",
       "kind": "test",
       "path": "tests/test_tech_writer_skill_packaging.py",
-      "line": 46
+      "line": 48
     },
     {
       "id": "TEST-TECHWRITER-004",
       "kind": "test",
       "path": "tests/test_tech_writer_skill_packaging.py",
-      "line": 56
+      "line": 60
     },
     {
       "id": "TEST-TECHWRITER-005",
       "kind": "test",
       "path": "tests/test_tech_writer_skill_packaging.py",
-      "line": 66
+      "line": 72
     }
   ],
   "edges": [
@@ -127,6 +127,6 @@
     ".musubix/features/tech-writer/design.md": "e39a7e99d6971de14a1ac6d508b6fb551873f89bbd524774117ba3cc53c91ab7",
     ".musubix/features/tech-writer/requirements.md": "50d9cff351d1424a0fcc33bcc38a548488310b63bafd9dc49eb0ba2642ef4fa5",
     "src/skill_packaging_guard/__init__.py": "d738bb98cbbe2a2e6dd318c9f3ebd6f7cf841525a950d9f55da303d9fbe29e9b",
-    "tests/test_tech_writer_skill_packaging.py": "1881ab5bbb9c21e6dba84928e8d35f70154a90e3628f48b90caf9d06de5e8e02"
+    "tests/test_tech_writer_skill_packaging.py": "26eda61368155bc04ef2a3a86508b03aa096c6ae9c49f404fc64036af9ccd24c"
   }
 }

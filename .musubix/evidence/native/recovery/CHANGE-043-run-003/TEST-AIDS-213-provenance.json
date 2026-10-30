@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+  "commandSha256": "b9c0bc4669feda9eb9e7aa5ffe99ac03fe5c313dc50d6ca09e85137cc9f50606",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_data_scientist/sensitivity.py": {
+          "past": {
+            "exists": true,
+            "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIDS-213",
+    "testSha256": "90223b1e4e0c6d168ccc9195d94ba5d4f8f2758cb42b07d25a070cf3e75c0e31",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_sensitivity.py\",\"-k\",\"test_aids_213\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIDS-213.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_data_scientist/sensitivity.py": {
+        "exists": true,
+        "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-213-red.cli.json",
+      "sha256": "b365e45aacd18447c74706df0bd93e91e565f64ef56b1796ce895842d12508b9"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-213-red.report.json",
+      "sha256": "c61a5271f4524844deca1023f1af7496012bb46083dd15c9e60057bdb0f6dc47"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_data_scientist/sensitivity.py": {
+          "past": {
+            "exists": true,
+            "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIDS-213",
+    "testSha256": "90223b1e4e0c6d168ccc9195d94ba5d4f8f2758cb42b07d25a070cf3e75c0e31",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_sensitivity.py\",\"-k\",\"test_aids_213\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIDS-213.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_data_scientist/sensitivity.py": {
+        "exists": true,
+        "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-213-green.cli.json",
+      "sha256": "c0e31af8338cdff18f4781143782d6132142ca25f9a597bb2a93db3ef8f528fa"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-213-green.report.json",
+      "sha256": "89b0eb29b629502c935985968fd86a1f4558c2eb04485147180b50d8a9710580"
+    }
+  }
+}

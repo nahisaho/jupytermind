@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-09T10:28:12.396Z",
+  "generatedAt": "2026-10-29T23:57:16.981Z",
   "nodes": [
     {
       "id": "ADR-0001",
@@ -756,6 +756,12 @@
       "id": "ADR-0126",
       "kind": "adr",
       "path": ".musubix/decisions/ADR-0126.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0127",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0127.md",
       "line": 1
     },
     {
@@ -2499,6 +2505,78 @@
       "line": 4
     },
     {
+      "id": "CODE-GATE-RECOVERY-001",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 59
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-002",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 405
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-003",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 966
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-004",
+      "kind": "code",
+      "path": "scripts/gate_recovery_transport.mjs",
+      "line": 174
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-005",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 140
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-006",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 174
+    },
+    {
+      "id": "CODE-GATE-RECOVERY-007",
+      "kind": "code",
+      "path": "scripts/gate_recovery.py",
+      "line": 712
+    },
+    {
+      "id": "CODE-GINZA53-001",
+      "kind": "code",
+      "path": "bin/ai-data-scientist.js",
+      "line": 212
+    },
+    {
+      "id": "CODE-GINZA53-002",
+      "kind": "code",
+      "path": ".github/skills/japanese-prose/scripts/lint.py",
+      "line": 1
+    },
+    {
+      "id": "CODE-GINZA53-003",
+      "kind": "code",
+      "path": ".github/skills/japanese-prose/scripts/terms.py",
+      "line": 1
+    },
+    {
+      "id": "CODE-GINZA53-004",
+      "kind": "code",
+      "path": ".github/skills/japanese-prose/scripts/test_engine.py",
+      "line": 1
+    },
+    {
+      "id": "CODE-RELGATE-001",
+      "kind": "code",
+      "path": "scripts/release_gate_governance.py",
+      "line": 33
+    },
+    {
       "id": "CODE-RELGATE-002",
       "kind": "code",
       "path": "scripts/release_gate_governance.py",
@@ -2521,6 +2599,12 @@
       "kind": "code",
       "path": "scripts/release_gate_governance.py",
       "line": 164
+    },
+    {
+      "id": "CODE-RELGATE-101",
+      "kind": "code",
+      "path": "scripts/release_gate_governance.py",
+      "line": 58
     },
     {
       "id": "CODE-RELGATE-105",
@@ -3595,6 +3679,42 @@
       "kind": "design",
       "path": ".musubix/features/example/design.md",
       "line": 7
+    },
+    {
+      "id": "DES-GATE-RECOVERY-001",
+      "kind": "design",
+      "path": ".musubix/features/full-gate-recovery/design.md",
+      "line": 15
+    },
+    {
+      "id": "DES-GATE-RECOVERY-002",
+      "kind": "design",
+      "path": ".musubix/features/full-gate-recovery/design.md",
+      "line": 24
+    },
+    {
+      "id": "DES-GATE-RECOVERY-003",
+      "kind": "design",
+      "path": ".musubix/features/full-gate-recovery/design.md",
+      "line": 33
+    },
+    {
+      "id": "DES-GINZA53-001",
+      "kind": "design",
+      "path": ".musubix/features/ginza-5-3/design.md",
+      "line": 11
+    },
+    {
+      "id": "DES-GINZA53-002",
+      "kind": "design",
+      "path": ".musubix/features/ginza-5-3/design.md",
+      "line": 19
+    },
+    {
+      "id": "DES-GINZA53-003",
+      "kind": "design",
+      "path": ".musubix/features/ginza-5-3/design.md",
+      "line": 27
     },
     {
       "id": "DES-RELGATE-001",
@@ -5033,6 +5153,48 @@
       "mandatory": true
     },
     {
+      "id": "REQ-GATE-RECOVERY-001",
+      "kind": "requirement",
+      "path": ".musubix/features/full-gate-recovery/requirements.md",
+      "line": 19,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-GATE-RECOVERY-002",
+      "kind": "requirement",
+      "path": ".musubix/features/full-gate-recovery/requirements.md",
+      "line": 111,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-GATE-RECOVERY-003",
+      "kind": "requirement",
+      "path": ".musubix/features/full-gate-recovery/requirements.md",
+      "line": 194,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-GINZA53-001",
+      "kind": "requirement",
+      "path": ".musubix/features/ginza-5-3/requirements.md",
+      "line": 12,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-GINZA53-002",
+      "kind": "requirement",
+      "path": ".musubix/features/ginza-5-3/requirements.md",
+      "line": 19,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-GINZA53-003",
+      "kind": "requirement",
+      "path": ".musubix/features/ginza-5-3/requirements.md",
+      "line": 27,
+      "mandatory": true
+    },
+    {
       "id": "REQ-RELGATE-001",
       "kind": "requirement",
       "path": ".musubix/features/release-gate-governance/requirements.md",
@@ -6218,7 +6380,7 @@
       "id": "TEST-AIDS-002",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 31
+      "line": 89
     },
     {
       "id": "TEST-AIDS-003",
@@ -6272,7 +6434,7 @@
       "id": "TEST-AIDS-011",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 46
+      "line": 104
     },
     {
       "id": "TEST-AIDS-012",
@@ -6284,7 +6446,7 @@
       "id": "TEST-AIDS-014",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 21
+      "line": 27
     },
     {
       "id": "TEST-AIDS-015",
@@ -6296,13 +6458,13 @@
       "id": "TEST-AIDS-016",
       "kind": "test",
       "path": "tests/test_clustering.py",
-      "line": 12
+      "line": 29
     },
     {
       "id": "TEST-AIDS-017",
       "kind": "test",
       "path": "tests/test_anomaly_detection.py",
-      "line": 10
+      "line": 26
     },
     {
       "id": "TEST-AIDS-018",
@@ -6332,13 +6494,13 @@
       "id": "TEST-AIDS-022",
       "kind": "test",
       "path": "tests/test_experiment_evaluation.py",
-      "line": 19
+      "line": 85
     },
     {
       "id": "TEST-AIDS-023",
       "kind": "test",
       "path": "tests/test_japanese_nlp.py",
-      "line": 10
+      "line": 27
     },
     {
       "id": "TEST-AIDS-024",
@@ -6368,13 +6530,13 @@
       "id": "TEST-AIDS-028",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 22
+      "line": 80
     },
     {
       "id": "TEST-AIDS-029",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 63
+      "line": 121
     },
     {
       "id": "TEST-AIDS-030",
@@ -6392,7 +6554,7 @@
       "id": "TEST-AIDS-032",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 47
+      "line": 53
     },
     {
       "id": "TEST-AIDS-033",
@@ -6404,7 +6566,7 @@
       "id": "TEST-AIDS-034",
       "kind": "test",
       "path": "tests/test_clustering.py",
-      "line": 29
+      "line": 46
     },
     {
       "id": "TEST-AIDS-035",
@@ -6542,13 +6704,13 @@
       "id": "TEST-AIDS-057",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 127
+      "line": 185
     },
     {
       "id": "TEST-AIDS-058",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 147
+      "line": 205
     },
     {
       "id": "TEST-AIDS-059",
@@ -6620,13 +6782,13 @@
       "id": "TEST-AIDS-070",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 175
+      "line": 233
     },
     {
       "id": "TEST-AIDS-071",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 197
+      "line": 255
     },
     {
       "id": "TEST-AIDS-072",
@@ -6824,7 +6986,7 @@
       "id": "TEST-AIDS-104",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 91
+      "line": 149
     },
     {
       "id": "TEST-AIDS-105",
@@ -6872,7 +7034,7 @@
       "id": "TEST-AIDS-112",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 219
+      "line": 277
     },
     {
       "id": "TEST-AIDS-113",
@@ -6992,25 +7154,25 @@
       "id": "TEST-AIDS-133",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 77
+      "line": 83
     },
     {
       "id": "TEST-AIDS-134",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 93
+      "line": 99
     },
     {
       "id": "TEST-AIDS-135",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 106
+      "line": 112
     },
     {
       "id": "TEST-AIDS-136",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 119
+      "line": 125
     },
     {
       "id": "TEST-AIDS-137",
@@ -7364,13 +7526,13 @@
       "id": "TEST-AIDS-203",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 135
+      "line": 141
     },
     {
       "id": "TEST-AIDS-204",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 150
+      "line": 156
     },
     {
       "id": "TEST-AIDS-205",
@@ -8259,6 +8421,24 @@
       "kind": "test",
       "path": "tests/test_missing_data_analysis.py",
       "line": 11
+    },
+    {
+      "id": "TEST-AIDS-416",
+      "kind": "test",
+      "path": "tests/test_missing_data_analysis.py",
+      "line": 33
+    },
+    {
+      "id": "TEST-AIDS-417",
+      "kind": "test",
+      "path": "tests/test_missing_data_analysis.py",
+      "line": 48
+    },
+    {
+      "id": "TEST-AIDS-418",
+      "kind": "test",
+      "path": "tests/test_missing_data_analysis.py",
+      "line": 57
     },
     {
       "id": "TEST-AIDS-419",
@@ -9242,7 +9422,7 @@
       "id": "TEST-AISCI-035",
       "kind": "test",
       "path": "tests/test_ai_scientist_tdd_gate.py",
-      "line": 11
+      "line": 33
     },
     {
       "id": "TEST-AISCI-036",
@@ -9485,34 +9665,70 @@
       "line": 4
     },
     {
+      "id": "TEST-GATE-RECOVERY-001",
+      "kind": "test",
+      "path": "tests/test_gate_recovery.py",
+      "line": 645
+    },
+    {
+      "id": "TEST-GATE-RECOVERY-002",
+      "kind": "test",
+      "path": "tests/test_gate_recovery.py",
+      "line": 743
+    },
+    {
+      "id": "TEST-GATE-RECOVERY-003",
+      "kind": "test",
+      "path": "tests/test_gate_recovery.py",
+      "line": 866
+    },
+    {
+      "id": "TEST-GINZA53-001",
+      "kind": "test",
+      "path": "tests/test_dependency_pins.py",
+      "line": 50
+    },
+    {
+      "id": "TEST-GINZA53-002",
+      "kind": "test",
+      "path": "tests/test_japanese_nlp.py",
+      "line": 41
+    },
+    {
+      "id": "TEST-GINZA53-003",
+      "kind": "test",
+      "path": "tests/test_japanese_nlp.py",
+      "line": 57
+    },
+    {
       "id": "TEST-RELGATE-001",
       "kind": "test",
       "path": "tests/test_release_gate_governance.py",
-      "line": 23
+      "line": 13
     },
     {
       "id": "TEST-RELGATE-002",
       "kind": "test",
       "path": "tests/test_release_gate_governance.py",
-      "line": 52
+      "line": 44
     },
     {
       "id": "TEST-RELGATE-003",
       "kind": "test",
       "path": "tests/test_release_gate_governance.py",
-      "line": 76
+      "line": 73
     },
     {
       "id": "TEST-RELGATE-005",
       "kind": "test",
       "path": "tests/test_release_gate_governance.py",
-      "line": 90
+      "line": 89
     },
     {
       "id": "TEST-RELGATE-101",
       "kind": "test",
       "path": "tests/test_measure_pytest_pass_rate.py",
-      "line": 15
+      "line": 13
     },
     {
       "id": "TEST-RELGATE-102",
@@ -9524,13 +9740,13 @@
       "id": "TEST-RELGATE-103",
       "kind": "test",
       "path": "tests/test_measure_pytest_pass_rate.py",
-      "line": 41
+      "line": 43
     },
     {
       "id": "TEST-TECHWRITER-001",
       "kind": "test",
       "path": "tests/test_tech_writer_skill_packaging.py",
-      "line": 16
+      "line": 14
     },
     {
       "id": "TEST-TECHWRITER-002",
@@ -9542,19 +9758,19 @@
       "id": "TEST-TECHWRITER-003",
       "kind": "test",
       "path": "tests/test_tech_writer_skill_packaging.py",
-      "line": 46
+      "line": 48
     },
     {
       "id": "TEST-TECHWRITER-004",
       "kind": "test",
       "path": "tests/test_tech_writer_skill_packaging.py",
-      "line": 56
+      "line": 60
     },
     {
       "id": "TEST-TECHWRITER-005",
       "kind": "test",
       "path": "tests/test_tech_writer_skill_packaging.py",
-      "line": 66
+      "line": 72
     }
   ],
   "edges": [
@@ -9586,6 +9802,21 @@
     {
       "from": "ADR-0006",
       "to": "DES-AIDS-021",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0006",
+      "to": "DES-GINZA53-001",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0006",
+      "to": "DES-GINZA53-002",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0006",
+      "to": "DES-GINZA53-003",
       "relation": "decides"
     },
     {
@@ -10241,6 +10472,21 @@
     {
       "from": "ADR-0126",
       "to": "DES-AIDS-114",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0127",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0127",
+      "to": "DES-GATE-RECOVERY-002",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0127",
+      "to": "DES-GATE-RECOVERY-003",
       "relation": "decides"
     },
     {
@@ -11505,7 +11751,17 @@
     },
     {
       "from": "CODE-AIDS-023",
+      "to": "DES-GINZA53-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-023",
       "to": "REQ-AIDS-023",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-023",
+      "to": "REQ-GINZA53-003",
       "relation": "implements"
     },
     {
@@ -14024,6 +14280,126 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-GATE-RECOVERY-001",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-001",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-002",
+      "to": "DES-GATE-RECOVERY-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-002",
+      "to": "REQ-GATE-RECOVERY-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-003",
+      "to": "DES-GATE-RECOVERY-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-003",
+      "to": "REQ-GATE-RECOVERY-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-004",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-004",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-005",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-005",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-006",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-006",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-007",
+      "to": "DES-GATE-RECOVERY-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GATE-RECOVERY-007",
+      "to": "REQ-GATE-RECOVERY-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-001",
+      "to": "DES-GINZA53-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-001",
+      "to": "REQ-GINZA53-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-002",
+      "to": "DES-GINZA53-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-002",
+      "to": "REQ-GINZA53-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-003",
+      "to": "DES-GINZA53-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-003",
+      "to": "REQ-GINZA53-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-004",
+      "to": "DES-GINZA53-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-004",
+      "to": "REQ-GINZA53-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-RELGATE-001",
+      "to": "DES-RELGATE-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-RELGATE-001",
+      "to": "REQ-RELGATE-001",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-RELGATE-002",
       "to": "DES-RELGATE-002",
       "relation": "implements"
@@ -14061,6 +14437,16 @@
     {
       "from": "CODE-RELGATE-005",
       "to": "REQ-RELGATE-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-RELGATE-101",
+      "to": "DES-RELGATE-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-RELGATE-101",
+      "to": "REQ-RELGATE-001",
       "relation": "implements"
     },
     {
@@ -16574,6 +16960,56 @@
       "relation": "satisfies"
     },
     {
+      "from": "DES-GATE-RECOVERY-001",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-GATE-RECOVERY-002",
+      "to": "REQ-GATE-RECOVERY-002",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-GATE-RECOVERY-003",
+      "to": "DES-GATE-RECOVERY-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-GATE-RECOVERY-003",
+      "to": "DES-GATE-RECOVERY-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-GATE-RECOVERY-003",
+      "to": "REQ-GATE-RECOVERY-003",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-GINZA53-001",
+      "to": "REQ-GINZA53-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-GINZA53-002",
+      "to": "REQ-GINZA53-002",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-GINZA53-003",
+      "to": "DES-GINZA53-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-GINZA53-003",
+      "to": "DES-GINZA53-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-GINZA53-003",
+      "to": "REQ-GINZA53-003",
+      "relation": "satisfies"
+    },
+    {
       "from": "DES-RELGATE-001",
       "to": "DES-RELGATE-005",
       "relation": "depends-on"
@@ -17916,6 +18352,11 @@
     {
       "from": "TEST-AIDS-021",
       "to": "REQ-AIDS-021",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-021",
+      "to": "REQ-AIDS-082",
       "relation": "verifies"
     },
     {
@@ -19599,6 +20040,21 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AIDS-416",
+      "to": "REQ-AIDS-110",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-417",
+      "to": "REQ-AIDS-110",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-418",
+      "to": "REQ-AIDS-110",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AIDS-419",
       "to": "REQ-AIDS-113",
       "relation": "verifies"
@@ -20619,6 +21075,36 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-GATE-RECOVERY-001",
+      "to": "REQ-GATE-RECOVERY-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-GATE-RECOVERY-002",
+      "to": "REQ-GATE-RECOVERY-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-GATE-RECOVERY-003",
+      "to": "REQ-GATE-RECOVERY-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-GINZA53-001",
+      "to": "REQ-GINZA53-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-GINZA53-002",
+      "to": "REQ-GINZA53-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-GINZA53-003",
+      "to": "REQ-GINZA53-003",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-RELGATE-001",
       "to": "REQ-RELGATE-001",
       "relation": "verifies"
@@ -20682,10 +21168,10 @@
   "diagnostics": [],
   "fingerprints": {
     ".github/skills/japanese-prose/scripts/core.py": "62ae6ecaec379b08c0bf117ed6c232cfce794c69895fa86fd93059dbe5ae5341",
-    ".github/skills/japanese-prose/scripts/lint.py": "06df08d56c86de047d0902a2f602d30b344a9d78a4abb71faa90139dbf1e2797",
+    ".github/skills/japanese-prose/scripts/lint.py": "6ede7a546b1c459a1dfe9d290688a0aa90ada702b8b0a08f25b3ba68f4616e72",
     ".github/skills/japanese-prose/scripts/outline.py": "9b8763fa5dcc28c1d9f9d71e25f410e7c5af40625a1801579d132a5918525633",
-    ".github/skills/japanese-prose/scripts/terms.py": "790b83b8a603320a0216f0c2f39388d0ffb1ba24494960eb291c8761dc5c0a2b",
-    ".github/skills/japanese-prose/scripts/test_engine.py": "fe0915337922a5baf4a60a9965796e9710291b30b00703f69ce32f64c9e17451",
+    ".github/skills/japanese-prose/scripts/terms.py": "2e38dd87fd0ad306fcc50fd6c404f92021f2a56dea82bf269c3ea5305cbcf583",
+    ".github/skills/japanese-prose/scripts/test_engine.py": "a05e69f25c9ef995b6552c46110ec697fb89e7fe0db2c195233b595c0ed9d126",
     ".github/skills/tech-writer/scripts/lint.py": "b0c14d073f79bce5b74e523eb02ecb80e979c2e5bdca047bb538fdbde2164303",
     ".musubix/decisions/ADR-0001.md": "6e21f1b375cfa1aabdf058b1dc987f94974dc23571fe60e94ba340dc48295b0f",
     ".musubix/decisions/ADR-0002.md": "0ac86056b84b2bd6951adf4664f6217d074b79637f5d573a1833daf1831285a8",
@@ -20813,6 +21299,7 @@
     ".musubix/decisions/ADR-0124.md": "50ca374d394cdcb116c328ebe92e7eecb7c60c8328a971fe2fc5c6e7cadd9812",
     ".musubix/decisions/ADR-0125.md": "f7f12e86d915751edda4114902c7864d0348f78c94bb137aeb1055c0567f4270",
     ".musubix/decisions/ADR-0126.md": "b6401175d89e4ac3e1bf8c99172a9474062c06fff6df75d24a615e7d8c511742",
+    ".musubix/decisions/ADR-0127.md": "af3bde933d05f6eb16f0fa2b27a84cb90ad4b558cd492e245802aaae9631e262",
     ".musubix/features/ai-chemistry-scientist/design.md": "a6027d71023ebc5b35d509bf2fd9e05a6d121c83bf822259055f3d3a546457c3",
     ".musubix/features/ai-chemistry-scientist/requirements.md": "6380be8c8beecffd00ad8d3e5cddce21ef464dcb06a97a029f983fe24c1d53f9",
     ".musubix/features/ai-data-scientist-ml/design.md": "749360fdcc61e30353cb0c86327670b1474900729526708b06a7ddb91509c495",
@@ -20829,13 +21316,19 @@
     ".musubix/features/ai-structural-biology-scientist/requirements.md": "0878083e60d4a5071147950030cbac059d19dac79d21d28a739859d951b91c3a",
     ".musubix/features/example/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
     ".musubix/features/example/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
+    ".musubix/features/full-gate-recovery/design.md": "94638d8d5c5a6a77c4f94da649e66b4522bc5b911ec89ad75487e9f9cfeaee7a",
+    ".musubix/features/full-gate-recovery/requirements.md": "13dd1d9d454817af40c1168cba9226cc509b678f95b2e78ebec2cd293596493c",
+    ".musubix/features/ginza-5-3/design.md": "8d65a794f006c2064a4a9dcbdea29414a39ffa88bde2bee37863c3f58e02a681",
+    ".musubix/features/ginza-5-3/requirements.md": "d6efe002f6581d25e330caecd71611d48040ca918d6068c95221a6ab09a5268b",
     ".musubix/features/release-gate-governance/design.md": "85a64aaf7f6e14b0e7e81a8a882ed07d19142de91e34b96b2067a49aad308e2b",
     ".musubix/features/release-gate-governance/requirements.md": "6e8f7367e19ccf8b16648be7adb392841b2d48c32e860e6eddfd4075db65e6d3",
     ".musubix/features/tech-writer/design.md": "e39a7e99d6971de14a1ac6d508b6fb551873f89bbd524774117ba3cc53c91ab7",
     ".musubix/features/tech-writer/requirements.md": "50d9cff351d1424a0fcc33bcc38a548488310b63bafd9dc49eb0ba2642ef4fa5",
-    "bin/ai-data-scientist.js": "57ab9fc11aff0de1721220bf0846b4915d41111a2771423bb6e7e9ecbcf1fc07",
+    "bin/ai-data-scientist.js": "c0f455bf139e2112900e78becdb5b8d04158b044b879e0830cbfa8d705cbbd0e",
+    "scripts/gate_recovery.py": "397c490fd9c9852ae72d98a4fe86e094a7470c611882dbbc8902a68229a66807",
+    "scripts/gate_recovery_transport.mjs": "205d6902375a2d8448c27131106e43579d75a45b15ced12e74a425dcc9830f7e",
     "scripts/measure_pytest_pass_rate.py": "517ef67da322f01b224fb164746cdcdd777bc7970a4cc0d7a3ea00222d4e674e",
-    "scripts/release_gate_governance.py": "4b9c6e390e03cf7d88480745ff99e7bd12579570b862df66bfc0718e6313887a",
+    "scripts/release_gate_governance.py": "18fe93692da77bdd615f59c19abb25f96225f5cd2bbf3a301acad58d6a71311a",
     "src/ai_chemistry_scientist/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/ai_chemistry_scientist/admet_prediction.py": "f23f411ef634b72ffe883f04c81c3ffa0ded35e4cdc9987a4f33548c5ec8986a",
     "src/ai_chemistry_scientist/bioactivity_classification.py": "a9c53ff1c8d25fd9903ec005073de812b4d6ee1b33517efdb72b4ae2e67d340a",
@@ -20877,7 +21370,7 @@
     "src/ai_data_scientist/gate_config.py": "c9ef43241e082fbb5f73c730353b76ba37c59334b12e973afaae99bd0cee45dd",
     "src/ai_data_scientist/ingestion.py": "6773fd5ee6edd37a9f52f9de90f90bff426a2de7509682d0fef13cf166c858fc",
     "src/ai_data_scientist/insight_engine.py": "aa1c5cdc5f1fcc06754a736efd6a164ab9602da186d200994b1c8df7cb8b9a24",
-    "src/ai_data_scientist/japanese_nlp.py": "49ee7fabf2f60de41fadfdc2238ef032bbdc953cded2611c5069200cd672905e",
+    "src/ai_data_scientist/japanese_nlp.py": "360e74ced88404cb9f789b5c79833e0cebee590198a2394a0b78a19c9e387251",
     "src/ai_data_scientist/jupyter_launcher.py": "a6cb2e9b439f6655d62aa99d35caacd99091de3da5f7cd0e3d2b2d92713dad13",
     "src/ai_data_scientist/jupyter_mcp_client.py": "e2e3fb23388b010a6f8af3644a1c816b0266dddc2ee439f26fcee94616791463",
     "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
@@ -21028,7 +21521,7 @@
     "tests/test_ai_scientist_phase_state.py": "8753eccaaa13ff761b6fcaf31254d3ac84064e81587ad44accbe465df6f8b3de",
     "tests/test_ai_scientist_project_handle.py": "02392815e0153fd76d547de9429a74c5f10c88089970ec9355d824307ebba3f4",
     "tests/test_ai_scientist_skill_packaging.py": "aee1a058d22b72b9c723649085bad580ba7f61c7d6104fa5fa1f803b5702f80d",
-    "tests/test_ai_scientist_tdd_gate.py": "6a902fbf67e554c42338c3b01726fafd990a7af696e870e5dd79d02f6279829e",
+    "tests/test_ai_scientist_tdd_gate.py": "872397ad1f1ad176199fe194e0bd6d5b91ff9c050cc3304d823ff07d25738e63",
     "tests/test_ai_structural_biology_scientist_bilingual.py": "3d04795a577faa9e1afbd8263fea2a88ef1fd3502ea727d9839ec4d1964e3da1",
     "tests/test_ai_structural_biology_scientist_contact_map.py": "3a2983768e2f1f9b4923bbd7ad904b314538bb287347168e079e856e350cccda",
     "tests/test_ai_structural_biology_scientist_dispatch.py": "194ef0e4cb6810692bd933cd0a273e6e57e085e15cb6f70def0f2c20836e00ae",
@@ -21040,41 +21533,42 @@
     "tests/test_ai_structural_biology_scientist_structural_similarity.py": "660725e1ac8fa3636fcd7b8ab419d2b0b6c9430034312ddeec7daa98e16fafdc",
     "tests/test_ai_structural_biology_scientist_validation.py": "ca34fe16e9c0651f2f884b4831330ca1d652032dd2b16b515d8511e2e791b917",
     "tests/test_analysis_assumptions.py": "665331b6baaeb624bd3562989a6925c4e80a269d2d0dfce93c3acbe7b21731d8",
-    "tests/test_anomaly_detection.py": "10e1dfc692c9b58cfa4bac4d85d0f3fc7609c0ce5546b5715fab2866fea62c09",
+    "tests/test_anomaly_detection.py": "ed3a1d54494b822dec8936dae35a70bd267e4908a655f3b3f429b66872d1c265",
     "tests/test_automl.py": "5ea36889e9cf572e8bbb26d581163e632f36d70c4049f7e220961d580a5fcce7",
     "tests/test_causal_inference.py": "44611f55ab5a7951bbb0f150f71d532ac5e0e5da340bf8cd1cf07511c814c5ff",
     "tests/test_cleaning.py": "83face0b0f1ddcd158def39d0a711444b717b0416dc1f1b7bc021bc71723942e",
-    "tests/test_clustering.py": "5b6a782ef4fd797b195745e4def2a8a274b0dd5f7dcd221e4c2bf60c2828732b",
+    "tests/test_clustering.py": "66df81479a79aa9883c3fb41f05ccc3c2ffdeea415fd7f1ffa5f1209402e9080",
     "tests/test_convergence_guard.py": "448c18dadb668eee2f49429b9e421a593017963137705af2522825aad34d2191",
     "tests/test_dashboard.py": "4e2358a3a6582809facb218355ae496de8cfb2b873a53977ec22bfbdcb5a3e15",
     "tests/test_data_definition.py": "6f60a5697cc7c2690e38b6cb63a26efc90705aeb7be631d959357e63b9b1429f",
     "tests/test_data_quality.py": "3a601b6addef011a5f10de6613309c0e97aedd4b023b6b6ae53495dc8db738e1",
     "tests/test_dataset_validation.py": "a5fe1a23960a0e7bf732008169d6eaeed8d69de45d363be2616320c1a7740757",
-    "tests/test_dependency_pins.py": "40aa635b09a8f4ea952266a7cfe36826383a668f619664eb68063c11afaecac5",
+    "tests/test_dependency_pins.py": "9c5f7047d9b73b81647221d3ea75d6710b996532df5e509e739533ebcce16c34",
     "tests/test_eda.py": "c1788a18c88015b40a6edf311a3c9f80bad2de40a4a51bbfc4618f363bc6eceb",
     "tests/test_example_readiness.py": "fc39997318a3cfecae12afaff9360d9041e8f6f989d3f29c3bb0bf6d2759b974",
-    "tests/test_experiment_evaluation.py": "305e835cca9424709559497406434e3f721d8adf4ba671d909fb3749908e6366",
-    "tests/test_explainability.py": "29b3005a88fc9a754857daae3456ad67de229b7d1cf4716c647384bc814f1d45",
+    "tests/test_experiment_evaluation.py": "bf06485113bf687d2dd997a626b35cccd58a5724006430934f98e34c9c2afad8",
+    "tests/test_explainability.py": "e23aa11d8b8d9c905588fd35db41b092ca4fd8999dc0ad129b34abf9db6a8b28",
     "tests/test_feature_engineering.py": "5117272c89e7ac8720068497d409db68b63bf7cde3b0b720cfb33f167dc483ee",
     "tests/test_gate_config.py": "4ac5cee06bd95f68897150aa8745af59fe4aad601dbced01e33354392374250c",
-    "tests/test_ingestion.py": "04f63a3ab04ccdb8fd6f90e92073f1d2e73d1d67c01ebaf58c4d673f94e49cdf",
+    "tests/test_gate_recovery.py": "18d941b10c830dbde111ecf9884cb14a98bd9378a79d89602c843df0a9b75f48",
+    "tests/test_ingestion.py": "622f706bdbeedb08572ba308a9675dd94e72f9c10515c8f227793d6c8449023f",
     "tests/test_insight_engine.py": "b85c8f0ceb7ccb3fcb57e448f1eaf9aacfde2d510a119668b9974870abf5c101",
-    "tests/test_japanese_nlp.py": "a5aaca651bf8f5dd44015833d01a52c0c0a45ce104875f04da4c20d2fdcd9325",
+    "tests/test_japanese_nlp.py": "ab364958355bc60538e20e50110756f9aa53c809360e3887e49bb7beacba828d",
     "tests/test_jupyter_mcp_client.py": "ff8a83b02041e4119dbe1f635adc5f70cd4b1ec50bb78f837971ce84feab6282",
     "tests/test_language_router.py": "27a278cb085fb9bf97fb6c8298fcdc39c9a40462de5f1fcafade143f924682ba",
     "tests/test_lifecycle.py": "3c59899e46482fc7f3a55ff8fcbef6264ef7a2a3ad4e383ddc816a4384468748",
     "tests/test_mcp_gateway.py": "d8ee0ddbdf0f299af259270b46b9772f1cbc6554c92c55dda8cccd04138e8d46",
     "tests/test_mcp_runtime.py": "ddc6a67c2565f205986a34f94cedf39c5a7fa7f8f5089d89f84ca881be6242c0",
     "tests/test_mcp_runtime_integration.py": "ac3e3e10c590fd0d5af7d69ae48558316fc01206f2d10d8702b6598a31c3c9bb",
-    "tests/test_measure_pytest_pass_rate.py": "a45e55b30ce02ca8a6d0227ac1e37f239e59791cf4de487154f1ba9e77743d6e",
-    "tests/test_missing_data_analysis.py": "de575dad4ed2dc8df18cc24d18b990c43443f7effb4200c44f06409374ac0e82",
+    "tests/test_measure_pytest_pass_rate.py": "5d4807d0aa87f8cde0a82a05d4cb58a11cd86ad40f82b6d157695b1c1979ba32",
+    "tests/test_missing_data_analysis.py": "3a4f6e075603cb39a288b1f0d19c9714ef2626227007cef9e1ae0d9730844b00",
     "tests/test_ml_modeling.py": "cabceb75fd78d7f2f0790d596007cd8e7ac1eb9647a40ee6e7619a00734e7124",
     "tests/test_model_monitoring.py": "e754139fb669ed9af09f651a411ad3b1c68ec0d028a42538064af45ae20e465f",
     "tests/test_model_tuning.py": "85166cebf88b3d97eb17e617e139d8de6613453c9e2ebfab96f096f71f099a7a",
     "tests/test_network_analysis.py": "21bd5c5a4851f0831c4140d7fc311e301613175ffe0e5aed6f01427651a2c28f",
     "tests/test_notebook_audit.py": "e77255d3c73f14d0f208808385c22aea17b6ba5c48ad727eaf59f7459fb6ea44",
-    "tests/test_project_manager.py": "b4953284dea18ab8b5c718f85c3e308717a2c08998d5402380ac2f7409bc351f",
-    "tests/test_release_gate_governance.py": "c63d6ec5fc2e24e0fb6f1fd3b1cc9f74ab07ee0b28ee07f31bf287e1a72c70e9",
+    "tests/test_project_manager.py": "3ec6aaaef14e0751ec4090440e6571011c4ce873e097e0cd4998fe2b5c8ec962",
+    "tests/test_release_gate_governance.py": "385fc41b51de57e8e13542b3daa001041162c93f78ed4e103565963dcf21f18d",
     "tests/test_report_export.py": "9640608629a523fc0b124d6fca0e7b5448869d672289b5bec3e9011e4e477fea",
     "tests/test_sensitivity.py": "90223b1e4e0c6d168ccc9195d94ba5d4f8f2758cb42b07d25a070cf3e75c0e31",
     "tests/test_setup_skill_deployment.py": "46609144e19e5da3e7a9a87ea0517a0825ab068d59ee19036229e8fc7c23903f",
@@ -21084,7 +21578,7 @@
     "tests/test_statistical_testing.py": "0ef562d4f660d989186494f8de5e85b8381f845fda41389abbc5b6006476395d",
     "tests/test_stats_analysis.py": "606684c4deecca85325ac0c83fea79ed1df4883e8f7192856b5054f617846842",
     "tests/test_symbolic_math.py": "52c9ca2c2bd4e71469d66db48d82b4449d5751fbd3ad31793eefa1d5c45eccef",
-    "tests/test_tech_writer_skill_packaging.py": "1881ab5bbb9c21e6dba84928e8d35f70154a90e3628f48b90caf9d06de5e8e02",
+    "tests/test_tech_writer_skill_packaging.py": "26eda61368155bc04ef2a3a86508b03aa096c6ae9c49f404fc64036af9ccd24c",
     "tests/test_text_nlp.py": "fd80ec14405d2eafc9def8bbf0e4e763a3b36e340f3aff4c6d6c69360dc69274",
     "tests/test_timeseries.py": "263103dc868f7a5d994c30b63640725af49bb1ac8bcc488f084075a758a7fdd0",
     "tests/test_visual_audit.py": "d8a7377f739f6172c3ea3e90fe937b0f47d85f134fbf0fa760df698550a01d1e",

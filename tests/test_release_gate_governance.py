@@ -9,20 +9,12 @@ scripts_dir = Path(__file__).resolve().parent.parent / "scripts"
 if str(scripts_dir) not in sys.path:
     sys.path.insert(0, str(scripts_dir))
 
-from release_gate_governance import (  # noqa: E402
-    PERMANENTLY_EXCLUDED_WAIVER_SCOPES,
-    assess_baseline_gate,
-    prepare_workflow_handoff,
-    record_live_session_limitation,
-    summarize_status,
-    verify_tdd_targets,
-    waivers_needing_refresh,
-)
-
 
 # @id TEST-RELGATE-001
 # @verifies REQ-RELGATE-001
 def test_TEST_RELGATE_001_classifies_checks_and_preserves_real_statuses():
+    from release_gate_governance import assess_baseline_gate, summarize_status
+
     gate_report = {
         "checks": [
             {"name": "tdd", "status": "pass"},
@@ -52,6 +44,11 @@ def test_TEST_RELGATE_001_classifies_checks_and_preserves_real_statuses():
 # @id TEST-RELGATE-002
 # @verifies REQ-RELGATE-002
 def test_TEST_RELGATE_002_excludes_permanently_stale_achem_scopes():
+    from release_gate_governance import (
+        PERMANENTLY_EXCLUDED_WAIVER_SCOPES,
+        waivers_needing_refresh,
+    )
+
     diagnostics = [
         {
             "code": "CHANGE_WAIVER_STALE",
@@ -76,6 +73,8 @@ def test_TEST_RELGATE_002_excludes_permanently_stale_achem_scopes():
 # @id TEST-RELGATE-003
 # @verifies REQ-RELGATE-003
 def test_TEST_RELGATE_003_detects_covered_and_uncovered_targets():
+    from release_gate_governance import verify_tdd_targets
+
     tdd_cycles = [
         {"testId": "TEST-AIMS-040", "red": {"valid": True}, "green": {"valid": True}},
         {"testId": "TEST-AIDS-021", "red": {"valid": True}, "green": {"valid": False}},
@@ -90,6 +89,8 @@ def test_TEST_RELGATE_003_detects_covered_and_uncovered_targets():
 # @id TEST-RELGATE-005
 # @verifies REQ-RELGATE-005
 def test_TEST_RELGATE_005_prepares_handoff_and_limitation_note():
+    from release_gate_governance import prepare_workflow_handoff, record_live_session_limitation
+
     handoff = prepare_workflow_handoff()
 
     assert handoff["requires_closed_transcript"] is True

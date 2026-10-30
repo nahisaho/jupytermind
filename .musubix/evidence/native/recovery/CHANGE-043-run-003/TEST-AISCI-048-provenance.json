@@ -1,0 +1,115 @@
+{
+  "valid": true,
+  "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+  "commandSha256": "1198955882c610d5b6e8a8051923328e01ab4e745c3054621e5f2bdd2f90bce3",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_scientist/npm_packaging.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "be42fd82e686896974f7d15f4fb1f962c929cac5d55c4249f72178d01d6d2c6f"
+          }
+        },
+        "package.json": {
+          "past": {
+            "exists": true,
+            "sha256": "f409c0f81aed0182de20c7f0bb7b9b0bc1429c88bbe81414e12a0922d0bb7a61"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "5cb739b6cb5177c91b98e6b3ecae81ec4666ff76ba6d318cef10ae8745574f76"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AISCI-048",
+    "testSha256": "aee1a058d22b72b9c723649085bad580ba7f61c7d6104fa5fa1f803b5702f80d",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_ai_scientist_skill_packaging.py\",\"-k\",\"test_aisci_048\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AISCI-048.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_scientist/npm_packaging.py": {
+        "exists": false,
+        "sha256": null
+      },
+      "package.json": {
+        "exists": true,
+        "sha256": "f409c0f81aed0182de20c7f0bb7b9b0bc1429c88bbe81414e12a0922d0bb7a61"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/npm-packaging-TEST-AISCI-048-red.cli.json",
+      "sha256": "0e7bbc5fbee47390416ee8e17d0e39dc4062d14f16b07353e668e341d4b59b26"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/npm-packaging-TEST-AISCI-048-red.report.json",
+      "sha256": "1cd6a19e323d55ebc226dc6de31a3eb65e62ceab8e94fa0740c810c348749be1"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "6662b7c0474dfdac2127cc51972dcf2cdb430914",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_scientist/npm_packaging.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "be42fd82e686896974f7d15f4fb1f962c929cac5d55c4249f72178d01d6d2c6f"
+          }
+        },
+        "package.json": {
+          "past": {
+            "exists": true,
+            "sha256": "f409c0f81aed0182de20c7f0bb7b9b0bc1429c88bbe81414e12a0922d0bb7a61"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "5cb739b6cb5177c91b98e6b3ecae81ec4666ff76ba6d318cef10ae8745574f76"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AISCI-048",
+    "testSha256": "aee1a058d22b72b9c723649085bad580ba7f61c7d6104fa5fa1f803b5702f80d",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_ai_scientist_skill_packaging.py\",\"-k\",\"test_aisci_048\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AISCI-048.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_scientist/npm_packaging.py": {
+        "exists": true,
+        "sha256": "be42fd82e686896974f7d15f4fb1f962c929cac5d55c4249f72178d01d6d2c6f"
+      },
+      "package.json": {
+        "exists": true,
+        "sha256": "5cb739b6cb5177c91b98e6b3ecae81ec4666ff76ba6d318cef10ae8745574f76"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/npm-packaging-TEST-AISCI-048-green.cli.json",
+      "sha256": "ac38515e3a5d9bc8c48c7916376b953235280c90e4432a846f9d388b39c2167f"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/npm-packaging-TEST-AISCI-048-green.report.json",
+      "sha256": "d859904b278e37271ab378b8b42630891a3d42276646a45b04334a05cd1a1e5f"
+    }
+  }
+}

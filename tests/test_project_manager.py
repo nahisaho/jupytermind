@@ -19,6 +19,64 @@ from ai_data_scientist.project_manager import (
 )
 
 
+# ---------------------------------------------------------------------------
+# REQ-AIDS-093 / DES-AIDS-093 (GitHub #72): slug-verified ancestor-directory
+# discovery of an existing projects root, so a freshly started process/kernel
+# whose own import-time cwd has already drifted inside an existing
+# projects/<slug>/... tree rediscovers that same tree instead of recreating
+# a nested projects/<slug>/notebooks/projects/<slug> path.
+#
+# All 9 scenarios are proven end-to-end across a real OS process boundary via
+# `subprocess.run` (TEST-AIDS-331/332/337/340-345), since that is the exact
+# failure mode reported in #72 (a *different process* importing the module
+# fresh with an already-drifted cwd) and is the "required subprocess-based
+# regression test" DES-AIDS-093 calls for. Scenarios 3-6/8/9 are additionally
+# unit-tested directly against `_discover_ancestor_projects_root` (a pure
+# function of `start`/`name`, per the DES-AIDS-093 "unit-tested directly"
+# interface), which DES-AIDS-093 calls for "in addition to" the required
+# subprocess coverage.
+# ---------------------------------------------------------------------------
+
+import subprocess
+import sys
+
+
+def _subprocess_resolve(cwd, name, env_root=None):
+    """Run a fresh Python process that imports project_manager from ``cwd``
+    and returns the resolved/created notebook path, proving real cross-process
+    behavior (not importlib.reload within the same process)."""
+    import os
+
+    env = dict(os.environ)
+    repo_src = str(_repo_src_dir())
+    env["PYTHONPATH"] = repo_src + os.pathsep + env.get("PYTHONPATH", "")
+    if env_root is not None:
+        env["AI_DATA_SCIENTIST_PROJECTS_ROOT"] = str(env_root)
+    else:
+        env.pop("AI_DATA_SCIENTIST_PROJECTS_ROOT", None)
+    code = (
+        "from ai_data_scientist.project_manager import resolve_project, ensure_notebook\n"
+        f"handle = resolve_project({name!r})\n"
+        "print(ensure_notebook(handle))\n"
+        "print(handle.root)\n"
+    )
+    result = subprocess.run(
+        [sys.executable, "-c", code],
+        cwd=str(cwd),
+        env=env,
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+    assert result.returncode == 0, f"subprocess failed: {result.stderr}"
+    lines = result.stdout.strip().splitlines()
+    return Path(lines[0]), Path(lines[1])
+
+
+def _repo_src_dir():
+    return Path(__file__).resolve().parents[1] / "src"
+
+
 # @id TEST-AIDS-028
 # @verifies REQ-AIDS-028
 def test_TEST_AIDS_028(tmp_path):
@@ -238,64 +296,6 @@ def test_TEST_AIDS_112_concurrent_mcp_write_risk_is_documented():
     docstring = enqueue_write.__doc__ or ""
     assert "Concurrent-write risk" in docstring
     assert "MCP" in docstring
-
-
-# ---------------------------------------------------------------------------
-# REQ-AIDS-093 / DES-AIDS-093 (GitHub #72): slug-verified ancestor-directory
-# discovery of an existing projects root, so a freshly started process/kernel
-# whose own import-time cwd has already drifted inside an existing
-# projects/<slug>/... tree rediscovers that same tree instead of recreating
-# a nested projects/<slug>/notebooks/projects/<slug> path.
-#
-# All 9 scenarios are proven end-to-end across a real OS process boundary via
-# `subprocess.run` (TEST-AIDS-331/332/337/340-345), since that is the exact
-# failure mode reported in #72 (a *different process* importing the module
-# fresh with an already-drifted cwd) and is the "required subprocess-based
-# regression test" DES-AIDS-093 calls for. Scenarios 3-6/8/9 are additionally
-# unit-tested directly against `_discover_ancestor_projects_root` (a pure
-# function of `start`/`name`, per the DES-AIDS-093 "unit-tested directly"
-# interface), which DES-AIDS-093 calls for "in addition to" the required
-# subprocess coverage.
-# ---------------------------------------------------------------------------
-
-import subprocess
-import sys
-
-
-def _subprocess_resolve(cwd, name, env_root=None):
-    """Run a fresh Python process that imports project_manager from ``cwd``
-    and returns the resolved/created notebook path, proving real cross-process
-    behavior (not importlib.reload within the same process)."""
-    import os
-
-    env = dict(os.environ)
-    repo_src = str(_repo_src_dir())
-    env["PYTHONPATH"] = repo_src + os.pathsep + env.get("PYTHONPATH", "")
-    if env_root is not None:
-        env["AI_DATA_SCIENTIST_PROJECTS_ROOT"] = str(env_root)
-    else:
-        env.pop("AI_DATA_SCIENTIST_PROJECTS_ROOT", None)
-    code = (
-        "from ai_data_scientist.project_manager import resolve_project, ensure_notebook\n"
-        f"handle = resolve_project({name!r})\n"
-        "print(ensure_notebook(handle))\n"
-        "print(handle.root)\n"
-    )
-    result = subprocess.run(
-        [sys.executable, "-c", code],
-        cwd=str(cwd),
-        env=env,
-        capture_output=True,
-        text=True,
-        timeout=60,
-    )
-    assert result.returncode == 0, f"subprocess failed: {result.stderr}"
-    lines = result.stdout.strip().splitlines()
-    return Path(lines[0]), Path(lines[1])
-
-
-def _repo_src_dir():
-    return Path(__file__).resolve().parents[1] / "src"
 
 
 # @id TEST-AIDS-331

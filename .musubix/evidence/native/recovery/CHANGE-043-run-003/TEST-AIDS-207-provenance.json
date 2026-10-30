@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+  "commandSha256": "8211adc69666ef11435c7d27b20bba8da8b8b4a4baebaa4d485e700a21d2e9a7",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_data_scientist/sensitivity.py": {
+          "past": {
+            "exists": true,
+            "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIDS-207",
+    "testSha256": "90223b1e4e0c6d168ccc9195d94ba5d4f8f2758cb42b07d25a070cf3e75c0e31",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_sensitivity.py\",\"-k\",\"test_aids_207\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIDS-207.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_data_scientist/sensitivity.py": {
+        "exists": true,
+        "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-207-red.cli.json",
+      "sha256": "e68ad6a35fde3c1b8fcd2b4358b65755f39155031e37a317c8bea8c1ad069329"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-207-red.report.json",
+      "sha256": "85c008b5d348b7478dcf54863e2978e2283de8d28ccd3221861996ef04ba30c4"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "d0c994395ef05e0851487015346739c0f5d67027",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_data_scientist/sensitivity.py": {
+          "past": {
+            "exists": true,
+            "sha256": "3cbb677cc7ca1037468cb5a996c49902ac7199632e3ce5b71faff55c9f3e2a84"
+          },
+          "current": {
+            "exists": true,
+            "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIDS-207",
+    "testSha256": "90223b1e4e0c6d168ccc9195d94ba5d4f8f2758cb42b07d25a070cf3e75c0e31",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_sensitivity.py\",\"-k\",\"test_aids_207\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIDS-207.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_data_scientist/sensitivity.py": {
+        "exists": true,
+        "sha256": "a1c3ca0a43bff1b2a2ddd56fa06da31a3eedb7e381036272594a84e46eb9d9a6"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-207-green.cli.json",
+      "sha256": "4e5fb3d21d80767ae4bc6f2deda80046917e9b5a3ca2f1fea6a8fb2ac3c2fa52"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/sensitivity-TEST-AIDS-207-green.report.json",
+      "sha256": "e464f7729793f7ff9cbbec11a92de1ff15fd295d2387f812b557e287893caa3d"
+    }
+  }
+}

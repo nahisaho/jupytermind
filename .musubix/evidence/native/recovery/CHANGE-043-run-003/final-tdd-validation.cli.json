@@ -1,0 +1,37 @@
+{
+  "present": true,
+  "valid": true,
+  "diagnostics": [],
+  "cycles": 640,
+  "voided": [
+    {
+      "testId": "TEST-AIMS-002",
+      "cycleId": "d6144b9e-cc5e-43f1-a2ba-3f8ec2736974",
+      "void": {
+        "approver": "nahisaho",
+        "reason": "legacy invalid red cycles recorded against an already-passing test; need clean Red baseline",
+        "recordedAt": "2026-10-02T10:46:00.541Z"
+      }
+    }
+  ],
+  "archived": [
+    {
+      "testId": "TEST-AISCI-024",
+      "cycleId": "1a91db34-ed68-4b5a-b225-a7cbe99cd316",
+      "archive": {
+        "approver": "nahisaho",
+        "reason": "Retire only obsolete static-check cycle 1a91db34-ed68-4b5a-b225-a7cbe99cd316: TEST-AISCI-024 cannot reproduce a historical implementation-only Red; REQ-AISCI-024 remains directly verified by nonarchived TEST-AISCI-035 cycle 0d264714-5c38-498a-9dbc-2b4f4f358849, whose Green fingerprint matches current tests. Both current tests pass. Preserve all history and keep TEST-AISCI-024 in the final gate; this archive is not a new Red/Green.",
+        "recordedAt": "2026-10-29T10:12:38.662Z"
+      }
+    },
+    {
+      "testId": "TEST-AIDS-340",
+      "cycleId": "d338d2a4-d6db-45e0-b711-2266228eb5bb",
+      "archive": {
+        "approver": "nahisaho",
+        "reason": "Retire only incomplete TEST-AIDS-340 cycle d338d2a4-d6db-45e0-b711-2266228eb5bb: the unchanged no-ancestor fallback passes the real pre-fix Git implementation, so no honest historical Red is reproducible. Preserve valid REQ-AIDS-093 proof TEST-AIDS-331 cycle 33a2818f-da5d-4bbb-b714-08f6bc146cf8 and its matching current Green fingerprint. Both current tests pass. Preserve all history and execute both tests in the final gate; this archive is not a new Red/Green.",
+        "recordedAt": "2026-10-29T12:12:37.280Z"
+      }
+    }
+  ]
+}

@@ -209,6 +209,10 @@ function isSetupCurrent() {
   return marker.pyprojectSha256 === fileHash(PYPROJECT_PATH);
 }
 
+/** @id CODE-GINZA53-001
+ * @implements REQ-GINZA53-001
+ * @design DES-GINZA53-001
+ */
 function ensureSetup() {
   if (isSetupCurrent()) return;
 

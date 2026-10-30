@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-09T10:28:12.396Z",
+  "generatedAt": "2026-10-29T08:31:05.815Z",
   "nodes": [
     {
       "id": "ADR-0002",
@@ -891,6 +891,30 @@
       "line": 46
     },
     {
+      "id": "CODE-GINZA53-001",
+      "kind": "code",
+      "path": "bin/ai-data-scientist.js",
+      "line": 212
+    },
+    {
+      "id": "CODE-GINZA53-002",
+      "kind": "code",
+      "path": ".github/skills/japanese-prose/scripts/lint.py",
+      "line": 1
+    },
+    {
+      "id": "CODE-GINZA53-003",
+      "kind": "code",
+      "path": ".github/skills/japanese-prose/scripts/terms.py",
+      "line": 1
+    },
+    {
+      "id": "CODE-GINZA53-004",
+      "kind": "code",
+      "path": ".github/skills/japanese-prose/scripts/test_engine.py",
+      "line": 1
+    },
+    {
       "id": "DES-AIDS-001",
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist/design.md",
@@ -1327,6 +1351,24 @@
       "kind": "design",
       "path": ".musubix/features/ai-data-scientist-ml/design.md",
       "line": 573
+    },
+    {
+      "id": "DES-GINZA53-001",
+      "kind": "design",
+      "path": ".musubix/features/ginza-5-3/design.md",
+      "line": 11
+    },
+    {
+      "id": "DES-GINZA53-002",
+      "kind": "design",
+      "path": ".musubix/features/ginza-5-3/design.md",
+      "line": 19
+    },
+    {
+      "id": "DES-GINZA53-003",
+      "kind": "design",
+      "path": ".musubix/features/ginza-5-3/design.md",
+      "line": 27
     },
     {
       "id": "REQ-AIDS-001",
@@ -1924,6 +1966,27 @@
       "mandatory": false
     },
     {
+      "id": "REQ-GINZA53-001",
+      "kind": "requirement",
+      "path": ".musubix/features/ginza-5-3/requirements.md",
+      "line": 12,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-GINZA53-002",
+      "kind": "requirement",
+      "path": ".musubix/features/ginza-5-3/requirements.md",
+      "line": 19,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-GINZA53-003",
+      "kind": "requirement",
+      "path": ".musubix/features/ginza-5-3/requirements.md",
+      "line": 27,
+      "mandatory": true
+    },
+    {
       "id": "TEST-AIDS-001",
       "kind": "test",
       "path": "tests/test_language_router.py",
@@ -1933,7 +1996,7 @@
       "id": "TEST-AIDS-002",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 31
+      "line": 89
     },
     {
       "id": "TEST-AIDS-003",
@@ -1987,7 +2050,7 @@
       "id": "TEST-AIDS-011",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 46
+      "line": 104
     },
     {
       "id": "TEST-AIDS-012",
@@ -1999,7 +2062,7 @@
       "id": "TEST-AIDS-014",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 21
+      "line": 27
     },
     {
       "id": "TEST-AIDS-015",
@@ -2011,13 +2074,13 @@
       "id": "TEST-AIDS-016",
       "kind": "test",
       "path": "tests/test_clustering.py",
-      "line": 12
+      "line": 29
     },
     {
       "id": "TEST-AIDS-017",
       "kind": "test",
       "path": "tests/test_anomaly_detection.py",
-      "line": 10
+      "line": 26
     },
     {
       "id": "TEST-AIDS-018",
@@ -2047,13 +2110,13 @@
       "id": "TEST-AIDS-022",
       "kind": "test",
       "path": "tests/test_experiment_evaluation.py",
-      "line": 19
+      "line": 85
     },
     {
       "id": "TEST-AIDS-023",
       "kind": "test",
       "path": "tests/test_japanese_nlp.py",
-      "line": 10
+      "line": 27
     },
     {
       "id": "TEST-AIDS-024",
@@ -2083,13 +2146,13 @@
       "id": "TEST-AIDS-028",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 22
+      "line": 80
     },
     {
       "id": "TEST-AIDS-029",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 63
+      "line": 121
     },
     {
       "id": "TEST-AIDS-030",
@@ -2107,7 +2170,7 @@
       "id": "TEST-AIDS-032",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 47
+      "line": 53
     },
     {
       "id": "TEST-AIDS-033",
@@ -2119,7 +2182,7 @@
       "id": "TEST-AIDS-034",
       "kind": "test",
       "path": "tests/test_clustering.py",
-      "line": 29
+      "line": 46
     },
     {
       "id": "TEST-AIDS-035",
@@ -2257,13 +2320,13 @@
       "id": "TEST-AIDS-057",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 127
+      "line": 185
     },
     {
       "id": "TEST-AIDS-058",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 147
+      "line": 205
     },
     {
       "id": "TEST-AIDS-059",
@@ -2335,13 +2398,13 @@
       "id": "TEST-AIDS-070",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 175
+      "line": 233
     },
     {
       "id": "TEST-AIDS-071",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 197
+      "line": 255
     },
     {
       "id": "TEST-AIDS-074",
@@ -2401,7 +2464,7 @@
       "id": "TEST-AIDS-104",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 91
+      "line": 149
     },
     {
       "id": "TEST-AIDS-105",
@@ -2443,7 +2506,7 @@
       "id": "TEST-AIDS-112",
       "kind": "test",
       "path": "tests/test_project_manager.py",
-      "line": 219
+      "line": 277
     },
     {
       "id": "TEST-AIDS-113",
@@ -2899,13 +2962,13 @@
       "id": "TEST-AIDS-203",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 135
+      "line": 141
     },
     {
       "id": "TEST-AIDS-204",
       "kind": "test",
       "path": "tests/test_ingestion.py",
-      "line": 150
+      "line": 156
     },
     {
       "id": "TEST-AIDS-210",
@@ -3140,6 +3203,24 @@
       "kind": "test",
       "path": "tests/test_anomaly_detection.py",
       "line": 80
+    },
+    {
+      "id": "TEST-GINZA53-001",
+      "kind": "test",
+      "path": "tests/test_dependency_pins.py",
+      "line": 50
+    },
+    {
+      "id": "TEST-GINZA53-002",
+      "kind": "test",
+      "path": "tests/test_japanese_nlp.py",
+      "line": 41
+    },
+    {
+      "id": "TEST-GINZA53-003",
+      "kind": "test",
+      "path": "tests/test_japanese_nlp.py",
+      "line": 57
     }
   ],
   "edges": [
@@ -3166,6 +3247,21 @@
     {
       "from": "ADR-0006",
       "to": "DES-AIDS-021",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0006",
+      "to": "DES-GINZA53-001",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0006",
+      "to": "DES-GINZA53-002",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0006",
+      "to": "DES-GINZA53-003",
       "relation": "decides"
     },
     {
@@ -3720,7 +3816,17 @@
     },
     {
       "from": "CODE-AIDS-023",
+      "to": "DES-GINZA53-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-023",
       "to": "REQ-AIDS-023",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AIDS-023",
+      "to": "REQ-GINZA53-003",
       "relation": "implements"
     },
     {
@@ -4764,6 +4870,46 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-GINZA53-001",
+      "to": "DES-GINZA53-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-001",
+      "to": "REQ-GINZA53-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-002",
+      "to": "DES-GINZA53-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-002",
+      "to": "REQ-GINZA53-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-003",
+      "to": "DES-GINZA53-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-003",
+      "to": "REQ-GINZA53-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-004",
+      "to": "DES-GINZA53-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-GINZA53-004",
+      "to": "REQ-GINZA53-002",
+      "relation": "implements"
+    },
+    {
       "from": "DES-AIDS-001",
       "to": "DES-AIDS-002",
       "relation": "depends-on"
@@ -5764,6 +5910,31 @@
       "relation": "satisfies"
     },
     {
+      "from": "DES-GINZA53-001",
+      "to": "REQ-GINZA53-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-GINZA53-002",
+      "to": "REQ-GINZA53-002",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-GINZA53-003",
+      "to": "DES-GINZA53-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-GINZA53-003",
+      "to": "DES-GINZA53-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-GINZA53-003",
+      "to": "REQ-GINZA53-003",
+      "relation": "satisfies"
+    },
+    {
       "from": "TEST-AIDS-001",
       "to": "REQ-AIDS-001",
       "relation": "verifies"
@@ -5861,6 +6032,11 @@
     {
       "from": "TEST-AIDS-021",
       "to": "REQ-AIDS-021",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AIDS-021",
+      "to": "REQ-AIDS-082",
       "relation": "verifies"
     },
     {
@@ -6847,10 +7023,28 @@
       "from": "TEST-AIDS-487",
       "to": "REQ-AIDS-112",
       "relation": "verifies"
+    },
+    {
+      "from": "TEST-GINZA53-001",
+      "to": "REQ-GINZA53-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-GINZA53-002",
+      "to": "REQ-GINZA53-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-GINZA53-003",
+      "to": "REQ-GINZA53-003",
+      "relation": "verifies"
     }
   ],
   "diagnostics": [],
   "fingerprints": {
+    ".github/skills/japanese-prose/scripts/lint.py": "6ede7a546b1c459a1dfe9d290688a0aa90ada702b8b0a08f25b3ba68f4616e72",
+    ".github/skills/japanese-prose/scripts/terms.py": "2e38dd87fd0ad306fcc50fd6c404f92021f2a56dea82bf269c3ea5305cbcf583",
+    ".github/skills/japanese-prose/scripts/test_engine.py": "a05e69f25c9ef995b6552c46110ec697fb89e7fe0db2c195233b595c0ed9d126",
     ".musubix/decisions/ADR-0002.md": "0ac86056b84b2bd6951adf4664f6217d074b79637f5d573a1833daf1831285a8",
     ".musubix/decisions/ADR-0003.md": "d36aeeec3fd830681c7efe7779b88cb3beed91770f99faf2bcdb3f8961916007",
     ".musubix/decisions/ADR-0004.md": "2c670f0816d34a45379c51d1570a083b5d180bc28e6ff715805b1d7fc53ab064",
@@ -6899,6 +7093,9 @@
     ".musubix/features/ai-data-scientist-ml/requirements.md": "c61e112c9de914da21c79f9198658ca308ef0887ef3e9ba0f170e07a66d5e64c",
     ".musubix/features/ai-data-scientist/design.md": "39a35e733b1373b040c98ab80816fbd1b75e3ec682216cc8b53cbea921d17b8e",
     ".musubix/features/ai-data-scientist/requirements.md": "b027c210ed3ff71a38cb48220e1d796e80ccfd45484d0ce0a977f8a5a620dd7d",
+    ".musubix/features/ginza-5-3/design.md": "8d65a794f006c2064a4a9dcbdea29414a39ffa88bde2bee37863c3f58e02a681",
+    ".musubix/features/ginza-5-3/requirements.md": "d6efe002f6581d25e330caecd71611d48040ca918d6068c95221a6ab09a5268b",
+    "bin/ai-data-scientist.js": "c0f455bf139e2112900e78becdb5b8d04158b044b879e0830cbfa8d705cbbd0e",
     "src/ai_data_scientist/anomaly_detection.py": "fec66e0a484383682f2cfeacd125685cf4f7987f0a9c596a31b771d8be9f2bdb",
     "src/ai_data_scientist/automl.py": "e1b067fd7068b3f7e7b2dc4f0554028da9fd6328265d7e8e2c1155b371569c19",
     "src/ai_data_scientist/cleaning.py": "8060c69112efe6aae6f0afdff6e464d601a76b5b62455e5d673916edfd4207ea",
@@ -6910,7 +7107,7 @@
     "src/ai_data_scientist/feature_engineering.py": "a496f0f8a99fc18f4c6c648b447fbad76ac13b88cae298eeadac55e2ff472495",
     "src/ai_data_scientist/ingestion.py": "6773fd5ee6edd37a9f52f9de90f90bff426a2de7509682d0fef13cf166c858fc",
     "src/ai_data_scientist/insight_engine.py": "aa1c5cdc5f1fcc06754a736efd6a164ab9602da186d200994b1c8df7cb8b9a24",
-    "src/ai_data_scientist/japanese_nlp.py": "49ee7fabf2f60de41fadfdc2238ef032bbdc953cded2611c5069200cd672905e",
+    "src/ai_data_scientist/japanese_nlp.py": "360e74ced88404cb9f789b5c79833e0cebee590198a2394a0b78a19c9e387251",
     "src/ai_data_scientist/jupyter_launcher.py": "a6cb2e9b439f6655d62aa99d35caacd99091de3da5f7cd0e3d2b2d92713dad13",
     "src/ai_data_scientist/jupyter_mcp_client.py": "e2e3fb23388b010a6f8af3644a1c816b0266dddc2ee439f26fcee94616791463",
     "src/ai_data_scientist/language_router.py": "e3b38cc6a6c4168bc3af8d709b34b3d58216e5d1769e22cbe9341675a5bb5b7e",
@@ -6928,18 +7125,19 @@
     "src/ai_data_scientist/text_nlp.py": "bb7ee36f88f69ba683b82dae4fee06b3a1ff004774d57973ee60c9b0f53f3985",
     "src/ai_data_scientist/timeseries.py": "9c36ccab2c39d70815a3e5cd55e8b79679d7678107a39fda02a22ab665263dc5",
     "src/ai_data_scientist/visualization.py": "a506d43a3756f5c101c435c2bb14b64594c61b99b406b7f192f77fd293f54bd5",
-    "tests/test_anomaly_detection.py": "10e1dfc692c9b58cfa4bac4d85d0f3fc7609c0ce5546b5715fab2866fea62c09",
+    "tests/test_anomaly_detection.py": "ed3a1d54494b822dec8936dae35a70bd267e4908a655f3b3f429b66872d1c265",
     "tests/test_automl.py": "5ea36889e9cf572e8bbb26d581163e632f36d70c4049f7e220961d580a5fcce7",
     "tests/test_cleaning.py": "83face0b0f1ddcd158def39d0a711444b717b0416dc1f1b7bc021bc71723942e",
-    "tests/test_clustering.py": "5b6a782ef4fd797b195745e4def2a8a274b0dd5f7dcd221e4c2bf60c2828732b",
+    "tests/test_clustering.py": "66df81479a79aa9883c3fb41f05ccc3c2ffdeea415fd7f1ffa5f1209402e9080",
     "tests/test_dashboard.py": "4e2358a3a6582809facb218355ae496de8cfb2b873a53977ec22bfbdcb5a3e15",
+    "tests/test_dependency_pins.py": "9c5f7047d9b73b81647221d3ea75d6710b996532df5e509e739533ebcce16c34",
     "tests/test_eda.py": "c1788a18c88015b40a6edf311a3c9f80bad2de40a4a51bbfc4618f363bc6eceb",
-    "tests/test_experiment_evaluation.py": "305e835cca9424709559497406434e3f721d8adf4ba671d909fb3749908e6366",
-    "tests/test_explainability.py": "29b3005a88fc9a754857daae3456ad67de229b7d1cf4716c647384bc814f1d45",
+    "tests/test_experiment_evaluation.py": "bf06485113bf687d2dd997a626b35cccd58a5724006430934f98e34c9c2afad8",
+    "tests/test_explainability.py": "e23aa11d8b8d9c905588fd35db41b092ca4fd8999dc0ad129b34abf9db6a8b28",
     "tests/test_feature_engineering.py": "5117272c89e7ac8720068497d409db68b63bf7cde3b0b720cfb33f167dc483ee",
-    "tests/test_ingestion.py": "04f63a3ab04ccdb8fd6f90e92073f1d2e73d1d67c01ebaf58c4d673f94e49cdf",
+    "tests/test_ingestion.py": "622f706bdbeedb08572ba308a9675dd94e72f9c10515c8f227793d6c8449023f",
     "tests/test_insight_engine.py": "b85c8f0ceb7ccb3fcb57e448f1eaf9aacfde2d510a119668b9974870abf5c101",
-    "tests/test_japanese_nlp.py": "a5aaca651bf8f5dd44015833d01a52c0c0a45ce104875f04da4c20d2fdcd9325",
+    "tests/test_japanese_nlp.py": "ab364958355bc60538e20e50110756f9aa53c809360e3887e49bb7beacba828d",
     "tests/test_jupyter_mcp_client.py": "ff8a83b02041e4119dbe1f635adc5f70cd4b1ec50bb78f837971ce84feab6282",
     "tests/test_language_router.py": "27a278cb085fb9bf97fb6c8298fcdc39c9a40462de5f1fcafade143f924682ba",
     "tests/test_lifecycle.py": "3c59899e46482fc7f3a55ff8fcbef6264ef7a2a3ad4e383ddc816a4384468748",
@@ -6949,7 +7147,7 @@
     "tests/test_ml_modeling.py": "cabceb75fd78d7f2f0790d596007cd8e7ac1eb9647a40ee6e7619a00734e7124",
     "tests/test_model_tuning.py": "85166cebf88b3d97eb17e617e139d8de6613453c9e2ebfab96f096f71f099a7a",
     "tests/test_notebook_audit.py": "e77255d3c73f14d0f208808385c22aea17b6ba5c48ad727eaf59f7459fb6ea44",
-    "tests/test_project_manager.py": "b4953284dea18ab8b5c718f85c3e308717a2c08998d5402380ac2f7409bc351f",
+    "tests/test_project_manager.py": "3ec6aaaef14e0751ec4090440e6571011c4ce873e097e0cd4998fe2b5c8ec962",
     "tests/test_report_export.py": "9640608629a523fc0b124d6fca0e7b5448869d672289b5bec3e9011e4e477fea",
     "tests/test_skill_packaging.py": "73cfcef96b5e5364334a76cfb402f2b5b956ac830e9ce9f8f5d1c3ad543a1c5c",
     "tests/test_stats_analysis.py": "606684c4deecca85325ac0c83fea79ed1df4883e8f7192856b5054f617846842",

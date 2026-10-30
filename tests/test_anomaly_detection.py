@@ -7,6 +7,22 @@ import pytest
 from ai_data_scientist.anomaly_detection import detect_anomalies, detect_multivariate_anomalies
 
 
+def _fixture_with_far_outliers():
+    rng = np.random.default_rng(42)
+    normal_points = rng.normal(loc=[0, 0], scale=0.5, size=(18, 2))
+    outliers = [[10, 10], [-10, -10]]
+    return np.vstack([normal_points, outliers]).tolist()
+
+
+def _assert_label_shape_and_boolean_equivalence(result, n_expected):
+    labels = result["labels"]
+    is_outlier = result["is_outlier"]
+    assert len(labels) == n_expected
+    assert len(is_outlier) == n_expected
+    assert set(labels) <= {1, -1}
+    assert all(is_outlier[i] == (labels[i] == -1) for i in range(n_expected))
+
+
 # @id TEST-AIDS-017
 # @verifies REQ-AIDS-017
 def test_TEST_AIDS_017():
@@ -22,22 +38,6 @@ def test_TEST_AIDS_017():
 
     assert injected_indices <= set(result.flagged_indices)
     assert result.method == "zscore"
-
-
-def _fixture_with_far_outliers():
-    rng = np.random.default_rng(42)
-    normal_points = rng.normal(loc=[0, 0], scale=0.5, size=(18, 2))
-    outliers = [[10, 10], [-10, -10]]
-    return np.vstack([normal_points, outliers]).tolist()
-
-
-def _assert_label_shape_and_boolean_equivalence(result, n_expected):
-    labels = result["labels"]
-    is_outlier = result["is_outlier"]
-    assert len(labels) == n_expected
-    assert len(is_outlier) == n_expected
-    assert set(labels) <= {1, -1}
-    assert all(is_outlier[i] == (labels[i] == -1) for i in range(n_expected))
 
 
 # @id TEST-AIDS-484

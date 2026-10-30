@@ -1,0 +1,143 @@
+{
+  "valid": true,
+  "revision": "a45a09e09fb5c24f0bba8481e040efcde1b678ad",
+  "commandSha256": "3b1c72849fa2f549c95cc42a6d4d2d5a6994c93e33512da3701de3a97f7a73a1",
+  "red": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "a45a09e09fb5c24f0bba8481e040efcde1b678ad",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_materials_scientist/phase_field.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "12fecebcf6eb55bb4604f855c67f982edf4e3332ef2aa5a52a732fc062a3782a"
+          }
+        },
+        "src/ai_materials_scientist/dispatch.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "5b2167953f26b2ce59df67ee5c59e0e32e2a21b8cc9af3f0278d5040c8276330"
+          }
+        },
+        ".github/skills/ai-materials-scientist/manifest.json": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "8d9a061a1c94dca492638215e3d9667dabad4a456493965a0d9f581ffa26c1a2"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIMS-980",
+    "testSha256": "003834f3ff975f434db91e0dc95b0a4e7f79c96823e32390908abf1987b71dca",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_ai_materials_scientist_phase_field.py\",\"-k\",\"test_aims_980\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIMS-980.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_materials_scientist/phase_field.py": {
+        "exists": false,
+        "sha256": null
+      },
+      "src/ai_materials_scientist/dispatch.py": {
+        "exists": false,
+        "sha256": null
+      },
+      ".github/skills/ai-materials-scientist/manifest.json": {
+        "exists": false,
+        "sha256": null
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "failed",
+    "exitCode": 1,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/materials-phase-field-TEST-AIMS-980-red.cli.json",
+      "sha256": "e25663ce01c3b12785837d8988d5c7f131d9413a64c811d4d814150338019618"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/materials-phase-field-TEST-AIMS-980-red.report.json",
+      "sha256": "6d38fdae6750b089391d9d81c5e9481c9e185300319d1b04a0715098e30ae4b1"
+    }
+  },
+  "green": {
+    "audit": {
+      "root": "/home/nahisaho/GitHub/jupytermind",
+      "revision": "a45a09e09fb5c24f0bba8481e040efcde1b678ad",
+      "head": "a9d060e7f67ccd257c560604a5db7252d1ce4412",
+      "files": {
+        "src/ai_materials_scientist/phase_field.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "12fecebcf6eb55bb4604f855c67f982edf4e3332ef2aa5a52a732fc062a3782a"
+          }
+        },
+        "src/ai_materials_scientist/dispatch.py": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "5b2167953f26b2ce59df67ee5c59e0e32e2a21b8cc9af3f0278d5040c8276330"
+          }
+        },
+        ".github/skills/ai-materials-scientist/manifest.json": {
+          "past": {
+            "exists": false,
+            "sha256": null
+          },
+          "current": {
+            "exists": true,
+            "sha256": "8d9a061a1c94dca492638215e3d9667dabad4a456493965a0d9f581ffa26c1a2"
+          }
+        }
+      }
+    },
+    "testId": "TEST-AIMS-980",
+    "testSha256": "003834f3ff975f434db91e0dc95b0a4e7f79c96823e32390908abf1987b71dca",
+    "command": "[\".venv/bin/pytest\",[\"tests/test_ai_materials_scientist_phase_field.py\",\"-k\",\"test_aims_980\",\"--json-report\",\"--json-report-file=.musubix/evidence/native/test/TEST-AIMS-980.json\"]]",
+    "environmentSha256": "e47c5e6c798caa4874a7ae53da76290e2db3a2306d4f3e60d68fa9caccb4186b",
+    "sources": {
+      "src/ai_materials_scientist/phase_field.py": {
+        "exists": true,
+        "sha256": "12fecebcf6eb55bb4604f855c67f982edf4e3332ef2aa5a52a732fc062a3782a"
+      },
+      "src/ai_materials_scientist/dispatch.py": {
+        "exists": true,
+        "sha256": "5b2167953f26b2ce59df67ee5c59e0e32e2a21b8cc9af3f0278d5040c8276330"
+      },
+      ".github/skills/ai-materials-scientist/manifest.json": {
+        "exists": true,
+        "sha256": "8d9a061a1c94dca492638215e3d9667dabad4a456493965a0d9f581ffa26c1a2"
+      }
+    },
+    "selected": 1,
+    "selectedCases": 1,
+    "testStatus": "passed",
+    "exitCode": 0,
+    "record": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/materials-phase-field-TEST-AIMS-980-green.cli.json",
+      "sha256": "286c933568b2917484e93428ba5bda448d069e820646e93643109b7036e232bd"
+    },
+    "report": {
+      "path": "/home/nahisaho/.copilot/session-state/a61b7e3f-3117-4629-a13a-4fbffd5d7545/files/gate-recovery-production-003/.musubix/evidence/native/recovery/CHANGE-043-run-003/materials-phase-field-TEST-AIMS-980-green.report.json",
+      "sha256": "c8fd8a57a6bf876afc6fb29e18a66ffeb424639095bf7fd3e8146c78f3353377"
+    }
+  }
+}

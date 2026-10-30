@@ -18,6 +18,12 @@ def _write_excel(tmp_path):
     return path
 
 
+# ---------------------------------------------------------------------------
+# REQ-AIDS-099 / DES-AIDS-099 (GitHub #76): CSV ingestion falls back through
+# utf-8 -> cp1252 -> latin-1 instead of raising UnicodeDecodeError.
+# ---------------------------------------------------------------------------
+
+
 # @id TEST-AIDS-014
 # @verifies REQ-AIDS-014
 def test_TEST_AIDS_014(tmp_path):
@@ -158,12 +164,6 @@ def test_TEST_AIDS_204_local_excel_is_never_row_limit_truncated(tmp_path):
 
     assert result.row_count == 150
     assert result.truncated is False
-
-
-# ---------------------------------------------------------------------------
-# REQ-AIDS-099 / DES-AIDS-099 (GitHub #76): CSV ingestion falls back through
-# utf-8 -> cp1252 -> latin-1 instead of raising UnicodeDecodeError.
-# ---------------------------------------------------------------------------
 
 
 # @id TEST-AIDS-346
